@@ -72,7 +72,7 @@ Hotove veci:
 - Primarni Figma assety jsou vyexportovane do `assets-source/figma/export/graphics/` a `wp-content/uploads/import/figma/`.
 - Frontend nacita `dist/css/arctic.css` po Baspa CSS.
 - Logo, CTA, header preconnecty, Smartsupp a mapa jsou upravene tak, aby local nevysilal externi requesty a nezobrazoval Baspa identitu.
-- Homepage ma pracovni Figma pass, ale dalsi prace musi prejit na presny Figma node/asset manifest.
+- Homepage header a prvni viewport HP jsou srovnane podle Figma node souradnic: desktop header, mobile header, hero text, slider tecky, Figma vyprodejovy banner a dve hlavni kategorie.
 - Homepage pouziva Figma logo a hlavni obrazove assety z node/export manifestu.
 - Katalog virivek ma Figma pass podle frame `KATEGORIE` a hero/kategorie/vlastnosti/zaruka jsou napojene na Figma exporty.
 - Detail Timberwolf je hlavni Figma detail podle frame `DETAIL KONKRETNIHO PRODUKTU`; hero, konfigurace, barvy a samostatna sekce `Volitelna vybava` jsou napojene na Figma/wireframe strukturu.
@@ -87,8 +87,8 @@ Hotove veci:
 - Smoke test hlavnich cest neukazuje `Baspa`, `baspa.cz`, Smartsupp, tracking preconnecty, Ecomail URL, Google Fonts ani Google map embed.
 - `npm run visual:smoke` prochazi hlavni URL vcetne `Dalsi sortiment`, kontroluje zakazane stringy, zakazane externi browser requesty, horizontalni overflow na desktopu/mobilu a uklada desktop/mobile screenshoty Figma stranek.
 - Defaultni WP obsah `Hello world!` a `Sample Page` seed odstranuje, aby se nepropsal do novinek ani navigace.
-- Posledni overeni: `npm run visual:smoke` prosel po napojeni Figma assetu a neodhalil externi browser requesty.
-- Aktualni kontrolni screenshoty jsou v `docs/screenshots/`, vcetne `product-timberwolf-configurations-figma-pass.png` a `product-timberwolf-colors-figma-pass.png`.
+- Posledni overeni: `npm run visual:smoke` prosel po presnem header/HP Figma passu a neodhalil externi browser requesty ani horizontalni overflow.
+- Aktualni kontrolni screenshoty jsou v `docs/screenshots/`, vcetne `home-desktop-1920-playwright.png`, `product-timberwolf-configurations-figma-pass.png` a `product-timberwolf-colors-figma-pass.png`.
 
 ## Souvisly postup realizace
 

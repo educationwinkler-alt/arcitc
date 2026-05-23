@@ -64,9 +64,9 @@ Admin:
 Frontend je seednuty minimalnim, ale pruchodnym obsahem:
 
 - homepage se slide/hero obsahem podle Figma HP passu,
-- Figma/Baspa visual pass pro homepage header, hero, CTA banner a dve hlavni kategorie,
+- presny Figma pass pro homepage header, prvni viewport, vyprodejovy banner z Figma assetu a dve hlavni kategorie,
 - Figma/Baspa visual pass pro katalog virivek podle frame `KATEGORIE`,
-- Figma/Baspa visual pass pro detail produktu Lunar podle frame `DETAIL KONKRETNIHO PRODUKTU`,
+- Figma/Baspa visual pass pro detail produktu Timberwolf podle frame `DETAIL KONKRETNIHO PRODUKTU`,
 - Figma/Baspa visual pass pro `Podpora` a `Kontakt` vcetne lokalni mapove nahrady bez externiho embedu,
 - vlastni Arctic footer podle Figma logiky s rychlym kontaktem a bez puvodniho Baspa block-template vystupu,
 - kategorie `Vířivky`, `Celoroční bazény`, `Další sortiment`,
