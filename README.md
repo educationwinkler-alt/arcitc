@@ -65,6 +65,7 @@ Frontend je seednuty minimalnim, ale pruchodnym obsahem:
 
 - homepage se slide/hero obsahem podle Figma HP passu,
 - presny Figma pass pro homepage header, prvni viewport, vyprodejovy banner z Figma assetu a dve hlavni kategorie,
+- mobilni HP top podle Figma `GM - HP`, vcetne specialniho mobile hero cropu a vyprodejoveho banneru,
 - desktop Figma pass pro katalog virivek podle frame `KATEGORIE` az po footer: hero, intro, series nav, produktove karty, konfigurator, showroom, prubeh, realizace, CTA a footer,
 - Figma/Baspa visual pass pro detail produktu Timberwolf podle frame `DETAIL KONKRETNIHO PRODUKTU`,
 - Figma/Baspa visual pass pro `Podpora` a `Kontakt` vcetne lokalni mapove nahrady bez externiho embedu,

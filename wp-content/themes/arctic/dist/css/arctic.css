@@ -437,6 +437,196 @@ body {
   }
 }
 @media (max-width: 1023px) {
+  .template--homepage .f-section--slides {
+    height: 842px;
+    min-height: 842px;
+    overflow: visible;
+    background: var(--arctic-color-frost);
+  }
+  .template--homepage .f-slides,
+  .template--homepage .f-slides__wrapper {
+    height: 556px;
+  }
+  .template--homepage .f-slides {
+    height: 842px !important;
+    overflow: hidden !important;
+    background: var(--arctic-color-frost);
+  }
+  .template--homepage .f-slide {
+    height: 556px;
+    min-height: 556px;
+  }
+  .template--homepage .f-slide__background {
+    width: 375px;
+    height: 556px;
+    overflow: hidden;
+    background-image: url("/wp-content/uploads/import/figma/mobile-hp-hero.jpg");
+    background-repeat: no-repeat;
+    background-position: -594px 0;
+    background-size: 1343px 556px;
+  }
+  .template--homepage .f-slide__background img {
+    display: none;
+  }
+  .template--homepage .f-caption__container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 375px;
+    height: 556px;
+    padding: 0;
+  }
+  .template--homepage .f-caption {
+    display: block;
+    width: 375px;
+    height: 556px;
+  }
+  .template--homepage .f-caption__header h2 {
+    position: absolute;
+    top: 303px;
+    left: 58px;
+    width: 260px !important;
+    max-width: 260px !important;
+    height: 82px;
+    margin: 0;
+    font-size: 32px !important;
+    line-height: 35px;
+    text-align: center;
+  }
+  .template--homepage .f-caption .f-content {
+    position: absolute;
+    top: 391px;
+    left: 21px;
+    width: 334px;
+    height: 110px;
+    overflow: hidden;
+    text-align: center;
+  }
+  .template--homepage .f-caption .f-content p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+  }
+  .template--homepage .f-slides__pagination {
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    left: 165px;
+    display: flex;
+    gap: 8px;
+    width: 45px;
+    height: 10px;
+    transform: none;
+  }
+  .template--homepage .f-slides__pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    margin: 0;
+  }
+  .template--homepage .f-slides__controls--pagination {
+    top: 526px !important;
+    bottom: auto !important;
+    left: 0;
+    height: 10px;
+    transform: none !important;
+  }
+  .template--homepage .f-section--slides .f-hero-promo {
+    display: block;
+    top: 562px;
+    right: auto;
+    left: 20px;
+    width: 335px;
+    height: 288px;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .template--homepage .f-section--slides .f-hero-promo:before {
+    content: "";
+    position: absolute;
+    top: 39px;
+    left: 0;
+    z-index: 0;
+    width: 335px;
+    height: 221px;
+    background: var(--arctic-color-red);
+    border-radius: 24px;
+  }
+  .template--homepage .f-section--slides .f-hero-promo__image {
+    position: absolute;
+    top: 0;
+    left: 80px;
+    z-index: 2;
+    width: 174px;
+    height: 131px;
+    object-fit: contain;
+  }
+  .template--homepage .f-section--slides .f-hero-promo__bubble {
+    top: 70px;
+    left: 178px;
+    z-index: 3;
+    width: 59px;
+    height: 59px;
+    transform: none;
+    background: #f88944;
+    border: 0;
+    box-shadow: none;
+  }
+  .template--homepage .f-section--slides .f-hero-promo__bubble:before {
+    content: "%";
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: var(--arctic-color-ink);
+    font-size: 24px;
+    font-weight: 800;
+    background: transparent;
+  }
+  .template--homepage .f-section--slides .f-hero-promo strong {
+    position: absolute;
+    top: 143px;
+    left: 18px;
+    z-index: 2;
+    width: 298px;
+    margin: 0;
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .template--homepage .f-section--slides .f-hero-promo__button {
+    position: absolute;
+    top: 181px;
+    left: 83px;
+    z-index: 2;
+    width: 168px;
+    min-height: 50px;
+    padding: 0 20px;
+    font-size: 16px;
+    line-height: 21.17px;
+  }
+  .template--homepage .f-section--product-categories {
+    padding-top: 0 !important;
+    padding-bottom: 41px;
+  }
+  .template--homepage .f-section--product-categories .f-section__container {
+    width: 335px;
+    max-width: 335px;
+    padding: 0;
+  }
+  .template--homepage .f-categories--product {
+    gap: 18px !important;
+  }
+  .template--homepage .f-category {
+    width: 335px;
+    height: 221px;
+    min-height: 221px;
+    border-radius: 24px;
+  }
+  .template--homepage .f-category a {
+    border-radius: 24px;
+  }
   .template--homepage .f-header {
     position: absolute;
   }

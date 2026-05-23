@@ -73,6 +73,7 @@ Hotove veci:
 - Frontend nacita `dist/css/arctic.css` po Baspa CSS.
 - Logo, CTA, header preconnecty, Smartsupp a mapa jsou upravene tak, aby local nevysilal externi requesty a nezobrazoval Baspa identitu.
 - Homepage header a prvni viewport HP jsou srovnane podle Figma node souradnic: desktop header, mobile header, hero text, slider tecky, Figma vyprodejovy banner a dve hlavni kategorie.
+- Mobile homepage top podle `GM - HP` ma Figma hero crop, hero vysku 556 px, vyprodejovy banner na y=562 a dve hlavni kategorie od y=842.
 - Homepage pouziva Figma logo a hlavni obrazove assety z node/export manifestu.
 - Katalog virivek ma desktop Figma pass podle frame `KATEGORIE` az po footer: header, top kontakt, breadcrumb, hero, promo banner, Vlastnosti/Zaruka, series switcher, serie Custom/Classic/Core, produktove karty z Figma assetu, konfigurator, showroom, prubeh, reference, kontaktni CTA a footer sedi na Figma souradnice.
 - Produktove karty v kategorii pouzivaji Figma exporty `category-product-card-1/2/3.png`; stare Arctic produktove fotky zustavaji obsahova vyjimka pro detaily nebo galerie, ne UX karta kategorie.
