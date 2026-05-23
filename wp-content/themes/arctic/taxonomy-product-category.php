@@ -20,13 +20,14 @@ get_template_part( 'templates/heading/term' );
 		<?php
 		if ( is_tax( 'product-category', 'virivky' ) ) {
 			get_template_part( 'templates/section/category-intro' );
+			get_template_part( 'templates/section/product-series-nav' );
 		}
 
 		get_template_part( 'modules/products/templates/section', 'navigation' );
 		get_template_part( 'modules/products/templates/section', 'products' );
 		get_template_part( 'templates/section/configurator' );
 
-		if ( !empty( $page_id ) ) {
+		if ( !is_tax( 'product-category', 'virivky' ) && !empty( $page_id ) ) {
 			$page = get_post( $page_id );
 			?>
 			<div class="f-section f-section--content">

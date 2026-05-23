@@ -50,7 +50,15 @@ if ( $references_query->have_posts() ) { ?>
 							</div>
 						<?php } ?>
 
-						<?php if ( function_exists( 'forqy_get_page_by_template' ) && !empty( forqy_get_page_by_template( 'template-references.php' ) ) ) { ?>
+						<?php if ( is_tax( 'product-category', 'virivky' ) ) { ?>
+
+							<div class="f-section__actions a-buttons">
+								<a class="f-button a-button a-button--outline" href="<?php echo esc_url( home_url( '/reference/' ) ); ?>">
+									<?php echo esc_html__( 'Zobrazit další reference', 'baspa' ); ?>
+								</a>
+							</div>
+
+						<?php } else if ( function_exists( 'forqy_get_page_by_template' ) && !empty( forqy_get_page_by_template( 'template-references.php' ) ) ) { ?>
 
 							<div class="f-section__actions a-buttons">
 								<?php echo function_exists( 'baspa_button_next' ) ? baspa_button_next( __( 'View Next References', 'baspa' ), forqy_get_page_by_template( 'template-references.php' )[ 'permalink' ] ) : ''; ?>

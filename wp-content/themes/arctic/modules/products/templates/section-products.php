@@ -73,12 +73,33 @@ if ( is_tax( 'product-category' ) && 'accessories' !== get_term_meta( get_querie
 						'core'    => __( 'Jednoduchá a úsporná řada pro celoroční relaxaci s nízkými provozními náklady.', 'baspa' ),
 						'swimspa' => __( 'Celoroční bazény pro plavání, rehabilitaci i rodinnou relaxaci.', 'baspa' ),
 					);
+					$series_copy = array(
+						'custom'  => array(
+							'subtitle'    => __( 'Nekompromisně výjimečná', 'baspa' ),
+							'description' => __( 'Dosud nevídaný komfort, konstrukce a technologie zcela podle vašich požadavků.', 'baspa' ),
+						),
+						'classic' => array(
+							'subtitle'    => __( 'Léty prověřená klasika', 'baspa' ),
+							'description' => __( 'Každá vířivka z řady Classic je postavena na základě více než 25 let zkušeností a vývoje.', 'baspa' ),
+						),
+						'core'    => array(
+							'subtitle'    => __( 'Naše základní hodnoty', 'baspa' ),
+							'description' => __( 'Cenově nejdostupnější řada vířivek, ve kterých jsou přesto zabudovány naše základní konstrukční principy.', 'baspa' ),
+						),
+						'swimspa' => array(
+							'subtitle'    => __( 'Celoroční bazény', 'baspa' ),
+							'description' => __( 'Celoroční bazény pro plavání, rehabilitaci i rodinnou relaxaci.', 'baspa' ),
+						),
+					);
 					?>
-					<section class="f-products-series f-products-series--<?php echo esc_attr( $series_term->slug ); ?>">
+					<section id="serie-<?php echo esc_attr( $series_term->slug ); ?>" class="f-products-series f-products-series--<?php echo esc_attr( $series_term->slug ); ?>">
 						<header class="f-products-series__header">
 							<h2><?php echo esc_html( 'Série ' . $series_term->name ); ?></h2>
-							<?php if ( !empty( $series_descriptions[ $series_term->slug ] ) ) { ?>
-								<p><?php echo esc_html( $series_descriptions[ $series_term->slug ] ); ?></p>
+							<?php if ( !empty( $series_copy[ $series_term->slug ]['subtitle'] ) ) { ?>
+								<p class="f-products-series__subtitle"><?php echo esc_html( $series_copy[ $series_term->slug ]['subtitle'] ); ?></p>
+							<?php } ?>
+							<?php if ( !empty( $series_copy[ $series_term->slug ]['description'] ) ) { ?>
+								<p class="f-products-series__description"><?php echo esc_html( $series_copy[ $series_term->slug ]['description'] ); ?></p>
 							<?php } ?>
 						</header>
 

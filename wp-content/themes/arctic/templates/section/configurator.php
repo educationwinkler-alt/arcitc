@@ -17,7 +17,7 @@ $configurator_image = get_posts( array(
 ) );
 ?>
 
-<section class="f-section f-section--configurator">
+<section id="konfigurator" class="f-section f-section--configurator">
 	<div class="f-section__container a-container">
 		<div class="f-configurator-cta">
 			<div class="f-configurator-cta__content">

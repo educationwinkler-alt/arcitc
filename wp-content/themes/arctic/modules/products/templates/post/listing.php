@@ -14,6 +14,11 @@ $post_class = array( 'f-listing--product', 'f-listing', 'f-listing--cover' );
 	get_template_part( 'modules/products/templates/post/listing/image' );
 	?>
 
+	<?php $product_badge = get_post_meta( get_the_ID(), 'product_badge', true ); ?>
+	<?php if ( is_tax( 'product-category' ) && !empty( $product_badge ) ) { ?>
+		<span class="f-listing__badge"><?php echo esc_html( $product_badge ); ?></span>
+	<?php } ?>
+
 	<div class="f-listing__container a-stack a-gap--xs">
 		<div class="a-flex a-flex--align-end a-gap--s">
 			<div class="a-flex__item--auto">

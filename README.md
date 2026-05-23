@@ -65,7 +65,7 @@ Frontend je seednuty minimalnim, ale pruchodnym obsahem:
 
 - homepage se slide/hero obsahem podle Figma HP passu,
 - presny Figma pass pro homepage header, prvni viewport, vyprodejovy banner z Figma assetu a dve hlavni kategorie,
-- Figma/Baspa visual pass pro katalog virivek podle frame `KATEGORIE`,
+- desktop Figma pass pro katalog virivek podle frame `KATEGORIE` az po footer: hero, intro, series nav, produktove karty, konfigurator, showroom, prubeh, realizace, CTA a footer,
 - Figma/Baspa visual pass pro detail produktu Timberwolf podle frame `DETAIL KONKRETNIHO PRODUKTU`,
 - Figma/Baspa visual pass pro `Podpora` a `Kontakt` vcetne lokalni mapove nahrady bez externiho embedu,
 - vlastni Arctic footer podle Figma logiky s rychlym kontaktem a bez puvodniho Baspa block-template vystupu,
@@ -75,6 +75,7 @@ Frontend je seednuty minimalnim, ale pruchodnym obsahem:
 - detailnejsi piloty `Lunar`, `Orion`, `Husky`, `Covana`,
 - sirsi sortiment `Luxusni sauny`, `Koupaci sudy Kirami`, `Prislusenstvi a doplnky`, `IKONO nabytek`, `Ochlazovaci bazenek`,
 - 26 dostupnych PDF dokumentu z crawlu ve `download` CPT,
+- 3 reference z Figma realizaci pro sekci `Ukazky realizaci`,
 - `Podpora`, `Ke stazeni`, `Showroom`, `Kontakt`,
 - menu v hlavni navigaci podle Figma grafiky, horni liste a paticce.
 

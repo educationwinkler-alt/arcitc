@@ -285,12 +285,37 @@ update_term_meta( $category_hot_tubs, 'category_image', $category_hot_tubs_life 
 update_term_meta( $category_hot_tubs, 'category_heading_image', $figma_category_hero_virivky );
 update_term_meta( $category_hot_tubs, 'category_description_short', 'Venkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily.' );
 update_term_meta( $category_hot_tubs, 'category_heading_title', 'Venkovní vířivky Arctic Spas' );
-update_term_meta( $category_hot_tubs, 'category_heading_text', 'Vyberte si kanadskou vířivku podle velikosti, konfigurace a způsobu používání. Sortiment je rozdělený do sérií Custom, Classic a Core přesně podle Figma architektury.' );
+update_term_meta( $category_hot_tubs, 'category_heading_text', 'Venkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily, byly jednoduché na obsluhu a pro svůj provoz spotřebovaly minimum energie.' );
 update_term_meta( $category_swimspa, 'category_image', $category_swimspa_life );
 update_term_meta( $category_swimspa, 'category_heading_image', $figma_hero );
 update_term_meta( $category_swimspa, 'category_description_short', 'Rodinný bazén na zahradě je snem řady domácností. Celoroční bazény Arctic nahrazují klasický bazén a přidávají masážní komfort.' );
 update_term_meta( $category_covers, 'category_image', $covana_main );
 update_term_meta( $category_covers, 'category_description_short', 'Automaticke kryty, doplnky a navazujici sortiment pro pohodlnejsi provoz virivky.' );
+
+$reference_location_kv = arctic_seed_term( 'reference-category', 'Karlovy Vary', 'karlovy-vary' );
+$reference_year_2025   = arctic_seed_term( 'reference-category', '2025', '2025' );
+
+foreach ( array(
+	array( 'key' => 'figma-reference-1', 'image' => $reference_hot_tubs_life, 'order' => 10 ),
+	array( 'key' => 'figma-reference-2', 'image' => $figma_realizace_2, 'order' => 20 ),
+	array( 'key' => 'figma-reference-3', 'image' => $figma_realizace_3, 'order' => 30 ),
+) as $reference_item ) {
+	$reference_id = arctic_seed_post_by_meta( 'reference', '_arctic_seed_key', $reference_item['key'], array(
+		'post_status'  => 'publish',
+		'post_title'   => 'Venkovní vířivka Timberwolf',
+		'post_name'    => $reference_item['key'],
+		'post_content' => '',
+		'menu_order'   => $reference_item['order'],
+	) );
+
+	set_post_thumbnail( $reference_id, $reference_item['image'] );
+	update_post_meta( $reference_id, 'reference_single', 0 );
+	update_post_meta( $reference_id, 'reference_location', 'Karlovy Vary' );
+	update_post_meta( $reference_id, 'reference_year', '2025' );
+	wp_set_post_terms( $reference_id, array( $reference_location_kv, $reference_year_2025 ), 'reference-category' );
+}
+
+update_option( 'baspa_references_title', 'Ukázky realizací' );
 
 $lunar_id = arctic_seed_post_by_meta( 'product', 'product_original_url', 'https://www.arctic-spas.cz/virivka-lunar.php', array(
 	'post_status'  => 'publish',
@@ -313,7 +338,7 @@ arctic_seed_set_multi_meta( $lunar_id, 'product_images', array( $lunar_main, $lu
 arctic_seed_set_multi_meta( $lunar_id, 'product_model', array( 'Core Lunar' ) );
 arctic_seed_set_multi_meta( $lunar_id, 'product_seats', array( '1 lehatko + 4 sedadla' ) );
 arctic_seed_set_multi_meta( $lunar_id, 'product_nozzles', array( 'Prestige: 20 trysek / 1 cerpadlo', 'Signature: 40 trysek / 2 cerpadla' ) );
-arctic_seed_set_multi_meta( $lunar_id, 'product_dimensions_external', array( '212 x 213 x 99 cm' ) );
+arctic_seed_set_multi_meta( $lunar_id, 'product_dimensions_external', array( '212 × 213 cm, výška: 99 cm' ) );
 arctic_seed_set_multi_meta( $lunar_id, 'product_acrylic_colors', array( 'Platinum Swirl', 'Espresso', 'Kalahari', 'Dakota' ) );
 arctic_seed_set_multi_meta( $lunar_id, 'product_configurations', array(
 	array(
@@ -358,7 +383,7 @@ arctic_seed_set_multi_meta( $orion_id, 'product_images', array( $orion_main, $or
 arctic_seed_set_multi_meta( $orion_id, 'product_model', array( 'Core Orion' ) );
 arctic_seed_set_multi_meta( $orion_id, 'product_seats', array( '6 sedadel' ) );
 arctic_seed_set_multi_meta( $orion_id, 'product_nozzles', array( 'Prestige: 20 trysek / 1 cerpadlo', 'Signature: 40 trysek / 2 cerpadla' ) );
-arctic_seed_set_multi_meta( $orion_id, 'product_dimensions_external', array( '212 x 213 x 99 cm' ) );
+arctic_seed_set_multi_meta( $orion_id, 'product_dimensions_external', array( '212 × 213 cm, výška: 99 cm' ) );
 arctic_seed_set_multi_meta( $orion_id, 'product_acrylic_colors', array( 'Platinum Swirl', 'Espresso', 'Kalahari', 'Dakota' ) );
 arctic_seed_set_multi_meta( $orion_id, 'product_configurations', array(
 	array(
@@ -474,20 +499,20 @@ foreach ( $other_sortiment_products as $index => $product ) {
 }
 
 $legacy_products = array(
-	array( 'source_slug' => 'virivka-cub', 'slug' => 'cub', 'name' => 'Cub', 'type' => 'hot_tub', 'series' => $series_custom ),
-	array( 'source_slug' => 'virivka-eagle', 'slug' => 'eagle', 'name' => 'Eagle', 'type' => 'hot_tub', 'series' => $series_classic ),
-	array( 'source_slug' => 'virivka-fox', 'slug' => 'fox', 'name' => 'Arctic Fox', 'type' => 'hot_tub', 'series' => $series_custom ),
-	array( 'source_slug' => 'virivka-husky', 'slug' => 'husky', 'name' => 'Husky', 'type' => 'hot_tub', 'series' => $series_core, 'price' => 'od 209 000 Kc', 'description' => 'Kompaktni virivka rady Core s peti sedadly, 20 tryskami a jednim cerpadlem.' ),
-	array( 'source_slug' => 'virivka-klondiker', 'slug' => 'klondiker', 'name' => 'Klondiker', 'type' => 'hot_tub', 'series' => $series_custom ),
-	array( 'source_slug' => 'virivka-kodiak', 'slug' => 'kodiak', 'name' => 'Kodiak', 'type' => 'hot_tub', 'series' => $series_custom ),
-	array( 'source_slug' => 'virivka-mckinley', 'slug' => 'mckinley', 'name' => 'McKinley', 'type' => 'hot_tub', 'series' => $series_classic ),
-	array( 'source_slug' => 'virivka-mustang', 'slug' => 'mustang', 'name' => 'Mustang', 'type' => 'hot_tub', 'series' => $series_classic ),
-	array( 'source_slug' => 'virivka-summit', 'slug' => 'summit', 'name' => 'Summit', 'type' => 'hot_tub', 'series' => $series_custom ),
-	array( 'source_slug' => 'virivka-summit-xl', 'slug' => 'summit-xl', 'name' => 'Summit XL', 'type' => 'hot_tub', 'series' => $series_custom ),
-	array( 'source_slug' => 'virivka-timberwolf', 'slug' => 'timberwolf', 'name' => 'Timberwolf', 'type' => 'hot_tub', 'series' => $series_classic ),
-	array( 'source_slug' => 'virivka-totem', 'slug' => 'totem', 'name' => 'Totem', 'type' => 'hot_tub', 'series' => $series_classic ),
-	array( 'source_slug' => 'virivka-tundra', 'slug' => 'tundra', 'name' => 'Tundra', 'type' => 'hot_tub', 'series' => $series_custom ),
-	array( 'source_slug' => 'virivka-yukon', 'slug' => 'yukon', 'name' => 'Yukon', 'type' => 'hot_tub', 'series' => $series_custom ),
+	array( 'source_slug' => 'virivka-summit-xl', 'slug' => 'summit-xl', 'name' => 'Summit XL', 'type' => 'hot_tub', 'series' => $series_custom, 'dimensions' => '293 × 235 cm, výška: 98 cm' ),
+	array( 'source_slug' => 'virivka-summit', 'slug' => 'summit', 'name' => 'Summit', 'type' => 'hot_tub', 'series' => $series_custom, 'dimensions' => '235 × 235 cm, výška: 98 cm', 'badge' => 'TOP' ),
+	array( 'source_slug' => 'virivka-tundra', 'slug' => 'tundra', 'name' => 'Tundra', 'type' => 'hot_tub', 'series' => $series_custom, 'dimensions' => '235 × 235 cm, výška: 98 cm', 'badge' => 'TOP' ),
+	array( 'source_slug' => 'virivka-kodiak', 'slug' => 'kodiak', 'name' => 'Kodiak', 'type' => 'hot_tub', 'series' => $series_custom, 'dimensions' => '235 × 235 cm, výška: 98 cm' ),
+	array( 'source_slug' => 'virivka-klondiker', 'slug' => 'klondiker', 'name' => 'Klondiker', 'type' => 'hot_tub', 'series' => $series_custom, 'dimensions' => '235 × 235 cm, výška: 98 cm' ),
+	array( 'source_slug' => 'virivka-yukon', 'slug' => 'yukon', 'name' => 'Yukon', 'type' => 'hot_tub', 'series' => $series_custom, 'dimensions' => '217 × 217 cm, výška: 104 cm', 'badge' => 'TOP' ),
+	array( 'source_slug' => 'virivka-cub', 'slug' => 'cub', 'name' => 'Cub', 'type' => 'hot_tub', 'series' => $series_custom, 'dimensions' => '217 × 217 cm, výška: 104 cm', 'badge' => 'TOP' ),
+	array( 'source_slug' => 'virivka-fox', 'slug' => 'fox', 'name' => 'Arctic Fox', 'type' => 'hot_tub', 'series' => $series_custom, 'dimensions' => '176 × 217 cm, výška: 98 cm', 'badge' => 'TOP' ),
+	array( 'source_slug' => 'virivka-mckinley', 'slug' => 'mckinley', 'name' => 'McKinley', 'type' => 'hot_tub', 'series' => $series_classic, 'dimensions' => '235 × 235 cm, výška: 98 cm' ),
+	array( 'source_slug' => 'virivka-mustang', 'slug' => 'mustang', 'name' => 'Mustang', 'type' => 'hot_tub', 'series' => $series_classic, 'dimensions' => '235 × 235 cm, výška: 98 cm' ),
+	array( 'source_slug' => 'virivka-totem', 'slug' => 'totem', 'name' => 'Totem', 'type' => 'hot_tub', 'series' => $series_classic, 'dimensions' => '217 × 217 cm, výška: 104 cm' ),
+	array( 'source_slug' => 'virivka-eagle', 'slug' => 'eagle', 'name' => 'Eagle', 'type' => 'hot_tub', 'series' => $series_classic, 'dimensions' => '217 × 217 cm, výška: 104 cm' ),
+	array( 'source_slug' => 'virivka-timberwolf', 'slug' => 'timberwolf', 'name' => 'Timberwolf', 'type' => 'hot_tub', 'series' => $series_classic, 'dimensions' => '174 × 217 cm, výška: 98 cm' ),
+	array( 'source_slug' => 'virivka-husky', 'slug' => 'husky', 'name' => 'Husky', 'type' => 'hot_tub', 'series' => $series_core, 'price' => 'od 209 000 Kc', 'description' => 'Kompaktni virivka rady Core s peti sedadly, 20 tryskami a jednim cerpadlem.', 'dimensions' => '213 × 186 cm, výška: 99 cm' ),
 	array( 'source_slug' => 'bazen-athabascan', 'slug' => 'athabascan', 'name' => 'Athabascan', 'type' => 'swimspa', 'series' => $series_swimspa ),
 	array( 'source_slug' => 'bazen-hudson', 'slug' => 'hudson', 'name' => 'Hudson', 'type' => 'swimspa', 'series' => $series_swimspa ),
 	array( 'source_slug' => 'bazen-kingfisher', 'slug' => 'kingfisher', 'name' => 'Kingfisher', 'type' => 'swimspa', 'series' => $series_swimspa ),
@@ -536,6 +561,12 @@ foreach ( $legacy_products as $index => $product ) {
 	set_post_thumbnail( $product_id, $image_id );
 	arctic_seed_set_multi_meta( $product_id, 'product_image', array( $image_id ) );
 	arctic_seed_set_multi_meta( $product_id, 'product_images', array( $image_id ) );
+	arctic_seed_set_multi_meta( $product_id, 'product_dimensions_external', array( $product['dimensions'] ?? '' ) );
+	if ( !empty( $product['badge'] ) ) {
+		update_post_meta( $product_id, 'product_badge', $product['badge'] );
+	} else {
+		delete_post_meta( $product_id, 'product_badge' );
+	}
 
 	if ( $is_swimspa ) {
 		wp_set_object_terms( $product_id, array( $kind_swimspa ), 'product-kind' );
@@ -570,7 +601,7 @@ arctic_seed_set_multi_meta( $timberwolf_id, 'product_images', array( $figma_timb
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_model', array( 'Classic Timberwolf' ) );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_seats', array( '3 osoby' ) );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_nozzles', array( 'Prestige 15/1', 'Signature 30/2' ) );
-arctic_seed_set_multi_meta( $timberwolf_id, 'product_dimensions_external', array( '217 x 174 x 98 cm' ) );
+arctic_seed_set_multi_meta( $timberwolf_id, 'product_dimensions_external', array( '174 × 217 cm, výška: 98 cm' ) );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_water_volume', array( '884 litru' ) );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_acrylic_colors', array( 'Dakota', 'Kalahari', 'Odyssey', 'Platinum Swirl', 'Espresso' ) );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_cabinet_colors', array( 'Cedrovy kabinet standardni', 'Bezudrzbovy kabinet volitelny' ) );
@@ -787,6 +818,13 @@ $downloads_page_id = arctic_seed_page(
 	'ke-stazeni',
 	'Ke stazeni',
 	'<!-- wp:heading --><h2>Dokumenty ke stazeni</h2><!-- /wp:heading --><!-- wp:shortcode -->[arctic-downloads]<!-- /wp:shortcode -->'
+);
+
+$references_page_id = arctic_seed_page(
+	'reference',
+	'Reference',
+	'',
+	'template-references.php'
 );
 
 $contact_id = arctic_seed_page(

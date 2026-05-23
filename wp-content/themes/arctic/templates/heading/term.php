@@ -17,7 +17,25 @@ $heading_class[] = !empty( $term_image_id ) ? 'f-heading--background' : '';
 
 <header <?php ( !function_exists( 'forqy_class' ) ) ?: forqy_class( $heading_class ); ?>>
 	<div class="f-heading__container a-container">
-		<?php if ( function_exists( 'forqy_breadcrumbs' ) ) {
+		<?php if ( is_tax( 'product-category' ) ) {
+			$term_link = get_term_link( $term_id );
+			$term_link = !is_wp_error( $term_link ) ? $term_link : home_url( '/' );
+			?>
+			<nav class="f-breadcrumbs f-breadcrumbs--figma" aria-label="<?php echo esc_attr_x( 'Breadcrumbs', 'breadcrumbs', 'baspa' ); ?>">
+				<ol>
+					<li>
+						<a class="f-breadcrumbs__home" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+							<span class="a-sr-only"><?php echo esc_html__( 'Úvod', 'baspa' ); ?></span>
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo esc_url( $term_link ); ?>" aria-current="page">
+							<?php echo esc_html( $heading_title ); ?>
+						</a>
+					</li>
+				</ol>
+			</nav>
+		<?php } else if ( function_exists( 'forqy_breadcrumbs' ) ) {
 			forqy_breadcrumbs();
 		} ?>
 
@@ -42,6 +60,10 @@ $heading_class[] = !empty( $term_image_id ) ? 'f-heading--background' : '';
 			) ); ?>
 		</div>
 	</div>
+
+	<?php if ( is_tax( 'product-category' ) ) {
+		get_template_part( 'templates/section/hero-promo' );
+	} ?>
 
 	<?php get_template_part( 'templates/image/background' ); ?>
 </header>
