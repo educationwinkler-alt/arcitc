@@ -1,0 +1,48 @@
+//
+// Common - Form - Field - Range
+//
+
+[type='range'] {
+  height: calc(var(--field--line-height, var(--a--field--line-height)) + (calc(var(--a--field--spacing--vertical, 0.625rem)) * 2)  + (var(--a--field--border-width) * 2));
+  padding-right: 0;
+  padding-left: 0;
+
+  appearance: none;
+
+  background: transparent;
+  border: transparent;
+  box-shadow: none;
+
+  // Track
+
+  &::-webkit-slider-runnable-track {
+    .field-range-track();
+  }
+
+  &::-moz-range-track {
+    .field-range-track();
+  }
+
+  // Thumb
+
+  &::-webkit-slider-thumb {
+    .field-range-thumb();
+  }
+
+  &::-moz-range-thumb {
+    .field-range-thumb();
+  }
+
+  // Focus
+  &:focus {
+    box-shadow: none;
+
+    &::-webkit-slider-thumb {
+      .field-range-thumb--active();
+    }
+
+    &::-moz-range-thumb {
+      .field-range-thumb--active();
+    }
+  }
+}

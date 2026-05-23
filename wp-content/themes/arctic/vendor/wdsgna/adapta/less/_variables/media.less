@@ -1,0 +1,41 @@
+//
+// Variables - Media
+//
+
+// Viewport
+@viewport-min: @breakpoints[min]; // 320px
+@viewport-max: @breakpoints[xxl]; // 1920px
+
+// Min
+@breakpoint-min: @breakpoints[min]; // 320px
+// XS
+@breakpoint-xs: @breakpoints[xs]; // 480px
+// S
+@breakpoint-s: @breakpoints[s]; // 768px
+// M
+@breakpoint-m: @breakpoints[m]; // 1024px
+// L
+@breakpoint-l: @breakpoints[l]; // 1280px
+// XL
+@breakpoint-xl: @breakpoints[xl]; // 1600px
+// XXL
+@breakpoint-xxl: @breakpoints[xxl]; // 1920px
+
+//
+// Minimum
+//
+
+@breakpoint-xs--min: (@viewport-min + 1px);
+@breakpoint-xxl--min: (@breakpoint-xxl + 1px);
+
+//
+// Maximum
+//
+
+@breakpoint-min--max: (@breakpoint-xs - 1px);
+@breakpoint-xs--max: (@breakpoint-s - 1px);
+@breakpoint-s--max: (@breakpoint-m - 1px);
+@breakpoint-m--max: (@breakpoint-l - 1px);
+@breakpoint-l--max: (@breakpoint-xl - 1px);
+@breakpoint-xl--max: (@breakpoint-xxl - 1px);
+@breakpoint-xxl--max: (@breakpoint-xxl - 1px);

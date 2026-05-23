@@ -1,0 +1,121 @@
+//
+// Utility - Visibility
+//
+
+// Hide
+
+.@{prefix}-hide {
+
+  // Min <
+  &\:min {
+    @media (max-width: @breakpoint-min--max) {
+      display: none;
+    }
+  }
+
+  // XS <
+  &\:xs {
+    @media (min-width: @breakpoint-min) and (max-width: @breakpoint-xs--max) {
+      display: none;
+    }
+  }
+
+  // S > M <
+  &\:s {
+    @media (min-width: @breakpoint-s) and (max-width: @breakpoint-s--max) {
+      display: none;
+    }
+  }
+
+  // M > L <
+  &\:m {
+    @media (min-width: @breakpoint-m) and (max-width: @breakpoint-m--max) {
+      display: none;
+    }
+  }
+
+  // L > XL <
+  &\:l {
+    @media (min-width: @breakpoint-l) and (max-width: @breakpoint-l--max) {
+      display: none;
+    }
+  }
+
+  // XL >
+  &\:xl {
+    @media (min-width: @breakpoint-xl) {
+      display: none;
+    }
+  }
+
+  // Print
+  &\:print {
+    @media print {
+      display: none;
+    }
+  }
+}
+
+.@{prefix}-hide {
+  display: none;
+}
+
+// Show
+
+.@{prefix}-show {
+
+  // Min <
+  &\:min {
+    @media (max-width: @breakpoint-min--max) {
+      display: revert;
+    }
+  }
+
+  // XS <
+  &\:xs {
+    @media (min-width: @breakpoint-min) and (max-width: @breakpoint-xs--max) {
+      display: revert;
+    }
+  }
+
+  // S > M <
+  &\:s {
+    @media (min-width: @breakpoint-s) and (max-width: @breakpoint-s--max) {
+      display: revert;
+    }
+  }
+
+  // M > L <
+  &\:m {
+    @media (min-width: @breakpoint-m) and (max-width: @breakpoint-m--max) {
+      display: revert;
+    }
+  }
+
+  // L > XL <
+  &\:l {
+    @media (min-width: @breakpoint-l) and (max-width: @breakpoint-l--max) {
+      display: revert;
+    }
+  }
+
+  // XL >
+  &\:xl {
+    @media (min-width: @breakpoint-xl) {
+      display: revert;
+    }
+  }
+
+  // Print
+  &\:print {
+    display: none;
+
+    @media print {
+      display: revert;
+    }
+  }
+}
+
+.@{prefix}-show {
+  display: block;
+}

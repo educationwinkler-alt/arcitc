@@ -1,0 +1,13 @@
+// Separator Block
+
+.wp-block-separator {
+  --separator--size: var(--a--border--width--1);
+
+  width: 100%;
+  border-bottom-width: var(--separator--size);
+
+  // ! Background
+  &:not(.has-background) {
+	border-color: rgba(var(--a--color-rgb), 20%);
+  }
+}

@@ -1,0 +1,45 @@
+// Slide
+
+body {
+  --wrapper--width: 720px;
+  --wrapper--spacing: var(--a--spacing--m);
+
+  @media (min-width: 1024px) {
+	--wrapper--spacing: var(--a--spacing--l);
+  }
+
+  line-height: var(--a--line-height--xs);
+
+  color: var(--f--slideshow--color);
+  background-color: var(--f--slideshow--color--background);
+
+  a {
+	color: var(--f--slideshow--color);
+  }
+
+  .is-root-container {
+
+	> p, > ul, > ol {
+	  &:not(.has-text-color) {
+		color: var(--f--slideshow--color);
+	  }
+	}
+  }
+
+  .edit-post-visual-editor__post-title-wrapper {
+	max-width: var(--wrapper--width);
+	padding-right: var(--wrapper--spacing);
+	padding-left: var(--wrapper--spacing);
+	margin-bottom: 120px;
+	text-wrap: balance;
+  }
+
+  .block-editor-block-list__layout.is-root-container {
+	  max-width: var(--wrapper--width);
+	padding-right: var(--wrapper--spacing);
+	padding-left: var(--wrapper--spacing);
+
+	> :not(.alignleft):not(.alignright):not(.alignfull) {
+	}
+  }
+}

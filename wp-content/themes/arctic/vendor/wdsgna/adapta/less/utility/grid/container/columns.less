@@ -1,0 +1,26 @@
+//
+// Utility - Grid - Container - Flow
+//
+
+.@{prefix}-grid {
+  // Default Properties
+  //--grid--auto-columns: auto;
+
+  grid-auto-columns: var(--grid--auto-columns, auto);
+
+  &--cols-auto {
+    --grid--auto-columns: auto;
+  }
+
+  &--cols-min {
+    --grid--auto-columns: min-content;
+  }
+
+  &--cols-max {
+    --grid--auto-columns: max-content;
+  }
+
+  &--cols-fr {
+    --grid--auto-columns: minmax(0, 1fr);
+  }
+}

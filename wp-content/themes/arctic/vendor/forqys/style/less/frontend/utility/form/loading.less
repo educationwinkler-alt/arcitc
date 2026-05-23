@@ -1,0 +1,36 @@
+// Loading
+
+.@{prefix-s}-form__loading {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate3d(0, -100%, 0);
+
+  position: absolute;
+  inset: 0;
+  z-index: var(--a--layer--5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--a--color);
+  background-color: rgba(var(--a--color--background-rgb), 50%);
+
+  .transition-property(~'opacity, visibility');
+  .transition-duration();
+  .transition-timing-function();
+
+  // Active
+  &.active {
+	opacity: 1;
+	visibility: visible;
+	transform: translate3d(0, 0, 0);
+	pointer-events: auto;
+  }
+
+  // Closing
+  &.closing {
+	opacity: 0;
+  }
+}

@@ -1,0 +1,41 @@
+// Overlay
+
+.@{prefix}-off__overlay {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 125%; // Mobile scrolling fix
+  z-index: calc(var(--off--z-index, 190) - 1);
+
+  transition: opacity var(--off--transition--duration) ease;
+
+  // Active
+  .off-active & {
+	opacity: 1;
+	pointer-events: auto;
+	transform: translateX(0);
+  }
+
+  // Active Closing
+  .off-active.off-closing & {
+	opacity: 0;
+	transition-duration: calc(var(--off--transition--duration) / 2);
+	transition-delay: calc(var(--off--transition--duration) / 2);
+  }
+}
+
+//body {
+//  &:has(.@{prefix}-off.active) {
+//
+//    .@{prefix}-off__overlay {
+//      opacity: 1;
+//      pointer-events: auto;
+//      transform: translateX(0);
+//    }
+//  }
+//}

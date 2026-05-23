@@ -1,0 +1,57 @@
+//
+// Properties - Typography
+//
+
+:root {
+
+  //
+  // Font Size
+  //
+
+  --a--font-size--xxxs: 0.625rem;
+  --a--font-size--xxs: 0.75rem;
+  --a--font-size--xs: 0.875rem;
+  --a--font-size--s: 0.9375rem;
+  --a--font-size--m: 1rem;
+  --a--font-size--l: 1.0625rem;
+  --a--font-size--xl: clamp(1.0625rem, calc(0.725rem + 1.125vw), 1.125rem); // 1.125
+  --a--font-size--xxl: clamp(1.125rem, calc(1.05rem + 0.25vw), 1.25rem); // 1.25
+
+  //
+  // Font Weight
+  //
+
+  --a--font-weight--thin: 100;
+  --a--font-weight--light-extra: 200;
+  --a--font-weight--light: 300;
+  --a--font-weight--regular: 400;
+  --a--font-weight--medium: 500;
+  --a--font-weight--bold-semi: 600;
+  --a--font-weight--bold: 700;
+  --a--font-weight--bold-extra: 800;
+  --a--font-weight--black: 900;
+
+  //
+  // Letter Spacing
+  //
+
+  --a--letter-spacing--xxs: calc(var(--a--letter-spacing, 0em) - 0.1em);
+  --a--letter-spacing--xs: calc(var(--a--letter-spacing, 0em) - 0.05em);
+  --a--letter-spacing--s: calc(var(--a--letter-spacing, 0em) - 0.025em);
+  --a--letter-spacing--m: var(--a--letter-spacing, 0em);
+  --a--letter-spacing--l: calc(var(--a--letter-spacing, 0em) + 0.025em);
+  --a--letter-spacing--xl: calc(var(--a--letter-spacing, 0em) + 0.05em);
+  --a--letter-spacing--xxl: calc(var(--a--letter-spacing, 0em) + 0.1em);
+
+  //
+  // Line Height
+  //
+
+  --a--line-height--xxs: calc(var(--a--line-height, 1.7) - 0.6);
+  --a--line-height--xs: calc(var(--a--line-height, 1.7) - 0.4);
+  --a--line-height--s: calc(var(--a--line-height, 1.7) - 0.2);
+  --a--line-height--m: var(--a--line-height, 1.7);
+  --a--line-height--l: calc(var(--a--line-height, 1.7) + 0.1);
+  --a--line-height--xl: calc(var(--a--line-height, 1.7) + 0.2);
+  --a--line-height--xxl: calc(var(--a--line-height, 1.7) + 0.3);
+}

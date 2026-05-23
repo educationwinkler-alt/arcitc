@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html id="top" lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="color-scheme" content="light dark">
+
+    <title>Adapta &mdash; Example &mdash; Gap</title>
+
+    <!--    <link rel="stylesheet" href="../dist/adapta.css">-->
+    <script>
+        // Prevent cache of the Adapta CSS file
+        document.write('<link href="../dist/adapta-skin--default.css?' + Math.random() + '" rel="stylesheet">');
+        document.write('<link href="../dist/adapta.css?' + Math.random() + '" rel="stylesheet">');
+    </script>
+
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        main {
+            padding: 0 0 calc(var(--a--spacing) * 2) 0;
+        }
+
+        main [class*='a-gap'] > * {
+
+        }
+
+        main [class*='a-gap'] > * > * {
+            min-height: var(--a--spacing);
+            color: var(--a--color--background);
+            background-color: var(--a--color);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="a-flex a-gap--0" style="position: sticky; top: 0; z-index: 1;">
+    <div class="a-flex__item--auto">
+        <button id="theme-toggle" style="width: 100%; border-radius: 0">
+            Toggle Scheme
+        </button>
+    </div>
+    <div class="a-flex__item--auto">
+        <button id="dir-toggle" style="width: 100%; border-radius: 0">
+            Toggle Dir
+        </button>
+    </div>
+</div>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", function () {
+        document.documentElement.classList.toggle("scheme-dark");
+    });
+    document.getElementById("dir-toggle").addEventListener("click", function () {
+        if (document.documentElement.getAttribute("dir") === "ltr") {
+            document.documentElement.setAttribute("dir", "rtl");
+        } else {
+            document.documentElement.setAttribute("dir", "ltr");
+        }
+    });
+</script>
+
+<div class="a-container">
+    <h1>Gap</h1>
+
+    <main>
+
+        <h2>Default</h2>
+
+        <h3>Gap</h3>
+        <div class="a-flex a-flex--wrap a-gap">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h3>Gap 0</h3>
+        <div class="a-flex a-flex--wrap a-gap--0">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h3>Gap 1</h3>
+        <div class="a-flex a-flex--wrap a-gap--1">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h3>Gap XXS</h3>
+        <div class="a-flex a-flex--wrap a-gap--xxs">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h3>Gap XS</h3>
+        <div class="a-flex a-flex--wrap a-gap--xs">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h3>Gap S</h3>
+        <div class="a-flex a-flex--wrap a-gap--s">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h3>Gap M [default]</h3>
+        <div class="a-flex a-flex--wrap a-gap">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h3>Gap L</h3>
+        <div class="a-flex a-flex--wrap a-gap--l">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h3>Gap M > Gap XL:l</h3>
+        <div class="a-flex a-flex--wrap a-gap--m a-gap--xl:l">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h3>Gap M > Gap XXL:l</h3>
+        <div class="a-flex a-flex--wrap a-gap--m a-gap--xxl:l">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h2>XS</h2>
+        <h3>Gap XS > Gap M:s</h3>
+        <div class="a-flex a-flex--wrap a-gap--xs a-gap--m:s">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h3>Gap XS > Gap L:s</h3>
+        <div class="a-flex a-flex--wrap a-gap--xs a-gap--l:s">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h3>Gap XS > Gap XL:m</h3>
+        <div class="a-flex a-flex--wrap a-gap--xs a-gap--xl:m">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h3>Gap XS > Gap XL:m</h3>
+        <div class="a-flex a-flex--wrap a-gap--xs a-gap--xl:m">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h3>Gap XS > Gap L:m</h3>
+        <div class="a-flex a-flex--wrap a-gap--xs a-gap--l:m">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h3>Gap XS > Gap XL:m</h3>
+        <div class="a-flex a-flex--wrap a-gap--xs a-gap--xl:m">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+        <h3>Gap XS > Gap M:m > Gap XL:xl</h3>
+        <div class="a-flex a-flex--wrap a-gap--xs a-gap--m:m a-gap--xl:xl">
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+            <div class="a-flex__item--33">
+                <div></div>
+            </div>
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

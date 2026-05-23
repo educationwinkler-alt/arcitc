@@ -1,0 +1,63 @@
+//
+// Utility - Alignment
+//
+
+.@{prefix}-align {
+
+  // Left
+  &--left {
+    text-align: left;
+
+    // M <
+    &\:m {
+      @media (max-width: @breakpoint-s--max) {
+        text-align: left;
+      }
+    }
+
+    // L <
+    &\:l {
+      @media (max-width: @breakpoint-m--max) {
+        text-align: left;
+      }
+    }
+  }
+
+  // Center
+  &--center {
+    text-align: center;
+
+    // M <
+    &\:m {
+      @media (max-width: @breakpoint-s--max) {
+        text-align: center;
+      }
+    }
+
+    // L <
+    &\:l {
+      @media (max-width: @breakpoint-m--max) {
+        text-align: center;
+      }
+    }
+  }
+
+  // Right
+  &--right {
+    text-align: right;
+
+    // M <
+    &\:m {
+      @media (max-width: @breakpoint-s--max) {
+        text-align: right;
+      }
+    }
+
+    // L <
+    &\:l {
+      @media (max-width: @breakpoint-m--max) {
+        text-align: right;
+      }
+    }
+  }
+}

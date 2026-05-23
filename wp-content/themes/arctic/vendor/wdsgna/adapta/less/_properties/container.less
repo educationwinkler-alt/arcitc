@@ -1,0 +1,16 @@
+//
+// Properties - Container
+//
+
+:root {
+  --a--container--width: 90rem;
+  --a--container--width-max: 120rem;
+  --a--container--spacing: var(--a--spacing--xs);
+
+  @media (min-width: @breakpoint-s) {
+	--a--container--spacing: var(--a--spacing--s);
+  }
+  @media (min-width: @breakpoint-m) {
+	--a--container--spacing: var(--a--spacing--m);
+  }
+}

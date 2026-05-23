@@ -1,0 +1,70 @@
+//
+// Utility - Shadow
+//
+
+.@{prefix}-shadow {
+  .shadow();
+
+  // Bottom
+  &--bottom {
+	.shadow--bottom();
+  }
+
+  // Top
+  &--top {
+	.shadow--top();
+  }
+
+  // Inset
+  &--inset {
+	--shadow--size: var(--a--spacing--s);
+
+	.shadow--inset();
+  }
+
+  // Sharp
+  &--sharp {
+	.shadow--sharp();
+  }
+
+  // Outline
+  &--outline {
+	.shadow--outline();
+  }
+
+  //
+  // Size
+  //
+
+  &--1 {
+	--shadow--size: var(--a--spacing--1);
+  }
+
+  &--xxs {
+	--shadow--size: var(--a--spacing--xxs);
+  }
+
+  &--xs {
+	--shadow--size: var(--a--spacing--xs);
+  }
+
+  &--s {
+	--shadow--size: var(--a--spacing--s);
+  }
+
+  &--m {
+	--shadow--size: var(--a--spacing--m);
+  }
+
+  &--l {
+	--shadow--size: var(--a--spacing--l);
+  }
+
+  &--xl {
+	--shadow--size: var(--a--spacing--xl);
+  }
+
+  &--xxl {
+	--shadow--size: var(--a--spacing--xxl);
+  }
+}

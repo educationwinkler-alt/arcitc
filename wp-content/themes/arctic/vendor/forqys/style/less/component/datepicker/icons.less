@@ -1,0 +1,26 @@
+//
+// Datepicker - Icons
+//
+
+// Firefox SVG Color Fix
+// http://codepen.io/geoffyuen/pen/zGKQQW
+@datepicker-color-rgba: rgba(var(--a--color-rgb), 0.99);
+
+.@{prefix-s}-datepicker {
+
+  // Arrows
+
+  // Prev
+  .ui-datepicker-prev {
+    .ui-icon {
+      .svg-background-image(~'<svg fill="@{datepicker-color-rgba}" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.244,11.984l8.607-8.159c0.197-0.19,0.197-0.498,0-0.688c-0.196-0.189-0.516-0.189-0.713,0l-8.965,8.504 c-0.197,0.19-0.197,0.498,0,0.688l8.965,8.503c0.197,0.19,0.517,0.19,0.713,0c0.197-0.189,0.197-0.498,0-0.688L8.244,11.984z"></path></svg>');
+    }
+  }
+
+  // Next
+  .ui-datepicker-next {
+    .ui-icon {
+      .svg-background-image(~'<svg fill="@{datepicker-color-rgba}" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.857,11.641L7.893,3.137c-0.197-0.189-0.517-0.189-0.713,0c-0.197,0.19-0.197,0.498,0,0.688l8.608,8.159l-8.608,8.16 c-0.197,0.189-0.197,0.498,0,0.688c0.197,0.19,0.516,0.19,0.713,0l8.965-8.503C17.055,12.139,17.055,11.831,16.857,11.641z"></path></svg>');
+    }
+  }
+}

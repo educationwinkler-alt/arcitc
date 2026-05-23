@@ -1,0 +1,32 @@
+// Cover Block
+
+.wp-block-cover {
+  min-height: 22.5rem;
+  padding: var(--cover--spacing--v, var(--a--spacing--m)) var(--cover--spacing--h, var(--a--container--spacing));
+
+  @media (min-width: @breakpoint-l) {
+	--cover--spacing--v: var(--a--spacing--l);
+
+	min-height: 30rem;
+  }
+
+  // Last
+  &:last-child {
+	margin-block-end: 0;
+  }
+
+  // Light
+  &:is(.is-light) {
+	&:not(.has-text-color) {
+	  color: var(--a--color);
+
+	  [data-scheme='light'] & {
+		color: var(--a--color);
+	  }
+
+	  [data-scheme='dark'] & {
+		color: var(--a--color--contrast);
+	  }
+	}
+  }
+}

@@ -1,0 +1,23 @@
+// Close
+
+.@{prefix}-off__close {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+
+  position: absolute;
+  top: var(--a--spacing--xs);
+  right: var(--a--spacing--xs);
+
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    pointer-events: none;
+  }
+
+  // Within Active Off
+  .active & {
+    display: flex;
+  }
+}

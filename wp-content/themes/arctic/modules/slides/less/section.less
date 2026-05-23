@@ -1,0 +1,22 @@
+// Section
+
+.f-section--slides {
+  --section--spacing: 0;
+  --heading--spacing: var(--a--spacing--xl);
+
+  padding: var(--f--header--height) 0 0;
+  background-color: var(--a--color);
+
+  .f-slides {
+	height: clamp(var(--f--hero--height--min), var(--f--hero--height), var(--f--hero--height--max));
+	background-color: var(--a--color--background);
+
+	@media (max-width: @breakpoint-s--max) {
+	  height: var(--f--hero--height--xs);
+	}
+  }
+
+  .f-slides__wrapper {
+	transition-timing-function: ease;
+  }
+}

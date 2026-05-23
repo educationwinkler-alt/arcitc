@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html id="top" lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="color-scheme" content="light dark">
+
+    <title>Adapta &mdash; Example &mdash; Form</title>
+
+    <!--    <link rel="stylesheet" href="../dist/adapta.css">-->
+    <script>
+        // Prevent cache of the Adapta CSS file
+        document.write('<link href="../dist/adapta-skin--default.css?' + Math.random() + '" rel="stylesheet">');
+        document.write('<link href="../dist/adapta.css?' + Math.random() + '" rel="stylesheet">');
+    </script>
+</head>
+
+<body>
+
+<div class="a-flex a-gap--0" style="position: sticky; top: 0; z-index: 1;">
+    <div class="a-flex__item--auto">
+        <button id="theme-toggle" style="width: 100%; border-radius: 0">
+            Toggle Scheme
+        </button>
+    </div>
+    <div class="a-flex__item--auto">
+        <button id="dir-toggle" style="width: 100%; border-radius: 0">
+            Toggle Dir
+        </button>
+    </div>
+</div>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", function () {
+        document.documentElement.classList.toggle("scheme-dark");
+    });
+    document.getElementById("dir-toggle").addEventListener("click", function () {
+        if (document.documentElement.getAttribute("dir") === "ltr") {
+            document.documentElement.setAttribute("dir", "rtl");
+        } else {
+            document.documentElement.setAttribute("dir", "ltr");
+        }
+    });
+</script>
+
+<div class="a-container">
+
+    <h1>Form</h1>
+
+    <form>
+        <fieldset>
+            <legend>Field</legend>
+
+            <p>Fieldset description.</p>
+
+            <div class="a-flex a-gap--m">
+                <div class="a-flex__item a-flex__item--33:m">
+
+                    <label for="text-1">
+                        Text within Label
+                        <input type="text" id="text-1" placeholder="Placeholder ...">
+                        <small>Field description.</small>
+                    </label>
+
+                </div>
+                <div class="a-flex__item a-flex__item--33:m">
+
+                    <label for="text-2">
+                        Text adjacent to Label
+                    </label>
+                    <input type="text" id="text-2" placeholder="Placeholder ...">
+                    <small>Field description.</small>
+
+                </div>
+                <div class="a-flex__item a-flex__item--33:m">
+
+                    <label for="text-3">
+                        Text within Label + Description
+                        <input type="text" id="text-3" placeholder="Placeholder ...">
+                    </label>
+                    <small>Field description.</small>
+
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+    <form>
+        <fieldset>
+            <legend>Field</legend>
+
+            <small>Fieldset description.</small>
+
+            <div class="a-flex">
+                <div class="a-flex__item a-flex__item--33">
+
+                    <label for="text-1-1">
+                        Text
+                        <input type="text" id="text-1-1" placeholder="Placeholder ...">
+                        <small>Field description.</small>
+                    </label>
+
+                </div>
+                <div class="a-flex__item a-flex__item--33">
+
+                    <label for="text-1-2">
+                        ARIA Valid
+                        <input type="text" id="text-1-2" placeholder="Placeholder ..." aria-invalid="false">
+                        <small>Field description.</small>
+                    </label>
+
+                </div>
+                <div class="a-flex__item a-flex__item--33">
+
+                    <label for="text-1-3">
+                        ARIA Invalid
+                        <input type="text" id="text-1-3" placeholder="Placeholder ..." aria-invalid="true">
+                        <small>Field description.</small>
+                    </label>
+
+                </div>
+                <div class="a-flex__item a-flex__item--33">
+
+                    <label for="text-1-4">
+                        Disabled
+                        <input type="text" id="text-1-4" placeholder="Placeholder ..." disabled>
+                        <small>Field description.</small>
+                    </label>
+
+                </div>
+                <div class="a-flex__item a-flex__item--33">
+
+                    <label for="text-1-5">
+                        Read Only
+                        <input type="text" id="text-1-5" placeholder="Placeholder ..." value="Read only value" readonly>
+                    </label>
+
+                </div>
+            </div>
+            <div class="a-flex">
+                <div class="a-flex__item a-flex__item--33">
+
+                    <label for="date-1-1">
+                        Date
+                        <input type="date" id="date-1-1" placeholder="Placeholder ...">
+                    </label>
+
+                </div>
+                <div class="a-flex__item a-flex__item--33">
+
+                    <label for="time-1-1">
+                        Time
+                        <input type="time" id="time-1-1" placeholder="Placeholder ...">
+                    </label>
+
+                </div>
+                <div class="a-flex__item--100">
+
+                    <label for="select-1-1">
+                        Select
+                        <select id="select-1-1">
+                            <option value disabled>Select ...</option>
+                            <option value>Option 01</option>
+                            <option value>Option 02</option>
+                            <option value>Option 03</option>
+                            <option value>Option 04</option>
+                            <option value>Option 05</option>
+                        </select>
+                    </label>
+
+                </div>
+                <div class="a-flex__item--100" dir="rtl">
+
+                    <label for="select-1-2">
+                        Select RTL
+                        <select id="select-1-2">
+                            <option value disabled>Select ...</option>
+                            <option value>Option 01</option>
+                            <option value>Option 02</option>
+                            <option value>Option 03</option>
+                            <option value>Option 04</option>
+                            <option value>Option 05</option>
+                        </select>
+                    </label>
+
+                </div>
+                <div class="a-flex__item--33">
+
+                    <label for="select-1-3">
+                        Select Multiple
+                        <select id="select-1-3" multiple size="4">
+                            <option value disabled>Select ...</option>
+                            <option value>Option 01</option>
+                            <option value>Option 02</option>
+                            <option value>Option 03</option>
+                            <option value>Option 04</option>
+                            <option value>Option 05</option>
+                        </select>
+                    </label>
+
+                </div>
+                <div class="a-flex__item--33">
+
+                    <label for="tel-1-1">
+                        Tel
+                        <input type="tel" id="tel-1-1" placeholder="Placeholder ...">
+                    </label>
+
+                </div>
+                <div class="a-flex__item--33">
+
+                    <label for="email-1-1">
+                        Email
+                        <input type="email" id="email-1-1" placeholder="Placeholder ...">
+                    </label>
+
+                </div>
+                <div class="a-flex__item--33">
+
+                    <label for="number-1-1">
+                        Number
+                        <input type="number" id="number-1-1" placeholder="Placeholder ...">
+                    </label>
+
+                </div>
+                <div class="a-flex__item--33">
+
+                    <label for="search-1-1">
+                        Search
+                        <input type="search" id="search-1-1" placeholder="Search ...">
+                    </label>
+
+                </div>
+                <div class="a-flex__item--33">
+
+                    <label for="url-1-1">
+                        URL
+                        <input type="url" id="url-1-1" placeholder="URL ...">
+                    </label>
+
+                </div>
+                <div class="a-flex__item--33">
+
+                    <label for="pswd-1-1">
+                        Password
+                        <input type="password" id="pswd-1-1" placeholder="Password ...">
+                    </label>
+
+                </div>
+            </div>
+            <div class="a-flex a-gap--s">
+                <div class="a-flex__item--50">
+
+                    <label for="file-1-1">
+                        File
+                        <input type="file" id="file-1-1" placeholder="File ...">
+                    </label>
+
+                </div>
+                <div class="a-flex__item--50">
+
+                    <label for="color-1-1">
+                        Color
+                        <input type="color" id="color-1-1" placeholder="Color ...">
+                    </label>
+
+                </div>
+            </div>
+            <div class="a-flex a-gap--s">
+                <div class="a-flex__item--100">
+
+                    <label for="textarea-1-1">
+                        Textarea
+                        <textarea id="textarea-1-1" placeholder="Placeholder ..."></textarea>
+                    </label>
+
+                </div>
+                <div class="a-flex__item--100">
+
+                    <label for="range-1-1">
+                        Range
+                        <input type="range" id="range-1-1" min="0" max="100" value="33">
+                    </label>
+
+                </div>
+            </div>
+            <div class="a-flex a-gap--s">
+                <div class="a-flex__item a-flex__item--33:m">
+
+                    <label for="text-1-6">
+                        Text
+                        <input type="text" id="text-1-6">
+                    </label>
+
+                </div>
+                <div class="a-flex__item a-flex__item--33:m">
+
+                    <label for="range-1-2">
+                        Range
+                        <input type="range" id="range-1-2" min="0" max="100" value="33" style="background-color: rgba(var(--a--color-rgb), 0.2)">
+                    </label>
+
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+
+            <div class="a-buttons a-buttons--center">
+                <input type="button" value="Super Super Super Super Super Super Super Super Super Super Super Super Super
+                Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Long
+                Button">
+                <input type="button" value="Input Button">
+                <input type="reset" value="Input Reset">
+                <input type="submit" value="Input Submit" disabled>
+                <button>Button</button>
+            </div>
+
+        </fieldset>
+
+        <p class="a-buttons a-buttons--center">
+            <a href="#" class="a-button">Super Super Super Super Super Super Super Super Super Super Super Super Super
+                Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Super Long
+                Button</a>
+            <a href="#" class="a-button">Button</a>
+            <a href="#" class="a-button">Button</a>
+            <a href="#" class="a-button" disabled="true">Button</a>
+        </p>
+
+        <p class="a-buttons a-buttons--center">
+            <a href="#" class="a-button a-button--accent">Button</a>
+            <a href="#" class="a-button a-button--accent">Button</a>
+            <a href="#" class="a-button a-button--accent" disabled>Button</a>
+        </p>
+
+        <p class="a-buttons a-buttons--center">
+            <a href="#" class="a-button a-button--highlight">Button</a>
+            <a href="#" class="a-button a-button--highlight">Button</a>
+            <a href="#" class="a-button a-button--highlight" disabled>Button</a>
+        </p>
+
+        <p class="a-buttons a-buttons--center">
+            <a href="#" class="a-button a-button--outline">Button</a>
+            <a href="#" class="a-button a-button--outline">Button</a>
+            <a href="#" class="a-button a-button--outline" disabled>Button</a>
+        </p>
+
+        <p class="a-buttons a-buttons--center">
+            <a href="#" class="a-button a-button--xxs">XXSmall</a>
+            <a href="#" class="a-button a-button--xs">XSmall</a>
+            <a href="#" class="a-button a-button--s">Small</a>
+            <a href="#" class="a-button">Default</a>
+            <a href="#" class="a-button a-button--l">Large</a>
+            <a href="#" class="a-button a-button--xl">XLarge</a>
+            <a href="#" class="a-button a-button--xxl">XXLarge</a>
+        </p>
+
+        <h2>Checkbox/Radio</h2>
+
+        <fieldset>
+            <legend>Checkbox adjacent to the Label</legend>
+
+            <p>
+                <input type="checkbox" id="checkbox-1-1"><label for="checkbox-1-1">Checkbox</label>
+            </p>
+            <p>
+                <input type="checkbox" id="checkbox-1-2"><label for="checkbox-1-2">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</label>
+            </p>
+            <p>
+                <label for="checkbox-1-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.</label><input type="checkbox" id="checkbox-1-3">
+            </p>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Checkbox within the Label</legend>
+
+            <p>
+                <label for="checkbox-2-1"><input type="checkbox" id="checkbox-2-1">Checkbox</label>
+                <label for="checkbox-2-2"><input type="checkbox" id="checkbox-2-2">Checkbox</label>
+                <label for="checkbox-2-3"><input type="checkbox" id="checkbox-2-3">Checkbox</label>
+            </p>
+            <p>
+                <label for="checkbox-2-4"><input type="checkbox" id="checkbox-2-4">Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.</label>
+            </p>
+            <p>
+                <label for="checkbox-2-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.<input type="checkbox" id="checkbox-2-5"></label>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Radio adjacent to the Label</legend>
+
+            <p>
+                <input type="radio" id="radio-1-1"><label for="radio-1-1">Radio within label</label>
+            </p>
+            <p>
+                <input type="radio" id="radio-1-2"><label for="radio-1-2">Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</label>
+            </p>
+            <p>
+                <label for="radio-1-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.</label><input type="radio" id="radio-1-3">
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Radio within the Label</legend>
+
+            <p>
+                <label for="radio-2-1"><input type="radio" id="radio-2-1" name="radio">Radio</label>
+                <label for="radio-2-2"><input type="radio" id="radio-2-2" name="radio">Radio</label>
+                <label for="radio-2-3"><input type="radio" id="radio-2-3" name="radio">Radio</label>
+            </p>
+
+            <p>
+                <label for="radio-2-4"><input type="radio" id="radio-2-4" name="radio">Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.</label>
+            </p>
+
+            <p>
+                <label for="radio-2-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.<input type="radio" id="radio-2-5" name="radio"></label>
+            </p>
+        </fieldset>
+
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+//
+// Mixins - Scrollbar
+//
+
+.scrollbar (@-color: rgba(var(--a--color-rgb), 0.2), @-background: transparent) {
+
+  // Firefox
+
+  &:not(::-webkit-scrollbar) {
+    scrollbar-width: var(--scrollbar--width, 15px);
+    scrollbar-color: @-color @-background;
+  }
+
+  // Webkit
+
+  &::-webkit-scrollbar {
+    background-color: @-background;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: @-color;
+    background-clip: content-box;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: @-background;
+  }
+}
+
+.scrollbar--thin(@-color: rgba(var(--a--color-rgb), 0.2), @-background: transparent) {
+  --scrollbar--width: 6px;
+  .scrollbar(@-color, @-background);
+
+  // Firefox
+
+  &:not(::-webkit-scrollbar) {
+    scrollbar-width: thin; // Equivalent to 6px
+  }
+
+  // Webkit
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+}

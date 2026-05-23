@@ -1,0 +1,31 @@
+//
+// Mixins - Flex
+//
+
+// Item
+.flex-item--sizes (@-sizes; @-breakpoint: '') { // .flex-item--sizes(100, 90, 80);
+  @--breakpoint: e(@-breakpoint);
+
+  .@{prefix}-flex__item--auto@{--breakpoint} {
+    flex: 1 0 0;
+  }
+
+  .@{prefix}-flex__item--0@{--breakpoint} {
+    flex: 0 0 0;
+    max-width: 0;
+    padding-inline: 0;
+  }
+
+  .@{prefix}-flex__item@{--breakpoint} {
+    flex: 0 1 content;
+  }
+
+  each(@-sizes, {
+    @--size: floor(@value, 0);
+
+    .@{prefix}-flex__item--@{--size}@{--breakpoint} {
+      flex-basis: ~'@{value}%';
+      max-width: ~'@{value}%';
+    }
+  });
+}

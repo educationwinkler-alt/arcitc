@@ -1,0 +1,62 @@
+// Section
+
+.f-section--contact {
+  position: relative;
+  z-index: var(--a--layer--1);
+
+  @media (min-width: @breakpoint-m) {
+	text-align: unset;
+  }
+
+  // Form
+
+  .f-section__form {
+	padding: var(--a--spacing--xxxs) 0 0;
+  }
+
+  // Blocks
+
+  .f-section__header {
+	text-align: center;
+
+	@media (min-width: @breakpoint-m) {
+	  text-align: unset;
+	}
+
+	.is-layout-flex {
+	  @media (max-width: @breakpoint-s--max) {
+		align-items: center !important;
+	  }
+	}
+  }
+}
+
+// Service
+
+.f-section--service {
+
+  .f-section__form {
+
+	.f-form {
+	  --a--field--border-color: transparent;
+
+	  padding: var(--a--container--spacing) var(--a--container--spacing) calc(var(--a--container--spacing) * 2);
+	  background-image: var(--f--gradient--form);
+	  border-bottom-left-radius: inherit;
+	  border-bottom-right-radius: inherit;
+
+	  @media (min-width: @breakpoint-m) {
+		padding-inline: calc(var(--a--container--spacing) * 2);
+	  }
+	}
+  }
+}
+
+// Catalog
+
+.f-section--catalog {
+
+  .f-section__header {
+	text-wrap: balance;
+  }
+}

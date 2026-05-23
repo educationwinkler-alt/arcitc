@@ -1,0 +1,119 @@
+//
+// Utility - Grid - Container
+//
+
+.@{prefix}-grid {
+  // Default Properties
+  //--grid--columns: auto-fill;
+  //--grid--rows: auto-fill;
+  //--grid--template-columns: repeat(var(--grid--columns, auto-fill));
+  //--grid--template-rows: repeat(var(--grid--rows, auto-fill), 1fr);
+  //--grid--column-min: ~'min(320px, 100%)';
+  //--grid--spacing: var(--a--spacing);
+
+  display: grid;
+  grid-template-columns: var(--grid--template-columns, repeat(var(--grid--columns, auto-fill), minmax(var(--grid--column-min, ~'min(320px, 100%)'), 1fr)));
+  grid-template-rows: var(--grid--template-rows, repeat(var(--grid--rows, auto-fill), 1fr));
+  gap: var(--gap--col, var(--grid--spacing, var(--a--spacing))) var(--gap--row, var(--grid--spacing, var(--a--spacing)));
+
+  // Next
+  & + & {
+	margin-block-start: var(--grid--spacing, var(--a--spacing));
+  }
+
+  // List
+
+  &:where(ul, ol) {
+	padding-inline: 0;
+	list-style: none;
+  }
+
+  // Columns
+
+  &--cols-0 {
+	--grid--template-columns: none;
+  }
+
+  &--cols-1 {
+	--grid--columns: 1;
+  }
+
+  &--cols-2 {
+	@media (min-width: @breakpoint-m) {
+	  --grid--columns: 2;
+	}
+  }
+
+  &--cols-3 {
+	@media (min-width: @breakpoint-m) {
+	  --grid--columns: 2;
+	}
+	@media (min-width: @breakpoint-l) {
+	  --grid--columns: 3;
+	}
+  }
+
+  &--cols-4 {
+	@media (min-width: @breakpoint-m) {
+	  --grid--columns: 2;
+	}
+	@media (min-width: @breakpoint-l) {
+	  --grid--columns: 3;
+	}
+	@media (min-width: @breakpoint-xl) {
+	  --grid--columns: 4;
+	}
+  }
+
+  &--cols-5 {
+	@media (min-width: @breakpoint-s) {
+	  --grid--columns: 2;
+	}
+	@media (min-width: @breakpoint-m) {
+	  --grid--columns: 3;
+	}
+	@media (min-width: @breakpoint-l) {
+	  --grid--columns: 4;
+	}
+	@media (min-width: @breakpoint-xl) {
+	  --grid--columns: 5;
+	}
+  }
+
+  &--cols-6 {
+	@media (min-width: @breakpoint-s) {
+	  --grid--columns: 2;
+	}
+	@media (min-width: @breakpoint-m) {
+	  --grid--columns: 3;
+	}
+	@media (min-width: @breakpoint-l) {
+	  --grid--columns: 4;
+	}
+	@media (min-width: @breakpoint-xl) {
+	  --grid--columns: 6;
+	}
+  }
+
+  // Rows
+
+  &--rows-0 {
+	--grid--template-rows: none;
+  }
+
+  &--rows-1 {
+	--grid--rows: 1;
+  }
+
+  &--rows-2 {
+	--grid--rows: 2;
+  }
+
+  &--rows-3 {
+	--grid--rows: 3;
+  }
+
+  &--rows-4 {
+	--grid--rows: 4;
+  }
+}

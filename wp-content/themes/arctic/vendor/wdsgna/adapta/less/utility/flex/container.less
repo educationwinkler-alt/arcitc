@@ -1,0 +1,25 @@
+//
+// Utility - Flex - Container
+//
+
+.@{prefix}-flex {
+  display: flex;
+  flex-wrap: wrap;
+
+  // Stack
+  & + & {
+	margin-block-start: var(--gap--row, var(--a--spacing--m));
+  }
+
+  // ! Stack
+  &--no-stack {
+	& + & {
+	  margin-block-start: 0;
+	}
+  }
+
+  // Inline
+  &--inline {
+	display: inline-flex;
+  }
+}

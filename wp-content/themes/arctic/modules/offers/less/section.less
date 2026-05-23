@@ -1,0 +1,19 @@
+// Section
+
+.f-section--offers-small {
+  --section--spacing: var(--a--spacing--xs);
+}
+
+.f-main--homepage {
+
+  .f-section--offers-small {
+	&:nth-child(1) {
+	  padding-top: 0;
+
+	  .f-section__container {
+		margin-top: calc(var(--f--offers--spacing) * -1);
+		padding-top: 0;
+	  }
+	}
+  }
+}

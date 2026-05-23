@@ -1,0 +1,29 @@
+// Listing
+
+.f-listings--accessories {
+  --grid--column-min: auto;
+}
+
+.f-listing--accessory {
+  --listing--spacing--h: 0;
+  --listing--image--scale--active: 1;
+  --listing--image--overlay--color: transparent;
+  --listing--image--overlay--color--active: transparent;
+  --listing--image--overlay--gradient: none;
+  --listing--header--font-size: var(--a--font-size);
+
+  .f-listing__image {
+	padding: var(--a--spacing--xxs);
+	background-color: transparent;
+	border: var(--a--border--width--1) solid rgba(var(--a--color-rgb), 20%);
+	.transition(border);
+  }
+
+  &:hover,
+  &:focus-within {
+
+	.f-listing__image {
+	  border-color: var(--a--color);
+	}
+  }
+}

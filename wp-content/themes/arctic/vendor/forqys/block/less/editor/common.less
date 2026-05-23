@@ -1,0 +1,56 @@
+// Common
+
+body {
+  padding-bottom: calc(var(--a--spacing) * 1.5);
+
+  line-height: var(--a--line-height);
+
+  color: var(--a--color);
+  background-color: var(--a--color--background);
+
+  // List
+
+  ul, ol {
+    margin-block-start: var(--a--spacing--m);
+    padding-inline-start: var(--a--spacing--m);
+  }
+
+  //
+  // Inline Spacing
+  //
+
+  // Title
+
+  .edit-post-visual-editor__post-title-wrapper {
+    padding-right: var(--a--spacing--xs);
+    padding-left: var(--a--spacing--xs);
+
+    @media (max-width: 768px) {
+      padding-right: var(--a--spacing--xxxs);
+      padding-left: var(--a--spacing--xxxs);
+    }
+  }
+
+  // Block
+
+  .block-editor-block-list__layout.is-root-container {
+    padding-right: var(--a--spacing--xs);
+    padding-left: var(--a--spacing--xs);
+
+    @media (max-width: 768px) {
+      padding-right: var(--a--spacing--xxxs);
+      padding-left: var(--a--spacing--xxxs);
+    }
+  }
+}
+
+// Mark
+
+mark {
+
+  // Has transparent background
+  &[style*='background-color:rgba(0, 0, 0, 0)'] {
+    padding: 0;
+    margin: 0;
+  }
+}

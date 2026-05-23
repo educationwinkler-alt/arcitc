@@ -1,0 +1,68 @@
+//
+// Utility - Badge
+//
+
+.@{prefix}-badge {
+  // Default Properties
+  //--badge--spacing--v: var(--a--spacing--xxxs);
+  //--badge--spacing--h: var(--a--spacing--xxs);
+  //--badge--color: var(--a--color--contrast);
+  //--badge--background-color: var(--a--color);
+  //--badge--border-radius: var(--a--border--radius, 2px);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--badge--spacing--h, var(--a--spacing--xxs));
+  padding: var(--badge--spacing--v, var(--a--spacing--xxxs)) var(--badge--spacing--h, var(--a--spacing--xxs));
+
+  font-size: var(--a--font-size--xs);
+  font-weight: normal;
+
+  white-space: nowrap;
+  vertical-align: baseline;
+  text-align: center;
+
+  color: var(--badge--color, var(--a--color--contrast));
+  background-color: var(--badge--background-color, var(--a--color));
+  border-radius: var(--badge--border-radius, var(--a--border--radius, 2px));
+
+  // Empty
+  &:empty {
+	display: none;
+  }
+
+  // Type
+
+  // Reverse
+  &--reverse {
+	--badge--color: var(--a--color);
+	--badge--background-color: var(--a--color--background);
+  }
+
+  // Accent
+  &--accent {
+	--badge--color: var(--a--color--background);
+	--badge--background-color: var(--a--color--accent);
+  }
+
+  // Success
+  &--success {
+	--badge--color: var(--a--color--light);
+	--badge--background-color: var(--a--color--success);
+  }
+
+  // Error
+  &--error {
+	--badge--color: var(--a--color--light);
+	--badge--background-color: var(--a--color--error);
+  }
+}
+
+// Badge as Link
+
+a {
+  &.@{prefix}-badge {
+	text-decoration: none;
+	cursor: pointer;
+  }
+}

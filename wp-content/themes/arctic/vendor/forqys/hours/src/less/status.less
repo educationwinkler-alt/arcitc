@@ -1,0 +1,74 @@
+// Status
+
+.@{prefix-s}-hours__status {
+  // Default properties
+  //--hours--status--color: currentColor;
+  //--hours--status--color--open: var(--a--color--success);
+  //--hours--status--color--closed: var(--a--color--error);
+
+  //--hours--status--size: 10px;
+  //--hours--status--radius: var(--a--border--radius--xl);
+  //--hours--status--spacing: var(--a--spacing--xxs);
+  //--hours--status--duration: 3s;
+
+  position: relative;
+  display: inline-flex;
+  padding: calc(var(--hours--status--spacing, var(--a--spacing--xxs)) / 2) calc(var(--hours--status--spacing, var(--a--spacing--xxs)) * 2) calc(var(--hours--status--spacing, var(--a--spacing--xxs)) / 2) calc(var(--hours--status--spacing, var(--a--spacing--xxs)) + var(--hours--status--size, 10px) + var(--hours--status--spacing, var(--a--spacing--xxs)));
+
+  border-radius: var(--hours--status--radius, var(--a--border--radius--xl));
+
+  transition: color var(--a--transition--duration) var(--a--transition--timing-function);
+
+  // Pin
+  &:before,
+  &:after {
+	content: '';
+	position: absolute;
+	left: var(--hours--status--spacing, var(--a--spacing--xxs));
+	top: 50%;
+	width: var(--hours--status--size, 10px);
+	height: var(--hours--status--size, 10px);
+	margin-top: calc(var(--hours--status--size, 10px) / 2 * -1);
+
+	user-select: none;
+	pointer-events: none;
+
+	background-color: var(--hours--status--color, currentColor);
+	border-radius: inherit;
+  }
+
+  &:after {
+	z-index: -1;
+
+	filter: opacity(50%);
+	transition: filter var(--a--transition--duration) var(--a--transition--timing-function);
+	animation: hoursStatusPulse var(--hours--status--duration, 3s) ease-in-out infinite;
+  }
+
+  // Status
+
+  &.open {
+	--hours--status--color: var(--hours--status--color--open, var(--a--color--success));
+  }
+
+  &.closed {
+	--hours--status--color: var(--hours--status--color--closed, var(--a--color--error));
+
+	&:after {
+	  filter: opacity(0);
+	}
+  }
+}
+
+// Animations
+
+@keyframes hoursStatusPulse {
+  0% {
+	opacity: 1;
+	transform: scale(1, 1);
+  }
+  50%, 100% {
+	opacity: 0;
+	transform: scale(4, 4);
+  }
+}

@@ -1,0 +1,26 @@
+//
+// Utility - Grid - Container - Flow
+//
+
+.@{prefix}-grid {
+  // Default Properties
+  //--grid--auto-flow: row;
+
+  grid-auto-flow: var(--grid--auto-flow, row);
+
+  &--flow-row {
+    --grid--auto-flow: row;
+
+    &-dense {
+      --grid--auto-flow: row dense;
+    }
+  }
+
+  &--flow-column {
+    --grid--auto-flow: column;
+
+    &-dense {
+      --grid--auto-flow: column dense;
+    }
+  }
+}

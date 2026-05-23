@@ -1,0 +1,82 @@
+//
+// Pagination
+//
+
+.@{prefix-s}-pagination {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--a--spacing--xxs);
+  margin: var(--a--spacing) auto 0;
+
+  li {
+	display: inline-block;
+  }
+
+  :is(a, span) {
+	display: inline-block;
+	position: relative;
+	padding: var(--a--spacing--xxs) var(--a--spacing--xs);
+	margin: 0;
+
+	text-decoration: none;
+	text-align: center;
+
+	background-color: transparent;
+	border-radius: var(--a--button--border-radius);
+
+	span {
+	  padding: 0;
+	  margin: 0;
+
+	  color: inherit;
+	}
+  }
+
+  a {
+
+	// Icon
+
+	svg {
+	  position: relative;
+	  display: inline-flex;
+	  vertical-align: middle;
+
+	  color: currentColor;
+	}
+
+	&:hover,
+	&:active,
+	&:focus {
+	  color: var(--a--color--accent);
+	}
+  }
+
+  span {
+
+	// Dots
+	&.dots {
+	  opacity: 0.5;
+	  padding-right: var(--a--spacing--xs);
+	  padding-left: var(--a--spacing--xs);
+	}
+
+	// Current
+	&.current {
+	  color: var(--a--color--contrast);
+	  background-color: var(--a--color--accent);
+	}
+  }
+
+  // Previous/Next
+
+  .prev,
+  .next {
+	width: 100%;
+
+	@media (min-width: @breakpoint-s) {
+	  width: auto;
+	}
+  }
+}

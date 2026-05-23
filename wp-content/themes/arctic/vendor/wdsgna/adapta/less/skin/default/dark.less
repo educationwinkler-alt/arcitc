@@ -1,0 +1,32 @@
+//
+// Skin - Default - Dark
+//
+
+.scheme-dark() {
+  color-scheme: dark;
+
+  // Color
+
+  --a--color-rgb: 255, 255, 255;
+  --a--color--accent-rgb: 100, 150, 255;
+  --a--color--highlight-rgb: 255, 150, 150;
+  --a--color--significant-rgb: 255, 150, 150;
+  --a--color--contrast-rgb: 10, 15, 25;
+  --a--color--background-rgb: 10, 15, 25;
+
+  --a--color--success-rgb: 100, 200, 100;
+  --a--color--warning-rgb: 240, 150, 100;
+  --a--color--error-rgb: 220, 100, 100;
+
+  --a--color--shadow-rgb: 255, 255, 255;
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+  :root {
+    .scheme-dark();
+  }
+}
+
+.scheme-dark {
+  .scheme-dark();
+}

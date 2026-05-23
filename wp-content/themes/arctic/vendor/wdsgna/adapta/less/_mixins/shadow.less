@@ -1,0 +1,77 @@
+//
+// Mixins - Shadow
+//
+
+.shadow (@-size: var(--a--spacing), @-color: rgba(var(--a--color--shadow-rgb), 5%)) {
+  --shadow--size: @-size;
+  --shadow--color: @-color;
+
+  box-shadow: 0 0 calc(var(--shadow--size) / 4) var(--shadow--color),
+  0 calc(var(--shadow--size) / 4) calc(var(--shadow--size) / 2) var(--shadow--color),
+  0 calc(var(--shadow--size) / 2) calc(var(--shadow--size) / 4 * 3) var(--shadow--color),
+  0 calc(var(--shadow--size) / 4 * 3) var(--shadow--size) var(--shadow--color);
+}
+
+// Around
+
+.shadow--around (@-size: var(--a--spacing), @-color: rgba(var(--a--color--shadow-rgb), 5%)) {
+  --shadow--size: @-size;
+  --shadow--color: @-color;
+
+  box-shadow: 0 0 calc(var(--shadow--size) / 4) var(--shadow--color),
+  0 0 calc(var(--shadow--size) / 2) var(--shadow--color),
+  0 0 var(--shadow--size) var(--shadow--color);
+}
+
+// Bottom
+
+.shadow--bottom (@-size: var(--a--spacing), @-color: rgba(var(--a--color--shadow-rgb), 5%)) {
+  --shadow--size: @-size;
+  --shadow--color: @-color;
+
+  box-shadow: 0 calc(var(--shadow--size) / 4) calc(var(--shadow--size) / 4) var(--shadow--color),
+  0 calc(var(--shadow--size) / 2) calc(var(--shadow--size) / 2) var(--shadow--color),
+  0 var(--shadow--size) var(--shadow--size) var(--shadow--color);
+}
+
+// Top
+
+.shadow--top (@-size: var(--a--spacing), @-color: rgba(var(--a--color--shadow-rgb), 5%)) {
+  --shadow--size: @-size;
+  --shadow--color: @-color;
+
+  box-shadow: 0 calc(calc(var(--shadow--size) / 4) * -1) calc(var(--shadow--size) / 4) var(--shadow--color),
+  0 calc(calc(var(--shadow--size) / 2) * -1) calc(var(--shadow--size) / 2) var(--shadow--color),
+  0 calc(var(--shadow--size) * -1) var(--shadow--size) var(--shadow--color);
+}
+
+// Sharp
+
+.shadow--sharp (@-size: var(--a--spacing--xxs), @-color: rgba(var(--a--color--shadow-rgb), 5%)) {
+  --shadow--size: @-size;
+  --shadow--color: @-color;
+
+  box-shadow: var(--shadow--size) var(--shadow--size) 0 0 var(--shadow--color);
+}
+
+// Outline
+
+.shadow--outline (@-size: var(--a--spacing--xxs), @-color: currentColor) {
+  --shadow--size: @-size;
+  --shadow--color: @-color;
+  --shadow--border: var(--a--border--width);
+
+  box-shadow: calc(var(--shadow--size) + (var(--shadow--border) * 2)) calc(var(--shadow--size) + (var(--shadow--border) * 2)) 0 0 var(--a--color--background),
+  calc(var(--shadow--size) + (var(--shadow--border) * 2)) calc(var(--shadow--size) + (var(--shadow--border) * 2)) 0 var(--shadow--border) var(--shadow--color);
+}
+
+// Inset
+
+.shadow--inset (@-size: var(--a--spacing--s), @-color: rgba(var(--a--color--shadow-rgb), 2.5%)) {
+  --shadow--size: @-size;
+  --shadow--color: @-color;
+
+  box-shadow: inset 0 0 calc(var(--shadow--size) / 4) calc(var(--shadow--size) / 4) var(--shadow--color),
+  inset 0 0 calc(var(--shadow--size) / 2) calc(var(--shadow--size) / 2) var(--shadow--color),
+  inset 0 0 var(--shadow--size) var(--shadow--size) var(--shadow--color);
+}

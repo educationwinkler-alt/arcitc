@@ -1,0 +1,30 @@
+//
+// Common - Form - Field - Color
+//
+
+[type='color'] {
+  height: calc(var(--field--line-height, var(--a--field--line-height)) + (var(--a--field--spacing--vertical, 0.625rem) * 2)  + (var(--a--field--border-width) * 2));
+  padding: var(--a--field--spacing--vertical, 0.625rem);
+
+  // Wrapper
+
+  &::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  &::-moz-focus-inner {
+    padding: 0;
+  }
+
+  // Swatch
+
+  &::-webkit-color-swatch {
+    border: 0;
+    border-radius: calc(var(--a--field--border-radius, var(--a--border--radius)) / 2);
+  }
+
+  &::-moz-color-swatch {
+    border: 0;
+    border-radius: calc(var(--a--field--border-radius, var(--a--border--radius)) / 2);
+  }
+}

@@ -1,0 +1,35 @@
+//
+// Utility - Divider
+//
+
+[class*='@{prefix}-divider'] {
+  display: block;
+  width: 100%;
+  margin: var(--a--spacing) 0;
+
+  border-top: var(--a--divider--width) solid var(--a--divider--color);
+}
+
+// Type
+
+.@{prefix}-divider {
+
+  &--dotted {
+    border-style: dotted;
+  }
+
+  &--dashed {
+    border-style: dashed;
+  }
+
+  &--double {
+    border-top-width: calc(var(--a--divider--width) * 3);
+    border-style: double;
+  }
+
+  // Color
+
+  &--accent {
+    border-color: var(--a--color--accent);
+  }
+}

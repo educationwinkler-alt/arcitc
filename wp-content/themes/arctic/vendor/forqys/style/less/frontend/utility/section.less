@@ -1,0 +1,45 @@
+//
+// Section
+//
+
+.@{prefix-s}-section {
+
+  // Container
+  &__container {
+	padding-top: var(--section--spacing, var(--a--spacing--m));
+	padding-bottom: var(--section--spacing, var(--a--spacing--m));
+
+	&:where(:not(.@{prefix}-stack)) {
+	  > *:where(:not(.screen-reader-text)) + * {
+		margin-top: ~'max(var(--section--spacing--inner, var(--section--spacing, var(--a--spacing--m)), var(--a--spacing--s)))';
+	  }
+	}
+  }
+
+  // Header & Footer
+  &__header,
+  &__footer {
+
+	&--center {
+	  text-align: center;
+	}
+
+	&--end {
+	  text-align: end;
+	}
+  }
+
+  // Actions
+  &__actions {
+	display: flex;
+	align-items: center;
+
+	&--center {
+	  justify-content: center;
+	}
+
+	&--end {
+	  justify-content: flex-end;
+	}
+  }
+}

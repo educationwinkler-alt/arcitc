@@ -1,0 +1,15 @@
+{
+  "name": "arctic-spas-wordpress-local",
+  "private": true,
+  "scripts": {
+    "css:build": "lessc wp-content/themes/arctic/src/less/arctic.less wp-content/themes/arctic/dist/css/arctic.css",
+    "css:watch": "lessc --watch wp-content/themes/arctic/src/less/arctic.less wp-content/themes/arctic/dist/css/arctic.css",
+    "figma:export-assets": "node tools/figma-export-assets.js",
+    "figma:export-local-assets": "node tools/figma-export-local-assets.js",
+    "visual:smoke": "node tools/visual-smoke.js"
+  },
+  "devDependencies": {
+    "less": "^4.2.0",
+    "playwright-core": "^1.60.0"
+  }
+}

@@ -1,0 +1,103 @@
+//
+// Utility - Grid - Item - Row
+//
+
+[class*='@{prefix}-grid__row'] {
+  // Default Properties
+  //--grid--row: auto;
+
+  grid-row: var(--grid--row, auto);
+}
+
+// Span
+
+.@{prefix}-grid__row--span {
+
+  &-1 {
+	--grid--row: span 1/span 1;
+  }
+
+  &-2 {
+	--grid--row: span 2/span 2;
+  }
+
+  &-3 {
+	--grid--row: span 3/span 3;
+  }
+
+  &-4 {
+	--grid--row: span 4/span 4;
+  }
+
+  &-5 {
+	--grid--row: span 5/span 5;
+  }
+
+  &-full {
+	--grid--row: 1/-1;
+  }
+}
+
+// Start
+
+[class*='@{prefix}-grid__row--start'] {
+  // Default Properties
+  //--grid--row-start: auto;
+
+  grid-row-start: var(--grid--row-start, auto);
+}
+
+.@{prefix}-grid__row--start {
+
+  &-1 {
+	--grid--row-start: 1;
+  }
+
+  &-2 {
+	--grid--row-start: 2;
+  }
+
+  &-3 {
+	--grid--row-start: 3;
+  }
+
+  &-4 {
+	--grid--row-start: 4;
+  }
+
+  &-5 {
+	--grid--row-start: 5;
+  }
+}
+
+// End
+
+[class*='@{prefix}-grid__row--end'] {
+  // Default Properties
+  //--grid--row-end: auto;
+
+  grid-row-end: var(--grid--row-end, auto);
+}
+
+.@{prefix}-grid__row--end {
+
+  &-1 {
+	--grid--row-end: 1;
+  }
+
+  &-2 {
+	--grid--row-end: 2;
+  }
+
+  &-3 {
+	--grid--row-end: 3;
+  }
+
+  &-4 {
+	--grid--row-end: 4;
+  }
+
+  &-5 {
+	--grid--row-end: 5;
+  }
+}

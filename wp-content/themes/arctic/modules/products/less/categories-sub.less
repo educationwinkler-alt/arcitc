@@ -1,0 +1,23 @@
+// Subcategories
+
+.f-categories--sub {
+
+  h3 {
+	font-size: var(--a--heading--font-size--h5--fluid);
+	text-wrap: balance;
+  }
+
+  .f-category__container {
+	align-content: space-between;
+  }
+}
+
+.f-category--sub {
+  min-height: 0;
+
+  aspect-ratio: 16/9;
+
+  @media (min-width: @breakpoint-m) {
+	aspect-ratio: 3/2;
+  }
+}

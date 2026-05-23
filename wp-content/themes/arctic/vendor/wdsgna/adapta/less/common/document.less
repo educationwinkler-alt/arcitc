@@ -1,0 +1,47 @@
+//
+// Common - Document
+//
+
+:where(html, body) {
+  min-height: 100%;
+}
+
+html {
+  font-family: var(--a--font-family--secondary, sans-serif);
+  font-size: var(--a--font-size--base, 16px);
+
+  // Smooth scrolling
+  // @url: https://caniuse.com/css-scroll-behavior
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+	scroll-behavior: auto;
+  }
+
+  // Misc
+  -webkit-text-size-adjust: 100%; // Prevent adjustments of font size after orientation changes in iOS
+
+  tab-size: 4;
+  -moz-tab-size: 4;
+}
+
+// Body
+
+body {
+  min-width: @viewport-min;
+  overflow-x: clip;
+
+  font-weight: var(--a--font-weight, 400);
+  letter-spacing: var(--a--letter-spacing, 0);
+  text-transform: var(--a--text-transform, none);
+  line-height: var(--a--line-height, 1.7);
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+
+  color: var(--a--body--color, var(--a--color));
+  background-color: var(--a--body--background-color, var(--a--color--background));
+
+  .transition(background-color);
+}

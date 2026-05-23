@@ -1,0 +1,38 @@
+// Gap
+
+.gap--sizes (@-sizes; @-breakpoint: '';) { // .gap--sizes(0, 1, xxxs, xxs, xs, s, m, l, xl, xxl, xxxl; '\:min');
+  @--breakpoint: e(@-breakpoint);
+
+  each(@-sizes, {
+    @--size: @value;
+
+    .@{prefix}-gap--@{--size}@{--breakpoint} {
+      --gap--col: var(~'--@{prefix}--spacing--@{--size}');
+      --gap--row: var(~'--@{prefix}--spacing--@{--size}');
+    }
+  });
+}
+
+.gap--sizes--col (@-sizes; @-breakpoint: '';) { // .gap--sizes--col(0, 1, xxxs, xxs, xs, s, m, l, xl, xxl, xxxl; '\:min');
+  @--breakpoint: e(@-breakpoint);
+
+  each(@-sizes, {
+    @--size: @value;
+
+    .@{prefix}-gap-col--@{--size}@{--breakpoint} {
+      --gap--col: var(~'--@{prefix}--spacing--@{--size}');
+    }
+  });
+}
+
+.gap--sizes--row (@-sizes; @-breakpoint: '';) { // .gap--sizes--row(0, 1, xxxs, xxs, xs, s, m, l, xl, xxl, xxxl; '\:min');
+  @--breakpoint: e(@-breakpoint);
+
+  each(@-sizes, {
+    @--size: @value;
+
+    .@{prefix}-gap-row--@{--size}@{--breakpoint} {
+      --gap--row: var(~'--@{prefix}--spacing--@{--size}');
+    }
+  });
+}

@@ -1,0 +1,30 @@
+// Column
+
+.wp-block-columns {
+  flex-wrap: wrap !important;
+  margin-bottom: var(--wp--style--block-gap, var(--a--spacing--m));
+
+  @media (min-width: @breakpoint-m) {
+    flex-wrap: nowrap !important;
+  }
+
+  &:where(:last-child) {
+    margin-bottom: 0;
+  }
+
+  // Stacked on mobile
+  &:not(.is-not-stacked-on-mobile) {
+    > .wp-block-column {
+
+      @media (max-width: @breakpoint-s--max) {
+        flex-basis: 100% !important;
+      }
+    }
+  }
+
+  // Column
+
+  .wp-block-column {
+    margin: 0;
+  }
+}

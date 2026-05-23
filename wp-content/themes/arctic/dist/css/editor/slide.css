@@ -1,0 +1,42 @@
+:root {
+  --f--slideshow--height--xs: 620px;
+  --f--slideshow--color: var(--a--color--contrast);
+  --f--slideshow--color--rgb: var(--a--color--contrast-rgb);
+  --f--slideshow--color--accent: var(--a--color--accent);
+  --f--slideshow--color--highlight: var(--a--color--highlight);
+  --f--slideshow--color--background: var(--a--color);
+  --f--slideshow--overlay: rgba(var(--f--overlay--color-rgb), 30%);
+  --f--slideshow--pagination--bullet--size: var(--a--border--width--xxl);
+}
+body {
+  --wrapper--width: 720px;
+  --wrapper--spacing: var(--a--spacing--m);
+  line-height: var(--a--line-height--xs);
+  color: var(--f--slideshow--color);
+  background-color: var(--f--slideshow--color--background);
+}
+@media (min-width: 1024px) {
+  body {
+    --wrapper--spacing: var(--a--spacing--l);
+  }
+}
+body a {
+  color: var(--f--slideshow--color);
+}
+body .is-root-container > p:not(.has-text-color),
+body .is-root-container > ul:not(.has-text-color),
+body .is-root-container > ol:not(.has-text-color) {
+  color: var(--f--slideshow--color);
+}
+body .edit-post-visual-editor__post-title-wrapper {
+  max-width: var(--wrapper--width);
+  padding-right: var(--wrapper--spacing);
+  padding-left: var(--wrapper--spacing);
+  margin-bottom: 120px;
+  text-wrap: balance;
+}
+body .block-editor-block-list__layout.is-root-container {
+  max-width: var(--wrapper--width);
+  padding-right: var(--wrapper--spacing);
+  padding-left: var(--wrapper--spacing);
+}

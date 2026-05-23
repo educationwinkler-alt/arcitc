@@ -1,0 +1,109 @@
+//
+// Utility - Container - Size
+//
+
+// 50%
+
+.@{prefix}-container--50 {
+  --container--width-max: calc(var(--a--container--width) / 2);
+}
+
+// 75%
+
+.@{prefix}-container--75 {
+  --container--width-max: calc(var(--a--container--width) / 4 * 3);
+}
+
+// Wide
+
+.@{prefix}-container--wide {
+  --container--width-max: ~'min(calc(var(--a--container--width-max) - (var(--container--spacing, var(--a--container--spacing)) * 2)), 100%)';
+}
+
+// Full-width
+
+.@{prefix}-container--full {
+  --container--width-min: 100%;
+  --container--width-max: ~'min(100vw, @{viewport-max})';
+}
+
+// Nested
+
+[class*='@{prefix}-container'] {
+
+  // ! Wide / ! Full-width
+
+  :where([class*='@{prefix}-container']:not([class*='--wide']):not([class*='--full'])) {
+	--container--spacing: 0;
+	--container--width-min: 100%;
+	--container--width-max: var(--a--container--width);
+  }
+
+  // 50%
+
+  .@{prefix}-container--50 {
+	--container--width-max: calc(var(--a--container--width) / 2);
+  }
+
+  // 75%
+
+  .@{prefix}-container--75 {
+	--container--width-max: calc(var(--a--container--width) / 4 * 3);
+  }
+
+  // Wide
+
+  .@{prefix}-container--wide {
+	--container--width-min: ~'max(100%, calc(var(--a--container--width-max)) - (var(--container--spacing, var(--a--container--spacing)) * 2))';
+
+	margin-inline: calc(var(--container--width-max) * -1 / 2 + 100% / 2);
+  }
+
+  &[class*='--wide'] {
+
+	// Nested wide of wide
+
+	.@{prefix}-container--wide {
+	  --container--spacing: 0;
+	  --container--width-min: 100%;
+	  --container--width-max: 100%;
+
+	  margin-inline: auto;
+	}
+  }
+
+  // Full-width
+
+  .@{prefix}-container--full {
+	--container--width-min: 100vw;
+	--container--width-max: ~'min(100vw, @{viewport-max})';
+
+	margin-inline: calc(var(--container--spacing, var(--a--container--spacing)) * -1);
+
+	@media (min-width: @breakpoint-s) {
+	  margin-inline: ~'calc(min(100vw, @{viewport-max}) * -1 / 2 + 100% / 2)';
+	}
+  }
+
+  &[class*='--full'] {
+
+	// Nested ! Wide / ! Full-width of Full-width
+
+	:where([class*='@{prefix}-container']:not([class*='--full'])) {
+	  --container--spacing: var(--a--container--spacing);
+	  --container--width-min: calc(100% - (var(--container--spacing, var(--a--container--spacing)) * 2));
+	}
+
+	// Nested wide of full-width
+
+	.@{prefix}-container--wide {
+	  margin-inline: auto;
+	}
+
+	// Nested full-width of full-width
+
+	.@{prefix}-container--full {
+	  margin-inline: 0;
+	}
+  }
+}

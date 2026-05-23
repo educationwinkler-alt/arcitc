@@ -1,0 +1,68 @@
+// Listing
+
+.f-listings--members {
+  --grid--column-min: ~'min(320px, 100%)';
+  --grid--columns: 1;
+
+  @media (min-width: @breakpoint-s) {
+	--grid--columns: 2;
+  }
+
+  @media (min-width: @breakpoint-l) {
+	--grid--columns: 3;
+  }
+}
+
+.f-listing--member {
+  --listing--spacing--v: var(--a--spacing--m);
+  --listing--spacing--h: var(--a--spacing--s);
+
+  --listing--image--scale--active: 1;
+  --listing--image--overlay--gradient: none;
+  --listing--image--overlay--color: transparent;
+  --listing--image--overlay--color--active: transparent;
+
+  --listing--header--font-size: var(--a--heading--font-size--h6--fluid);
+
+  background-color: var(--a--color--soft);
+
+  // Container
+
+  .f-listing__container {
+	justify-content: flex-start;
+  }
+
+  // Image
+
+  .f-listing__image {
+	background-color: transparent;
+  }
+
+  // Header
+
+  .f-listing__header {
+	max-width: 100%;
+  }
+
+  // Position
+
+  .f-listing__position {
+	opacity: 0.6;
+	font-size: var(--a--font-size--s);
+  }
+
+  // Scope
+
+  .f-listing__scope {
+	text-wrap: balance;
+  }
+
+  // Card
+  &-card {
+
+	.f-listing__image {
+	  max-width: 80px;
+	  border-radius: 40px;
+	}
+  }
+}

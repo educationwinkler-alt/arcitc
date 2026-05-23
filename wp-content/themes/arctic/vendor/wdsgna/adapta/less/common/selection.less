@@ -1,0 +1,32 @@
+//
+// Common - Selection
+//
+
+::selection {
+  color: var(--a--selection--color);
+  background-color: var(--a--selection--background-color);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  color: var(--a--selection--color);
+  background-color: var(--a--selection--background-color);
+  text-shadow: none;
+}
+
+// Form
+
+input,
+textarea,
+select {
+
+  &::selection {
+    -webkit-text-fill-color: var(--a--selection--color);
+  }
+
+  &:-webkit-autofill {
+    &::selection {
+      -webkit-text-fill-color: var(--a--selection--color);
+    }
+  }
+}

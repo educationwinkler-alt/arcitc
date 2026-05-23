@@ -1,0 +1,18 @@
+//
+// Properties - Spacing
+//
+
+:root {
+  --a--spacing--0: 0;
+  --a--spacing--1: 1px;
+
+  --a--spacing--xxxs: calc(var(--a--spacing) / 8); // 0.3125rem
+  --a--spacing--xxs: calc(var(--a--spacing) / 4); // 0.625rem
+  --a--spacing--xs: calc(var(--a--spacing) / 2); // 1.25rem
+  --a--spacing--s: calc(var(--a--spacing) / 4 * 3); // 1.875rem
+  --a--spacing--m: clamp(calc(var(--a--spacing) / 4 * 3), calc(1.5rem + 1.25vw), var(--a--spacing)); // 1.875rem + 2.5rem
+  --a--spacing--l: clamp(var(--a--spacing), calc(2.75rem + 2.5vw), calc(var(--a--spacing) * 1.5)); // 2.5rem - 3.75rem
+  --a--spacing--xl: clamp(var(--a--spacing), calc(1rem + 5vw), calc(var(--a--spacing) * 2)); // 2.5rem - 5rem
+  --a--spacing--xxl: clamp(calc(var(--a--spacing) * 1.5), calc(1.5rem + 7.5vw), calc(var(--a--spacing) * 3)); // 3.75rem - 7.5rem
+  --a--spacing--xxxl: clamp(calc(var(--a--spacing) * 2), calc(2rem + 10vw), calc(var(--a--spacing) * 4)); // 5rem - 10rem
+}

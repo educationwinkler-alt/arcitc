@@ -1,0 +1,28 @@
+//
+// Common - Form - Hint
+//
+
+:where(legend, label, input, select, textarea) {
+
+  + small {
+	// Default Properties
+	//--hint--font-size: var(--a--font-size--s);
+	//--hint--color: rgba(var(--a--color-rgb), 75%);
+
+	display: block;
+	padding: var(--a--field--spacing--vertical) 0;
+	margin: calc(var(--a--field--spacing--outer, var(--a--spacing--s)) * -1) 0 0;
+
+	font-size: var(--hint--font-size, var(--a--font-size--s));
+
+	color: var(--hint--color, rgba(var(--a--color-rgb), 75%));
+  }
+}
+
+:where(legend) {
+
+  + small {
+	--hint--font-size: var(--a--font-size);
+	margin: calc(var(--a--spacing--xs) * -1) 0 var(--a--spacing--s);
+  }
+}

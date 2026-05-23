@@ -1,0 +1,27 @@
+//
+// Utility - Form - Hint
+//
+
+.@{prefix}-field__hint {
+  // Default Properties
+  //--hint--font-family: var(--a--font-family--secondary);
+  //--hint--font-size: var(--a--font-size--s);
+  //--hint--font-weight: var(--a--font-weight);
+  //--hint--letter-spacing: var(--a--letter-spacing);
+  //--hint--text-transform: var(--a--text-transform);
+  //--hint--line-height: var(--a--line-height);
+  //--hint--color: rgba(var(--a--color-rgb), 75%);
+
+  display: block;
+  padding: var(--a--field--spacing--vertical) 0;
+  margin: calc(var(--a--field--spacing--outer, var(--a--spacing--s)) * -1) 0 0;
+
+  font-family: var(--hint--font-family, var(--a--font-family--secondary));
+  font-size: var(--hint--font-size, var(--a--font-size--s));
+  font-weight: var(--hint--font-weight, var(--a--font-weight));
+  letter-spacing: var(--hint--letter-spacing, var(--a--letter-spacing));
+  text-transform: var(--hint--text-transform, var(--a--text-transform));
+  line-height: var(--hint--line-height, var(--a--line-height));
+
+  color: var(--hint--color, rgba(var(--a--color-rgb), 80%));
+}

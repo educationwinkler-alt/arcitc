@@ -1,0 +1,44 @@
+// Listing
+
+.f-listings--offers {
+  --grid--column-min: min(320px, 100%);
+}
+
+.f-listing--offer {
+  position: relative;
+  z-index: var(--a--layer--1);
+  background-color: var(--a--color--background);
+  .shadow();
+
+  .f-listing__image {
+
+	.f-image {
+	  aspect-ratio: 16/6;
+
+	  @media (min-width: @breakpoint-s) {
+		aspect-ratio: 16/9;
+	  }
+	}
+  }
+
+  // Small
+  &-small {
+	--listing--spacing--v: var(--a--spacing--xs);
+	--listing--spacing--h: var(--a--spacing--s);
+	--listing--header--font-size: var(--a--font-size--l);
+
+	.f-listing__container {
+	  justify-content: unset;
+	}
+
+	.f-listing__header {
+	  text-align: center;
+	}
+
+	.f-listing__image {
+	  @media (min-width: @breakpoint-s) {
+		max-width: 200px;
+	  }
+	}
+  }
+}

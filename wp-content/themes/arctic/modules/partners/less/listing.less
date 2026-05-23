@@ -1,0 +1,54 @@
+// Listing
+
+.f-listings--partners {
+  --grid--column-min: ~'min(320px, 100%)';
+  --grid--columns: 1;
+
+  @media (min-width: @breakpoint-s) {
+	--grid--columns: 2;
+  }
+
+  @media (min-width: @breakpoint-l) {
+	--grid--columns: 3;
+  }
+}
+
+.f-listing--partner {
+  --listing--spacing--v: var(--a--spacing--m);
+  --listing--spacing--h: var(--a--spacing--s);
+
+  --listing--image--scale--active: 1;
+  --listing--image--overlay--gradient: none;
+  --listing--image--overlay--color: transparent;
+  --listing--image--overlay--color--active: transparent;
+
+  --listing--header--font-size: var(--a--heading--font-size--h6--fluid);
+
+  background-color: var(--a--color--background);
+  .shadow();
+
+  // Container
+
+  .f-listing__container {
+	padding-top: var(--a--spacing--m);
+	text-align: center;
+	background-color: transparent;
+  }
+
+  // Image
+
+  .f-listing__image {
+	max-height: 120px;
+	background-color: transparent;
+
+	a {
+	  display: initial;
+	}
+  }
+
+  // Header
+
+  .f-listing__header {
+	max-width: 100%;
+  }
+}

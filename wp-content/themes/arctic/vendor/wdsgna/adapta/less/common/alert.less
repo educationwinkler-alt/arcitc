@@ -1,0 +1,60 @@
+//
+// Common - Alert
+//
+
+[role='alert'] {
+  // Default Properties
+  //--alerts--spacing: var(--a--spacing--xs);
+  //--alert--spacing--v: var(--a--spacing--xs);
+  //--alert--spacing--h: var(--a--spacing--s);
+  //--alert--heading--font-size: var(--a--heading--font-size--h5--fluid);
+
+  display: block;
+  padding: var(--alert--spacing--v, var(--a--spacing--xs)) var(--alert--spacing--h, var(--a--spacing--s));
+  margin-block-end: var(--alerts--spacing, var(--a--spacing--s));
+
+  color: var(--alert--color, var(--a--color));
+  background-color: var(--alert--background-color, rgba(var(--a--color-rgb), 5%));
+
+  border: var(--alert--border-width, var(--a--border--width--1)) solid var(--alert--border-color, var(--a--color));
+  border-radius: var(--alert--border-radius, var(--a--border--radius));
+
+  @media (min-width: @breakpoint-m) {
+	--alert--spacing--v: var(--a--spacing--xs);
+	--alert--spacing--h: var(--a--spacing--m);
+  }
+
+  // Element
+
+  > * {
+	margin-block: 0;
+
+	+ * {
+	  margin-block-start: ~'max(calc(var(--alert--spacing--v, var(--a--spacing--xs)) / 2), var(--a--spacing--xxs))';
+	}
+  }
+
+  // Link
+
+  :where(a) {
+	color: inherit;
+  }
+
+  // Paragraph
+
+  :where(p) {
+	line-height: var(--a--line-height--xs);
+  }
+
+  // Heading
+
+  :where(h4, h5, h6) {
+	font-size: var(--alert--heading--font-size, var(--a--heading--font-size--h5--fluid));
+  }
+
+  // Next
+
+  & + & {
+	margin-block-start: var(--alerts--spacing, var(--a--spacing--xs));
+  }
+}

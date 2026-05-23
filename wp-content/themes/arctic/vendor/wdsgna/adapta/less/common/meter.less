@@ -1,0 +1,43 @@
+//
+// Common - Meter
+//
+
+meter {
+  // Default Properties
+  //--meter--height: var(--a--progress--size, 1rem);
+  //--meter--color: var(--a--progress--color);
+  //--meter--background-color: var(--a--progress--color-background);
+  //--meter--border-radius: var(--a--border--radius);
+
+  position: relative;
+  top: 1px;
+  height: var(--meter--height, var(--a--progress--size, 1rem));
+  vertical-align: baseline;
+  overflow: hidden;
+
+  color: var(--meter--color, var(--a--progress--color));
+  background: var(--meter--background-color, var(--a--progress--color-background));
+  border-radius: var(--meter--border-radius, var(--a--border--radius));
+  border: 0;
+
+  &::-webkit-meter-inner-element {
+	grid-template-rows: auto;
+  }
+
+  &::-webkit-meter-bar {
+	background-color: transparent;
+	background-image: none;
+	border-radius: var(--meter--border-radius, var(--a--border--radius));
+	border: 0;
+  }
+
+  &::-webkit-meter-optimum-value {
+	background-color: currentColor;
+	background-image: none;
+  }
+
+  &::-moz-meter-bar {
+	background: currentColor;
+	background-image: none;
+  }
+}

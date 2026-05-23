@@ -1,0 +1,14 @@
+//
+// Common - Form
+//
+
+:where(form) {
+
+  label[for]:not(:has(+[disabled], [disabled], +[readonly], [readonly])) {
+    cursor: pointer;
+  }
+
+  p {
+    --p--spacing: var(--a--spacing--xxs);
+  }
+}

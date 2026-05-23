@@ -1,0 +1,82 @@
+// Table Block
+
+.wp-block-table {
+  --table--spacing--v: var(--a--spacing--xxs);
+  --table--spacing--h: var(--a--spacing--xs);
+  --table--border-width: var(--a--table--border-width, var(--a--border--width--s));
+  --table--border-color: var(--a--table--border-color, rgba(var(--a--color-rgb), 0.2));
+
+  margin-block-end: var(--wp--style--block-gap, var(--a--spacing));
+
+  table {
+	margin-block-end: var(--wp--style--block-gap, var(--a--spacing));
+
+	&:last-child {
+	  margin-block-end: 0;
+	}
+  }
+
+  td,
+  th {
+	padding: var(--table--spacing--v) var(--table--spacing--h);
+
+	&:where(:first-child) {
+	  padding-inline-start: 0;
+	}
+
+	&:where(:last-child) {
+	  padding-inline-end: 0;
+	}
+  }
+
+  th {
+	text-align: inherit;
+  }
+
+  :is(figcaption) {
+	--caption--spacing--v: 0;
+
+	font-size: small;
+	text-align: inherit;
+
+	color: inherit;
+  }
+
+  // NOT Stripes
+  &:not(.is-style-stripes) {
+
+	td,
+	th {
+	  border-bottom: solid var(--table--border-color);
+	  border-width: 0 0 var(--table--border-width);
+	}
+  }
+
+  // Stripes
+  &.is-style-stripes {
+	margin-inline: calc(var(--table--spacing--h) * -1);
+
+	border: none;
+
+	tbody {
+	  tr {
+		&:nth-child(odd) {
+		  background-color: var(--a--table--stripe-background-color);
+		  background-image: var(--a--table--stripe-background-image);
+		}
+	  }
+	}
+
+	td,
+	th {
+
+	  &:where(:first-child) {
+		padding-inline-start: var(--table--spacing--h);
+	  }
+
+	  &:where(:last-child) {
+		padding-inline-end: var(--table--spacing--h);
+	  }
+	}
+  }
+}

@@ -1,0 +1,36 @@
+// Alignment
+
+// Wide
+
+.alignwide {
+  --spacing: var(--a--container--spacing);
+
+  min-width: calc(100% + (var(--spacing) * 2));
+  margin-inline: calc(var(--spacing) * -1);
+
+  // Nested
+
+  .alignwide {
+	min-width: 100%;
+	margin-inline: 0;
+  }
+}
+
+// Full
+
+.alignfull {
+  margin-inline: calc(-100vw / 2 + 100% / 2);
+
+  @media (max-width: @breakpoint-min--max) {
+
+	[class*='@{prefix}-container'] & {
+	  margin-inline: calc(var(--a--container--spacing) * -1);
+	}
+  }
+
+  // Nested
+
+  .alignfull {
+	margin-inline: 0;
+  }
+}

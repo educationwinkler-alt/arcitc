@@ -1,0 +1,44 @@
+//
+// Properties - Heading
+//
+
+:root {
+
+  --a--heading--font-size--h6: calc(var(--a--heading--font-size, 1rem) * var(--a--heading--font-scale, 1.2)); // 1.2rem
+  --a--heading--font-size--h6--fluid: clamp(var(--a--heading--font-size, 1rem), calc(.9rem + .4vw), var(--a--heading--font-size--h6, 1.2rem));
+
+  --a--heading--font-size--h5: calc(var(--a--heading--font-size--h6, 1.2rem) * var(--a--heading--font-scale, 1.2)); // 1.44rem
+  --a--heading--font-size--h5--fluid: clamp(var(--a--heading--font-size--h6, 1.2rem), calc(1.1rem + .5vw), var(--a--heading--font-size--h5, 1.44rem));
+
+  --a--heading--font-size--h4: calc(var(--a--heading--font-size--h5, 1.44rem) * var(--a--heading--font-scale, 1.2)); // 1.728rem
+  --a--heading--font-size--h4--fluid: clamp(var(--a--heading--font-size--h5, 1.44rem), calc(1.3rem + .6vw), var(--a--heading--font-size--h4, 1.728rem));
+
+  --a--heading--font-size--h3: calc(var(--a--heading--font-size--h4, 1.728rem) * var(--a--heading--font-scale, 1.2)); // 2.074rem
+  --a--heading--font-size--h3--fluid: clamp(var(--a--heading--font-size--h4, 1.728rem), calc(1.5rem + .7vw), var(--a--heading--font-size--h3, 2.074rem));
+
+  --a--heading--font-size--h2: calc(var(--a--heading--font-size--h3, 2.074rem) * var(--a--heading--font-scale, 1.2)); // 2.488rem
+  --a--heading--font-size--h2--fluid: clamp(var(--a--heading--font-size--h3, 2.074rem), calc(1.8rem + .8vw), var(--a--heading--font-size--h2, 2.488rem));
+
+  --a--heading--font-size--h1: calc(var(--a--heading--font-size--h2, 2.488rem) * var(--a--heading--font-scale, 1.2)); // 2.986rem
+  --a--heading--font-size--h1--fluid: clamp(var(--a--heading--font-size--h2, 2.488rem), calc(2.2rem + 1vw), var(--a--heading--font-size--h1, 2.986rem));
+
+  //
+  // Title
+  //
+
+  --a--heading--title--font-size--m: calc(var(--a--heading--font-size--h1, 2.986rem) * var(--a--heading--font-scale, 1.2)); // 3.583rem
+  --a--heading--title--font-size--m--fluid: clamp(var(--a--heading--font-size--h2, 2.488rem), calc(1.8rem + 2.2vw), var(--a--heading--title--font-size--m, 3.583rem));
+
+  --a--heading--title--font-size--l: calc(var(--a--heading--title--font-size--m, 3.583rem) * var(--a--heading--font-scale, 1.2)); // 4.3rem
+  --a--heading--title--font-size--l--fluid: clamp(var(--a--heading--font-size--h1, 2.986rem), calc(2.2rem + 2.6vw), var(--a--heading--title--font-size--l, 4.3rem));
+
+  //
+  // Sub
+  //
+
+  --a--heading--sub--font-family: var(--a--font-family--secondary);
+  --a--heading--sub--font-size: ~'max(0.5em, 1rem)';
+  --a--heading--sub--font-weight: normal;
+  --a--heading--sub--letter-spacing: 0;
+  --a--heading--sub--text-transform: none;
+}

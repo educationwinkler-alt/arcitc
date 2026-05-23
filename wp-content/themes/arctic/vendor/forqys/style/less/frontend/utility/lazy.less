@@ -1,0 +1,31 @@
+//
+// Lazy
+//
+
+:where(html:not(.no-js)) {
+  //--f--lazy--transition-duration: var(--a--transition--duration--double);
+  //--f--lazy--transition-timing-function: linear;
+
+  .@{prefix-s}-lazy {
+	opacity: 0;
+
+	transition: opacity var(--f--lazy--transition-duration, var(--a--transition--duration--double)) var(--f--lazy--transition-timing-function, linear);
+
+	// Loading
+
+	+ .@{prefix-s}-lazy__loading {
+	  opacity: 1;
+	}
+
+	// Loaded
+	&.lazy-loaded {
+	  opacity: 1;
+
+	  // Loading
+
+	  + .@{prefix-s}-lazy__loading {
+		opacity: 0;
+	  }
+	}
+  }
+}

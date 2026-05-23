@@ -1,0 +1,45 @@
+// Breakpoint - 1024 [Default]
+
+.@{prefix}-off {
+
+  &:where(:not([data-off-breakpoint])),
+  &:where([data-off-breakpoint='1024']) {
+    @media (max-width: 1023px) {
+      .off();
+
+      // Active
+      &.active {
+        .off--active();
+      }
+    }
+  }
+}
+
+// Trigger
+
+.@{prefix}-off__trigger {
+
+  &:not([data-off-breakpoint]),
+  &:is([data-off-breakpoint='1024']) {
+    @media (min-width: 1024px) {
+      display: none;
+      pointer-events: none;
+    }
+    @media (max-width: 1023px) {
+      .off-trigger();
+    }
+  }
+}
+
+// Prevent Display of the Relocated Off
+
+.@{prefix}-off__location {
+
+  > .@{prefix}-off:not([data-off-breakpoint]),
+  > .@{prefix}-off[data-off-breakpoint='1024'] {
+
+    @media (min-width: 1024px) {
+      display: none;
+    }
+  }
+}

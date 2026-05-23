@@ -1,0 +1,194 @@
+//
+// Common - Navigation
+//
+
+// Horizontal
+
+nav {
+  // Default Properties
+  //--nav--spacing--v: var(--a--spacing--xxs);
+  //--nav--spacing--h: var(--a--spacing--s);
+
+  display: block;
+
+  ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	padding: 0;
+	margin: 0;
+
+	list-style: none;
+  }
+
+  li {
+	display: inline-block;
+	padding: var(--nav--spacing--v, var(--a--spacing--xxs)) var(--nav--spacing--h, var(--a--spacing--s));
+  }
+
+  :is(a, button) {
+	display: block;
+	padding: var(--nav--spacing--v, var(--a--spacing--xxs)) var(--nav--spacing--h, var(--a--spacing--s));
+	margin: calc(var(--nav--spacing--v, var(--a--spacing--xxs)) * -1) calc(var(--nav--spacing--h, var(--a--spacing--s)) * -1);
+
+	text-decoration: none;
+	line-height: var(--a--line-height--s);
+
+	outline-offset: calc(var(--a--outline--offset) * -1);
+
+	// Description
+
+	p {
+	  margin: 0;
+
+	  font-size: var(--a--font-size--xxs);
+	}
+
+	// Current
+	&:where([aria-current]) {
+	  --link--color: var(--a--link--color--active);
+	}
+  }
+
+  // Active
+
+  li {
+	&:where(:hover, :focus-within) {
+
+	  > a {
+		--link--color: var(--a--link--color--active);
+	  }
+	}
+  }
+
+  // Element
+
+  input {
+	margin: 0;
+  }
+
+  label + input {
+	margin: 0;
+  }
+}
+
+// Horizontal - Sub-navigation
+
+:not(aside) {
+
+  > nav {
+
+	li {
+	  position: relative;
+
+	  ul {
+		opacity: 0;
+		pointer-events: none;
+
+		flex-direction: column;
+		align-items: stretch;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: max-content;
+		min-width: 100%;
+		padding-top: var(--nav--spacing--v, var(--a--spacing--xxs));
+		padding-bottom: var(--nav--spacing--v, var(--a--spacing--xxs));
+		z-index: var(--a--layer--9);
+
+		line-height: normal;
+
+		background-color: var(--a--color--background);
+		.shadow--bottom();
+
+		.transition-property(~'opacity, margin');
+		.transition-duration();
+		.transition-timing-function();
+
+		// RTL Position
+		[dir='rtl'] & {
+		  right: 0;
+		  left: auto;
+		}
+
+		li {
+		  display: block;
+		  padding: 0;
+		}
+
+		a {
+		  display: block;
+		  padding-top: var(--nav--spacing--v, var(--a--spacing--xxs));
+		  padding-bottom: var(--nav--spacing--v, var(--a--spacing--xxs));
+		  margin: 0;
+		}
+	  }
+
+	  // Active
+	  &:where(:hover, :focus-within) {
+
+		> ul {
+		  opacity: 1;
+		  pointer-events: auto;
+		}
+	  }
+
+	  // Sub-sub-navigation
+
+	  li {
+
+		ul {
+		  top: 0;
+		  left: 0;
+		  margin-top: calc(var(--nav--spacing--v, var(--a--spacing--xxs)) * -1); // The negative margin for padding compensation
+
+		  @media (min-width: @breakpoint-m) {
+			left: 100%;
+		  }
+
+		  // RTL Position
+		  [dir='rtl'] & {
+			right: 100%;
+			left: auto;
+		  }
+		}
+	  }
+	}
+  }
+}
+
+// Vertical
+
+aside {
+
+  nav {
+	padding: var(--a--spacing) 0;
+
+	ul {
+	  flex-direction: column;
+	  align-items: unset;
+	}
+  }
+
+  li {
+	padding: 0;
+
+	ul {
+	  margin-inline-start: var(--nav--spacing--h, var(--a--spacing--s));
+	}
+  }
+
+  a {
+	margin: 0;
+  }
+}
+
+// Vertical - Sub-navigation
+
+:where(aside) {
+
+  nav {
+
+  }
+}

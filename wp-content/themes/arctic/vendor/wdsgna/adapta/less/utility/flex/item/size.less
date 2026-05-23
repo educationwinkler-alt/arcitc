@@ -1,0 +1,60 @@
+//
+// Utility - Flex - Item - Size
+//
+
+@flex-item--sizes: 100, 83.333, 80, 75, 70, 66.666, 60, 50, 40, 33.333, 30, 25, 20, 16.666;
+.flex-item--sizes(@flex-item--sizes);
+
+// Min +
+
+.media-min(min, {
+
+  @flex-item--sizes-min: 100, 50;
+  .flex-item--sizes(@flex-item--sizes-min; '\:min');
+
+});
+
+// XSmall +
+
+.media-min(xs, {
+
+  @flex-item--sizes-xs: 100, 75, 70, 66.666, 60, 50, 40, 30, 33.333, 25;
+  .flex-item--sizes(@flex-item--sizes-xs; '\:xs');
+
+});
+
+// Small +
+
+.media-min(s, {
+
+  @flex-item--sizes-s: 100, 80, 75, 70, 66.666, 60, 50, 40, 30, 33.333, 25, 20;
+  .flex-item--sizes(@flex-item--sizes-s; '\:s');
+
+});
+
+// Medium +
+
+.media-min(m, {
+
+  @flex-item--sizes-m: 100, 83.333, 80, 75, 70, 66.666, 60, 50, 40, 33.333, 30, 25, 20, 16.666;
+  .flex-item--sizes(@flex-item--sizes-m; '\:m');
+
+});
+
+// Large +
+
+.media-min(l, {
+
+  @flex-item--sizes-l: 100, 83.333, 80, 75, 70, 66.666, 60, 50, 40, 33.333, 30, 25, 20, 16.666;
+  .flex-item--sizes(@flex-item--sizes-l; '\:l');
+
+});
+
+// XLarge +
+
+.media-min(xl, {
+
+  @flex-item--sizes-xl: 100, 83.333, 80, 75, 70, 66.666, 60, 50, 40, 33.333, 30, 25, 20, 16.666;
+  .flex-item--sizes(@flex-item--sizes-xl; '\:xl');
+
+});

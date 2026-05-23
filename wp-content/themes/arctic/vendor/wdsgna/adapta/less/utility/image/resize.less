@@ -1,0 +1,48 @@
+//
+// Utility - Image - Resize
+//
+
+:where(.@{prefix}-image--cover, .@{prefix}-image--contain, .@{prefix}-image--fill, .@{prefix}-image--scale-down) {
+  position: relative;
+
+  // Image
+  img {
+	width: 100%;
+	height: 100%;
+	z-index: var(--a--layer--1);
+
+	object-position: center;
+  }
+}
+
+// Cover
+
+:where(.@{prefix}-image--cover) {
+  img {
+	object-fit: cover;
+  }
+}
+
+// Contain
+
+:where(.@{prefix}-image--contain) {
+  img {
+	object-fit: contain;
+  }
+}
+
+// Fill
+
+:where(.@{prefix}-image--fill) {
+  img {
+	object-fit: fill;
+  }
+}
+
+// Scale Down
+
+:where(.@{prefix}-image--scale-down) {
+  img {
+	object-fit: scale-down;
+  }
+}

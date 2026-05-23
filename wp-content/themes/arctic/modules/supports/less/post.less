@@ -1,0 +1,26 @@
+// Post
+
+.f-support__summary {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  @media (min-width: @breakpoint-s) {
+	flex-direction: row;
+	align-items: center;
+  }
+
+  h3 {
+	text-wrap: balance;
+  }
+
+  .f-terms {
+	@media (min-width: @breakpoint-s) {
+	  justify-content: flex-end;
+	}
+  }
+}
+
+.f-support__content {
+  --content--spacing: var(--a--spacing--s);
+}

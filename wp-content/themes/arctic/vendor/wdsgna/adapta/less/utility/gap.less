@@ -1,0 +1,12 @@
+//
+// Utility - Gap
+//
+
+[class*='@{prefix}-gap'] {
+  // Default Properties
+  //--gap--col: var(--a--spacing);
+  //--gap--row: var(--a--spacing);
+
+  column-gap: var(--gap--col, var(--a--spacing));
+  row-gap: var(--gap--row, var(--a--spacing));
+}

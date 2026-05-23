@@ -1,0 +1,292 @@
+// PSWP - UI
+
+.pswp {
+  z-index: var(--pswp--z-index);
+}
+
+.pswp__bg {
+  background: var(--pswp--color-background);
+}
+
+/*
+Error message appears when image is not loaded
+(JS option errorMsg controls markup)
+*/
+.pswp__error-msg-container {
+  display: grid;
+}
+
+.pswp__error-msg {
+  margin: auto;
+
+  font-size: 1em;
+  line-height: 1;
+
+  color: var(--pswp--color);
+}
+
+/*
+class pswp__hide-on-close is applied to elements that
+should hide (for example fade out) when PhotoSwipe is closed
+and show (for example fade in) when PhotoSwipe is opened
+*/
+.pswp .pswp__hide-on-close {
+  opacity: 0.005;
+  will-change: opacity;
+  transition: opacity var(--pswp--transition--duration) var(--pswp--transition--timing-function);
+  z-index: 10; /* always overlap slide content */
+  pointer-events: none; /* hidden elements should not be clickable */
+}
+
+/*
+class pswp--ui-visible is added when opening or closing transition starts
+*/
+.pswp--ui-visible .pswp__hide-on-close {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/*
+<button> styles, including css reset
+*/
+.pswp__button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--pswp--size);
+  height: var(--pswp--size);
+  padding: 0;
+  margin: 0;
+
+  overflow: hidden;
+  cursor: pointer;
+
+  color: var(--pswp--color);
+  background: none;
+  border: 0;
+  box-shadow: none;
+
+  -webkit-appearance: none;
+  -webkit-touch-callout: none;
+
+  &:is(:hover, :active, :focus) {
+	transition: none;
+	padding: 0;
+	background: none;
+	border: 0;
+	box-shadow: none;
+	opacity: 1;
+  }
+
+  &:focus-visible {
+	outline-color: var(--pswp--color);
+  }
+
+  &:disabled {
+	opacity: 0.3;
+	cursor: auto;
+  }
+
+  // Icon
+
+  .icon {
+	[stroke-width] {
+	  stroke-width: var(--pswp--icon--stroke);
+	}
+  }
+}
+
+.pswp__icn {
+  pointer-events: none;
+}
+
+.pswp__icn-shadow {
+  display: none;
+
+  //stroke: var(--pswp-icon-stroke-color);
+  //stroke-width: var(--pswp-icon-stroke-width);
+  //fill: none;
+}
+
+/*
+div element that matches size of large image,
+large image loads on top of it,
+used when msrc is not provided
+*/
+div.pswp__img--placeholder,
+.pswp__img--with-bg {
+  background-color: var(--pswp--placeholder--color-background);
+}
+
+.pswp__top-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: var(--pswp--size);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  z-index: 10;
+
+  /*
+  allow events to pass through top bar itself
+  */
+  pointer-events: none !important;
+}
+
+.pswp__top-bar > * {
+  pointer-events: auto;
+  /*
+  this makes transition significantly more smooth,
+  even though inner elements are not animated
+  */
+  will-change: opacity;
+}
+
+/*
+
+Close button
+
+*/
+.pswp__button--close {
+
+}
+
+/*
+
+Arrow buttons
+
+*/
+.pswp__button--arrow {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  width: var(--pswp--size);
+  height: calc(var(--pswp--size) * 2);
+  margin-top: calc(var(--pswp--size) * -1);
+
+  &:disabled {
+	display: none;
+	cursor: default;
+  }
+}
+
+/*
+hide arrows on touch screens
+*/
+.pswp--touch .pswp__button--arrow {
+  visibility: hidden;
+}
+
+/*
+show arrows only after mouse was used
+*/
+.pswp--has_mouse .pswp__button--arrow {
+  visibility: visible;
+}
+
+.pswp__button--arrow--prev {
+  right: auto;
+  left: 0;
+}
+
+.pswp__button--arrow--next {
+  right: 0;
+}
+
+/*
+hide arrows if single slide
+*/
+.pswp--one-slide {
+  .pswp__button--arrow--prev,
+  .pswp__button--arrow--next {
+	visibility: hidden;
+  }
+}
+
+/*
+
+Zoom button
+
+*/
+.pswp__button--zoom {
+  display: none;
+}
+
+.pswp--zoom-allowed {
+  .pswp__button--zoom {
+	display: flex;
+  }
+}
+
+/*
+"+" => "-"
+*/
+.pswp--zoomed-in .pswp__zoom-icn-bar-v {
+  display: none;
+}
+
+/*
+
+Loading indicator
+
+*/
+.pswp__preloader {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--pswp--size);
+  height: var(--pswp--size);
+  margin-right: auto;
+  overflow: hidden;
+}
+
+.pswp__preloader .pswp__icn {
+  opacity: 0;
+  transition: opacity var(--pswp--transition--duration) linear;
+  animation: pswp-clockwise 600ms linear infinite;
+
+  path {
+	fill: var(--pswp--color);
+  }
+}
+
+.pswp__preloader--active .pswp__icn {
+  opacity: 0.85;
+}
+
+@keyframes pswp-clockwise {
+  0% {
+	transform: rotate(0deg);
+  }
+  100% {
+	transform: rotate(360deg);
+  }
+}
+
+/*
+
+"1 of 10" counter
+
+*/
+.pswp__counter {
+  height: var(--pswp--size);
+  padding: 0 1.25rem;
+
+  font-size: var(--pswp--font-size);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--pswp--size);
+
+  color: var(--pswp--color);
+
+  opacity: 0.8;
+}
+
+.pswp--one-slide .pswp__counter {
+  display: none;
+}

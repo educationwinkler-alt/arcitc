@@ -1,0 +1,24 @@
+// Properties
+
+:root {
+  //--off--width: 80%;
+  //--off--width-min: 320px;
+  //--off--width-max: 480px;
+  //--off--z-index: 190;
+
+  // Transition
+  --off--transition--duration: 0.5s;
+  @media (prefers-reduced-motion: reduce) {
+	--off--transition--duration: 0s;
+  }
+  --off--transition--timing-function: cubic-bezier(.9, 0, .1, 1);
+
+  // Dialog
+
+  --off--dialog--width: var(--a--container--width);
+  --off--dialog--width--50: calc(var(--a--container--width) / 2);
+  --off--dialog--width--75: calc(var(--a--container--width) / 4 * 3);
+
+  --off--dialog--spacing: var(--a--container--spacing);
+  --off--dialog--radius: var(--a--border--radius);
+}

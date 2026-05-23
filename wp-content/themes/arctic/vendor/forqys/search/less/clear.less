@@ -1,0 +1,20 @@
+// Clear
+
+.f-search__clear {
+  --button--spacing--v: var(--a--spacing--xxxs);
+  --button--spacing--h: var(--a--spacing--xxxs);
+
+  position: absolute;
+  top: calc(100% + var(--search--results--spacing));
+  right: var(--a--spacing--xxxs);
+  z-index: var(--a--layer--2);
+}
+
+.f-search__results {
+
+  &:empty {
+	+ .f-search__clear {
+	  display: none;
+	}
+  }
+}

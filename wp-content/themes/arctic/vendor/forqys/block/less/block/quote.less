@@ -1,0 +1,18 @@
+// Quote Block
+
+.wp-block-quote {
+  padding-block: ~'max(var(--quote--spacing, var(--a--spacing--s)), var(--quote--spacing--max, var(--a--spacing--m)))';
+  margin-block-end: var(--quote--spacing, var(--a--spacing--s));
+
+  border: unset;
+
+  @media (min-width: @breakpoint-m) {
+    padding: ~'max(var(--quote--spacing, var(--a--spacing--s)), var(--quote--spacing--max, var(--a--spacing--m)))';
+  }
+
+  cite {
+    display: block;
+	font-size: var(--a--font-size);
+    line-height: normal;
+  }
+}

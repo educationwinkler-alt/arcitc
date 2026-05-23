@@ -1,0 +1,33 @@
+//
+// Mixins - SVG
+//
+
+// Background Image
+
+.svg-background-image (@-svg) { // .svg-background-image(~' @-svg ')
+  @--svg-code: escape(~'@{-svg}');
+  @--svg-code-inline: ~'data:image/svg+xml;charset=UTF-8,@{--svg-code}';
+  @--svg-code-url: ~"url('@{--svg-code-inline}')";
+
+  background-image: @--svg-code-url;
+}
+
+// Mask Image
+
+.svg-mask-image (@-svg) { // .svg-mask-image(~' @-svg ')
+  @--svg-code: escape(~'@{-svg}');
+  @--svg-code-inline: ~'data:image/svg+xml;charset=UTF-8,@{--svg-code}';
+  @--svg-code-url: ~"url('@{--svg-code-inline}')";
+
+  mask-image: @--svg-code-url;
+}
+
+// Content
+
+.svg-content (@-svg) { // .svg-content(~' @-svg ')
+  @--svg-code: escape(~'@{-svg}');
+  @--svg-code-inline: ~'data:image/svg+xml;charset=UTF-8,@{--svg-code}';
+  @--svg-code-url: ~"url('@{--svg-code-inline}')";
+
+  content: @--svg-code-url;
+}

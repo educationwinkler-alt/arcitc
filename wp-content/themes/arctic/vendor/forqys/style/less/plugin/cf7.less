@@ -1,0 +1,113 @@
+// Contact Form 7
+
+.wpcf7-form {
+  margin: 0;
+
+  // Submitting
+  &.submitting {
+
+    // Button
+
+    .wpcf7-submit {
+      // Disable button to prevent multiple submit
+      pointer-events: none;
+      touch-action: none;
+    }
+  }
+}
+
+// Field
+
+.wpcf7-form-control-wrap {
+  position: relative;
+  display: block;
+  padding: 0 0 var(--a--spacing--xxxs);
+  margin: var(--a--spacing--xxxs) 0 var(--a--spacing--xs);
+
+  input,
+  select,
+  textarea {
+    margin: 0;
+  }
+
+  // Hint
+
+  .wpcf7-not-valid-tip {
+    position: absolute;
+    top: 100%;
+
+    font-family: var(--a--font-family--secondary);
+    font-size: var(--a--font-size--xs);
+    font-weight: normal;
+    letter-spacing: normal;
+    text-transform: none;
+    line-height: var(--a--line-height--xs);
+
+    color: var(--a--color--error);
+  }
+}
+
+// Alert
+
+.wpcf7 {
+
+  form {
+
+    // Default
+
+    .wpcf7-response-output {
+      padding: var(--a--spacing--xs) var(--a--spacing--xl) var(--a--spacing--xs) ~'max(var(--a--field--spacing--horizontal), var(--a--spacing--xs))';
+      margin: var(--a--spacing--s) 0;
+
+      line-height: var(--a--line-height--s);
+
+      border-radius: var(--a--border--radius);
+    }
+  }
+
+  form.invalid,
+  form.unaccepted,
+  form.payment-required {
+
+    // Error
+
+    .wpcf7-response-output {
+      color: var(--a--color--error);
+      border-color: var(--a--color--error);
+    }
+  }
+
+  form.sent {
+
+    // Success
+
+    .wpcf7-response-output {
+      color: var(--a--color--success);
+      border-color: var(--a--color--success);
+    }
+  }
+}
+
+// Spinner
+
+.wpcf7-spinner {
+  opacity: 1;
+
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  margin: 0;
+
+  background-color: rgba(var(--a--color--dark-rgb), 0.2);
+
+  &:before {
+    top: 2px;
+    left: 2px;
+    transform-origin: 8px 8px;
+
+    background-color: var(--a--button--accent--color);
+  }
+}

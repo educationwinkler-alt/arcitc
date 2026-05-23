@@ -1,0 +1,11 @@
+body {
+  --wrapper-width: calc(var(--a--container--width) / 4 * 3);
+}
+body .edit-post-visual-editor__post-title-wrapper {
+  max-width: var(--wrapper-width);
+  margin-inline: auto;
+}
+body .block-editor-block-list__layout.is-root-container > :not(.alignleft):not(.alignright):not(.alignfull) {
+  max-width: var(--wrapper-width);
+  margin-inline: auto;
+}

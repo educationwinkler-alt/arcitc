@@ -1,0 +1,23 @@
+//
+// Content
+//
+
+.@{prefix-s}-content {
+  --content--spacing: var(--a--spacing--m);
+
+  display: flow-root;
+
+  > *:where(:not(p, h1, h2, h3, h4, h5, h6, figure)) {
+    margin-block: var(--content--spacing);
+
+    // First
+    &:first-child {
+      margin-block-start: 0;
+    }
+
+    // Last
+    &:last-child {
+      margin-block-end: 0;
+    }
+  }
+}

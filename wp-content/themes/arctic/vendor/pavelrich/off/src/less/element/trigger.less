@@ -1,0 +1,13 @@
+// Trigger
+
+.@{prefix}-off__trigger {
+  display: none;
+
+  &:is([data-off-breakpoint='all']) {
+    display: block;
+  }
+
+  svg {
+    pointer-events: none;
+  }
+}

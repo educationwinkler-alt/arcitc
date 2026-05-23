@@ -1,0 +1,110 @@
+//
+// Metas
+//
+
+.@{prefix-s}-metas {
+  //--meta--border-width: var(--a--border--width);
+  //--meta--border-color: rgba(var(--a--color-rgb), 20%);
+  //--meta--border-spacing: var(--a--spacing--s);
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--gap--row, 0) var(--gap--col, 0);
+  padding: 0;
+  margin: 0;
+
+  @media (min-width: @breakpoint-s) {
+	flex-direction: row;
+	align-items: flex-start;
+	gap: var(--gap--row, var(--a--spacing--xs)) var(--gap--col, var(--a--spacing--xs));
+  }
+
+  // Align - Center
+  &--align-center {
+
+	@media (min-width: @breakpoint-s) {
+	  align-items: center;
+	}
+  }
+
+  // Justify - Center
+  &--justify-center {
+
+	@media (min-width: @breakpoint-s) {
+	  justify-content: center;
+	}
+  }
+}
+
+// Meta
+
+.@{prefix-s}-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--gap--row, var(--a--spacing--xxs)) var(--gap--col, var(--a--spacing--xs));
+  padding: var(--a--spacing--xxxs) 0;
+
+  // ! Last
+  &:not(:last-child) {
+	border: solid var(--meta--border-color, rgba(var(--a--color-rgb), 20%));
+	border-width: 0 0 var(--meta--border-width, var(--a--border--width)) 0;
+
+	@media (min-width: @breakpoint-s) {
+	  padding-right: var(--meta--border-spacing, var(--a--spacing--s));
+
+	  border-width: 0 var(--meta--border-width, var(--a--border--width)) 0 0;
+	}
+  }
+
+  // Center
+  &--center {
+	align-items: center;
+  }
+
+  // End
+  &--end {
+	align-items: flex-end;
+  }
+
+  // Row
+  &--row {
+	flex-direction: row;
+  }
+}
+
+// Label
+
+.@{prefix-s}-meta__label {
+  font-size: var(--a--font-size--xxs);
+  font-weight: var(--a--font-weight);
+  letter-spacing: var(--a--letter-spacing--xxl);
+  text-transform: uppercase;
+}
+
+// Value
+
+.@{prefix-s}-meta__value {
+  line-height: var(--a--line-height--xs);
+}
+
+//
+// Metas - Vertical
+//
+
+.@{prefix-s}-metas--vertical {
+  flex-direction: column;
+
+  // Meta
+
+  .@{prefix-s}-meta {
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	padding: 0 0 0 var(--meta--border-spacing, var(--a--spacing--xs));
+
+	border: solid var(--meta--border-color, rgba(var(--a--color-rgb), 20%));
+	border-width: 0 0 0 var(--meta--border-width, var(--a--border--width));
+  }
+}

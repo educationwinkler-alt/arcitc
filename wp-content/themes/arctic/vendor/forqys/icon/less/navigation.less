@@ -1,0 +1,25 @@
+// Icon - Navigation
+
+.@{prefix-s}-icon--animated { // a, button, ...
+
+  .icon-nav {
+	.path {
+	  transition: var(--a--transition--duration);
+	}
+  }
+
+  // Hover
+  &:is(:hover, :focus) {
+
+	.icon-nav {
+
+	  .path-1 {
+		d: path("M4 6H20");
+	  }
+
+	  .path-3 {
+		d: path("M4 18H20");
+	  }
+	}
+  }
+}

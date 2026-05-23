@@ -1,0 +1,174 @@
+// Base
+
+.pswp {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  touch-action: none;
+
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--pswp--z-index);
+  overflow: hidden;
+
+  will-change: opacity;
+  backface-visibility: hidden;
+
+  outline: none;
+
+  transition: opacity var(--pswp--transition--duration) var(--pswp--transition--timing-function);
+
+  * {
+    box-sizing: border-box;
+  }
+
+  img {
+    max-width: none;
+  }
+}
+
+// Open
+
+.pswp--open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+// Cursors
+
+.pswp--zoom-allowed {
+
+  .pswp__img {
+    cursor: zoom-in;
+  }
+}
+
+.pswp--zoomed-in {
+
+  .pswp__img {
+    cursor: grab;
+  }
+}
+
+.pswp--dragging {
+
+  .pswp__img {
+    cursor: grabbing;
+  }
+}
+
+// Background
+
+.pswp__bg {
+  opacity: 0;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  will-change: opacity;
+  backface-visibility: hidden;
+
+  transition: opacity var(--pswp--transition--duration) var(--pswp--transition--timing-function);
+}
+
+// Container/Wrap
+
+.pswp__container,
+.pswp__zoom-wrap,
+.pswp__scroll-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pswp__container,
+.pswp__zoom-wrap {
+  touch-action: none;
+  user-select: none;
+}
+
+.pswp__zoom-wrap {
+  will-change: transform;
+  backface-visibility: hidden;
+
+  transition: transform var(--pswp--transition--duration) var(--pswp--transition--timing-function);
+  transform-origin: left top;
+}
+
+.pswp__scroll-wrap {
+  overflow: hidden;
+}
+
+// Item
+
+.pswp__item {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+// Image
+
+.pswp__img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  top: 0;
+  left: 0;
+  user-select: none;
+}
+
+// Error
+
+.pswp__error-msg {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  margin-top: -0.5rem;
+
+  text-align: center;
+  line-height: 1rem;
+
+  color: var(--pswp--color);
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+// Placeholder
+
+.pswp__img--placeholder {
+  backface-visibility: hidden;
+
+  &--blank {
+    background: transparent;
+  }
+}
+
+
+// Animated
+
+.pswp--animated-in {
+
+  .pswp__bg,
+  .pswp__zoom-wrap {
+    transition: none;
+  }
+}

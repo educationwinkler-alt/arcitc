@@ -1,0 +1,27 @@
+//
+// Common - Link
+//
+
+a {
+  text-decoration: var(--link--text-decoration, underline);
+  text-decoration-thickness: var(--link--text-decoration-thickness, from-font);
+  text-underline-offset: var(--link--text-underline-offset, 0.1ch);
+
+  color: var(--link--color, var(--a--link--color));
+
+  outline: transparent var(--a--outline--style) var(--a--outline--width);
+  outline-offset: var(--a--outline--offset);
+
+  .transition-property(~'color, background-color, background-size, border, box-shadow, text-decoration, outline, opacity');
+  .transition-duration();
+  .transition-timing-function();
+
+  &:where(:hover, :focus) {
+	--link--color: var(--a--link--color--active);
+	--link--text-decoration: underline transparent;
+  }
+
+  &:where(:focus-visible) {
+	outline-color: currentColor;
+  }
+}

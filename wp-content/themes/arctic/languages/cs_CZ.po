@@ -1,0 +1,4316 @@
+# Copyright (C) 2022 Pavel Richter
+# This file is distributed under the GPL-3.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: baspa 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/baspa\n"
+"POT-Creation-Date: 2025-09-11T01:31:38+02:00\n"
+"PO-Revision-Date: 2025-09-11 01:33+0200\n"
+"Last-Translator: Pavel Richter <pavelrich@gmail.com>\n"
+"Language-Team: \n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
+"X-Generator: Poedit 3.7\n"
+"X-Domain: baspa\n"
+
+#. Theme Name of the theme
+msgid "Baspa"
+msgstr ""
+
+#. Theme URI of the theme
+msgid "https://baspa.cz/"
+msgstr ""
+
+#. Description of the theme
+msgid "Baspa WordPress Theme"
+msgstr "Baspa WordPress Téma"
+
+#. Author of the theme
+msgid "Pavel Richter"
+msgstr "Pavel Richter"
+
+#. Author URI of the theme
+msgid "https://pavelrichter.cz/"
+msgstr "https://pavelrichter.cz/"
+
+#: 404.php:11 archive.php:11 author.php:11 index.php:11 page.php:27
+#: search.php:11 single-offer.php:11 single-product.php:23
+#: single-reference.php:10 single.php:10 taxonomy-product-category.php:17
+#: taxonomy-reference-category.php:29 template-about.php:11
+#: template-blog.php:11 template-contact.php:11 template-faq.php:23
+#: template-homepage.php:12 template-pricelist.php:11
+#: template-references.php:23 template-showroom.php:11 template-support.php:11
+#: templates/skiplinks.php:13
+msgctxt "anchor"
+msgid "content"
+msgstr "obsah"
+
+#: 404.php:16
+msgid "It looks like nothing was found at this location."
+msgstr "Vypadá to, že na tomto místě nebylo nic nalezeno."
+
+#: 404.php:17
+msgid "Back to Homepage"
+msgstr "Zpět na úvod"
+
+#: inc/blocks/block/button.php:37 modules/contacts/templates/off-contact.php:9
+#: modules/contacts/templates/off-contact.php:19
+#: templates/button/contact.php:36
+msgctxt "anchor"
+msgid "contact-us"
+msgstr "kontaktujte-nas"
+
+#: inc/blocks/block/button.php:52 modules/contacts/templates/off-service.php:9
+#: modules/contacts/templates/off-service.php:19
+#: templates/button/service.php:36
+msgctxt "anchor"
+msgid "service"
+msgstr "servis"
+
+#: inc/blocks/patterns.php:19
+msgctxt "admin"
+msgid "Pattern"
+msgstr "Vzor"
+
+#: inc/blocks/styles.php:19
+msgctxt "block style"
+msgid "Balance"
+msgstr "Balance"
+
+#: inc/blocks/styles.php:23
+msgctxt "block style"
+msgid "Pretty"
+msgstr "Pretty"
+
+#: inc/blocks/styles.php:27
+msgctxt "block style"
+msgid "Subheading"
+msgstr "Podnadpis"
+
+#: inc/blocks/styles.php:33
+msgctxt "block style"
+msgid "Feature"
+msgstr "Vlastnost"
+
+#: inc/blocks/styles.php:37
+msgctxt "block style"
+msgid "Feature - Shadow"
+msgstr "Vlastnost - Stín"
+
+#: inc/blocks/styles.php:41 inc/blocks/styles.php:57
+msgctxt "block style"
+msgid "Service"
+msgstr "Servis"
+
+#: inc/blocks/styles.php:47
+msgctxt "block style"
+msgid "Features - Separated"
+msgstr "Vlastnosti - Oddělené"
+
+#: inc/blocks/styles.php:53
+msgctxt "block style"
+msgid "Contact"
+msgstr "Kontakt"
+
+#: inc/blocks/styles.php:63 inc/blocks/styles.php:77
+msgctxt "block style"
+msgid "Container"
+msgstr "Kontejnér"
+
+#: inc/blocks/styles.php:67
+msgctxt "block style"
+msgid "Container - 75%"
+msgstr "Kontejnér - 75%"
+
+#: inc/blocks/styles.php:71
+msgctxt "block style"
+msgid "Container - 50%"
+msgstr "Kontejnér - 50%"
+
+#: inc/blocks/styles.php:81
+msgctxt "block style"
+msgid "Media to Edge"
+msgstr "Média k okraji"
+
+#: inc/blocks/styles.php:87
+msgctxt "block style"
+msgid "Icon"
+msgstr "Ikona"
+
+#: inc/blocks/styles.php:93
+msgctxt "block style"
+msgid "Featured"
+msgstr "Zvýrazněný"
+
+#: inc/blocks/styles.php:97 inc/blocks/styles.php:103
+msgctxt "block style"
+msgid "Pages"
+msgstr "Stránky"
+
+#. Template Name of the theme
+#: inc/customize/section/about.php:17
+msgid "About"
+msgstr "O nás"
+
+#: inc/customize/section/about.php:38
+msgid "BASPA s.r.o."
+msgstr ""
+
+#: inc/customize/section/about.php:43 templates/about/phone.php:8
+#: templates/header/bar/contacts.php:8
+msgid "+420 602 774 195"
+msgstr ""
+
+#: inc/customize/section/about.php:48
+#: modules/contacts/templates/form/alert/error-recaptcha.php:11
+#: modules/contacts/templates/form/alert/error.php:11
+#: templates/about/email.php:8 templates/header/bar/contacts.php:9
+msgid "info@baspa.cz"
+msgstr ""
+
+#: inc/customize/section/about.php:53 templates/about/address.php:7
+msgid "Bohunická cesta 15"
+msgstr ""
+
+#: inc/customize/section/about.php:58 templates/about/address.php:8
+msgid "664 48"
+msgstr ""
+
+#: inc/customize/section/about.php:63 templates/about/address.php:9
+msgid "Moravany u Brna"
+msgstr ""
+
+#: inc/customize/section/about.php:68 templates/about/address.php:10
+msgid "https://maps.app.goo.gl/ZsYfoZ2aQGF1JnZG6"
+msgstr ""
+
+#: inc/customize/section/about.php:88
+#: modules/contacts/templates/email/contact.php:17
+#: modules/contacts/type/metabox.php:32
+msgid "Name"
+msgstr "Jméno"
+
+#: inc/customize/section/about.php:95
+#: modules/contacts/templates/email/contact.php:29
+#: modules/contacts/templates/form-contact.php:72
+#: modules/contacts/templates/form-service.php:72
+#: modules/contacts/type/metabox.php:40 modules/members/type.php:124
+#: modules/members/type/metabox.php:46
+msgid "Phone"
+msgstr "Telefon"
+
+#: inc/customize/section/about.php:102
+#: modules/contacts/templates/email/contact.php:23
+#: modules/contacts/templates/form-catalog.php:30
+#: modules/contacts/templates/form-contact.php:58
+#: modules/contacts/templates/form-service.php:58
+#: modules/contacts/type/metabox.php:36 modules/members/type.php:123
+#: modules/members/type/metabox.php:41
+msgid "Email"
+msgstr "Email"
+
+#: inc/customize/section/about.php:109
+msgid "Street"
+msgstr "Ulice"
+
+#: inc/customize/section/about.php:116
+msgid "Zip"
+msgstr "PSČ"
+
+#: inc/customize/section/about.php:123
+msgid "City"
+msgstr "Město"
+
+#: inc/customize/section/about.php:130
+msgid "Map"
+msgstr "Mapa"
+
+#: inc/customize/section/ecomail.php:17
+msgid "Ecomail"
+msgstr "Ecomail"
+
+#: inc/customize/section/ecomail.php:63
+msgid "API Key"
+msgstr ""
+
+#: inc/customize/section/ecomail.php:70
+msgid "List ID"
+msgstr ""
+
+#: inc/customize/section/gtm.php:17 inc/customize/section/gtm.php:58
+msgid "GTM"
+msgstr "GTM"
+
+#: inc/customize/section/hours.php:17
+msgid "Hours"
+msgstr "Otevírací doba"
+
+#: inc/customize/section/hours.php:88 inc/functions/hours.php:18
+msgid "Monday"
+msgstr "Pondělí"
+
+#: inc/customize/section/hours.php:89
+msgid "Required format"
+msgstr "Požadovaný formát"
+
+#: inc/customize/section/hours.php:89
+msgid "Multiple intervals separated by comma."
+msgstr "Více intervalů oddělte čárkou."
+
+#: inc/customize/section/hours.php:96 inc/functions/hours.php:22
+msgid "Tuesday"
+msgstr "Úterý"
+
+#: inc/customize/section/hours.php:103 inc/functions/hours.php:26
+msgid "Wednesday"
+msgstr "Středa"
+
+#: inc/customize/section/hours.php:110 inc/functions/hours.php:30
+msgid "Thursday"
+msgstr "Čtvrtek"
+
+#: inc/customize/section/hours.php:117 inc/functions/hours.php:34
+msgid "Friday"
+msgstr "Pátek"
+
+#: inc/customize/section/hours.php:124 inc/functions/hours.php:38
+msgid "Saturday"
+msgstr "Sobota"
+
+#: inc/customize/section/hours.php:131 inc/functions/hours.php:42
+msgid "Sunday"
+msgstr "Neděle"
+
+#: inc/customize/section/socials.php:17
+msgid "Socials"
+msgstr "Sociální sítě"
+
+#: inc/customize/section/socials.php:64
+msgid "Instagram"
+msgstr "Instagram"
+
+#: inc/customize/section/socials.php:70
+msgid "Instagram Feed Shortcode"
+msgstr "Shortcode Instagram Feedu"
+
+#: inc/functions/breadcrumbs.php:27
+msgctxt "breadcrumbs"
+msgid "Breadcrumbs"
+msgstr "Drobečková navigace"
+
+#: inc/functions/breadcrumbs.php:29
+msgctxt "breadcrumbs"
+msgid "Page not found"
+msgstr "Stránka nebyla nalezena"
+
+#: inc/functions/breadcrumbs.php:30
+msgctxt "breadcrumbs"
+msgid "Search results for \"%s\""
+msgstr "Výsledky hledání pro \"%s\""
+
+#: inc/functions/cf7/form.php:25
+msgctxt "form"
+msgid "Name and surname"
+msgstr "Jméno a příjmení"
+
+#: inc/functions/cf7/form.php:25 inc/functions/cf7/form.php:31
+#: inc/functions/cf7/form.php:37
+msgctxt "form"
+msgid "Required"
+msgstr "Povinné"
+
+#: inc/functions/cf7/form.php:26
+msgctxt "form"
+msgid "Fill in your name"
+msgstr "Vyplňte vaše jméno"
+
+#: inc/functions/cf7/form.php:31
+msgctxt "form"
+msgid "Email"
+msgstr "Email"
+
+#: inc/functions/cf7/form.php:32
+msgctxt "form"
+msgid "Fill in your email"
+msgstr "Vyplňte váš email"
+
+#: inc/functions/cf7/form.php:37
+msgctxt "form"
+msgid "Phone"
+msgstr "Telefon"
+
+#: inc/functions/cf7/form.php:38
+msgctxt "form"
+msgid "Fill in your phone"
+msgstr "Vyplňte váš telefon"
+
+#: inc/functions/cf7/form.php:43
+msgctxt "form"
+msgid "Message"
+msgstr "Zpráva"
+
+#: inc/functions/cf7/form.php:44
+msgctxt "form"
+msgid "Fill in your message"
+msgstr "Vyplňte vaši zprávu"
+
+#: inc/functions/cf7/form.php:49
+msgctxt "form"
+msgid ""
+"By submitting the form, you agree to the processing of personal data "
+"necessary to handle your inquiry."
+msgstr ""
+"Odesláním formuláře souhlasíte se zpracováním osobních údajů nezbytných pro "
+"vyřízení vašeho dotazu."
+
+#: inc/functions/cf7/form.php:55
+msgctxt "form"
+msgid "Send"
+msgstr "Odeslat"
+
+#: inc/functions/images.php:19
+msgctxt "image size"
+msgid "Medium"
+msgstr "Střední"
+
+#: inc/functions/images.php:20
+msgctxt "image size"
+msgid "Large"
+msgstr "Velký"
+
+#: inc/functions/images.php:21
+msgctxt "image size"
+msgid "Huge"
+msgstr "Obrovský"
+
+#: inc/functions/metabox.php:8
+msgctxt "admin"
+msgid "+ Add Media"
+msgstr "+ Přidat média"
+
+#: inc/functions/pagination.php:24 inc/functions/pagination.php:61
+msgid "Previous"
+msgstr "Předchozí"
+
+#: inc/functions/pagination.php:28 inc/functions/pagination.php:62
+msgid "Next"
+msgstr "Další"
+
+#: inc/functions/pagination.php:32 inc/functions/pagination.php:58
+msgid "Pagination"
+msgstr "Stránkování"
+
+#: inc/functions/post.php:30
+#: modules/accessories/templates/post/listing/excerpt.php:12
+#: modules/offers/templates/post/listing/excerpt.php:12
+#: modules/posts/templates/post/listing.php:43
+#: modules/products/templates/post/listing/excerpt.php:12
+msgid " ..."
+msgstr ""
+
+#: inc/navigations.php:15 inc/navigations.php:16 inc/navigations.php:17
+#: inc/navigations.php:18 inc/navigations.php:19 inc/navigations.php:20
+#: templates/navigation/trigger.php:18
+msgid "Navigation"
+msgstr "Navigace"
+
+#: inc/navigations.php:16
+msgid "Bar"
+msgstr "Lišta"
+
+#: inc/navigations.php:17 modules/offers/type/metabox.php:92
+msgid "Pools"
+msgstr "Bazény"
+
+#: inc/navigations.php:18 modules/offers/type/metabox.php:93
+msgid "Jacuzzis"
+msgstr "Vířivky"
+
+#: inc/navigations.php:19
+msgid "Information"
+msgstr "Informace"
+
+#: inc/navigations.php:20
+msgid "Footer"
+msgstr "Patička"
+
+#: inc/scripts.php:44 modules/slides/inc/scripts.php:35
+msgctxt "slideshow accessibility"
+msgid "Previous slide"
+msgstr "Předchozí slide"
+
+#: inc/scripts.php:45 modules/slides/inc/scripts.php:36
+msgctxt "slideshow accessibility"
+msgid "Next slide"
+msgstr "Další slide"
+
+#: inc/scripts.php:46 modules/slides/inc/scripts.php:37
+msgctxt "slideshow accessibility"
+msgid "First slide"
+msgstr "První slide"
+
+#: inc/scripts.php:47 modules/slides/inc/scripts.php:38
+msgctxt "slideshow accessibility"
+msgid "Last slide"
+msgstr "Poslední slide"
+
+#: inc/scripts.php:48 modules/slides/inc/scripts.php:39
+msgctxt "slideshow accessibility"
+msgid "Go to slide {{index}}"
+msgstr "Přejít na slide {{index}}"
+
+#: inc/translations.php:17
+msgctxt "lightbox"
+msgid "Close"
+msgstr "Zavřít"
+
+#: inc/translations.php:18
+msgctxt "lightbox"
+msgid "Previous"
+msgstr "Předchozí"
+
+#: inc/translations.php:19
+msgctxt "lightbox"
+msgid "Next"
+msgstr "Další"
+
+#: inc/translations.php:20
+msgctxt "lightbox"
+msgid "Zoom"
+msgstr "Zoom"
+
+#: inc/translations.php:21
+msgctxt "lightbox"
+msgid "Unfortunately, the item could not be loaded."
+msgstr "Bohužel se položku nepodařilo načíst."
+
+#: inc/translations.php:22
+msgctxt "lightbox"
+msgid " / "
+msgstr " / "
+
+#: modules/accessories/inc/admin.php:19 modules/accessories/inc/admin.php:20
+#: modules/accessories/inc/admin.php:55 modules/contacts/inc/admin.php:52
+#: modules/contacts/inc/admin.php:53 modules/contacts/inc/admin.php:118
+#: modules/faqs/inc/admin.php:19 modules/faqs/inc/admin.php:20
+#: modules/faqs/inc/admin.php:55 modules/jobs/inc/admin.php:19
+#: modules/jobs/inc/admin.php:20 modules/jobs/inc/admin.php:55
+#: modules/members/inc/admin.php:19 modules/members/inc/admin.php:20
+#: modules/members/inc/admin.php:55 modules/partners/inc/admin.php:19
+#: modules/partners/inc/admin.php:20 modules/partners/inc/admin.php:55
+#: modules/references/inc/admin.php:19 modules/references/inc/admin.php:20
+#: modules/references/inc/admin.php:55
+msgctxt "admin"
+msgid "Settings"
+msgstr "Nastavení"
+
+#: modules/accessories/inc/admin.php:40
+#: modules/accessories/templates/section.php:84
+#: modules/products/templates/post/single/navigation.php:44
+#: modules/products/templates/_section-products-accessories.php:100
+msgid "Accessories"
+msgstr "Příslušenství"
+
+#: modules/accessories/inc/admin.php:65 modules/contacts/inc/admin.php:134
+#: modules/contacts/inc/admin.php:171 modules/contacts/inc/admin.php:212
+#: modules/contacts/inc/admin.php:249 modules/faqs/inc/admin.php:65
+#: modules/jobs/inc/admin.php:65 modules/members/inc/admin.php:65
+#: modules/pages/type/metabox.php:31 modules/pages/type/metabox.php:106
+#: modules/partners/inc/admin.php:65 modules/posts/type/metabox.php:51
+#: modules/references/inc/admin.php:65
+msgctxt "admin"
+msgid "Title"
+msgstr "Nadpis"
+
+#: modules/accessories/inc/admin.php:79 modules/contacts/inc/admin.php:148
+#: modules/contacts/inc/admin.php:226 modules/faqs/inc/admin.php:79
+#: modules/jobs/inc/admin.php:79 modules/members/inc/admin.php:79
+#: modules/partners/inc/admin.php:79 modules/references/inc/admin.php:79
+msgctxt "admin"
+msgid "Subtitle"
+msgstr "Podnadpis"
+
+#: modules/accessories/inc/admin.php:97 modules/contacts/inc/admin.php:278
+#: modules/faqs/inc/admin.php:97 modules/jobs/inc/admin.php:97
+#: modules/members/inc/admin.php:97 modules/partners/inc/admin.php:97
+#: modules/references/inc/admin.php:97
+msgctxt "admin"
+msgid "Save"
+msgstr "Uložit"
+
+#: modules/accessories/inc/admin/category.php:30
+#: modules/pages/type/metabox.php:91 modules/slides/type/metabox.php:43
+msgctxt "admin"
+msgid "Product Category"
+msgstr "Kategorie produktů"
+
+#: modules/accessories/inc/admin/category.php:41
+msgctxt "admin"
+msgid "Please select the product categories for which it will be displayed."
+msgstr "Vyberte prosím kategorie produktů, pro které se bude zobrazovat."
+
+#: modules/accessories/templates/post/listing/link.php:10
+#: modules/products/templates/post/listing/_accessory/link.php:13
+msgid "Buy on Eshop"
+msgstr "Koupit v e-shopu"
+
+#: modules/accessories/templates/section.php:40
+#: modules/products/templates/post/single/navigation.php:43
+#: modules/products/templates/_section-products-accessories.php:52
+msgctxt "anchor"
+msgid "accessories"
+msgstr "prislusenstvi"
+
+#: modules/accessories/templates/section.php:93
+#: modules/posts/templates/navigation.php:19
+#: modules/products/templates/_section-products-accessories.php:110
+#: modules/references/templates/navigation.php:25
+#: modules/supports/templates/section-by-category-pricelist.php:121
+#: modules/supports/templates/section-by-category.php:124
+msgid "All"
+msgstr "Vše"
+
+#: modules/accessories/type.php:16 modules/accessories/type.php:17
+msgctxt "type"
+msgid "Accessories"
+msgstr "Příslušenství"
+
+#: modules/accessories/type.php:18
+msgctxt "type"
+msgid "Accessory"
+msgstr "Příslušenství"
+
+#: modules/accessories/type.php:19 modules/accessories/type.php:21
+#: modules/accessories/type.php:22
+msgctxt "type"
+msgid "Add Accessory"
+msgstr "Přidat příslušenství"
+
+#: modules/accessories/type.php:20
+msgctxt "type"
+msgid "All Accessories"
+msgstr "Veškeré příslušenství"
+
+#: modules/accessories/type.php:23
+msgctxt "type"
+msgid "Edit Accessory"
+msgstr "Upravit příslušenství"
+
+#: modules/accessories/type.php:24
+msgctxt "type"
+msgid "New Accessory"
+msgstr "Nové příslušenství"
+
+#: modules/accessories/type.php:25
+msgctxt "type"
+msgid "View Accessory"
+msgstr "Zobrazit příslušenství"
+
+#: modules/accessories/type.php:26
+msgctxt "type"
+msgid "View Accessories"
+msgstr "Zobrazit příslušenství"
+
+#: modules/accessories/type.php:27
+msgctxt "type"
+msgid "Search Accessories"
+msgstr "Vyhledat příslušenství"
+
+#: modules/accessories/type.php:28
+msgctxt "type"
+msgid "No Accessories"
+msgstr "Žádné příslušenství"
+
+#: modules/accessories/type.php:29
+msgctxt "type"
+msgid "No Accessories Found in Trash"
+msgstr "Žádné příslušenství v koši"
+
+#: modules/accessories/type.php:30
+msgctxt "type"
+msgid "Accessory Archives"
+msgstr "Archiv příslušenství"
+
+#: modules/accessories/type.php:31
+msgctxt "type"
+msgid "Accessory Attributes"
+msgstr "Atributy příslušenství"
+
+#: modules/accessories/type.php:32
+msgctxt "type"
+msgid "Accessory published."
+msgstr "Příslušenství publikováno."
+
+#: modules/accessories/type.php:33
+msgctxt "type"
+msgid "Accessory updated."
+msgstr "Příslušenství aktualizováno."
+
+#: modules/accessories/type.php:47
+msgctxt "type"
+msgid "accessory"
+msgstr "prislusenstvi"
+
+#: modules/accessories/type.php:119 modules/accessories/type/metabox.php:21
+msgid "Accessory"
+msgstr "Příslušenství"
+
+#: modules/accessories/type.php:120 modules/products/type.php:140
+#: modules/references/type.php:121
+msgid "Categories"
+msgstr "Kategorie"
+
+#: modules/accessories/type.php:121 modules/contacts/type/metabox.php:73
+#: modules/partners/type.php:120 modules/partners/type/metabox.php:26
+msgid "URL"
+msgstr "URL"
+
+#: modules/accessories/type.php:122 modules/members/type.php:125
+#: modules/offers/type.php:144 modules/pages/type.php:21
+#: modules/partners/type.php:122 modules/products/type.php:142
+#: modules/references/type.php:123
+msgid "Order"
+msgstr "Pořadí"
+
+#: modules/accessories/type/metabox.php:26
+msgctxt "admin"
+msgid "URL"
+msgstr "URL"
+
+#: modules/accessories/type/metabox.php:27 modules/products/type/metabox.php:33
+msgctxt "admin"
+msgid "URL to the external product page."
+msgstr "URL na externí stránku produktu."
+
+#: modules/accessories/type/metabox.php:32
+msgctxt "admin"
+msgid "Products"
+msgstr "Produkty"
+
+#: modules/accessories/type/metabox.php:33
+msgctxt "admin"
+msgid "Please select the products for which it will be displayed."
+msgstr "Vyberte prosím produkty, pro které se bude zobrazovat."
+
+#: modules/accessories/type/metabox.php:34
+msgctxt "admin"
+msgid "Select products"
+msgstr "Vyberte produkty"
+
+#: modules/accessories/type/taxonomy.php:21
+#: modules/accessories/type/taxonomy.php:36
+msgctxt "taxonomy"
+msgid "Accessory Categories"
+msgstr "Kategorie příslušenství"
+
+#: modules/accessories/type/taxonomy.php:22 modules/faqs/type/taxonomy.php:22
+#: modules/products/type/taxonomy.php:22
+#: modules/references/type/taxonomy.php:23
+#: modules/supports/type/taxonomy.php:22
+msgctxt "taxonomy"
+msgid "Category"
+msgstr "Kategorie"
+
+#: modules/accessories/type/taxonomy.php:23 modules/faqs/type/taxonomy.php:23
+#: modules/products/type/taxonomy.php:23
+#: modules/references/type/taxonomy.php:24
+#: modules/supports/type/taxonomy.php:23
+msgctxt "taxonomy"
+msgid "Search Categories"
+msgstr "Hledat kategorie"
+
+#: modules/accessories/type/taxonomy.php:24 modules/faqs/type/taxonomy.php:24
+#: modules/products/type/taxonomy.php:24
+#: modules/references/type/taxonomy.php:25
+#: modules/supports/type/taxonomy.php:24
+msgctxt "taxonomy"
+msgid "Popular Categories"
+msgstr "Oblíbené kategorie"
+
+#: modules/accessories/type/taxonomy.php:25 modules/faqs/type/taxonomy.php:25
+#: modules/products/type/taxonomy.php:25
+#: modules/references/type/taxonomy.php:26
+#: modules/supports/type/taxonomy.php:25
+msgctxt "taxonomy"
+msgid "All Categories"
+msgstr "Všechny kategorie"
+
+#: modules/accessories/type/taxonomy.php:26 modules/faqs/type/taxonomy.php:26
+#: modules/products/type/taxonomy.php:26
+#: modules/references/type/taxonomy.php:27
+#: modules/supports/type/taxonomy.php:26
+msgctxt "taxonomy"
+msgid "Edit Category"
+msgstr "Upravit kategorii"
+
+#: modules/accessories/type/taxonomy.php:27 modules/faqs/type/taxonomy.php:27
+#: modules/products/type/taxonomy.php:27
+#: modules/references/type/taxonomy.php:28
+#: modules/supports/type/taxonomy.php:27
+msgctxt "taxonomy"
+msgid "View Category"
+msgstr "Zobrazit kategorii"
+
+#: modules/accessories/type/taxonomy.php:28 modules/faqs/type/taxonomy.php:28
+#: modules/products/type/taxonomy.php:28
+#: modules/references/type/taxonomy.php:29
+#: modules/supports/type/taxonomy.php:28
+msgctxt "taxonomy"
+msgid "Update Category"
+msgstr "Aktualizovat kategorii"
+
+#: modules/accessories/type/taxonomy.php:29 modules/faqs/type/taxonomy.php:29
+#: modules/products/type/taxonomy.php:29
+#: modules/references/type/taxonomy.php:30
+#: modules/supports/type/taxonomy.php:29
+msgctxt "taxonomy"
+msgid "Add New Category"
+msgstr "Přidat kategorii"
+
+#: modules/accessories/type/taxonomy.php:30 modules/faqs/type/taxonomy.php:30
+#: modules/products/type/taxonomy.php:30
+#: modules/references/type/taxonomy.php:31
+#: modules/supports/type/taxonomy.php:30
+msgctxt "taxonomy"
+msgid "New Category Name"
+msgstr "Název nové kategorie"
+
+#: modules/accessories/type/taxonomy.php:31 modules/faqs/type/taxonomy.php:31
+#: modules/products/type/taxonomy.php:31
+#: modules/references/type/taxonomy.php:32
+#: modules/supports/type/taxonomy.php:31
+msgctxt "taxonomy"
+msgid "No categories found."
+msgstr "Žádné kategorie."
+
+#: modules/accessories/type/taxonomy.php:32 modules/faqs/type/taxonomy.php:32
+#: modules/products/type/taxonomy.php:32
+#: modules/references/type/taxonomy.php:33
+#: modules/supports/type/taxonomy.php:32
+msgctxt "taxonomy"
+msgid "Add or remove categories"
+msgstr "Přidat nebo odebrat kategorie"
+
+#: modules/accessories/type/taxonomy.php:33 modules/faqs/type/taxonomy.php:33
+#: modules/products/type/taxonomy.php:33
+#: modules/references/type/taxonomy.php:34
+#: modules/supports/type/taxonomy.php:33
+msgctxt "taxonomy"
+msgid "Separate categories with commas"
+msgstr "Oddělte kategorie čárkami"
+
+#: modules/accessories/type/taxonomy.php:34 modules/faqs/type/taxonomy.php:34
+#: modules/products/type/taxonomy.php:34
+#: modules/references/type/taxonomy.php:35
+#: modules/supports/type/taxonomy.php:34
+msgctxt "taxonomy"
+msgid "Back to categories"
+msgstr "Zpět na kategorie"
+
+#: modules/accessories/type/taxonomy.php:44
+msgctxt "taxonomy"
+msgid "accessories"
+msgstr "prislusenstvi"
+
+#: modules/contacts/inc/admin.php:29 modules/contacts/type.php:85
+msgctxt "admin"
+msgid "Received"
+msgstr "Přijaté"
+
+#: modules/contacts/inc/admin.php:122 modules/contacts/inc/customize.php:17
+#: modules/products/type/metabox.php:106
+msgctxt "admin"
+msgid "Contacts"
+msgstr "Kontakty"
+
+#: modules/contacts/inc/admin.php:126 modules/contacts/inc/admin.php:204
+msgctxt "admin"
+msgid "Section"
+msgstr "Sekce"
+
+#: modules/contacts/inc/admin.php:163 modules/contacts/inc/admin.php:241
+#: modules/contacts/type.php:79
+msgctxt "admin"
+msgid "Form"
+msgstr "Formulář"
+
+#: modules/contacts/inc/admin.php:185 modules/contacts/inc/admin.php:263
+msgctxt "admin"
+msgid "Content"
+msgstr "Obsah"
+
+#: modules/contacts/inc/admin.php:200 modules/contacts/inc/customize.php:132
+msgctxt "admin"
+msgid "Service"
+msgstr "Servis"
+
+#: modules/contacts/inc/customize.php:97
+msgctxt "admin"
+msgid "Send from Name"
+msgstr "Odeslat jménem"
+
+#: modules/contacts/inc/customize.php:104
+msgctxt "admin"
+msgid "Send from Email Address"
+msgstr "Odeslat z emailu"
+
+#: modules/contacts/inc/customize.php:111
+#: modules/contacts/inc/customize.php:118
+#: modules/contacts/inc/customize.php:125
+#: modules/contacts/inc/customize.php:132
+msgctxt "admin"
+msgid "Send to Email Address"
+msgstr "Odeslat na email"
+
+#: modules/contacts/inc/customize.php:118
+msgctxt "admin"
+msgid "Pool"
+msgstr "Bazén"
+
+#: modules/contacts/inc/customize.php:125
+msgctxt "admin"
+msgid "Jacuzzi"
+msgstr "Vířivka"
+
+#: modules/contacts/inc/customize.php:143
+msgctxt "admin"
+msgid "ReCaptcha Site Key"
+msgstr ""
+
+#: modules/contacts/inc/customize.php:150
+msgctxt "admin"
+msgid "ReCaptcha Secret Key"
+msgstr ""
+
+#: modules/contacts/inc/form.php:17
+msgid "Pool"
+msgstr "Bazén"
+
+#: modules/contacts/inc/form.php:18
+msgid "Jacuzzi"
+msgstr "Vířivka"
+
+#: modules/contacts/inc/form.php:19
+#: modules/contacts/templates/form-service.php:133
+#: templates/elements/service.php:17 templates/elements/service.php:39
+msgid "Service"
+msgstr "Servis"
+
+#: modules/contacts/templates/email/contact.php:35
+#: modules/contacts/type/metabox.php:44
+msgid "Interest"
+msgstr "Zájem"
+
+#: modules/contacts/templates/email/contact.php:41
+#: modules/contacts/type/metabox.php:48
+msgid "Message"
+msgstr "Zpráva"
+
+#: modules/contacts/templates/form-catalog.php:14
+#: modules/contacts/templates/form-catalog.php:16
+msgctxt "anchor"
+msgid "form-catalog"
+msgstr "formular-katalog"
+
+#: modules/contacts/templates/form-catalog.php:31
+#: modules/contacts/templates/form-contact.php:45
+#: modules/contacts/templates/form-contact.php:59
+#: modules/contacts/templates/form-contact.php:73
+#: modules/contacts/templates/form-contact.php:90
+#: modules/contacts/templates/form-service.php:45
+#: modules/contacts/templates/form-service.php:59
+#: modules/contacts/templates/form-service.php:73
+msgid "Required"
+msgstr "Povinné"
+
+#: modules/contacts/templates/form-catalog.php:32
+#: modules/contacts/templates/form-contact.php:46
+#: modules/contacts/templates/form-contact.php:60
+#: modules/contacts/templates/form-contact.php:74
+#: modules/contacts/templates/form-contact.php:91
+#: modules/contacts/templates/form-service.php:46
+#: modules/contacts/templates/form-service.php:60
+#: modules/contacts/templates/form-service.php:74
+msgid "&#10043;"
+msgstr ""
+
+#: modules/contacts/templates/form-catalog.php:35
+#: modules/contacts/templates/form-contact.php:63
+#: modules/contacts/templates/form-service.php:63
+msgid "Fill in the email address"
+msgstr "Vyplňte emailovou adresu"
+
+#: modules/contacts/templates/form-catalog.php:55
+#: modules/contacts/templates/form-contact.php:148
+#: modules/contacts/templates/form-service.php:123
+msgid "Submit"
+msgstr "Odeslat"
+
+#: modules/contacts/templates/form-catalog.php:63
+#: modules/contacts/templates/form-contact.php:139
+#: modules/contacts/templates/form-service.php:114
+msgid ""
+"By submitting, you agree to the terms of the <a href=\"%s\" "
+"target=\"_blank\">privacy policy</a>."
+msgstr ""
+"Odesláním souhlasíte se zpracováním <a href=\"%s\" "
+"target=\"_blank\">osobních údajů</a>."
+
+#: modules/contacts/templates/form-catalog.php:71
+#: modules/contacts/templates/form/processing.php:212
+msgid "Catalog"
+msgstr "Katalog"
+
+#: modules/contacts/templates/form-contact.php:24
+#: modules/contacts/templates/form-contact.php:26
+msgctxt "anchor"
+msgid "form-contact"
+msgstr "formular-kontakt"
+
+#: modules/contacts/templates/form-contact.php:36
+msgid "Contact Form"
+msgstr "Kontaktní formulář"
+
+#: modules/contacts/templates/form-contact.php:44
+#: modules/contacts/templates/form-service.php:44
+msgid "Name and surname"
+msgstr "Jméno a příjmení"
+
+#: modules/contacts/templates/form-contact.php:49
+#: modules/contacts/templates/form-service.php:49
+msgid "Fill in the name and surname"
+msgstr "Vyplňte jméno a příjmení"
+
+#: modules/contacts/templates/form-contact.php:77
+#: modules/contacts/templates/form-service.php:77
+msgid "Fill in the phone number"
+msgstr "Vyplňte telefonní číslo"
+
+#: modules/contacts/templates/form-contact.php:89
+msgid "What are you interested in?"
+msgstr "O co se zajímáte?"
+
+#: modules/contacts/templates/form-contact.php:96
+msgid "Select what you are interested in"
+msgstr "Vyberte o co se zajímáte"
+
+#: modules/contacts/templates/form-contact.php:111
+#: modules/contacts/templates/form-service.php:86
+msgid "Question or request"
+msgstr "Dotaz nebo požadavek"
+
+#: modules/contacts/templates/form-contact.php:115
+#: modules/contacts/templates/form-service.php:90
+msgid "Fill in the question or request"
+msgstr "Vyplňte dotaz nebo požadavek"
+
+#. Template Name of the theme
+#: modules/contacts/templates/form-contact.php:158
+#: modules/offers/type/metabox.php:86
+msgid "Contact"
+msgstr "Kontakt"
+
+#: modules/contacts/templates/form-service.php:24
+#: modules/contacts/templates/form-service.php:26
+msgctxt "anchor"
+msgid "form-service"
+msgstr "formular-servis"
+
+#: modules/contacts/templates/form-service.php:36
+#: modules/contacts/templates/section-service.php:18
+#: modules/supports/templates/navigation.php:41 templates/button/service.php:10
+msgid "Service Form"
+msgstr "Servisní formulář"
+
+#: modules/contacts/templates/form/alert/error-recaptcha.php:10
+msgid "We're sorry, but verification that you're not a robot failed."
+msgstr "Je nám líto, ale ověření, že nejste robot, se nezdařilo."
+
+#: modules/contacts/templates/form/alert/error-recaptcha.php:11
+#: modules/contacts/templates/form/alert/error.php:11
+msgid ""
+"You can try to submit the form again, and if it fails again, please write to "
+"our email address <a href=\"mailto:%s\">%s</a>. We apologize for the "
+"inconvenience."
+msgstr ""
+"Můžete zkusit formulář odeslat znovu a pokud se to znovu nezdaří, napište "
+"prosím na naši emailovou adresu <a href=\"mailto:%s\">%s</a>. Omlouváme se "
+"za nepříjemnosti."
+
+#: modules/contacts/templates/form/alert/error.php:10
+msgid "We're sorry, but submitting the form failed."
+msgstr "Je nám líto, ale odeslání formuláře se nezdařilo."
+
+#: modules/contacts/templates/form/alert/success-catalog.php:10
+#: modules/contacts/templates/form/alert/success.php:10
+msgid "The form has been submitted successfully. Thank you."
+msgstr "Formulář byl úspěšně odeslán. Děkujeme."
+
+#: modules/contacts/templates/form/alert/success-catalog.php:11
+msgid "The catalog is now on its way to your inbox."
+msgstr "Katalog je nyní na cestě do vaší emailové schránky."
+
+#: modules/contacts/templates/form/alert/success.php:11
+msgid "As soon as we process your message, we will contact you."
+msgstr "Jakmile vaši zprávu zpracujeme, budeme vás kontaktovat."
+
+#: modules/contacts/templates/form/processing.php:107
+msgid " — Suspicious"
+msgstr " — Podezřelé"
+
+#: modules/contacts/templates/form/processing.php:178
+msgid "Catalog #%s"
+msgstr "Katalog #%s"
+
+#: modules/contacts/templates/form/processing.php:180
+msgid "Service #%s"
+msgstr "Servis #%s"
+
+#: modules/contacts/templates/form/processing.php:182
+msgid "Contact #%s — %s"
+msgstr "Kontakt #%s — %s"
+
+#: modules/contacts/templates/off-contact.php:23
+#: modules/contacts/templates/off-service.php:23
+msgctxt "navigation"
+msgid "Close"
+msgstr "Zavřít"
+
+#: modules/contacts/templates/off-contact.php:38
+#: modules/contacts/templates/off-service.php:38
+#: modules/contacts/templates/section-contact.php:21
+msgid "Contact Us"
+msgstr "Kontaktujte nás"
+
+#: modules/contacts/templates/section-catalog.php:9
+msgctxt "anchor"
+msgid "catalog"
+msgstr "katalog"
+
+#: modules/contacts/templates/section-catalog.php:19
+msgid "Complete Catalog with Price List of Products"
+msgstr "Kompletní katalog s ceníkem produktů"
+
+#: modules/contacts/templates/section-catalog.php:23
+msgid ""
+"Please enter your e-mail address, where you will receive a link to download "
+"the price list."
+msgstr ""
+"Zadejte prosím váš e-mail, na který obratem přijde odkaz ke stažení ceníku."
+
+#: modules/contacts/templates/section-contact.php:9
+msgctxt "anchor"
+msgid "contact"
+msgstr "kontakt"
+
+#: modules/contacts/templates/section-service.php:9
+#: modules/supports/templates/navigation.php:40
+msgctxt "anchor"
+msgid "service-form"
+msgstr "servisni-formular"
+
+#: modules/contacts/type.php:16 modules/contacts/type.php:17
+msgctxt "type"
+msgid "Contacts"
+msgstr "Kontakty"
+
+#: modules/contacts/type.php:18
+msgctxt "type"
+msgid "Contact"
+msgstr "Kontakt"
+
+#: modules/contacts/type.php:19 modules/contacts/type.php:21
+#: modules/contacts/type.php:22
+msgctxt "type"
+msgid "Add Contact"
+msgstr "Přidat kontakt"
+
+#: modules/contacts/type.php:20
+msgctxt "type"
+msgid "All Contacts"
+msgstr "Všechny kontakty"
+
+#: modules/contacts/type.php:23
+msgctxt "type"
+msgid "Edit Contact"
+msgstr "Upravit kontakt"
+
+#: modules/contacts/type.php:24
+msgctxt "type"
+msgid "New Contact"
+msgstr "Nový kontakt"
+
+#: modules/contacts/type.php:25
+msgctxt "type"
+msgid "View Contact"
+msgstr "Zobrazit kontakt"
+
+#: modules/contacts/type.php:26
+msgctxt "type"
+msgid "View Contacts"
+msgstr "Zobrazit kontakty"
+
+#: modules/contacts/type.php:27
+msgctxt "type"
+msgid "Search Contacts"
+msgstr "Hledat kontakty"
+
+#: modules/contacts/type.php:28
+msgctxt "type"
+msgid "No Contacts"
+msgstr "Žádné kontakty"
+
+#: modules/contacts/type.php:29
+msgctxt "type"
+msgid "No Contacts Found in Trash"
+msgstr "Žádné kontakty v koši"
+
+#: modules/contacts/type.php:30
+msgctxt "type"
+msgid "Contact Archives"
+msgstr "Archiv kontaktů"
+
+#: modules/contacts/type.php:31
+msgctxt "type"
+msgid "Contact Attributes"
+msgstr "Atributy kontaktu"
+
+#: modules/contacts/type.php:32
+msgctxt "type"
+msgid "Contact saved."
+msgstr "Kontakt uložen."
+
+#: modules/contacts/type.php:33
+msgctxt "type"
+msgid "Contact updated."
+msgstr "Kontakt aktualizován."
+
+#: modules/contacts/type.php:51
+msgctxt "type"
+msgid "contacts"
+msgstr "kontakty"
+
+#: modules/contacts/type.php:78
+msgctxt "admin"
+msgid "Contact"
+msgstr "Kontakt"
+
+#: modules/contacts/type.php:80
+msgctxt "admin"
+msgid "Interest"
+msgstr "Zájem"
+
+#: modules/contacts/type.php:81
+msgctxt "admin"
+msgid "Email"
+msgstr "Email"
+
+#: modules/contacts/type.php:82
+msgctxt "admin"
+msgid "Phone"
+msgstr "Telefon"
+
+#: modules/contacts/type.php:83 modules/pages/type/metabox.php:86
+msgctxt "admin"
+msgid "Page"
+msgstr "Stránka"
+
+#: modules/contacts/type.php:84
+msgctxt "admin"
+msgid "ReCAPTCHA"
+msgstr ""
+
+#: modules/contacts/type/metabox.php:54
+msgid "Basic Information"
+msgstr "Základní informace"
+
+#: modules/contacts/type/metabox.php:65
+msgid "Form"
+msgstr "Formulář"
+
+#: modules/contacts/type/metabox.php:69 modules/offers/type/metabox.php:54
+#: modules/pages/type.php:19
+msgid "Title"
+msgstr "Nadpis"
+
+#: modules/contacts/type/metabox.php:79
+msgid "Additional Information"
+msgstr "Doplňující údaje"
+
+#: modules/contacts/type/metabox.php:90
+msgid "Token"
+msgstr ""
+
+#: modules/contacts/type/metabox.php:94
+msgid "Success"
+msgstr ""
+
+#: modules/contacts/type/metabox.php:98
+msgid "Score"
+msgstr ""
+
+#: modules/contacts/type/metabox.php:102
+msgid "Body"
+msgstr ""
+
+#: modules/contacts/type/metabox.php:108
+msgid "ReCAPTCHA"
+msgstr ""
+
+#: modules/faqs/inc/admin.php:40
+msgid "Faqs"
+msgstr "Časté dotazy"
+
+#: modules/faqs/templates/section.php:21
+#: modules/products/templates/post/single/navigation.php:54
+msgctxt "anchor"
+msgid "faq"
+msgstr "faq"
+
+#: modules/faqs/templates/section.php:31
+#: modules/supports/templates/section.php:31
+msgid "Frequently Asked Questions"
+msgstr "Časté dotazy"
+
+#: modules/faqs/templates/section.php:61
+msgid "View more <span class=\"screen-reader-text\">FAQs</span>"
+msgstr "Zobrazit více <span class=\"screen-reader-text\">častých dotazů</span>"
+
+#: modules/faqs/type.php:16 modules/faqs/type.php:17
+msgctxt "type"
+msgid "FAQs"
+msgstr "FAQ"
+
+#: modules/faqs/type.php:18 modules/faqs/type.php:110
+msgctxt "type"
+msgid "FAQ"
+msgstr "FAQ"
+
+#: modules/faqs/type.php:19 modules/faqs/type.php:21 modules/faqs/type.php:22
+msgctxt "type"
+msgid "Add FAQ"
+msgstr "Přidat FAQ"
+
+#: modules/faqs/type.php:20
+msgctxt "type"
+msgid "All FAQs"
+msgstr "Všechny FAQ"
+
+#: modules/faqs/type.php:23
+msgctxt "type"
+msgid "Edit FAQ"
+msgstr "Editovat FAQ"
+
+#: modules/faqs/type.php:24
+msgctxt "type"
+msgid "New FAQ"
+msgstr "Nový FAQ"
+
+#: modules/faqs/type.php:25
+msgctxt "type"
+msgid "View FAQ"
+msgstr "Zobrazit FAQ"
+
+#: modules/faqs/type.php:26
+msgctxt "type"
+msgid "View FAQs"
+msgstr "Zobrazit FAQ"
+
+#: modules/faqs/type.php:27
+msgctxt "type"
+msgid "Search FAQs"
+msgstr "Hledat FAQ"
+
+#: modules/faqs/type.php:28
+msgctxt "type"
+msgid "No FAQs"
+msgstr "Žádné FAQ"
+
+#: modules/faqs/type.php:29
+msgctxt "type"
+msgid "No FAQs Found in Trash"
+msgstr "Žádné FAQ v koši"
+
+#: modules/faqs/type.php:30
+msgctxt "type"
+msgid "FAQ Archives"
+msgstr "Archiv FAQ"
+
+#: modules/faqs/type.php:31
+msgctxt "type"
+msgid "FAQ Attributes"
+msgstr "Atributy FAQ"
+
+#: modules/faqs/type.php:32
+msgctxt "type"
+msgid "FAQ published."
+msgstr "FAQ publikovaný."
+
+#: modules/faqs/type.php:33
+msgctxt "type"
+msgid "FAQ updated."
+msgstr "FAQ aktualizovaný."
+
+#: modules/faqs/type.php:47
+msgctxt "type"
+msgid "faqs"
+msgstr "faq"
+
+#: modules/faqs/type.php:111 modules/supports/type.php:111
+msgctxt "type"
+msgid "Categories"
+msgstr "Kategorie"
+
+#: modules/faqs/type.php:112 modules/jobs/type.php:200
+#: modules/slides/type.php:141 modules/supports/type.php:114
+msgctxt "type"
+msgid "Order"
+msgstr "Pořadí"
+
+#: modules/faqs/type/taxonomy.php:21 modules/faqs/type/taxonomy.php:36
+msgctxt "taxonomy"
+msgid "FAQ Categories"
+msgstr "Kategorie FAQ"
+
+#: modules/faqs/type/taxonomy.php:44
+msgctxt "taxonomy"
+msgid "faqs"
+msgstr "faq"
+
+#: modules/jobs/inc/admin.php:40
+msgid "Jobs"
+msgstr "Práce"
+
+#: modules/jobs/templates/loop/empty.php:10
+msgid "Unfortunately, we currently have no job openings."
+msgstr ""
+"Aktuálně nemáme žádnou volnou pozici, pokud Vás však zajímá náš obor a "
+"lákala by Vás práce pro naši firmu, budeme potěšeni, pokud nás oslovíte."
+
+#: modules/jobs/templates/section.php:21 templates/navigation/about.php:30
+msgctxt "anchor"
+msgid "career"
+msgstr "kariera"
+
+#: modules/jobs/templates/section.php:31
+msgid "Career in BASPA"
+msgstr "Kariéra v BASPA"
+
+#: modules/jobs/templates/section.php:62
+msgid "View more <span class=\"screen-reader-text\">jobs</span>"
+msgstr "Zobrazit více <span class=\"screen-reader-text\">prací</span>"
+
+#: modules/jobs/type.php:16 modules/jobs/type.php:17
+msgctxt "type"
+msgid "Jobs"
+msgstr "Práce"
+
+#: modules/jobs/type.php:18 modules/jobs/type.php:199
+msgctxt "type"
+msgid "Job"
+msgstr "Práce"
+
+#: modules/jobs/type.php:19 modules/jobs/type.php:21 modules/jobs/type.php:22
+msgctxt "type"
+msgid "Add Job"
+msgstr "Přidat práci"
+
+#: modules/jobs/type.php:20
+msgctxt "type"
+msgid "All Jobs"
+msgstr "Všechny práce"
+
+#: modules/jobs/type.php:23
+msgctxt "type"
+msgid "Edit Job"
+msgstr "Upravit práci"
+
+#: modules/jobs/type.php:24
+msgctxt "type"
+msgid "New Job"
+msgstr "Nová práce"
+
+#: modules/jobs/type.php:25
+msgctxt "type"
+msgid "View Job"
+msgstr "Zobrazit práci"
+
+#: modules/jobs/type.php:26
+msgctxt "type"
+msgid "View Jobs"
+msgstr "Zobrazit práce"
+
+#: modules/jobs/type.php:27
+msgctxt "type"
+msgid "Search Jobs"
+msgstr "Hledat práce"
+
+#: modules/jobs/type.php:28
+msgctxt "type"
+msgid "No Jobs"
+msgstr "Žádné práce"
+
+#: modules/jobs/type.php:29
+msgctxt "type"
+msgid "No Jobs Found in Trash"
+msgstr "Žádné práce v koši"
+
+#: modules/jobs/type.php:30
+msgctxt "type"
+msgid "Job Archives"
+msgstr "Archiv práce"
+
+#: modules/jobs/type.php:31
+msgctxt "type"
+msgid "Job Attributes"
+msgstr "Atributy práce"
+
+#: modules/jobs/type.php:32
+msgctxt "type"
+msgid "Job published."
+msgstr "Práce publikována."
+
+#: modules/jobs/type.php:33
+msgctxt "type"
+msgid "Job updated."
+msgstr "Práce aktualizována."
+
+#: modules/jobs/type.php:47
+msgctxt "type"
+msgid "jobs"
+msgstr "prace"
+
+#: modules/members/inc/admin.php:40
+msgid "Members"
+msgstr "Tým"
+
+#: modules/members/templates/section-cards.php:12
+#: modules/members/templates/section.php:12
+msgctxt "anchor"
+msgid "team"
+msgstr "tym"
+
+#: modules/members/templates/section-cards.php:19
+msgid "Important Contacts"
+msgstr "Důležité kontakty"
+
+#: modules/members/templates/section.php:23
+msgid "Our Team"
+msgstr "Náš tým"
+
+#: modules/members/type.php:16 modules/members/type.php:17
+msgctxt "type"
+msgid "Members"
+msgstr "Tým"
+
+#: modules/members/type.php:18
+msgctxt "type"
+msgid "Member"
+msgstr "Člen"
+
+#: modules/members/type.php:19 modules/members/type.php:21
+#: modules/members/type.php:22
+msgctxt "type"
+msgid "Add Member"
+msgstr "Přidat člena"
+
+#: modules/members/type.php:20
+msgctxt "type"
+msgid "All Members"
+msgstr "Všichni členové"
+
+#: modules/members/type.php:23
+msgctxt "type"
+msgid "Edit Member"
+msgstr "Upravit člena"
+
+#: modules/members/type.php:24
+msgctxt "type"
+msgid "New Member"
+msgstr "Nový člen"
+
+#: modules/members/type.php:25
+msgctxt "type"
+msgid "View Member"
+msgstr "Zobrazit člena"
+
+#: modules/members/type.php:26
+msgctxt "type"
+msgid "View Members"
+msgstr "Zobrazit členy"
+
+#: modules/members/type.php:27
+msgctxt "type"
+msgid "Search Members"
+msgstr "Hledat členy"
+
+#: modules/members/type.php:28
+msgctxt "type"
+msgid "No Members"
+msgstr "Žádní členové"
+
+#: modules/members/type.php:29
+msgctxt "type"
+msgid "No Members Found in Trash"
+msgstr "Žádní členové v koši"
+
+#: modules/members/type.php:30
+msgctxt "type"
+msgid "Member Archives"
+msgstr "Archiv člena"
+
+#: modules/members/type.php:31
+msgctxt "type"
+msgid "Member Attributes"
+msgstr "Atributy člena"
+
+#: modules/members/type.php:32
+msgctxt "type"
+msgid "Member published."
+msgstr "Člen publikován."
+
+#: modules/members/type.php:33
+msgctxt "type"
+msgid "Member updated."
+msgstr "Člen aktualizován."
+
+#: modules/members/type.php:47
+msgctxt "type"
+msgid "member"
+msgstr "clen"
+
+#: modules/members/type.php:119 modules/members/type/metabox.php:21
+msgid "Member"
+msgstr "Člen"
+
+#: modules/members/type.php:120
+msgid "In contacts?"
+msgstr "V kontaktech?"
+
+#: modules/members/type.php:121 modules/members/type/metabox.php:31
+msgid "Position"
+msgstr "Pozice"
+
+#: modules/members/type.php:122 modules/members/type/metabox.php:36
+msgid "Scope"
+msgstr "Zaměření"
+
+#: modules/members/type/metabox.php:26
+msgid "Display on Contact Page?"
+msgstr "Zobrazit v kontaktech?"
+
+#: modules/offers/templates/post/listing/button.php:12
+msgid "More About Offer"
+msgstr "Více o nabídce"
+
+#: modules/offers/templates/post/single/heading.php:42
+#: modules/products/templates/post/single/heading.php:48
+msgid "I am interested"
+msgstr "Mám zájem"
+
+#: modules/offers/templates/post/uni/type.php:17
+msgid "Spring Offer"
+msgstr "Jarní nabídka"
+
+#: modules/offers/templates/post/uni/type.php:20
+msgid "Summer Offer"
+msgstr "Letní nabídka"
+
+#: modules/offers/templates/post/uni/type.php:22
+msgid "Autumn Offer"
+msgstr "Podzimní nabídka"
+
+#: modules/offers/templates/post/uni/type.php:25
+msgid "Winter Offer"
+msgstr "Zimní nabídka"
+
+#: modules/offers/templates/section-small.php:52
+#: modules/offers/templates/section.php:18
+msgctxt "anchor"
+msgid "offers"
+msgstr "nabidky"
+
+#: modules/offers/templates/section-small.php:58
+#: modules/offers/templates/section.php:24
+msgid "Offers"
+msgstr "Nabídky"
+
+#: modules/offers/templates/section.php:47
+msgid "View All Offers"
+msgstr "Zobrazit všechny nabídky"
+
+#: modules/offers/type.php:16 modules/offers/type.php:17
+msgctxt "type"
+msgid "Offers"
+msgstr "Nabídky"
+
+#: modules/offers/type.php:18
+msgctxt "type"
+msgid "Offer"
+msgstr "Nabídka"
+
+#: modules/offers/type.php:19 modules/offers/type.php:21
+#: modules/offers/type.php:22
+msgctxt "type"
+msgid "Add Offer"
+msgstr "Přidat nabídku"
+
+#: modules/offers/type.php:20
+msgctxt "type"
+msgid "All Offers"
+msgstr "Všechny nabídky"
+
+#: modules/offers/type.php:23
+msgctxt "type"
+msgid "Edit Offer"
+msgstr "Upravit nabídku"
+
+#: modules/offers/type.php:24
+msgctxt "type"
+msgid "New Offer"
+msgstr "Nová nabídka"
+
+#: modules/offers/type.php:25
+msgctxt "type"
+msgid "View Offer"
+msgstr "Zobrazit nabídku"
+
+#: modules/offers/type.php:26
+msgctxt "type"
+msgid "View Offers"
+msgstr "Zobrazit nabídky"
+
+#: modules/offers/type.php:27
+msgctxt "type"
+msgid "Search Offers"
+msgstr "Hledat nabídky"
+
+#: modules/offers/type.php:28
+msgctxt "type"
+msgid "No Offers"
+msgstr "Žádné nabídky"
+
+#: modules/offers/type.php:29
+msgctxt "type"
+msgid "No Offers Found in Trash"
+msgstr "Žádné nabídky v koši"
+
+#: modules/offers/type.php:30
+msgctxt "type"
+msgid "Offer Archives"
+msgstr "Archiv nabídky"
+
+#: modules/offers/type.php:31
+msgctxt "type"
+msgid "Offer Attributes"
+msgstr "Atributy nabídky"
+
+#: modules/offers/type.php:32
+msgctxt "type"
+msgid "Offer published."
+msgstr "Nabídka publikována."
+
+#: modules/offers/type.php:33
+msgctxt "type"
+msgid "Offer updated."
+msgstr "Nabídka aktualizována."
+
+#: modules/offers/type.php:47
+msgctxt "type"
+msgid "offer"
+msgstr "nabidka"
+
+#: modules/offers/type.php:142
+msgid "Offer"
+msgstr "Nabídka"
+
+#: modules/offers/type.php:143
+msgid "Featured?"
+msgstr "Zvýrazněný?"
+
+#: modules/offers/type/metabox.php:21
+msgid "offer"
+msgstr "nabidka"
+
+#: modules/offers/type/metabox.php:26
+msgctxt "admin"
+msgid "Featured on Homepage?"
+msgstr "Zvýrazněný na úvodě?"
+
+#: modules/offers/type/metabox.php:32
+#: modules/products/inc/admin/category.php:44
+#: modules/products/type/metabox.php:25
+msgctxt "admin"
+msgid "Type"
+msgstr "Typ"
+
+#: modules/offers/type/metabox.php:35 modules/offers/type/metabox.php:78
+msgctxt "admin"
+msgid "Select a Type"
+msgstr "Vyberte typ"
+
+#: modules/offers/type/metabox.php:37
+msgctxt "admin"
+msgid "Spring"
+msgstr "Jarní"
+
+#: modules/offers/type/metabox.php:38
+msgctxt "admin"
+msgid "Summer"
+msgstr "Letní"
+
+#: modules/offers/type/metabox.php:39
+msgctxt "admin"
+msgid "Autumn"
+msgstr "Podzimní"
+
+#: modules/offers/type/metabox.php:40
+msgctxt "admin"
+msgid "Winter"
+msgstr "Zimní"
+
+#: modules/offers/type/metabox.php:44
+msgid "Custom Type"
+msgstr "Vlastní typ"
+
+#: modules/offers/type/metabox.php:49
+msgid "Short Title"
+msgstr "Krátký nadpis"
+
+#: modules/offers/type/metabox.php:59 modules/partners/type.php:121
+#: modules/partners/type/metabox.php:31
+#: modules/products/templates/post/single/description.php:19
+#: modules/products/templates/post/single/navigation.php:24
+#: modules/products/templates/post/single/parameters-and-description.php:146
+#: modules/references/type.php:122 modules/references/type/metabox.php:38
+msgid "Description"
+msgstr "Popis"
+
+#: modules/offers/type/metabox.php:75
+msgctxt "admin"
+msgid "Display for"
+msgstr "Zobrazit pro"
+
+#: modules/offers/type/metabox.php:80 modules/products/type/metabox.php:111
+msgctxt "admin"
+msgid "Default"
+msgstr "Výchozí"
+
+#: modules/offers/type/metabox.php:81 modules/products/type/metabox.php:112
+msgctxt "admin"
+msgid "Pools"
+msgstr "Bazény"
+
+#: modules/offers/type/metabox.php:82 modules/products/type/metabox.php:113
+msgctxt "admin"
+msgid "Jacuzzis"
+msgstr "Vířivky"
+
+#: modules/offers/type/metabox.php:90
+msgid "None"
+msgstr "Žádný"
+
+#: modules/offers/type/metabox.php:91
+msgid "Default"
+msgstr "Výchozí"
+
+#: modules/offers/type/metabox.php:98 modules/pages/type/metabox.php:62
+#: modules/pages/type/metabox.php:137
+msgctxt "admin"
+msgid "Button"
+msgstr "Tlačítko"
+
+#: modules/offers/type/metabox.php:101 modules/pages/type/metabox.php:65
+#: modules/pages/type/metabox.php:140 modules/slides/type/metabox.php:26
+msgctxt "admin"
+msgid "Button Text"
+msgstr "Text tlačítka"
+
+#: modules/offers/type/metabox.php:107 modules/pages/type/metabox.php:71
+#: modules/pages/type/metabox.php:146 modules/slides/type/metabox.php:33
+#: modules/slides/type/metabox.php:36 modules/slides/type/metabox.php:43
+#: modules/slides/type/metabox.php:50
+msgctxt "admin"
+msgid "Button URL"
+msgstr "URL tlačítka"
+
+#: modules/pages/templates/section-pages.php:22
+#: modules/pages/templates/section-subpages.php:40
+msgctxt "anchor"
+msgid "pages"
+msgstr "stranky"
+
+#: modules/pages/templates/section-pages.php:27
+#: modules/products/templates/section-products.php:9
+msgid "Products"
+msgstr "Produkty"
+
+#: modules/pages/templates/section-subpages.php:46
+msgid "You may be interested in"
+msgstr "Mohlo by vás také zajímat"
+
+#: modules/pages/templates/section-subpages.php:48
+msgid "Subpages"
+msgstr "Podstránky"
+
+#: modules/pages/type.php:20
+msgid "Product Category"
+msgstr "Kategorie produktů"
+
+#: modules/pages/type.php:22 modules/products/type.php:143
+msgid "Author"
+msgstr "Autor"
+
+#: modules/pages/type.php:23
+msgid "Date"
+msgstr "Datum"
+
+#: modules/pages/type/metabox.php:26
+msgctxt "admin"
+msgid "Homepage"
+msgstr "Úvodní stránka"
+
+#: modules/pages/type/metabox.php:46 modules/pages/type/metabox.php:121
+#: modules/posts/type/metabox.php:64 modules/products/type/metabox.php:89
+msgctxt "admin"
+msgid "Description"
+msgstr "Popis"
+
+#: modules/pages/type/metabox.php:92
+msgctxt "admin"
+msgid ""
+"Page won't be available on the website, and will be redirected to a product "
+"category."
+msgstr ""
+"Stránka nebude na webu dostupná a bude přesměrována na kategorii produktů."
+
+#: modules/pages/type/metabox.php:95
+msgctxt "admin"
+msgid "Select a Category"
+msgstr "Vyberte kategorii"
+
+#: modules/pages/type/metabox.php:100
+msgctxt "admin"
+msgid "Display Title"
+msgstr "Zobrazení nadpisu"
+
+#: modules/pages/type/metabox.php:152
+msgctxt "admin"
+msgid "Badge"
+msgstr "Odznak"
+
+#: modules/pages/type/metabox.php:155
+msgctxt "admin"
+msgid "Badge Title"
+msgstr "Nadpis odznaku"
+
+#: modules/pages/type/metabox.php:161
+msgctxt "admin"
+msgid "Badge Text"
+msgstr "Text odznaku"
+
+#: modules/partners/inc/admin.php:40
+msgid "Partners"
+msgstr "Partneři"
+
+#: modules/partners/templates/section.php:23 templates/navigation/about.php:23
+msgctxt "anchor"
+msgid "suppliers-and-partners"
+msgstr "dodavatele-a-partneri"
+
+#: modules/partners/templates/section.php:34 templates/navigation/about.php:24
+msgid "Suppliers and Partners"
+msgstr "Dodavatelé a partneři"
+
+#: modules/partners/templates/section.php:48
+msgid "View Next Partners"
+msgstr "Zobrazit další partnery"
+
+#: modules/partners/type.php:16 modules/partners/type.php:17
+msgctxt "type"
+msgid "Partners"
+msgstr "Partneři"
+
+#: modules/partners/type.php:18
+msgctxt "type"
+msgid "Partner"
+msgstr "Partner"
+
+#: modules/partners/type.php:19 modules/partners/type.php:21
+#: modules/partners/type.php:22
+msgctxt "type"
+msgid "Add Partner"
+msgstr "Přidat partnera"
+
+#: modules/partners/type.php:20
+msgctxt "type"
+msgid "All Partners"
+msgstr "Všichni partneři"
+
+#: modules/partners/type.php:23
+msgctxt "type"
+msgid "Edit Partner"
+msgstr "Upravit partnera"
+
+#: modules/partners/type.php:24
+msgctxt "type"
+msgid "New Partner"
+msgstr "Nový partner"
+
+#: modules/partners/type.php:25
+msgctxt "type"
+msgid "View Partner"
+msgstr "Zobrazit partnera"
+
+#: modules/partners/type.php:26
+msgctxt "type"
+msgid "View Partners"
+msgstr "Zobrazit partnery"
+
+#: modules/partners/type.php:27
+msgctxt "type"
+msgid "Search Partners"
+msgstr "Hledat partnery"
+
+#: modules/partners/type.php:28
+msgctxt "type"
+msgid "No Partners"
+msgstr "Žádní partneři"
+
+#: modules/partners/type.php:29
+msgctxt "type"
+msgid "No Partners Found in Trash"
+msgstr "Žádní partneři v koši"
+
+#: modules/partners/type.php:30
+msgctxt "type"
+msgid "Partner Archives"
+msgstr "Archiv partnerů"
+
+#: modules/partners/type.php:31
+msgctxt "type"
+msgid "Partner Attributes"
+msgstr "Atributy partnera"
+
+#: modules/partners/type.php:32
+msgctxt "type"
+msgid "Partner published."
+msgstr "Partner publikován."
+
+#: modules/partners/type.php:33
+msgctxt "type"
+msgid "Partner updated."
+msgstr "Partner aktualizován."
+
+#: modules/partners/type.php:47
+msgctxt "type"
+msgid "partner"
+msgstr "partner"
+
+#: modules/partners/type.php:119 modules/partners/type/metabox.php:21
+msgid "Partner"
+msgstr "Partner"
+
+#: modules/posts/templates/loop/search.php:29
+msgid ""
+"Sorry, but nothing matched your search criteria. Please try again with some "
+"different keywords."
+msgstr ""
+"Bohužel žádné výsledky splňující kritéria vyhledávání. Zkuste to prosím "
+"znovu."
+
+#: modules/posts/templates/navigation.php:15 templates/navigation/about.php:12
+msgctxt "navigation"
+msgid "About Navigation"
+msgstr "Navigace o nás"
+
+#. translators: %s: term name
+#: modules/posts/templates/post/common/categories.php:33
+msgid "View all posts in %s"
+msgstr "Zobrazit všechny příspěvky %s"
+
+#: modules/posts/templates/post/listing/footer.php:16
+msgid "Read article <span class=\"screen-reader-text\">%s</span>"
+msgstr "Přečíst článek <span class=\"screen-reader-text\">%s</span>"
+
+#: modules/posts/templates/post/single/meta.php:38
+msgid "Edit"
+msgstr "Editovat"
+
+#: modules/posts/templates/post/single/tags.php:9
+msgid "Tags"
+msgstr "Tagy"
+
+#: modules/posts/templates/section-carousel.php:24
+msgctxt "anchor"
+msgid "posts-recent"
+msgstr "novinky"
+
+#: modules/posts/templates/section-carousel.php:29
+msgid "Recent Posts"
+msgstr "Novinky"
+
+#: modules/posts/templates/section-recent.php:26
+#: modules/posts/templates/section.php:18
+msgctxt "anchor"
+msgid "posts"
+msgstr "prispevky"
+
+#: modules/posts/templates/section-recent.php:32
+#: modules/posts/templates/section.php:28
+msgid "Posts"
+msgstr "Příspěvky"
+
+#: modules/posts/templates/section-related.php:48
+msgctxt "anchor"
+msgid "posts-related"
+msgstr "souvisejici-prispevky"
+
+#: modules/posts/templates/section-related.php:54
+msgid "Related Posts"
+msgstr "Související příspěvky"
+
+#: modules/posts/templates/section.php:38
+msgid "All Posts"
+msgstr "Všechny příspěvky"
+
+#: modules/posts/type/metabox.php:18
+msgid "Post"
+msgstr "Příspěvek"
+
+#: modules/posts/type/metabox.php:57
+msgctxt "admin"
+msgid "Alternative title of the post"
+msgstr "Alternativní nadpis příspěvku"
+
+#: modules/posts/type/metabox.php:69
+msgctxt "admin"
+msgid "Short description of the post"
+msgstr "Krátký popis příspěvku"
+
+#: modules/products/inc/admin/category.php:27
+#: modules/products/type/metabox.php:72
+msgctxt "admin"
+msgid "Short Description"
+msgstr "Krátký popis"
+
+#: modules/products/inc/admin/category.php:37
+msgctxt "admin"
+msgid "Short description of the category"
+msgstr "Krátký popis kategorie"
+
+#: modules/products/inc/admin/category.php:50
+msgctxt "admin"
+msgid "Accessories"
+msgstr "Příslušenství"
+
+#: modules/products/inc/admin/category.php:53
+msgctxt "admin"
+msgid "Select a type of a category."
+msgstr "Vyberte typ kategorie."
+
+#: modules/products/inc/admin/category.php:60
+msgctxt "admin"
+msgid "Image"
+msgstr "Obrázek"
+
+#: modules/products/inc/admin/category.php:74
+#: modules/products/inc/admin/scripts.php:28
+msgctxt "admin"
+msgid "Change Image"
+msgstr "Změnit obrázek"
+
+#: modules/products/inc/admin/category.php:77
+#: modules/products/inc/admin/category.php:89
+msgctxt "admin"
+msgid "Remove Image"
+msgstr "Odstranit obrázek"
+
+#: modules/products/inc/admin/category.php:86
+#: modules/products/inc/admin/scripts.php:27
+msgctxt "admin"
+msgid "Add Image"
+msgstr "Přidat obrázek"
+
+#: modules/products/inc/admin/list.php:29
+msgid "Filter by Type"
+msgstr "Filtrovat podle typu"
+
+#: modules/products/inc/admin/list.php:31
+msgid "All Types"
+msgstr "Všechny typy"
+
+#: modules/products/inc/admin/list.php:89
+msgctxt "admin"
+msgid "Affiliate Product"
+msgstr "Partnerský"
+
+#: modules/products/inc/admin/list/affiliate.php:107
+msgctxt "admin"
+msgid "Standard"
+msgstr "Standardní"
+
+#: modules/products/inc/admin/list/affiliate.php:114
+msgctxt "admin"
+msgid "Affiliate"
+msgstr "Partnerské"
+
+#: modules/products/inc/admin/list/affiliate.php:121
+msgctxt "admin"
+msgid "Published"
+msgstr "Publikované"
+
+#: modules/products/inc/admin/scripts.php:29
+msgctxt "admin"
+msgid "Insert Image"
+msgstr "Vložit obrázek"
+
+#: modules/products/inc/admin/scripts.php:30
+msgctxt "admin"
+msgid "Use Image"
+msgstr "Použít obrázek"
+
+#: modules/products/inc/product.php:17
+msgid "Standard"
+msgstr "Standardní"
+
+#: modules/products/inc/product.php:34
+msgid "White"
+msgstr "Bílá"
+
+#: modules/products/inc/product.php:35
+msgid "Grey"
+msgstr "Šedá"
+
+#: modules/products/inc/product.php:36
+msgid "Black"
+msgstr "Černá"
+
+#: modules/products/inc/product.php:37
+msgid "Blue"
+msgstr "Modrá"
+
+#: modules/products/inc/product.php:38
+msgid "Green"
+msgstr "Zelená"
+
+#: modules/products/inc/product.php:39
+msgid "Beige"
+msgstr "Béžová"
+
+#: modules/products/inc/product.php:40
+msgid "Yellow"
+msgstr "Žlutá"
+
+#: modules/products/inc/product.php:41
+msgid "Red"
+msgstr "Červená"
+
+#: modules/products/inc/product.php:42
+msgid "Pink"
+msgstr "Růžová"
+
+#: modules/products/inc/product.php:43
+msgid "Purple"
+msgstr "Fialová"
+
+#: modules/products/inc/product.php:44
+msgid "Brown"
+msgstr "Hnědá"
+
+#: modules/products/templates/post/listing/button.php:11
+msgid "View %s"
+msgstr "Zobrazit %s"
+
+#: modules/products/templates/post/listing/footer.php:12
+msgid "View Detail"
+msgstr "Zobrazit detail"
+
+#: modules/products/templates/post/single/description.php:11
+#: modules/products/templates/post/single/navigation.php:23
+msgctxt "anchor"
+msgid "description"
+msgstr "popis"
+
+#: modules/products/templates/post/single/description.php:17
+#: modules/products/templates/post/single/navigation.php:18
+#: modules/products/templates/post/single/parameters-and-description.php:29
+msgid "Parameters and Description"
+msgstr "Parametry a popis"
+
+#: modules/products/templates/post/single/heading.php:40
+#: modules/products/templates/post/single/navigation.php:30
+#: modules/products/templates/post/single/navigation.php:36
+#: modules/products/templates/section-products-related.php:8
+#: modules/products/templates/section-products.php:37
+msgctxt "anchor"
+msgid "variations"
+msgstr "varianty"
+
+#: modules/products/templates/post/single/heading.php:42
+msgid "View Variations"
+msgstr "Zobrazit varianty"
+
+#: modules/products/templates/post/single/navigation.php:13
+msgctxt "navigation"
+msgid "Product Navigation"
+msgstr "Navigace produktu"
+
+#: modules/products/templates/post/single/navigation.php:17
+#: modules/products/templates/post/single/parameters-and-description.php:24
+msgctxt "anchor"
+msgid "parameters-and-description"
+msgstr "parametry-a-popis"
+
+#: modules/products/templates/post/single/navigation.php:31
+#: modules/products/templates/section-products.php:38
+msgid "Available Variations"
+msgstr "Dostupné varianty"
+
+#: modules/products/templates/post/single/navigation.php:37
+#: modules/products/templates/section-products-related.php:9
+msgid "Other Variations"
+msgstr "Další varianty"
+
+#: modules/products/templates/post/single/navigation.php:49
+msgctxt "anchor"
+msgid "order-progress"
+msgstr "prubeh-zakazky"
+
+#: modules/products/templates/post/single/navigation.php:50
+msgid "Order Progress"
+msgstr "Průběh zakázky"
+
+#: modules/products/templates/post/single/navigation.php:55
+msgid "FAQs"
+msgstr "FAQ"
+
+#: modules/products/templates/post/single/navigation.php:59
+#: modules/references/templates/section-recent.php:28
+msgctxt "anchor"
+msgid "references"
+msgstr "reference"
+
+#: modules/products/templates/post/single/navigation.php:60
+#: modules/references/type.php:118 modules/references/type/metabox.php:21
+msgid "Reference"
+msgstr "Reference"
+
+#: modules/products/templates/post/single/parameters-and-description.php:35
+msgid "Parameters"
+msgstr "Parametry"
+
+#: modules/products/templates/post/single/parameters-and-description.php:44
+#: modules/products/type/metabox.php:126
+msgid "Model"
+msgstr "Model"
+
+#: modules/products/templates/post/single/parameters-and-description.php:59
+#: modules/products/type/metabox.php:140
+msgid "Number of Seats"
+msgstr "Počet míst"
+
+#: modules/products/templates/post/single/parameters-and-description.php:74
+msgid "Nozzles/Pumps"
+msgstr "Trysky/čerpadla"
+
+#: modules/products/templates/post/single/parameters-and-description.php:89
+#: modules/products/type/metabox.php:154
+msgid "Internal Dimensions"
+msgstr "Vnitřní rozměry"
+
+#: modules/products/templates/post/single/parameters-and-description.php:104
+#: modules/products/type/metabox.php:161
+msgid "External Dimensions"
+msgstr "Vnější rozměry"
+
+#: modules/products/templates/post/single/parameters-and-description.php:119
+#: modules/products/type/metabox.php:168
+msgid "Water Depth"
+msgstr "Hloubka vody"
+
+#: modules/products/templates/post/single/parameters-and-description.php:134
+#: modules/products/type/metabox.php:175
+msgid "Water Volume"
+msgstr "Objem vody"
+
+#: modules/products/templates/post/single/params/_backup-colors.php:10
+msgid "Color"
+msgstr "Barva"
+
+#: modules/products/templates/post/single/sidebar.php:17
+msgid "Send inquiry"
+msgstr "Poslat poptávku"
+
+#: modules/products/templates/section-categories.php:15
+#: modules/products/templates/section-navigation.php:22
+msgctxt "anchor"
+msgid "categories"
+msgstr "kategorie"
+
+#: modules/products/templates/section-categories.php:19
+msgid "Product Categories"
+msgstr "Kategorie produktů"
+
+#: modules/products/templates/section-navigation.php:26
+msgid "Sub-categories"
+msgstr "Podkategorie"
+
+#: modules/products/templates/section-products.php:8
+msgctxt "anchor"
+msgid "products"
+msgstr "produkty"
+
+#: modules/products/type.php:16 modules/products/type.php:17
+msgctxt "type"
+msgid "Products"
+msgstr "Produkty"
+
+#: modules/products/type.php:18
+msgctxt "type"
+msgid "Product"
+msgstr "Produkt"
+
+#: modules/products/type.php:19 modules/products/type.php:21
+#: modules/products/type.php:22
+msgctxt "type"
+msgid "Add Product"
+msgstr "Přidat produkt"
+
+#: modules/products/type.php:20
+msgctxt "type"
+msgid "All Products"
+msgstr "Všechny produkty"
+
+#: modules/products/type.php:23
+msgctxt "type"
+msgid "Edit Product"
+msgstr "Upravit produkt"
+
+#: modules/products/type.php:24
+msgctxt "type"
+msgid "New Product"
+msgstr "Nový produkt"
+
+#: modules/products/type.php:25
+msgctxt "type"
+msgid "View Product"
+msgstr "Zobrazit produkt"
+
+#: modules/products/type.php:26
+msgctxt "type"
+msgid "View Products"
+msgstr "Zobrazit produkty"
+
+#: modules/products/type.php:27
+msgctxt "type"
+msgid "Search Products"
+msgstr "Hledat produkty"
+
+#: modules/products/type.php:28
+msgctxt "type"
+msgid "No Products"
+msgstr "Žádné produkty"
+
+#: modules/products/type.php:29
+msgctxt "type"
+msgid "No Products Found in Trash"
+msgstr "Žádné produkty v koši"
+
+#: modules/products/type.php:30
+msgctxt "type"
+msgid "Product Archives"
+msgstr "Archiv produktů"
+
+#: modules/products/type.php:31
+msgctxt "type"
+msgid "Product Attributes"
+msgstr "Atributy produktu"
+
+#: modules/products/type.php:32
+msgctxt "type"
+msgid "Product published."
+msgstr "Produkt publikován."
+
+#: modules/products/type.php:33
+msgctxt "type"
+msgid "Product updated."
+msgstr "Produkt aktualizován."
+
+#: modules/products/type.php:47
+msgctxt "type"
+msgid "product"
+msgstr "produkt"
+
+#: modules/products/type.php:138
+msgid "Product"
+msgstr "Produkt"
+
+#: modules/products/type.php:139
+msgid "Price"
+msgstr "Cena"
+
+#: modules/products/type.php:141
+msgid "Manufacturer"
+msgstr "Výrobce"
+
+#: modules/products/type/metabox.php:20 modules/products/type/metabox.php:42
+#: modules/slides/type/metabox.php:36
+msgctxt "admin"
+msgid "Product"
+msgstr "Produkt"
+
+#: modules/products/type/metabox.php:26
+msgctxt "admin"
+msgid "Affiliate product type hasn't a single page."
+msgstr "Partnerský typ produktu nemá detailní stránku."
+
+#: modules/products/type/metabox.php:32
+msgctxt "admin"
+msgid "Affiliate URL"
+msgstr "Partnerská URL"
+
+#: modules/products/type/metabox.php:47
+msgctxt "admin"
+msgid "Short Title"
+msgstr "Krátký nadpis"
+
+#: modules/products/type/metabox.php:48 modules/products/type/metabox.php:73
+#: modules/products/type/metabox.php:192
+msgctxt "admin"
+msgid "Zobrazí se na kartě varianty produktu."
+msgstr ""
+
+#: modules/products/type/metabox.php:53
+msgctxt "admin"
+msgid "Price"
+msgstr "Cena"
+
+#: modules/products/type/metabox.php:61
+msgctxt "admin"
+msgid "Price Text"
+msgstr "Textová cena"
+
+#: modules/products/type/metabox.php:66
+msgctxt "admin"
+msgid "Price Suffix"
+msgstr "Přípona ceny"
+
+#: modules/products/type/metabox.php:67
+msgctxt "admin"
+msgid "incl. assembly"
+msgstr "vč. montáže"
+
+#: modules/products/type/metabox.php:90
+msgctxt "admin"
+msgid "Zobrazí se na detailní stránce produktu."
+msgstr ""
+
+#: modules/products/type/metabox.php:107
+msgctxt "admin"
+msgid "Zobrazený kontakt na detailní stránce produktu."
+msgstr ""
+
+#: modules/products/type/metabox.php:121
+msgctxt "admin"
+msgid "Product Parameters"
+msgstr "Parametry produktu"
+
+#: modules/products/type/metabox.php:130
+msgid "+ Add Model"
+msgstr "+ Přidat model"
+
+#: modules/products/type/metabox.php:144 modules/products/type/metabox.php:151
+msgid "+ Add Number"
+msgstr "+ Přidat číslo"
+
+#: modules/products/type/metabox.php:147
+msgid "Number of Nozzles/Pumps"
+msgstr "Počet trysek/čerpadel"
+
+#: modules/products/type/metabox.php:158 modules/products/type/metabox.php:165
+msgid "+ Add Dimensions"
+msgstr "+ Přidat rozměr"
+
+#: modules/products/type/metabox.php:172
+msgid "+ Add Depth"
+msgstr "+ Přidat hloubku"
+
+#: modules/products/type/metabox.php:179
+msgid "+ Add Volume"
+msgstr "+ Přidat objem"
+
+#: modules/products/type/metabox.php:186 modules/products/type/metabox.php:199
+msgctxt "admin"
+msgid "Product Images"
+msgstr "Obrázky produktu"
+
+#: modules/products/type/metabox.php:191
+msgctxt "admin"
+msgid "Product Image"
+msgstr "Obrázek produktu"
+
+#: modules/products/type/taxonomy.php:21 modules/products/type/taxonomy.php:36
+msgctxt "taxonomy"
+msgid "Product Categories"
+msgstr "Kategorie produktů"
+
+#: modules/products/type/taxonomy.php:44
+msgctxt "taxonomy"
+msgid "catalog"
+msgstr "katalog"
+
+#: modules/products/type/taxonomy.php:55 modules/products/type/taxonomy.php:70
+msgctxt "taxonomy"
+msgid "Manufacturers"
+msgstr "Výrobci"
+
+#: modules/products/type/taxonomy.php:56
+msgctxt "taxonomy"
+msgid "Manufacturer"
+msgstr "Výrobce"
+
+#: modules/products/type/taxonomy.php:57
+msgctxt "taxonomy"
+msgid "Search Manufacturers"
+msgstr "Hledat výrobce"
+
+#: modules/products/type/taxonomy.php:58
+msgctxt "taxonomy"
+msgid "Popular Manufacturers"
+msgstr "Oblíbení výrobci"
+
+#: modules/products/type/taxonomy.php:59
+msgctxt "taxonomy"
+msgid "All Manufacturers"
+msgstr "Všichni výrobci"
+
+#: modules/products/type/taxonomy.php:60
+msgctxt "taxonomy"
+msgid "Edit Manufacturer"
+msgstr "Upravit výrobce"
+
+#: modules/products/type/taxonomy.php:61
+msgctxt "taxonomy"
+msgid "View Manufacturer"
+msgstr "Zobrazit výrobce"
+
+#: modules/products/type/taxonomy.php:62
+msgctxt "taxonomy"
+msgid "Update Manufacturer"
+msgstr "Aktualizovat výrobce"
+
+#: modules/products/type/taxonomy.php:63
+msgctxt "taxonomy"
+msgid "Add New Manufacturer"
+msgstr "Přidat výrobce"
+
+#: modules/products/type/taxonomy.php:64
+msgctxt "taxonomy"
+msgid "New Manufacturer Name"
+msgstr "Název nového výrobce"
+
+#: modules/products/type/taxonomy.php:65
+msgctxt "taxonomy"
+msgid "No manufacturers found."
+msgstr "Žádní výrobci."
+
+#: modules/products/type/taxonomy.php:66
+msgctxt "taxonomy"
+msgid "Add or remove manufacturers"
+msgstr "Přidat nebo odebrat výrobce"
+
+#: modules/products/type/taxonomy.php:67
+msgctxt "taxonomy"
+msgid "Separate manufacturers with commas"
+msgstr "Oddělte výrobce čárkami"
+
+#: modules/products/type/taxonomy.php:68
+msgctxt "taxonomy"
+msgid "Back to manufacturers"
+msgstr "Zpět na výrobce"
+
+#: modules/products/type/taxonomy.php:78
+msgctxt "taxonomy"
+msgid "manufacturer"
+msgstr "vyrobce"
+
+#. Template Name of the theme
+#: modules/references/inc/admin.php:40
+#: modules/references/templates/section-recent.php:42
+msgid "References"
+msgstr "Reference"
+
+#: modules/references/templates/navigation.php:19
+msgctxt "navigation"
+msgid "References Navigation"
+msgstr "Navigace referencí"
+
+#: modules/references/templates/post/listing/buttons.php:10
+msgid "Read More"
+msgstr "Celý článek"
+
+#: modules/references/templates/post/listing/meta.php:16
+#: modules/references/templates/post/single/meta.php:16
+#: modules/references/type/metabox.php:54
+msgid "Location"
+msgstr "Místo"
+
+#: modules/references/templates/post/listing/meta.php:22
+#: modules/references/templates/post/single/meta.php:22
+#: modules/references/type/metabox.php:59
+msgid "Year"
+msgstr "Rok"
+
+#: modules/references/templates/post/single/description.php:15
+msgid "Project Description"
+msgstr "Popis projektu"
+
+#: modules/references/templates/post/single/gallery.php:15
+#: modules/references/type/metabox.php:69
+msgid "Gallery"
+msgstr "Galerie"
+
+#: modules/references/templates/section-recent.php:56
+msgid "View Next References"
+msgstr "Zobrazit další reference"
+
+#: modules/references/type.php:16 modules/references/type.php:17
+msgctxt "type"
+msgid "References"
+msgstr "Reference"
+
+#: modules/references/type.php:18
+msgctxt "type"
+msgid "Reference"
+msgstr "Reference"
+
+#: modules/references/type.php:19 modules/references/type.php:21
+#: modules/references/type.php:22
+msgctxt "type"
+msgid "Add Reference"
+msgstr "Přidat referenci"
+
+#: modules/references/type.php:20
+msgctxt "type"
+msgid "All References"
+msgstr "Všechny reference"
+
+#: modules/references/type.php:23
+msgctxt "type"
+msgid "Edit Reference"
+msgstr "Upravit referenci"
+
+#: modules/references/type.php:24
+msgctxt "type"
+msgid "New Reference"
+msgstr "Nová reference"
+
+#: modules/references/type.php:25
+msgctxt "type"
+msgid "View Reference"
+msgstr "Zobrazit referenci"
+
+#: modules/references/type.php:26
+msgctxt "type"
+msgid "View References"
+msgstr "Zobrazit reference"
+
+#: modules/references/type.php:27
+msgctxt "type"
+msgid "Search References"
+msgstr "Vyhledat reference"
+
+#: modules/references/type.php:28
+msgctxt "type"
+msgid "No References"
+msgstr "Žádné reference"
+
+#: modules/references/type.php:29
+msgctxt "type"
+msgid "No References Found in Trash"
+msgstr "Žádné reference v koši"
+
+#: modules/references/type.php:30
+msgctxt "type"
+msgid "Reference Archives"
+msgstr "Archiv reference"
+
+#: modules/references/type.php:31
+msgctxt "type"
+msgid "Reference Attributes"
+msgstr "Atributy reference"
+
+#: modules/references/type.php:32
+msgctxt "type"
+msgid "Reference published."
+msgstr "Reference publikována."
+
+#: modules/references/type.php:33
+msgctxt "type"
+msgid "Reference updated."
+msgstr "Reference aktualizována."
+
+#: modules/references/type.php:47
+msgctxt "type"
+msgid "project"
+msgstr "projekt"
+
+#: modules/references/type.php:120
+msgid "Single"
+msgstr "Detail"
+
+#: modules/references/type/metabox.php:32
+msgctxt "admin"
+msgid "Display Single"
+msgstr "Zobrazení detailu"
+
+#: modules/references/type/metabox.php:74
+msgid "Images"
+msgstr "Obrázky"
+
+#: modules/references/type/taxonomy.php:21
+msgctxt "taxonomy"
+msgid "Reference Categories"
+msgstr "Kategorie referencí"
+
+#: modules/references/type/taxonomy.php:22
+#: modules/supports/type/taxonomy.php:21
+msgctxt "taxonomy"
+msgid "Categories"
+msgstr "Kategorie"
+
+#: modules/references/type/taxonomy.php:44
+msgctxt "taxonomy"
+msgid "references"
+msgstr "reference"
+
+#: modules/slides/templates/section.php:36
+msgctxt "slideshow accessibility"
+msgid "Slideshow"
+msgstr "Slideshow"
+
+#: modules/slides/type.php:16 modules/slides/type.php:17
+msgctxt "type"
+msgid "Slides"
+msgstr "Slidy"
+
+#: modules/slides/type.php:18 modules/slides/type.php:140
+msgctxt "type"
+msgid "Slide"
+msgstr "Slide"
+
+#: modules/slides/type.php:19 modules/slides/type.php:21
+#: modules/slides/type.php:22
+msgctxt "type"
+msgid "Add Slide"
+msgstr "Přidat slide"
+
+#: modules/slides/type.php:20
+msgctxt "type"
+msgid "All Slides"
+msgstr "Všechny slidy"
+
+#: modules/slides/type.php:23
+msgctxt "type"
+msgid "Edit Slide"
+msgstr "Upravit slide"
+
+#: modules/slides/type.php:24
+msgctxt "type"
+msgid "New Slide"
+msgstr "Nový slide"
+
+#: modules/slides/type.php:25
+msgctxt "type"
+msgid "View Slide"
+msgstr "Zobrazit slide"
+
+#: modules/slides/type.php:26
+msgctxt "type"
+msgid "View Slides"
+msgstr "Zobrazit slidy"
+
+#: modules/slides/type.php:27
+msgctxt "type"
+msgid "Search Slides"
+msgstr "Hledat slidy"
+
+#: modules/slides/type.php:28
+msgctxt "type"
+msgid "No Slides"
+msgstr "Žádné slidy"
+
+#: modules/slides/type.php:29
+msgctxt "type"
+msgid "No Slides Found in Trash"
+msgstr "Žádné slidy v koši"
+
+#: modules/slides/type.php:30
+msgctxt "type"
+msgid "Slide Archives"
+msgstr "Archiv slidů"
+
+#: modules/slides/type.php:31
+msgctxt "type"
+msgid "Slide Attributes"
+msgstr "Atributy slidů"
+
+#: modules/slides/type.php:32
+msgctxt "type"
+msgid "Slide published."
+msgstr "Slide publikovaný."
+
+#: modules/slides/type.php:33
+msgctxt "type"
+msgid "Slide updated."
+msgstr "Slide aktualizovaný."
+
+#: modules/slides/type.php:47
+msgctxt "type"
+msgid "slide"
+msgstr "slide"
+
+#: modules/slides/type/metabox.php:21
+msgid "Slide"
+msgstr "Slide"
+
+#: modules/slides/type/metabox.php:40
+msgctxt "admin"
+msgid "Select a Product"
+msgstr "Vyberte produkt"
+
+#: modules/slides/type/metabox.php:47
+msgctxt "admin"
+msgid "Select a Product Category"
+msgstr "Vyberte kategorii produktů"
+
+#: modules/slides/type/metabox.php:50
+msgctxt "admin"
+msgid "Custom"
+msgstr "Vlastní"
+
+#: modules/supports/inc/admin/category.php:26
+msgctxt "admin"
+msgid "Display also in a price list?"
+msgstr "Zobrazit také v ceníku?"
+
+#: modules/supports/inc/admin/category.php:32
+#: modules/supports/inc/admin/category.php:49
+msgid "Yes"
+msgstr "Ano"
+
+#: modules/supports/inc/admin/category.php:33
+#: modules/supports/inc/admin/category.php:50
+msgid "No"
+msgstr "Ne"
+
+#: modules/supports/inc/admin/category.php:36
+msgctxt "admin"
+msgid ""
+"Please select whether the category will be displayed also in a price list or "
+"not."
+msgstr "Vyberte, zda se kategorie bude zobrazovat v ceníku či nikoli."
+
+#: modules/supports/inc/admin/category.php:43
+msgctxt "admin"
+msgid "Display only in a price list?"
+msgstr "Zobrazit pouze v ceníku?"
+
+#: modules/supports/inc/admin/category.php:53
+msgctxt "admin"
+msgid ""
+"Please select whether the category will be displayed only in a price list or "
+"not."
+msgstr "Vyberte, zda se kategorie bude zobrazovat pouze v ceníku nebo nikoliv."
+
+#: modules/supports/templates/navigation.php:30
+msgctxt "navigation"
+msgid "Support Navigation"
+msgstr "Navigace podpory"
+
+#: modules/supports/templates/post/listing/downloads.php:49
+msgid "Download"
+msgstr "Stáhnout"
+
+#: modules/supports/templates/section.php:21
+msgctxt "anchor"
+msgid "support"
+msgstr "podpora"
+
+#: modules/supports/templates/section.php:61
+msgid "View more <span class=\"screen-reader-text\">Supports</span>"
+msgstr "Zobrazit více <span class=\"screen-reader-text\">podpory</span>"
+
+#: modules/supports/type.php:16 modules/supports/type.php:17
+#: modules/supports/type.php:18 modules/supports/type.php:110
+msgctxt "type"
+msgid "Support"
+msgstr "Podpora"
+
+#: modules/supports/type.php:19 modules/supports/type.php:21
+#: modules/supports/type.php:22
+msgctxt "type"
+msgid "Add Support"
+msgstr "Přidat podporu"
+
+#: modules/supports/type.php:20
+msgctxt "type"
+msgid "All Supports"
+msgstr "Všechny podpory"
+
+#: modules/supports/type.php:23
+msgctxt "type"
+msgid "Edit Support"
+msgstr "Upravit podporu"
+
+#: modules/supports/type.php:24
+msgctxt "type"
+msgid "New Support"
+msgstr "Nová podpora"
+
+#: modules/supports/type.php:25
+msgctxt "type"
+msgid "View Support"
+msgstr "Zobrazit podporu"
+
+#: modules/supports/type.php:26
+msgctxt "type"
+msgid "View Supports"
+msgstr "Zobrazit podpory"
+
+#: modules/supports/type.php:27
+msgctxt "type"
+msgid "Search Supports"
+msgstr "Hledat podpory"
+
+#: modules/supports/type.php:28
+msgctxt "type"
+msgid "No Supports"
+msgstr "Žádné podpory"
+
+#: modules/supports/type.php:29
+msgctxt "type"
+msgid "No Supports Found in Trash"
+msgstr "Žádné podpory v koši"
+
+#: modules/supports/type.php:30
+msgctxt "type"
+msgid "Support Archives"
+msgstr "Archiv podpory"
+
+#: modules/supports/type.php:31
+msgctxt "type"
+msgid "Support Attributes"
+msgstr "Atributy podpory"
+
+#: modules/supports/type.php:32
+msgctxt "type"
+msgid "Support published."
+msgstr "Podpora publikována."
+
+#: modules/supports/type.php:33
+msgctxt "type"
+msgid "Support updated."
+msgstr "Podpora aktualizována."
+
+#: modules/supports/type.php:47
+msgctxt "type"
+msgid "support"
+msgstr "podpora"
+
+#: modules/supports/type.php:112 modules/supports/type/taxonomy.php:63
+msgctxt "type"
+msgid "Also in pricelist?"
+msgstr "Také v ceníku?"
+
+#: modules/supports/type.php:113 modules/supports/type/taxonomy.php:64
+msgctxt "type"
+msgid "Only in pricelist?"
+msgstr "Pouze v ceníku?"
+
+#: modules/supports/type.php:158 modules/supports/type.php:168
+#: modules/supports/type/taxonomy.php:80 modules/supports/type/taxonomy.php:83
+msgctxt "admin"
+msgid "Yes"
+msgstr "Ano"
+
+#. Template Name of the theme
+#: modules/supports/type/metabox.php:21
+msgid "Support"
+msgstr "Podpora"
+
+#: modules/supports/type/metabox.php:26
+msgid "Downloads"
+msgstr "Ke stažení"
+
+#: modules/supports/type/metabox.php:33
+msgid "Display also in the price list?"
+msgstr "Zobrazit také v ceníku?"
+
+#: modules/supports/type/metabox.php:39
+msgid "Display only in the price list?"
+msgstr "Zobrazit pouze v ceníku?"
+
+#: modules/supports/type/taxonomy.php:36
+msgctxt "taxonomy"
+msgid "Support Categories"
+msgstr "Kategorie podpory"
+
+#: modules/supports/type/taxonomy.php:44
+msgctxt "taxonomy"
+msgid "supports"
+msgstr "podpora"
+
+#: searchform.php:23 templates/search.php:32
+msgctxt "label"
+msgid "Search"
+msgstr "Vyhledávání"
+
+#: searchform.php:27
+msgctxt "placeholder"
+msgid "Search"
+msgstr "Zadejte hledaný výraz"
+
+#: searchform.php:31
+msgctxt "submit button"
+msgid "Search"
+msgstr "Hledat"
+
+#: template-about.php:18 templates/navigation/about.php:16
+msgctxt "anchor"
+msgid "our-company"
+msgstr "nase-spolecnost"
+
+#. Template Name of the theme
+msgid "Blog"
+msgstr "Blog"
+
+#. Template Name of the theme
+msgid "FAQ"
+msgstr "FAQ"
+
+#. Template Name of the theme
+msgid "Homepage"
+msgstr "Úvodní stránka"
+
+#. Template Name of the theme
+msgid "Pricelist"
+msgstr "Ceník"
+
+#. Template Name of the theme
+msgid "Showroom"
+msgstr "Showroom"
+
+#: templates/about/_hours.php:8
+msgid "Po-Pá: 8:00-16:00"
+msgstr ""
+
+#: templates/about/_hours.php:9
+msgid "8:00"
+msgstr ""
+
+#: templates/about/_hours.php:10
+msgid "16:00"
+msgstr ""
+
+#: templates/button/contact.php:10
+msgid "Free Consultation"
+msgstr "Nezávazná konzultace"
+
+#: templates/elements/service.php:24
+msgid "Serviceman"
+msgstr "Servisní technik"
+
+#: templates/elements/service.php:44
+msgid ""
+"Jsme tu pro vás i po dokončení projektu. Záruční i pozáruční servis je pro "
+"nás samozřejmost."
+msgstr ""
+
+#: templates/elements/service.php:49
+msgid "More information"
+msgstr "Více informací"
+
+#: templates/footer.php:11 templates/skiplinks.php:15
+msgctxt "anchor"
+msgid "footer"
+msgstr "paticka"
+
+#: templates/footer/copyright.php:16
+msgid "Copyright &copy;"
+msgstr "Copyright &copy;"
+
+#: templates/footer/copyright.php:16
+msgid "All rights reserved."
+msgstr "Všechna práva vyhrazena."
+
+#: templates/footer/copyright.php:20
+msgctxt "signature"
+msgid "Created by"
+msgstr "Vytvořil"
+
+#: templates/footer/copyright.php:21
+msgctxt "signature"
+msgid "https://eboost.cz/"
+msgstr "https://eboost.cz/"
+
+#: templates/footer/copyright.php:22
+msgctxt "signature"
+msgid "EBOOST"
+msgstr "EBOOST"
+
+#: templates/footer/copyright.php:23
+msgctxt "signature"
+msgid "Online marketing with results"
+msgstr "Online marketing s výsledky"
+
+#: templates/footer/copyright.php:24 templates/footer/copyright.php:28
+msgctxt "signature"
+msgid "(opens in a new tab)"
+msgstr "(otevře se v novém okně)"
+
+#: templates/footer/copyright.php:27
+msgctxt "signature"
+msgid "Developed by"
+msgstr "Vyvinul"
+
+#: templates/footer/copyright.php:38
+msgid "Footer Navigation"
+msgstr "Navigace v patičce"
+
+#: templates/header/bar/contacts.php:13
+msgctxt "bar"
+msgid "Do you have a question? Call"
+msgstr "Máte dotaz? Volejte na"
+
+#: templates/header/bar/navigation.php:10
+msgid "Bar Navigation"
+msgstr "Navigace v liště"
+
+#: templates/heading/404.php:19
+msgid "Page not Found"
+msgstr "Stránka nebyla nalezena"
+
+#: templates/heading/archive.php:26
+msgctxt "link to a new tab"
+msgid "(opens in new tab)"
+msgstr "(otevře se v novém okně)"
+
+#: templates/heading/archive.php:31
+msgid "F jS, Y"
+msgstr "F jS, Y"
+
+#: templates/heading/archive.php:33
+msgid "F, Y"
+msgstr "F, Y"
+
+#: templates/heading/archive.php:35
+msgid "Y"
+msgstr "Y"
+
+#: templates/heading/archive.php:37
+msgid "Archive"
+msgstr "Archiv"
+
+#: templates/heading/contact.php:57
+msgid "Odpovíme do dvou pracovních dní"
+msgstr ""
+
+#: templates/heading/contact.php:65
+msgid "Inquiry Form"
+msgstr "Poptávkový formulář"
+
+#. translators: %1$s: the number of search results, %2$s: search query
+#: templates/heading/search.php:22
+msgid "%1$s result for '%2$s'"
+msgid_plural "%1$s results for '%2$s'"
+msgstr[0] "%1$s výsledek pro '%2$s'"
+msgstr[1] "%1$s výsledky pro '%2$s'"
+msgstr[2] "%1$s výsledků pro '%2$s'"
+
+#: templates/heading/term.php:33
+msgid "Chci poradit s výběrem"
+msgstr ""
+
+#: templates/loop/empty.php:10
+msgid "No items were found."
+msgstr "Žádné položky."
+
+#: templates/navigation.php:11 templates/navigation/trigger.php:13
+#: templates/skiplinks.php:11
+msgctxt "anchor"
+msgid "navigation"
+msgstr "navigace"
+
+#: templates/navigation.php:20
+msgctxt "navigation"
+msgid "Primary Navigation"
+msgstr "Primární navigace"
+
+#: templates/navigation/about.php:17
+msgid "Our Company"
+msgstr "Naše společnost"
+
+#: templates/navigation/about.php:31
+msgid "Career"
+msgstr "Kariéra"
+
+#: templates/search.php:11 templates/search.php:22
+#: templates/search/trigger.php:13
+msgctxt "anchor"
+msgid "search-dialog"
+msgstr "dialog-vyhledavani"
+
+#: templates/search.php:27
+msgid "Close"
+msgstr "Zavřít"
+
+#: templates/search/trigger.php:17
+msgid "Search"
+msgstr "Vyhledat"
+
+#: templates/section/instagram.php:24 templates/section/instagram.php:29
+msgid "Baspa on Instagram"
+msgstr "Baspa na Instagramu"
+
+#: templates/skiplinks.php:12
+msgctxt "skip link"
+msgid "Skip to navigation"
+msgstr "Přeskočit na navigaci"
+
+#: templates/skiplinks.php:14
+msgctxt "skip link"
+msgid "Skip to content"
+msgstr "Přeskočit na obsah"
+
+#: templates/skiplinks.php:16
+msgctxt "skip link"
+msgid "Skip to footer"
+msgstr "Přeskočit na patičku"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XXSmall"
+msgstr "XXS"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XSmall"
+msgstr "XS"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "S"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "M"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "L"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XLarge"
+msgstr "XL"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XXLarge"
+msgstr "2XL"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading 6"
+msgstr "Nadpis 6"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading 5"
+msgstr "Nadpis 5"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading 4"
+msgstr "Nadpis 4"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading 3"
+msgstr "Nadpis 3"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading 2"
+msgstr "Nadpis 2"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading 1"
+msgstr "Nadpis 1"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Title"
+msgstr "Titulek"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Gigantic"
+msgstr "Gigantické"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Primary"
+msgstr "Primární"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Secondary"
+msgstr "Sekundární"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr "Primární"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Accent"
+msgstr "Akcentní"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Highlight"
+msgstr "Zvýrazněná"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Contrast"
+msgstr "Kontrastní"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Soft"
+msgstr "Jemná"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Background"
+msgstr "Pozadí"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Shadow"
+msgstr "Stín"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Shadow - Light"
+msgstr "Stín - Světlý"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Soft"
+msgstr "Jemná"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "1px"
+msgstr "1px"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3XSmall"
+msgstr "3XS"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2XSmall"
+msgstr "2XS"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "XSmall"
+msgstr "XS"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Small"
+msgstr "S"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Medium"
+msgstr "M"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Large"
+msgstr "L"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "XLarge"
+msgstr "XL"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2XLarge"
+msgstr "2XL"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3XLarge"
+msgstr "3XL"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "S"
+msgstr "S"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "M"
+msgstr "M"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "L"
+msgstr "L"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Sharp"
+msgstr "Ostrý"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Crisp"
+msgstr "Crisp"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Crisp - Accent"
+msgstr "Crisp - Akcentní"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Crisp - Highlight"
+msgstr "Crisp - Zvýrazněný"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Outline"
+msgstr "Obrys"
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Outline - Accent"
+msgstr "Obrys - Akcentní"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Contact"
+msgstr "Kontakt"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Contact - Pools"
+msgstr "Kontakt - Bazény"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Contact - Jacuzzis"
+msgstr "Kontakt - Vířivky"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Contact - Small"
+msgstr "Kontakt - Malý"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Contact - Small - Pools"
+msgstr "Kontakt - Malý - Bazény"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Contact - Small - Jacuzzis"
+msgstr "Kontakt - Malý - Vířivky"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Progress"
+msgstr "Průběh zakázky"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Catalog"
+msgstr "Katalog"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "App"
+msgstr "Aplikace"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Location"
+msgstr "Místo"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Patička"
+
+#~ msgctxt "signature"
+#~ msgid "Opens in a new tab"
+#~ msgstr "Otevře se v nové záložce"
+
+#~ msgid ""
+#~ "You can try filling out the form again, and if the verification fails "
+#~ "again, you can write to our email address. We apologize for the "
+#~ "inconvenience."
+#~ msgstr ""
+#~ "Můžete zkusit formulář vyplnit znovu, a pokud se ověření znovu nezdaří, "
+#~ "můžete napsat na naši e-mailovou adresu. Omlouváme se za nepříjemnosti."
+
+#~ msgid "Affiliate"
+#~ msgstr "Partnerský"
+
+#~ msgid "Inquiry #%s"
+#~ msgstr "Poptávka #%s"
+
+#~ msgctxt "admin"
+#~ msgid "Product Type"
+#~ msgstr "Typ produktu"
+
+#, fuzzy
+#~| msgctxt "type"
+#~| msgid "View Contacts"
+#~ msgctxt "type"
+#~ msgid "View Moduletemplates"
+#~ msgstr "Zobrazit kontakty"
+
+#, fuzzy
+#~| msgctxt "type"
+#~| msgid "Search Contacts"
+#~ msgctxt "type"
+#~ msgid "Search Moduletemplates"
+#~ msgstr "Hledat kontakty"
+
+#, fuzzy
+#~| msgctxt "type"
+#~| msgid "No Contacts Found in Trash"
+#~ msgctxt "type"
+#~ msgid "No Moduletemplates Found in Trash"
+#~ msgstr "Žádné kontakty v koši"
+
+#, fuzzy
+#~| msgctxt "type"
+#~| msgid "Contact Archives"
+#~ msgctxt "type"
+#~ msgid "Moduletemplate Archives"
+#~ msgstr "Archiv kontaktů"
+
+#, fuzzy
+#~| msgctxt "type"
+#~| msgid "Contact Attributes"
+#~ msgctxt "type"
+#~ msgid "Moduletemplate Attributes"
+#~ msgstr "Atributy kontaktu"
+
+#, fuzzy
+#~| msgctxt "type"
+#~| msgid "Request published."
+#~ msgctxt "type"
+#~ msgid "Moduletemplate published."
+#~ msgstr "Žádost uložena."
+
+#, fuzzy
+#~| msgctxt "type"
+#~| msgid "Contact updated."
+#~ msgctxt "type"
+#~ msgid "Moduletemplate updated."
+#~ msgstr "Kontakt aktualizován."
+
+#~ msgid "ID"
+#~ msgstr "IČ"
+
+#~ msgid "ID VAT"
+#~ msgstr "DIČ"
+
+#~ msgid "Continue"
+#~ msgstr "Pokračovat"
+
+#~ msgid "Similar Posts by Tag"
+#~ msgstr "Podobné příspěvky"
+
+#~ msgctxt "anchor"
+#~ msgid "about-us"
+#~ msgstr "o-nas"
+
+#~ msgctxt "anchor"
+#~ msgid "job"
+#~ msgstr "prace"
+
+#~ msgctxt "taxonomy"
+#~ msgid "jobs"
+#~ msgstr "prace"
+
+#~ msgctxt "anchor"
+#~ msgid "product"
+#~ msgstr "produkt"
+
+#~ msgctxt "block style"
+#~ msgid "Plus"
+#~ msgstr "Plus"
+
+#~ msgid "Type"
+#~ msgstr "Typ"
+
+#~ msgctxt "Template part name"
+#~ msgid "Contacts"
+#~ msgstr "Kontakty"
+
+#~ msgid "Fill in the message"
+#~ msgstr "Vyplňte zprávu"
+
+#~ msgid "Have a questions? Don't hesitate to contact us."
+#~ msgstr "Máte dotazy? Neváhejte nás kontaktovat."
+
+#~ msgid ""
+#~ "I&rsquo;ve read and accept the <a href=\"%s\" target=\"_blank\" "
+#~ "rel=\"noopener\">terms and conditions</a>."
+#~ msgstr ""
+#~ "Souhlasím se zpracováním <a href=\"%s\" target=\"_blank\" "
+#~ "rel=\"noopener\">osobních údajů</a>."
+
+#~ msgctxt "admin"
+#~ msgid "Products Page?"
+#~ msgstr "Produktová stránka?"
+
+#~ msgid "Popular Products"
+#~ msgstr "Oblíbené produkty"
+
+#~ msgctxt "pagination"
+#~ msgid "Previous references"
+#~ msgstr "Předchozí reference"
+
+#~ msgctxt "pagination"
+#~ msgid "Next references"
+#~ msgstr "Další reference"
+
+#~ msgid "Next References"
+#~ msgstr "Další reference"
+
+#~ msgid "View more <span class=\"screen-reader-text\">%s products</span>"
+#~ msgstr "Zobrazit více <span class=\"screen-reader-text\">%s produktů</span>"
+
+#~ msgid "Features"
+#~ msgstr "Výhody"
+
+#~ msgctxt "taxonomy"
+#~ msgid "product-category"
+#~ msgstr "kategorie-produktu"
+
+#~ msgctxt "admin"
+#~ msgid "Navigation"
+#~ msgstr "Navigace"
+
+#~ msgid "Back to Form"
+#~ msgstr "Zpět na formulář"
+
+#~ msgid "Back to Home"
+#~ msgstr "Zpět na úvod"
+
+#~ msgid "Reservation #%s"
+#~ msgstr "Rezervace #%s"
+
+#~ msgid "Contact <strong>Us</strong>"
+#~ msgstr "Kontaktujte <strong>nás</strong>"
+
+#~ msgid "Slide content"
+#~ msgstr "Obsah slidu"
+
+#~ msgctxt "lightbox"
+#~ msgid "Toggle Full-screen"
+#~ msgstr "Přepnout na celou obrazovku"
+
+#~ msgctxt "lightbox"
+#~ msgid "Zoom In/Out"
+#~ msgstr "Přiblížit/oddálit"
+
+#~ msgid "Navigation - Footer"
+#~ msgstr "Navigace v patičce"
+
+#~ msgctxt "admin"
+#~ msgid "Reasons"
+#~ msgstr "Důvody"
+
+#~ msgctxt "admin"
+#~ msgid "Avatar"
+#~ msgstr "Profilový obrázek"
+
+#~ msgctxt "admin"
+#~ msgid "Identifier"
+#~ msgstr "Identifikátor"
+
+#~ msgctxt "admin"
+#~ msgid "Position"
+#~ msgstr "Pozice"
+
+#~ msgctxt "admin"
+#~ msgid "Please fill in the job position."
+#~ msgstr "Vyplňte prosím pracovní pozici."
+
+#~ msgctxt "admin"
+#~ msgid "Monthly Commission"
+#~ msgstr "Měsíční provize"
+
+#~ msgctxt "admin"
+#~ msgid "Please fill in the monthly commission rate."
+#~ msgstr "Vyplňte prosím výši měsíční provize."
+
+#~ msgid "All fields are required."
+#~ msgstr "Všechna pole jsou povinná."
+
+#~ msgid "The current password is incorrect."
+#~ msgstr "Aktuální heslo není správné."
+
+#~ msgid ""
+#~ "The password should be at least 8 characters long and contain at least "
+#~ "one capital letter, one number, and one special character (~!@#$%^&*()+)."
+#~ msgstr ""
+#~ "Heslo by mělo mít alespoň 8 znaků a obsahovat alespoň jedno velké "
+#~ "písmeno, jednu číslici a jeden speciální znak (~!@#$%^&*()+)."
+
+#~ msgid "New passwords don't match."
+#~ msgstr "Nová hesla se neshodují."
+
+#~ msgid "Username"
+#~ msgstr "Uživatelské jméno"
+
+#~ msgid "Current Password"
+#~ msgstr "Aktuální heslo"
+
+#~ msgid "Fill in your current password"
+#~ msgstr "Vyplňte aktuální heslo"
+
+#~ msgid "New Password"
+#~ msgstr "Nové heslo"
+
+#~ msgid "Fill in your new password"
+#~ msgstr "Vyplňte nové heslo"
+
+#~ msgid ""
+#~ "At least 8 characters long with a capital letter, number, and special "
+#~ "character!"
+#~ msgstr "Minimálně 8 znaků s velkým písmenem, číslem a speciálním znakem."
+
+#~ msgid "Confirm New Password"
+#~ msgstr "Potvrzení nového hesla"
+
+#~ msgid "Confirm your new password"
+#~ msgstr "Potvrďte nové heslo"
+
+#~ msgid "Change Password"
+#~ msgstr "Změnit heslo"
+
+#~ msgid "Account information has been saved."
+#~ msgstr "Informace o účtu byly uloženy."
+
+#~ msgid "File size is too big."
+#~ msgstr "Velikost souboru je příliš velká."
+
+#~ msgid ""
+#~ "Required image formats are PNG, JPG/JPEG, GIF. <br>Minimum image size is "
+#~ "240x240px. <br>Maximum file size is 2MB."
+#~ msgstr ""
+#~ "Obrázkový formát PNG, JPG/JPEG, GIF. <br>Minimální rozměry 240x240px. "
+#~ "<br>Maximální velikost do 2MB."
+
+#~ msgid "Sign Out"
+#~ msgstr "Odhlásit"
+
+#~ msgid "Surname"
+#~ msgstr "Příjmení"
+
+#~ msgid "Fill in your surname"
+#~ msgstr "Vyplňte vaše příjmení"
+
+#~ msgid "Please, contact us to change your email address!"
+#~ msgstr "Pro změnu emailové adresy nás prosím kontaktujte!"
+
+#~ msgid "Fill in your position"
+#~ msgstr "Vyplňte vaši pracovní pozici"
+
+#~ msgid "Fill in your description"
+#~ msgstr "Vyplňte váš popis"
+
+#~ msgid "Commission Display"
+#~ msgstr "Zobrazení provize"
+
+#~ msgid "Annually"
+#~ msgstr "Roční"
+
+#~ msgid "Monthly"
+#~ msgstr "Měsíční"
+
+#~ msgid "Save Settings"
+#~ msgstr "Uložit nastavení"
+
+#~ msgid "Welcome"
+#~ msgstr "Vítejte"
+
+#~ msgid "Sign In"
+#~ msgstr "Přihlásit se"
+
+#~ msgid "The username or password is incorrect."
+#~ msgstr "Uživatelské jméno nebo heslo není správné."
+
+#~ msgid "The username field cannot be empty."
+#~ msgstr "Pole uživatelského jména nesmí být prázdné."
+
+#~ msgid "The password field cannot be empty."
+#~ msgstr "Pole hesla nesmí být prázdné."
+
+#~ msgid "You are now logged out."
+#~ msgstr "Nyní jste odhlášeni."
+
+#~ msgid "Password"
+#~ msgstr "Heslo"
+
+#~ msgid "Highlighting"
+#~ msgstr "Zvýraznění"
+
+#~ msgid "Highlight category?"
+#~ msgstr "Zvýraznit kategorii?"
+
+#~ msgctxt "anchor"
+#~ msgid "news"
+#~ msgstr "novinky"
+
+#~ msgid "Investment News"
+#~ msgstr "Investiční novinky"
+
+#~ msgid "Month #"
+#~ msgstr "Měsíc"
+
+#~ msgid "Yield"
+#~ msgstr "Výnos"
+
+#~ msgid "Client Yield"
+#~ msgstr "Výnos klienta"
+
+#~ msgid "Partner Commission"
+#~ msgstr "Provize partnera"
+
+#~ msgid "month"
+#~ msgstr "měsíc"
+
+#~ msgid "No data!"
+#~ msgstr "Žádná data!"
+
+#~ msgid "Copyright"
+#~ msgstr "Copyright"
+
+#~ msgid "Yearly Yield"
+#~ msgstr "Roční výnos"
+
+#~ msgid "Emission"
+#~ msgstr "Emise"
+
+#~ msgid "months"
+#~ msgstr "měsíců"
+
+#~ msgid "Client"
+#~ msgstr "Klient"
+
+#~ msgid "Investment"
+#~ msgstr "Investice"
+
+#~ msgid "Duration"
+#~ msgstr "Trvání"
+
+#~ msgid "Monthly Yield"
+#~ msgstr "Měsíční výnos"
+
+#~ msgid "Total Yield"
+#~ msgstr "Celkový výnos"
+
+#~ msgid "Monthly Commission"
+#~ msgstr "Měsíční provize"
+
+#~ msgid "Yearly Commission"
+#~ msgstr "Roční provize"
+
+#~ msgid "Total Commission"
+#~ msgstr "Celková provize"
+
+#~ msgid "Yields"
+#~ msgstr "Výnosy"
+
+#~ msgid "Commissions and Yields"
+#~ msgstr "Provize a výnosy"
+
+#~ msgid "Invested <span>%s</span> out of <span>%s</span>"
+#~ msgstr "Investováno <span>%s</span> z <span>%s</span>"
+
+#~ msgid "Be the first to invest up to <span>%s</span>"
+#~ msgstr "Investujte první až do <span>%s</span>"
+
+#~ msgctxt "investment from"
+#~ msgid "from"
+#~ msgstr "od"
+
+#~ msgctxt "due date in"
+#~ msgid "in"
+#~ msgstr "za"
+
+#~ msgctxt "years"
+#~ msgid "%s year"
+#~ msgid_plural "%s years"
+#~ msgstr[0] "%s rok"
+#~ msgstr[1] "%s roky"
+#~ msgstr[2] "%s let"
+
+#~ msgid "and"
+#~ msgstr "a"
+
+#~ msgctxt "months"
+#~ msgid "%s months"
+#~ msgid_plural "%s months"
+#~ msgstr[0] "%s měsíc"
+#~ msgstr[1] "%s měsíce"
+#~ msgstr[2] "%s měsíců"
+
+#~ msgid "Soon! Hurry up!"
+#~ msgstr "Brzy! Pospěšte si!"
+
+#~ msgid "Calculate Yields"
+#~ msgstr "Spočítat výnosy"
+
+#~ msgid "Save as PDF"
+#~ msgstr "Uložit jako PDF"
+
+#~ msgid "About Project"
+#~ msgstr "O projektu"
+
+#~ msgid "Register"
+#~ msgstr "Registrace"
+
+#~ msgid "Copy"
+#~ msgstr "Kopírovat"
+
+#~ msgid "Copied!"
+#~ msgstr "Zkopírováno!"
+
+#~ msgid "Month"
+#~ msgstr "Měsíc"
+
+#~ msgid "when investing from"
+#~ msgstr "při investici od"
+
+#~ msgctxt "months"
+#~ msgid "Remaining %s month"
+#~ msgid_plural "Remaining %s months"
+#~ msgstr[0] "Zbývá jeden měsíc"
+#~ msgstr[1] "Zbývají %s měsíce"
+#~ msgstr[2] "Zbývá %s měsíců"
+
+#~ msgctxt "anchor"
+#~ msgid "projects"
+#~ msgstr "projekty"
+
+#~ msgid "Latest Projects"
+#~ msgstr "Nejnovější projekty"
+
+#~ msgctxt "type"
+#~ msgid "Projects"
+#~ msgstr "Projekty"
+
+#~ msgctxt "type"
+#~ msgid "Project"
+#~ msgstr "Projekt"
+
+#~ msgid "Scope of business"
+#~ msgstr "Předmět podnikání"
+
+#~ msgid "Ensuring"
+#~ msgstr "Zajištění"
+
+#~ msgid "What will the money be used for?"
+#~ msgstr "Na co budou peníze použity?"
+
+#~ msgid "Results"
+#~ msgstr "Výsledky"
+
+#~ msgid "Project"
+#~ msgstr "Projekt"
+
+#~ msgid "Files"
+#~ msgstr "Soubory"
+
+#~ msgid "File Name"
+#~ msgstr "Název souboru"
+
+#~ msgid "Portal"
+#~ msgstr "Portál"
+
+#~ msgctxt "admin"
+#~ msgid "Anti-inflation Bond?"
+#~ msgstr "Protiinflační dluhopis?"
+
+#~ msgctxt "admin"
+#~ msgid "Target"
+#~ msgstr "Cíl"
+
+#~ msgctxt "admin"
+#~ msgid "Target Amount"
+#~ msgstr "Cílová částka"
+
+#~ msgctxt "admin"
+#~ msgid "[Kč/€]"
+#~ msgstr "[Kč/€]"
+
+#~ msgctxt "admin"
+#~ msgid "Target amount in the project"
+#~ msgstr "Cílová částka v projektu"
+
+#~ msgctxt "admin"
+#~ msgid "Invested"
+#~ msgstr "Ivestováno"
+
+#~ msgctxt "admin"
+#~ msgid "Amount invested in the project"
+#~ msgstr "Částka již investovaná do projektu"
+
+#~ msgctxt "admin"
+#~ msgid "Emission"
+#~ msgstr "Emise"
+
+#~ msgctxt "admin"
+#~ msgid "Due Date"
+#~ msgstr "Splatnost"
+
+#~ msgctxt "admin"
+#~ msgid "Yield"
+#~ msgstr "Výnos"
+
+#~ msgctxt "admin"
+#~ msgid "Minimum [%]"
+#~ msgstr "Minimální [%]"
+
+#~ msgctxt "admin"
+#~ msgid "Minimal yield in percent"
+#~ msgstr "Minimální výnos v procentech"
+
+#~ msgctxt "admin"
+#~ msgid "Minimum From"
+#~ msgstr "Minimální od"
+
+#~ msgctxt "admin"
+#~ msgid "Minimal yield from value"
+#~ msgstr "Minimální výnos od hodnoty"
+
+#~ msgctxt "admin"
+#~ msgid "Maximum [%]"
+#~ msgstr "Maximální [%]"
+
+#~ msgctxt "admin"
+#~ msgid "Maximal yield in percent"
+#~ msgstr "Maximální výnos v procentech"
+
+#~ msgctxt "admin"
+#~ msgid "Maximum From"
+#~ msgstr "Maximální od"
+
+#~ msgctxt "admin"
+#~ msgid "Maximal yield from value"
+#~ msgstr "Maximální výnos od hodnoty"
+
+#~ msgctxt "admin"
+#~ msgid "Investment"
+#~ msgstr "Investice"
+
+#~ msgctxt "admin"
+#~ msgid "Minimum"
+#~ msgstr "Minimální"
+
+#~ msgctxt "admin"
+#~ msgid "Investment from amount"
+#~ msgstr "Investice od částky"
+
+#~ msgctxt "admin"
+#~ msgid "Investment default amount"
+#~ msgstr "Výchozí investice"
+
+#~ msgctxt "admin"
+#~ msgid "Maximum"
+#~ msgstr "Maximální"
+
+#~ msgctxt "admin"
+#~ msgid "Investment to amount"
+#~ msgstr "Investice do částky"
+
+#~ msgctxt "admin"
+#~ msgid "Duration"
+#~ msgstr "Trvání"
+
+#~ msgctxt "admin"
+#~ msgid "[months]"
+#~ msgstr "[měsíce]"
+
+#~ msgctxt "admin"
+#~ msgid "Duration from"
+#~ msgstr "Trvání od"
+
+#~ msgctxt "admin"
+#~ msgid "Duration default value"
+#~ msgstr "Výchozí trvání"
+
+#~ msgctxt "admin"
+#~ msgid "Duration to"
+#~ msgstr "Trvání do"
+
+#~ msgctxt "admin"
+#~ msgid "Fill in the short description"
+#~ msgstr "Vyplňte krátký popis"
+
+#~ msgctxt "taxonomy"
+#~ msgid "Labels"
+#~ msgstr "Štítky"
+
+#~ msgctxt "taxonomy"
+#~ msgid "Label"
+#~ msgstr "Štítek"
+
+#~ msgctxt "taxonomy"
+#~ msgid "All Labels"
+#~ msgstr "Všechny štítky"
+
+#~ msgctxt "taxonomy"
+#~ msgid "Edit Label"
+#~ msgstr "Upravit štítek"
+
+#~ msgctxt "taxonomy"
+#~ msgid "label"
+#~ msgstr "stitek"
+
+#~ msgid "Thank you, your registration request has been sent."
+#~ msgstr "Děkujeme, vaše žádost o registraci byla odeslána."
+
+#~ msgid "We will contact you as soon as possible."
+#~ msgstr "Budeme vás co nejdříve kontaktovat."
+
+#~ msgid "Request Registration"
+#~ msgstr "Žádost o registraci"
+
+#~ msgctxt "type"
+#~ msgid "Requests"
+#~ msgstr "Žádosti"
+
+#~ msgctxt "type"
+#~ msgid "Request"
+#~ msgstr "Žádost"
+
+#~ msgctxt "type"
+#~ msgid "Add Request"
+#~ msgstr "Přidat žádost"
+
+#~ msgctxt "type"
+#~ msgid "New Request"
+#~ msgstr "Nová žádost"
+
+#~ msgctxt "type"
+#~ msgid "No Requests"
+#~ msgstr "Žádné žádosti"
+
+#~ msgctxt "type"
+#~ msgid "request"
+#~ msgstr "zadost"
+
+#~ msgid "Request"
+#~ msgstr "Žádost"
+
+#~ msgid "Projects"
+#~ msgstr "Projekty"
+
+#~ msgid "User - Change Password"
+#~ msgstr "Uživatel - Změna hesla"
+
+#~ msgid "Log in first to manage your account!"
+#~ msgstr "Nejdříve se přihlašte pro správu vašeho účtu!"
+
+#~ msgid "User - Sign Up"
+#~ msgstr "Uživatel - Registrace"
+
+#~ msgid "User"
+#~ msgstr "Uživatel"
+
+#~ msgid "Investment to the"
+#~ msgstr "Investice do"
+
+#~ msgid "czech"
+#~ msgstr "českých"
+
+#~ msgid "companies"
+#~ msgstr "firem"
+
+#~ msgid "Commission"
+#~ msgstr "Provize"
+
+#~ msgid "End Client Mode"
+#~ msgstr "Ukončit klientský mód"
+
+#~ msgid "Client Mode"
+#~ msgstr "Klientský mód"
+
+#~ msgid "Manage Account"
+#~ msgstr "Správa účtu"
+
+#~ msgctxt "Color name"
+#~ msgid "Base"
+#~ msgstr "Základní"
+
+#~ msgid "Monthly commissions and yields"
+#~ msgstr "Měsíční provize a výnosy"
+
+#~ msgid "Anti-inflation bond"
+#~ msgstr "Protiinflační dluhopis"
+
+#~ msgid "Administrator"
+#~ msgstr "Administrátor"
+
+#~ msgid "Antiinflation Bond"
+#~ msgstr "Protiinflační dluhopis"
+
+#~ msgid "Due date in"
+#~ msgstr "Splatnost za"
+
+#~ msgid "Soon"
+#~ msgstr "Brzy"
+
+#~ msgid "Investment from"
+#~ msgstr "Investice od"
+
+#~ msgid "Remaining"
+#~ msgstr "Zbývá"
+
+#~ msgctxt "Space size name"
+#~ msgid "XXXLarge"
+#~ msgstr "3XL"
+
+#~ msgctxt "admin"
+#~ msgid "Commission"
+#~ msgstr "Provize"

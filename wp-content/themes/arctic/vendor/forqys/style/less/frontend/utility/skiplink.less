@@ -1,0 +1,38 @@
+//
+// Skiplink
+//
+
+.@{prefix-s}-skiplink {
+  position: absolute;
+  top: 0;
+  left: -10000px;
+
+  // Focus
+  &:focus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: var(--a--spacing--xxs) var(--a--spacing);
+    z-index: var(--a--layer--top);
+
+    text-align: center;
+
+    color: var(--a--color);
+    background-color: var(--a--color--background);
+    border-radius: 0;
+    outline-offset: 0;
+    .shadow();
+
+    transition: none;
+
+    // Admin Bar
+    .admin-bar & {
+      top: 32px;
+
+      @media (max-width: 782px) {
+        top: 46px;
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+//
+// Swiper - Effects
+//
+
+// Fade
+
+.swiper-fade {
+
+  .swiper-slide {
+    pointer-events: none;
+    transition-property: opacity;
+
+    .swiper-slide {
+      pointer-events: none;
+    }
+  }
+
+  // Free Mode
+  &.swiper-free-mode {
+    .swiper-slide {
+      transition-timing-function: ease-out;
+    }
+  }
+
+  // Active
+  .swiper-slide-active {
+    &, & .swiper-slide-active {
+      pointer-events: auto;
+    }
+  }
+}
+
+// Creative
+
+.swiper-creative {
+
+  .swiper-slide {
+    overflow: hidden;
+    backface-visibility: hidden;
+    transition-property: transform, opacity, z-index;
+  }
+}

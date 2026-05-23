@@ -1,0 +1,20 @@
+// All - Enabled
+
+body.off-all--enabled {
+
+  // Trigger
+  .@{prefix}-off__trigger {
+    .off-trigger();
+  }
+}
+
+.@{prefix}-off {
+  &:where([data-off-breakpoint='all']) {
+    .off();
+
+    // Active
+    &:where(.active) {
+      .off--active();
+    }
+  }
+}

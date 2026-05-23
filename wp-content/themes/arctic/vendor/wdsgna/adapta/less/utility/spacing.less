@@ -1,0 +1,113 @@
+//
+// Utility - Spacing
+//
+
+// Padding
+
+.@{prefix}-p {
+  .spacing--padding();
+
+  &--0 {
+    --spacing: var(--a--spacing--0);
+  }
+
+  &--xxs {
+    --spacing: var(--a--spacing--xxs);
+  }
+
+  &--xs {
+    --spacing: var(--a--spacing--xs);
+  }
+
+  &--s {
+    --spacing: var(--a--spacing--s);
+  }
+
+  &--m {
+    --spacing: var(--a--spacing);
+  }
+
+  &--l {
+    --spacing: var(--a--spacing--l);
+  }
+
+  &--xl {
+    --spacing: var(--a--spacing--xl);
+  }
+
+  &--xxl {
+    --spacing: var(--a--spacing--xxl);
+  }
+}
+
+// Margin
+
+.@{prefix}-m {
+  .spacing--margin();
+
+  &--0 {
+    --spacing: var(--a--spacing--0);
+  }
+
+  &--xxs {
+    --spacing: var(--a--spacing--xxs);
+  }
+
+  &--xs {
+    --spacing: var(--a--spacing--xs);
+  }
+
+  &--s {
+    --spacing: var(--a--spacing--s);
+  }
+
+  &--m {
+    --spacing: var(--a--spacing);
+  }
+
+  &--l {
+    --spacing: var(--a--spacing--l);
+  }
+
+  &--xl {
+    --spacing: var(--a--spacing--xl);
+  }
+
+  &--xxl {
+    --spacing: var(--a--spacing--xxl);
+  }
+}
+
+// Margin - Negative
+
+.@{prefix}-mn {
+  .spacing--margin(calc(var(--a--spacing) * -1));
+
+  &--xxs {
+    --spacing: calc(var(--a--spacing--xxs) * -1);
+  }
+
+  &--xs {
+    --spacing: calc(var(--a--spacing--xs) * -1);
+  }
+
+  &--s {
+    --spacing: calc(var(--a--spacing--s) * -1);
+  }
+
+  &--m {
+    --spacing: calc(var(--a--spacing) * -1);
+  }
+
+  &--l {
+    --spacing: calc(var(--a--spacing--l) * -1);
+  }
+
+  &--xl {
+    --spacing: calc(var(--a--spacing--xl) * -1);
+  }
+
+  &--xxl {
+    --spacing: calc(var(--a--spacing--xxl) * -1);
+  }
+}

@@ -1,0 +1,87 @@
+// Admin Metabox
+
+.@{prefix-s}-metabox {
+
+}
+
+// Field
+
+.@{prefix-s}-metabox__field {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+// Label
+
+.@{prefix-s}-metabox__label {
+  display: inline-block;
+  min-width: 20%;
+
+  label {
+    font-weight: bold;
+    user-select: none;
+
+    &:not([for]) {
+      cursor: default;
+    }
+  }
+}
+
+// Input
+
+.@{prefix-s}-metabox__input {
+  label {
+    display: block;
+    user-select: none;
+
+    + input {
+      margin-top: 0.25rem;
+    }
+  }
+
+  input {
+
+    &:not([type='checkbox'], [type='radio'], [type='button']) {
+      min-width: 16rem;
+    }
+
+    &.number {
+      padding-right: 0;
+    }
+  }
+
+  textarea {
+    display: block;
+    width: 100%;
+
+    min-height: 6rem;
+
+    line-height: 1.5;
+  }
+}
+
+.@{prefix-s}-metabox__input--textarea {
+  flex-grow: 1;
+}
+
+.@{prefix-s}-metabox__input-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+// Content
+
+.@{prefix-s}-metabox__content {
+  display: flex;
+  gap: 2rem;
+}

@@ -1,0 +1,99 @@
+//
+// Utility - Image - Resize - Position
+//
+
+// Start / Top
+
+:where(.@{prefix}-image--start-top) {
+  img {
+	object-position: left top;
+
+	[dir='rtl'] & {
+	  object-position: right top;
+	}
+  }
+}
+
+// Center / Top
+
+:where(.@{prefix}-image--center-top) {
+  img {
+	object-position: center top;
+  }
+}
+
+// End / Top
+
+:where(.@{prefix}-image--end-top) {
+  img {
+	object-position: right top;
+
+	[dir='rtl'] & {
+	  object-position: left top;
+	}
+  }
+}
+
+// Start / Center
+
+:where(.@{prefix}-image--start-center) {
+  img {
+	object-position: left center;
+
+	[dir='rtl'] & {
+	  object-position: right center;
+	}
+  }
+}
+
+// Center / Center
+
+:where(.@{prefix}-image--center-center) {
+  img {
+	object-position: center center;
+  }
+}
+
+// End / Center
+
+:where(.@{prefix}-image--end-center) {
+  img {
+	object-position: right center;
+
+	[dir='rtl'] & {
+	  object-position: left center;
+	}
+  }
+}
+
+// Start / Bottom
+
+:where(.@{prefix}-image--start-bottom) {
+  img {
+	object-position: left bottom;
+
+	[dir='rtl'] & {
+	  object-position: right bottom;
+	}
+  }
+}
+
+// Center / Bottom
+
+:where(.@{prefix}-image--center-bottom) {
+  img {
+	object-position: center bottom;
+  }
+}
+
+// End / Bottom
+
+:where(.@{prefix}-image--end-bottom) {
+  img {
+	object-position: right bottom;
+
+	[dir='rtl'] & {
+	  object-position: left bottom;
+	}
+  }
+}

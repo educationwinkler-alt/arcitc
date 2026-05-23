@@ -1,0 +1,26 @@
+//
+// Common - Form - Fieldset
+//
+
+fieldset {
+  // Default Properties
+  //--fieldset--spacing--v: var(--a--spacing--m);
+
+  padding: 0;
+  margin: 0;
+  border: none;
+
+  // ! Last
+  &:not(:last-of-type) {
+    margin: 0 0 var(--fieldset--spacing--v, var(--a--spacing--m));
+  }
+
+  > ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  > p {
+    --p--spacing: var(--a--spacing--s);
+  }
+}

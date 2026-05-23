@@ -1,0 +1,72 @@
+//
+// Common - Form - Label
+//
+
+label {
+  // Default Properties
+  //--label--color: var(--a--label--color, var(--a--color));
+
+  font-family: var(--a--label--font-family, sans-serif);
+  font-size: var(--a--label--font-size, var(--a--font-size--l));
+  font-weight: var(--a--label--font-weight, normal);
+  letter-spacing: var(--a--label--letter-spacing, 0);
+  text-transform: var(--a--label--text-transform, none);
+  line-height: var(--a--line-height--xs);
+
+  color: var(--label--color, var(--a--label--color, var(--a--color)));
+
+  vertical-align: middle;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  .transition-property(~'color');
+  .transition-duration();
+  .transition-timing-function();
+
+  // Next
+  + label {
+	padding-inline-start: var(--a--spacing--s);
+  }
+
+  // Small
+
+  small {
+	display: block;
+	font-size: var(--a--font-size--xs);
+	opacity: 75%;
+  }
+
+  // Abbreviation
+
+  abbr[title] {
+	vertical-align: super;
+	font-size: ~'min(var(--a--label--font-size, var(--a--font-size--l)), var(--a--font-size))';
+	text-decoration-color: transparent;
+  }
+
+  // Focus
+  &:focus-within:not(:has([disabled], [readonly])):not([class*='button']) {
+	--label--color: var(--a--label--color--active, var(--a--color--accent));
+  }
+
+  // Field within the label
+
+  :is(input:not([type='checkbox'], [type='radio'])),
+  :is(select, textarea, progress) {
+	margin-top: var(--a--label--spacing, var(--a--spacing--xxxs));
+  }
+
+  // Field adjacent to the label
+
+  + :is(input, select, textarea, progress) {
+	margin-top: var(--a--label--spacing, var(--a--spacing--xxxs));
+  }
+
+  // Field adjacent to the label hint
+
+  + small {
+	+ :is(input, select, textarea, progress) {
+	  margin-top: var(--a--label--spacing, var(--a--spacing--xxxs));
+	}
+  }
+}

@@ -1,0 +1,15 @@
+// Details Block
+
+.wp-block-details {
+  padding: 0;
+  overflow: unset;
+
+  > :not(summary) {
+    margin-block-start: 0;
+  }
+
+  // Next
+  + .wp-block-details {
+    margin-block-start: calc(var(--spacing) / 2 * -1);
+  }
+}

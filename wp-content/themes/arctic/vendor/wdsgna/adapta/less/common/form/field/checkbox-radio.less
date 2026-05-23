@@ -1,0 +1,81 @@
+//
+// Common - Form - Field - Checkbox/Radio
+//
+
+[type='checkbox'],
+[type='radio'] {
+  // Default Properties
+  //--field--checkbox-radio--color: transparent;
+  //--field--checkbox-radio--size: var(--a--field--checkbox-radio--size, 1.25rem));
+
+  position: relative;
+  flex-shrink: 0;
+  width: var(--field--checkbox-radio--size, var(--a--field--checkbox-radio--size, 1.25rem));
+  height: var(--field--checkbox-radio--size, var(--a--field--checkbox-radio--size, 1.25rem));
+  margin-inline-start: 0;
+  margin-inline-end: var(--a--spacing--xxs);
+
+  font-size: var(--field--checkbox-radio--size, var(--a--field--checkbox-radio--size, 1.25rem));
+  vertical-align: middle;
+  cursor: pointer;
+
+  background-position: center;
+
+  // Adjacent Label
+  + label {
+	vertical-align: middle;
+
+	+ [type='checkbox'],
+	+ [type='radio'] {
+	  margin-inline-start: var(--a--spacing--xxs);
+	}
+  }
+
+  // Active
+  &:focus {
+
+	// Adjacent Label
+	+ label {
+	  --label--color: var(--a--label--color--active, var(--a--color--accent));
+	}
+  }
+}
+
+// Checkbox/Radio within the Label
+
+label {
+
+  > :where([type='checkbox'], [type='radio']) {
+	top: -0.05em;
+  }
+}
+
+//
+// Checkbox
+//
+
+[type='checkbox'] {
+  background-image: linear-gradient(to right, var(--field--checkbox-radio--color, transparent), var(--field--checkbox-radio--color, transparent));
+  background-size: 0.5rem 0.5rem;
+  border-radius: ~'min(var(--a--field--border-radius, var(--a--border--radius)), 2px)';
+
+  &:checked {
+	--field--checkbox-radio--color: var(--a--field--border-color--active, var(--a--color));
+  }
+}
+
+//
+// Radio
+//
+
+[type='radio'] {
+  border-radius: 50%;
+  margin-bottom: 3px; // Add default margin as has [type='checkbox']
+
+  background-image: radial-gradient(closest-side, var(--field--checkbox-radio--color, transparent) 94%, transparent 100%);
+  background-size: 0.5rem 0.5rem;
+
+  &:checked {
+	--field--checkbox-radio--color: var(--a--field--border-color--active, var(--a--color));
+  }
+}

@@ -1,0 +1,151 @@
+// Off Mixins
+
+.off () {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(100%, 0, 0);
+
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  width: var(--off--width, 100%);
+  min-width: var(--off--width-min, 320px);
+  height: 100vh;
+  @supports (min-height: 100dvh) {
+    height: 100dvh;
+  }
+  z-index: var(--off--z-index, 190);
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  // ! Render Hidden Off
+  //content-visibility: hidden;
+
+  // Momentum Scroll
+  -webkit-overflow-scrolling: touch;
+
+  // Overscroll
+  @supports (overscroll-behavior-y: contain) {
+    overscroll-behavior-y: contain;
+  }
+
+  transition-property: opacity, box-shadow;
+  transition-duration: var(--off--transition--duration);
+  transition-timing-function: var(--off--transition--timing-function);
+
+  // Position
+  // Right Position [default]
+
+  &:where([data-off-position]) {
+    opacity: 1;
+
+    transition-property: transform, box-shadow;
+    transition-duration: var(--off--transition--duration);
+    transition-timing-function: var(--off--transition--timing-function);
+
+    // Close
+
+    .@{prefix}-off__close {
+      opacity: 1;
+    }
+  }
+
+  // Top Position
+
+  &:where([data-off-position='top']) {
+    top: 0;
+    bottom: auto;
+    height: auto;
+    min-height: auto;
+    transform: translate3d(0, -100%, 0);
+  }
+
+  // Right Position
+
+  &:where([data-off-position='right']) {
+    right: 0;
+    left: auto;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  // Bottom Position
+
+  &:where([data-off-position='bottom']) {
+    top: auto;
+    bottom: 0;
+    height: auto;
+    min-height: auto;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  // Left Position
+
+  &:where([data-off-position='left']) {
+    right: auto;
+    left: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  // Horizontal Position
+  &:where([data-off-position='right']),
+  &:where([data-off-position='left']) {
+    width: var(--off--width, 80%);
+    max-width: var(--off--width-max, 480px);
+  }
+}
+
+// Active
+
+.off--active () {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+
+  transition-duration: calc(var(--off--transition--duration) / 2), var(--off--transition--duration); // Faster 'opacity'
+
+  // Render Active Off
+  //content-visibility: visible;
+
+  &:where([data-off-position]) {
+    transition-duration: var(--off--transition--duration);
+  }
+
+  // Closing
+  &:is(.closing) {
+    opacity: 0;
+  }
+
+  // Closing Position
+  &:is(.closing[data-off-position]) {
+    opacity: 1;
+  }
+
+  // Closing Top Position
+  &:is(.closing[data-off-position='top']) {
+    transform: translate3d(0, -100%, 0);
+  }
+
+  // Closing Right Position
+  &:is(.closing[data-off-position='right']) {
+    transform: translate3d(100%, 0, 0);
+  }
+
+  // Closing Bottom Position
+  &:is(.closing[data-off-position='bottom']) {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  // Closing Left Position
+  &:is(.closing[data-off-position='left']) {
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  // Close Button
+
+  .@{prefix}-off__close {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}

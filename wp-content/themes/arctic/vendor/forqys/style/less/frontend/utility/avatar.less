@@ -1,0 +1,63 @@
+//
+// Avatar
+//
+
+.@{prefix-s}-avatar {
+  --avatar--size: var(--f--avatar--size, 40px);
+  --avatar--border-width: var(--a--border--width--l);
+  --avatar--border-color: currentColor;
+
+  position: relative;
+  display: inline-flex;
+  place-content: center;
+  margin: 0;
+  overflow: hidden;
+
+  width: var(--avatar--size);
+  height: var(--avatar--size);
+
+  border-radius: 50%;
+  box-shadow: 0 0 0 var(--avatar--border-width) var(--avatar--border-color);
+
+  img {
+    width: var(--avatar--size);
+    height: var(--avatar--size);
+    border-radius: inherit;
+  }
+
+  // Placeholder
+  &--placeholder {
+    border: none;
+
+    svg {
+      width: inherit;
+      height: inherit;
+
+      [stroke-width] {
+        stroke-width: 1px;
+      }
+    }
+  }
+
+  // Sizes
+
+  // S
+  &--s {
+    --avatar--size: calc(var(--f--avatar--size, 40px) / 2);
+  }
+
+  // L
+  &--l {
+    --avatar--size: calc(var(--f--avatar--size, 40px) * 1.5);
+  }
+
+  // XL
+  &--xl {
+    --avatar--size: calc(var(--f--avatar--size, 40px) * 2);
+  }
+
+  // XXL
+  &--xxl {
+    --avatar--size: calc(var(--f--avatar--size, 40px) * 3);
+  }
+}

@@ -1,0 +1,13 @@
+//
+// Utility - Form
+//
+
+// Field
+
+.@{prefix}-field {
+
+  // Active within
+  &:is(:focus-within:not(:has([disabled])):not(:has([readonly]))) {
+	--label--color: var(--a--label--color--active, var(--a--color--accent));
+  }
+}

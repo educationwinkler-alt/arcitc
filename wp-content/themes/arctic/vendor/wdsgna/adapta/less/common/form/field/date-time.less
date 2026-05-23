@@ -1,0 +1,64 @@
+//
+// Common - Form - Field - Date/Time
+//
+
+[type='date'],
+[type='time'],
+[type='month'],
+[type='week'],
+[type='datetime-local'] {
+  height: calc(var(--field--line-height, var(--a--field--line-height)) + (var(--a--field--spacing--vertical, 0.625rem) * 2) + (var(--a--field--border-width) * 2));
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button,
+  &::-webkit-clear-button {
+	margin: 0;
+	appearance: none;
+  }
+
+  // Icon
+  &::-webkit-calendar-picker-indicator {
+	padding: 0;
+	cursor: pointer;
+  }
+}
+
+[type='date'],
+[type='month'],
+[type='week'],
+[type='datetime-local'] {
+  // Default Properties
+  //--field--icon--color: var(--a--field--color, var(--a--color));
+
+  // Icon
+  &::-webkit-calendar-picker-indicator {
+	width: 18px;
+	height: 16px;
+
+	background-image: linear-gradient(to bottom, transparent 8px, var(--field--icon--color, var(--a--field--color, var(--a--color))) 8px, var(--field--icon--color, var(--a--field--color, var(--a--color))) 10px, transparent 10px), // separator
+	linear-gradient(to right, var(--field--icon--color, var(--a--field--color, var(--a--color))), var(--field--icon--color, var(--a--field--color, var(--a--color)))); // day
+
+	background-size: 18px 16px, 4px 4px, 14px 12px, 18px 16px;
+	background-position: 0 -4px, 10px 8px, top 2px left 2px, 0 0;
+	border-radius: calc(var(--a--field--border-radius, var(--a--border--radius)) / 2);
+	box-shadow: inset 0 0 0 2px var(--field--icon--color, var(--a--field--color, var(--a--color)));
+  }
+}
+
+[type='time'] {
+  --field--icon--color: var(--a--field--color, var(--a--color));
+
+  // Icon
+  &::-webkit-calendar-picker-indicator {
+	width: 14px;
+	height: 14px;
+
+	background-image: linear-gradient(to bottom, var(--field--icon--color), var(--field--icon--color)), // hour hand
+	linear-gradient(to right, var(--field--icon--color), var(--field--icon--color)); // minute hand
+
+	background-size: 6px 2px, 2px 6px;
+	background-position: 6px 6px, 6px 2px;
+	border-radius: 50%;
+	box-shadow: 0 0 0 2px var(--field--icon--color);
+  }
+}

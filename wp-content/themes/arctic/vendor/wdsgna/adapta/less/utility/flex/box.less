@@ -1,0 +1,59 @@
+//
+// Utility - Flex - Box
+//
+
+[class*='@{prefix}-flex__box'] {
+  // Default Properties
+  //--box--spacing: var(--a--spacing);
+
+  display: block;
+  padding: var(--box--spacing, var(--a--spacing));
+}
+
+// Spacing
+
+.@{prefix}-flex__box {
+
+  &--0 {
+    --box--spacing: 0;
+  }
+
+  &--1 {
+    --box--spacing: var(--a--spacing--1);
+  }
+
+  &--xxs {
+    --box--spacing: var(--a--spacing--xxs);
+  }
+
+  &--xs {
+    --box--spacing: var(--a--spacing--xs);
+  }
+
+  &--s {
+    --box--spacing: var(--a--spacing--s);
+  }
+
+  &--m {
+    --box--spacing: var(--a--spacing);
+  }
+
+  &--l {
+    --box--spacing: var(--a--spacing--l);
+
+    @media (max-width: @breakpoint-s--max) {
+      --box--spacing: var(--a--spacing);
+    }
+  }
+
+  &--xl {
+    --box--spacing: var(--a--spacing--xl);
+
+    @media (max-width: @breakpoint-s--max) {
+      --box--spacing: var(--a--spacing--l);
+    }
+    @media (max-width: @breakpoint-xs--max) {
+      --box--spacing: var(--a--spacing);
+    }
+  }
+}

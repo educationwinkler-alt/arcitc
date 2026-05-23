@@ -1,0 +1,99 @@
+# Arctic Spas 2
+
+Oddeleny pracovni prostor pro novou WordPress realizaci webu Arctic Spas.
+
+Referencni slozky mimo tento adresar se nemaji upravovat:
+
+- `../Arctic-spas/` - puvodni Arctic web, archiv obsahu a assetu
+- `../baspa.cz/` - technicka reference WordPressu a zdroj pro fork tematu
+- `../drive-download-20260523T082002Z-3-001.zip` - doplnkove podklady od klienta
+
+Veskere nove soubory, upravy sablony, importery, dokumentace a staging konfigurace patri sem.
+
+## Navrzena struktura
+
+- `wp-content/themes/arctic/` - nove WordPress tema
+- `tools/` - crawlery, importery a pomocne skripty
+- `docs/` - migracni mapy, exporty z Figmy, SEO/redirect podklady
+- `assets-source/` - vybrane zdrojove assety pred importem do WordPressu
+
+Aktualni rozbalene zdroje:
+
+- `assets-source/figma/` - kopie `.fig` souboru
+- `assets-source/owner-info/` - rozbaleny archiv s marketingovym briefem, PDF a fotkami
+- `wp-content/themes/arctic/src/less/` - Arctic CSS build vrstva pro Figma tokeny a rebrand
+
+Aktualni stav:
+
+- `wp-content/themes/arctic/` - zalozeny fork Baspa theme
+- `docs/theme-fork-status.md` - stav a pravidla prvniho forku
+- `docs/end-to-end-implementation-plan.md` - souvisly implementacni plan od lokalniho prostredi po launch
+- `docs/figma-tokens.md` - aktualni mapovani Figma/Arctic tokenu do CSS vrstvy
+- `wp-content/mu-plugins/arctic-redirects.php` - prvni redirect vrstva pro stare `.php` URL
+- `wp-content/themes/arctic/tools/seed-pilot-content.php` - opakovatelny seed obsahu, produktu, menu a nastaveni
+
+## Lokalni WordPress
+
+Docker Compose stack:
+
+- WordPress: `http://localhost:8090`
+- Adminer: `http://localhost:8091`
+- DB host v Admineru: `db`
+- DB/user/password: `wordpress` / `wordpress` / `wordpress`
+
+Pomocne prikazy:
+
+- `powershell -ExecutionPolicy Bypass -File tools/wp-local.ps1 start`
+- `powershell -ExecutionPolicy Bypass -File tools/wp-local.ps1 install`
+- `powershell -ExecutionPolicy Bypass -File tools/wp-local.ps1 status`
+- `powershell -ExecutionPolicy Bypass -File tools/wp-local.ps1 stop`
+
+Lokalni bezpecnost:
+
+- `wp-content/mu-plugins/arctic-local-safety.php` blokuje odchozi WordPress HTTP requesty mimo localhost.
+- V local rezimu se neodesilaji e-maily.
+- Ecomail integrace se v local rezimu nevola.
+- V local rezimu se nenacitaji Google/Fontshare fonty, tracking preconnecty, Smartsupp ani Google mapa.
+- WP-CLI i webovy kontejner jsou nastavene na `WP_ENVIRONMENT_TYPE=local`.
+
+Admin:
+
+- URL: `http://localhost:8090/wp-admin/`
+- Lokalni ucet: `admin` / `admin`
+
+Frontend je seednuty minimalnim, ale pruchodnym obsahem:
+
+- homepage se slide/hero obsahem podle Figma HP passu,
+- Figma/Baspa visual pass pro homepage header, hero, CTA banner a dve hlavni kategorie,
+- Figma/Baspa visual pass pro katalog virivek podle frame `KATEGORIE`,
+- Figma/Baspa visual pass pro detail produktu Lunar podle frame `DETAIL KONKRETNIHO PRODUKTU`,
+- Figma/Baspa visual pass pro `Podpora` a `Kontakt` vcetne lokalni mapove nahrady bez externiho embedu,
+- vlastni Arctic footer podle Figma logiky s rychlym kontaktem a bez puvodniho Baspa block-template vystupu,
+- kategorie `Vířivky`, `Celoroční bazény`, `Další sortiment`,
+- 28 publikovanych produktu celkem,
+- 22 aktivnich produktu z crawlu a `Covana` jako kontrolni sirsi sortiment,
+- detailnejsi piloty `Lunar`, `Orion`, `Husky`, `Covana`,
+- sirsi sortiment `Luxusni sauny`, `Koupaci sudy Kirami`, `Prislusenstvi a doplnky`, `IKONO nabytek`, `Ochlazovaci bazenek`,
+- 26 dostupnych PDF dokumentu z crawlu ve `download` CPT,
+- `Podpora`, `Ke stazeni`, `Showroom`, `Kontakt`,
+- menu v hlavni navigaci podle Figma grafiky, horni liste a paticce.
+
+## CSS build
+
+Instalace zavislosti:
+
+- `npm install`
+
+Build Arctic CSS:
+
+- `npm run css:build`
+
+Watch rezim:
+
+- `npm run css:watch`
+
+Vizualni smoke test hlavnich cest:
+
+- `npm run visual:smoke`
+
+Smoke test zahrnuje homepage, katalog virivek, swimspa, dalsi sortiment, produktove detaily, showroom, podporu, downloady a kontakt. Soucasne kontroluje zakazane externi requesty v prohlizeci, horizontalni overflow na desktopu i mobilu a uklada Playwright screenshoty hlavnich Figma stranek.

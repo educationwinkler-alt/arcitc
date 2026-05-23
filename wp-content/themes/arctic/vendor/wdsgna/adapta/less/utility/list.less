@@ -1,0 +1,76 @@
+//
+// Utility - List
+//
+
+.@{prefix}-list {
+  margin-bottom: var(--a--spacing);
+  list-style-type: square;
+
+  // Nested
+
+  :where(ul) {
+	list-style-type: inherit;
+  }
+
+  :where(ul, ol) {
+	padding: var(--a--spacing--xxs) 0;
+	margin-inline-start: var(--a--spacing--s);
+  }
+
+  //
+  // Type
+  //
+
+  // Ordered
+  &--o {
+	margin-bottom: var(--a--spacing);
+	list-style-type: decimal;
+
+	// Nested
+
+	ol {
+	  list-style-type: lower-alpha;
+
+	  ol {
+		list-style-type: lower-alpha;
+	  }
+	}
+  }
+
+  // Inline
+  &--inline {
+	display: inline-flex;
+	padding-inline-start: 0;
+	gap: var(--gap--col, var(--a--spacing--s));
+
+	list-style: none;
+
+	> li {
+	  display: inline-block;
+	}
+  }
+
+  //
+  // Style
+  //
+
+  // None
+  &--none {
+	list-style-type: none;
+  }
+
+  // Square
+  &--square {
+	list-style-type: square;
+  }
+
+  // Circle
+  &--circle {
+	list-style-type: circle;
+  }
+
+  // Disc
+  &--disc {
+	list-style-type: disc;
+  }
+}

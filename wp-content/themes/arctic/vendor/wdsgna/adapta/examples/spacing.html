@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html id="top" lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="color-scheme" content="light dark">
+
+    <title>Adapta &mdash; Example &mdash; Spacing</title>
+
+    <!--    <link rel="stylesheet" href="../dist/adapta.css">-->
+    <script>
+        // Prevent cache of the Adapta CSS file
+        document.write('<link href="../dist/adapta-skin--default.css?' + Math.random() + '" rel="stylesheet">');
+        document.write('<link href="../dist/adapta.css?' + Math.random() + '" rel="stylesheet">');
+    </script>
+
+    <style>
+        main {
+            padding: 0 0 calc(var(--a--spacing) * 2) 0;
+        }
+
+        .a-stack [class*='a-'] {
+            color: var(--a--color--background);
+            background-color: var(--a--color);
+        }
+
+        .a-stack--margin-negative > * {
+            padding: var(--a--spacing);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="a-flex a-gap--0" style="position: sticky; top: 0; z-index: 1;">
+    <div class="a-flex__item--auto">
+        <button id="theme-toggle" style="width: 100%; border-radius: 0">
+            Toggle Scheme
+        </button>
+    </div>
+    <div class="a-flex__item--auto">
+        <button id="dir-toggle" style="width: 100%; border-radius: 0">
+            Toggle Dir
+        </button>
+    </div>
+</div>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", function () {
+        document.documentElement.classList.toggle("scheme-dark");
+    });
+    document.getElementById("dir-toggle").addEventListener("click", function () {
+        if (document.documentElement.getAttribute("dir") === "ltr") {
+            document.documentElement.setAttribute("dir", "rtl");
+        } else {
+            document.documentElement.setAttribute("dir", "ltr");
+        }
+    });
+</script>
+
+<div class="a-container">
+    <h1>Spacing</h1>
+
+    <main>
+
+        <h2>Padding</h2>
+
+        <div class="a-stack a-stack--xs">
+            <div class="a-p a-p--xs">Padding</div>
+            <div class="a-p-x">Padding X</div>
+            <div class="a-p-y">Padding Y</div>
+            <div class="a-p-t">Padding Top</div>
+            <div class="a-p-r" style="text-align: right">Padding Right</div>
+            <div class="a-p-b">Padding Bottom</div>
+            <div class="a-p-l">Padding Left</div>
+        </div>
+
+        <h2>Margin</h2>
+
+        <div class="a-stack a-stack--xs">
+            <div>
+                <div class="a-m">Margin</div>
+            </div>
+            <div>
+                <div class="a-m-x">Margin X</div>
+            </div>
+            <div>
+                <div class="a-m-y">Margin Y</div>
+            </div>
+            <div>
+                <div class="a-m-t">Margin Top</div>
+            </div>
+            <div>
+                <div class="a-m-r" style="text-align: right">Margin Right</div>
+            </div>
+            <div>
+                <div class="a-m-b">Margin Bottom</div>
+            </div>
+            <div>
+                <div class="a-m-l">Margin Left</div>
+            </div>
+        </div>
+
+        <h2>Margin - Negative</h2>
+
+        <div class="a-stack a-stack--xs a-stack--margin-negative">
+            <div>
+                <div class="a-mn">Margin</div>
+            </div>
+            <div>
+                <div class="a-mn-x">Margin X</div>
+            </div>
+            <div>
+                <div class="a-mn-y">Margin Y</div>
+            </div>
+            <div>
+                <div class="a-mn-t">Margin Top</div>
+            </div>
+            <div>
+                <div class="a-mn-r" style="text-align: right">Margin Right</div>
+            </div>
+            <div>
+                <div class="a-mn-b">Margin Bottom</div>
+            </div>
+            <div>
+                <div class="a-mn-l">Margin Left</div>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+</body>
+</html>

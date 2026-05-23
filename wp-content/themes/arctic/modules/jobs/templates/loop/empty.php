@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Empty Loop
+ */
+
+?>
+
+<div class="f-loop--empty f-alert a-alert" role="alert">
+	<?php echo esc_html__( 'Unfortunately, we currently have no job openings.', 'baspa' ); ?>
+</div>

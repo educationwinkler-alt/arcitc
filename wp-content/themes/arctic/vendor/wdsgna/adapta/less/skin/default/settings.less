@@ -1,0 +1,231 @@
+//
+// Skin - Default - Settings
+//
+
+:root {
+
+  //
+  // Color
+  //
+
+  // Light
+  --a--color--light: #fff;
+  --a--color--light-rgb: 255, 255, 255;
+  // Dark
+  --a--color--dark: #0a0f19;
+  --a--color--dark-rgb: 10, 15, 25;
+
+  // Shadow
+  --a--color--shadow-rgb: var(--a--color--dark-rgb);
+
+  //
+  // Typography
+  //
+
+  // Family
+  --a--font-family--primary: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
+  --a--font-family--secondary: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
+
+  // Size
+  --a--font-size--base: 16px;
+  --a--font-size: 1rem;
+
+  // Settings
+  --a--font-weight: 400;
+  --a--letter-spacing: 0;
+  --a--text-transform: none;
+  --a--line-height: 1.7;
+
+  //
+  // Transition
+  //
+
+  --a--transition--duration: 0.25s;
+  --a--transition--timing-function: ease-in-out;
+
+  @media (prefers-reduced-motion: reduce) {
+	--a--transition--duration: 0s;
+  }
+
+  //
+  // Spacing
+  //
+
+  --a--spacing: 2.5rem;
+
+  //
+  // Border
+  //
+
+  --a--border--width: 1px;
+  --a--border--radius: 3px;
+
+  //
+  // Outline
+  //
+
+  --a--outline--width: 2px;
+  --a--outline--style: solid;
+  --a--outline--offset: var(--a--outline--width);
+
+  //
+  // Heading
+  //
+
+  --a--heading--font-family: var(--a--font-family--primary, sans-serif);
+  --a--heading--font-scale: 1.2; // 1.067, 1.125, 1.2, 1.25, 1.333, 1.414, 1.5, 1.618
+  --a--heading--font-size: 1rem;
+  --a--heading--font-weight: 700;
+  --a--heading--line-height: calc(2ex + .1em);
+  --a--heading--letter-spacing: 0;
+  --a--heading--text-transform: none;
+
+  //
+  // Form
+  //
+
+  // Label
+  --a--label--font-family: var(--a--font-family--primary);
+  --a--label--font-size: var(--a--font-size--l);
+  --a--label--font-weight: var(--a--font-weight);
+  --a--label--letter-spacing: var(--a--letter-spacing);
+  --a--label--text-transform: var(--a--text-transform);
+
+  --a--label--color: var(--a--color);
+  --a--label--color--active: var(--a--color--accent);
+
+  // Field
+  --a--field--font-size: var(--a--font-size);
+  --a--field--line-height: 1.5rem;
+
+  --a--field--spacing--vertical: 0.625rem;
+  --a--field--spacing--horizontal: 1.250rem;
+
+  --a--field--spacing--outer: var(--a--spacing);
+
+  --a--field--color: rgba(var(--a--color-rgb), 1);
+  --a--field--color--active: var(--a--color);
+
+  --a--field--background-color: inherit;
+  --a--field--background-color--active: inherit;
+  --a--field--background-color--readonly: rgba(var(--a--color-rgb), 0.05);
+
+  --a--field--border-width: var(--a--border--width);
+  --a--field--border-radius: var(--a--border--radius);
+  --a--field--border-color: rgba(var(--a--color-rgb), 0.4);
+  --a--field--border-color--active: rgba(var(--a--color--accent-rgb), 1);
+
+  --a--field--shadow-width: 3px;
+  --a--field--shadow: none;
+  --a--field--shadow--active: 0 0 0 var(--a--field--shadow-width) rgba(var(--a--color--accent-rgb), 0.3);
+  --a--field--shadow--valid: 0 0 0 var(--a--field--shadow-width) rgba(var(--a--color--success-rgb), 0.3);
+  --a--field--shadow--invalid: 0 0 0 var(--a--field--shadow-width) rgba(var(--a--color--error-rgb), 0.3);
+
+  --a--field--placeholder--color: rgba(var(--a--color-rgb), 60%);
+  --a--field--placeholder--color--active: var(--a--color);
+
+  --a--field--checkbox-radio--size: 1.25rem;
+  --a--field--range-thumb--size: 1.5rem;
+
+  //
+  // Button
+  //
+
+  --a--button--spacing--vertical: var(--a--spacing--xxs);
+  --a--button--spacing--horizontal: var(--a--spacing--m);
+
+  --a--button--font-family: var(--a--font-family--primary, sans-serif);
+  --a--button--font-size: 1rem;
+  --a--button--font-weight: 700;
+  --a--button--letter-spacing: 0;
+  --a--button--text-transform: none;
+  --a--button--line-height: 1.5rem;
+
+  --a--button--border-width: var(--a--field--border-width, var(--a--border--width));
+  --a--button--border-radius: var(--a--border--radius);
+
+  // Default
+  --a--button--color: rgba(var(--a--color--contrast-rgb), 1);
+  --a--button--color--active: rgba(var(--a--color--contrast-rgb), 1);
+
+  --a--button--background-color: rgba(var(--a--color-rgb), 1);
+  --a--button--background-color--active: rgba(var(--a--color--accent-rgb), 1);
+
+  --a--button--border-color: transparent;
+  --a--button--border-color--active: transparent;
+
+  --a--button--shadow-width: 3px;
+  --a--button--shadow: 0 0 0 0 transparent;
+  --a--button--shadow--active: 0 0 0 var(--a--button--shadow-width) rgba(var(--a--color--accent-rgb), 0.3);
+
+  // Accent
+  --a--button--accent--color: rgba(var(--a--color--contrast-rgb), 1);
+  --a--button--accent--color--active: rgba(var(--a--color--contrast-rgb), 1);
+
+  --a--button--accent--background-color: rgba(var(--a--color--accent-rgb), 1);
+  --a--button--accent--background-color--active: rgba(var(--a--color--highlight-rgb), 1);
+
+  --a--button--accent--border-color: transparent;
+  --a--button--accent--border-color--active: transparent;
+
+  --a--button--accent--shadow-width: 3px;
+  --a--button--accent--shadow: 0 0 0 0 transparent;
+  --a--button--accent--shadow--active: 0 0 0 var(--a--button--accent--shadow-width) rgba(var(--a--color--highlight-rgb), 0.3);
+
+  // Highlight
+  --a--button--highlight--color: rgba(var(--a--color--contrast-rgb), 1);
+  --a--button--highlight--color--active: rgba(var(--a--color--contrast-rgb), 1);
+
+  --a--button--highlight--background-color: rgba(var(--a--color--highlight-rgb), 1);
+  --a--button--highlight--background-color--active: rgba(var(--a--color--accent-rgb), 1);
+
+  --a--button--highlight--border-color: transparent;
+  --a--button--highlight--border-color--active: transparent;
+
+  --a--button--highlight--shadow-width: 3px;
+  --a--button--highlight--shadow: 0 0 0 0 transparent;
+  --a--button--highlight--shadow--active: 0 0 0 var(--a--button--highlight--shadow-width) rgba(var(--a--color--accent-rgb), 0.3);
+
+  // Contrast
+  --a--button--contrast--color: rgba(var(--a--color-rgb), 1);
+  --a--button--contrast--color--active: rgba(var(--a--color--contrast-rgb), 1);
+
+  --a--button--contrast--background-color: rgba(var(--a--color--contrast-rgb), 1);
+  --a--button--contrast--background-color--active: rgba(var(--a--color-rgb), 1);
+
+  --a--button--contrast--border-color: transparent;
+  --a--button--contrast--border-color--active: transparent;
+
+  --a--button--contrast--shadow-width: 3px;
+  --a--button--contrast--shadow: 0 0 0 0 transparent;
+  --a--button--contrast--shadow--active: 0 0 0 var(--a--button--contrast--shadow-width) rgba(var(--a--color-rgb), 0.3);
+
+  // Outline
+  --a--button--outline--color: rgba(var(--a--color-rgb), 0.75);
+  --a--button--outline--color--active: rgba(var(--a--color-rgb), 1);
+
+  --a--button--outline--background-color: transparent;
+  --a--button--outline--background-color--active: transparent;
+
+  --a--button--outline--border-color: rgba(var(--a--color-rgb), 0.5);
+  --a--button--outline--border-color--active: rgba(var(--a--color-rgb), 1);
+
+  --a--button--outline--shadow-width: 3px;
+  --a--button--outline--shadow: 0 0 0 0 transparent;
+  --a--button--outline--shadow--active: 0 0 0 var(--a--button--outline--shadow-width) rgba(var(--a--color-rgb), 0.2);
+
+  //
+  // Progress
+  //
+
+  --a--progress--size: 0.75rem;
+  --a--progress--color: rgba(var(--a--color--accent-rgb), 1);
+  --a--progress--color-background: rgba(var(--a--color-rgb), 10%);
+
+  //
+  // Anchor
+  //
+
+  --a--anchor--gutter: var(--a--spacing--xl);
+
+}

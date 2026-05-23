@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html id="top" lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <!--    <meta name="color-scheme" content="light dark">-->
+
+    <title>Adapta &mdash; Example &mdash; Content</title>
+
+    <!--    <link rel="stylesheet" href="../dist/adapta.css">-->
+    <script>
+        // Prevent cache of the Adapta CSS file
+        document.write('<link href="../dist/adapta-skin--default.css?' + Math.random() + '" rel="stylesheet">');
+        document.write('<link href="../dist/adapta.css?' + Math.random() + '" rel="stylesheet">');
+    </script>
+
+    <style>
+        main {
+            padding: 0 0 calc(var(--a--spacing) * 2);
+        }
+
+        .a-stack--color > * {
+            /*color: var(--a--color-background);*/
+            border: var(--a--border--width) solid var(--a--color);
+            background-color: var(--a--color--background);
+        }
+
+        .a-flex__box {
+            /*color: var(--a--color-background);*/
+            /*background-color: var(--a--color-accent);*/
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="a-flex a-gap--0" style="position: sticky; top: 0; z-index: 1;">
+    <div class="a-flex__item--auto">
+        <button id="theme-toggle" style="width: 100%; border-radius: 0">
+            Toggle Scheme
+        </button>
+    </div>
+    <div class="a-flex__item--auto">
+        <button id="dir-toggle" style="width: 100%; border-radius: 0">
+            Toggle Dir
+        </button>
+    </div>
+</div>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", function () {
+        document.documentElement.classList.toggle("scheme-dark");
+    });
+    document.getElementById("dir-toggle").addEventListener("click", function () {
+        if (document.documentElement.getAttribute("dir") === "ltr") {
+            document.documentElement.setAttribute("dir", "rtl");
+        } else {
+            document.documentElement.setAttribute("dir", "ltr");
+        }
+    });
+</script>
+
+<div class="a-container">
+
+    <main>
+
+        <h1 style="font-size: var(--a--heading--title--font-size--l--fluid);">Heading Title L <small>Subheading</small></h1>
+        <h1 style="font-size: var(--a--heading--title--font-size--m--fluid);">Heading Title M <small>Subheading</small></h1>
+
+        <h1>Heading 1 <small>Subheading</small></h1>
+        <p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing</a> elit, sed do eiusmod tempor incididunt ut
+            labore et dolore
+            <mark>magna aliqua</mark>
+            . Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+            dolore eu
+            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit
+            anim id est laborum.
+        </p>
+        <h2>Heading 2 <small>Subheading</small></h2>
+        <h3>Heading 3 <small>Subheading</small></h3>
+        <h4>Heading 4 <small>Subheading</small></h4>
+        <h5>Heading 5 <small>Subheading</small></h5>
+        <h6>Heading 6 <small>Subheading</small></h6>
+
+        <h2>Content</h2>
+        <p>Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.</p>
+        <p>Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.</p>
+        <p>Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.</p>
+
+        <blockquote class="a-shadow">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
+            <cite>John McQueen</cite>
+        </blockquote>
+
+        <ul>
+            <li>List item 01</li>
+            <li>List item 02</li>
+            <li>List item 03</li>
+        </ul>
+
+        <ol>
+            <li>List item 01</li>
+            <li>List item 02</li>
+            <li>List item 03</li>
+        </ol>
+
+        <details class="a-shadow--xl" open>
+            <summary>
+                Details/Summary
+            </summary>
+
+            <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.
+            </div>
+        </details>
+
+        <details>
+            <summary>
+                Details/Summary
+            </summary>
+
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+            ex ea commodo consequat.
+        </details>
+
+        <details>
+            <summary>
+                Details/Summary
+            </summary>
+
+            <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.
+            </div>
+        </details>
+
+        <h2>Code</h2>
+
+        <pre>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</pre>
+
+        <pre><code>display: block;
+
+white-space: pre;
+word-break: break-all;
+word-wrap: break-word;
+overflow-wrap: break-word;
+overflow-x: auto;
+
+text-align: start;</code></pre>
+
+        <h2>Table</h2>
+
+        <figure>
+            <table>
+                <thead>
+                <tr>
+                    <th>Heading</th>
+                    <th>Heading</th>
+                    <th>Heading</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><a href="#">Link</a></td>
+                    <td><strong>Bold</strong></td>
+                    <td><em>Italic</em></td>
+                </tr>
+                <tr>
+                    <td><u>Underline</u></td>
+                    <td>
+                        <del>Deleted</del>
+                    </td>
+                    <td>
+                        <ins>Inserted</ins>
+                    </td>
+                </tr>
+                <tr>
+                    <td><s>Strikethrough</s></td>
+                    <td><small>Small </small></td>
+                    <td><abbr title="Abbreviation" data-tooltip="Abbreviation">Abbr.</abbr></td>
+                </tr>
+                <tr>
+                    <td>Text <sub>Sub</sub></td>
+                    <td>Text <sup>Sup</sup></td>
+                    <td><kbd>Kbd</kbd></td>
+                </tr>
+                <tr>
+                    <td>
+                        <mark>Highlighted</mark>
+                    </td>
+                    <td><code>Code</code></td>
+                    <td><code><a href="#">Code Link</a></code></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td>Footer</td>
+                    <td>Footer</td>
+                    <td>Footer</td>
+                </tr>
+                </tfoot>
+            </table>
+        </figure>
+
+        <section class="scheme-dark" data-scheme="dark">
+
+            <header>
+                <h2>Section</h2>
+            </header>
+
+            <figure>
+                <table role="grid" aria-labelledby="id-select-your-seat">
+                    <caption id="id-select-your-seat">Select your seat</caption>
+                    <tbody role="presentation">
+                    <tr role="presentation">
+                        <td></td>
+                        <th>Row A</th>
+                        <th>Row B</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Aisle 1</th>
+                        <td>
+                            <button id="1a" tabindex="-1">1A</button>
+                        </td>
+                        <td>
+                            <button id="1b" tabindex="-1">1B</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Aisle 2</th>
+                        <td>
+                            <button id="2a" tabindex="-1">2A</button>
+                        </td>
+                        <td>
+                            <button id="2b" tabindex="-1">2B</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Aisle 3</th>
+                        <td>
+                            <button id="3a" tabindex="-1">2A</button>
+                        </td>
+                        <td>
+                            <button id="3b" tabindex="-1">2B</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </figure>
+        </section>
+
+        <h2>Image</h2>
+
+        <div class="a-flex">
+            <div class="a-flex__item--auto">
+                <figure class="a-image--portrait-2-3 a-image--cover">
+                    <img src="https://images.unsplash.com/photo-1638864615951-360884c3a277?w=1064&q=80" alt="Image"
+                         loading="lazy">
+                    <figcaption>Caption</figcaption>
+                </figure>
+            </div>
+            <div class="a-flex__item--auto">
+                <figure class="a-image--portrait-9-16 a-image--cover">
+                    <img src="https://images.unsplash.com/photo-1638864616275-9f0b291a2eb6?w=1064&q=80" alt="Image"
+                         loading="lazy">
+                    <figcaption>Caption</figcaption>
+                </figure>
+            </div>
+            <div class="a-flex__item--auto">
+                <figure class="a-image--square a-image--cover">
+                    <img src="https://images.unsplash.com/photo-1638864616271-04a85f133205?w=1064&q=80" alt="Image"
+                         loading="lazy">
+                    <figcaption>Caption</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <h2>Badge</h2>
+        <div class="a-stack--horizontal a-stack--vertical:xs a-gap--xxs">
+            <span class="a-badge">Badge</span>
+            <span class="a-badge--reverse">Badge - Reverse</span>
+            <span class="a-badge--accent">Badge - Accent</span>
+            <span class="a-badge--success">Badge - Success</span>
+            <span class="a-badge--error">Badge - Error</span>
+        </div>
+
+        <h2>Alert</h2>
+
+        <div class="a-alert" role="alert">
+            <h5>Alert <span class="a-badge">Badge</span></h5>
+            <p>Alert content.</p>
+            <div class="a-stack--horizontal a-gap--xs">
+                <a href="#">Link</a>
+                <a href="#">Link</a>
+            </div>
+        </div>
+
+        <div class="a-alert--accent" role="alert">
+            <h5>Alert</h5>
+            <p>Alert content.</p>
+            <a href="#">Link</a>
+        </div>
+
+        <div class="a-alert--success" role="alert">
+            <h5>Alert</h5>
+            <p>Alert content.</p>
+        </div>
+
+        <div class="a-alert--error" role="alert">
+            <h5>Alert</h5>
+            <p>Alert content.</p>
+        </div>
+
+        <h2>Button</h2>
+
+        <p class="a-buttons a-gap--0">
+            <a href="#" class="a-button">Button</a>
+            <a href="#" class="a-button">Button</a>
+            <a href="#" class="a-button">Button</a>
+            <a href="#" class="a-button">
+                Button
+                <svg class="icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <polygon class="shape"
+                             points="18.5,7.6 17.8,8.3 21.5,12 5,12 5,13 21.5,13 17.8,16.7 18.5,17.4 23.4,12.5"></polygon>
+                </svg>
+            </a>
+        </p>
+
+        <p class="a-buttons a-gap--1">
+            <a href="#" class="a-button">Button</a>
+            <a href="#" class="a-button">Button</a>
+            <a href="#" class="a-button">Button</a>
+            <a href="#" class="a-button a-button--link">Button</a>
+            <a href="#" class="a-button a-button--xlarge">
+                Button
+                <svg class="icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <polygon class="shape"
+                             points="18.5,7.6 17.8,8.3 21.5,12 5,12 5,13 21.5,13 17.8,16.7 18.5,17.4 23.4,12.5"></polygon>
+                </svg>
+            </a>
+        </p>
+
+        <p class="a-buttons">
+            <a href="#" class="a-button a-button--small">Button - Small</a>
+            <a href="#" class="a-button">Button</a>
+            <a href="#" class="a-button a-button--l">Button - Large</a>
+            <a href="#" class="a-button a-button--xl">Button - XLarge</a>
+        </p>
+
+        <label for="progress-1">Progress without Value</label>
+        <progress id="progress-1" max="100" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></progress>
+
+        <label for="progress-2">Progress</label>
+        <progress id="progress-2" value="50" max="100" aria-valuenow="50" aria-valuemin="0"
+                  aria-valuemax="100"></progress>
+
+        <label>
+            Progress within Label
+            <progress value="75" max="100" aria-valuenow=75" aria-valuemin="0" aria-valuemax="100">75%</progress>
+        </label>
+
+        <p>Heat the oven to
+            <meter min="200" max="500" value="100">100 degrees</meter>
+            .
+        </p>
+        <p>Heat the oven to
+            <meter min="200" max="500" value="200">200 degrees</meter>
+            .
+        </p>
+        <p>Heat the oven to
+            <meter min="200" max="500" value="300">300 degrees</meter>
+            .
+        </p>
+        <p>Heat the oven to
+            <meter min="200" max="500" value="400">400 degrees</meter>
+            .
+        </p>
+        <p>Heat the oven to
+            <meter min="200" max="500" value="500">500 degrees</meter>
+            .
+        </p>
+
+        <div class="a-flex a-gap--s">
+            <div class="a-flex__item--100">
+                <div class="a-flex__box a-shadow--xxs">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip.
+                </div>
+            </div>
+            <div class="a-flex__item--auto">
+                <div class="a-flex__box a-shadow--l">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip.
+                </div>
+            </div>
+            <div class="a-flex__item--auto">
+                <div class="a-flex__box a-shadow--inset">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip.
+                </div>
+            </div>
+        </div>
+
+        <div class="a-flex a-stack">
+            <div class="a-flex__item--100">
+                <div class="a-flex__box a-shadow--reversed a-shadow--xxs">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip.
+                </div>
+            </div>
+            <div class="a-flex__item--auto">
+                <div class="a-flex__box a-shadow--l">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip.
+                </div>
+            </div>
+            <div class="a-flex__item--auto">
+                <div class="a-flex__box a-shadow--inset a-shadow--xxs">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip.
+                </div>
+            </div>
+        </div>
+
+        <div class="a-stack">
+            <div class="a-p a-shadow--xxs">Shadow XXS</div>
+            <div class="a-p a-shadow--xs">Shadow XS</div>
+            <div class="a-p a-shadow--s">Shadow S</div>
+            <div class="a-p a-shadow--m" style="--shadow-color: rgba(255,0,0,0.1);">Shadow M</div>
+            <div class="a-p a-shadow--l">Shadow L</div>
+            <div class="a-p a-shadow--xl">Shadow XL</div>
+            <div class="a-p a-m--b-xxl a-shadow--xxl">Shadow XXL</div>
+        </div>
+
+        <div class="a-stack a-stack--color">
+            <div class="a-p a-shadow--xxs a-shadow--sharp">Shadow XXS</div>
+            <div class="a-p a-shadow--xs a-shadow--sharp" style="--shadow-color: blue;">Shadow XS</div>
+            <div class="a-p a-shadow--s a-shadow--sharp">Shadow S</div>
+            <div class="a-p a-shadow--m a-shadow--sharp">Shadow M</div>
+        </div>
+
+        <div class="a-stack a-stack--color">
+            <div class="a-p a-shadow--xxs a-shadow--outline">Shadow XXS</div>
+            <div class="a-p a-shadow--xs a-shadow--outline" style="--shadow-color: blue;">Shadow XS</div>
+            <div class="a-p a-shadow--s a-shadow--outline">Shadow S</div>
+            <div class="a-p a-shadow--m a-shadow--outline">Shadow M</div>
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

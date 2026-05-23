@@ -1,0 +1,57 @@
+//
+// Breadcrumbs
+//
+
+.@{prefix-s}-breadcrumbs {
+  --breadcrumbs--gap: var(--a--spacing--xxs);
+
+  position: relative;
+  line-height: var(--a--line-height--xs);
+
+  ol {
+	display: flex;
+	align-items: baseline;
+	gap: var(--breadcrumbs--gap);
+	padding: 0;
+	margin: 0;
+
+	overflow-x: auto;
+
+	.scrollbar--thin();
+
+	@media (max-width: @breakpoint-xs--max) {
+	  font-size: var(--a--font-size--xs);
+	}
+  }
+
+  li {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--breadcrumbs--gap);
+	padding: 0;
+
+	white-space: nowrap;
+  }
+
+  a {
+	padding: 0;
+	margin: 0;
+
+	text-decoration: revert;
+	text-decoration-color: transparent;
+	line-height: inherit;
+
+	&:where([aria-current]):not(:hover, :focus) {
+	  --link--color: inherit;
+	}
+
+	&:where(:hover, :focus) {
+	  text-decoration-color: currentColor;
+	}
+  }
+
+  // Separator
+  &__separator {
+	line-height: inherit;
+  }
+}

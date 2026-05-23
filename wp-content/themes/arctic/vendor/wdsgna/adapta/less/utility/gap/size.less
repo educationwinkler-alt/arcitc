@@ -1,0 +1,83 @@
+//
+// Utility - Gap - Size
+//
+
+@gap--sizes: 0, 1, xxxs, xxs, xs, s, m, l, xl, xxl, xxxl;
+.gap--sizes(@gap--sizes);
+.gap--sizes--row(@gap--sizes);
+.gap--sizes--col(@gap--sizes);
+
+// Min +
+
+.media-min(min, {
+
+  .gap--sizes(@gap--sizes, '\:min');
+  .gap--sizes--row(@gap--sizes; '\:min');
+  .gap--sizes--col(@gap--sizes; '\:min');
+
+});
+
+// XSmall +
+
+.media-min(xs, {
+
+  .gap--sizes(@gap--sizes, '\:xs');
+  .gap--sizes--row(@gap--sizes; '\:xs');
+  .gap--sizes--col(@gap--sizes; '\:xs');
+
+});
+
+// Small +
+
+.media-min(s, {
+
+  .gap--sizes(@gap--sizes, '\:s');
+  .gap--sizes--row(@gap--sizes; '\:s');
+  .gap--sizes--col(@gap--sizes; '\:s');
+
+});
+
+// Medium +
+
+.media-min(m, {
+
+  .gap--sizes(@gap--sizes, '\:m');
+  .gap--sizes--row(@gap--sizes; '\:m');
+  .gap--sizes--col(@gap--sizes; '\:m');
+
+});
+
+// Large +
+
+.media-min(l, {
+
+  .gap--sizes(@gap--sizes, '\:l');
+  .gap--sizes--row(@gap--sizes; '\:l');
+  .gap--sizes--col(@gap--sizes; '\:l');
+
+});
+
+// XLarge +
+
+.media-min(xl, {
+
+  .gap--sizes(@gap--sizes, '\:xl');
+  .gap--sizes--row(@gap--sizes; '\:xl');
+  .gap--sizes--col(@gap--sizes; '\:xl');
+
+});
+
+// XL | XXL | XXXL
+
+:is(.@{prefix}-gap--xl, .@{prefix}-gap--xxl, .@{prefix}-gap--xxxl) {
+
+  @media (max-width: @breakpoint-s--max) {
+    --gap--col: var(--a--spacing--m);
+    --gap--row: var(--a--spacing--m);
+  }
+
+  @media (max-width: @breakpoint-m--max) {
+    --gap--col: var(--a--spacing--l);
+    --gap--row: var(--a--spacing--l);
+  }
+}

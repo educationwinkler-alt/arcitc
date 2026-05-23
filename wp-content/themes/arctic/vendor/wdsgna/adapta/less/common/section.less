@@ -1,0 +1,14 @@
+//
+// Common - Section
+//
+
+section {
+  // Default Properties
+  //--section--spacing: var(--a--spacing--m);
+
+  padding-block: var(--section--spacing, var(--a--spacing--m));
+
+  :where(header) {
+	margin-block-end: ~'max(var(--section--spacing--inner, var(--section--spacing, var(--a--spacing--m)), var(--a--spacing--s)))';
+  }
+}

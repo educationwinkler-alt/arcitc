@@ -1,0 +1,36 @@
+// SVG
+
+svg {
+
+  // Icon
+  &.icon {
+
+    [stroke]:not([stroke='none']) {
+      stroke: currentColor;
+    }
+
+    [fill]:not([fill='none']) {
+      fill: currentColor;
+    }
+
+    // Accent
+
+    .accent {
+      color: var(--a--color--accent);
+    }
+
+    // Highlight
+
+    .highlight {
+      color: var(--a--color--highlight);
+    }
+  }
+
+  // Definitions
+  &.defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+}

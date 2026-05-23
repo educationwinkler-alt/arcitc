@@ -1,0 +1,47 @@
+{
+  "name": "adapta",
+  "description": "A CSS framework for rapid web development. No dependencies. No javascript.",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "keywords": [
+    "adapta",
+    "adapta ui",
+    "css",
+    "css3",
+    "less",
+    "less css",
+    "ui",
+    "ui framework",
+    "css framework",
+    "html",
+    "html5",
+    "no-js",
+    "front-end",
+    "back-end",
+    "responsive",
+    "layout",
+    "flex",
+    "flexbox",
+    "form",
+    "theme",
+    "web"
+  ],
+  "authors": [
+    "Pavel Richter <pavelrich@gmail.com> (https://pavelrichter.cz/)"
+  ],
+  "main": [
+    "dist/adapta.css"
+  ],
+  "ignore": [
+    "bin/",
+    "vendor/",
+    "node_modules/",
+    ".directory",
+    ".gitignore",
+    ".gitattributes",
+    "composer.lock",
+    "package-lock.json",
+    "adapta.zip"
+  ]
+}

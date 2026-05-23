@@ -1,0 +1,22 @@
+//
+// Common - Form - Field - Textarea
+//
+
+textarea {
+  display: block;
+
+  line-height: var(--a--line-height--s);
+
+  .field-textarea--resizable(vertical);
+  .scrollbar--thin();
+
+  // ! Rows
+  &:where(:not([rows])) {
+	max-height: 50vh;
+	min-height: 7lh;
+  }
+
+  &::-webkit-input-placeholder {
+	line-height: var(--field--linhe-height, var(--a--field--line-height));
+  }
+}

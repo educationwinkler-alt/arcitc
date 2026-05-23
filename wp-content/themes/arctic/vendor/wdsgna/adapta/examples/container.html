@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html id="top" lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <!--    <meta name="color-scheme" content="light dark">-->
+
+    <title>Adapta &mdash; Example &mdash; Container</title>
+
+    <!--    <link rel="stylesheet" href="../dist/adapta.css">-->
+    <script>
+        // Prevent cache of the Adapta CSS file
+        document.write('<link href="../dist/adapta-skin--default.css?' + Math.random() + '" rel="stylesheet">');
+        document.write('<link href="../dist/adapta.css?' + Math.random() + '" rel="stylesheet">');
+    </script>
+
+    <style>
+        main {
+            padding: 0 0 calc(var(--a--spacing) * 2);
+        }
+
+        .a-stack--color > * {
+            /*color: var(--a--color-background);*/
+            border: var(--a--border--width) solid var(--a--color);
+            background-color: var(--a--color--background);
+        }
+
+        .a-flex__box {
+            /*color: var(--a--color-background);*/
+            /*background-color: var(--a--color-accent);*/
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="a-flex a-gap--0" style="position: sticky; top: 0; z-index: 1;">
+    <div class="a-flex__item--auto">
+        <button id="theme-toggle" style="width: 100%; border-radius: 0">
+            Toggle Scheme
+        </button>
+    </div>
+    <div class="a-flex__item--auto">
+        <button id="dir-toggle" style="width: 100%; border-radius: 0">
+            Toggle Dir
+        </button>
+    </div>
+</div>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", function () {
+        document.documentElement.classList.toggle("scheme-dark");
+    });
+    document.getElementById("dir-toggle").addEventListener("click", function () {
+        if (document.documentElement.getAttribute("dir") === "ltr") {
+            document.documentElement.setAttribute("dir", "rtl");
+        } else {
+            document.documentElement.setAttribute("dir", "ltr");
+        }
+    });
+</script>
+
+<div class="a-container"
+     style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: indianred">
+    Default
+</div>
+<div class="a-container--wide"
+     style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: indianred">
+    Wide
+</div>
+<div class="a-container--full"
+     style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: indianred">
+    Full
+</div>
+<div class="a-container--75"
+     style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: indianred">
+    75%
+</div>
+<div class="a-container--50"
+     style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: indianred">
+    50%
+</div>
+
+<div class="a-container"
+     style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: indianred">
+    Default
+    <br><br>
+
+    <div class="a-container--wide"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - Wide
+    </div>
+    <div class="a-container--full"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - Full
+    </div>
+    <div class="a-container"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested
+    </div>
+    <div class="a-container--75"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - 75%
+    </div>
+    <div class="a-container--50"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - 50%
+    </div>
+</div>
+
+<div class="a-container--full"
+     style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: indianred">
+    Default - Full
+    <br><br>
+
+    <div class="a-container--wide"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - Wide
+    </div>
+    <div class="a-container--full"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - Full
+    </div>
+    <div class="a-container"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested
+    </div>
+    <div class="a-container--75"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - 75%
+    </div>
+    <div class="a-container--50"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - 50%
+    </div>
+</div>
+
+<div class="a-container--wide"
+     style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: indianred">
+    Default - Wide
+    <br><br>
+
+    <div class="a-container--wide"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - Wide
+    </div>
+    <div class="a-container--full"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - Full
+    </div>
+    <div class="a-container"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested
+    </div>
+    <div class="a-container--75"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - 75%
+    </div>
+    <div class="a-container--50"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - 50%
+    </div>
+</div>
+
+<div class="a-container a-container--75"
+     style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: indianred">
+    Default - 75%
+    <br><br>
+
+    <div class="a-container--wide"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - Wide
+    </div>
+    <div class="a-container--full"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - Full
+    </div>
+    <div class="a-container"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested
+    </div>
+    <div class="a-container--75"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - 75%
+    </div>
+    <div class="a-container--50"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - 50%
+    </div>
+</div>
+
+<div class="a-container--50"
+     style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: indianred">
+    Default - 50%
+    <br><br>
+
+    <div class="a-container--wide"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - Wide
+    </div>
+    <div class="a-container--full"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - Full
+    </div>
+    <div class="a-container"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested
+    </div>
+    <div class="a-container--75"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - 75%
+    </div>
+    <div class="a-container--50"
+         style="padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 5px; color: white; background-color: coral">
+        Nested - 50%
+    </div>
+</div>
+
+</body>
+</html>

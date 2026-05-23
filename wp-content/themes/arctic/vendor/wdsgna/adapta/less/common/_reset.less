@@ -1,0 +1,95 @@
+//
+// Common - Reset
+//
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+}
+
+body, figure, blockquote, dl, dd, pre {
+  margin: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+// =====
+// Media
+// =====
+
+audio,
+video,
+canvas,
+iframe,
+img,
+svg,
+progress {
+  vertical-align: middle;
+}
+
+audio {
+  &:not([controls]) {
+    display: none;
+    height: 0;
+  }
+}
+
+iframe {
+  border: none;
+}
+
+// =====
+// Form
+// =====
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+select {
+  text-transform: none;
+}
+
+textarea {
+  overflow: auto;
+  white-space: revert;
+}
+
+[type='file'] {
+  height: auto;
+}
+
+// Search
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+// Increment/Decrement Button
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+// Upload Button
+::-webkit-file-upload-button {
+  font: inherit;
+}
+
+// Unset Firefox Inner Border and Padding
+::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+// Unset Firefox Additional ':invalid' Styles
+:-moz-ui-invalid {
+  box-shadow: none;
+}

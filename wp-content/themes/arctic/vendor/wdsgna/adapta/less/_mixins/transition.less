@@ -1,0 +1,27 @@
+//
+// Mixins - Transition
+//
+
+.transition (@-property: all, @-duration: var(--a--transition--duration, 0.25s), @-timing-function: var(--a--transition--timing-function, ease-in-out), @-delay: 0s) { // none | <transition-property> <transition-duration> <transition-timing-function> <transition-delay>
+  transition: @arguments;
+}
+
+.transition-property (@-property: all) { // <property> | all | none
+  transition-property: @-property;
+}
+
+.transition-duration (@-duration: var(--a--transition--duration, 0.25s)) { // <time>
+  transition-duration: @-duration;
+}
+
+.transition-timing-function (@-timing-function: var(--a--transition--timing-function, ease-in-out)) { // ease | linear | ease-in | ease-out | ease-in-out | <cubic-bezier(n,n,n,n)>
+  transition-timing-function: @-timing-function;
+}
+
+.transition-delay (@-delay: 0s) { // <time>
+  transition-delay: @-delay;
+}
+
+.transition-transform (@-transitions) { // <transition-duration> <transition-timing-function>, <next-transitions>
+  transition: transform @-transitions;
+}

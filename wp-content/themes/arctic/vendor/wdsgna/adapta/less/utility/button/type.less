@@ -1,0 +1,103 @@
+//
+// Utility - Button - Type
+//
+
+.@{prefix}-button {
+
+  // Primary
+  &--primary {
+	.button--primary();
+  }
+
+  // Secondary
+  &--secondary {
+	.button--secondary();
+  }
+
+  // Accent
+  &--accent {
+	.button--accent();
+  }
+
+  // Highlight
+  &--highlight {
+	.button--highlight();
+  }
+
+  // Contrast
+  &--contrast {
+	.button--contrast();
+  }
+
+  // Outline
+  &--outline {
+	.button--outline();
+
+	// Accent
+	&.@{prefix}-button--accent {
+	  &:not(:hover, :focus) {
+		--button--color: var(--a--color--accent);
+		--button--border-color: currentColor;
+	  }
+	}
+
+	// Highlight
+	&.@{prefix}-button--highlight {
+	  &:not(:hover, :focus) {
+		--button--color: var(--a--color--highlight);
+		--button--border-color: currentColor;
+	  }
+	}
+
+	// Contrast
+	&.@{prefix}-button--contrast {
+	  &:not(:hover, :focus) {
+		--button--color: var(--a--color--contrast);
+		--button--border-color: currentColor;
+	  }
+	}
+  }
+
+  // Link
+  &--link {
+	.button--link();
+	text-decoration: revert;
+  }
+
+  // Icon
+  &--icon {
+	padding-inline: var(--button--spacing--v, var(--a--button--spacing--vertical));
+
+	// Start
+	&-start {
+	  display: inline-grid;
+	  grid-template-columns: auto 1fr;
+	  gap: ~'max(var(--button--spacing--h, var(--a--button--spacing--horizontal)), var(--a--spacing--xs))';
+	  padding-inline: var(--button--spacing--v, var(--a--button--spacing--vertical)) calc(var(--button--spacing--v, var(--a--button--spacing--vertical)) * 2);
+	}
+
+	// End
+	&-end {
+	  display: inline-grid;
+	  grid-template-columns: 1fr auto;
+	  gap: ~'max(var(--button--spacing--h, var(--a--button--spacing--horizontal)), var(--a--spacing--xs))';
+	  padding-inline: calc(var(--button--spacing--v, var(--a--button--spacing--vertical)) * 2) var(--button--spacing--v, var(--a--button--spacing--vertical));
+	}
+
+	// Equal
+	&-equal {
+	  display: inline-grid;
+	  grid-template-columns: 1.5rem 1fr 1.5rem;
+	  gap: ~'max(var(--button--spacing--h, var(--a--button--spacing--horizontal)), var(--a--spacing--xs))';
+	  padding-inline: calc(var(--button--spacing--v, var(--a--button--spacing--vertical)) * 2);
+	}
+  }
+
+  // Narrow
+  &--narrow {
+	padding-inline: ~'max(var(--button--spacing--v, var(--a--button--spacing--vertical)), var(--a--spacing--xs))';
+  }
+
+  // Disabled
+  .button--disabled();
+}

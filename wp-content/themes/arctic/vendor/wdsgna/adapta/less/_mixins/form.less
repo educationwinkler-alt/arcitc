@@ -1,0 +1,91 @@
+//
+// Mixins - Form
+//
+
+// Placeholder
+
+.field-placeholder (
+  @-color: var(--a--field--placeholder--color, var(--a--color)),
+  @-color--active: var(--a--field--placeholder--color--active, var(--a--color))) {
+
+  &::placeholder {
+    color: @-color;
+    .transition(color);
+  }
+
+  // Firefox
+  &::-moz-placeholder {
+    color: @-color;
+    .transition(color);
+  }
+
+  // Focus
+  &:focus:not(:disabled) {
+
+    &::placeholder {
+      color: @-color--active;
+    }
+
+    &::-moz-placeholder {
+      color: @-color--active;
+    }
+  }
+}
+
+// Textarea
+
+.field-textarea--resizable (@-direction: both) { // none | both | horizontal | vertical | inherit
+  resize: @-direction;
+
+  // Safari Fix
+  overflow: auto;
+}
+
+// Range
+
+.field-range-track (
+  @-size: var(--a--field--border-width, var(--a--border--width)),
+  @-background-color: var(--a--field--border-color),
+  @-border-radius: var(--a--field--border-radius, var(--a--border--radius))) {
+
+  width: 100%;
+  height: @-size;
+
+  background-color: @-background-color;
+  border-radius: @-border-radius;
+}
+
+.field-range-thumb (
+  @-size: var(--a--field--range-thumb--size, 1.5rem),
+  @-background-color: rgba(var(--a--color-rgb), 1),
+  @-border-width: var(--a--field--border-width, var(--a--border--width)),
+  @-border-color: var(--a--field--border-color),
+  @-border-radius: var(--a--field--border-radius, var(--a--border--radius)),
+  @-shadow: var(--a--field--shadow)) {
+
+  width: @-size;
+  height: @-size;
+  margin-top: calc(@-size / 2 * -1);
+
+  appearance: none;
+  cursor: pointer;
+
+  background-color: @-background-color;
+  border: @-border-width solid @-border-color;
+  border-radius: @-border-radius;
+  box-shadow: @-shadow;
+
+  .transition-property(~'background-color, border-color, box-shadow, outline');
+  .transition-duration();
+  .transition-timing-function();
+}
+
+.field-range-thumb--active (
+  @-background-color: rgba(var(--a--color--accent-rgb), 1),
+  @-border-color: var(--a--field--border-color--active, var(--a--color)),
+  @-shadow: var(--a--field--shadow--active)) {
+
+  background-color: @-background-color;
+  border-color: @-border-color;
+  box-shadow: @-shadow;
+}

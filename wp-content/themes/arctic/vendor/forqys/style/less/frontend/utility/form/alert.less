@@ -1,0 +1,16 @@
+// Alert
+
+.@{prefix-s}-form__alert {
+  user-select: none;
+  cursor: default;
+
+  > * {
+    pointer-events: none;
+  }
+
+  // Keep dismiss-on-click behavior, but allow real links inside alerts.
+  a,
+  a * {
+    pointer-events: auto;
+  }
+}

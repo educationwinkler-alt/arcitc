@@ -1,0 +1,19 @@
+// Image Block
+
+.wp-block-image {
+  margin-block-end: var(--spacing, var(--wp--style--block-gap, var(--a--spacing)));
+
+  img {
+	vertical-align: middle;
+  }
+
+  figcaption {
+	color: inherit;
+  }
+
+  // Center
+  &.aligncenter {
+	margin-right: auto;
+	margin-left: auto;
+  }
+}

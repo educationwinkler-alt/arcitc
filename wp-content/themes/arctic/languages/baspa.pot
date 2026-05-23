@@ -1,0 +1,3717 @@
+# Copyright (C) 2025 Pavel Richter
+# This file is distributed under the GPL-3.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Baspa 1.0.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/baspa\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-09-11T01:31:38+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.6.0\n"
+"X-Domain: baspa\n"
+
+#. Theme Name of the theme
+msgid "Baspa"
+msgstr ""
+
+#. Theme URI of the theme
+msgid "https://baspa.cz/"
+msgstr ""
+
+#. Description of the theme
+msgid "Baspa WordPress Theme"
+msgstr ""
+
+#. Author of the theme
+msgid "Pavel Richter"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://pavelrichter.cz/"
+msgstr ""
+
+#: 404.php:11
+#: archive.php:11
+#: author.php:11
+#: index.php:11
+#: page.php:27
+#: search.php:11
+#: single-offer.php:11
+#: single-product.php:23
+#: single-reference.php:10
+#: single.php:10
+#: taxonomy-product-category.php:17
+#: taxonomy-reference-category.php:29
+#: template-about.php:11
+#: template-blog.php:11
+#: template-contact.php:11
+#: template-faq.php:23
+#: template-homepage.php:12
+#: template-pricelist.php:11
+#: template-references.php:23
+#: template-showroom.php:11
+#: template-support.php:11
+#: templates/skiplinks.php:13
+msgctxt "anchor"
+msgid "content"
+msgstr ""
+
+#: 404.php:16
+msgid "It looks like nothing was found at this location."
+msgstr ""
+
+#: 404.php:17
+msgid "Back to Homepage"
+msgstr ""
+
+#: inc/blocks/block/button.php:37
+#: modules/contacts/templates/off-contact.php:9
+#: modules/contacts/templates/off-contact.php:19
+#: templates/button/contact.php:36
+msgctxt "anchor"
+msgid "contact-us"
+msgstr ""
+
+#: inc/blocks/block/button.php:52
+#: modules/contacts/templates/off-service.php:9
+#: modules/contacts/templates/off-service.php:19
+#: templates/button/service.php:36
+msgctxt "anchor"
+msgid "service"
+msgstr ""
+
+#: inc/blocks/patterns.php:19
+msgctxt "admin"
+msgid "Pattern"
+msgstr ""
+
+#: inc/blocks/styles.php:19
+msgctxt "block style"
+msgid "Balance"
+msgstr ""
+
+#: inc/blocks/styles.php:23
+msgctxt "block style"
+msgid "Pretty"
+msgstr ""
+
+#: inc/blocks/styles.php:27
+msgctxt "block style"
+msgid "Subheading"
+msgstr ""
+
+#: inc/blocks/styles.php:33
+msgctxt "block style"
+msgid "Feature"
+msgstr ""
+
+#: inc/blocks/styles.php:37
+msgctxt "block style"
+msgid "Feature - Shadow"
+msgstr ""
+
+#: inc/blocks/styles.php:41
+#: inc/blocks/styles.php:57
+msgctxt "block style"
+msgid "Service"
+msgstr ""
+
+#: inc/blocks/styles.php:47
+msgctxt "block style"
+msgid "Features - Separated"
+msgstr ""
+
+#: inc/blocks/styles.php:53
+msgctxt "block style"
+msgid "Contact"
+msgstr ""
+
+#: inc/blocks/styles.php:63
+#: inc/blocks/styles.php:77
+msgctxt "block style"
+msgid "Container"
+msgstr ""
+
+#: inc/blocks/styles.php:67
+msgctxt "block style"
+msgid "Container - 75%"
+msgstr ""
+
+#: inc/blocks/styles.php:71
+msgctxt "block style"
+msgid "Container - 50%"
+msgstr ""
+
+#: inc/blocks/styles.php:81
+msgctxt "block style"
+msgid "Media to Edge"
+msgstr ""
+
+#: inc/blocks/styles.php:87
+msgctxt "block style"
+msgid "Icon"
+msgstr ""
+
+#: inc/blocks/styles.php:93
+msgctxt "block style"
+msgid "Featured"
+msgstr ""
+
+#: inc/blocks/styles.php:97
+#: inc/blocks/styles.php:103
+msgctxt "block style"
+msgid "Pages"
+msgstr ""
+
+#. Template Name of the theme
+#: inc/customize/section/about.php:17
+msgid "About"
+msgstr ""
+
+#: inc/customize/section/about.php:38
+msgid "BASPA s.r.o."
+msgstr ""
+
+#: inc/customize/section/about.php:43
+#: templates/about/phone.php:8
+#: templates/header/bar/contacts.php:8
+msgid "+420 602 774 195"
+msgstr ""
+
+#: inc/customize/section/about.php:48
+#: modules/contacts/templates/form/alert/error-recaptcha.php:11
+#: modules/contacts/templates/form/alert/error.php:11
+#: templates/about/email.php:8
+#: templates/header/bar/contacts.php:9
+msgid "info@baspa.cz"
+msgstr ""
+
+#: inc/customize/section/about.php:53
+#: templates/about/address.php:7
+msgid "Bohunická cesta 15"
+msgstr ""
+
+#: inc/customize/section/about.php:58
+#: templates/about/address.php:8
+msgid "664 48"
+msgstr ""
+
+#: inc/customize/section/about.php:63
+#: templates/about/address.php:9
+msgid "Moravany u Brna"
+msgstr ""
+
+#: inc/customize/section/about.php:68
+#: templates/about/address.php:10
+msgid "https://maps.app.goo.gl/ZsYfoZ2aQGF1JnZG6"
+msgstr ""
+
+#: inc/customize/section/about.php:88
+#: modules/contacts/templates/email/contact.php:17
+#: modules/contacts/type/metabox.php:32
+msgid "Name"
+msgstr ""
+
+#: inc/customize/section/about.php:95
+#: modules/contacts/templates/email/contact.php:29
+#: modules/contacts/templates/form-contact.php:72
+#: modules/contacts/templates/form-service.php:72
+#: modules/contacts/type/metabox.php:40
+#: modules/members/type.php:124
+#: modules/members/type/metabox.php:46
+msgid "Phone"
+msgstr ""
+
+#: inc/customize/section/about.php:102
+#: modules/contacts/templates/email/contact.php:23
+#: modules/contacts/templates/form-catalog.php:30
+#: modules/contacts/templates/form-contact.php:58
+#: modules/contacts/templates/form-service.php:58
+#: modules/contacts/type/metabox.php:36
+#: modules/members/type.php:123
+#: modules/members/type/metabox.php:41
+msgid "Email"
+msgstr ""
+
+#: inc/customize/section/about.php:109
+msgid "Street"
+msgstr ""
+
+#: inc/customize/section/about.php:116
+msgid "Zip"
+msgstr ""
+
+#: inc/customize/section/about.php:123
+msgid "City"
+msgstr ""
+
+#: inc/customize/section/about.php:130
+msgid "Map"
+msgstr ""
+
+#: inc/customize/section/ecomail.php:17
+msgid "Ecomail"
+msgstr ""
+
+#: inc/customize/section/ecomail.php:63
+msgid "API Key"
+msgstr ""
+
+#: inc/customize/section/ecomail.php:70
+msgid "List ID"
+msgstr ""
+
+#: inc/customize/section/gtm.php:17
+#: inc/customize/section/gtm.php:58
+msgid "GTM"
+msgstr ""
+
+#: inc/customize/section/hours.php:17
+msgid "Hours"
+msgstr ""
+
+#: inc/customize/section/hours.php:88
+#: inc/functions/hours.php:18
+msgid "Monday"
+msgstr ""
+
+#: inc/customize/section/hours.php:89
+msgid "Required format"
+msgstr ""
+
+#: inc/customize/section/hours.php:89
+msgid "Multiple intervals separated by comma."
+msgstr ""
+
+#: inc/customize/section/hours.php:96
+#: inc/functions/hours.php:22
+msgid "Tuesday"
+msgstr ""
+
+#: inc/customize/section/hours.php:103
+#: inc/functions/hours.php:26
+msgid "Wednesday"
+msgstr ""
+
+#: inc/customize/section/hours.php:110
+#: inc/functions/hours.php:30
+msgid "Thursday"
+msgstr ""
+
+#: inc/customize/section/hours.php:117
+#: inc/functions/hours.php:34
+msgid "Friday"
+msgstr ""
+
+#: inc/customize/section/hours.php:124
+#: inc/functions/hours.php:38
+msgid "Saturday"
+msgstr ""
+
+#: inc/customize/section/hours.php:131
+#: inc/functions/hours.php:42
+msgid "Sunday"
+msgstr ""
+
+#: inc/customize/section/socials.php:17
+msgid "Socials"
+msgstr ""
+
+#: inc/customize/section/socials.php:64
+msgid "Instagram"
+msgstr ""
+
+#: inc/customize/section/socials.php:70
+msgid "Instagram Feed Shortcode"
+msgstr ""
+
+#: inc/functions/breadcrumbs.php:27
+msgctxt "breadcrumbs"
+msgid "Breadcrumbs"
+msgstr ""
+
+#: inc/functions/breadcrumbs.php:29
+msgctxt "breadcrumbs"
+msgid "Page not found"
+msgstr ""
+
+#: inc/functions/breadcrumbs.php:30
+msgctxt "breadcrumbs"
+msgid "Search results for \"%s\""
+msgstr ""
+
+#: inc/functions/cf7/form.php:25
+msgctxt "form"
+msgid "Name and surname"
+msgstr ""
+
+#: inc/functions/cf7/form.php:25
+#: inc/functions/cf7/form.php:31
+#: inc/functions/cf7/form.php:37
+msgctxt "form"
+msgid "Required"
+msgstr ""
+
+#: inc/functions/cf7/form.php:26
+msgctxt "form"
+msgid "Fill in your name"
+msgstr ""
+
+#: inc/functions/cf7/form.php:31
+msgctxt "form"
+msgid "Email"
+msgstr ""
+
+#: inc/functions/cf7/form.php:32
+msgctxt "form"
+msgid "Fill in your email"
+msgstr ""
+
+#: inc/functions/cf7/form.php:37
+msgctxt "form"
+msgid "Phone"
+msgstr ""
+
+#: inc/functions/cf7/form.php:38
+msgctxt "form"
+msgid "Fill in your phone"
+msgstr ""
+
+#: inc/functions/cf7/form.php:43
+msgctxt "form"
+msgid "Message"
+msgstr ""
+
+#: inc/functions/cf7/form.php:44
+msgctxt "form"
+msgid "Fill in your message"
+msgstr ""
+
+#: inc/functions/cf7/form.php:49
+msgctxt "form"
+msgid "By submitting the form, you agree to the processing of personal data necessary to handle your inquiry."
+msgstr ""
+
+#: inc/functions/cf7/form.php:55
+msgctxt "form"
+msgid "Send"
+msgstr ""
+
+#: inc/functions/images.php:19
+msgctxt "image size"
+msgid "Medium"
+msgstr ""
+
+#: inc/functions/images.php:20
+msgctxt "image size"
+msgid "Large"
+msgstr ""
+
+#: inc/functions/images.php:21
+msgctxt "image size"
+msgid "Huge"
+msgstr ""
+
+#: inc/functions/metabox.php:8
+msgctxt "admin"
+msgid "+ Add Media"
+msgstr ""
+
+#: inc/functions/pagination.php:24
+#: inc/functions/pagination.php:61
+msgid "Previous"
+msgstr ""
+
+#: inc/functions/pagination.php:28
+#: inc/functions/pagination.php:62
+msgid "Next"
+msgstr ""
+
+#: inc/functions/pagination.php:32
+#: inc/functions/pagination.php:58
+msgid "Pagination"
+msgstr ""
+
+#: inc/functions/post.php:30
+#: modules/accessories/templates/post/listing/excerpt.php:12
+#: modules/offers/templates/post/listing/excerpt.php:12
+#: modules/posts/templates/post/listing.php:43
+#: modules/products/templates/post/listing/excerpt.php:12
+msgid " ..."
+msgstr ""
+
+#: inc/navigations.php:15
+#: inc/navigations.php:16
+#: inc/navigations.php:17
+#: inc/navigations.php:18
+#: inc/navigations.php:19
+#: inc/navigations.php:20
+#: templates/navigation/trigger.php:18
+msgid "Navigation"
+msgstr ""
+
+#: inc/navigations.php:16
+msgid "Bar"
+msgstr ""
+
+#: inc/navigations.php:17
+#: modules/offers/type/metabox.php:92
+msgid "Pools"
+msgstr ""
+
+#: inc/navigations.php:18
+#: modules/offers/type/metabox.php:93
+msgid "Jacuzzis"
+msgstr ""
+
+#: inc/navigations.php:19
+msgid "Information"
+msgstr ""
+
+#: inc/navigations.php:20
+msgid "Footer"
+msgstr ""
+
+#: inc/scripts.php:44
+#: modules/slides/inc/scripts.php:35
+msgctxt "slideshow accessibility"
+msgid "Previous slide"
+msgstr ""
+
+#: inc/scripts.php:45
+#: modules/slides/inc/scripts.php:36
+msgctxt "slideshow accessibility"
+msgid "Next slide"
+msgstr ""
+
+#: inc/scripts.php:46
+#: modules/slides/inc/scripts.php:37
+msgctxt "slideshow accessibility"
+msgid "First slide"
+msgstr ""
+
+#: inc/scripts.php:47
+#: modules/slides/inc/scripts.php:38
+msgctxt "slideshow accessibility"
+msgid "Last slide"
+msgstr ""
+
+#: inc/scripts.php:48
+#: modules/slides/inc/scripts.php:39
+msgctxt "slideshow accessibility"
+msgid "Go to slide {{index}}"
+msgstr ""
+
+#: inc/translations.php:17
+msgctxt "lightbox"
+msgid "Close"
+msgstr ""
+
+#: inc/translations.php:18
+msgctxt "lightbox"
+msgid "Previous"
+msgstr ""
+
+#: inc/translations.php:19
+msgctxt "lightbox"
+msgid "Next"
+msgstr ""
+
+#: inc/translations.php:20
+msgctxt "lightbox"
+msgid "Zoom"
+msgstr ""
+
+#: inc/translations.php:21
+msgctxt "lightbox"
+msgid "Unfortunately, the item could not be loaded."
+msgstr ""
+
+#: inc/translations.php:22
+msgctxt "lightbox"
+msgid " / "
+msgstr ""
+
+#: modules/accessories/inc/admin.php:19
+#: modules/accessories/inc/admin.php:20
+#: modules/accessories/inc/admin.php:55
+#: modules/contacts/inc/admin.php:52
+#: modules/contacts/inc/admin.php:53
+#: modules/contacts/inc/admin.php:118
+#: modules/faqs/inc/admin.php:19
+#: modules/faqs/inc/admin.php:20
+#: modules/faqs/inc/admin.php:55
+#: modules/jobs/inc/admin.php:19
+#: modules/jobs/inc/admin.php:20
+#: modules/jobs/inc/admin.php:55
+#: modules/members/inc/admin.php:19
+#: modules/members/inc/admin.php:20
+#: modules/members/inc/admin.php:55
+#: modules/partners/inc/admin.php:19
+#: modules/partners/inc/admin.php:20
+#: modules/partners/inc/admin.php:55
+#: modules/references/inc/admin.php:19
+#: modules/references/inc/admin.php:20
+#: modules/references/inc/admin.php:55
+msgctxt "admin"
+msgid "Settings"
+msgstr ""
+
+#: modules/accessories/inc/admin.php:40
+#: modules/accessories/templates/section.php:84
+#: modules/products/templates/post/single/navigation.php:44
+#: modules/products/templates/_section-products-accessories.php:100
+msgid "Accessories"
+msgstr ""
+
+#: modules/accessories/inc/admin.php:65
+#: modules/contacts/inc/admin.php:134
+#: modules/contacts/inc/admin.php:171
+#: modules/contacts/inc/admin.php:212
+#: modules/contacts/inc/admin.php:249
+#: modules/faqs/inc/admin.php:65
+#: modules/jobs/inc/admin.php:65
+#: modules/members/inc/admin.php:65
+#: modules/pages/type/metabox.php:31
+#: modules/pages/type/metabox.php:106
+#: modules/partners/inc/admin.php:65
+#: modules/posts/type/metabox.php:51
+#: modules/references/inc/admin.php:65
+msgctxt "admin"
+msgid "Title"
+msgstr ""
+
+#: modules/accessories/inc/admin.php:79
+#: modules/contacts/inc/admin.php:148
+#: modules/contacts/inc/admin.php:226
+#: modules/faqs/inc/admin.php:79
+#: modules/jobs/inc/admin.php:79
+#: modules/members/inc/admin.php:79
+#: modules/partners/inc/admin.php:79
+#: modules/references/inc/admin.php:79
+msgctxt "admin"
+msgid "Subtitle"
+msgstr ""
+
+#: modules/accessories/inc/admin.php:97
+#: modules/contacts/inc/admin.php:278
+#: modules/faqs/inc/admin.php:97
+#: modules/jobs/inc/admin.php:97
+#: modules/members/inc/admin.php:97
+#: modules/partners/inc/admin.php:97
+#: modules/references/inc/admin.php:97
+msgctxt "admin"
+msgid "Save"
+msgstr ""
+
+#: modules/accessories/inc/admin/category.php:30
+#: modules/pages/type/metabox.php:91
+#: modules/slides/type/metabox.php:43
+msgctxt "admin"
+msgid "Product Category"
+msgstr ""
+
+#: modules/accessories/inc/admin/category.php:41
+msgctxt "admin"
+msgid "Please select the product categories for which it will be displayed."
+msgstr ""
+
+#: modules/accessories/templates/post/listing/link.php:10
+#: modules/products/templates/post/listing/_accessory/link.php:13
+msgid "Buy on Eshop"
+msgstr ""
+
+#: modules/accessories/templates/section.php:40
+#: modules/products/templates/post/single/navigation.php:43
+#: modules/products/templates/_section-products-accessories.php:52
+msgctxt "anchor"
+msgid "accessories"
+msgstr ""
+
+#: modules/accessories/templates/section.php:93
+#: modules/posts/templates/navigation.php:19
+#: modules/products/templates/_section-products-accessories.php:110
+#: modules/references/templates/navigation.php:25
+#: modules/supports/templates/section-by-category-pricelist.php:121
+#: modules/supports/templates/section-by-category.php:124
+msgid "All"
+msgstr ""
+
+#: modules/accessories/type.php:16
+#: modules/accessories/type.php:17
+msgctxt "type"
+msgid "Accessories"
+msgstr ""
+
+#: modules/accessories/type.php:18
+msgctxt "type"
+msgid "Accessory"
+msgstr ""
+
+#: modules/accessories/type.php:19
+#: modules/accessories/type.php:21
+#: modules/accessories/type.php:22
+msgctxt "type"
+msgid "Add Accessory"
+msgstr ""
+
+#: modules/accessories/type.php:20
+msgctxt "type"
+msgid "All Accessories"
+msgstr ""
+
+#: modules/accessories/type.php:23
+msgctxt "type"
+msgid "Edit Accessory"
+msgstr ""
+
+#: modules/accessories/type.php:24
+msgctxt "type"
+msgid "New Accessory"
+msgstr ""
+
+#: modules/accessories/type.php:25
+msgctxt "type"
+msgid "View Accessory"
+msgstr ""
+
+#: modules/accessories/type.php:26
+msgctxt "type"
+msgid "View Accessories"
+msgstr ""
+
+#: modules/accessories/type.php:27
+msgctxt "type"
+msgid "Search Accessories"
+msgstr ""
+
+#: modules/accessories/type.php:28
+msgctxt "type"
+msgid "No Accessories"
+msgstr ""
+
+#: modules/accessories/type.php:29
+msgctxt "type"
+msgid "No Accessories Found in Trash"
+msgstr ""
+
+#: modules/accessories/type.php:30
+msgctxt "type"
+msgid "Accessory Archives"
+msgstr ""
+
+#: modules/accessories/type.php:31
+msgctxt "type"
+msgid "Accessory Attributes"
+msgstr ""
+
+#: modules/accessories/type.php:32
+msgctxt "type"
+msgid "Accessory published."
+msgstr ""
+
+#: modules/accessories/type.php:33
+msgctxt "type"
+msgid "Accessory updated."
+msgstr ""
+
+#: modules/accessories/type.php:47
+msgctxt "type"
+msgid "accessory"
+msgstr ""
+
+#: modules/accessories/type.php:119
+#: modules/accessories/type/metabox.php:21
+msgid "Accessory"
+msgstr ""
+
+#: modules/accessories/type.php:120
+#: modules/products/type.php:140
+#: modules/references/type.php:121
+msgid "Categories"
+msgstr ""
+
+#: modules/accessories/type.php:121
+#: modules/contacts/type/metabox.php:73
+#: modules/partners/type.php:120
+#: modules/partners/type/metabox.php:26
+msgid "URL"
+msgstr ""
+
+#: modules/accessories/type.php:122
+#: modules/members/type.php:125
+#: modules/offers/type.php:144
+#: modules/pages/type.php:21
+#: modules/partners/type.php:122
+#: modules/products/type.php:142
+#: modules/references/type.php:123
+msgid "Order"
+msgstr ""
+
+#: modules/accessories/type/metabox.php:26
+msgctxt "admin"
+msgid "URL"
+msgstr ""
+
+#: modules/accessories/type/metabox.php:27
+#: modules/products/type/metabox.php:33
+msgctxt "admin"
+msgid "URL to the external product page."
+msgstr ""
+
+#: modules/accessories/type/metabox.php:32
+msgctxt "admin"
+msgid "Products"
+msgstr ""
+
+#: modules/accessories/type/metabox.php:33
+msgctxt "admin"
+msgid "Please select the products for which it will be displayed."
+msgstr ""
+
+#: modules/accessories/type/metabox.php:34
+msgctxt "admin"
+msgid "Select products"
+msgstr ""
+
+#: modules/accessories/type/taxonomy.php:21
+#: modules/accessories/type/taxonomy.php:36
+msgctxt "taxonomy"
+msgid "Accessory Categories"
+msgstr ""
+
+#: modules/accessories/type/taxonomy.php:22
+#: modules/faqs/type/taxonomy.php:22
+#: modules/products/type/taxonomy.php:22
+#: modules/references/type/taxonomy.php:23
+#: modules/supports/type/taxonomy.php:22
+msgctxt "taxonomy"
+msgid "Category"
+msgstr ""
+
+#: modules/accessories/type/taxonomy.php:23
+#: modules/faqs/type/taxonomy.php:23
+#: modules/products/type/taxonomy.php:23
+#: modules/references/type/taxonomy.php:24
+#: modules/supports/type/taxonomy.php:23
+msgctxt "taxonomy"
+msgid "Search Categories"
+msgstr ""
+
+#: modules/accessories/type/taxonomy.php:24
+#: modules/faqs/type/taxonomy.php:24
+#: modules/products/type/taxonomy.php:24
+#: modules/references/type/taxonomy.php:25
+#: modules/supports/type/taxonomy.php:24
+msgctxt "taxonomy"
+msgid "Popular Categories"
+msgstr ""
+
+#: modules/accessories/type/taxonomy.php:25
+#: modules/faqs/type/taxonomy.php:25
+#: modules/products/type/taxonomy.php:25
+#: modules/references/type/taxonomy.php:26
+#: modules/supports/type/taxonomy.php:25
+msgctxt "taxonomy"
+msgid "All Categories"
+msgstr ""
+
+#: modules/accessories/type/taxonomy.php:26
+#: modules/faqs/type/taxonomy.php:26
+#: modules/products/type/taxonomy.php:26
+#: modules/references/type/taxonomy.php:27
+#: modules/supports/type/taxonomy.php:26
+msgctxt "taxonomy"
+msgid "Edit Category"
+msgstr ""
+
+#: modules/accessories/type/taxonomy.php:27
+#: modules/faqs/type/taxonomy.php:27
+#: modules/products/type/taxonomy.php:27
+#: modules/references/type/taxonomy.php:28
+#: modules/supports/type/taxonomy.php:27
+msgctxt "taxonomy"
+msgid "View Category"
+msgstr ""
+
+#: modules/accessories/type/taxonomy.php:28
+#: modules/faqs/type/taxonomy.php:28
+#: modules/products/type/taxonomy.php:28
+#: modules/references/type/taxonomy.php:29
+#: modules/supports/type/taxonomy.php:28
+msgctxt "taxonomy"
+msgid "Update Category"
+msgstr ""
+
+#: modules/accessories/type/taxonomy.php:29
+#: modules/faqs/type/taxonomy.php:29
+#: modules/products/type/taxonomy.php:29
+#: modules/references/type/taxonomy.php:30
+#: modules/supports/type/taxonomy.php:29
+msgctxt "taxonomy"
+msgid "Add New Category"
+msgstr ""
+
+#: modules/accessories/type/taxonomy.php:30
+#: modules/faqs/type/taxonomy.php:30
+#: modules/products/type/taxonomy.php:30
+#: modules/references/type/taxonomy.php:31
+#: modules/supports/type/taxonomy.php:30
+msgctxt "taxonomy"
+msgid "New Category Name"
+msgstr ""
+
+#: modules/accessories/type/taxonomy.php:31
+#: modules/faqs/type/taxonomy.php:31
+#: modules/products/type/taxonomy.php:31
+#: modules/references/type/taxonomy.php:32
+#: modules/supports/type/taxonomy.php:31
+msgctxt "taxonomy"
+msgid "No categories found."
+msgstr ""
+
+#: modules/accessories/type/taxonomy.php:32
+#: modules/faqs/type/taxonomy.php:32
+#: modules/products/type/taxonomy.php:32
+#: modules/references/type/taxonomy.php:33
+#: modules/supports/type/taxonomy.php:32
+msgctxt "taxonomy"
+msgid "Add or remove categories"
+msgstr ""
+
+#: modules/accessories/type/taxonomy.php:33
+#: modules/faqs/type/taxonomy.php:33
+#: modules/products/type/taxonomy.php:33
+#: modules/references/type/taxonomy.php:34
+#: modules/supports/type/taxonomy.php:33
+msgctxt "taxonomy"
+msgid "Separate categories with commas"
+msgstr ""
+
+#: modules/accessories/type/taxonomy.php:34
+#: modules/faqs/type/taxonomy.php:34
+#: modules/products/type/taxonomy.php:34
+#: modules/references/type/taxonomy.php:35
+#: modules/supports/type/taxonomy.php:34
+msgctxt "taxonomy"
+msgid "Back to categories"
+msgstr ""
+
+#: modules/accessories/type/taxonomy.php:44
+msgctxt "taxonomy"
+msgid "accessories"
+msgstr ""
+
+#: modules/contacts/inc/admin.php:29
+#: modules/contacts/type.php:85
+msgctxt "admin"
+msgid "Received"
+msgstr ""
+
+#: modules/contacts/inc/admin.php:122
+#: modules/contacts/inc/customize.php:17
+#: modules/products/type/metabox.php:106
+msgctxt "admin"
+msgid "Contacts"
+msgstr ""
+
+#: modules/contacts/inc/admin.php:126
+#: modules/contacts/inc/admin.php:204
+msgctxt "admin"
+msgid "Section"
+msgstr ""
+
+#: modules/contacts/inc/admin.php:163
+#: modules/contacts/inc/admin.php:241
+#: modules/contacts/type.php:79
+msgctxt "admin"
+msgid "Form"
+msgstr ""
+
+#: modules/contacts/inc/admin.php:185
+#: modules/contacts/inc/admin.php:263
+msgctxt "admin"
+msgid "Content"
+msgstr ""
+
+#: modules/contacts/inc/admin.php:200
+#: modules/contacts/inc/customize.php:132
+msgctxt "admin"
+msgid "Service"
+msgstr ""
+
+#: modules/contacts/inc/customize.php:97
+msgctxt "admin"
+msgid "Send from Name"
+msgstr ""
+
+#: modules/contacts/inc/customize.php:104
+msgctxt "admin"
+msgid "Send from Email Address"
+msgstr ""
+
+#: modules/contacts/inc/customize.php:111
+#: modules/contacts/inc/customize.php:118
+#: modules/contacts/inc/customize.php:125
+#: modules/contacts/inc/customize.php:132
+msgctxt "admin"
+msgid "Send to Email Address"
+msgstr ""
+
+#: modules/contacts/inc/customize.php:118
+msgctxt "admin"
+msgid "Pool"
+msgstr ""
+
+#: modules/contacts/inc/customize.php:125
+msgctxt "admin"
+msgid "Jacuzzi"
+msgstr ""
+
+#: modules/contacts/inc/customize.php:143
+msgctxt "admin"
+msgid "ReCaptcha Site Key"
+msgstr ""
+
+#: modules/contacts/inc/customize.php:150
+msgctxt "admin"
+msgid "ReCaptcha Secret Key"
+msgstr ""
+
+#: modules/contacts/inc/form.php:17
+msgid "Pool"
+msgstr ""
+
+#: modules/contacts/inc/form.php:18
+msgid "Jacuzzi"
+msgstr ""
+
+#: modules/contacts/inc/form.php:19
+#: modules/contacts/templates/form-service.php:133
+#: templates/elements/service.php:17
+#: templates/elements/service.php:39
+msgid "Service"
+msgstr ""
+
+#: modules/contacts/templates/email/contact.php:35
+#: modules/contacts/type/metabox.php:44
+msgid "Interest"
+msgstr ""
+
+#: modules/contacts/templates/email/contact.php:41
+#: modules/contacts/type/metabox.php:48
+msgid "Message"
+msgstr ""
+
+#: modules/contacts/templates/form-catalog.php:14
+#: modules/contacts/templates/form-catalog.php:16
+msgctxt "anchor"
+msgid "form-catalog"
+msgstr ""
+
+#: modules/contacts/templates/form-catalog.php:31
+#: modules/contacts/templates/form-contact.php:45
+#: modules/contacts/templates/form-contact.php:59
+#: modules/contacts/templates/form-contact.php:73
+#: modules/contacts/templates/form-contact.php:90
+#: modules/contacts/templates/form-service.php:45
+#: modules/contacts/templates/form-service.php:59
+#: modules/contacts/templates/form-service.php:73
+msgid "Required"
+msgstr ""
+
+#: modules/contacts/templates/form-catalog.php:32
+#: modules/contacts/templates/form-contact.php:46
+#: modules/contacts/templates/form-contact.php:60
+#: modules/contacts/templates/form-contact.php:74
+#: modules/contacts/templates/form-contact.php:91
+#: modules/contacts/templates/form-service.php:46
+#: modules/contacts/templates/form-service.php:60
+#: modules/contacts/templates/form-service.php:74
+msgid "&#10043;"
+msgstr ""
+
+#: modules/contacts/templates/form-catalog.php:35
+#: modules/contacts/templates/form-contact.php:63
+#: modules/contacts/templates/form-service.php:63
+msgid "Fill in the email address"
+msgstr ""
+
+#: modules/contacts/templates/form-catalog.php:55
+#: modules/contacts/templates/form-contact.php:148
+#: modules/contacts/templates/form-service.php:123
+msgid "Submit"
+msgstr ""
+
+#: modules/contacts/templates/form-catalog.php:63
+#: modules/contacts/templates/form-contact.php:139
+#: modules/contacts/templates/form-service.php:114
+msgid "By submitting, you agree to the terms of the <a href=\"%s\" target=\"_blank\">privacy policy</a>."
+msgstr ""
+
+#: modules/contacts/templates/form-catalog.php:71
+#: modules/contacts/templates/form/processing.php:212
+msgid "Catalog"
+msgstr ""
+
+#: modules/contacts/templates/form-contact.php:24
+#: modules/contacts/templates/form-contact.php:26
+msgctxt "anchor"
+msgid "form-contact"
+msgstr ""
+
+#: modules/contacts/templates/form-contact.php:36
+msgid "Contact Form"
+msgstr ""
+
+#: modules/contacts/templates/form-contact.php:44
+#: modules/contacts/templates/form-service.php:44
+msgid "Name and surname"
+msgstr ""
+
+#: modules/contacts/templates/form-contact.php:49
+#: modules/contacts/templates/form-service.php:49
+msgid "Fill in the name and surname"
+msgstr ""
+
+#: modules/contacts/templates/form-contact.php:77
+#: modules/contacts/templates/form-service.php:77
+msgid "Fill in the phone number"
+msgstr ""
+
+#: modules/contacts/templates/form-contact.php:89
+msgid "What are you interested in?"
+msgstr ""
+
+#: modules/contacts/templates/form-contact.php:96
+msgid "Select what you are interested in"
+msgstr ""
+
+#: modules/contacts/templates/form-contact.php:111
+#: modules/contacts/templates/form-service.php:86
+msgid "Question or request"
+msgstr ""
+
+#: modules/contacts/templates/form-contact.php:115
+#: modules/contacts/templates/form-service.php:90
+msgid "Fill in the question or request"
+msgstr ""
+
+#. Template Name of the theme
+#: modules/contacts/templates/form-contact.php:158
+#: modules/offers/type/metabox.php:86
+msgid "Contact"
+msgstr ""
+
+#: modules/contacts/templates/form-service.php:24
+#: modules/contacts/templates/form-service.php:26
+msgctxt "anchor"
+msgid "form-service"
+msgstr ""
+
+#: modules/contacts/templates/form-service.php:36
+#: modules/contacts/templates/section-service.php:18
+#: modules/supports/templates/navigation.php:41
+#: templates/button/service.php:10
+msgid "Service Form"
+msgstr ""
+
+#: modules/contacts/templates/form/alert/error-recaptcha.php:10
+msgid "We're sorry, but verification that you're not a robot failed."
+msgstr ""
+
+#: modules/contacts/templates/form/alert/error-recaptcha.php:11
+#: modules/contacts/templates/form/alert/error.php:11
+msgid "You can try to submit the form again, and if it fails again, please write to our email address <a href=\"mailto:%s\">%s</a>. We apologize for the inconvenience."
+msgstr ""
+
+#: modules/contacts/templates/form/alert/error.php:10
+msgid "We're sorry, but submitting the form failed."
+msgstr ""
+
+#: modules/contacts/templates/form/alert/success-catalog.php:10
+#: modules/contacts/templates/form/alert/success.php:10
+msgid "The form has been submitted successfully. Thank you."
+msgstr ""
+
+#: modules/contacts/templates/form/alert/success-catalog.php:11
+msgid "The catalog is now on its way to your inbox."
+msgstr ""
+
+#: modules/contacts/templates/form/alert/success.php:11
+msgid "As soon as we process your message, we will contact you."
+msgstr ""
+
+#: modules/contacts/templates/form/processing.php:107
+msgid " — Suspicious"
+msgstr ""
+
+#: modules/contacts/templates/form/processing.php:178
+msgid "Catalog #%s"
+msgstr ""
+
+#: modules/contacts/templates/form/processing.php:180
+msgid "Service #%s"
+msgstr ""
+
+#: modules/contacts/templates/form/processing.php:182
+msgid "Contact #%s — %s"
+msgstr ""
+
+#: modules/contacts/templates/off-contact.php:23
+#: modules/contacts/templates/off-service.php:23
+msgctxt "navigation"
+msgid "Close"
+msgstr ""
+
+#: modules/contacts/templates/off-contact.php:38
+#: modules/contacts/templates/off-service.php:38
+#: modules/contacts/templates/section-contact.php:21
+msgid "Contact Us"
+msgstr ""
+
+#: modules/contacts/templates/section-catalog.php:9
+msgctxt "anchor"
+msgid "catalog"
+msgstr ""
+
+#: modules/contacts/templates/section-catalog.php:19
+msgid "Complete Catalog with Price List of Products"
+msgstr ""
+
+#: modules/contacts/templates/section-catalog.php:23
+msgid "Please enter your e-mail address, where you will receive a link to download the price list."
+msgstr ""
+
+#: modules/contacts/templates/section-contact.php:9
+msgctxt "anchor"
+msgid "contact"
+msgstr ""
+
+#: modules/contacts/templates/section-service.php:9
+#: modules/supports/templates/navigation.php:40
+msgctxt "anchor"
+msgid "service-form"
+msgstr ""
+
+#: modules/contacts/type.php:16
+#: modules/contacts/type.php:17
+msgctxt "type"
+msgid "Contacts"
+msgstr ""
+
+#: modules/contacts/type.php:18
+msgctxt "type"
+msgid "Contact"
+msgstr ""
+
+#: modules/contacts/type.php:19
+#: modules/contacts/type.php:21
+#: modules/contacts/type.php:22
+msgctxt "type"
+msgid "Add Contact"
+msgstr ""
+
+#: modules/contacts/type.php:20
+msgctxt "type"
+msgid "All Contacts"
+msgstr ""
+
+#: modules/contacts/type.php:23
+msgctxt "type"
+msgid "Edit Contact"
+msgstr ""
+
+#: modules/contacts/type.php:24
+msgctxt "type"
+msgid "New Contact"
+msgstr ""
+
+#: modules/contacts/type.php:25
+msgctxt "type"
+msgid "View Contact"
+msgstr ""
+
+#: modules/contacts/type.php:26
+msgctxt "type"
+msgid "View Contacts"
+msgstr ""
+
+#: modules/contacts/type.php:27
+msgctxt "type"
+msgid "Search Contacts"
+msgstr ""
+
+#: modules/contacts/type.php:28
+msgctxt "type"
+msgid "No Contacts"
+msgstr ""
+
+#: modules/contacts/type.php:29
+msgctxt "type"
+msgid "No Contacts Found in Trash"
+msgstr ""
+
+#: modules/contacts/type.php:30
+msgctxt "type"
+msgid "Contact Archives"
+msgstr ""
+
+#: modules/contacts/type.php:31
+msgctxt "type"
+msgid "Contact Attributes"
+msgstr ""
+
+#: modules/contacts/type.php:32
+msgctxt "type"
+msgid "Contact saved."
+msgstr ""
+
+#: modules/contacts/type.php:33
+msgctxt "type"
+msgid "Contact updated."
+msgstr ""
+
+#: modules/contacts/type.php:51
+msgctxt "type"
+msgid "contacts"
+msgstr ""
+
+#: modules/contacts/type.php:78
+msgctxt "admin"
+msgid "Contact"
+msgstr ""
+
+#: modules/contacts/type.php:80
+msgctxt "admin"
+msgid "Interest"
+msgstr ""
+
+#: modules/contacts/type.php:81
+msgctxt "admin"
+msgid "Email"
+msgstr ""
+
+#: modules/contacts/type.php:82
+msgctxt "admin"
+msgid "Phone"
+msgstr ""
+
+#: modules/contacts/type.php:83
+#: modules/pages/type/metabox.php:86
+msgctxt "admin"
+msgid "Page"
+msgstr ""
+
+#: modules/contacts/type.php:84
+msgctxt "admin"
+msgid "ReCAPTCHA"
+msgstr ""
+
+#: modules/contacts/type/metabox.php:54
+msgid "Basic Information"
+msgstr ""
+
+#: modules/contacts/type/metabox.php:65
+msgid "Form"
+msgstr ""
+
+#: modules/contacts/type/metabox.php:69
+#: modules/offers/type/metabox.php:54
+#: modules/pages/type.php:19
+msgid "Title"
+msgstr ""
+
+#: modules/contacts/type/metabox.php:79
+msgid "Additional Information"
+msgstr ""
+
+#: modules/contacts/type/metabox.php:90
+msgid "Token"
+msgstr ""
+
+#: modules/contacts/type/metabox.php:94
+msgid "Success"
+msgstr ""
+
+#: modules/contacts/type/metabox.php:98
+msgid "Score"
+msgstr ""
+
+#: modules/contacts/type/metabox.php:102
+msgid "Body"
+msgstr ""
+
+#: modules/contacts/type/metabox.php:108
+msgid "ReCAPTCHA"
+msgstr ""
+
+#: modules/faqs/inc/admin.php:40
+msgid "Faqs"
+msgstr ""
+
+#: modules/faqs/templates/section.php:21
+#: modules/products/templates/post/single/navigation.php:54
+msgctxt "anchor"
+msgid "faq"
+msgstr ""
+
+#: modules/faqs/templates/section.php:31
+#: modules/supports/templates/section.php:31
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: modules/faqs/templates/section.php:61
+msgid "View more <span class=\"screen-reader-text\">FAQs</span>"
+msgstr ""
+
+#: modules/faqs/type.php:16
+#: modules/faqs/type.php:17
+msgctxt "type"
+msgid "FAQs"
+msgstr ""
+
+#: modules/faqs/type.php:18
+#: modules/faqs/type.php:110
+msgctxt "type"
+msgid "FAQ"
+msgstr ""
+
+#: modules/faqs/type.php:19
+#: modules/faqs/type.php:21
+#: modules/faqs/type.php:22
+msgctxt "type"
+msgid "Add FAQ"
+msgstr ""
+
+#: modules/faqs/type.php:20
+msgctxt "type"
+msgid "All FAQs"
+msgstr ""
+
+#: modules/faqs/type.php:23
+msgctxt "type"
+msgid "Edit FAQ"
+msgstr ""
+
+#: modules/faqs/type.php:24
+msgctxt "type"
+msgid "New FAQ"
+msgstr ""
+
+#: modules/faqs/type.php:25
+msgctxt "type"
+msgid "View FAQ"
+msgstr ""
+
+#: modules/faqs/type.php:26
+msgctxt "type"
+msgid "View FAQs"
+msgstr ""
+
+#: modules/faqs/type.php:27
+msgctxt "type"
+msgid "Search FAQs"
+msgstr ""
+
+#: modules/faqs/type.php:28
+msgctxt "type"
+msgid "No FAQs"
+msgstr ""
+
+#: modules/faqs/type.php:29
+msgctxt "type"
+msgid "No FAQs Found in Trash"
+msgstr ""
+
+#: modules/faqs/type.php:30
+msgctxt "type"
+msgid "FAQ Archives"
+msgstr ""
+
+#: modules/faqs/type.php:31
+msgctxt "type"
+msgid "FAQ Attributes"
+msgstr ""
+
+#: modules/faqs/type.php:32
+msgctxt "type"
+msgid "FAQ published."
+msgstr ""
+
+#: modules/faqs/type.php:33
+msgctxt "type"
+msgid "FAQ updated."
+msgstr ""
+
+#: modules/faqs/type.php:47
+msgctxt "type"
+msgid "faqs"
+msgstr ""
+
+#: modules/faqs/type.php:111
+#: modules/supports/type.php:111
+msgctxt "type"
+msgid "Categories"
+msgstr ""
+
+#: modules/faqs/type.php:112
+#: modules/jobs/type.php:200
+#: modules/slides/type.php:141
+#: modules/supports/type.php:114
+msgctxt "type"
+msgid "Order"
+msgstr ""
+
+#: modules/faqs/type/taxonomy.php:21
+#: modules/faqs/type/taxonomy.php:36
+msgctxt "taxonomy"
+msgid "FAQ Categories"
+msgstr ""
+
+#: modules/faqs/type/taxonomy.php:44
+msgctxt "taxonomy"
+msgid "faqs"
+msgstr ""
+
+#: modules/jobs/inc/admin.php:40
+msgid "Jobs"
+msgstr ""
+
+#: modules/jobs/templates/loop/empty.php:10
+msgid "Unfortunately, we currently have no job openings."
+msgstr ""
+
+#: modules/jobs/templates/section.php:21
+#: templates/navigation/about.php:30
+msgctxt "anchor"
+msgid "career"
+msgstr ""
+
+#: modules/jobs/templates/section.php:31
+msgid "Career in BASPA"
+msgstr ""
+
+#: modules/jobs/templates/section.php:62
+msgid "View more <span class=\"screen-reader-text\">jobs</span>"
+msgstr ""
+
+#: modules/jobs/type.php:16
+#: modules/jobs/type.php:17
+msgctxt "type"
+msgid "Jobs"
+msgstr ""
+
+#: modules/jobs/type.php:18
+#: modules/jobs/type.php:199
+msgctxt "type"
+msgid "Job"
+msgstr ""
+
+#: modules/jobs/type.php:19
+#: modules/jobs/type.php:21
+#: modules/jobs/type.php:22
+msgctxt "type"
+msgid "Add Job"
+msgstr ""
+
+#: modules/jobs/type.php:20
+msgctxt "type"
+msgid "All Jobs"
+msgstr ""
+
+#: modules/jobs/type.php:23
+msgctxt "type"
+msgid "Edit Job"
+msgstr ""
+
+#: modules/jobs/type.php:24
+msgctxt "type"
+msgid "New Job"
+msgstr ""
+
+#: modules/jobs/type.php:25
+msgctxt "type"
+msgid "View Job"
+msgstr ""
+
+#: modules/jobs/type.php:26
+msgctxt "type"
+msgid "View Jobs"
+msgstr ""
+
+#: modules/jobs/type.php:27
+msgctxt "type"
+msgid "Search Jobs"
+msgstr ""
+
+#: modules/jobs/type.php:28
+msgctxt "type"
+msgid "No Jobs"
+msgstr ""
+
+#: modules/jobs/type.php:29
+msgctxt "type"
+msgid "No Jobs Found in Trash"
+msgstr ""
+
+#: modules/jobs/type.php:30
+msgctxt "type"
+msgid "Job Archives"
+msgstr ""
+
+#: modules/jobs/type.php:31
+msgctxt "type"
+msgid "Job Attributes"
+msgstr ""
+
+#: modules/jobs/type.php:32
+msgctxt "type"
+msgid "Job published."
+msgstr ""
+
+#: modules/jobs/type.php:33
+msgctxt "type"
+msgid "Job updated."
+msgstr ""
+
+#: modules/jobs/type.php:47
+msgctxt "type"
+msgid "jobs"
+msgstr ""
+
+#: modules/members/inc/admin.php:40
+msgid "Members"
+msgstr ""
+
+#: modules/members/templates/section-cards.php:12
+#: modules/members/templates/section.php:12
+msgctxt "anchor"
+msgid "team"
+msgstr ""
+
+#: modules/members/templates/section-cards.php:19
+msgid "Important Contacts"
+msgstr ""
+
+#: modules/members/templates/section.php:23
+msgid "Our Team"
+msgstr ""
+
+#: modules/members/type.php:16
+#: modules/members/type.php:17
+msgctxt "type"
+msgid "Members"
+msgstr ""
+
+#: modules/members/type.php:18
+msgctxt "type"
+msgid "Member"
+msgstr ""
+
+#: modules/members/type.php:19
+#: modules/members/type.php:21
+#: modules/members/type.php:22
+msgctxt "type"
+msgid "Add Member"
+msgstr ""
+
+#: modules/members/type.php:20
+msgctxt "type"
+msgid "All Members"
+msgstr ""
+
+#: modules/members/type.php:23
+msgctxt "type"
+msgid "Edit Member"
+msgstr ""
+
+#: modules/members/type.php:24
+msgctxt "type"
+msgid "New Member"
+msgstr ""
+
+#: modules/members/type.php:25
+msgctxt "type"
+msgid "View Member"
+msgstr ""
+
+#: modules/members/type.php:26
+msgctxt "type"
+msgid "View Members"
+msgstr ""
+
+#: modules/members/type.php:27
+msgctxt "type"
+msgid "Search Members"
+msgstr ""
+
+#: modules/members/type.php:28
+msgctxt "type"
+msgid "No Members"
+msgstr ""
+
+#: modules/members/type.php:29
+msgctxt "type"
+msgid "No Members Found in Trash"
+msgstr ""
+
+#: modules/members/type.php:30
+msgctxt "type"
+msgid "Member Archives"
+msgstr ""
+
+#: modules/members/type.php:31
+msgctxt "type"
+msgid "Member Attributes"
+msgstr ""
+
+#: modules/members/type.php:32
+msgctxt "type"
+msgid "Member published."
+msgstr ""
+
+#: modules/members/type.php:33
+msgctxt "type"
+msgid "Member updated."
+msgstr ""
+
+#: modules/members/type.php:47
+msgctxt "type"
+msgid "member"
+msgstr ""
+
+#: modules/members/type.php:119
+#: modules/members/type/metabox.php:21
+msgid "Member"
+msgstr ""
+
+#: modules/members/type.php:120
+msgid "In contacts?"
+msgstr ""
+
+#: modules/members/type.php:121
+#: modules/members/type/metabox.php:31
+msgid "Position"
+msgstr ""
+
+#: modules/members/type.php:122
+#: modules/members/type/metabox.php:36
+msgid "Scope"
+msgstr ""
+
+#: modules/members/type/metabox.php:26
+msgid "Display on Contact Page?"
+msgstr ""
+
+#: modules/offers/templates/post/listing/button.php:12
+msgid "More About Offer"
+msgstr ""
+
+#: modules/offers/templates/post/single/heading.php:42
+#: modules/products/templates/post/single/heading.php:48
+msgid "I am interested"
+msgstr ""
+
+#: modules/offers/templates/post/uni/type.php:17
+msgid "Spring Offer"
+msgstr ""
+
+#: modules/offers/templates/post/uni/type.php:20
+msgid "Summer Offer"
+msgstr ""
+
+#: modules/offers/templates/post/uni/type.php:22
+msgid "Autumn Offer"
+msgstr ""
+
+#: modules/offers/templates/post/uni/type.php:25
+msgid "Winter Offer"
+msgstr ""
+
+#: modules/offers/templates/section-small.php:52
+#: modules/offers/templates/section.php:18
+msgctxt "anchor"
+msgid "offers"
+msgstr ""
+
+#: modules/offers/templates/section-small.php:58
+#: modules/offers/templates/section.php:24
+msgid "Offers"
+msgstr ""
+
+#: modules/offers/templates/section.php:47
+msgid "View All Offers"
+msgstr ""
+
+#: modules/offers/type.php:16
+#: modules/offers/type.php:17
+msgctxt "type"
+msgid "Offers"
+msgstr ""
+
+#: modules/offers/type.php:18
+msgctxt "type"
+msgid "Offer"
+msgstr ""
+
+#: modules/offers/type.php:19
+#: modules/offers/type.php:21
+#: modules/offers/type.php:22
+msgctxt "type"
+msgid "Add Offer"
+msgstr ""
+
+#: modules/offers/type.php:20
+msgctxt "type"
+msgid "All Offers"
+msgstr ""
+
+#: modules/offers/type.php:23
+msgctxt "type"
+msgid "Edit Offer"
+msgstr ""
+
+#: modules/offers/type.php:24
+msgctxt "type"
+msgid "New Offer"
+msgstr ""
+
+#: modules/offers/type.php:25
+msgctxt "type"
+msgid "View Offer"
+msgstr ""
+
+#: modules/offers/type.php:26
+msgctxt "type"
+msgid "View Offers"
+msgstr ""
+
+#: modules/offers/type.php:27
+msgctxt "type"
+msgid "Search Offers"
+msgstr ""
+
+#: modules/offers/type.php:28
+msgctxt "type"
+msgid "No Offers"
+msgstr ""
+
+#: modules/offers/type.php:29
+msgctxt "type"
+msgid "No Offers Found in Trash"
+msgstr ""
+
+#: modules/offers/type.php:30
+msgctxt "type"
+msgid "Offer Archives"
+msgstr ""
+
+#: modules/offers/type.php:31
+msgctxt "type"
+msgid "Offer Attributes"
+msgstr ""
+
+#: modules/offers/type.php:32
+msgctxt "type"
+msgid "Offer published."
+msgstr ""
+
+#: modules/offers/type.php:33
+msgctxt "type"
+msgid "Offer updated."
+msgstr ""
+
+#: modules/offers/type.php:47
+msgctxt "type"
+msgid "offer"
+msgstr ""
+
+#: modules/offers/type.php:142
+msgid "Offer"
+msgstr ""
+
+#: modules/offers/type.php:143
+msgid "Featured?"
+msgstr ""
+
+#: modules/offers/type/metabox.php:21
+msgid "offer"
+msgstr ""
+
+#: modules/offers/type/metabox.php:26
+msgctxt "admin"
+msgid "Featured on Homepage?"
+msgstr ""
+
+#: modules/offers/type/metabox.php:32
+#: modules/products/inc/admin/category.php:44
+#: modules/products/type/metabox.php:25
+msgctxt "admin"
+msgid "Type"
+msgstr ""
+
+#: modules/offers/type/metabox.php:35
+#: modules/offers/type/metabox.php:78
+msgctxt "admin"
+msgid "Select a Type"
+msgstr ""
+
+#: modules/offers/type/metabox.php:37
+msgctxt "admin"
+msgid "Spring"
+msgstr ""
+
+#: modules/offers/type/metabox.php:38
+msgctxt "admin"
+msgid "Summer"
+msgstr ""
+
+#: modules/offers/type/metabox.php:39
+msgctxt "admin"
+msgid "Autumn"
+msgstr ""
+
+#: modules/offers/type/metabox.php:40
+msgctxt "admin"
+msgid "Winter"
+msgstr ""
+
+#: modules/offers/type/metabox.php:44
+msgid "Custom Type"
+msgstr ""
+
+#: modules/offers/type/metabox.php:49
+msgid "Short Title"
+msgstr ""
+
+#: modules/offers/type/metabox.php:59
+#: modules/partners/type.php:121
+#: modules/partners/type/metabox.php:31
+#: modules/products/templates/post/single/description.php:19
+#: modules/products/templates/post/single/navigation.php:24
+#: modules/products/templates/post/single/parameters-and-description.php:146
+#: modules/references/type.php:122
+#: modules/references/type/metabox.php:38
+msgid "Description"
+msgstr ""
+
+#: modules/offers/type/metabox.php:75
+msgctxt "admin"
+msgid "Display for"
+msgstr ""
+
+#: modules/offers/type/metabox.php:80
+#: modules/products/type/metabox.php:111
+msgctxt "admin"
+msgid "Default"
+msgstr ""
+
+#: modules/offers/type/metabox.php:81
+#: modules/products/type/metabox.php:112
+msgctxt "admin"
+msgid "Pools"
+msgstr ""
+
+#: modules/offers/type/metabox.php:82
+#: modules/products/type/metabox.php:113
+msgctxt "admin"
+msgid "Jacuzzis"
+msgstr ""
+
+#: modules/offers/type/metabox.php:90
+msgid "None"
+msgstr ""
+
+#: modules/offers/type/metabox.php:91
+msgid "Default"
+msgstr ""
+
+#: modules/offers/type/metabox.php:98
+#: modules/pages/type/metabox.php:62
+#: modules/pages/type/metabox.php:137
+msgctxt "admin"
+msgid "Button"
+msgstr ""
+
+#: modules/offers/type/metabox.php:101
+#: modules/pages/type/metabox.php:65
+#: modules/pages/type/metabox.php:140
+#: modules/slides/type/metabox.php:26
+msgctxt "admin"
+msgid "Button Text"
+msgstr ""
+
+#: modules/offers/type/metabox.php:107
+#: modules/pages/type/metabox.php:71
+#: modules/pages/type/metabox.php:146
+#: modules/slides/type/metabox.php:33
+#: modules/slides/type/metabox.php:36
+#: modules/slides/type/metabox.php:43
+#: modules/slides/type/metabox.php:50
+msgctxt "admin"
+msgid "Button URL"
+msgstr ""
+
+#: modules/pages/templates/section-pages.php:22
+#: modules/pages/templates/section-subpages.php:40
+msgctxt "anchor"
+msgid "pages"
+msgstr ""
+
+#: modules/pages/templates/section-pages.php:27
+#: modules/products/templates/section-products.php:9
+msgid "Products"
+msgstr ""
+
+#: modules/pages/templates/section-subpages.php:46
+msgid "You may be interested in"
+msgstr ""
+
+#: modules/pages/templates/section-subpages.php:48
+msgid "Subpages"
+msgstr ""
+
+#: modules/pages/type.php:20
+msgid "Product Category"
+msgstr ""
+
+#: modules/pages/type.php:22
+#: modules/products/type.php:143
+msgid "Author"
+msgstr ""
+
+#: modules/pages/type.php:23
+msgid "Date"
+msgstr ""
+
+#: modules/pages/type/metabox.php:26
+msgctxt "admin"
+msgid "Homepage"
+msgstr ""
+
+#: modules/pages/type/metabox.php:46
+#: modules/pages/type/metabox.php:121
+#: modules/posts/type/metabox.php:64
+#: modules/products/type/metabox.php:89
+msgctxt "admin"
+msgid "Description"
+msgstr ""
+
+#: modules/pages/type/metabox.php:92
+msgctxt "admin"
+msgid "Page won't be available on the website, and will be redirected to a product category."
+msgstr ""
+
+#: modules/pages/type/metabox.php:95
+msgctxt "admin"
+msgid "Select a Category"
+msgstr ""
+
+#: modules/pages/type/metabox.php:100
+msgctxt "admin"
+msgid "Display Title"
+msgstr ""
+
+#: modules/pages/type/metabox.php:152
+msgctxt "admin"
+msgid "Badge"
+msgstr ""
+
+#: modules/pages/type/metabox.php:155
+msgctxt "admin"
+msgid "Badge Title"
+msgstr ""
+
+#: modules/pages/type/metabox.php:161
+msgctxt "admin"
+msgid "Badge Text"
+msgstr ""
+
+#: modules/partners/inc/admin.php:40
+msgid "Partners"
+msgstr ""
+
+#: modules/partners/templates/section.php:23
+#: templates/navigation/about.php:23
+msgctxt "anchor"
+msgid "suppliers-and-partners"
+msgstr ""
+
+#: modules/partners/templates/section.php:34
+#: templates/navigation/about.php:24
+msgid "Suppliers and Partners"
+msgstr ""
+
+#: modules/partners/templates/section.php:48
+msgid "View Next Partners"
+msgstr ""
+
+#: modules/partners/type.php:16
+#: modules/partners/type.php:17
+msgctxt "type"
+msgid "Partners"
+msgstr ""
+
+#: modules/partners/type.php:18
+msgctxt "type"
+msgid "Partner"
+msgstr ""
+
+#: modules/partners/type.php:19
+#: modules/partners/type.php:21
+#: modules/partners/type.php:22
+msgctxt "type"
+msgid "Add Partner"
+msgstr ""
+
+#: modules/partners/type.php:20
+msgctxt "type"
+msgid "All Partners"
+msgstr ""
+
+#: modules/partners/type.php:23
+msgctxt "type"
+msgid "Edit Partner"
+msgstr ""
+
+#: modules/partners/type.php:24
+msgctxt "type"
+msgid "New Partner"
+msgstr ""
+
+#: modules/partners/type.php:25
+msgctxt "type"
+msgid "View Partner"
+msgstr ""
+
+#: modules/partners/type.php:26
+msgctxt "type"
+msgid "View Partners"
+msgstr ""
+
+#: modules/partners/type.php:27
+msgctxt "type"
+msgid "Search Partners"
+msgstr ""
+
+#: modules/partners/type.php:28
+msgctxt "type"
+msgid "No Partners"
+msgstr ""
+
+#: modules/partners/type.php:29
+msgctxt "type"
+msgid "No Partners Found in Trash"
+msgstr ""
+
+#: modules/partners/type.php:30
+msgctxt "type"
+msgid "Partner Archives"
+msgstr ""
+
+#: modules/partners/type.php:31
+msgctxt "type"
+msgid "Partner Attributes"
+msgstr ""
+
+#: modules/partners/type.php:32
+msgctxt "type"
+msgid "Partner published."
+msgstr ""
+
+#: modules/partners/type.php:33
+msgctxt "type"
+msgid "Partner updated."
+msgstr ""
+
+#: modules/partners/type.php:47
+msgctxt "type"
+msgid "partner"
+msgstr ""
+
+#: modules/partners/type.php:119
+#: modules/partners/type/metabox.php:21
+msgid "Partner"
+msgstr ""
+
+#: modules/posts/templates/loop/search.php:29
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr ""
+
+#: modules/posts/templates/navigation.php:15
+#: templates/navigation/about.php:12
+msgctxt "navigation"
+msgid "About Navigation"
+msgstr ""
+
+#. translators: %s: term name
+#: modules/posts/templates/post/common/categories.php:33
+msgid "View all posts in %s"
+msgstr ""
+
+#: modules/posts/templates/post/listing/footer.php:16
+msgid "Read article <span class=\"screen-reader-text\">%s</span>"
+msgstr ""
+
+#: modules/posts/templates/post/single/meta.php:38
+msgid "Edit"
+msgstr ""
+
+#: modules/posts/templates/post/single/tags.php:9
+msgid "Tags"
+msgstr ""
+
+#: modules/posts/templates/section-carousel.php:24
+msgctxt "anchor"
+msgid "posts-recent"
+msgstr ""
+
+#: modules/posts/templates/section-carousel.php:29
+msgid "Recent Posts"
+msgstr ""
+
+#: modules/posts/templates/section-recent.php:26
+#: modules/posts/templates/section.php:18
+msgctxt "anchor"
+msgid "posts"
+msgstr ""
+
+#: modules/posts/templates/section-recent.php:32
+#: modules/posts/templates/section.php:28
+msgid "Posts"
+msgstr ""
+
+#: modules/posts/templates/section-related.php:48
+msgctxt "anchor"
+msgid "posts-related"
+msgstr ""
+
+#: modules/posts/templates/section-related.php:54
+msgid "Related Posts"
+msgstr ""
+
+#: modules/posts/templates/section.php:38
+msgid "All Posts"
+msgstr ""
+
+#: modules/posts/type/metabox.php:18
+msgid "Post"
+msgstr ""
+
+#: modules/posts/type/metabox.php:57
+msgctxt "admin"
+msgid "Alternative title of the post"
+msgstr ""
+
+#: modules/posts/type/metabox.php:69
+msgctxt "admin"
+msgid "Short description of the post"
+msgstr ""
+
+#: modules/products/inc/admin/category.php:27
+#: modules/products/type/metabox.php:72
+msgctxt "admin"
+msgid "Short Description"
+msgstr ""
+
+#: modules/products/inc/admin/category.php:37
+msgctxt "admin"
+msgid "Short description of the category"
+msgstr ""
+
+#: modules/products/inc/admin/category.php:50
+msgctxt "admin"
+msgid "Accessories"
+msgstr ""
+
+#: modules/products/inc/admin/category.php:53
+msgctxt "admin"
+msgid "Select a type of a category."
+msgstr ""
+
+#: modules/products/inc/admin/category.php:60
+msgctxt "admin"
+msgid "Image"
+msgstr ""
+
+#: modules/products/inc/admin/category.php:74
+#: modules/products/inc/admin/scripts.php:28
+msgctxt "admin"
+msgid "Change Image"
+msgstr ""
+
+#: modules/products/inc/admin/category.php:77
+#: modules/products/inc/admin/category.php:89
+msgctxt "admin"
+msgid "Remove Image"
+msgstr ""
+
+#: modules/products/inc/admin/category.php:86
+#: modules/products/inc/admin/scripts.php:27
+msgctxt "admin"
+msgid "Add Image"
+msgstr ""
+
+#: modules/products/inc/admin/list.php:29
+msgid "Filter by Type"
+msgstr ""
+
+#: modules/products/inc/admin/list.php:31
+msgid "All Types"
+msgstr ""
+
+#: modules/products/inc/admin/list.php:89
+msgctxt "admin"
+msgid "Affiliate Product"
+msgstr ""
+
+#: modules/products/inc/admin/list/affiliate.php:107
+msgctxt "admin"
+msgid "Standard"
+msgstr ""
+
+#: modules/products/inc/admin/list/affiliate.php:114
+msgctxt "admin"
+msgid "Affiliate"
+msgstr ""
+
+#: modules/products/inc/admin/list/affiliate.php:121
+msgctxt "admin"
+msgid "Published"
+msgstr ""
+
+#: modules/products/inc/admin/scripts.php:29
+msgctxt "admin"
+msgid "Insert Image"
+msgstr ""
+
+#: modules/products/inc/admin/scripts.php:30
+msgctxt "admin"
+msgid "Use Image"
+msgstr ""
+
+#: modules/products/inc/product.php:17
+msgid "Standard"
+msgstr ""
+
+#: modules/products/inc/product.php:34
+msgid "White"
+msgstr ""
+
+#: modules/products/inc/product.php:35
+msgid "Grey"
+msgstr ""
+
+#: modules/products/inc/product.php:36
+msgid "Black"
+msgstr ""
+
+#: modules/products/inc/product.php:37
+msgid "Blue"
+msgstr ""
+
+#: modules/products/inc/product.php:38
+msgid "Green"
+msgstr ""
+
+#: modules/products/inc/product.php:39
+msgid "Beige"
+msgstr ""
+
+#: modules/products/inc/product.php:40
+msgid "Yellow"
+msgstr ""
+
+#: modules/products/inc/product.php:41
+msgid "Red"
+msgstr ""
+
+#: modules/products/inc/product.php:42
+msgid "Pink"
+msgstr ""
+
+#: modules/products/inc/product.php:43
+msgid "Purple"
+msgstr ""
+
+#: modules/products/inc/product.php:44
+msgid "Brown"
+msgstr ""
+
+#: modules/products/templates/post/listing/button.php:11
+msgid "View %s"
+msgstr ""
+
+#: modules/products/templates/post/listing/footer.php:12
+msgid "View Detail"
+msgstr ""
+
+#: modules/products/templates/post/single/description.php:11
+#: modules/products/templates/post/single/navigation.php:23
+msgctxt "anchor"
+msgid "description"
+msgstr ""
+
+#: modules/products/templates/post/single/description.php:17
+#: modules/products/templates/post/single/navigation.php:18
+#: modules/products/templates/post/single/parameters-and-description.php:29
+msgid "Parameters and Description"
+msgstr ""
+
+#: modules/products/templates/post/single/heading.php:40
+#: modules/products/templates/post/single/navigation.php:30
+#: modules/products/templates/post/single/navigation.php:36
+#: modules/products/templates/section-products-related.php:8
+#: modules/products/templates/section-products.php:37
+msgctxt "anchor"
+msgid "variations"
+msgstr ""
+
+#: modules/products/templates/post/single/heading.php:42
+msgid "View Variations"
+msgstr ""
+
+#: modules/products/templates/post/single/navigation.php:13
+msgctxt "navigation"
+msgid "Product Navigation"
+msgstr ""
+
+#: modules/products/templates/post/single/navigation.php:17
+#: modules/products/templates/post/single/parameters-and-description.php:24
+msgctxt "anchor"
+msgid "parameters-and-description"
+msgstr ""
+
+#: modules/products/templates/post/single/navigation.php:31
+#: modules/products/templates/section-products.php:38
+msgid "Available Variations"
+msgstr ""
+
+#: modules/products/templates/post/single/navigation.php:37
+#: modules/products/templates/section-products-related.php:9
+msgid "Other Variations"
+msgstr ""
+
+#: modules/products/templates/post/single/navigation.php:49
+msgctxt "anchor"
+msgid "order-progress"
+msgstr ""
+
+#: modules/products/templates/post/single/navigation.php:50
+msgid "Order Progress"
+msgstr ""
+
+#: modules/products/templates/post/single/navigation.php:55
+msgid "FAQs"
+msgstr ""
+
+#: modules/products/templates/post/single/navigation.php:59
+#: modules/references/templates/section-recent.php:28
+msgctxt "anchor"
+msgid "references"
+msgstr ""
+
+#: modules/products/templates/post/single/navigation.php:60
+#: modules/references/type.php:118
+#: modules/references/type/metabox.php:21
+msgid "Reference"
+msgstr ""
+
+#: modules/products/templates/post/single/parameters-and-description.php:35
+msgid "Parameters"
+msgstr ""
+
+#: modules/products/templates/post/single/parameters-and-description.php:44
+#: modules/products/type/metabox.php:126
+msgid "Model"
+msgstr ""
+
+#: modules/products/templates/post/single/parameters-and-description.php:59
+#: modules/products/type/metabox.php:140
+msgid "Number of Seats"
+msgstr ""
+
+#: modules/products/templates/post/single/parameters-and-description.php:74
+msgid "Nozzles/Pumps"
+msgstr ""
+
+#: modules/products/templates/post/single/parameters-and-description.php:89
+#: modules/products/type/metabox.php:154
+msgid "Internal Dimensions"
+msgstr ""
+
+#: modules/products/templates/post/single/parameters-and-description.php:104
+#: modules/products/type/metabox.php:161
+msgid "External Dimensions"
+msgstr ""
+
+#: modules/products/templates/post/single/parameters-and-description.php:119
+#: modules/products/type/metabox.php:168
+msgid "Water Depth"
+msgstr ""
+
+#: modules/products/templates/post/single/parameters-and-description.php:134
+#: modules/products/type/metabox.php:175
+msgid "Water Volume"
+msgstr ""
+
+#: modules/products/templates/post/single/params/_backup-colors.php:10
+msgid "Color"
+msgstr ""
+
+#: modules/products/templates/post/single/sidebar.php:17
+msgid "Send inquiry"
+msgstr ""
+
+#: modules/products/templates/section-categories.php:15
+#: modules/products/templates/section-navigation.php:22
+msgctxt "anchor"
+msgid "categories"
+msgstr ""
+
+#: modules/products/templates/section-categories.php:19
+msgid "Product Categories"
+msgstr ""
+
+#: modules/products/templates/section-navigation.php:26
+msgid "Sub-categories"
+msgstr ""
+
+#: modules/products/templates/section-products.php:8
+msgctxt "anchor"
+msgid "products"
+msgstr ""
+
+#: modules/products/type.php:16
+#: modules/products/type.php:17
+msgctxt "type"
+msgid "Products"
+msgstr ""
+
+#: modules/products/type.php:18
+msgctxt "type"
+msgid "Product"
+msgstr ""
+
+#: modules/products/type.php:19
+#: modules/products/type.php:21
+#: modules/products/type.php:22
+msgctxt "type"
+msgid "Add Product"
+msgstr ""
+
+#: modules/products/type.php:20
+msgctxt "type"
+msgid "All Products"
+msgstr ""
+
+#: modules/products/type.php:23
+msgctxt "type"
+msgid "Edit Product"
+msgstr ""
+
+#: modules/products/type.php:24
+msgctxt "type"
+msgid "New Product"
+msgstr ""
+
+#: modules/products/type.php:25
+msgctxt "type"
+msgid "View Product"
+msgstr ""
+
+#: modules/products/type.php:26
+msgctxt "type"
+msgid "View Products"
+msgstr ""
+
+#: modules/products/type.php:27
+msgctxt "type"
+msgid "Search Products"
+msgstr ""
+
+#: modules/products/type.php:28
+msgctxt "type"
+msgid "No Products"
+msgstr ""
+
+#: modules/products/type.php:29
+msgctxt "type"
+msgid "No Products Found in Trash"
+msgstr ""
+
+#: modules/products/type.php:30
+msgctxt "type"
+msgid "Product Archives"
+msgstr ""
+
+#: modules/products/type.php:31
+msgctxt "type"
+msgid "Product Attributes"
+msgstr ""
+
+#: modules/products/type.php:32
+msgctxt "type"
+msgid "Product published."
+msgstr ""
+
+#: modules/products/type.php:33
+msgctxt "type"
+msgid "Product updated."
+msgstr ""
+
+#: modules/products/type.php:47
+msgctxt "type"
+msgid "product"
+msgstr ""
+
+#: modules/products/type.php:138
+msgid "Product"
+msgstr ""
+
+#: modules/products/type.php:139
+msgid "Price"
+msgstr ""
+
+#: modules/products/type.php:141
+msgid "Manufacturer"
+msgstr ""
+
+#: modules/products/type/metabox.php:20
+#: modules/products/type/metabox.php:42
+#: modules/slides/type/metabox.php:36
+msgctxt "admin"
+msgid "Product"
+msgstr ""
+
+#: modules/products/type/metabox.php:26
+msgctxt "admin"
+msgid "Affiliate product type hasn't a single page."
+msgstr ""
+
+#: modules/products/type/metabox.php:32
+msgctxt "admin"
+msgid "Affiliate URL"
+msgstr ""
+
+#: modules/products/type/metabox.php:47
+msgctxt "admin"
+msgid "Short Title"
+msgstr ""
+
+#: modules/products/type/metabox.php:48
+#: modules/products/type/metabox.php:73
+#: modules/products/type/metabox.php:192
+msgctxt "admin"
+msgid "Zobrazí se na kartě varianty produktu."
+msgstr ""
+
+#: modules/products/type/metabox.php:53
+msgctxt "admin"
+msgid "Price"
+msgstr ""
+
+#: modules/products/type/metabox.php:61
+msgctxt "admin"
+msgid "Price Text"
+msgstr ""
+
+#: modules/products/type/metabox.php:66
+msgctxt "admin"
+msgid "Price Suffix"
+msgstr ""
+
+#: modules/products/type/metabox.php:67
+msgctxt "admin"
+msgid "incl. assembly"
+msgstr ""
+
+#: modules/products/type/metabox.php:90
+msgctxt "admin"
+msgid "Zobrazí se na detailní stránce produktu."
+msgstr ""
+
+#: modules/products/type/metabox.php:107
+msgctxt "admin"
+msgid "Zobrazený kontakt na detailní stránce produktu."
+msgstr ""
+
+#: modules/products/type/metabox.php:121
+msgctxt "admin"
+msgid "Product Parameters"
+msgstr ""
+
+#: modules/products/type/metabox.php:130
+msgid "+ Add Model"
+msgstr ""
+
+#: modules/products/type/metabox.php:144
+#: modules/products/type/metabox.php:151
+msgid "+ Add Number"
+msgstr ""
+
+#: modules/products/type/metabox.php:147
+msgid "Number of Nozzles/Pumps"
+msgstr ""
+
+#: modules/products/type/metabox.php:158
+#: modules/products/type/metabox.php:165
+msgid "+ Add Dimensions"
+msgstr ""
+
+#: modules/products/type/metabox.php:172
+msgid "+ Add Depth"
+msgstr ""
+
+#: modules/products/type/metabox.php:179
+msgid "+ Add Volume"
+msgstr ""
+
+#: modules/products/type/metabox.php:186
+#: modules/products/type/metabox.php:199
+msgctxt "admin"
+msgid "Product Images"
+msgstr ""
+
+#: modules/products/type/metabox.php:191
+msgctxt "admin"
+msgid "Product Image"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:21
+#: modules/products/type/taxonomy.php:36
+msgctxt "taxonomy"
+msgid "Product Categories"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:44
+msgctxt "taxonomy"
+msgid "catalog"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:55
+#: modules/products/type/taxonomy.php:70
+msgctxt "taxonomy"
+msgid "Manufacturers"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:56
+msgctxt "taxonomy"
+msgid "Manufacturer"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:57
+msgctxt "taxonomy"
+msgid "Search Manufacturers"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:58
+msgctxt "taxonomy"
+msgid "Popular Manufacturers"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:59
+msgctxt "taxonomy"
+msgid "All Manufacturers"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:60
+msgctxt "taxonomy"
+msgid "Edit Manufacturer"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:61
+msgctxt "taxonomy"
+msgid "View Manufacturer"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:62
+msgctxt "taxonomy"
+msgid "Update Manufacturer"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:63
+msgctxt "taxonomy"
+msgid "Add New Manufacturer"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:64
+msgctxt "taxonomy"
+msgid "New Manufacturer Name"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:65
+msgctxt "taxonomy"
+msgid "No manufacturers found."
+msgstr ""
+
+#: modules/products/type/taxonomy.php:66
+msgctxt "taxonomy"
+msgid "Add or remove manufacturers"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:67
+msgctxt "taxonomy"
+msgid "Separate manufacturers with commas"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:68
+msgctxt "taxonomy"
+msgid "Back to manufacturers"
+msgstr ""
+
+#: modules/products/type/taxonomy.php:78
+msgctxt "taxonomy"
+msgid "manufacturer"
+msgstr ""
+
+#. Template Name of the theme
+#: modules/references/inc/admin.php:40
+#: modules/references/templates/section-recent.php:42
+msgid "References"
+msgstr ""
+
+#: modules/references/templates/navigation.php:19
+msgctxt "navigation"
+msgid "References Navigation"
+msgstr ""
+
+#: modules/references/templates/post/listing/buttons.php:10
+msgid "Read More"
+msgstr ""
+
+#: modules/references/templates/post/listing/meta.php:16
+#: modules/references/templates/post/single/meta.php:16
+#: modules/references/type/metabox.php:54
+msgid "Location"
+msgstr ""
+
+#: modules/references/templates/post/listing/meta.php:22
+#: modules/references/templates/post/single/meta.php:22
+#: modules/references/type/metabox.php:59
+msgid "Year"
+msgstr ""
+
+#: modules/references/templates/post/single/description.php:15
+msgid "Project Description"
+msgstr ""
+
+#: modules/references/templates/post/single/gallery.php:15
+#: modules/references/type/metabox.php:69
+msgid "Gallery"
+msgstr ""
+
+#: modules/references/templates/section-recent.php:56
+msgid "View Next References"
+msgstr ""
+
+#: modules/references/type.php:16
+#: modules/references/type.php:17
+msgctxt "type"
+msgid "References"
+msgstr ""
+
+#: modules/references/type.php:18
+msgctxt "type"
+msgid "Reference"
+msgstr ""
+
+#: modules/references/type.php:19
+#: modules/references/type.php:21
+#: modules/references/type.php:22
+msgctxt "type"
+msgid "Add Reference"
+msgstr ""
+
+#: modules/references/type.php:20
+msgctxt "type"
+msgid "All References"
+msgstr ""
+
+#: modules/references/type.php:23
+msgctxt "type"
+msgid "Edit Reference"
+msgstr ""
+
+#: modules/references/type.php:24
+msgctxt "type"
+msgid "New Reference"
+msgstr ""
+
+#: modules/references/type.php:25
+msgctxt "type"
+msgid "View Reference"
+msgstr ""
+
+#: modules/references/type.php:26
+msgctxt "type"
+msgid "View References"
+msgstr ""
+
+#: modules/references/type.php:27
+msgctxt "type"
+msgid "Search References"
+msgstr ""
+
+#: modules/references/type.php:28
+msgctxt "type"
+msgid "No References"
+msgstr ""
+
+#: modules/references/type.php:29
+msgctxt "type"
+msgid "No References Found in Trash"
+msgstr ""
+
+#: modules/references/type.php:30
+msgctxt "type"
+msgid "Reference Archives"
+msgstr ""
+
+#: modules/references/type.php:31
+msgctxt "type"
+msgid "Reference Attributes"
+msgstr ""
+
+#: modules/references/type.php:32
+msgctxt "type"
+msgid "Reference published."
+msgstr ""
+
+#: modules/references/type.php:33
+msgctxt "type"
+msgid "Reference updated."
+msgstr ""
+
+#: modules/references/type.php:47
+msgctxt "type"
+msgid "project"
+msgstr ""
+
+#: modules/references/type.php:120
+msgid "Single"
+msgstr ""
+
+#: modules/references/type/metabox.php:32
+msgctxt "admin"
+msgid "Display Single"
+msgstr ""
+
+#: modules/references/type/metabox.php:74
+msgid "Images"
+msgstr ""
+
+#: modules/references/type/taxonomy.php:21
+msgctxt "taxonomy"
+msgid "Reference Categories"
+msgstr ""
+
+#: modules/references/type/taxonomy.php:22
+#: modules/supports/type/taxonomy.php:21
+msgctxt "taxonomy"
+msgid "Categories"
+msgstr ""
+
+#: modules/references/type/taxonomy.php:44
+msgctxt "taxonomy"
+msgid "references"
+msgstr ""
+
+#: modules/slides/templates/section.php:36
+msgctxt "slideshow accessibility"
+msgid "Slideshow"
+msgstr ""
+
+#: modules/slides/type.php:16
+#: modules/slides/type.php:17
+msgctxt "type"
+msgid "Slides"
+msgstr ""
+
+#: modules/slides/type.php:18
+#: modules/slides/type.php:140
+msgctxt "type"
+msgid "Slide"
+msgstr ""
+
+#: modules/slides/type.php:19
+#: modules/slides/type.php:21
+#: modules/slides/type.php:22
+msgctxt "type"
+msgid "Add Slide"
+msgstr ""
+
+#: modules/slides/type.php:20
+msgctxt "type"
+msgid "All Slides"
+msgstr ""
+
+#: modules/slides/type.php:23
+msgctxt "type"
+msgid "Edit Slide"
+msgstr ""
+
+#: modules/slides/type.php:24
+msgctxt "type"
+msgid "New Slide"
+msgstr ""
+
+#: modules/slides/type.php:25
+msgctxt "type"
+msgid "View Slide"
+msgstr ""
+
+#: modules/slides/type.php:26
+msgctxt "type"
+msgid "View Slides"
+msgstr ""
+
+#: modules/slides/type.php:27
+msgctxt "type"
+msgid "Search Slides"
+msgstr ""
+
+#: modules/slides/type.php:28
+msgctxt "type"
+msgid "No Slides"
+msgstr ""
+
+#: modules/slides/type.php:29
+msgctxt "type"
+msgid "No Slides Found in Trash"
+msgstr ""
+
+#: modules/slides/type.php:30
+msgctxt "type"
+msgid "Slide Archives"
+msgstr ""
+
+#: modules/slides/type.php:31
+msgctxt "type"
+msgid "Slide Attributes"
+msgstr ""
+
+#: modules/slides/type.php:32
+msgctxt "type"
+msgid "Slide published."
+msgstr ""
+
+#: modules/slides/type.php:33
+msgctxt "type"
+msgid "Slide updated."
+msgstr ""
+
+#: modules/slides/type.php:47
+msgctxt "type"
+msgid "slide"
+msgstr ""
+
+#: modules/slides/type/metabox.php:21
+msgid "Slide"
+msgstr ""
+
+#: modules/slides/type/metabox.php:40
+msgctxt "admin"
+msgid "Select a Product"
+msgstr ""
+
+#: modules/slides/type/metabox.php:47
+msgctxt "admin"
+msgid "Select a Product Category"
+msgstr ""
+
+#: modules/slides/type/metabox.php:50
+msgctxt "admin"
+msgid "Custom"
+msgstr ""
+
+#: modules/supports/inc/admin/category.php:26
+msgctxt "admin"
+msgid "Display also in a price list?"
+msgstr ""
+
+#: modules/supports/inc/admin/category.php:32
+#: modules/supports/inc/admin/category.php:49
+msgid "Yes"
+msgstr ""
+
+#: modules/supports/inc/admin/category.php:33
+#: modules/supports/inc/admin/category.php:50
+msgid "No"
+msgstr ""
+
+#: modules/supports/inc/admin/category.php:36
+msgctxt "admin"
+msgid "Please select whether the category will be displayed also in a price list or not."
+msgstr ""
+
+#: modules/supports/inc/admin/category.php:43
+msgctxt "admin"
+msgid "Display only in a price list?"
+msgstr ""
+
+#: modules/supports/inc/admin/category.php:53
+msgctxt "admin"
+msgid "Please select whether the category will be displayed only in a price list or not."
+msgstr ""
+
+#: modules/supports/templates/navigation.php:30
+msgctxt "navigation"
+msgid "Support Navigation"
+msgstr ""
+
+#: modules/supports/templates/post/listing/downloads.php:49
+msgid "Download"
+msgstr ""
+
+#: modules/supports/templates/section.php:21
+msgctxt "anchor"
+msgid "support"
+msgstr ""
+
+#: modules/supports/templates/section.php:61
+msgid "View more <span class=\"screen-reader-text\">Supports</span>"
+msgstr ""
+
+#: modules/supports/type.php:16
+#: modules/supports/type.php:17
+#: modules/supports/type.php:18
+#: modules/supports/type.php:110
+msgctxt "type"
+msgid "Support"
+msgstr ""
+
+#: modules/supports/type.php:19
+#: modules/supports/type.php:21
+#: modules/supports/type.php:22
+msgctxt "type"
+msgid "Add Support"
+msgstr ""
+
+#: modules/supports/type.php:20
+msgctxt "type"
+msgid "All Supports"
+msgstr ""
+
+#: modules/supports/type.php:23
+msgctxt "type"
+msgid "Edit Support"
+msgstr ""
+
+#: modules/supports/type.php:24
+msgctxt "type"
+msgid "New Support"
+msgstr ""
+
+#: modules/supports/type.php:25
+msgctxt "type"
+msgid "View Support"
+msgstr ""
+
+#: modules/supports/type.php:26
+msgctxt "type"
+msgid "View Supports"
+msgstr ""
+
+#: modules/supports/type.php:27
+msgctxt "type"
+msgid "Search Supports"
+msgstr ""
+
+#: modules/supports/type.php:28
+msgctxt "type"
+msgid "No Supports"
+msgstr ""
+
+#: modules/supports/type.php:29
+msgctxt "type"
+msgid "No Supports Found in Trash"
+msgstr ""
+
+#: modules/supports/type.php:30
+msgctxt "type"
+msgid "Support Archives"
+msgstr ""
+
+#: modules/supports/type.php:31
+msgctxt "type"
+msgid "Support Attributes"
+msgstr ""
+
+#: modules/supports/type.php:32
+msgctxt "type"
+msgid "Support published."
+msgstr ""
+
+#: modules/supports/type.php:33
+msgctxt "type"
+msgid "Support updated."
+msgstr ""
+
+#: modules/supports/type.php:47
+msgctxt "type"
+msgid "support"
+msgstr ""
+
+#: modules/supports/type.php:112
+#: modules/supports/type/taxonomy.php:63
+msgctxt "type"
+msgid "Also in pricelist?"
+msgstr ""
+
+#: modules/supports/type.php:113
+#: modules/supports/type/taxonomy.php:64
+msgctxt "type"
+msgid "Only in pricelist?"
+msgstr ""
+
+#: modules/supports/type.php:158
+#: modules/supports/type.php:168
+#: modules/supports/type/taxonomy.php:80
+#: modules/supports/type/taxonomy.php:83
+msgctxt "admin"
+msgid "Yes"
+msgstr ""
+
+#. Template Name of the theme
+#: modules/supports/type/metabox.php:21
+msgid "Support"
+msgstr ""
+
+#: modules/supports/type/metabox.php:26
+msgid "Downloads"
+msgstr ""
+
+#: modules/supports/type/metabox.php:33
+msgid "Display also in the price list?"
+msgstr ""
+
+#: modules/supports/type/metabox.php:39
+msgid "Display only in the price list?"
+msgstr ""
+
+#: modules/supports/type/taxonomy.php:36
+msgctxt "taxonomy"
+msgid "Support Categories"
+msgstr ""
+
+#: modules/supports/type/taxonomy.php:44
+msgctxt "taxonomy"
+msgid "supports"
+msgstr ""
+
+#: searchform.php:23
+#: templates/search.php:32
+msgctxt "label"
+msgid "Search"
+msgstr ""
+
+#: searchform.php:27
+msgctxt "placeholder"
+msgid "Search"
+msgstr ""
+
+#: searchform.php:31
+msgctxt "submit button"
+msgid "Search"
+msgstr ""
+
+#: template-about.php:18
+#: templates/navigation/about.php:16
+msgctxt "anchor"
+msgid "our-company"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Blog"
+msgstr ""
+
+#. Template Name of the theme
+msgid "FAQ"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Homepage"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Pricelist"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Showroom"
+msgstr ""
+
+#: templates/about/_hours.php:8
+msgid "Po-Pá: 8:00-16:00"
+msgstr ""
+
+#: templates/about/_hours.php:9
+msgid "8:00"
+msgstr ""
+
+#: templates/about/_hours.php:10
+msgid "16:00"
+msgstr ""
+
+#: templates/button/contact.php:10
+msgid "Free Consultation"
+msgstr ""
+
+#: templates/elements/service.php:24
+msgid "Serviceman"
+msgstr ""
+
+#: templates/elements/service.php:44
+msgid "Jsme tu pro vás i po dokončení projektu. Záruční i pozáruční servis je pro nás samozřejmost."
+msgstr ""
+
+#: templates/elements/service.php:49
+msgid "More information"
+msgstr ""
+
+#: templates/footer.php:11
+#: templates/skiplinks.php:15
+msgctxt "anchor"
+msgid "footer"
+msgstr ""
+
+#: templates/footer/copyright.php:16
+msgid "Copyright &copy;"
+msgstr ""
+
+#: templates/footer/copyright.php:16
+msgid "All rights reserved."
+msgstr ""
+
+#: templates/footer/copyright.php:20
+msgctxt "signature"
+msgid "Created by"
+msgstr ""
+
+#: templates/footer/copyright.php:21
+msgctxt "signature"
+msgid "https://eboost.cz/"
+msgstr ""
+
+#: templates/footer/copyright.php:22
+msgctxt "signature"
+msgid "EBOOST"
+msgstr ""
+
+#: templates/footer/copyright.php:23
+msgctxt "signature"
+msgid "Online marketing with results"
+msgstr ""
+
+#: templates/footer/copyright.php:24
+#: templates/footer/copyright.php:28
+msgctxt "signature"
+msgid "(opens in a new tab)"
+msgstr ""
+
+#: templates/footer/copyright.php:27
+msgctxt "signature"
+msgid "Developed by"
+msgstr ""
+
+#: templates/footer/copyright.php:38
+msgid "Footer Navigation"
+msgstr ""
+
+#: templates/header/bar/contacts.php:13
+msgctxt "bar"
+msgid "Do you have a question? Call"
+msgstr ""
+
+#: templates/header/bar/navigation.php:10
+msgid "Bar Navigation"
+msgstr ""
+
+#: templates/heading/404.php:19
+msgid "Page not Found"
+msgstr ""
+
+#: templates/heading/archive.php:26
+msgctxt "link to a new tab"
+msgid "(opens in new tab)"
+msgstr ""
+
+#: templates/heading/archive.php:31
+msgid "F jS, Y"
+msgstr ""
+
+#: templates/heading/archive.php:33
+msgid "F, Y"
+msgstr ""
+
+#: templates/heading/archive.php:35
+msgid "Y"
+msgstr ""
+
+#: templates/heading/archive.php:37
+msgid "Archive"
+msgstr ""
+
+#: templates/heading/contact.php:57
+msgid "Odpovíme do dvou pracovních dní"
+msgstr ""
+
+#: templates/heading/contact.php:65
+msgid "Inquiry Form"
+msgstr ""
+
+#. translators: %1$s: the number of search results, %2$s: search query
+#: templates/heading/search.php:22
+msgid "%1$s result for '%2$s'"
+msgid_plural "%1$s results for '%2$s'"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/heading/term.php:33
+msgid "Chci poradit s výběrem"
+msgstr ""
+
+#: templates/loop/empty.php:10
+msgid "No items were found."
+msgstr ""
+
+#: templates/navigation.php:11
+#: templates/navigation/trigger.php:13
+#: templates/skiplinks.php:11
+msgctxt "anchor"
+msgid "navigation"
+msgstr ""
+
+#: templates/navigation.php:20
+msgctxt "navigation"
+msgid "Primary Navigation"
+msgstr ""
+
+#: templates/navigation/about.php:17
+msgid "Our Company"
+msgstr ""
+
+#: templates/navigation/about.php:31
+msgid "Career"
+msgstr ""
+
+#: templates/search.php:11
+#: templates/search.php:22
+#: templates/search/trigger.php:13
+msgctxt "anchor"
+msgid "search-dialog"
+msgstr ""
+
+#: templates/search.php:27
+msgid "Close"
+msgstr ""
+
+#: templates/search/trigger.php:17
+msgid "Search"
+msgstr ""
+
+#: templates/section/instagram.php:24
+#: templates/section/instagram.php:29
+msgid "Baspa on Instagram"
+msgstr ""
+
+#: templates/skiplinks.php:12
+msgctxt "skip link"
+msgid "Skip to navigation"
+msgstr ""
+
+#: templates/skiplinks.php:14
+msgctxt "skip link"
+msgid "Skip to content"
+msgstr ""
+
+#: templates/skiplinks.php:16
+msgctxt "skip link"
+msgid "Skip to footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XXSmall"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XSmall"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XLarge"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XXLarge"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading 6"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading 5"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading 4"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading 3"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading 2"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading 1"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Title"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Gigantic"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Primary"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Secondary"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Accent"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Highlight"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Contrast"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Soft"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Background"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Shadow"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Shadow - Light"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Soft"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "1px"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3XSmall"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2XSmall"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "XSmall"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "XLarge"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2XLarge"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3XLarge"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "S"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "M"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "L"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Sharp"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Crisp"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Crisp - Accent"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Crisp - Highlight"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Outline"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Outline - Accent"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Contact"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Contact - Pools"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Contact - Jacuzzis"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Contact - Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Contact - Small - Pools"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Contact - Small - Jacuzzis"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Progress"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Catalog"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "App"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Location"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr ""

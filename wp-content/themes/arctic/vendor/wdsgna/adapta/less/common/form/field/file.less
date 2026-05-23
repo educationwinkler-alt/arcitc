@@ -1,0 +1,48 @@
+//
+// Common - Form - Field - File
+//
+
+[type='file'] {
+  // Default Properties
+  //--field--button--color: var(--a--button--color);
+  //--field--button--background-color: var(--a--button--background-color);
+
+  padding: var(--a--field--spacing--vertical, 0.625rem);
+
+  &::-webkit-file-upload-button,
+  &::file-selector-button {
+	position: relative;
+	padding-right: var(--a--spacing--s);
+	padding-left: var(--a--spacing--s);
+	margin-top: -0.25rem;
+	margin-bottom: -0.25rem;
+	margin-inline-end: var(--a--field--spacing--horizontal, 1.250rem);
+
+	font-family: var(--a--button--font-family, sans-serif);
+	font-size: var(--a--button--font-size, 1rem);
+	font-weight: var(--a--button--font-weight, 700);
+	letter-spacing: var(--a--button--letter-spacing, 0);
+	text-transform: var(--a--button--text-transform, none);
+	line-height: var(--a--field--line-height);
+
+	appearance: none;
+	cursor: pointer;
+
+	color: var(--field--button--color, var(--a--button--color));
+	background-color: var(--field--button--background-color, var(--a--button--background-color));
+	border: none;
+	border-radius: calc(var(--a--field--border-radius, var(--a--border--radius)) / 2);
+	outline: none;
+
+	.transition-property(~'color, background-color');
+	.transition-timing-function();
+	.transition-duration();
+
+	// Active
+	&:hover,
+	&:focus {
+	  --field--button--color: var(--a--button--color--active);
+	  --field--button--background-color: var(--a--button--background-color--active);
+	}
+  }
+}

@@ -1,0 +1,28 @@
+// Carousel
+
+.f-carousel--references {
+  --carousel--item--gap: 40px;
+
+  // Initialized
+  &.swiper-initialized {
+
+	.f-carousel__item {
+
+	  // NOT Visible
+	  &:not(.swiper-slide-active):not(.swiper-slide-visible):not(.swiper-slide-fully-visible) {
+		pointer-events: none;
+
+		.f-listing {
+		  background-color: var(--a--color--background);
+		}
+
+		.f-listing__categories,
+		.f-listing__container,
+		.f-listing__image {
+		  opacity: 0.4;
+		  filter: grayscale(100%);
+		}
+	  }
+	}
+  }
+}

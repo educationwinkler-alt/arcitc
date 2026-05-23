@@ -1,0 +1,198 @@
+//
+// Datepicker - Skin
+//
+
+.@{prefix-s}-datepicker {
+  display: none;
+  padding: var(--a--spacing--s);
+  z-index: var(--a--layer--3) !important;
+
+  color: var(--a--color);
+  background-color: var(--a--color--background);
+
+  @media (min-width: @breakpoint-xs) {
+    min-width: @breakpoint-min;
+    max-width: @breakpoint-xs;
+  }
+  @media (max-width: @breakpoint-xs--max) {
+    width: calc(100% - var(--a--spacing--m));
+  }
+  @media (max-width: @breakpoint-min--max) {
+    width: calc(@breakpoint-min - var(--a--spacing--m));
+    padding: var(--a--spacing--xs);
+  }
+
+  // Multi
+  &.ui-datepicker-multi {
+    @media (min-width: @breakpoint-s--max) {
+      width: auto !important;
+      max-width: var(--a--container--width);
+    }
+  }
+
+  // Header
+
+  .ui-datepicker-header {
+    padding: var(--a--spacing--xs) 0;
+    margin-top: calc(var(--a--spacing--s) * -1);
+
+    color: currentColor;
+    background-color: transparent;
+
+    @media (max-width: @breakpoint-xs--max) {
+      margin-top: 0;
+      padding-top: var(--a--spacing--xxs);
+      padding-bottom: var(--a--spacing--xxs);
+    }
+  }
+
+  // Title
+
+  .ui-datepicker-title {
+    font-family: var(--a--heading--font-family);
+    font-size: var(--a--heading--font-size--h6--fluid);
+    font-weight: var(--a--heading--font-weight);
+    letter-spacing: var(--a--heading--letter-spacing);
+    text-transform: var(--a--heading--text-transform);
+    text-align: center;
+
+    color: currentColor;
+  }
+
+  // Calendar
+
+  .ui-datepicker-calendar {
+    thead {
+      tr {
+        th {
+          font-family: var(--a--font-family--primary);
+          font-size: var(--a--font-size);
+          font-weight: var(--a--font-weight--bold);
+          letter-spacing: var(--a--letter-spacing);
+          text-transform: var(--a--text-transform);
+
+          color: var(--a--color--accent);
+          background-color: transparent;
+
+          @media (max-width: @breakpoint-xs--max) {
+            font-size: var(--a--font-size--s);
+          }
+        }
+      }
+    }
+
+    tbody {
+      border-color: currentColor;
+
+      tr {
+        td {
+          padding: var(--a--border--width);
+
+          font-family: var(--a--font-family--secondary);
+          font-size: var(--a--font-size);
+          text-align: center;
+
+          border: none;
+
+          @media (max-width: @breakpoint-xs--max) {
+            font-size: var(--a--font-size--s);
+          }
+
+          &.ui-state-disabled {
+            opacity: 0.3;
+          }
+
+          a {
+            &.ui-state-default {
+              color: currentColor;
+              background-color: transparent;
+              border: var(--a--border--width) solid rgba(var(--a--color-rgb), 20%);
+              border-radius: var(--a--border--radius);
+
+              &:hover,
+              &:focus {
+                color: var(--a--color--accent);
+                border-color: var(--a--color--accent);
+              }
+
+              &.ui-state-active {
+                color: var(--a--color--contrast);
+                background-color: var(--a--color--accent);
+                border-color: transparent;
+              }
+
+              &.ui-state-highlight {
+                position: relative;
+                color: var(--a--color--contrast);
+                background-color: var(--a--color);
+                border-color: transparent;
+
+                // Corner
+                &:before {
+                  content: '';
+                  position: absolute;
+                  top: var(--a--border--width);
+                  right: var(--a--border--width);
+                  width: 0;
+                  height: 0;
+                  border-style: solid;
+                  border-width: 0 8px 8px 0;
+                  border-color: transparent var(--a--color--background) transparent transparent;
+                }
+
+                &.ui-state-active {
+                  background-color: var(--a--color--accent);
+                }
+              }
+            }
+          }
+
+          span {
+            &.ui-state-default {
+              border: var(--a--border--width--1) solid transparent;
+            }
+          }
+        }
+      }
+
+      tr:first-child {
+        td {
+          border-top: var(--a--border--width--1) solid transparent;
+        }
+      }
+    }
+  }
+
+  // Inline
+
+  &.@{prefix-s}-datepicker--inline {
+    display: block;
+    width: 100%;
+    padding: var(--a--spacing--m);
+    margin: 0 0 var(--a--spacing--m);
+
+    @media (max-width: @breakpoint-xs--max) {
+      width: 100%;
+      max-width: 100%;
+    }
+    @media (max-width: @breakpoint-min--max) {
+      width: 100%;
+      max-width: 100%;
+      padding: var(--a--spacing--s);
+    }
+
+    .ui-widget-header {
+      padding: var(--a--spacing--m);
+      margin-top: calc(var(--a--spacing--m) * -1);
+    }
+
+    .ui-datepicker-title {
+      font-size: var(--a--heading--font-size--h2--fluid);
+    }
+
+    td span,
+    td a {
+      padding: var(--a--spacing--s);
+    }
+  }
+}

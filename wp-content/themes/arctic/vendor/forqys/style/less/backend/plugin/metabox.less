@@ -1,0 +1,94 @@
+// WP Metabox Plugin
+
+.rwmb-seamless {
+  padding: 24px;
+}
+
+// Field
+
+.rwmb-field {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+// Label
+
+.rwmb-label {
+  width: 20%;
+}
+
+// Input
+
+.rwmb-input {
+
+  input:not([size],[type='checkbox'], [type='radio'], [type='button']),
+  select,
+  .select2-container,
+  textarea:not([cols]) {
+    width: auto;
+    min-width: 16rem;
+  }
+}
+
+// Button
+
+.rwmb-button {
+
+  // Remove
+  &.remove-clone {
+    top: 50%;
+  }
+}
+
+// Fieldset Text
+
+.rwmb-fieldset_text-wrapper {
+
+  fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    label {
+      display: block;
+      width: 100%;
+
+      + * {
+        margin-top: 0.25rem;
+      }
+    }
+  }
+}
+
+// Cloning
+
+.rwmb-clone {
+  position: relative;
+}
+
+.rwmb-sort-clone {
+  padding-left: 20px;
+  margin-left: -20px;
+}
+
+.rwmb-clone-icon {
+  position: absolute;
+  height: 100%;
+
+  background-position: center;
+  background-color: #f0f0f0;
+  border-radius: 2px;
+}

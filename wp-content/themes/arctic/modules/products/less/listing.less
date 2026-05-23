@@ -1,0 +1,53 @@
+// Listing
+
+.f-listings--products {
+  --grid--column-min: ~'min(560px, 100%)';
+}
+
+// Product
+
+.f-listing--product {
+  min-height: 320px;
+
+  // Container
+
+  .f-listing__container {
+	width: 100%;
+  }
+
+  // Excerpt
+
+  .f-listing__excerpt {
+	line-height: var(--a--line-height--xs);
+  }
+
+  // Button
+
+  .f-listing__button {
+	@media (max-width: @breakpoint-xs--max) {
+	  --button--spacing--v: var(--a--spacing--xxxs);
+	}
+  }
+
+  // Price
+
+  .f-price {
+	flex-direction: unset;
+	flex-wrap: wrap;
+	padding: var(--a--border--width--xl) var(--a--spacing--xxs);
+	margin-inline: calc(var(--a--spacing--xxs) * -1);
+
+	font-family: var(--a--font-family--secondary);
+	font-size: var(--a--font-size--xs);
+	font-weight: var(--a--font-weight);
+	line-height: var(--a--line-height--xxs);
+
+	color: var(--a--color--contrast);
+	background-color: var(--a--color);
+	border-radius: var(--a--border--radius--xxl);
+  }
+}
+
+.f-listing--variation {
+  min-height: 0;
+}

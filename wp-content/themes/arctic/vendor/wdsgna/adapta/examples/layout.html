@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html id="top" lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="color-scheme" content="dark">
+
+    <title>Adapta &mdash; Example &mdash; Layout</title>
+
+    <!--    <link rel="stylesheet" href="../dist/adapta.css">-->
+    <script>
+        // Prevent cache of the Adapta CSS file
+        document.write('<link href="../dist/adapta-skin--default.css?' + Math.random() + '" rel="stylesheet">');
+        document.write('<link href="../dist/adapta.css?' + Math.random() + '" rel="stylesheet">');
+    </script>
+
+    <style>
+        main .a-flex > * > *,
+        main .a-grid > *,
+        main .a-stack > *,
+        main .a-show-hide > * {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+
+            text-align: center;
+
+            color: var(--a--color--background);
+            background-color: var(--a--color);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="a-flex a-gap--0" style="position: sticky; top: 0; z-index: 1;">
+    <div class="a-flex__item--auto">
+        <button id="theme-toggle" style="width: 100%; border-radius: 0">
+            Toggle Scheme
+        </button>
+    </div>
+    <div class="a-flex__item--auto">
+        <button id="dir-toggle" style="width: 100%; border-radius: 0">
+            Toggle Dir
+        </button>
+    </div>
+</div>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", function () {
+        document.documentElement.classList.toggle("scheme-dark");
+    });
+    document.getElementById("dir-toggle").addEventListener("click", function () {
+        if (document.documentElement.getAttribute("dir") === "ltr") {
+            document.documentElement.setAttribute("dir", "rtl");
+        } else {
+            document.documentElement.setAttribute("dir", "ltr");
+        }
+    });
+</script>
+
+<header>
+    <div class="a-container a-container--stretched">
+
+        <div class="a-flex a-flex--align-center a-gap--s a-flex--nowrap">
+            <div class="a-flex__item">
+                <h1>Adapta UI</h1>
+            </div>
+            <div class="a-flex__item a-flex__item--auto">
+                <small>CSS Framework for Rapid Web Development.<br> No Dependencies. No Javascript.</small>
+            </div>
+            <div class="a-flex__item a-flex__item--shrink-1">
+
+                <nav>
+                    <ul>
+                        <li><a href="#" aria-current="page">Home</a></li>
+                        <li><a href="#" aria-haspopup="true">About<br> Our Company</a>
+                            <ul aria-label="Sub-menu">
+                                <li><a href="#">History</a></li>
+                                <li><a href="#">Present</a>
+                                    <ul aria-label="Sub-menu">
+                                        <li><a href="#">History</a></li>
+                                        <li><a href="#">Present</a></li>
+                                        <li><a href="#">Future</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Future</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Products <p>Description of the menu item</p></a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li>
+                            <label for="search" class="a-sr-only">Search</label>
+                            <input type="search" id="search" placeholder="Search ...">
+                        </li>
+                        <li>
+                            <button>Download</button>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<main>
+    <div class="a-stack a-align--center">
+        <div class="a-container">
+            Container
+        </div>
+        <div class="a-container a-container--75">
+            Container - 75
+        </div>
+        <div class="a-container a-container--50">
+            Container - 50
+        </div>
+        <div class="a-container a-container--stretched">
+            Container - Stretched
+        </div>
+        <div class="a-container a-container--full">
+            Container - Full
+        </div>
+    </div>
+</main>
+
+<section>
+    <div class="a-container">
+        <header>
+            <h2>Section Heading</h2>
+            <small>Section Sub-heading</small>
+        </header>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+</section>
+
+<section>
+    <div class="a-container">
+        <header>
+            <h2>Section<br> <small>Section Sub-heading</small></h2>
+        </header>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+</section>
+
+<div class="a-container">
+    <div class="a-flex a-gap--xxl">
+
+        <main class="a-flex__item--auto">
+
+            <h2>Grid</h2>
+
+            <div class="a-grid a-grid--cols-3 a-gap--xlarge">
+                <div class="">01</div>
+                <div class="">02</div>
+                <div class="">03</div>
+                <div class="a-grid__col--span-2">04</div>
+                <div class="">05</div>
+                <div class="">06</div>
+                <div class="a-grid__col--span-2">07</div>
+            </div>
+
+            <div class="a-grid a-grid--cols-4 a-grid--rows-5">
+                <div class="">01</div>
+                <div class="a-grid__row--start-1 a-grid__row--end-3">02</div>
+                <div class="">03</div>
+                <div class="">04</div>
+                <div class="a-grid__col--start-3 a-grid__row--start-1 a-grid__row--end-3">05</div>
+                <div class="">06</div>
+                <div class="">07</div>
+            </div>
+
+            <div class="a-grid">
+                <div class="a-grid__item">01</div>
+                <div class="a-grid__item">02</div>
+                <div class="a-grid__item">03</div>
+            </div>
+
+            <div class="a-grid">
+                <div class="a-grid__item">01</div>
+                <div class="a-grid__item">02</div>
+                <div class="a-grid__item">03</div>
+                <div class="a-grid__item">04</div>
+                <div class="a-grid__item">05</div>
+                <div class="a-grid__item">06</div>
+                <div class="a-grid__item">07</div>
+                <div class="a-grid__item">08</div>
+                <div class="a-grid__item">09</div>
+                <div class="a-grid__item">10</div>
+                <div class="a-grid__item">11</div>
+                <div class="a-grid__item">12</div>
+                <div class="a-grid__item">13</div>
+                <div class="a-grid__item">14</div>
+                <div class="a-grid__item">15</div>
+                <div class="a-grid__item">16</div>
+                <div class="a-grid__item">17</div>
+            </div>
+
+            <h2>Flex</h2>
+            <h3>50/50</h3>
+
+            <div class="a-flex a-gap--xs">
+                <div class="a-flex__item--50">
+                    <div class="a-flex__inner">01</div>
+                </div>
+                <div class="a-flex__item--50">
+                    <div class="a-flex__inner">02</div>
+                </div>
+            </div>
+
+            <h3>33/33/33</h3>
+
+            <div class="a-flex a-gap--xs">
+                <div class="a-flex__item--33">
+                    <div class="a-flex__inner">01</div>
+                </div>
+                <div class="a-flex__item--33">
+                    <div class="a-flex__inner">02</div>
+                </div>
+                <div class="a-flex__item--33">
+                    <div class="a-flex__inner">03</div>
+                </div>
+            </div>
+
+            <h3>25/25/25/25</h3>
+
+            <div class="a-flex a-gap--xs">
+                <div class="a-flex__item a-flex__item--25">
+                    <div class="a-p-xxl">01</div>
+                </div>
+                <div class="a-flex__item a-flex__item--25">
+                    <div>02</div>
+                </div>
+                <div class="a-flex__item a-flex__item--25">
+                    <div>03</div>
+                </div>
+                <div class="a-flex__item a-flex__item--25">
+                    <div>04</div>
+                </div>
+            </div>
+
+            <h3>20/20/20/20/20</h3>
+
+            <div class="a-flexa-gap--xs">
+                <div class="a-flex__item a-flex__item--20">
+                    <div class="a-flex__inner">01</div>
+                </div>
+                <div class="a-flex__item a-flex__item--20">
+                    <div class="a-flex__inner">02</div>
+                </div>
+                <div class="a-flex__item a-flex__item--20">
+                    <div class="a-flex__inner">03</div>
+                </div>
+                <div class="a-flex__item a-flex__item--20">
+                    <div class="a-flex__inner">04</div>
+                </div>
+                <div class="a-flex__item a-flex__item--20">
+                    <div class="a-flex__inner">05</div>
+                </div>
+            </div>
+
+            <h3>auto/auto/auto/auto/auto</h3>
+
+            <div class="a-flex a-gap--xs">
+                <div class="a-flex__item--auto">
+                    <div class="a-flex__inner">01</div>
+                </div>
+                <div class="a-flex__item--auto">
+                    <div class="a-flex__inner">02</div>
+                </div>
+                <div class="a-flex__item--auto">
+                    <div class="a-flex__inner">03</div>
+                </div>
+                <div class="a-flex__item--auto">
+                    <div class="a-flex__inner">04</div>
+                </div>
+                <div class="a-flex__item--auto">
+                    <div class="a-flex__inner">05</div>
+                </div>
+            </div>
+
+            <h3>50/25/25</h3>
+
+            <div class="a-flex a-gap--xs">
+                <div class="a-flex__item--50">
+                    <div class="a-flex__inner">01</div>
+                </div>
+                <div class="a-flex__item--25">
+                    <div class="a-flex__inner">02</div>
+                </div>
+                <div class="a-flex__item--25">
+                    <div class="a-flex__inner">03</div>
+                </div>
+            </div>
+
+            <h3>33/66</h3>
+
+            <div class="a-flex a-gap--xs">
+                <div class="a-flex__item--33">
+                    <div class="a-flex__inner">01</div>
+                </div>
+                <div class="a-flex__item--66">
+                    <div class="a-flex__inner">02</div>
+                </div>
+            </div>
+
+            <h3>25/75</h3>
+
+            <div class="a-flex a-gap--xs">
+                <div class="a-flex__item--25">
+                    <div class="a-flex__inner">01</div>
+                </div>
+                <div class="a-flex__item--75">
+                    <div class="a-flex__inner">02</div>
+                </div>
+            </div>
+
+            <h3>20/80</h3>
+
+            <div class="a-flex a-gap--xs">
+                <div class="a-flex__item--20">
+                    <div class="a-flex__inner">01</div>
+                </div>
+                <div class="a-flex__item--auto">
+                    <div class="a-flex__inner">02</div>
+                </div>
+            </div>
+
+            <h2>Stack</h2>
+
+            <div class="a-stack a-stack--xxsmall">
+                <div class="a-stack__item">01</div>
+                <div class="a-stack__item">02</div>
+                <div class="a-stack__item">03</div>
+                <div class="a-stack__item">04</div>
+                <div class="a-stack__item">05</div>
+            </div>
+
+            <div class="a-stack a-stack--small">
+                <div class="a-stack__item">01</div>
+                <div class="a-stack__item">02</div>
+                <div class="a-stack__item">03</div>
+                <div class="a-stack__item">04</div>
+                <div class="a-stack__item">05</div>
+            </div>
+
+            <h2>Show</h2>
+
+            <div class="a-stack a-stack--small">
+                <div class="a-stack__item a-show:xl">Show on XL</div>
+                <div class="a-stack__item a-show:l">Show on L</div>
+                <div class="a-stack__item a-show:m">Show on M</div>
+                <div class="a-stack__item a-show:s">Show on S</div>
+                <div class="a-stack__item a-show:xs">Show on XS</div>
+                <div class="a-stack__item a-show:min">Show on Min</div>
+            </div>
+
+            <h2>Hide</h2>
+
+            <div class="a-stack a-stack--small">
+                <div class="a-stack__item a-hide:xl">Hide on XL</div>
+                <div class="a-stack__item a-hide:l">Hide on L</div>
+                <div class="a-stack__item a-hide:m">Hide on M</div>
+                <div class="a-stack__item a-hide:s">Hide on S</div>
+                <div class="a-stack__item a-hide:xs">Hide on XS</div>
+                <div class="a-stack__item a-hide:min">Hide on Min</div>
+            </div>
+
+        </main>
+
+        <aside class="a-flex__item--20">
+
+            <div class="select-inside-this">
+                <div class="bar">
+                    <div class="not-inside-this">
+                        <div class="select-this"></div>
+                    </div>
+                </div>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About<br> Our Company</a>
+                        <ul aria-label="Sub-menu">
+                            <li><a href="#">History</a></li>
+                            <li><a href="#">Present</a>
+                                <ul aria-label="Sub-menu">
+                                    <li><a href="#">History</a></li>
+                                    <li><a href="#">Present<br> Our Company</a></li>
+                                    <li><a href="#">Future</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Future</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Products <p>Description of the menu item</p></a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+    </div>
+</div>
+
+<footer class="a-pt-l a-pb-xl">
+    <div class="a-container a-p-y a-p--xl">
+        Copyright &copy; 2022. Adapta UI.
+    </div>
+</footer>
+
+</body>
+</html>

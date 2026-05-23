@@ -1,0 +1,71 @@
+//
+// Common - Form - Field - Select
+//
+
+select {
+  // Default Properties
+  //--field--arrow--color: var(--a--field--color, var(--a--color));
+  //--field--arrow--size: 4px;
+  //--field--arrow--spacing: var(--a--field--spacing--horizontal, 1.250rem);
+
+  padding-inline-end: calc(var(--a--field--spacing--horizontal, 1.250rem) + var(--field--arrow--spacing, var(--a--field--spacing--horizontal, 1.250rem)));
+
+  background-image: linear-gradient(45deg, transparent 49%, var(--field--arrow--color, var(--a--field--color, var(--a--color))) 51%), linear-gradient(135deg, var(--field--arrow--color, var(--a--field--color, var(--a--color))) 49%, transparent 51%);
+  background-position: center right calc(var(--field--arrow--size, 4px) + var(--field--arrow--spacing, var(--a--field--spacing--horizontal, 1.250rem))), center right var(--field--arrow--spacing, var(--a--field--spacing--horizontal, 1.250rem));
+  background-size: var(--field--arrow--size, 4px) var(--field--arrow--size, 4px), var(--field--arrow--size, 4px) var(--field--arrow--size, 4px);
+  backface-visibility: hidden;
+
+  // RTL
+  [dir='rtl'] & {
+    background-position: center left var(--field--arrow--spacing, var(--a--field--spacing--horizontal, 1.250rem)), center left calc(var(--field--arrow--size, 4px) + var(--field--arrow--spacing, var(--a--field--spacing--horizontal, 1.250rem)));
+  }
+
+  // Active
+  &:focus {
+    --field--arrow--color: var(--a--field--color--active, var(--a--color));
+  }
+
+  // Option
+
+  option {
+    &[disabled] {
+      color: var(--a--field--placeholder--color);
+    }
+  }
+
+  // Option as Placeholder
+  &:has(option[disabled]:checked) {
+    color: var(--a--field--placeholder--color);
+
+    option {
+      &:not([disabled]) {
+        color: var(--a--field--color);
+      }
+    }
+  }
+
+  // Option Group
+
+  optgroup {
+    font-style: normal;
+  }
+
+  // Multiple
+  &[multiple] {
+    background-image: none;
+
+    .scrollbar--thin();
+
+    optgroup {
+      option {
+        &:first-child {
+          margin-top: 0.2em;
+        }
+      }
+    }
+
+    option {
+      background-color: transparent;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+// Slide
+
+.f-slide {
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  padding-bottom: var(--a--spacing--xxxl);
+
+  overflow: hidden;
+  will-change: opacity;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+
+  color: var(--f--slideshow--color);
+  background-color: var(--f--slideshow--color--background);
+
+  transition-property: transform, opacity;
+
+  @media (min-width: @breakpoint-m) {
+    align-items: center;
+    padding-bottom: 0;
+  }
+}
+
+// Active
+
+.f-slide {
+  &.swiper-slide-active {
+
+  }
+}

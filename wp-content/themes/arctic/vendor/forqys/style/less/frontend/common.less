@@ -1,0 +1,17 @@
+//
+// Common
+//
+
+p {
+  // ! Text Decoration
+  &[style*='text-decoration:none'] {
+	a {
+	  text-decoration-color: transparent;
+
+	  &:hover,
+	  &:focus {
+		text-decoration-color: currentColor;
+	  }
+	}
+  }
+}

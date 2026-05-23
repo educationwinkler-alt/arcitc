@@ -1,0 +1,164 @@
+// Button Block
+
+.wp-block-button {
+
+  // Link
+
+  .wp-block-button__link {
+	.button();
+
+	//
+	// Colors
+	//
+
+	// Primary Background
+	&:where(.has-primary-background-color) {
+	  .button--default();
+
+	  &:is(:hover, :focus) {
+		background-color: var(--button--background-color) !important; // Not property because WordPress adds !important :-/
+	  }
+	}
+
+	// Accent Background
+	&:where(.has-accent-background-color) {
+	  .button--accent();
+
+	  &:is(:hover, :focus) {
+		background-color: var(--button--background-color) !important; // Not property because WordPress adds !important :-/
+	  }
+	}
+
+	// Highlight Background
+	&:where(.has-highlight-background-color) {
+	  .button--highlight();
+
+	  &:is(:hover, :focus) {
+		background-color: var(--button--background-color) !important; // Not property because WordPress adds !important :-/
+	  }
+	}
+
+	// Contrast Background
+	&:where(.has-contrast-background-color) {
+	  .button--contrast();
+
+	  &:is(:hover, :focus) {
+		background-color: var(--button--background-color) !important; // Not property because WordPress adds !important :-/
+	  }
+	}
+  }
+}
+
+// Outline
+
+.wp-block-button {
+  &.is-style-outline {
+
+	> .wp-block-button__link {
+	  .button--outline();
+
+	  padding: var(--button--spacing--v, var(--a--button--spacing--vertical)) var(--button--spacing--h, var(--a--button--spacing--horizontal)); // rewrite default spacing
+
+	  //
+	  // Without Color
+	  //
+
+	  &:not(.has-text-color) {
+		color: var(--button--color);
+	  }
+
+	  //
+	  // With Color
+	  //
+
+	  &:is(.has-text-color) {
+
+		&:is(:hover, :focus) {
+		  --button--color: var(--a--button--outline--color--active);
+		  --button--background-color: var(--a--button--outline--background-color--active);
+		  --button--border-color: var(--a--button--outline--border-color--active);
+
+		  color: var(--button--color) !important;
+		}
+	  }
+
+	  // Primary Color
+	  &:where(.has-primary-color) {
+
+	  }
+
+	  // Accent Color
+	  &:where(.has-accent-color) {
+		--button--border-color: var(--a--color--accent);
+	  }
+
+	  // Highlight Color
+	  &:where(.has-highlight-color) {
+		--button--border-color: var(--a--color--highlight);
+	  }
+
+	  // Contrast Color
+	  &:where(.has-contrast-color) {
+		--button--border-color: var(--a--color--contrast);
+	  }
+
+	  //
+	  // Without Background
+	  //
+
+	  &:not(.has-background) {
+
+		&:where(:hover, :focus) {
+		  --button--color: var(--a--button--outline--color--active);
+		  --button--background-color: var(--a--button--outline--background-color--active);
+		  --button--border-color: var(--a--button--outline--border-color--active);
+		}
+
+		&:where(:focus) {
+		  --button--box-shadow: var(--a--button--outline--shadow--active);
+		}
+
+		&:where(:focus-visible) {
+		  --button--outline-color: var(--a--button--outline--border-color--active);
+		}
+	  }
+
+	  //
+	  // With Background
+	  //
+
+	  &:is(.has-background) {
+		--button--background-color: var(--a--button--outline--background-color);
+
+		background-color: var(--button--background-color) !important; // Not property because WordPress adds !important :-/
+	  }
+
+	  &:is(.has-accent-background-color):not(:hover, :focus) {
+		--button--border-color: var(--a--color--accent);
+	  }
+
+	  &:is(.has-highlight-background-color):not(:hover, :focus) {
+		--button--border-color: var(--a--color--highlight);
+	  }
+
+	  &:is(.has-contrast-background-color):not(:hover, :focus) {
+		--button--border-color: var(--a--color--contrast);
+	  }
+
+	  // With Border
+
+	  &:is(.has-border-color) {
+		border-color: var(--button--border-color); // Not property because WordPress adds !important :-/
+
+		&:is(:hover, :focus) {
+		  --button--box-shadow: none;
+		  border-color: currentColor;
+		}
+
+		&:is(:focus-visible) {
+		  --button--outline-color: currentColor;
+		}
+	  }
+	}
+  }
+}

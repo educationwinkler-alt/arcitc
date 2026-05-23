@@ -1,0 +1,122 @@
+//
+// Common - Form - Field
+//
+
+input:where(:not([type='button'], [type='reset'], [type='submit'])),
+textarea,
+select {
+  // Default Properties
+  //--field--line-height: var(--a--field--line-height);
+  //--field--color: var(--a--field--color, var(--a--color));
+  //--field--background-color: var(--a--field--background-color, var(--a--color--background));
+  //--field--border-color: var(--a--field--border-color);
+  //--field--border-width: var(--a--field--border-width, var(--a--border--width));
+  //--field--border-radius: var(--a--field--border-radius, var(--a--border--radius));
+  //--field--box-shadow: var(--a--field--shadow);
+
+  //--field--disabled--stripe--size: 0.5rem;
+  //--field--disabled--stripe--color--rgb: var(--a--color-rgb);
+  //--field--disabled--stripe--opacity: 10%;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  line-height: var(--field--line-height, var(--a--field--line-height));
+
+  color: var(--field--color, var(--a--field--color, var(--a--color)));
+  background-color: var(--field--background-color, var(--a--field--background-color, var(--a--color--background)));
+  border: solid var(--field--border-color, var(--a--field--border-color));
+  border-width: var(--field--border-width, var(--a--field--border-width, var(--a--border--width)));
+  border-radius: var(--field--border-radius, var(--a--field--border-radius, var(--a--border--radius)));
+  box-shadow: var(--field--box-shadow, var(--a--field--shadow));
+  outline: none;
+
+  .field-placeholder();
+
+  .transition-property(~'color, background-color, border-color, box-shadow, outline, opacity');
+  .transition-duration();
+  .transition-timing-function();
+
+  // Disabled
+  &[disabled] {
+	cursor: not-allowed;
+
+	background-image: repeating-linear-gradient(-45deg,
+	transparent,
+	transparent var(--field--disabled--stripe--size, 0.5rem),
+	rgba(var(--field--disabled--stripe--color--rgb, var(--a--color-rgb)), var(--field--disabled--stripe--opacity, 10%)) var(--field--disabled--stripe--size, 0.5rem),
+	rgba(var(--field--disabled--stripe--color--rgb, var(--a--color-rgb)), var(--field--disabled--stripe--opacity, 10%)) calc(var(--field--disabled--stripe--size, 0.5rem) * 2));
+  }
+
+  // Read only
+  &[readonly] {
+	cursor: default;
+
+	background-color: var(--a--field--background-color--readonly);
+  }
+}
+
+// Active
+
+input:where(:not([disabled], [readonly], [type='button'], [type='reset'], [type='submit'])),
+textarea:where(:not([disabled], [readonly])),
+select:where(:not([disabled], [readonly])) {
+
+  &:is(:focus, :focus-within) { // Focused [type='file'] button
+	--field--color: var(--a--field--color--active, var(--a--color));
+	--field--background-color: var(--a--field--background-color--active, var(--a--field--background-color));
+	--field--border-color: var(--a--field--border-color--active, var(--a--color));
+	--field--box-shadow: var(--a--field--shadow--active);
+  }
+}
+
+// Common without Checkbox/Radio and Buttons
+
+input:where(:not([type='checkbox'], [type='radio'], [type='button'], [type='reset'], [type='submit'])),
+textarea,
+select {
+  width: 100%;
+  padding: var(--a--field--spacing--vertical, 0.625rem) var(--a--field--spacing--horizontal, 1.25rem);
+  margin: 0 0 var(--a--field--spacing--outer, var(--a--spacing--s));
+
+  font-family: var(--a--font-family--secondary, sans-serif);
+  font-size: var(--a--field--font-size, var(--a--font-size));
+  font-weight: normal;
+  line-height: var(--a--field--line-height, 1.5rem);
+
+  // ! Hidden
+  &:not([hidden]) {
+	display: block;
+  }
+}
+
+// Normalize Firefox Field Padding
+select,
+[type='date'],
+[type='time'] {
+  -moz-padding-start: calc(var(--a--field--spacing--horizontal, 1.25rem) - 5px);
+}
+
+// State
+
+:where(input, select, textarea) {
+
+  // Valid (filled in)
+  &[aria-invalid='false']:not(:placeholder-shown) {
+	--field--border-color: var(--a--color--success);
+
+	&:focus {
+	  --field--box-shadow: var(--a--field--shadow--valid);
+	}
+  }
+
+  // Invalid
+  &[aria-invalid='true'] {
+	--field--border-color: var(--a--color--error);
+	--field--box-shadow: var(--a--field--shadow--invalid);
+
+	+ small {
+	  --field--color: var(--a--color--error);
+	}
+  }
+}

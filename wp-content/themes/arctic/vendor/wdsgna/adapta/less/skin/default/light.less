@@ -1,0 +1,35 @@
+//
+// Skin - Default - Light
+//
+
+.scheme-light() {
+  color-scheme: light;
+
+  // Color
+
+  --a--color-rgb: 40, 60, 100;
+  --a--color--accent-rgb: 80, 100, 200;
+  --a--color--highlight-rgb: 200, 80, 100;
+  --a--color--significant-rgb: 200, 80, 100;
+  --a--color--contrast-rgb: 255, 255, 255;
+  --a--color--background-rgb: 255, 255, 255;
+
+  --a--color--success-rgb: 40, 120, 80;
+  --a--color--warning-rgb: 200, 80, 20;
+  --a--color--error-rgb: 180, 40, 40;
+
+  --a--color--shadow-rgb: 10, 15, 25;
+
+  // Link
+
+  --a--link--color-rgb: var(--a--color--accent-rgb);
+  --a--link--color--active-rgb: var(--a--color--highlight-rgb);
+}
+
+:root {
+  .scheme-light();
+}
+
+.scheme-light {
+  .scheme-light();
+}

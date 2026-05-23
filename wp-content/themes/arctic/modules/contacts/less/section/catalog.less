@@ -1,0 +1,56 @@
+// Catalog
+
+.f-section--catalog {
+  --section--spacing: var(--a--spacing);
+
+  position: relative;
+  overflow-x: clip;
+  z-index: var(--a--layer--2);
+
+  // Form
+
+  .f-section__form {
+
+	.f-form__note {
+	  padding: var(--a--spacing--xxs) 0 0;
+
+	  @media (min-width: @breakpoint-m) {
+		padding: 0 var(--a--field--spacing--horizontal);
+	  }
+	}
+  }
+
+  // Image
+
+  .f-section__image {
+	margin-block: calc(((var(--section--spacing) * 4) + var(--a--spacing--xxxl)) * -1);
+	margin-inline: calc(var(--a--spacing--xxl) * 2 * -1);
+
+	pointer-events: none;
+
+	@media (min-width: @breakpoint-m) {
+	  margin-inline: calc(var(--a--spacing--xxl) * 2 * -1);
+	}
+	@media (max-width: @breakpoint-s--max) {
+	  margin-block-end: calc((var(--section--spacing) + var(--a--spacing--xxxl)) * -1);
+	}
+
+	figure {
+	  margin: 0;
+	}
+  }
+
+  // Columns
+
+  .f-section__content--col {
+	@media (max-width: @breakpoint-s--max) {
+	  order: 2;
+	}
+  }
+
+  .f-section__image--col {
+	@media (max-width: @breakpoint-s--max) {
+	  order: 1;
+	}
+  }
+}

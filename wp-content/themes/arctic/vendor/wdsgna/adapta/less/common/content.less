@@ -1,0 +1,255 @@
+//
+// Common - Content
+//
+
+ul,
+ol,
+address,
+blockquote,
+figure,
+pre,
+dl,
+table,
+details,
+progress {
+  // Default Properties
+  //--spacing: var(--a--spacing--m);
+
+  margin-block-end: var(--spacing, var(--a--spacing--m));
+}
+
+// Paragraph
+
+p {
+  // Default Properties
+  //--p--spacing: var(--a--spacing--s);
+
+  margin-block: 0;
+
+  // ! First
+  &:where(:not(:first-child)) {
+	margin-block-start: var(--p--spacing, var(--a--spacing--s));
+  }
+
+  // ! Last
+  &:where(:not(:last-child)) {
+	margin-block-end: var(--p--spacing, var(--a--spacing--s));
+  }
+}
+
+// List
+
+ul,
+ol {
+  padding-inline-start: var(--spacing, var(--a--spacing--m));
+}
+
+ul {
+  list-style: square;
+
+  ol,
+  ul {
+	margin: 0;
+  }
+}
+
+ol {
+  ol,
+  ul {
+	margin: 0;
+  }
+}
+
+// Media
+
+img,
+picture,
+video,
+iframe {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+// Blockquote
+
+blockquote {
+  // Default Properties
+  //--quote--spacing: var(--a--spacing--s);
+  //--quote--spacing--min: var(--a--spacing--xs);
+  //--quote--spacing--max: var(--a--spacing--m);
+
+  display: flex;
+  gap: var(--quote--spacing, var(--a--spacing--s));
+  flex-direction: column;
+  padding-block: ~'max(var(--quote--spacing, var(--a--spacing--s)), var(--quote--spacing--max, var(--a--spacing--m)))';
+  //padding: ~'min(var(--quote--spacing, var(--a--spacing--s)), var(--quote--spacing--min, var(--a--spacing--xs)))';
+
+  font-family: var(--a--heading--font-family);
+  font-size: var(--a--heading--font-size--h3--fluid);
+  line-height: var(--a--heading--line-height);
+
+  @media (min-width: @breakpoint-m) {
+	padding: ~'max(var(--quote--spacing, var(--a--spacing--s)), var(--quote--spacing--max, var(--a--spacing--m)))';
+  }
+
+  > * {
+	margin: 0;
+  }
+
+  // Content
+
+  p {
+	line-height: inherit;
+  }
+
+  // Cite
+
+  cite {
+	font-family: var(--a--font-family--secondary);
+	font-size: var(--a--font-size);
+	font-style: normal;
+  }
+}
+
+// Code
+
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace;
+}
+
+// Code
+
+code {
+  padding: 0.25em 0.5em;
+
+  font-size: var(--a--font-size--s);
+
+  border: var(--a--border--width--s) solid rgba(var(--a--color-rgb), 0.2);
+  border-radius: var(--a--border--radius--s);
+}
+
+// Preformatted
+
+pre {
+  // Default Properties
+  //--pre--spacing: var(--a--spacing--s);
+  //--pre--spacing--min: var(--a--spacing--xs);
+  //--pre--spacing--max: var(--a--spacing--m);
+
+  display: block;
+  padding: ~'min(var(--pre--spacing, var(--a--spacing--s)), var(--pre--spacing--min, var(--a--spacing--xs)))';
+  overflow-x: auto;
+
+  text-align: start;
+
+  @media (min-width: @breakpoint-m) {
+	padding: ~'max(var(--pre--spacing, var(--a--spacing--s)), var(--pre--spacing--max, var(--a--spacing--m)))';
+  }
+
+  > code {
+	display: block;
+	padding: 0;
+	border: 0;
+  }
+}
+
+// Keyboard Input
+
+kbd {
+  padding: 0.25em 0.5em;
+
+  color: var(--a--color--accent);
+  border: var(--a--border--width--s) solid currentColor;
+  border-radius: var(--a--border--radius--s);
+  box-shadow: 1px 1px 0, 2px 2px 0;
+}
+
+// Mark
+
+mark {
+  padding: 0.25em 0.5em;
+
+  color: inherit;
+  background-color: rgba(var(--a--color--accent-rgb), 0.1);
+  border-radius: var(--a--border--radius--s);
+
+  a {
+	color: inherit;
+  }
+}
+
+br {
+  + mark {
+	margin-inline-start: calc(0.5em * -1);
+  }
+}
+
+// Address
+
+address {
+  font-style: normal;
+}
+
+// Abbreviation & Acronym
+
+:where(abbr, acronym) {
+
+  &[title] {
+	cursor: help;
+
+	text-decoration: underline dotted currentColor;
+	text-underline-offset: var(--abbr--text-underline-offset, 0.5ch);
+
+	.transition(text-decoration);
+  }
+}
+
+// Inserted
+
+ins {
+  text-decoration: none;
+}
+
+// Superscript & Subscript
+
+sup,
+sub {
+  position: relative;
+  font-size: 0.75em;
+}
+
+// Horizontal Rules
+
+hr {
+  // Default Properties
+  //--hr--spacing: var(--a--spacing--m);
+
+  box-sizing: content-box;
+  margin: var(--hr--spacing, var(--a--spacing--m)) 0;
+  overflow: visible;
+
+  border: solid var(--a--divider--color);
+  border-width: var(--a--divider--width) 0 0;
+}
+
+// Definition
+
+dl {
+  // Default Properties
+  //--dl--spacing: var(--a--spacing--s);
+
+  dt {
+	font-family: var(--a--heading--font-family, sans-serif);
+	font-size: var(--a--font-size--l);
+	font-weight: var(--a--heading--font-weight, 700);
+	letter-spacing: var(--a--heading--letter-spacing, 0);
+	text-transform: var(--a--heading--text-transform, none);
+  }
+
+  dd {
+	margin-inline-start: var(--dl--spacing, var(--a--spacing--s));
+  }
+}

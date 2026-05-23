@@ -1,0 +1,18 @@
+//
+// Mixins - Container
+//
+
+.container (
+  @-spacing: var(--a--container--spacing),
+  @-width-min: calc(100% - (var(--container--spacing, var(--a--container--spacing)) * 2)),
+  @-width-max: var(--a--container--width)
+) {
+  // Default Properties
+  //--container--spacing: @-spacing;
+  //--container--width-min: @-width-min;
+  //--container--width-max: @-width-max;
+
+  width: ~'min(var(--container--width-min, @{-width-min}), var(--container--width-max,  @{-width-max}))';
+  max-width: var(--container--width-max, @-width-max);
+  margin-inline: auto;
+}

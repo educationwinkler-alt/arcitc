@@ -1,0 +1,111 @@
+// PSWP - Core
+
+.pswp {
+  display: none;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  touch-action: none;
+  outline: 0;
+  opacity: 0.003;
+  contain: layout style size;
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  // Prevents focus outline on the root element, (it may be focused initially)
+  &:focus {
+	outline: 0;
+  }
+
+  img {
+	max-width: none;
+  }
+}
+
+.pswp--open {
+  display: block;
+}
+
+.pswp,
+.pswp__bg {
+  transform: translateZ(0);
+  will-change: opacity;
+}
+
+.pswp__bg {
+  opacity: 0.005;
+}
+
+.pswp,
+.pswp__scroll-wrap {
+  padding: 0;
+  overflow: hidden;
+}
+
+.pswp__scroll-wrap,
+.pswp__bg,
+.pswp__container,
+.pswp__item,
+.pswp__content,
+.pswp__img,
+.pswp__zoom-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.pswp__img,
+.pswp__zoom-wrap {
+  width: auto;
+  height: auto;
+}
+
+.pswp--click-to-zoom.pswp--zoom-allowed .pswp__img {
+  cursor: zoom-in;
+}
+
+.pswp--click-to-zoom.pswp--zoomed-in .pswp__img {
+  cursor: grab;
+}
+
+.pswp--click-to-zoom.pswp--zoomed-in .pswp__img:active {
+  cursor: grabbing;
+}
+
+// :active to override grabbing cursor
+.pswp--no-mouse-drag.pswp--zoomed-in .pswp__img,
+.pswp--no-mouse-drag.pswp--zoomed-in .pswp__img:active,
+.pswp__img {
+  cursor: zoom-out;
+}
+
+
+// Prevent selection and tap highlights
+.pswp__container,
+.pswp__img,
+.pswp__button,
+.pswp__counter {
+  user-select: none;
+}
+
+.pswp__item {
+  // z-index for fade transition
+  z-index: 1;
+  overflow: hidden;
+}
+
+.pswp__hidden {
+  display: none !important;
+}
+
+// Allow to click through pswp__content element, but not its children
+.pswp__content {
+  pointer-events: none;
+}
+
+.pswp__content > * {
+  pointer-events: auto;
+}

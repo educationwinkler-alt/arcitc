@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#
+# release
+# bin/release 1.0.0
+#
+
+VERSION=$1
+
+if [ ! "$VERSION" ]; then
+  echo "Enter the VERSION!"
+  exit;
+fi
+
+# create archive
+if [ "$VERSION" ]; then
+  git archive master -o adapta-"$VERSION".zip
+fi
+git archive master -o adapta-latest.zip
+git archive master --format=tar.gz -o adapta-latest.tar.gz
+
+# upload dist css to snoopy
+scp -r dist/ pavel@snoopy:/var/www/sites/forqy.website/adapta/www/dist/
+# upload examples to snoopy
+scp examples/content.html pavel@snoopy:/var/www/sites/forqy.website/adapta/www/examples/
+scp examples/form.html pavel@snoopy:/var/www/sites/forqy.website/adapta/www/examples/
+scp examples/layout.html pavel@snoopy:/var/www/sites/forqy.website/adapta/www/examples/
+scp examples/html5.html pavel@snoopy:/var/www/sites/forqy.website/adapta/www/examples/
+
+# upload archive to snoopy
+scp adapta-"$VERSION".zip pavel@snoopy:/var/www/sites/forqy.website/adapta/www/package/
+scp adapta-latest.zip pavel@snoopy:/var/www/sites/forqy.website/adapta/www/package/
+scp adapta-latest.tar.gz pavel@snoopy:/var/www/sites/forqy.website/adapta/www/package/
+
+# remove archive
+rm -f adapta-"$VERSION".zip
+rm -f adapta-latest.zip
+rm -f adapta-latest.tar.gz

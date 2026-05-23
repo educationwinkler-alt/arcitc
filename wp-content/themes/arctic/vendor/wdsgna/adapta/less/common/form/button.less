@@ -1,0 +1,22 @@
+//
+// Common - Form - Button
+//
+
+:where(button, [type='button'], [type='submit'], [type='reset']) {
+  .button();
+
+  white-space: normal;
+  cursor: pointer;
+
+  -webkit-appearance: button;
+
+  .button--disabled();
+}
+
+//:where([type='submit']) {
+//  .button--accent();
+//}
+
+:where([type='reset']) {
+  .button--outline();
+}
