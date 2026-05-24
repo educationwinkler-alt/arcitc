@@ -16,9 +16,21 @@ if ( !function_exists( 'forqy_search_processing' ) ) {
 	 */
 	function forqy_search_processing(): void {
 
-		$keyword    = $_POST[ 'keyword' ];
-		$types      = isset( $_POST[ 'post_type' ] ) ? explode( ',', $_POST[ 'post_type' ] ) : 'post';
-		$taxonomies = isset( $_POST[ 'post_taxonomy' ] ) ? explode( ',', $_POST[ 'post_taxonomy' ] ) : 'category';
+		$post_value = static function ( string $key, string $default = '' ): string {
+			return isset( $_POST[ $key ] ) ? (string) wp_unslash( $_POST[ $key ] ) : $default;
+		};
+
+		$keyword    = sanitize_text_field( $post_value( 'keyword' ) );
+		$types      = array_filter( array_map( 'sanitize_key', explode( ',', $post_value( 'post_type', 'post' ) ) ), 'post_type_exists' );
+		$taxonomies = array_filter( array_map( 'sanitize_key', explode( ',', $post_value( 'post_taxonomy', 'category' ) ) ), 'taxonomy_exists' );
+
+		if ( empty( $keyword ) ) {
+			wp_die();
+		}
+
+		if ( empty( $types ) ) {
+			$types = array( 'post' );
+		}
 
 		/**
 		 * Posts
@@ -26,7 +38,7 @@ if ( !function_exists( 'forqy_search_processing' ) ) {
 		$query = new WP_Query( array(
 			'post_type'      => $types,
 			'post_status'    => 'publish',
-			's'              => esc_attr( $keyword ),
+			's'              => $keyword,
 			'posts_per_page' => -1,
 		) );
 
@@ -35,12 +47,12 @@ if ( !function_exists( 'forqy_search_processing' ) ) {
 				<?php while ( $query->have_posts() ) {
 					$query->the_post(); ?>
 					<li>
-						<a href="<?php the_permalink(); ?>">
+						<a href="<?php echo esc_url( get_permalink() ); ?>">
 							<?php if ( has_post_thumbnail() ) { ?>
 								<figure><?php the_post_thumbnail( 'thumbnail' ); ?></figure>
 							<?php }
 
-							the_title(); ?>
+							echo esc_html( get_the_title() ); ?>
 						</a>
 					</li>
 				<?php }
@@ -55,7 +67,7 @@ if ( !function_exists( 'forqy_search_processing' ) ) {
 
 			// Arguments
 			$taxonomies_args = array(
-				'name__like' => esc_attr( $keyword ),
+				'name__like' => $keyword,
 				'hide_empty' => true,
 				'fields'     => 'all',
 				'orderby'    => 'menu_order',
@@ -66,10 +78,17 @@ if ( !function_exists( 'forqy_search_processing' ) ) {
 
 				foreach ( $taxonomies as $taxonomy ) {
 					$tax = get_taxonomy( $taxonomy );
+					if ( !$tax ) {
+						continue;
+					}
 
 					$tax_terms       = get_terms( array_merge( $taxonomies_args, array(
 						'taxonomy' => $taxonomy,
 					) ) );
+					if ( is_wp_error( $tax_terms ) ) {
+						continue;
+					}
+
 					$tax_terms_count = count( $tax_terms );
 
 					if ( !empty( $tax_terms_count ) ) {
@@ -81,7 +100,11 @@ if ( !function_exists( 'forqy_search_processing' ) ) {
 
 						echo "<ul>";
 						foreach ( $tax_terms as $term ) {
-							echo "<li><a href='" . get_term_link( $term ) . "'>" . esc_html( $term->name ) . "</a></li>";
+							$term_link = get_term_link( $term );
+							if ( is_wp_error( $term_link ) ) {
+								continue;
+							}
+							echo "<li><a href='" . esc_url( $term_link ) . "'>" . esc_html( $term->name ) . "</a></li>";
 						}
 						echo "</ul>";
 						echo '</section>';

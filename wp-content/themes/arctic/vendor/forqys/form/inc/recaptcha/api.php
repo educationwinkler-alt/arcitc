@@ -162,17 +162,19 @@ if ( !function_exists( 'forqy_form_recaptcha_verify' ) ) {
 	function forqy_form_recaptcha_verify( $key, $input ): array {
 
 		$response_body = array();
+		$request_method = isset( $_SERVER[ 'REQUEST_METHOD' ] ) ? sanitize_text_field( wp_unslash( $_SERVER[ 'REQUEST_METHOD' ] ) ) : '';
+		$remote_ip     = isset( $_SERVER[ 'REMOTE_ADDR' ] ) ? sanitize_text_field( wp_unslash( $_SERVER[ 'REMOTE_ADDR' ] ) ) : '';
 
-		if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $input ) ) {
+		if ( $request_method === 'POST' && isset( $input ) ) {
 
 			// Get a reCAPTCHA response
 //			$response = (array)wp_remote_get( 'https://www.google.com/recaptcha/api/siteverify?secret=' . $key . '&response=' . $input );
 			// Get a response
 			$response = wp_remote_post( 'https://www.google.com/recaptcha/api/siteverify', array(
 				'body' => array(
-					'secret'   => $key,
-					'response' => $input,
-					'remoteip' => $_SERVER[ 'REMOTE_ADDR' ],
+					'secret'   => sanitize_text_field( $key ),
+					'response' => sanitize_text_field( $input ),
+					'remoteip' => $remote_ip,
 				)
 			) );
 
@@ -215,6 +217,13 @@ if ( !function_exists( 'forqy_form_recaptcha_debug' ) ) {
 		$error_message = forqy_form_recaptcha_error_message( $error_code );
 
 		// Construct debug messages
+		$response_summary = array(
+			'success'     => $response[ 'success' ] ?? null,
+			'score'       => $response[ 'score' ] ?? null,
+			'action'      => $response[ 'action' ] ?? null,
+			'error-codes' => $response[ 'error-codes' ] ?? array(),
+		);
+
 		if ( isset( $response[ 'success' ] ) && (int)$response[ 'success' ] === 1 ) {
 			$message = '<div class="f-alert f-alert--success a-alert a-alert--success a-stack a-gap--xxs">';
 			$message .= '<p>' . esc_html_x( 'Debug Information:', 'recaptcha', 'forqy-recaptcha' ) . '</p>';
@@ -227,7 +236,7 @@ if ( !function_exists( 'forqy_form_recaptcha_debug' ) ) {
 				$message .= '<p>' . $error_code . ' - ' . $error_message . '</p>';
 			}
 		}
-		$message .= '<pre style="max-height:5ch;padding: 10px;margin:0;">' . var_export( $response, true ) . '</pre>';
+		$message .= '<pre style="max-height:5ch;padding: 10px;margin:0;">' . esc_html( wp_json_encode( $response_summary ) ) . '</pre>';
 		$message .= '</div>';
 
 		// If debug enabled

@@ -17,14 +17,24 @@ if ( !function_exists( 'forqy_form_processing' ) ) {
 	function forqy_form_processing(): void {
 
 		// Template Path
-		$form_processing_template_path = $_POST[ 'f-form-processing-path' ] ?? apply_filters(
+		$form_processing_template_path = apply_filters(
 			'forqy_form_processing_template_path',
 			'modules/contacts/templates/form/processing'
 		);
+		$allowed_template_paths        = apply_filters(
+			'forqy_form_processing_allowed_template_paths',
+			array(
+				'modules/contacts/templates/form/processing',
+			)
+		);
+
+		if ( !in_array( $form_processing_template_path, $allowed_template_paths, true ) ) {
+			wp_die( esc_html__( 'Invalid form processing template.', 'baspa' ), '', array( 'response' => 400 ) );
+		}
 
 		get_template_part( $form_processing_template_path );
 
-		exit();
+		wp_die();
 
 	}
 

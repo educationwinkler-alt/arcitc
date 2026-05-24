@@ -11,20 +11,19 @@ if ( !empty( $GLOBALS[ 'arctic_contact_form_processed' ] ) ) {
 $GLOBALS[ 'arctic_contact_form_processed' ] = true;
 
 $is_local          = function_exists( 'wp_get_environment_type' ) && 'local' === wp_get_environment_type();
+$post_value        = static function ( string $key, string $default = '' ): string {
+	return isset( $_POST[ $key ] ) ? (string) wp_unslash( $_POST[ $key ] ) : $default;
+};
+$posted_form       = sanitize_key( $post_value( 'f-form' ) );
+$contact_nonce     = $post_value( 'f-contact-nonce' );
+$catalog_nonce     = $post_value( 'f-catalog-nonce' );
+$service_nonce     = $post_value( 'f-service-nonce' );
+$recaptcha_token   = $post_value( 'recaptcha' );
 $suspicious        = false;
-$recaptcha         = !empty( $_POST[ 'recaptcha' ] ) ? 'set' : ( $is_local ? 'local-skipped' : 'empty' ); // Token
+$recaptcha         = !empty( $recaptcha_token ) ? 'set' : ( $is_local ? 'local-skipped' : 'empty' ); // Token
 $recaptcha_body    = '?';
 $recaptcha_success = '?';
 $recaptcha_score   = '?';
-
-/**
- * Debug
- */
-//	if ( is_user_logged_in() && is_super_admin() ) {
-//		echo '<div class="f-alert" role="alert"><h5>Debug:</h5><br>';
-//		echo '<pre>' . var_export( $_POST, true ) . '</pre>';
-//		echo '</div>';
-//	}
 
 /**
  * Check
@@ -32,9 +31,9 @@ $recaptcha_score   = '?';
 
 // Check Nonce
 if (
-	( !isset( $_POST[ 'f-contact-nonce' ] ) || !wp_verify_nonce( $_POST[ 'f-contact-nonce' ], 'f-contact' ) ) &&
-	( !isset( $_POST[ 'f-catalog-nonce' ] ) || !wp_verify_nonce( $_POST[ 'f-catalog-nonce' ], 'f-catalog' ) ) &&
-	( !isset( $_POST[ 'f-service-nonce' ] ) || !wp_verify_nonce( $_POST[ 'f-service-nonce' ], 'f-service' ) )
+	( empty( $contact_nonce ) || !wp_verify_nonce( $contact_nonce, 'f-contact' ) ) &&
+	( empty( $catalog_nonce ) || !wp_verify_nonce( $catalog_nonce, 'f-catalog' ) ) &&
+	( empty( $service_nonce ) || !wp_verify_nonce( $service_nonce, 'f-service' ) )
 ) {
 	get_template_part( 'modules/contacts/templates/form/alert/error' );
 	error_log( get_the_date( get_option( 'date_format' ) ) . ' / ' . 'Nonce check failed!' );
@@ -48,13 +47,13 @@ if ( $is_local ) {
 	$recaptcha_success = 'skipped';
 	$recaptcha_score   = 'skipped';
 
-	if ( isset( $_POST[ 'f-form' ] ) && $_POST[ 'f-form' ] == 'catalog' ) {
+	if ( $posted_form === 'catalog' ) {
 		get_template_part( 'modules/contacts/templates/form/alert/success', 'catalog' );
 	} else {
 		get_template_part( 'modules/contacts/templates/form/alert/success' );
 	}
-} else if ( !empty( $_POST[ 'recaptcha' ] ) ) {
-	$recaptcha_response = function_exists( 'forqy_form_recaptcha_get_response' ) ? forqy_form_recaptcha_get_response( $_POST[ 'recaptcha' ] ) : array();
+} else if ( !empty( $recaptcha_token ) ) {
+	$recaptcha_response = function_exists( 'forqy_form_recaptcha_get_response' ) ? forqy_form_recaptcha_get_response( $recaptcha_token ) : array();
 
 	// Save reCAPTCHA params
 	if ( !empty( $recaptcha_response ) ) {
@@ -69,7 +68,7 @@ if ( $is_local ) {
 
 		if ( isset( $recaptcha_response[ 'score' ] ) && $recaptcha_response[ 'score' ] >= 0.4 ) {
 			$suspicious = false;
-			if ( $_POST[ 'f-form' ] == 'catalog' ) {
+			if ( $posted_form === 'catalog' ) {
 				get_template_part( 'modules/contacts/templates/form/alert/success', 'catalog' );
 			} else {
 				get_template_part( 'modules/contacts/templates/form/alert/success' );
@@ -102,19 +101,19 @@ do_action( 'forqy_form_sent' );
 /**
  * Data
  */
-$form      = isset( $_POST[ 'f-form' ] ) ? sanitize_key( $_POST[ 'f-form' ] ) : '';
-$form_name = isset( $_POST[ 'f-form-name' ] ) ? sanitize_text_field( $_POST[ 'f-form-name' ] ) : '';
-$number    = isset( $_POST[ 'f-number' ] ) ? sanitize_text_field( $_POST[ 'f-number' ] ) : '';
-$title     = isset( $_POST[ 'f-title' ] ) ? sanitize_text_field( $_POST[ 'f-title' ] ) : '';
-$url       = isset( $_POST[ 'f-url' ] ) ? esc_url_raw( $_POST[ 'f-url' ] ) : '';
+$form      = $posted_form;
+$form_name = sanitize_text_field( $post_value( 'f-form-name' ) );
+$number    = sanitize_text_field( $post_value( 'f-number' ) );
+$title     = sanitize_text_field( $post_value( 'f-title' ) );
+$url       = esc_url_raw( $post_value( 'f-url' ) );
 $processed = function_exists( 'forqy_form_is_ajax' ) ? forqy_form_is_ajax() ? 'AJAX' : 'PHP' : '';
 
-$name     = isset( $_POST[ 'f-name' ] ) ? sanitize_text_field( $_POST[ 'f-name' ] ) : '';
-$email    = isset( $_POST[ 'f-email' ] ) ? sanitize_email( $_POST[ 'f-email' ] ) : '';
-$phone    = isset( $_POST[ 'f-phone' ] ) ? sanitize_text_field( $_POST[ 'f-phone' ] ) : '';
-$interest = isset( $_POST[ 'f-interest' ] ) ? sanitize_key( $_POST[ 'f-interest' ] ) : '';
-$message  = isset( $_POST[ 'f-message' ] ) ? wp_kses_post( $_POST[ 'f-message' ] ) : '';
-$terms    = isset( $_POST[ 'f-terms' ] ) ? sanitize_text_field( $_POST[ 'f-terms' ] ) : '';
+$name     = sanitize_text_field( $post_value( 'f-name' ) );
+$email    = sanitize_email( $post_value( 'f-email' ) );
+$phone    = sanitize_text_field( $post_value( 'f-phone' ) );
+$interest = sanitize_key( $post_value( 'f-interest' ) );
+$message  = wp_kses_post( $post_value( 'f-message' ) );
+$terms    = sanitize_text_field( $post_value( 'f-terms' ) );
 
 /**
  * Insert Post
@@ -184,20 +183,20 @@ if ( !is_email( $from_email ) ) {
 // Recipients
 $recipient  = sanitize_email( get_theme_mod( 'baspa_form_to', get_bloginfo( 'admin_email' ) ) );
 $recipients = array_filter( array( $recipient ), 'is_email' );
-if ( isset( $interest ) && $interest == 'pool' && !empty( get_theme_mod( 'baspa_form_to_pool' ) ) ) {
+if ( isset( $interest ) && $interest === 'pool' && !empty( get_theme_mod( 'baspa_form_to_pool' ) ) ) {
 	$recipients[] = sanitize_email( get_theme_mod( 'baspa_form_to_pool' ) );
 }
-if ( isset( $interest ) && $interest == 'jacuzzi' && !empty( get_theme_mod( 'baspa_form_to_jacuzzi' ) ) ) {
+if ( isset( $interest ) && $interest === 'jacuzzi' && !empty( get_theme_mod( 'baspa_form_to_jacuzzi' ) ) ) {
 	$recipients[] = sanitize_email( get_theme_mod( 'baspa_form_to_jacuzzi' ) );
 }
-if ( isset( $interest ) && $interest == 'service' && !empty( get_theme_mod( 'baspa_form_to_service' ) ) ) {
+if ( isset( $interest ) && $interest === 'service' && !empty( get_theme_mod( 'baspa_form_to_service' ) ) ) {
 	$recipients[] = sanitize_email( get_theme_mod( 'baspa_form_to_service' ) );
 }
 $recipients = array_values( array_filter( $recipients, 'is_email' ) );
 // Subject
-if ( $form == 'catalog' ) {
+if ( $form === 'catalog' ) {
 	$subject = get_bloginfo( 'name' ) . ' — ' . sprintf( __( 'Catalog #%s', 'baspa' ), $number );
-} else if ( $form == 'service' ) {
+} else if ( $form === 'service' ) {
 	$subject = get_bloginfo( 'name' ) . ' — ' . sprintf( __( 'Service #%s', 'baspa' ), $number );
 } else {
 	$subject = get_bloginfo( 'name' ) . ' — ' . sprintf( __( 'Contact #%s — %s', 'baspa' ), $number, esc_html( baspa_contacts_get_interest_title( $interest ) ) );
@@ -224,14 +223,14 @@ if ( !$is_local && !empty( $recipients ) && $email !== 'test@test.com' ) {
 /**
  * Add Subscriber to Ecomail
  */
-if ( isset( $interest ) && $interest == 'pool' ) {
+if ( isset( $interest ) && $interest === 'pool' ) {
 	baspa_contacts_add_contact_to_ecomail( $name, $email, $phone, $form_name, $url, esc_html( baspa_contacts_get_interest_title( $interest ) ) );
-} else if ( isset( $interest ) && $interest == 'jacuzzi' ) {
+} else if ( isset( $interest ) && $interest === 'jacuzzi' ) {
 	baspa_contacts_add_contact_to_ecomail( $name, $email, $phone, $form_name, $url, esc_html( baspa_contacts_get_interest_title( $interest ) ) );
-} else if ( isset( $interest ) && $interest == 'service' ) {
+} else if ( isset( $interest ) && $interest === 'service' ) {
 	baspa_contacts_add_contact_to_ecomail( $name, $email, $phone, $form_name, $url, esc_html( baspa_contacts_get_interest_title( $interest ) ) );
 } else {
-	if ( $form == 'catalog' ) {
+	if ( $form === 'catalog' ) {
 		baspa_contacts_add_contact_to_ecomail( $name, $email, $phone, $form_name, $url, esc_html__( 'Catalog', 'baspa' ) );
 	} else {
 		baspa_contacts_add_contact_to_ecomail( $name, $email, $phone, $form_name, $url );

@@ -19,6 +19,19 @@ Pro Arctic doporucuji: fork Baspa theme ano, ale v nove slozce `arctic-spas-2`; 
 
 ## Hlavni nalezy
 
+### Stav oprav v Arctic forku k 2026-05-24
+
+V `arctic-spas-2/wp-content/themes/arctic/` uz jsou opravené nejdulezitejsi frontendove casti z tohoto auditu:
+
+- formularove sablony vraci hodnoty pres `esc_attr( wp_unslash(...) )` / `esc_textarea( wp_unslash(...) )`,
+- formularovy processing uklada POST hodnoty az po `wp_unslash()` a sanitizaci,
+- AJAX formularovy handler uz nebere `f-form-processing-path` z POSTu a povoluje jen server-side whitelist sablon,
+- hardcoded Bcc je odstraneny a `Reply-To` se pridava jen pro validni e-mail,
+- Ecomail integrace pouziva `wp_remote_post()`, ma timeout, validaci e-mailu, local bypass a zadny frontend debug vypis,
+- AJAX search sanitizuje keyword, whitelistuje registrovane post typy/taxonomie a escapuje vystup odkazu/titulku.
+
+Zbyvajici technicky dluh pred produkci: admin settings stranky vlastnich modulu stale potrebuji doplnit nonce/capability pattern a SVG upload strategii je potreba uzavrit podle finalnich rolí editoru.
+
 ### Vysoke riziko
 
 1. Kontaktní formulare vypisuji raw `$_POST` zpet do HTML
