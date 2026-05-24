@@ -30,7 +30,6 @@ get_template_part( 'modules/products/templates/post/single/heading' );
 		get_template_part( 'templates/section/product-benefits' );
 		get_template_part( 'templates/section/product-options' );
 		get_template_part( 'modules/references/templates/section', 'recent' );
-		get_template_part( 'modules/contacts/templates/section', 'catalog' );
 		?>
 
 	</main>
