@@ -102,12 +102,16 @@ Watch rezim:
 
 - `npm run css:watch`
 
-Figma audit HP/header/mobile top:
+Figma audit podle hlavních Figma passů:
 
 - `npm run figma:audit`
+
+Kontroluje homepage/header/mobile top, katalog vířivek, detail Timberwolf a kontakt proti Figma souřadnicím a Figma assetům.
 
 Vizualni smoke test hlavnich cest:
 
 - `npm run visual:smoke`
+
+Smoke test hlídá hlavní URL, externí browser requesty, horizontální overflow, veřejné placeholdery a zakázané živé integrace.
 
 Smoke test zahrnuje homepage, katalog virivek, swimspa, dalsi sortiment, produktove detaily, showroom, podporu, downloady a kontakt. Soucasne kontroluje zakazane externi requesty v prohlizeci, horizontalni overflow na desktopu i mobilu a uklada Playwright screenshoty hlavnich Figma stranek.
