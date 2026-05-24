@@ -19,6 +19,8 @@ Poznámka k 2026-05-23: Figma API v průběhu práce vrátilo rate limit `429`, 
 
 Poznámka k homepage passu: malé vektorové prvky, které nebyly dostupné jako samostatný `imageRef`, jsou dočasně vyříznuté z uloženého Figma frame screenshotu `docs/screenshots/figma-hp.png`. Jde pořád o Figma zdroj, ne o grafiku ze starého webu.
 
+Poznámka k auditu 2026-05-24: HP hero má ve Figma grafice jeden skutečný obrazový node `1:15` (`Arctic Spas 07`) a mobilní referenci `1:1974`. Tři tečky a šipky jsou vizuální ovladače návrhu; další hero fotky Lunar/showroom se nesmí doplňovat ze starého obsahu, pokud pro ně ve Figmě není samostatný hero node.
+
 ## Struktura šablon podle wireframe
 
 | Šablona | Wireframe node | Použití |

@@ -723,7 +723,7 @@ delete_post_meta( $slide_hero_id, 'button_url_post' );
 delete_post_meta( $slide_hero_id, 'button_url' );
 
 $slide_lunar_id = arctic_seed_post_by_meta( 'slide', '_arctic_seed_key', 'home-hero-lunar', array(
-	'post_status'  => 'publish',
+	'post_status'  => 'draft',
 	'post_title'   => 'Lunar a Orion 2025',
 	'post_content' => '<!-- wp:paragraph --><p>Nove modely rady Core s konfiguraci Prestige nebo Signature a cenou od 249 000 Kc.</p><!-- /wp:paragraph -->',
 	'menu_order'   => 20,
@@ -733,7 +733,7 @@ update_post_meta( $slide_lunar_id, 'button_text', 'Prohlednout Lunar' );
 update_post_meta( $slide_lunar_id, 'button_url_post', $lunar_id );
 
 $slide_showroom_id = arctic_seed_post_by_meta( 'slide', '_arctic_seed_key', 'home-hero-showroom', array(
-	'post_status'  => 'publish',
+	'post_status'  => 'draft',
 	'post_title'   => 'Showroom u Brna',
 	'post_content' => '<!-- wp:paragraph --><p>Prijedte si virivku osahat, porovnat vybavu a projit technickou pripravu s konzultantem.</p><!-- /wp:paragraph -->',
 	'menu_order'   => 30,

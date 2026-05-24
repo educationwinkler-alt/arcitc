@@ -73,10 +73,12 @@ Hotove veci:
 - Frontend nacita `dist/css/arctic.css` po Baspa CSS.
 - Logo, CTA, header preconnecty, Smartsupp a mapa jsou upravene tak, aby local nevysilal externi requesty a nezobrazoval Baspa identitu.
 - Homepage header a prvni viewport HP jsou srovnane podle Figma node souradnic: desktop header, mobile header, hero text, slider tecky, Figma vyprodejovy banner a dve hlavni kategorie.
+- Audit 2026-05-24: Figma grafika pro HP obsahuje jeden skutecny hero obraz `Arctic Spas 07` (`1:15`, mobile `1:1974`). Dalsi uvodni slidy Lunar/showroom nejsou ve Figme jako samostatne hero plochy, proto se na homepage nezobrazuji jako realny slider. Homepage query je zamcena na seed `home-hero-arctic`; tecky a sipky zustavaji jen jako staticky Figma vizual podle navrhu.
 - Desktop homepage hero nepouziva WordPress crop z media sizes, ale primo Figma asset `hp-hero-arctic-spas-07.jpg` natazeny na frame `1920 x 795`, aby sedel Figma `scaleMode: STRETCH`.
 - Desktop homepage ma podle Figma HP frame srovnanou i dolni cast: produktove karty `x=258/986 y=866 w=674 h=424`, obsahovy blok `x=584 y=1405`, benefity `x=260/752/1244 y=1703`, showroom panel `x=260 y=2102`, prubeh `y=2863`, reference `y=3418`, kontaktni CTA `y=3945` a footer `y=4428`.
 - Produktove karty na HP pouzivaji Figma image crop smerem k `imageTransform` z node `1:33` a `1:34`, ne defaultni WordPress center crop.
 - Hero promo banner je odblokovany mimo clipping slideru, takze se zobrazuje i spodní Figma button v presne pozici. Showroom kolaz ma poradi obrazku podle Figma node souradnic `1:123`, `1:125`, `1:124`.
+- Hero promo banner bere produktovy obrazek z Figma node `1:254` / mobile `1:1992`. CSS kreslena bila nahradni ikona se nesmi zobrazit; fallback je nahrazen figmovym produktem a oranzovym `%` badge.
 - Benefit ikony a showroom pin jsou vyrezane z ulozeneho Figma HP screenshotu `docs/screenshots/figma-hp.png`; kontaktni portret `1:50` je exportovany z Figma imageRef. Vse je zapsane v `docs/figma-asset-manifest.md` a neni prevzate ze stareho Arctic webu.
 - Mobile homepage top podle `GM - HP` ma Figma hero crop, hero vysku 556 px, vyprodejovy banner na y=562 a dve hlavni kategorie od y=842.
 - Mobile homepage dolni cast podle `GM - HP` ma Figma showroom kolaz: panel `x=20/y=2162/w=335/h=695`, fotky `1:2081/1:2082/1:2083`, badge `x=139/y=2254/w=121/h=123`; reference maji heading `y=3728`, kartu `x=20/y=3793/w=318/h=232` a CTA pod carousel.
