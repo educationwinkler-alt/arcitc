@@ -8,26 +8,53 @@
 
 $phone = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
 $email = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
+$avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
 
 $groups = array(
-	__( 'Vířivky', 'baspa' ) => array(
-		__( 'Série Core', 'baspa' )   => home_url( '/catalog/virivky/?series=core' ),
-		__( 'Série Classic', 'baspa' ) => home_url( '/catalog/virivky/?series=classic' ),
-		__( 'Série Custom', 'baspa' )  => home_url( '/catalog/virivky/?series=custom' ),
-		__( 'Výprodej vířivek', 'baspa' ) => home_url( '/catalog/virivky/' ),
+	array(
+		'heading' => __( 'Vířivky', 'baspa' ),
+		'items'   => array(
+			__( 'Série Core', 'baspa' )      => home_url( '/catalog/virivky/?series=core' ),
+			__( 'Série Classic', 'baspa' )   => home_url( '/catalog/virivky/?series=classic' ),
+			__( 'Série Custom', 'baspa' )    => home_url( '/catalog/virivky/?series=custom' ),
+			__( 'Výprodej vířivek', 'baspa' ) => home_url( '/catalog/virivky/' ),
+		),
+		'sections' => array(
+			array(
+				'heading' => __( 'Celoroční bazény', 'baspa' ),
+				'items'   => array(
+					__( 'Série Core', 'baspa' )    => home_url( '/catalog/swimspa/?series=core' ),
+					__( 'Série Classic', 'baspa' ) => home_url( '/catalog/swimspa/?series=classic' ),
+				),
+			),
+		),
 	),
-	__( 'Vlastnosti vířivek', 'baspa' ) => array(
-		__( 'Izolace vířivky', 'baspa' ) => home_url( '/vlastnosti/' ),
-		__( 'Záruka', 'baspa' )          => home_url( '/zaruka/' ),
-		__( 'Termokryt', 'baspa' )       => home_url( '/vlastnosti/' ),
-		__( 'Servisní přístup', 'baspa' ) => home_url( '/podpora/' ),
+	array(
+		'heading' => __( 'Vlastnosti vířivek', 'baspa' ),
+		'items'   => array(
+			__( 'Izolace vířivky', 'baspa' )        => home_url( '/vlastnosti/' ),
+			__( 'Záruka na skořepinu', 'baspa' )    => home_url( '/zaruka/' ),
+			__( 'Termokryt', 'baspa' )              => home_url( '/vlastnosti/' ),
+			__( 'Podlaha vířivky', 'baspa' )        => home_url( '/vlastnosti/' ),
+			__( 'Servisní přístup', 'baspa' )       => home_url( '/podpora/' ),
+			__( 'Variabilita', 'baspa' )            => home_url( '/vlastnosti/' ),
+			__( 'Automatická dezinfekce', 'baspa' ) => home_url( '/vlastnosti/' ),
+		),
 	),
-	__( 'Další informace', 'baspa' ) => array(
-		__( 'Průběh realizace', 'baspa' ) => home_url( '/dalsi-informace/' ),
-		__( 'Podpora', 'baspa' )          => home_url( '/podpora/' ),
-		__( 'Ke stažení', 'baspa' )       => home_url( '/ke-stazeni/' ),
-		__( 'Showroom', 'baspa' )         => home_url( '/showroom/' ),
-		__( 'Kontakt', 'baspa' )          => home_url( '/kontakt/' ),
+	array(
+		'heading' => __( 'Další informace', 'baspa' ),
+		'items'   => array(
+			__( 'Průběh realizace', 'baspa' )            => home_url( '/dalsi-informace/' ),
+			__( 'Podpora', 'baspa' )                     => home_url( '/podpora/' ),
+			__( 'Služby', 'baspa' )                      => home_url( '/sluzby/' ),
+			__( 'Kolik stojí provoz a údržba', 'baspa' ) => home_url( '/kolik-stoji-udrzba/' ),
+			__( 'Časté otázky', 'baspa' )                => home_url( '/podpora/#faq' ),
+			__( 'Reference', 'baspa' )                   => home_url( '/reference/' ),
+			__( 'O nás', 'baspa' )                       => home_url( '/o-nas/' ),
+			__( 'Showroom', 'baspa' )                    => home_url( '/showroom/' ),
+			__( 'Servis', 'baspa' )                      => home_url( '/servis/' ),
+			__( 'Kontakt', 'baspa' )                     => home_url( '/kontakt/' ),
+		),
 	),
 );
 ?>
@@ -35,22 +62,39 @@ $groups = array(
 <footer id="<?php echo sanitize_title( esc_attr_x( 'footer', 'anchor', 'baspa' ) ); ?>" class="f-footer f-footer--arctic">
 	<div class="f-footer__container a-container">
 		<div class="f-footer__grid">
-			<?php foreach ( $groups as $heading => $items ) { ?>
-				<nav class="f-footer__group" aria-label="<?php echo esc_attr( $heading ); ?>">
-					<h2><?php echo esc_html( $heading ); ?></h2>
+			<?php foreach ( $groups as $group ) { ?>
+				<nav class="f-footer__group" aria-label="<?php echo esc_attr( $group['heading'] ); ?>">
+					<h2><?php echo esc_html( $group['heading'] ); ?></h2>
 					<ul>
-						<?php foreach ( $items as $label => $url ) { ?>
+						<?php foreach ( $group['items'] as $label => $url ) { ?>
 							<li><a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?></a></li>
 						<?php } ?>
 					</ul>
+					<?php if ( !empty( $group['sections'] ) ) {
+						foreach ( $group['sections'] as $section ) { ?>
+							<h2><?php echo esc_html( $section['heading'] ); ?></h2>
+							<ul>
+								<?php foreach ( $section['items'] as $label => $url ) { ?>
+									<li><a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?></a></li>
+								<?php } ?>
+							</ul>
+						<?php }
+					} ?>
 				</nav>
 			<?php } ?>
 
 			<aside class="f-footer__quick-contact">
 				<div class="f-footer__quick-contact-body">
 					<h2><?php echo esc_html__( 'Rychlý kontakt', 'baspa' ); ?></h2>
-					<strong><?php echo esc_html__( 'Lukáš Dušek', 'baspa' ); ?></strong>
-					<span><?php echo esc_html__( 'Bazénový specialista', 'baspa' ); ?></span>
+					<div class="f-footer__quick-person">
+						<span class="f-footer__quick-avatar" aria-hidden="true">
+							<img src="<?php echo esc_url( $avatar ); ?>" alt="" loading="lazy" decoding="async">
+						</span>
+						<div>
+							<strong><?php echo esc_html__( 'Lukáš Dušek', 'baspa' ); ?></strong>
+							<span><?php echo esc_html__( 'Bazénový specialista', 'baspa' ); ?></span>
+						</div>
+					</div>
 					<a href="mailto:<?php echo antispambot( esc_attr( $email ) ); ?>"><?php echo antispambot( esc_html( $email ) ); ?></a>
 					<a href="tel:<?php echo esc_attr( str_replace( ' ', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a>
 					<?php get_template_part( 'templates/button/contact', '', array(

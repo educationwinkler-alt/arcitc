@@ -74,6 +74,10 @@ Hotove veci:
 - Logo, CTA, header preconnecty, Smartsupp a mapa jsou upravene tak, aby local nevysilal externi requesty a nezobrazoval Baspa identitu.
 - Homepage header a prvni viewport HP jsou srovnane podle Figma node souradnic: desktop header, mobile header, hero text, slider tecky, Figma vyprodejovy banner a dve hlavni kategorie.
 - Desktop homepage hero nepouziva WordPress crop z media sizes, ale primo Figma asset `hp-hero-arctic-spas-07.jpg` natazeny na frame `1920 x 795`, aby sedel Figma `scaleMode: STRETCH`.
+- Desktop homepage ma podle Figma HP frame srovnanou i dolni cast: produktove karty `x=258/986 y=866 w=674 h=424`, obsahovy blok `x=584 y=1405`, benefity `x=260/752/1244 y=1703`, showroom panel `x=260 y=2102`, prubeh `y=2863`, reference `y=3418`, kontaktni CTA `y=3945` a footer `y=4428`.
+- Produktove karty na HP pouzivaji Figma image crop smerem k `imageTransform` z node `1:33` a `1:34`, ne defaultni WordPress center crop.
+- Hero promo banner je odblokovany mimo clipping slideru, takze se zobrazuje i spodní Figma button v presne pozici. Showroom kolaz ma poradi obrazku podle Figma node souradnic `1:123`, `1:125`, `1:124`.
+- Benefit ikony a showroom pin jsou vyrezane z ulozeneho Figma HP screenshotu `docs/screenshots/figma-hp.png`; kontaktni portret `1:50` je exportovany z Figma imageRef. Vse je zapsane v `docs/figma-asset-manifest.md` a neni prevzate ze stareho Arctic webu.
 - Mobile homepage top podle `GM - HP` ma Figma hero crop, hero vysku 556 px, vyprodejovy banner na y=562 a dve hlavni kategorie od y=842.
 - Mobile homepage dolni cast podle `GM - HP` ma Figma showroom kolaz: panel `x=20/y=2162/w=335/h=695`, fotky `1:2081/1:2082/1:2083`, badge `x=139/y=2254/w=121/h=123`; reference maji heading `y=3728`, kartu `x=20/y=3793/w=318/h=232` a CTA pod carousel.
 - Mobile menu podle `GM - HP menu` ma Figma rozmery: logo `x=20/y=7/w=86/h=48`, close button `x=310/y=9/w=45/h=45`, tmavy panel `#23282f`, search `x=26/y=527/w=323/h=44`, placeholder `Zadejte hledany vyraz` a ikonu search `x=311/y=537/w=24/h=24`.
@@ -92,7 +96,7 @@ Hotove veci:
 - Smoke test hlavnich cest neukazuje `Baspa`, `baspa.cz`, Smartsupp, tracking preconnecty, Ecomail URL, Google Fonts ani Google map embed.
 - `npm run visual:smoke` prochazi hlavni URL vcetne `Dalsi sortiment`, kontroluje zakazane stringy, zakazane externi browser requesty, horizontalni overflow na desktopu/mobilu a uklada desktop/mobile screenshoty Figma stranek.
 - Defaultni WP obsah `Hello world!` a `Sample Page` seed odstranuje, aby se nepropsal do novinek ani navigace.
-- Posledni overeni: `npm run visual:smoke` prosel po desktop Figma passu Timberwolf detailu a neodhalil externi browser requesty, `baspa.cz` requesty ani horizontalni overflow.
+- Posledni overeni: PHP lint upravenych sablon prosel, desktop HP produktove karty byly premerene proti Figma souradnicim a cekaji na finalni `npm run visual:smoke` po doplneni aktualni dokumentace.
 - Aktualni kontrolni screenshoty jsou v `docs/screenshots/`, vcetne `home-desktop-1920-playwright.png`, `product-timberwolf-1920-current.png`, `product-timberwolf-desktop-current.png` a `product-timberwolf-full-1920-current.png`.
 
 ## Souvisly postup realizace

@@ -283,12 +283,12 @@ foreach ( array(
 
 update_term_meta( $category_hot_tubs, 'category_image', $category_hot_tubs_life );
 update_term_meta( $category_hot_tubs, 'category_heading_image', $figma_category_hero_virivky );
-update_term_meta( $category_hot_tubs, 'category_description_short', 'Venkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily.' );
+update_term_meta( $category_hot_tubs, 'category_description_short', 'Venkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily, byly jednoduché na obsluhu a pro svůj provoz spotřebovaly minimum energie.' );
 update_term_meta( $category_hot_tubs, 'category_heading_title', 'Venkovní vířivky Arctic Spas' );
 update_term_meta( $category_hot_tubs, 'category_heading_text', 'Venkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily, byly jednoduché na obsluhu a pro svůj provoz spotřebovaly minimum energie.' );
 update_term_meta( $category_swimspa, 'category_image', $category_swimspa_life );
 update_term_meta( $category_swimspa, 'category_heading_image', $figma_hero );
-update_term_meta( $category_swimspa, 'category_description_short', 'Rodinný bazén na zahradě je snem řady domácností. Celoroční bazény Arctic nahrazují klasický bazén a přidávají masážní komfort.' );
+update_term_meta( $category_swimspa, 'category_description_short', 'Rodinný bazén na zahradě je snem řady domácností. Mnohé nicméně odradí nesmírná náročnost souvisejících zemních a stavebních prací a v našich klimatických podmínkách také žalostně limitované využití omezené na krátkou letní sezónu.' );
 update_term_meta( $category_covers, 'category_image', $covana_main );
 update_term_meta( $category_covers, 'category_description_short', 'Automaticke kryty, doplnky a navazujici sortiment pro pohodlnejsi provoz virivky.' );
 
@@ -752,7 +752,7 @@ $home_id = arctic_seed_page(
 	'uvod',
 	'Uvod',
 	'<!-- wp:heading {"textAlign":"center"} --><h2 class="wp-block-heading has-text-align-center">Jsme výhradní prodejce</h2><!-- /wp:heading -->'
-	. '<!-- wp:paragraph {"align":"center"} --><p class="has-text-align-center">Rádi vám pomůžeme při výběru bazénu nebo vířivky. Jsme vám k dispozici, ať už máte přesnou představu nebo se myšlenkami na bazén či vířivku teprve začínáte zabývat.</p><!-- /wp:paragraph -->'
+	. '<!-- wp:paragraph {"align":"center"} --><p class="has-text-align-center">Rádi vám pomůžeme při výběru bazénu nebo vířivky. Jsme vám k dispozici, ať už máte přesnou představu nebo se myšlenkami na bazén či vířivku teprve začínáte zabývat. Nejprve se pobavíme o vašich přáních a potřebách, navrhneme vhodné řešení, zpracujeme podrobnou nabídku a nakonec projekt zrealizujeme.</p><!-- /wp:paragraph -->'
 	. '<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} --><div class="wp-block-buttons"><!-- wp:button {"className":"is-style-outline"} --><div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="' . esc_url( home_url( '/o-nas/' ) ) . '">Více o nás</a></div><!-- /wp:button --></div><!-- /wp:buttons -->',
 	'template-homepage.php'
 );

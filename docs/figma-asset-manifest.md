@@ -17,6 +17,8 @@ WordPress seed pak používá soubory z `wp-content/uploads/import/figma/`, ne r
 
 Poznámka k 2026-05-23: Figma API v průběhu práce vrátilo rate limit `429`, proto jsou primární obrazové assety dočasně exportované přímo z lokálně importovaného `.fig` souboru přes Figma `imageRef`. Po uvolnění API limitu se může spustit `npm run figma:export-assets` pro přesný render složených frame výřezů; zdroj ale zůstává Figma, ne starý Arctic web.
 
+Poznámka k homepage passu: malé vektorové prvky, které nebyly dostupné jako samostatný `imageRef`, jsou dočasně vyříznuté z uloženého Figma frame screenshotu `docs/screenshots/figma-hp.png`. Jde pořád o Figma zdroj, ne o grafiku ze starého webu.
+
 ## Struktura šablon podle wireframe
 
 | Šablona | Wireframe node | Použití |
@@ -36,9 +38,14 @@ Poznámka k 2026-05-23: Figma API v průběhu práce vrátilo rate limit `429`, 
 | Homepage karta vířivky | `1:33` | 674 x 424 | `graphics/hp-category-virivky.jpg` | karta směru Vířivky |
 | Homepage karta swimspa | `1:34` | 674 x 424 | `graphics/hp-category-celorocni-bazeny.png` | karta směru Celoroční bazény |
 | Hero promo produkt | `1:254` | 174 x 131 | `graphics/hp-fixed-banner-product.png` | pevný banner z grafiky |
+| Kontakt Lukáš Dušek | `1:50` | 58 x 58 | `graphics/contact-lukas-dusek.png` | portrét v HP CTA a rychlém kontaktu |
+| Homepage benefit Montáž | `1:72` | 88 x 88 | `graphics/hp-benefit-montaz.png` | ikona benefitu Montáž podle HP frame |
+| Homepage benefit Podpora | `1:114` | 83 x 82 | `graphics/hp-benefit-podpora.png` | ikona benefitu Podpora podle HP frame |
+| Homepage benefit Servis | `1:82` | 83 x 82 | `graphics/hp-benefit-servis.png` | ikona benefitu Servis podle HP frame |
 | Showroom foto 1 | `1:123` | 384 x 210 | `graphics/showroom-1.png` | showroom koláž |
 | Showroom foto 2 | `1:124` | 454 x 285 | `graphics/showroom-2.png` | showroom koláž |
 | Showroom foto 3 | `1:125` | 334 x 341 | `graphics/showroom-3.png` | showroom koláž |
+| Homepage showroom pin | `1:135` | 24 x 24 | `graphics/hp-pin-showroom.png` | ikona adresy v showroom CTA podle HP frame |
 | Realizace 1 | `1:179` | 335 x 422 | `graphics/realizace-1.jpg` | realizace / reference |
 | Realizace 2 | `1:187` | 335 x 422 | `graphics/realizace-2.jpg` | realizace / reference |
 | Realizace 3 | `1:195` | 335 x 422 | `graphics/realizace-3.jpg` | realizace / reference |

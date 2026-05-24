@@ -6,6 +6,7 @@
 
 $email = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
 $phone = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
+$avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
 ?>
 
 <section class="f-section f-section--contact">
@@ -15,7 +16,9 @@ $phone = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
 			<p><?php echo esc_html__( 'Dejte nám vědět a naši specialisté na bazény se vám budou věnovat.', 'baspa' ); ?></p>
 			<div class="f-contact-cta__bar">
 				<div class="f-contact-cta__person">
-					<span class="f-contact-cta__avatar" aria-hidden="true">LD</span>
+					<span class="f-contact-cta__avatar" aria-hidden="true">
+						<img src="<?php echo esc_url( $avatar ); ?>" alt="" loading="eager" decoding="async">
+					</span>
 					<div>
 						<strong><?php echo esc_html__( 'Lukáš Dušek', 'baspa' ); ?></strong>
 						<span><?php echo esc_html__( 'Bazénový specialista', 'baspa' ); ?></span>

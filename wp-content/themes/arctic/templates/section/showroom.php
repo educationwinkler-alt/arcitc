@@ -6,8 +6,8 @@
 
 $image_keys = array(
 	'figma-node-1-123-showroom-1',
-	'figma-node-1-124-showroom-2',
 	'figma-node-1-125-showroom-3',
+	'figma-node-1-124-showroom-2',
 );
 $image_ids  = array();
 
@@ -33,7 +33,11 @@ foreach ( $image_keys as $image_key ) {
 			<div class="f-showroom-panel__media">
 				<?php foreach ( $image_ids as $index => $image_id ) { ?>
 					<figure class="f-showroom-panel__image f-showroom-panel__image--<?php echo esc_attr( $index + 1 ); ?>">
-						<?php echo wp_get_attachment_image( $image_id, 'large' ); ?>
+						<?php echo wp_get_attachment_image( $image_id, 'large', false, array(
+							'data-lazy' => 'false',
+							'loading'   => 'eager',
+							'decoding'  => 'async',
+						) ); ?>
 					</figure>
 				<?php } ?>
 				<div class="f-showroom-panel__badge">

@@ -74,11 +74,11 @@ if ( $slides_query->have_posts() ) {
 				</div>
 			<?php } ?>
 
-			<?php if ( is_front_page() ) { ?>
-				<?php get_template_part( 'templates/section/hero-promo' ); ?>
-			<?php } ?>
-
 		</div>
+
+		<?php if ( is_front_page() ) { ?>
+			<?php get_template_part( 'templates/section/hero-promo' ); ?>
+		<?php } ?>
 
 	</div>
 

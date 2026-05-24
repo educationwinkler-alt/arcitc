@@ -21,11 +21,19 @@
 			   data-pswp-height="<?php echo esc_attr( $image_height ); ?>"
 			   data-cropped="true"
 			   target="_blank">
-				<?php the_post_thumbnail( get_template() . '-medium' ); ?>
+				<?php echo get_the_post_thumbnail( get_the_ID(), get_template() . '-medium', array(
+					'data-lazy' => 'false',
+					'loading'   => 'eager',
+					'decoding'  => 'async',
+				) ); ?>
 			</a>
 		<?php } else { ?>
 			<a href="<?php the_permalink(); ?>" tabindex="-1" class="f-image a-image a-image--cover a-image--landscape">
-				<?php the_post_thumbnail( get_template() . '-medium' ); ?>
+				<?php echo get_the_post_thumbnail( get_the_ID(), get_template() . '-medium', array(
+					'data-lazy' => 'false',
+					'loading'   => 'eager',
+					'decoding'  => 'async',
+				) ); ?>
 			</a>
 		<?php }
 	} else {

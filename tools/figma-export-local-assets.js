@@ -14,6 +14,7 @@ const ASSETS = [
   { id: '1:33', name: 'hp-category-virivky' },
   { id: '1:34', name: 'hp-category-celorocni-bazeny' },
   { id: '1:254', name: 'hp-fixed-banner-product' },
+  { id: '1:50', name: 'contact-lukas-dusek' },
   { id: '1:123', name: 'showroom-1' },
   { id: '1:124', name: 'showroom-2' },
   { id: '1:125', name: 'showroom-3' },

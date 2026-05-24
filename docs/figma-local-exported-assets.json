@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-23T20:14:25.006Z",
+  "generatedAt": "2026-05-24T03:15:07.356Z",
   "source": "local .fig image refs from assets-source/figma/local-grafika/images",
   "exported": [
     {
@@ -59,6 +59,18 @@
       "imageMode": "direct",
       "archivePath": "assets-source/figma/export/graphics/hp-fixed-banner-product.png",
       "wpImportPath": "wp-content/uploads/import/figma/hp-fixed-banner-product.png"
+    },
+    {
+      "id": "1:50",
+      "name": "contact-lukas-dusek",
+      "ok": true,
+      "format": "png",
+      "imageRef": "9257bc6178b9895b9a6eed6e599b071c4e469db5",
+      "imageNodeId": "1:50",
+      "imageNodeName": "Ellipse 20",
+      "imageMode": "direct",
+      "archivePath": "assets-source/figma/export/graphics/contact-lukas-dusek.png",
+      "wpImportPath": "wp-content/uploads/import/figma/contact-lukas-dusek.png"
     },
     {
       "id": "1:123",

@@ -6,6 +6,7 @@
 
 $phone = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
 $email = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
+$avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
 
 $contacts = array(
 	array(
@@ -36,13 +37,15 @@ $contacts = array(
 	<div class="f-section__container a-container">
 		<h2><?php echo esc_html__( 'Další důležité kontakty', 'baspa' ); ?></h2>
 		<div class="f-contact-directory">
-			<?php foreach ( $contacts as $contact ) { ?>
+			<?php foreach ( $contacts as $index => $contact ) { ?>
 				<article class="f-contact-card">
 					<div class="f-contact-card__avatar" aria-hidden="true">
-						<?php
-						$initial = function_exists( 'mb_substr' ) ? mb_substr( $contact['name'], 0, 1 ) : substr( $contact['name'], 0, 1 );
-						echo esc_html( $initial );
-						?>
+						<?php if ( 0 === $index ) { ?>
+							<img src="<?php echo esc_url( $avatar ); ?>" alt="" loading="lazy" decoding="async">
+						<?php } else {
+							$initial = function_exists( 'mb_substr' ) ? mb_substr( $contact['name'], 0, 1 ) : substr( $contact['name'], 0, 1 );
+							echo esc_html( $initial );
+						} ?>
 					</div>
 					<h3><?php echo esc_html( $contact['name'] ); ?></h3>
 					<p class="f-contact-card__role"><?php echo esc_html( $contact['role'] ); ?></p>
