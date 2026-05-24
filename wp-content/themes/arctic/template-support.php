@@ -164,6 +164,7 @@ $support_avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
 						<span><?php echo esc_html__( 'Dotaz nebo požadavek', 'baspa' ); ?></span>
 						<textarea name="message" rows="5"></textarea>
 					</label>
+					<p class="f-support-form__consent"><?php echo esc_html__( 'Odesláním souhlasíte se zpracováním osobních údajů.', 'baspa' ); ?></p>
 					<button class="f-button a-button a-button--accent" type="submit">
 						<?php echo esc_html__( 'Odeslat požadavek', 'baspa' ); ?>
 					</button>
