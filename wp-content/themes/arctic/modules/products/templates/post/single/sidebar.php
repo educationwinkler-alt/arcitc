@@ -1,39 +1,36 @@
 <?php
 
 /**
- * Post Single Sidebar
+ * Product detail Figma contact card.
  */
 
-$contacts = get_post_meta( get_the_ID(), 'product_contacts', true );
-$cta_text = get_post_meta( get_the_ID(), 'product_cta_text', true );
+$email  = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
+$phone  = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
+$avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
 ?>
 
 <aside class="f-sidebar f-sidebar--sticky a-stack a-gap--m">
-	<div class="a-flex a-flex--align-center a-gap--xs">
-		<div class="a-flex__item--100 a-flex__item--100:m">
-			<?php get_template_part( 'modules/products/templates/post/common/price' ); ?>
-		</div>
-		<div class="a-flex__item--100 a-flex__item--100:m">
-			<?php get_template_part( 'templates/button/contact', '', array(
-				'text' => !empty( $cta_text ) ? $cta_text : __( 'Nezávazná konzultace', 'baspa' ),
-			) ); ?>
-		</div>
-	</div>
+	<div class="f-product-contact-card">
+		<h3><?php echo esc_html__( 'Potřebujete poradit?', 'baspa' ); ?></h3>
 
-	<?php
-	if ( !empty( $contacts ) ) {
-		if ( $contacts == 'pools' ) {
-			block_template_part( 'contact-small-pools' );
-		} else if ( $contacts == 'jacuzzis' ) {
-			block_template_part( 'contact-small-jacuzzis' );
-		}
-	} else {
-		if ( baspa_products_is_term_or_product( 'bazeny' ) ) {
-			block_template_part( 'contact-small-pools' );
-		} else if ( baspa_products_is_term_or_product( 'virivky' ) ) {
-			block_template_part( 'contact-small-jacuzzis' );
-		} else {
-			block_template_part( 'contact-small' );
-		}
-	} ?>
+		<div class="f-product-contact-card__details">
+			<a href="mailto:<?php echo esc_attr( antispambot( $email ) ); ?>"><?php echo esc_html( antispambot( $email ) ); ?></a>
+			<a href="tel:<?php echo esc_attr( str_replace( ' ', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a>
+			<span><?php echo esc_html__( 'Po - Pá 8:00-17:00 h', 'baspa' ); ?></span>
+		</div>
+
+		<div class="f-product-contact-card__person">
+			<span class="f-product-contact-card__avatar" aria-hidden="true">
+				<img src="<?php echo esc_url( $avatar ); ?>" alt="" loading="eager" decoding="async">
+			</span>
+			<div>
+				<strong><?php echo esc_html__( 'Lukáš Dušek', 'baspa' ); ?></strong>
+				<span><?php echo esc_html__( 'Bazénový specialista', 'baspa' ); ?></span>
+			</div>
+		</div>
+
+		<a class="f-product-contact-card__button f-button a-button a-button--outline" href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>">
+			<?php echo esc_html__( 'Napsat zprávu', 'baspa' ); ?>
+		</a>
+	</div>
 </aside>
