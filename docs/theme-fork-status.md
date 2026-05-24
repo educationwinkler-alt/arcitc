@@ -66,11 +66,11 @@ Toto rozhodnuti chrani Baspa zaklad, zrychluje pilot a soucasne drzi Figma token
 - Seed zaklada homepage, menu, katalogy, produkty, sirsi sortiment, showroom, podporu, kontakt a 26 PDF.
 - Homepage ma prvni Figma visual pass: bily plovouci header panel nad hero fotkou, Figma hero text, promo banner a dve hlavni kategorie `Vířivky` / `Celoroční bazény`.
 - Katalog virivek ma prvni Figma visual pass podle frame `KATEGORIE`: hero, intro `Vlastnosti vířivek` / `Záruka`, produktove serie, konfigurator CTA, showroom a proces.
-- Detail Lunar ma prvni Figma visual pass podle frame `DETAIL KONKRETNIHO PRODUKTU`: hero, sticky produktova navigace, konfigurace pred parametry, barvy, vyhody a CTA.
+- Detail Timberwolf ma Figma visual pass podle frame `DETAIL KONKRETNIHO PRODUKTU`: hero, produktova navigace, konfigurace, Figma konfigurator banner, barvy, vyhody, volitelna vybava, realizace a CTA.
 - `Podpora` a `Kontakt` maji prvni Figma visual pass: svetly non-hero heading, taby/FAQ/download/form u podpory a lokalni mapovy fallback u kontaktu.
 - Footer je nahrazen vlastni Arctic strukturou s navigacnimi sloupci, rychlym kontaktem, lokanim obrazkem showroomu a krajinnym pozadim bez block-template vystupu Baspa.
 - Redirect MU plugin pokryva aktivni produkty, sirsi sortiment, vyradene modely, hlavni review URL a PDF.
-- `npm run css:build`, PHP lint upravenych souboru a `npm run visual:smoke` prosly.
+- `npm run css:build`, PHP lint upravenych souboru, `npm run local:safety`, `npm run form:smoke`, `npm run redirect:smoke` a `npm run visual:smoke` prosly.
 - Visual smoke kontroluje hlavni URL, zakazane externi requesty prohlizece, horizontalni overflow na desktopu/mobilu a uklada Figma kontrolni screenshoty.
 
 ## Dalsi technicke kroky

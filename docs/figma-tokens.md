@@ -11,7 +11,7 @@ Zdroj:
 
 Figma soubory jsou dostupne pres API a jejich hlavni frame jsou popsane v `docs/figma-structure.md`.
 
-Aktualni implementace uz nepouziva jen konzervativni Baspa skin. Homepage, katalog virivek, detail Lunar, Podpora a Kontakt maji prvni Figma visual pass nad Baspa architekturou. Header, hero, promo banner a hlavni kategorie jsou ladene podle frame `HP` a `header`; katalog podle `KATEGORIE`; detail podle `DETAIL KONKRETNIHO PRODUKTU`; support/kontakt podle prislusnych Figma stranek. Cilem zustava drzet Baspa rozmery a doplnovat jen rozdily z finalni grafiky. Tokeny jsou ulozene v:
+Aktualni implementace uz nepouziva jen konzervativni Baspa skin. Homepage, katalog virivek, detail Timberwolf, Podpora, Ke stazeni, Kontakt, Showroom, O nas, Reference, Servis a hlavni informacni stranky maji Figma visual pass nad Baspa architekturou. Header, hero, promo banner a hlavni kategorie jsou ladene podle frame `HP` a `header`; katalog podle `KATEGORIE`; detail podle `DETAIL KONKRETNIHO PRODUKTU`; support/kontakt podle prislusnych Figma stranek. Cilem zustava drzet Baspa rozmery a doplnovat jen rozdily z finalni grafiky. Tokeny jsou ulozene v:
 
 - `wp-content/themes/arctic/src/less/_tokens.less`
 - build vystup `wp-content/themes/arctic/dist/css/arctic.css`
@@ -55,7 +55,7 @@ To drzi technicky zaklad Baspa a soucasne umoznuje skin podle Arctic.
 - homepage kategorie `Vířivky` a `Celoroční bazény`
 - katalogovy hero a intro bloky `Vlastnosti vířivek` / `Záruka`
 - produktove serie v katalogu podle `product-series`
-- produktovy hero, sticky produktova navigace a konfigurace jako prvni detailova sekce
+- produktovy hero, produktova navigace, konfigurace a konfigurator banner pro Timberwolf detail
 - produktove konfigurace Prestige/Signature
 - barvy akrylu jako chip list
 - download listing
@@ -67,6 +67,6 @@ To drzi technicky zaklad Baspa a soucasne umoznuje skin podle Arctic.
 
 - Logo už je exportované z Figmy; dál se jen hlídá, že header používá `images/logo.svg` a žádný ruční fallback.
 - Vytahnout presne hodnoty fontu a zkontrolovat proti Baspa typografii.
-- Dodelat pixelove rozdily ve spacingu z `HP`, `KATEGORIE`, `DETAIL KONKRETNIHO PRODUKTU`, `PODPORA` a `KONTAKT`.
-- Porovnat mobilni frame `GM - HP menu` s aktualnim mobile headerem.
+- Dal hlidat pixelove rozdily ve spacingu z `HP`, `KATEGORIE`, `DETAIL KONKRETNIHO PRODUKTU`, `PODPORA`, `KONTAKT`, `SHOWROOM`, `O NAS`, `REFERENCE` a `SERVIS` pres `npm run figma:audit`.
+- Mobilni frame `GM - HP menu` je napojeny do kontroly mobile header/menu; dalsi upravy se maji delat podle Figma node souradnic.
 - Doplnit tokeny pro finalni produktove karty, tabulky konfiguraci, FAQ a podporu po klientskem vizualnim schvaleni.
