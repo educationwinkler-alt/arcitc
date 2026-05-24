@@ -127,6 +127,10 @@ function classify(row, sourcePath, redirectTarget) {
     return ['redirect_retired', redirectTarget || '/catalog/virivky/', 'retired_product', 'Retired product; do not create an active product page.'];
   }
 
+  if (type === 'download_asset' && row.ContentType !== 'application/pdf') {
+    return ['skip_missing_download', redirectTarget || '/ke-stazeni/', 'download_missing', 'Live URL resolves to non-PDF content; do not import unless the client supplies the file.'];
+  }
+
   if (type === 'download_asset') {
     return ['import_download', redirectTarget || '/ke-stazeni/', 'download', 'Import as download CPT/media; old PDF URL redirects dynamically when media exists.'];
   }
