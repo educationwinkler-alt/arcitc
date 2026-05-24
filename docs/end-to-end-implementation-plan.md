@@ -94,15 +94,15 @@ Hotove veci:
 - `Kontakt` ma desktop Figma pass: heading `x=260/y=206`, kontakty `x=970`, CTA buttony `x=1424`, mapa/showroom z Figma node `1:1069` na `y=430/h=782`, karta `x=260/y=561/w=565/h=491`, pin `x=1226/y=786/w=42/h=42`, kontaktni karty `x=260/733/1206 y=1399` a `y=1704`, fakturacni udaje `x=260/y=2071` a footer `y=2425`.
 - Produktovy model ma konfigurace, barvy akrylu, sirsi typy produktu, taxonomie `product-kind` a `product-series`.
 - CPT `download` a shortcode `[arctic-downloads]` jsou implementovane.
-- Seed script zaklada homepage, menu, kontaktni data, kategorie a produkty. Figma pilot je Timberwolf; Lunar/Orion/Husky zustavaji obsahove produkty v katalogu.
+- Seed script zaklada homepage, menu, kontaktni data, kategorie a produkty. Figma pilot je Timberwolf; Lunar/Orion jsou obsahove produkty v katalogu, Husky uz ma doplnenou obsahovou konfiguraci podle puvodni Arctic stranky: 5 osob, 20 trysek, 1030 litru a jedno dvourychlostni cerpadlo.
 - Redirect MU plugin resi aktivni produkty, sirsi sortiment, Dreammaker, stare Core modely a hlavni review URL z crawlu.
 - Stare PDF URL se dynamicky presmeruji na importovany media soubor podle `download_original_url`; chybejici PDF padaji na `/ke-stazeni/`.
 - Kontaktni formular ma local reCAPTCHA bypass, neposila maily v localu, nema hardcoded Bcc a jeden POST se zpracuje jen jednou.
 - Smoke test hlavnich cest neukazuje `Baspa`, `baspa.cz`, Smartsupp, tracking preconnecty, Ecomail URL, Google Fonts ani Google map embed.
-- `npm run visual:smoke` prochazi hlavni URL vcetne `Dalsi sortiment`, kontroluje zakazane stringy, zakazane externi browser requesty, horizontalni overflow na desktopu/mobilu a uklada desktop/mobile screenshoty Figma stranek.
+- `npm run visual:smoke` prochazi hlavni URL vcetne `Dalsi sortiment`, kontroluje zakazane stringy, zakazane externi browser requesty, horizontalni overflow na desktopu/mobilu a uklada desktop/mobile screenshoty Figma stranek i detailu `Husky`.
 - Defaultni WP obsah `Hello world!` a `Sample Page` seed odstranuje, aby se nepropsal do novinek ani navigace.
-- Posledni overeni: PHP lint upravenych sablon prosel, desktop HP produktove karty byly premerene proti Figma souradnicim a cekaji na finalni `npm run visual:smoke` po doplneni aktualni dokumentace.
-- Aktualni kontrolni screenshoty jsou v `docs/screenshots/`, vcetne `home-desktop-1920-playwright.png`, `product-timberwolf-1920-current.png`, `product-timberwolf-desktop-current.png` a `product-timberwolf-full-1920-current.png`.
+- Posledni overeni: PHP lint seedu prosel, seed se propsal do lokalniho WordPressu, detail `Husky` ma vykreslenou konfiguraci a `npm run visual:smoke` prosel bez externich requestu.
+- Aktualni kontrolni screenshoty jsou v `docs/screenshots/`, vcetne `home-desktop-playwright.png`, `product-timberwolf-desktop-playwright.png`, `product-husky-desktop-playwright.png`, `product-husky-mobile-playwright.png` a dalsich hlavních stran.
 
 ## Souvisly postup realizace
 

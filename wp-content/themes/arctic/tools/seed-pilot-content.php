@@ -512,7 +512,30 @@ $legacy_products = array(
 	array( 'source_slug' => 'virivka-totem', 'slug' => 'totem', 'name' => 'Totem', 'type' => 'hot_tub', 'series' => $series_classic, 'dimensions' => '217 × 217 cm, výška: 104 cm' ),
 	array( 'source_slug' => 'virivka-eagle', 'slug' => 'eagle', 'name' => 'Eagle', 'type' => 'hot_tub', 'series' => $series_classic, 'dimensions' => '217 × 217 cm, výška: 104 cm' ),
 	array( 'source_slug' => 'virivka-timberwolf', 'slug' => 'timberwolf', 'name' => 'Timberwolf', 'type' => 'hot_tub', 'series' => $series_classic, 'dimensions' => '217 x 174 x 98 cm' ),
-	array( 'source_slug' => 'virivka-husky', 'slug' => 'husky', 'name' => 'Husky', 'type' => 'hot_tub', 'series' => $series_core, 'price' => 'od 209 000 Kc', 'description' => 'Kompaktni virivka rady Core s peti sedadly, 20 tryskami a jednim cerpadlem.', 'dimensions' => '213 × 186 cm, výška: 99 cm' ),
+	array(
+		'source_slug'    => 'virivka-husky',
+		'slug'           => 'husky',
+		'name'           => 'Husky',
+		'type'           => 'hot_tub',
+		'series'         => $series_core,
+		'price'          => 'od 209 000 Kc',
+		'description'    => 'Husky ma misto az pro 5 osob a je koncipovana jako velky otevreny prostor s mnozstvim ruznych sedatek. Jednoduchy komfort a spousta relaxace, pritom nezabere tolik mista.',
+		'dimensions'     => '213 x 186 x 99 cm',
+		'seats'          => array( '5 osob' ),
+		'nozzles'        => array( '20 trysek' ),
+		'water_volume'   => array( '1030 litru' ),
+		'configurations' => array(
+			array(
+				'name'        => '20 trysek',
+				'price'       => '209 000 Kc',
+				'seats'       => '5 osob',
+				'jets'        => '18 x 2,5" + 2 x 4"',
+				'pumps'       => '1 dvourychlostni',
+				'dimensions'  => '213 x 186 x 99 cm',
+				'description' => 'Konfigurace Core s 20 tryskami a jednim dvourychlostnim cerpadlem.',
+			),
+		),
+	),
 	array( 'source_slug' => 'bazen-athabascan', 'slug' => 'athabascan', 'name' => 'Athabascan', 'type' => 'swimspa', 'series' => $series_swimspa ),
 	array( 'source_slug' => 'bazen-hudson', 'slug' => 'hudson', 'name' => 'Hudson', 'type' => 'swimspa', 'series' => $series_swimspa ),
 	array( 'source_slug' => 'bazen-kingfisher', 'slug' => 'kingfisher', 'name' => 'Kingfisher', 'type' => 'swimspa', 'series' => $series_swimspa ),
@@ -562,6 +585,10 @@ foreach ( $legacy_products as $index => $product ) {
 	arctic_seed_set_multi_meta( $product_id, 'product_image', array( $image_id ) );
 	arctic_seed_set_multi_meta( $product_id, 'product_images', array( $image_id ) );
 	arctic_seed_set_multi_meta( $product_id, 'product_dimensions_external', array( $product['dimensions'] ?? '' ) );
+	arctic_seed_set_multi_meta( $product_id, 'product_seats', $product['seats'] ?? array() );
+	arctic_seed_set_multi_meta( $product_id, 'product_nozzles', $product['nozzles'] ?? array() );
+	arctic_seed_set_multi_meta( $product_id, 'product_water_volume', $product['water_volume'] ?? array() );
+	arctic_seed_set_multi_meta( $product_id, 'product_configurations', $product['configurations'] ?? array() );
 	if ( !empty( $product['badge'] ) ) {
 		update_post_meta( $product_id, 'product_badge', $product['badge'] );
 	} else {
