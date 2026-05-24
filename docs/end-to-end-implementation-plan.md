@@ -73,6 +73,7 @@ Hotove veci:
 - Frontend nacita `dist/css/arctic.css` po Baspa CSS.
 - Logo, CTA, header preconnecty, Smartsupp a mapa jsou upravene tak, aby local nevysilal externi requesty a nezobrazoval Baspa identitu.
 - Homepage header a prvni viewport HP jsou srovnane podle Figma node souradnic: desktop header, mobile header, hero text, slider tecky, Figma vyprodejovy banner a dve hlavni kategorie.
+- Desktop homepage hero nepouziva WordPress crop z media sizes, ale primo Figma asset `hp-hero-arctic-spas-07.jpg` natazeny na frame `1920 x 795`, aby sedel Figma `scaleMode: STRETCH`.
 - Mobile homepage top podle `GM - HP` ma Figma hero crop, hero vysku 556 px, vyprodejovy banner na y=562 a dve hlavni kategorie od y=842.
 - Mobile homepage dolni cast podle `GM - HP` ma Figma showroom kolaz: panel `x=20/y=2162/w=335/h=695`, fotky `1:2081/1:2082/1:2083`, badge `x=139/y=2254/w=121/h=123`; reference maji heading `y=3728`, kartu `x=20/y=3793/w=318/h=232` a CTA pod carousel.
 - Mobile menu podle `GM - HP menu` ma Figma rozmery: logo `x=20/y=7/w=86/h=48`, close button `x=310/y=9/w=45/h=45`, tmavy panel `#23282f`, search `x=26/y=527/w=323/h=44`, placeholder `Zadejte hledany vyraz` a ikonu search `x=311/y=537/w=24/h=24`.

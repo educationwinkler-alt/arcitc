@@ -65,6 +65,7 @@ Frontend je seednuty minimalnim, ale pruchodnym obsahem:
 
 - homepage se slide/hero obsahem podle Figma HP passu,
 - presny Figma pass pro homepage header, prvni viewport, vyprodejovy banner z Figma assetu a dve hlavni kategorie,
+- desktop hero pouziva primo Figma `1920 x 795` background asset bez WordPress orezoveho media cropu,
 - mobilni HP top podle Figma `GM - HP`, vcetne specialniho mobile hero cropu a vyprodejoveho banneru,
 - mobilni HP showroom a realizace podle Figma `GM - HP`, vcetne Figma kolaze, badge `280 m2`, referencni karty a CTA pod carousel,
 - mobilni menu podle Figma `GM - HP menu`, vcetne presne pozice loga, close buttonu, tmaveho panelu, vyhledavani a kontaktu,
