@@ -2289,6 +2289,254 @@ body:not(.template--homepage) .f-logo__img {
   }
 }
 
+.f-section--references .f-section__actions--mobile {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .template--homepage .f-category .f-category__container p,
+  .template--homepage .f-category .f-category__children {
+    display: none;
+  }
+
+  .template--homepage .f-category .f-category__container {
+    justify-content: flex-end;
+    padding: 0 30px 32px;
+  }
+
+  .template--homepage .f-category h3 {
+    width: 220px;
+    margin: 0;
+    font-size: 28px;
+    line-height: 51px;
+  }
+
+  .template--homepage .f-category .f-category__container:after {
+    content: "";
+    position: absolute;
+    right: 27px;
+    bottom: 23px;
+    width: 42px;
+    height: 42px;
+    background: var(--arctic-color-red);
+    border-radius: 999px;
+  }
+
+  .template--homepage .f-category .f-category__container:before {
+    content: "";
+    position: absolute;
+    right: 43px;
+    bottom: 37px;
+    z-index: 2;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid var(--arctic-color-snow);
+    border-right: 2px solid var(--arctic-color-snow);
+    transform: rotate(45deg);
+  }
+
+  .template--homepage .f-section--showroom {
+    padding-top: 14px;
+    padding-bottom: 62px;
+  }
+
+  .template--homepage .f-section--showroom .f-section__container {
+    width: 335px;
+    max-width: 335px;
+    padding: 0;
+  }
+
+  .template--homepage .f-showroom-panel {
+    position: relative;
+    display: block;
+    width: 335px;
+    min-height: 695px;
+    margin: 0 auto;
+    overflow: visible;
+    background: var(--arctic-color-menu);
+    border-radius: 12px;
+  }
+
+  .template--homepage .f-showroom-panel__media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 335px;
+    min-height: 320px;
+  }
+
+  .template--homepage .f-showroom-panel__image {
+    display: block !important;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .template--homepage .f-showroom-panel__image--1 {
+    top: 43px;
+    left: -10px;
+    width: 183px;
+    height: 100px;
+  }
+
+  .template--homepage .f-showroom-panel__image--2 {
+    top: 154px;
+    left: 71px;
+    width: 217px;
+    height: 136px;
+  }
+
+  .template--homepage .f-showroom-panel__image--3 {
+    top: -19px;
+    left: 185px;
+    width: 159px;
+    height: 162px;
+  }
+
+  .template--homepage .f-showroom-panel__badge {
+    top: 92px;
+    left: 119px;
+    display: grid !important;
+    width: 121px;
+    height: 123px;
+    background: var(--arctic-color-red);
+    border-radius: 50%;
+  }
+
+  .template--homepage .f-showroom-panel__badge strong {
+    max-width: 80px;
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .template--homepage .f-showroom-panel__badge span {
+    max-width: 80px;
+    font-size: 12px;
+    line-height: 1.1;
+  }
+
+  .template--homepage .f-showroom-panel__content {
+    position: absolute;
+    top: 322px;
+    left: 36.5px;
+    width: 260px;
+    max-width: 260px;
+    padding: 0;
+  }
+
+  .template--homepage .f-showroom-panel__content h2 {
+    width: 260px;
+    margin: 0 0 10px;
+    font-size: 38px;
+    line-height: 43.32px;
+  }
+
+  .template--homepage .f-showroom-panel__content p {
+    width: 260px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .template--homepage .f-showroom-panel__actions {
+    display: grid;
+    width: 198px;
+    gap: 21px;
+    margin: 21px auto 0;
+    justify-items: center;
+  }
+
+  .template--homepage .f-showroom-panel__actions .a-button {
+    width: 116px;
+    min-height: 50px;
+    padding: 0 20px;
+    color: var(--arctic-color-snow);
+    border-color: rgba(255, 255, 255, 0.38);
+  }
+
+  .template--homepage .f-showroom-panel__actions span {
+    width: 198px;
+    max-width: 198px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  .template--homepage .f-section--references .f-section__heading > .f-section__actions {
+    display: none;
+  }
+
+  .template--homepage .f-section--references,
+  .template--homepage .f-section--references .f-section__container {
+    padding-top: 7.5px;
+  }
+
+  .template--homepage .f-section--references .f-section__container > .a-flex {
+    row-gap: 9px;
+  }
+
+  .template--homepage .f-section--references .f-section__actions--mobile {
+    display: flex;
+    justify-content: center;
+    margin-top: 34px;
+  }
+
+  .template--homepage .f-section--references .f-section__actions--mobile .a-button {
+    min-width: 219px;
+    min-height: 50px;
+    color: var(--arctic-color-red);
+    border-color: rgba(181, 29, 58, 0.35);
+    border-radius: 999px;
+  }
+
+  .template--homepage .f-section--references .f-carousel {
+    position: relative;
+    width: 335px;
+    margin-top: 13px;
+    overflow: visible;
+  }
+
+  .template--homepage .f-section--references .f-carousel:after {
+    content: "";
+    display: block;
+    width: 45px;
+    height: 10px;
+    margin: 18px auto 0;
+    background:
+      radial-gradient(circle at 5px 5px, var(--arctic-color-red) 0 5px, transparent 5.5px),
+      radial-gradient(circle at 23px 5px, rgba(35, 40, 47, 0.18) 0 5px, transparent 5.5px),
+      radial-gradient(circle at 40px 5px, rgba(35, 40, 47, 0.18) 0 5px, transparent 5.5px);
+  }
+
+  .template--homepage .f-section--references .f-carousel__item {
+    width: 318px !important;
+  }
+
+  .template--homepage .f-section--references .f-listing--reference {
+    position: relative;
+    display: block;
+    width: 318px;
+    height: 232px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .template--homepage .f-section--references .f-listing--reference .f-listing__image--container,
+  .template--homepage .f-section--references .f-listing--reference .f-listing__image,
+  .template--homepage .f-section--references .f-listing--reference .f-image,
+  .template--homepage .f-section--references .f-listing--reference img {
+    width: 318px;
+    height: 232px;
+  }
+
+  .template--homepage .f-section--references .f-listing--reference .f-listing__container {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    left: 22px;
+    z-index: 2;
+    color: var(--arctic-color-snow);
+  }
+}
+
 /*
  * Figma header geometry
  * Desktop source: Grafika/header + page instances, 1400 x 105 at x260/y18.

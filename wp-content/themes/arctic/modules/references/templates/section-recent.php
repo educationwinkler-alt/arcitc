@@ -61,7 +61,7 @@ if ( $references_query->have_posts() ) { ?>
 						<?php } else if ( function_exists( 'forqy_get_page_by_template' ) && !empty( forqy_get_page_by_template( 'template-references.php' ) ) ) { ?>
 
 							<div class="f-section__actions a-buttons">
-								<?php echo function_exists( 'baspa_button_next' ) ? baspa_button_next( __( 'View Next References', 'baspa' ), forqy_get_page_by_template( 'template-references.php' )[ 'permalink' ] ) : ''; ?>
+								<?php echo function_exists( 'baspa_button_next' ) ? baspa_button_next( __( 'Zobrazit další reference', 'baspa' ), forqy_get_page_by_template( 'template-references.php' )[ 'permalink' ] ) : ''; ?>
 							</div>
 
 						<?php } ?>
@@ -95,6 +95,14 @@ if ( $references_query->have_posts() ) { ?>
 							<?php get_template_part( 'images/icon/arrow-right' ); ?></button>
 
 					</div>
+
+					<?php if ( !is_tax( 'product-category', 'virivky' ) && function_exists( 'forqy_get_page_by_template' ) && !empty( forqy_get_page_by_template( 'template-references.php' ) ) ) { ?>
+						<div class="f-section__actions f-section__actions--mobile a-buttons">
+							<a class="f-button a-button a-button--outline" href="<?php echo esc_url( forqy_get_page_by_template( 'template-references.php' )[ 'permalink' ] ); ?>">
+								<?php echo esc_html__( 'Zobrazit další reference', 'baspa' ); ?>
+							</a>
+						</div>
+					<?php } ?>
 
 				</div>
 			</div>
