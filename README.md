@@ -102,6 +102,10 @@ Build Arctic CSS:
 
 - `npm run css:build`
 
+Kompletni lokalni QA pruchod:
+
+- `npm run qa:local`
+
 Watch rezim:
 
 - `npm run css:watch`

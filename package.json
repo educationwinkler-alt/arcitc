@@ -11,6 +11,7 @@
     "legacy:products": "node tools/extract-legacy-products.js",
     "local:safety": "node tools/local-safety-smoke.js",
     "migration:map": "node tools/build-migration-map.js",
+    "qa:local": "npm run css:build && npm run local:safety && npm run figma:audit && npm run visual:smoke && npm run form:smoke && npm run search:smoke && npm run redirect:smoke",
     "redirect:smoke": "node tools/redirect-smoke.js",
     "search:smoke": "node tools/search-smoke.js",
     "visual:smoke": "node tools/visual-smoke.js"
