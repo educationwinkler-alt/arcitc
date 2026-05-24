@@ -64,7 +64,7 @@ Hotove veci:
 - Figma missing pages jsou doplneny do lokalnich raw dumpu: grafika `docs/grafika-missing-pages.raw.json` a wireframe `docs/wireframe-missing-pages.raw.json`. Tim uz nejsou blokovane stranky `VLASTNOSTI`, `DALSI INFORMACE`, `SLUZBY`, `CERTIFIKATY`, `ZARUKA`, `KOLIK STOJI UDRZBA` ani `VLASTNOSTI DETAIL`.
 - Stranky `/vlastnosti/`, `/dalsi-informace/`, `/sluzby/`, `/certifikaty/`, `/zaruka/`, `/kolik-stoji-udrzba/` a `/vlastnosti/izolace-virivky/` maji vlastni Figma sablony. Uz nepouzivaji obecny `page.php`, placeholder obsah ani showroom jako nahradu.
 - Figma assety `feature-freeheat-diagram.png` a `certificate-tuv-1/2/3.png` jsou exportovane pres lokalni Figma imageRef flow do `assets-source/figma/export/graphics/` a `wp-content/uploads/import/figma/`.
-- Grafika pro zbyvajici frame `SHOWROOM`, `O NAS`, `REFERENCE` a `SERVIS` je ulozena v `docs/grafika-remaining-pages.raw.json`. `/o-nas/`, `/reference/` a `/servis/` maji vlastni Figma sablony a jsou zahrnute do visual smoke testu.
+- Grafika pro zbyvajici frame `SHOWROOM`, `O NAS`, `REFERENCE` a `SERVIS` je ulozena v `docs/grafika-remaining-pages.raw.json`. `/showroom/`, `/o-nas/`, `/reference/` a `/servis/` maji vlastni Figma sablony a jsou zahrnute do visual smoke testu.
 - Klientsky ZIP je rozbaleny do `assets-source/owner-info/`.
 - Baspa audit je hotovy v `docs/baspa-audit.md`.
 - Local safety guard existuje v `wp-content/mu-plugins/arctic-local-safety.php`.
@@ -100,7 +100,7 @@ Hotove veci:
 - Produktovy mini kontakt na Timberwolf detailu je nahrazen custom Figma komponentou: karta `x=1362/y=934/w=298/h=341`, kontaktni data `y=1018`, portret `1:50` na `x=1392/y=1115` a button `x=1392/y=1195`.
 - `Podpora` ma desktop Figma pass hornich sekci: heading `x=260/y=206`, tabs `x=260/y=394/w=1400/h=93`, FAQ `x=260/y=568`, 9 FAQ karet podle Figma rytmu a mini kontakt `x=1362/y=556/w=298/h=341` s portretem z node `1:50`. Sekce `Ke stazeni` ma Figma accordion: nadpis `y=1953`, chips `y=2027`, otevrena skupina `x=260/y=2109/w=1045/h=503`, zavrene skupiny `y=2632/2748`. Servisni formular sedi na Figma pozice: nadpis `y=2940`, karta `x=260/y=3114/w=1045/h=674`, inputy `x=346/w=893`, textarea `h=146`, souhlas `y=3680` a submit `x=1053/y=3668/w=186/h=50`.
 - Samostatna stranka `/ke-stazeni/` uz nepouziva defaultni obsahovy seznam. Ma sablonu `template-downloads.php`, bere data z CPT `download` a zobrazuje stejny Figma download accordion/chips jako sekce podpory; visual smoke ji uklada i na desktopu a mobilu.
-- `Showroom` uz neni defaultni page s vlozenymi obsahovymi fotkami. Sablona sklada stranku z Figma showroom komponenty, prubehu zakazky, referenci a kontaktniho CTA; stare showroom fotky zustavaji jen obsahovy zdroj, ne layoutovy UX blok.
+- `Showroom` uz neni defaultni page s vlozenymi obsahovymi fotkami ani obecna komponenta z HP. Sablona sleduje Figma frame `SHOWROOM`: hero `1:446`, kontaktni radek, duvody navstevy, dve obsahove fotografie `1:443/1:444`, kontaktni CTA a footer v Figma poradi.
 - `Kontakt` ma desktop Figma pass: heading `x=260/y=206`, kontakty `x=970`, CTA buttony `x=1424`, mapa/showroom z Figma node `1:1069` na `y=430/h=782`, karta `x=260/y=561/w=565/h=491`, pin `x=1226/y=786/w=42/h=42`, kontaktni karty `x=260/733/1206 y=1399` a `y=1704`, fakturacni udaje `x=260/y=2071` a footer `y=2425`.
 - Produktovy model ma konfigurace, barvy akrylu, sirsi typy produktu, taxonomie `product-kind` a `product-series`.
 - CPT `download` a shortcode `[arctic-downloads]` jsou implementovane.

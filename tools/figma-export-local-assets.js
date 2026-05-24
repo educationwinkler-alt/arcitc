@@ -57,6 +57,8 @@ const ASSETS = [
   { id: '1:717', name: 'certificate-tuv-2' },
   { id: '1:718', name: 'certificate-tuv-3' },
   { id: '1:446', name: 'showroom-hero-bazeny' },
+  { id: '1:443', name: 'showroom-detail-bazeny' },
+  { id: '1:444', name: 'showroom-detail-virivky' },
   { id: '1:987', name: 'about-team-vladimir' },
   { id: '1:1003', name: 'about-team-lukas' },
   { id: '1:1004', name: 'about-team-helena' },

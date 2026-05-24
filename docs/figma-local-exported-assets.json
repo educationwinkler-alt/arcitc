@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-24T09:15:22.021Z",
+  "generatedAt": "2026-05-24T09:57:03.379Z",
   "source": "local .fig image refs from assets-source/figma/local-grafika/images",
   "exported": [
     {
@@ -525,6 +525,30 @@
       "imageMode": "direct",
       "archivePath": "assets-source/figma/export/graphics/showroom-hero-bazeny.jpg",
       "wpImportPath": "wp-content/uploads/import/figma/showroom-hero-bazeny.jpg"
+    },
+    {
+      "id": "1:443",
+      "name": "showroom-detail-bazeny",
+      "ok": true,
+      "format": "png",
+      "imageRef": "27369055620ccbe799eb55d60952467f858ecdc8",
+      "imageNodeId": "1:443",
+      "imageNodeName": "Rectangle 107",
+      "imageMode": "direct",
+      "archivePath": "assets-source/figma/export/graphics/showroom-detail-bazeny.png",
+      "wpImportPath": "wp-content/uploads/import/figma/showroom-detail-bazeny.png"
+    },
+    {
+      "id": "1:444",
+      "name": "showroom-detail-virivky",
+      "ok": true,
+      "format": "png",
+      "imageRef": "e90376838800f072698ea8ee964e17c637559ddd",
+      "imageNodeId": "1:444",
+      "imageNodeName": "Rectangle 108",
+      "imageMode": "direct",
+      "archivePath": "assets-source/figma/export/graphics/showroom-detail-virivky.png",
+      "wpImportPath": "wp-content/uploads/import/figma/showroom-detail-virivky.png"
     },
     {
       "id": "1:987",

@@ -89,6 +89,8 @@ Poznámka k auditu 2026-05-24: HP hero má ve Figma grafice jeden skutečný obr
 | Certifikát TUV 2 | `1:717` | Figma imageRef | `graphics/certificate-tuv-2.png` | stránka Certifikáty |
 | Certifikát TUV 3 | `1:718` | Figma imageRef | `graphics/certificate-tuv-3.png` | stránka Certifikáty |
 | Showroom hero | `1:446` | 1920 x 801 | `graphics/showroom-hero-bazeny.jpg` | Figma showroom/O nás obsahový obraz |
+| Showroom detail bazény | `1:443` | 674 x 424 | `graphics/showroom-detail-bazeny.png` | stránka Showroom |
+| Showroom detail vířivky | `1:444` | 674 x 424 | `graphics/showroom-detail-virivky.png` | stránka Showroom |
 | Tým Vladimír | `1:987` | 336 x 335 | `graphics/about-team-vladimir.png` | stránka O nás |
 | Tým Lukáš | `1:1003` | 336 x 335 | `graphics/about-team-lukas.png` | stránka O nás |
 | Tým Helena | `1:1004` | 336 x 335 | `graphics/about-team-helena.png` | stránka O nás |

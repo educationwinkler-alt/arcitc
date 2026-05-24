@@ -258,6 +258,9 @@ $figma_realizace_3 = arctic_seed_attachment( 'figma-node-1-195-realizace-3', 'up
 $showroom = arctic_seed_attachment( 'figma-node-1-123-showroom-1', 'uploads/import/figma/showroom-1.png', 'Figma showroom 1', 'Showroom Arctic Spas podle grafiky' );
 $showroom_2 = arctic_seed_attachment( 'figma-node-1-124-showroom-2', 'uploads/import/figma/showroom-2.png', 'Figma showroom 2', 'Showroom Arctic Spas podle grafiky' );
 $figma_showroom_3 = arctic_seed_attachment( 'figma-node-1-125-showroom-3', 'uploads/import/figma/showroom-3.png', 'Figma showroom 3', 'Showroom Arctic Spas podle grafiky' );
+$figma_showroom_hero = arctic_seed_attachment( 'figma-node-1-446-showroom-hero-bazeny', 'uploads/import/figma/showroom-hero-bazeny.jpg', 'Figma showroom hero', 'Hero showroomu Arctic Spas podle grafiky' );
+$figma_showroom_detail_bazeny = arctic_seed_attachment( 'figma-node-1-443-showroom-detail-bazeny', 'uploads/import/figma/showroom-detail-bazeny.png', 'Figma showroom detail bazény', 'Detail showroomu Arctic Spas podle grafiky' );
+$figma_showroom_detail_virivky = arctic_seed_attachment( 'figma-node-1-444-showroom-detail-virivky', 'uploads/import/figma/showroom-detail-virivky.png', 'Figma showroom detail vířivky', 'Vířivky v showroomu Arctic Spas podle grafiky' );
 $figma_footer_map = arctic_seed_attachment( 'figma-node-1-242-footer-map', 'uploads/import/figma/footer-map.png', 'Figma footer mapa', 'Showroom Arctic Spas ve footeru' );
 $figma_contact_map = arctic_seed_attachment( 'figma-node-1-1069-contact-map-showroom', 'uploads/import/figma/contact-map-showroom.png', 'Figma kontakt mapa/showroom', 'Kontaktní mapa a showroom podle grafiky' );
 $figma_timberwolf_hero = arctic_seed_attachment( 'figma-node-1-1462-detail-timberwolf-hero', 'uploads/import/figma/detail-timberwolf-hero.jpg', 'Figma Timberwolf hero', 'Hero fotografie detailu vířivky Timberwolf' );
@@ -900,12 +903,10 @@ update_post_meta( $swimspa_id, 'page_product_category', $category_swimspa );
 $showroom_id = arctic_seed_page(
 	'showroom',
 	'Showroom',
-	'<!-- wp:paragraph --><p>Vzorkova prodejna slouzi pro osobni vyber virivky, konzultaci technicke pripravy a srovnani vybavy.</p><!-- /wp:paragraph -->'
-	. '<!-- wp:image {"id":' . (int) $showroom . ',"sizeSlug":"large"} --><figure class="wp-block-image size-large">' . wp_get_attachment_image( $showroom, 'large' ) . '</figure><!-- /wp:image -->'
-	. '<!-- wp:image {"id":' . (int) $showroom_2 . ',"sizeSlug":"large"} --><figure class="wp-block-image size-large">' . wp_get_attachment_image( $showroom_2, 'large' ) . '</figure><!-- /wp:image -->',
+	'',
 	'template-showroom.php'
 );
-set_post_thumbnail( $showroom_id, $showroom );
+set_post_thumbnail( $showroom_id, $figma_showroom_hero );
 update_post_meta( $slide_showroom_id, 'button_url', get_permalink( $showroom_id ) );
 
 $support_id = arctic_seed_page(
