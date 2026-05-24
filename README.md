@@ -131,3 +131,9 @@ Redirect smoke test:
 - `npm run redirect:smoke`
 
 Test projde `docs/migration-map.csv`, overi 301 ze starych Arctic URL na lokalni nove URL/media soubory a hlida, ze zadny redirect nemiri na `baspa.cz` ani zive `arctic-spas.cz`.
+
+Vyhledavaci smoke test:
+
+- `npm run search:smoke`
+
+Test odesle AJAX vyhledavani na lokalni `admin-ajax.php`, overi nalezeni produktu Timberwolf, ignorovani nepovoleneho post typu a odmitnuti neplatneho nonce.
