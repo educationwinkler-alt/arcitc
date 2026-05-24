@@ -10,6 +10,8 @@ $term_image_id = !empty( $term_image_id ) ? $term_image_id : get_term_meta( $ter
 $heading_title = get_term_meta( $term_id, 'category_heading_title', true );
 $heading_title = !empty( $heading_title ) ? $heading_title : single_term_title( '', false );
 $heading_text  = get_term_meta( $term_id, 'category_heading_text', true );
+$heading_cta   = get_term_meta( $term_id, 'category_heading_cta_text', true );
+$heading_cta   = !empty( $heading_cta ) ? $heading_cta : __( 'Vybrat vířivku', 'baspa' );
 
 $heading_class   = array( 'f-heading', 'f-heading--term' );
 $heading_class[] = !empty( $term_image_id ) ? 'f-heading--background' : '';
@@ -49,7 +51,7 @@ $heading_class[] = !empty( $term_image_id ) ? 'f-heading--background' : '';
 			<?php } ?>
 
 			<?php get_template_part( 'templates/button/contact', '', array(
-				'text'          => __( 'Vybrat vířivku', 'baspa' ),
+				'text'          => $heading_cta,
 				'class_replace' => array(
 					'f-button',
 					'a-button',

@@ -20,6 +20,8 @@ const paths = [
 const screenshotPaths = [
   ['/', 'home-desktop-playwright.png'],
   ['/catalog/virivky/', 'category-virivky-desktop-playwright.png'],
+  ['/catalog/swimspa/', 'category-swimspa-desktop-playwright.png'],
+  ['/catalog/dalsi-sortiment/', 'category-dalsi-sortiment-desktop-playwright.png'],
   ['/product/timberwolf/', 'product-timberwolf-desktop-playwright.png'],
   ['/product/husky/', 'product-husky-desktop-playwright.png'],
   ['/podpora/', 'support-desktop-playwright.png'],
@@ -31,6 +33,8 @@ const screenshotPaths = [
 const mobileScreenshotPaths = [
   ['/', 'home-mobile-playwright.png'],
   ['/catalog/virivky/', 'category-virivky-mobile-playwright.png'],
+  ['/catalog/swimspa/', 'category-swimspa-mobile-playwright.png'],
+  ['/catalog/dalsi-sortiment/', 'category-dalsi-sortiment-mobile-playwright.png'],
   ['/product/timberwolf/', 'product-timberwolf-mobile-playwright.png'],
   ['/product/husky/', 'product-husky-mobile-playwright.png'],
   ['/podpora/', 'support-mobile-playwright.png'],

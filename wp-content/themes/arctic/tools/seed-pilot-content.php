@@ -286,11 +286,14 @@ update_term_meta( $category_hot_tubs, 'category_heading_image', $figma_category_
 update_term_meta( $category_hot_tubs, 'category_description_short', 'Venkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily, byly jednoduché na obsluhu a pro svůj provoz spotřebovaly minimum energie.' );
 update_term_meta( $category_hot_tubs, 'category_heading_title', 'Venkovní vířivky Arctic Spas' );
 update_term_meta( $category_hot_tubs, 'category_heading_text', 'Venkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily, byly jednoduché na obsluhu a pro svůj provoz spotřebovaly minimum energie.' );
+update_term_meta( $category_hot_tubs, 'category_heading_cta_text', 'Vybrat vířivku' );
 update_term_meta( $category_swimspa, 'category_image', $category_swimspa_life );
 update_term_meta( $category_swimspa, 'category_heading_image', $figma_hero );
 update_term_meta( $category_swimspa, 'category_description_short', 'Rodinný bazén na zahradě je snem řady domácností. Mnohé nicméně odradí nesmírná náročnost souvisejících zemních a stavebních prací a v našich klimatických podmínkách také žalostně limitované využití omezené na krátkou letní sezónu.' );
+update_term_meta( $category_swimspa, 'category_heading_cta_text', 'Vybrat bazén' );
 update_term_meta( $category_covers, 'category_image', $covana_main );
 update_term_meta( $category_covers, 'category_description_short', 'Automaticke kryty, doplnky a navazujici sortiment pro pohodlnejsi provoz virivky.' );
+update_term_meta( $category_covers, 'category_heading_cta_text', 'Prohlédnout sortiment' );
 
 $reference_location_kv = arctic_seed_term( 'reference-category', 'Karlovy Vary', 'karlovy-vary' );
 $reference_year_2025   = arctic_seed_term( 'reference-category', '2025', '2025' );

@@ -4569,8 +4569,10 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     position: absolute;
     top: 623px;
     left: 0;
-    width: 147px;
+    width: max-content;
     min-width: 147px;
+    max-width: 280px;
+    box-sizing: border-box;
     min-height: 50px;
     padding: 0 20px;
     font-size: 16px;
