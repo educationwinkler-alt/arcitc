@@ -4,21 +4,42 @@
  * Single Navigation
  */
 
-$price        = get_post_meta( get_the_ID(), 'product_price_text', true );
-$price_suffix = get_post_meta( get_the_ID(), 'product_price_suffix', true );
+$product_id     = get_the_ID();
+$price          = get_post_meta( $product_id, 'product_price_text', true );
+$price_suffix   = get_post_meta( $product_id, 'product_price_suffix', true );
+$is_hot_tub     = has_term( 'virivky', 'product-category', $product_id );
+$is_wider_range = has_term( 'dalsi-sortiment', 'product-category', $product_id );
+$nav_items      = array();
+
+if ( !empty( get_post_meta( $product_id, 'product_configurations' ) ) ) {
+	$nav_items['#konfigurace'] = __( 'Konfigurace', 'baspa' );
+}
+
+if ( !empty( get_post_meta( $product_id, 'product_acrylic_colors' ) ) || !empty( get_post_meta( $product_id, 'product_acrylic_color_options' ) ) ) {
+	$nav_items['#barvy'] = __( 'Barvy', 'baspa' );
+}
+
+if ( $is_hot_tub ) {
+	$nav_items['#vyhody']            = __( 'Výhody', 'baspa' );
+	$nav_items['#volitelna-vybava'] = __( 'Volitelná výbava', 'baspa' );
+}
+
+if ( !$is_wider_range ) {
+	$nav_items['#' . sanitize_title( esc_attr_x( 'references', 'anchor', 'baspa' ) )] = __( 'Příklady realizací', 'baspa' );
+}
 ?>
 
 <div class="f-links f-links--sticky f-links--product">
 	<div class="f-links__container a-container">
-		<nav class="f-links__navigation js-links__navigation" aria-label="<?php echo esc_attr_x( 'Product Navigation', 'navigation', 'baspa' ); ?>">
-			<ul>
-				<li><a href="#konfigurace"><?php echo esc_html__( 'Konfigurace', 'baspa' ); ?></a></li>
-				<li><a href="#barvy"><?php echo esc_html__( 'Barvy', 'baspa' ); ?></a></li>
-				<li><a href="#vyhody"><?php echo esc_html__( 'Výhody', 'baspa' ); ?></a></li>
-				<li><a href="#volitelna-vybava"><?php echo esc_html__( 'Volitelná výbava', 'baspa' ); ?></a></li>
-					<li><a href="#<?php echo sanitize_title( esc_attr_x( 'references', 'anchor', 'baspa' ) ); ?>"><?php echo esc_html__( 'Příklady realizací', 'baspa' ); ?></a></li>
-			</ul>
-		</nav>
+		<?php if ( !empty( $nav_items ) ) { ?>
+			<nav class="f-links__navigation js-links__navigation" aria-label="<?php echo esc_attr_x( 'Product Navigation', 'navigation', 'baspa' ); ?>">
+				<ul>
+					<?php foreach ( $nav_items as $href => $label ) { ?>
+						<li><a href="<?php echo esc_url( $href ); ?>"><?php echo esc_html( $label ); ?></a></li>
+					<?php } ?>
+				</ul>
+			</nav>
+		<?php } ?>
 
 		<div class="f-links__cta">
 			<?php if ( !empty( $price ) ) { ?>

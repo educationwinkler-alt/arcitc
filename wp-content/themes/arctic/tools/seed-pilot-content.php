@@ -417,15 +417,15 @@ $covana_id = arctic_seed_post_by_meta( 'product', 'product_original_url', 'https
 	'post_status'  => 'publish',
 	'post_title'   => 'Covana',
 	'post_name'    => 'covana',
-	'post_content' => '<!-- wp:paragraph --><p>Covana je automaticky kryt virivky, ktery kombinuje funkci termokrytu, zvedaku a elegantniho pristresku.</p><!-- /wp:paragraph -->',
+	'post_content' => '<!-- wp:paragraph --><p>Covana je automatický kryt vířivky, který kombinuje funkci termokrytu, zvedáku a elegantního přístřešku.</p><!-- /wp:paragraph -->',
 	'menu_order'   => 100,
 ) );
 
 update_post_meta( $covana_id, 'product_type', 'landing_section' );
 update_post_meta( $covana_id, 'product_title_short', 'Covana' );
-update_post_meta( $covana_id, 'product_description_short', 'Automaticky kryt, zvedak a altanek pro virivku v jednom.' );
-update_post_meta( $covana_id, 'product_description', 'Covana chrani virivku, zjednodusuje manipulaci s krytem a vytvari pohodlne zastreseni pro kazdodenni pouzivani.' );
-update_post_meta( $covana_id, 'product_cta_text', 'Zjistit vice o Covana' );
+update_post_meta( $covana_id, 'product_description_short', 'Automatický kryt, zvedák a altánek pro vířivku v jednom.' );
+update_post_meta( $covana_id, 'product_description', 'Covana chrání vířivku, zjednodušuje manipulaci s krytem a vytváří pohodlné zastřešení pro každodenní používání.' );
+update_post_meta( $covana_id, 'product_cta_text', 'Zjistit více o Covana' );
 set_post_thumbnail( $covana_id, $covana_main );
 arctic_seed_set_multi_meta( $covana_id, 'product_image', array( $covana_main ) );
 arctic_seed_set_multi_meta( $covana_id, 'product_images', array( $covana_main ) );
@@ -540,12 +540,97 @@ $legacy_products = array(
 			),
 		),
 	),
-	array( 'source_slug' => 'bazen-athabascan', 'slug' => 'athabascan', 'name' => 'Athabascan', 'type' => 'swimspa', 'series' => $series_swimspa ),
-	array( 'source_slug' => 'bazen-hudson', 'slug' => 'hudson', 'name' => 'Hudson', 'type' => 'swimspa', 'series' => $series_swimspa ),
-	array( 'source_slug' => 'bazen-kingfisher', 'slug' => 'kingfisher', 'name' => 'Kingfisher', 'type' => 'swimspa', 'series' => $series_swimspa ),
-	array( 'source_slug' => 'bazen-ocean', 'slug' => 'ocean', 'name' => 'Arctic Ocean', 'type' => 'swimspa', 'series' => $series_swimspa ),
-	array( 'source_slug' => 'bazen-okanagan', 'slug' => 'okanagan', 'name' => 'Okanagan', 'type' => 'swimspa', 'series' => $series_swimspa ),
-	array( 'source_slug' => 'bazen-wolverine', 'slug' => 'wolverine', 'name' => 'Wolverine', 'type' => 'swimspa', 'series' => $series_swimspa ),
+	array(
+		'source_slug'    => 'bazen-athabascan',
+		'slug'           => 'athabascan',
+		'name'           => 'Athabascan',
+		'type'           => 'swimspa',
+		'series'         => $series_swimspa,
+		'description'    => 'Athabascan je nejprostornější celoroční bazén Arctic. Disponuje velkou vodní plochou pro vodní radovánky, relaxaci a celoroční využití jen pár kroků od domu.',
+		'dimensions'     => '436 x 236 x 129 cm',
+		'nozzles'        => array( '3 trysky', 'bez protiproudu' ),
+		'water_volume'   => array( '5100 litrů' ),
+		'configurations' => array(
+			array( 'name' => 'Athabascan', 'jets' => '3 trysky', 'pumps' => '1 dvourychlostní pro filtraci', 'dimensions' => '436 x 236 x 129 cm', 'description' => 'Největší volná vodní plocha bez masážních sedadel.' ),
+		),
+	),
+	array(
+		'source_slug'    => 'bazen-hudson',
+		'slug'           => 'hudson',
+		'name'           => 'Hudson',
+		'type'           => 'swimspa',
+		'series'         => $series_swimspa,
+		'description'    => 'Hudson kombinuje plavecký systém Swim Tether, trysky Monsoon, hydroterapii a cvičení ve vodě. Nabízí dvě komfortní terapeutická sedátka.',
+		'dimensions'     => '436 x 236 x 129 cm',
+		'nozzles'        => array( '26 trysek', 'Monsoon protiproud', '2 masážní sedadla' ),
+		'water_volume'   => array( '5100 litrů' ),
+		'configurations' => array(
+			array( 'name' => 'Hudson', 'jets' => '2 x 5", 22 x 3", 2 x Monsoon', 'pumps' => '1 dvourychlostní + 2 jednorychlostní', 'dimensions' => '436 x 236 x 129 cm', 'description' => 'Kombinace kondičního plavání, protiproudu a hydroterapie.' ),
+		),
+	),
+	array(
+		'source_slug'    => 'bazen-kingfisher',
+		'slug'           => 'kingfisher',
+		'name'           => 'Kingfisher',
+		'type'           => 'swimspa',
+		'series'         => $series_swimspa,
+		'description'    => 'Kingfisher poskytne trénink kondičním plavcům. Široký prostor pro plavání doplňuje systém Swim Tether Resistance a plavecký systém Niagara.',
+		'dimensions'     => '436 x 236 x 129 cm',
+		'nozzles'        => array( '5 trysek', 'Niagara protiproud' ),
+		'water_volume'   => array( '5100 litrů' ),
+		'configurations' => array(
+			array( 'name' => 'Kingfisher', 'jets' => '3 x 3", 2 x Niagara', 'pumps' => '1 dvourychlostní pro filtraci + Badustream', 'dimensions' => '436 x 236 x 129 cm', 'description' => 'Swimspa s důrazem na plavecký prostor a silný protiproud.' ),
+		),
+	),
+	array(
+		'source_slug'    => 'bazen-ocean',
+		'slug'           => 'ocean',
+		'name'           => 'Arctic Ocean',
+		'type'           => 'swimspa',
+		'series'         => $series_swimspa,
+		'description'    => 'Arctic Ocean spojuje maximální sestavu luxusních masážních sedátek pro hydroterapii s prostorem pro plavání a cvičení. Počet masážních a protiproudých trysek lze zvolit podle konfigurace.',
+		'dimensions'     => '436 x 236 x 129 cm',
+		'nozzles'        => array( '20 až 60 trysek', 'Monsoon protiproud', '6 masážních sedadel' ),
+		'water_volume'   => array( '5100 litrů' ),
+		'configurations' => array(
+			array( 'name' => 'Prestige 20/1', 'jets' => '20 trysek', 'pumps' => '1 dvourychlostní', 'dimensions' => '436 x 236 x 129 cm' ),
+			array( 'name' => 'Signature 40/2', 'jets' => '40 trysek', 'pumps' => '1 dvourychlostní + 1 jednorychlostní', 'dimensions' => '436 x 236 x 129 cm' ),
+			array( 'name' => 'Legend 40/3', 'jets' => '40 trysek', 'pumps' => '1 dvourychlostní + 2 jednorychlostní', 'dimensions' => '436 x 236 x 129 cm' ),
+			array( 'name' => 'Legend Select 60/3', 'jets' => '60 trysek', 'pumps' => '1 dvourychlostní + 2 jednorychlostní', 'dimensions' => '436 x 236 x 129 cm' ),
+			array( 'name' => 'SDS 60/4', 'jets' => '6 x 7", 48 x 3", 6 x Monsoon', 'pumps' => '1 dvourychlostní + 3 jednorychlostní', 'dimensions' => '436 x 236 x 129 cm' ),
+		),
+	),
+	array(
+		'source_slug'    => 'bazen-okanagan',
+		'slug'           => 'okanagan',
+		'name'           => 'Okanagan',
+		'type'           => 'swimspa',
+		'series'         => $series_swimspa,
+		'description'    => 'Okanagan přidává do celoročního bazénu bar se stoličkami, podsvícení, masáž a protiproud. Je navržený pro společenské využití i domácí wellness.',
+		'dimensions'     => '436 x 236 x 129 cm',
+		'nozzles'        => array( '20 až 40 trysek', 'Monsoon protiproud', '4 masážní sedadla' ),
+		'water_volume'   => array( '5100 litrů' ),
+		'configurations' => array(
+			array( 'name' => 'Prestige 20/1', 'jets' => '20 trysek', 'pumps' => '1 dvourychlostní', 'dimensions' => '436 x 236 x 129 cm' ),
+			array( 'name' => 'Signature 40/2', 'jets' => '40 trysek', 'pumps' => '1 dvourychlostní + 1 jednorychlostní', 'dimensions' => '436 x 236 x 129 cm' ),
+			array( 'name' => 'Legend 40/3', 'jets' => '40 trysek', 'pumps' => '1 dvourychlostní + 2 jednorychlostní', 'dimensions' => '436 x 236 x 129 cm' ),
+			array( 'name' => 'SDS 40/3', 'jets' => '6 x 7", 32 x 3", 2 x Monsoon', 'pumps' => '1 dvourychlostní + 2 jednorychlostní', 'dimensions' => '436 x 236 x 129 cm' ),
+		),
+	),
+	array(
+		'source_slug'    => 'bazen-wolverine',
+		'slug'           => 'wolverine',
+		'name'           => 'Wolverine',
+		'type'           => 'swimspa',
+		'series'         => $series_swimspa,
+		'description'    => 'Wolverine kombinuje plavecký systém Niagara, Swim Tether Resistance a dvě pohodlná hydromasážní sedátka s celkem 24 masážními tryskami.',
+		'dimensions'     => '436 x 236 x 129 cm',
+		'nozzles'        => array( '26 trysek', 'Niagara protiproud', '2 masážní sedadla' ),
+		'water_volume'   => array( '5100 litrů' ),
+		'configurations' => array(
+			array( 'name' => 'Wolverine', 'jets' => '2 x 5", 22 x 3", 2 x Niagara', 'pumps' => '1 dvourychlostní + 1 jednorychlostní + 1 Badustream', 'dimensions' => '436 x 236 x 129 cm', 'description' => 'Plná výbava pro náročné plavání, cvičení a hydroterapii.' ),
+		),
+	),
 );
 
 foreach ( $legacy_products as $index => $product ) {

@@ -6,6 +6,10 @@
 
 global $post;
 
+$product_id     = get_the_ID();
+$is_hot_tub     = has_term( 'virivky', 'product-category', $product_id );
+$is_wider_range = has_term( 'dalsi-sortiment', 'product-category', $product_id );
+
 if ( in_array( get_post_meta( get_the_ID(), 'product_type', true ), array( 'affiliate', 'external_shop', 'hidden_or_retired' ), true ) ) {
 	$url = get_post_meta( get_the_ID(), 'product_url', true );
 	if ( !empty( $url ) ) {
@@ -26,10 +30,16 @@ get_template_part( 'modules/products/templates/post/single/heading' );
 		<?php
 		get_template_part( 'modules/products/templates/post/single/navigation' );
 		get_template_part( 'modules/products/templates/post/single' );
-		get_template_part( 'modules/products/templates/post/single/acrylic-colors' );
-		get_template_part( 'templates/section/product-benefits' );
-		get_template_part( 'templates/section/product-options' );
-		get_template_part( 'modules/references/templates/section', 'recent' );
+
+		if ( $is_hot_tub ) {
+			get_template_part( 'modules/products/templates/post/single/acrylic-colors' );
+			get_template_part( 'templates/section/product-benefits' );
+			get_template_part( 'templates/section/product-options' );
+		}
+
+		if ( !$is_wider_range ) {
+			get_template_part( 'modules/references/templates/section', 'recent' );
+		}
 		?>
 
 	</main>

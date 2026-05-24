@@ -13,6 +13,13 @@ $seats        = get_post_meta( get_the_ID(), 'product_seats', false );
 $jets         = get_post_meta( get_the_ID(), 'product_nozzles', false );
 $dimensions   = get_post_meta( get_the_ID(), 'product_dimensions_external', false );
 $water_volume = get_post_meta( get_the_ID(), 'product_water_volume', false );
+$title_prefix  = __( 'Venkovní vířivka ', 'baspa' );
+
+if ( has_term( 'swimspa', 'product-category', get_the_ID() ) || has_term( 'swimspa', 'product-kind', get_the_ID() ) ) {
+	$title_prefix = __( 'Celoroční bazén ', 'baspa' );
+} elseif ( has_term( 'dalsi-sortiment', 'product-category', get_the_ID() ) ) {
+	$title_prefix = '';
+}
 
 $heading_class   = array( 'f-heading', 'f-heading--product-detail' );
 $heading_class[] = has_post_thumbnail() || has_header_image() ? 'f-heading--background' : '';
@@ -35,7 +42,7 @@ if ( get_post_field( 'post_name', get_the_ID() ) === 'timberwolf' ) {
 				<div class="f-product-hero__series"><?php echo esc_html( implode( ' / ', $series ) ); ?></div>
 			<?php } ?>
 
-			<h1><?php echo esc_html( 'Venkovní vířivka ' . $title ); ?></h1>
+			<h1><?php echo esc_html( $title_prefix . $title ); ?></h1>
 
 			<?php if ( !empty( $description ) ) { ?>
 				<div class="f-heading__description">
