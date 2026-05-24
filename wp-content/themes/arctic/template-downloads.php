@@ -23,9 +23,6 @@ get_template_part( 'templates/heading/default' );
 			<?php echo do_shortcode( '[arctic-downloads]' ); ?>
 		</div>
 	</section>
-
-	<?php get_template_part( 'templates/section/contact' ); ?>
-
 </main>
 
 <?php

@@ -172,9 +172,6 @@ $support_avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
 			</div>
 		</div>
 	</section>
-
-	<?php get_template_part( 'templates/section/contact' ); ?>
-
 </main>
 
 <?php
