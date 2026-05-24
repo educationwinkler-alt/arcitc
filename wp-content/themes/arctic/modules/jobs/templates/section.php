@@ -28,7 +28,7 @@ $jobs_query = new WP_Query( $jobs_query_args );
 				<h2><?php if ( !empty( get_option( 'baspa_jobs_title' ) ) ) {
 						echo wp_kses_post( get_option( 'baspa_jobs_title' ) );
 					} else {
-						echo wp_kses_post( __( 'Career in BASPA', 'baspa' ) );
+						echo wp_kses_post( __( 'Kariéra v Arctic Spas', 'baspa' ) );
 					} ?></h2>
 			</header>
 
