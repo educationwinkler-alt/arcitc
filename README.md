@@ -115,3 +115,9 @@ Vizualni smoke test hlavnich cest:
 Smoke test hlídá hlavní URL, externí browser requesty, horizontální overflow, veřejné placeholdery a zakázané živé integrace.
 
 Smoke test zahrnuje homepage, katalog virivek, swimspa, dalsi sortiment, produktove detaily, showroom, podporu, downloady a kontakt. Soucasne kontroluje zakazane externi requesty v prohlizeci, horizontalni overflow na desktopu i mobilu a uklada Playwright screenshoty hlavnich Figma stranek.
+
+Formularovy smoke test:
+
+- `npm run form:smoke`
+
+Test odesle lokalne kontaktni a servisni formular pres WordPress `admin-ajax.php`, overi uspech, ulozeni do `contact` CPT, metadata AJAX/local reCAPTCHA a po sobe testovaci zaznamy smaze.

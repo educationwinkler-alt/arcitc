@@ -7,6 +7,7 @@
     "figma:export-assets": "node tools/figma-export-assets.js",
     "figma:export-local-assets": "node tools/figma-export-local-assets.js",
     "figma:audit": "node tools/figma-visual-audit.js",
+    "form:smoke": "node tools/form-smoke.js",
     "legacy:products": "node tools/extract-legacy-products.js",
     "migration:map": "node tools/build-migration-map.js",
     "visual:smoke": "node tools/visual-smoke.js"
