@@ -111,6 +111,44 @@ function arctic_seed_set_multi_meta( int $post_id, string $key, array $values ):
 	}
 }
 
+function arctic_seed_legacy_products(): array {
+	static $products = null;
+
+	if ( null !== $products ) {
+		return $products;
+	}
+
+	$products = array();
+	$path     = WP_CONTENT_DIR . '/uploads/import/legacy-content/product-data.json';
+
+	if ( file_exists( $path ) ) {
+		$data = json_decode( (string) file_get_contents( $path ), true );
+		if ( is_array( $data ) ) {
+			$products = $data;
+		}
+	}
+
+	return $products;
+}
+
+function arctic_seed_legacy_param( array $legacy, array $labels ): string {
+	foreach ( $legacy['parameters'] ?? array() as $parameter ) {
+		$label = trim( (string) ( $parameter['label'] ?? '' ) );
+		foreach ( $labels as $expected ) {
+			if ( 0 === strcasecmp( $label, $expected ) ) {
+				return trim( (string) ( $parameter['value'] ?? '' ) );
+			}
+		}
+	}
+
+	return '';
+}
+
+function arctic_seed_value_array( string $value ): array {
+	$value = trim( $value );
+	return '' === $value || 'nemá' === strtolower( $value ) ? array() : array( $value );
+}
+
 function arctic_seed_page( string $slug, string $title, string $content, string $template = '' ): int {
 	$page = get_page_by_path( $slug );
 	if ( !$page ) {
@@ -646,9 +684,19 @@ $legacy_products = array(
 	),
 );
 
+$legacy_product_data = arctic_seed_legacy_products();
+
 foreach ( $legacy_products as $index => $product ) {
 	$is_swimspa      = 'swimspa' === $product['type'];
 	$original_url    = 'https://www.arctic-spas.cz/' . $product['source_slug'] . '.php';
+	$legacy          = $legacy_product_data[ $product['source_slug'] ] ?? array();
+	$legacy_text     = !empty( $legacy['paragraphs'] ) ? implode( "\n\n", array_slice( $legacy['paragraphs'], 0, 2 ) ) : '';
+	$legacy_seats    = arctic_seed_legacy_param( $legacy, array( 'Počet osob', 'Počet masážních sedadel' ) );
+	$legacy_jets     = arctic_seed_legacy_param( $legacy, array( 'Počet trysek' ) );
+	$legacy_volume   = arctic_seed_legacy_param( $legacy, array( 'Objem vody' ) );
+	$legacy_size     = arctic_seed_legacy_param( $legacy, array( 'Rozměry' ) );
+	$series_term     = get_term( (int) $product['series'], 'product-series' );
+	$series_label    = $series_term && !is_wp_error( $series_term ) ? $series_term->name : '';
 	$image_id        = arctic_seed_attachment(
 		'legacy-' . $product['source_slug'],
 		'uploads/import/legacy-products/' . $product['source_slug'] . '.jpg',
@@ -660,10 +708,15 @@ foreach ( $legacy_products as $index => $product ) {
 		'post_name' => 'media-' . $product['source_slug'],
 	) );
 
-	$default_content = $product['description'] ?? ( $is_swimspa
+	if ( preg_match( '/^\d+$/', $legacy_jets ) ) {
+		$legacy_jets .= ' trysek';
+	}
+
+	$default_content = $product['description'] ?? ( $legacy_text ?: ( $is_swimspa
 		? 'Swimspa ' . $product['name'] . ' bude doplnena podle aktualniho obsahu live webu a klientskych podkladu.'
-		: 'Virivka ' . $product['name'] . ' bude doplnena podle aktualniho obsahu live webu a klientskych podkladu.' );
+		: 'Virivka ' . $product['name'] . ' bude doplnena podle aktualniho obsahu live webu a klientskych podkladu.' ) );
 	$order_offset    = $is_swimspa ? 200 : 40;
+	$model_label     = trim( ( $series_label ? $series_label . ' ' : '' ) . $product['name'] );
 
 	$product_id = arctic_seed_post_by_meta( 'product', 'product_original_url', $original_url, array(
 		'post_status'  => 'publish',
@@ -686,10 +739,11 @@ foreach ( $legacy_products as $index => $product ) {
 	set_post_thumbnail( $product_id, $image_id );
 	arctic_seed_set_multi_meta( $product_id, 'product_image', array( $image_id ) );
 	arctic_seed_set_multi_meta( $product_id, 'product_images', array( $image_id ) );
-	arctic_seed_set_multi_meta( $product_id, 'product_dimensions_external', array( $product['dimensions'] ?? '' ) );
-	arctic_seed_set_multi_meta( $product_id, 'product_seats', $product['seats'] ?? array() );
-	arctic_seed_set_multi_meta( $product_id, 'product_nozzles', $product['nozzles'] ?? array() );
-	arctic_seed_set_multi_meta( $product_id, 'product_water_volume', $product['water_volume'] ?? array() );
+	arctic_seed_set_multi_meta( $product_id, 'product_model', arctic_seed_value_array( $model_label ) );
+	arctic_seed_set_multi_meta( $product_id, 'product_dimensions_external', arctic_seed_value_array( $product['dimensions'] ?? $legacy_size ) );
+	arctic_seed_set_multi_meta( $product_id, 'product_seats', $product['seats'] ?? arctic_seed_value_array( $legacy_seats ) );
+	arctic_seed_set_multi_meta( $product_id, 'product_nozzles', $product['nozzles'] ?? arctic_seed_value_array( $legacy_jets ) );
+	arctic_seed_set_multi_meta( $product_id, 'product_water_volume', $product['water_volume'] ?? arctic_seed_value_array( $legacy_volume ) );
 	arctic_seed_set_multi_meta( $product_id, 'product_configurations', $product['configurations'] ?? array() );
 	if ( !empty( $product['badge'] ) ) {
 		update_post_meta( $product_id, 'product_badge', $product['badge'] );

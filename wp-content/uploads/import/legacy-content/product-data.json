@@ -1,0 +1,1088 @@
+{
+  "bazen-athabascan": {
+    "sourcePath": "/bazen-athabascan.php",
+    "title": "Swimspa Athabascan - Arctic celoroční bazény",
+    "metaDescription": "Venkovní swimspa vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model celoročního bazénu Athabascan. Popis, parametry, vybavení.",
+    "h1": "Celoroční bazén Athabascan swimspa",
+    "lead": "Náš nejprostornější bazén.",
+    "paragraphs": [
+      "Athabascan je nejčistěší reprezentant mezi našimi bazény. Disponuje největším prostorem vodní plochy a dává tak obrovský prostor vodním radovánkám a relaxaci.",
+      "Pro vstup a výstup je vybaven několika zvýšenými plochami, které zároveň poskytují prostor pro oddech po aktivitách v hluboké vodě. Athabascan je Vám k dispozici po celý rok, jen pár kroků od domu."
+    ],
+    "parameters": [
+      {
+        "label": "Rozměry",
+        "value": "436 x 236 x 129 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "5100 Litrů"
+      },
+      {
+        "label": "Počet masážních sedadel",
+        "value": "nemá"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "3"
+      },
+      {
+        "label": "Druh protiproudu",
+        "value": "nemá"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "3 vel. 3\", jednopulsní/rotační a přímé"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní - určeno pro filtraci"
+      }
+    ]
+  },
+  "bazen-hudson": {
+    "sourcePath": "/bazen-hudson.php",
+    "title": "Swimspa Hudson - Arctic celoroční bazény",
+    "metaDescription": "Venkovní swimspa vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model celoročního bazénu Hudson. Popis, parametry, vybavení.",
+    "h1": "Celoroční bazén Hudson swimspa",
+    "lead": "Kombinace masáže a fitness.",
+    "paragraphs": [
+      "Bazén Hudson nabízí plavecký systém Swim Tether doplněný dvěma silnými tryskami Monsoon. Tato kombinace uspokojí zájemce o kondiční plavání a současně poskytne zábavu všem členům rodiny.",
+      "Bazén Hudson přináší kombinaci komfortu, hydroterapie a cvičení ve vodě. Tento model má dvě možnosti plaveckých aktivit: protiproud a zádržný systém. To uspokojí jak silné tak běžné plavce. Dále zde naleznete ve vířivkové části dvě extrémně komfortní terapeutická sedátka, které obsahují velmi výkonné trysky pro dokonalou masáž."
+    ],
+    "parameters": [
+      {
+        "label": "Rozměry",
+        "value": "436 x 236 x 129 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "5100 Litrů"
+      },
+      {
+        "label": "Počet masážních sedadel",
+        "value": "2"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "26"
+      },
+      {
+        "label": "Druh protiproudu",
+        "value": "Monsoon"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "2 vel. 5\", jednopulsní/rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Čerpadlo 3",
+        "value": "jednorychlostní"
+      }
+    ]
+  },
+  "bazen-kingfisher": {
+    "sourcePath": "/bazen-kingfisher.php",
+    "title": "Swimspa Kingfisher - Arctic celoroční bazény",
+    "metaDescription": "Venkovní swimspa vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model celoročního bazénu Kingfisher. Popis, parametry, vybavení.",
+    "h1": "Celoroční bazén Kingfisher swimspa",
+    "lead": "S dostatkem místa pro plavce.",
+    "paragraphs": [
+      "Bazén Kingfisher poskytne dokonalý trénink výkonným kondičním plavcům. Široky prostor pro plavání, systém Swim Tether Resistance a především jedinečný plavecký systém Niagara jsou skutečnou výzvou.",
+      "Kompaktní rohové schodiště zajistí bezpečný vstup do swimspa a současně ponechá dostatek prostoru i pro uživatele, kteří právě nepracují na své fyzické kondici v protiproudu."
+    ],
+    "parameters": [
+      {
+        "label": "Rozměry",
+        "value": "436 x 236 x 129 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "5100 Litrů"
+      },
+      {
+        "label": "Počet masážních sedadel",
+        "value": "nemá"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "5"
+      },
+      {
+        "label": "Druh protiproudu",
+        "value": "Niagara"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "3 vel. 3\", jednopulsní/rotační a přímé"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostiní - určeno pro filtraci"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "Badustream"
+      }
+    ]
+  },
+  "bazen-ocean": {
+    "sourcePath": "/bazen-ocean.php",
+    "title": "Swimspa Arctic Ocean - Arctic celoroční bazény",
+    "metaDescription": "Venkovní swimspa vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model celoročního bazénu Ocean. Popis, parametry, vybavení.",
+    "h1": "Celoroční bazén Arctic Ocean swimspa",
+    "lead": "Maximální terapie se základními možnostmi plavání.",
+    "paragraphs": [
+      "Celoroční bazén Ocean v sobě zahrnuje maximální možnou sestavu luxusních masážních sedátek pro hydroterapii a také prostor pro plavání a cvičení. Je tak v tomto segmentu nejlépe vybavený ze všech swimspa Arctic. Navíc si můžete zvolit jak moc má být Ocean vybavený počtem masážních a protiproudých trysek."
+    ],
+    "parameters": [
+      {
+        "label": "Rozměry",
+        "value": "436 x 236 x 129 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "5100 Litrů"
+      },
+      {
+        "label": "Počet masážních sedadel",
+        "value": "6"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "20 až 60"
+      },
+      {
+        "label": "Druh protiproudu",
+        "value": "Monsoon"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "vel. 5\", jednopulsní/rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "vel. 5\", jednopulsní/rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "vel. 5\", jednopulsní/rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      }
+    ]
+  },
+  "bazen-okanagan": {
+    "sourcePath": "/bazen-okanagan.php",
+    "title": "Swimspa Okanagan - Arctic celoroční bazény",
+    "metaDescription": "Venkovní swimspa vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model celoročního bazénu Okanagan. Popis, parametry, vybavení.",
+    "h1": "Celoroční bazén Okanagan swimspa",
+    "lead": "Nové swimspa od Arctic.",
+    "paragraphs": [
+      "Vířivky Arctic Spas jsou známé pro dvě věci. Zaprvé dělají nejlepší vířivky na planetě určené pro studené klima a pohodu s jejich vířivkami naleznete kdekoliv na světě. Pokud budete cestovat na jih, tak zde je pravidlem mít v bazénu bar. Nyní už nemusíte, bar se stoličkami má i náš nový bazén Okanagan.",
+      "Okanagan je vyrobený s podsvíceným barem , dvěma stoličkami, vše příjemně dostupné z vody. Dokonce zde nalezneme i místo pro led a uchování studených nápojů. Volitelně lze sezení udělat až pro 12 osob, fantastické podsvícení, masáž a protiproud, to vše nalezneme ve celoročním bazénu - swimspa Okanagan."
+    ],
+    "parameters": [
+      {
+        "label": "Rozměry",
+        "value": "436 x 236 x 129 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "5100 Litrů"
+      },
+      {
+        "label": "Počet masážních sedadel",
+        "value": "4"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "20 až 40"
+      },
+      {
+        "label": "Druh protiproudu",
+        "value": "Monsoon"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "vel. 5\", jednopulsní/rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "vel. 5\", jednopulsní/rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "vel. 5\", jednopulsní/rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      }
+    ]
+  },
+  "bazen-wolverine": {
+    "sourcePath": "/bazen-wolverine.php",
+    "title": "Swimspa Wolverine - Arctic celoroční bazény",
+    "metaDescription": "Venkovní swimspa vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model celoročního bazénu Wolverine. Popis, parametry, vybavení.",
+    "h1": "Celoroční bazén Wolverine swimspa",
+    "lead": "Se sedátky pro něj a pro ni.",
+    "paragraphs": [
+      "Pokud chcete jen to nejlepší, je tu pro Vás swimspa Wolverine. Plavecký systém Niagara doplněný systémem Swim Tether Resistance ocení kondiční plavci v každodenním tréninku, dvě pohodlná hydromasážní sedátka s celkem 24 tryskami nabídnou kvělou relaxaci. Plná výbava pro náročné!",
+      "Tento model je koncipován pro ty, co chtějí opravdu to nejlepší; maximální terapie, maximum komfortu a maximální možnosti cvičení."
+    ],
+    "parameters": [
+      {
+        "label": "Rozměry",
+        "value": "436 x 236 x 129 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "5100 Litrů"
+      },
+      {
+        "label": "Počet masážních sedadel",
+        "value": "2"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "26"
+      },
+      {
+        "label": "Druh protiproudu",
+        "value": "Niagara"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "2 vel. 5\", jednopulsní/rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Čerpadlo 3",
+        "value": "badustream"
+      }
+    ]
+  },
+  "covana": {
+    "sourcePath": "/covana.php",
+    "title": "Automatický kryt vířivky - Covana",
+    "metaDescription": "Automatický zvedák krytu vířivky Covana. Termokryt, který plní roli i altánku.",
+    "h1": "Automatický termokryt - altánek",
+    "lead": "",
+    "paragraphs": [
+      "Covana™ je unikátní, plně automatický systém, který neplní jen funkci termokrytu, ale zároveň vytvoří soukromý altánek",
+      "Pojezd: Elektrický",
+      "Využití: Pro všechny typy vířivek",
+      "Barvy: Mocha a slate"
+    ],
+    "parameters": []
+  },
+  "koupaci-sudy-kirami": {
+    "sourcePath": "/koupaci-sudy-kirami.php",
+    "title": "Koupací sudy Kirami",
+    "metaDescription": "Venkovní koupací sudy od finského výrobce Kirami.",
+    "h1": "Koupací sudy Kirami",
+    "lead": "",
+    "paragraphs": [
+      "S přáteli nebo jen ve dvou, vždy dokonalá relaxace.",
+      "Modelů: spousta",
+      "Vnitřek: dřevěný nebo vložka",
+      "Opláštění: různé"
+    ],
+    "parameters": []
+  },
+  "prislusenstvi-doplnky": {
+    "sourcePath": "/prislusenstvi-doplnky.php",
+    "title": "Příslušenství k vířivkám",
+    "metaDescription": "Venkovní i vnitřní luxusní vířivky ARCTIC SPAS. Vhodné příslušenství a doplňky pro venkovní vířivky.",
+    "h1": "Příslušenství a další sortiment",
+    "lead": "",
+    "paragraphs": [
+      "Také manipulaci s termokrytem je potřeba věnovat pozornost, protože jednoduchost jeho odklápění Vám opravdu usnadní užívání vířivky. Pro maximální pohodlí pak volte automatický termokryt/altánek Covana."
+    ],
+    "parameters": []
+  },
+  "sauny": {
+    "sourcePath": "/sauny.php",
+    "title": "Luxusní finské sauny",
+    "metaDescription": "Luxusní sauny na míru. Finské sauny i infrakabiny dělané na míru dle vaših požadavků.",
+    "h1": "Sauny",
+    "lead": "Luxusní sauny na míru",
+    "paragraphs": [
+      "Přijďte se podívat na naši prodejnu do Moravan u Brna, kde máme vystavený funkční vzorek luxusních saun.",
+      "Výroba: Na míru té nejvyšší kvality",
+      "Dřevo: Od cedru pro smrk",
+      "Ohřev: Klasický i infra"
+    ],
+    "parameters": []
+  },
+  "virivka-cub": {
+    "sourcePath": "/virivka-cub.php",
+    "title": "Vířivka Cub - Arctic Spas - řada Custom",
+    "metaDescription": "Venkovní vířivky vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model vířivky Cub. Popis, parametry, vybavení.",
+    "h1": "Venkovní vířivka Cub",
+    "lead": "Vytvarovaný & ergonomický.",
+    "paragraphs": [
+      "Dvě křesla pro pár a hluboce tvarované lehátko dělá z vířivky Cub velmi vyhledávaný model. Užijte si pohodlí a komfort v křeslech s víceúrovňovými opěrkami rukou nebo spočiňte na lehátku. Ať tak či onak, pohodlí čeká."
+    ],
+    "parameters": [
+      {
+        "label": "Počet osob",
+        "value": "4 osoby"
+      },
+      {
+        "label": "Rozměry",
+        "value": "217 x 217 x 104 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "1185 Litrů"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "12 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "28 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "28 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Čerpadlo 3",
+        "value": "jednorychlostní"
+      }
+    ]
+  },
+  "virivka-eagle": {
+    "sourcePath": "/virivka-eagle.php",
+    "title": "Vířivka Eagle - Arctic Spas - řada Classic",
+    "metaDescription": "Venkovní vířivky vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model vířivky Eagle. Popis, parametry, vybavení.",
+    "h1": "Venkovní vířivka Eagle",
+    "lead": "Jedna z nejvšestranějších vířivek v naší nabídce",
+    "paragraphs": [
+      "Nabízí dokonale tvarované terapeutické křeslo, prostorné lehátko i rohová sedátka pro trochu víc přátel. Z těchto rozmanitých stylů relaxačního posezení si každý může vybrat ten svůj."
+    ],
+    "parameters": [
+      {
+        "label": "Počet osob",
+        "value": "5 osob"
+      },
+      {
+        "label": "Rozměry",
+        "value": "217 x 217 x 104 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "1185 Litrů"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "9 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "26 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      }
+    ]
+  },
+  "virivka-fox": {
+    "sourcePath": "/virivka-fox.php",
+    "title": "Vířivka Arctic Fox - Arctic Spas - řada Custom",
+    "metaDescription": "Venkovní vířivky vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model vířivky Arctic Fox. Popis, parametry, vybavení.",
+    "h1": "Venkovní vířivka Arctic Fox",
+    "lead": "Arctic Fox je extrémně komfortní vířivka s malým půdorysem.",
+    "paragraphs": [
+      "Náš designérský tým dokonale zvládl, jak dostat nejpohodlnější sedadla do naší nejmenší vířivky řady Custom. Je pohodlná, ale současně kompaktní a hluboká, vybavena kapitánskými křesly a úžasným lehátkem."
+    ],
+    "parameters": [
+      {
+        "label": "Počet osob",
+        "value": "3 osoby"
+      },
+      {
+        "label": "Rozměry",
+        "value": "217 x 174 x 98 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "884 Litrů"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "10 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "23 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      }
+    ]
+  },
+  "virivka-husky": {
+    "sourcePath": "/virivka-husky.php",
+    "title": "Vířivka Husky - Arctic Spas - řada Core",
+    "metaDescription": "Venkovní vířivky vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model vířivky Husky. Popis, parametry, vybavení.",
+    "h1": "Venkovní vířivka Husky",
+    "lead": "Menší, ale velice prostorná",
+    "paragraphs": [
+      "Vířivka Husky má místo až pro 5 osob a je koncipována jako velký otevřený prostor s množstvím různých sedátek. Jednoduchý komfort a spousta relaxace, to vše vířivka Husky přináší, přitom nezabere tolik místa."
+    ],
+    "parameters": [
+      {
+        "label": "Počet osob",
+        "value": "5 osob"
+      },
+      {
+        "label": "Rozměry",
+        "value": "213 x 186 x 99 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "1030 Litrů"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "18 vel. 2,5\", jednopulsní/rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "25 vel. 3\", jednopulsní/rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      }
+    ]
+  },
+  "virivka-klondiker": {
+    "sourcePath": "/virivka-klondiker.php",
+    "title": "Vířivka Klondiker - Arctic Spas - řada Custom",
+    "metaDescription": "Venkovní vířivky vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model vířivky Klondiker. Popis, parametry, vybavení.",
+    "h1": "Venkovní vířivka Klondiker",
+    "lead": "Nepřekonatelná ergonomie.",
+    "paragraphs": [
+      "Luxusní lenošení jak pro ni, tak pro něj, to je to, co můžete očekávat v této vířivce se dvěma lehátky. Nedávno přepracovaná neplovoucí lehátka vám přinesou opravdový komfort. Tři různě tvarovaná sedadla s víceúrovňovými opěrkami rukou doplňují tento úžasný model."
+    ],
+    "parameters": [
+      {
+        "label": "Počet osob",
+        "value": "5 osob"
+      },
+      {
+        "label": "Rozměry",
+        "value": "235 x 235 x 98 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "1430 Litrů"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "10 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "28 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "28 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Čerpadlo 3",
+        "value": "jednorychlostní"
+      }
+    ]
+  },
+  "virivka-kodiak": {
+    "sourcePath": "/virivka-kodiak.php",
+    "title": "Vířivka Kodiak - Arctic Spas - řada Custom",
+    "metaDescription": "Venkovní vířivky vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model vířivky Kodiak. Popis, parametry, vybavení.",
+    "h1": "Venkovní vířivka Kodiak",
+    "lead": "Medvěd je zpátky!",
+    "paragraphs": [
+      "Kodiak má všechny výhody a parametry jako model Cub, jen je větší. Místo k ležení je navrženo podle principu gravitačních lehátek, aby se předešlo klouzání a vznášení se ve vodě. Kodiak má komfortní křeslo pro muže i pro ženu, takže doma už vás nečeká boj o nejlepší místo ve vířivce."
+    ],
+    "parameters": [
+      {
+        "label": "Počet osob",
+        "value": "5 osob"
+      },
+      {
+        "label": "Rozměry",
+        "value": "235 x 235 x 98 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "1400 Litrů"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "10 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "25 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "25 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Čerpadlo 3",
+        "value": "jednorychlostní"
+      }
+    ]
+  },
+  "virivka-mckinley": {
+    "sourcePath": "/virivka-mckinley.php",
+    "title": "Vířivka McKinley - Arctic Spas - řada Classic",
+    "metaDescription": "Venkovní vířivky vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model vířivky McKinley. Popis, parametry, vybavení.",
+    "h1": "Venkovní vířivka McKinley",
+    "lead": "Samostatná sedadla ve vířivce s koncepcí otevřeného prostoru?",
+    "paragraphs": [
+      "Oceněný design vířivky McKinley to umožňuje. Čtyři rohová kapitánská křesla dominují celkovému počtu sedmi míst, která všechna obklopují rozsáhlý prostor pro hydromasáž chodidel. Dost místa pro všechny, přitom je však zachován individuální komfort. McKinley je perfektní volbou pro početné rodiny nebo pro časté návštěvy."
+    ],
+    "parameters": [
+      {
+        "label": "Počet osob",
+        "value": "7 osob"
+      },
+      {
+        "label": "Rozměry",
+        "value": "235 x 235 x 98 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "1700 Litrů"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "11 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "25 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      }
+    ]
+  },
+  "virivka-mustang": {
+    "sourcePath": "/virivka-mustang.php",
+    "title": "Vířivka Mustang - Arctic Spas - řada Classic",
+    "metaDescription": "Venkovní vířivky vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model vířivky Mustang. Popis, parametry, vybavení.",
+    "h1": "Venkovní vířivka Mustang",
+    "lead": "S hrdostí vám představujeme vířivku Mustang!",
+    "paragraphs": [
+      "Čerstvě přepracován s jemnějšími konturami, a ještě více ergonomickými sedadly. Relaxujte na prostorném lehátku nebo se si vychutnejte osvěžující masáž ve fantastických terapeutických sedadlech. Dostatečně velká venkovní vířivka pro rodinu s luxusem pro každého."
+    ],
+    "parameters": [
+      {
+        "label": "Počet osob",
+        "value": "6 osob"
+      },
+      {
+        "label": "Rozměry",
+        "value": "235 x 235 x 98 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "1400 Litrů"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "8 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "24 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      }
+    ]
+  },
+  "virivka-summit": {
+    "sourcePath": "/virivka-summit.php",
+    "title": "Vířivka Summit - Arctic Spas - řada Custom",
+    "metaDescription": "Venkovní vířivky vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model vířivky Summit. Popis, parametry, vybavení.",
+    "h1": "Venkovní vířivka Summit",
+    "lead": "Naše nejpopulárnější vířivka.",
+    "paragraphs": [
+      "Model Summit je perfektní rodinnou vířivkou. Tři komfortní kapitánská křesla s rozdílnou hloubkou umožní skvělou relaxaci různým postavám. Navíc mají dvouúrovňové opěrky pro ruce a jsou základem mimořádného komfortu této vířivky. Summit patří mezi naše nejoblíbenější vířivky."
+    ],
+    "parameters": [
+      {
+        "label": "Počet osob",
+        "value": "7 osob"
+      },
+      {
+        "label": "Rozměry",
+        "value": "235 x 235 x 98 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "1405 Litrů"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "9 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "26 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "26 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Čerpadlo 3",
+        "value": "jednorychlostní"
+      }
+    ]
+  },
+  "virivka-summit-xl": {
+    "sourcePath": "/virivka-summit-xl.php",
+    "title": "Vířivka Summit XL - Arctic Spas - řada Custom",
+    "metaDescription": "Venkovní vířivky vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model vířivky Summit XL. Popis, parametry, vybavení.",
+    "h1": "Venkovní vířivka Summit XL",
+    "lead": "Větší, lepší.",
+    "paragraphs": [
+      "Tak toto je největší vířivka v naší řadě. Prostě jsme vzali nejoblíbenější vířivku Summit a doslova ji natáhli. A tak se nyní do ní vleze více lidí při rodinné sešlosti nebo pokud pořádáte večírek. Sedátka ve vířivce jsou naprosto stejná jako má model Summit, nejpohodlnější a velice oblíbený otevřený styl."
+    ],
+    "parameters": [
+      {
+        "label": "Počet osob",
+        "value": "9 osob"
+      },
+      {
+        "label": "Rozměry",
+        "value": "297 x 235 x 98 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "1980 Litrů"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "10 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "26 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "26 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Čerpadlo 3",
+        "value": "jednorychlostní"
+      }
+    ]
+  },
+  "virivka-timberwolf": {
+    "sourcePath": "/virivka-timberwolf.php",
+    "title": "Vířivka Timberwolf - Arctic Spas - řada Classic",
+    "metaDescription": "Venkovní vířivky vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model vířivky Timberwolf. Popis, parametry, vybavení.",
+    "h1": "Venkovní vířivka Timberwolf",
+    "lead": "Timberwolf je extrémně komfortní vířivka s malým půdorysem.",
+    "paragraphs": [
+      "Maximální terapii naleznete ve dvou pohodlných lehátkách, navíc je zde místo i pro třetího. Maximální komfort na minimálním prostoru."
+    ],
+    "parameters": [
+      {
+        "label": "Počet osob",
+        "value": "3 osoby"
+      },
+      {
+        "label": "Rozměry",
+        "value": "217 x 174 x 98 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "884 Litrů"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "10 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "25 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      }
+    ]
+  },
+  "virivka-totem": {
+    "sourcePath": "/virivka-totem.php",
+    "title": "Vířivka Totem - Arctic Spas - řada Classic",
+    "metaDescription": "Venkovní vířivky vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model vířivky Totem. Popis, parametry, vybavení.",
+    "h1": "Venkovní vířivka Totem",
+    "lead": "Totem je další ze skvělých modelů vířivek orientovaných na rodinu, který nabízí prostor i komfort.",
+    "paragraphs": [
+      "Obvodové sezení poskytuje jeden z největších prostorů pro nohy a terapii chodidel u dvoumetrových vířivek. Tři terapeutická křesla a víceúrovňová lavice jsou zárukou toho, že každý najde své oblíbené místo."
+    ],
+    "parameters": [
+      {
+        "label": "Počet osob",
+        "value": "6 osob"
+      },
+      {
+        "label": "Rozměry",
+        "value": "217 x 217 x 104 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "1360 Litrů"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "10 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "26 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      }
+    ]
+  },
+  "virivka-tundra": {
+    "sourcePath": "/virivka-tundra.php",
+    "title": "Vířivka Tundra - Arctic Spas - řada Custom",
+    "metaDescription": "Venkovní vířivky vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model vířivky Tundra. Popis, parametry, vybavení.",
+    "h1": "Venkovní vířivka Tundra",
+    "lead": "Oceněný design & unikátní.",
+    "paragraphs": [
+      "Pravděpodobně nejlepší kombinace komfortu a prostornosti. Podařilo se nám zkombinovat čtyři samostatná pohodlná křesla se třemi sedátky různé hloubky, a přitom zachovat ohromující místo pro nohy. Pokud hledáte dokonalý komfort a současně dost prostoru pro celou rodinu, může být Tundra pro vás pravou volbou."
+    ],
+    "parameters": [
+      {
+        "label": "Počet osob",
+        "value": "7 osob"
+      },
+      {
+        "label": "Rozměry",
+        "value": "235 x 235 x 98 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "1700 Litrů"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "9 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "27 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "27 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Čerpadlo 3",
+        "value": "jednorychlostní"
+      }
+    ]
+  },
+  "virivka-yukon": {
+    "sourcePath": "/virivka-yukon.php",
+    "title": "Vířivka Yukon - Arctic Spas - řada Custom",
+    "metaDescription": "Venkovní vířivky vyrobené v Kanadě určené pro nejdrsnější klima na světě. Model vířivky Yukon. Popis, parametry, vybavení.",
+    "h1": "Venkovní vířivka Yukon",
+    "lead": "Hloubka & prostor.",
+    "paragraphs": [
+      "Otevřená, komfortní a disponující jedním z největších prostorů pro nohy mezi 7“ vířivkami. Yukon je další ze skvělých modelů vířivek orientovaných na jakoukoliv rodinu, který nabízí prostor i komfort. Čtyři terapeutická křesla a víceúrovňové lavice jsou zárukou toho, že každý najde své oblíbené místo."
+    ],
+    "parameters": [
+      {
+        "label": "Počet osob",
+        "value": "6 osob"
+      },
+      {
+        "label": "Rozměry",
+        "value": "217 x 217 x 104 cm"
+      },
+      {
+        "label": "Objem vody",
+        "value": "1360 Litrů"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "12 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "29 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Počet trysek",
+        "value": "29 vel. 3\", jednopulsní / rotační"
+      },
+      {
+        "label": "Čerpadlo 1",
+        "value": "dvourychlostní"
+      },
+      {
+        "label": "Čerpadlo 2",
+        "value": "jednorychlostní"
+      },
+      {
+        "label": "Čerpadlo 3",
+        "value": "jednorychlostní"
+      }
+    ]
+  }
+}

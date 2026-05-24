@@ -112,6 +112,7 @@ Hotove veci:
 - Migracni mapa je generovana prikazem `npm run migration:map` do `docs/migration-map.csv`. Posledni vystup ma 135 radku: 75 sloucenych redirectu, 26 downloadu k importu, 1 chybejici download presmerovany na `/ke-stazeni/`, 22 produktu, 5 vyrazenych produktu, 4 polozky sirsiho sortimentu a 2 hlavni stranky.
 - Stare PDF URL se dynamicky presmeruji na importovany media soubor podle `download_original_url`; chybejici PDF padaji na `/ke-stazeni/`.
 - Download audit 2026-05-24: lokalni WP obsahuje 26 publikovanych `download` polozek a vsechny maji `download_original_url` i `download_file_url`. Testovane stare PDF URL vraci 301 na lokalni media soubor; chybejici `as-sluzby-cenik-2022.pdf` vraci 301 na `/ke-stazeni/`.
+- Produktovy obsahovy audit 2026-05-24: prikaz `npm run legacy:products` extrahuje z `../Arctic-spas/www` obsah 24 dostupnych produktovych stranek do `wp-content/uploads/import/legacy-content/product-data.json`. Seed z nej doplnuje popisy a zakladni parametry produktu tam, kde Figma nema obsah a kde predtim zustaval pracovni placeholder.
 - Kontaktni formular ma local reCAPTCHA bypass, neposila maily v localu, nema hardcoded Bcc a jeden POST se zpracuje jen jednou.
 - Smartsupp uz nema ve forku hardcoded Baspa klic. Chat/preconnect se vypise jen v `production` prostredi a jen pokud je nastaveny `arctic_smartsupp_key`.
 - Smoke test hlavnich cest neukazuje `Baspa`, `baspa.cz`, Smartsupp, tracking preconnecty, Ecomail URL, Google Fonts ani Google map embed.
