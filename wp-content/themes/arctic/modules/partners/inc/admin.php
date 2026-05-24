@@ -37,16 +37,27 @@ if ( !function_exists( 'baspa_partners_admin_page_content' ) ) {
 	 */
 	function baspa_partners_admin_page_content(): void {
 
+		if ( !current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'Sorry, you are not allowed to access this page.', 'baspa' ) );
+		}
+
+		$post_value = static function ( string $key, string $default = '' ): string {
+			return isset( $_POST[ $key ] ) ? (string) wp_unslash( $_POST[ $key ] ) : $default;
+		};
+
 		$partners_title    = get_option( 'baspa_partners_title' ) !== null ? get_option( 'baspa_partners_title' ) : __( 'Partners', 'baspa' );
 		$partners_subtitle = get_option( 'baspa_partners_subtitle' );
 
 		if ( isset( $_POST[ 'submit' ] ) ) {
+			check_admin_referer( 'baspa_partners_settings' );
 
 			if ( isset( $_POST[ 'partners_title' ] ) ) {
-				update_option( 'baspa_partners_title', wp_kses_post( $_POST[ 'partners_title' ] ) );
+				$partners_title = sanitize_text_field( $post_value( 'partners_title' ) );
+				update_option( 'baspa_partners_title', $partners_title );
 			}
 			if ( isset( $_POST[ 'partners_subtitle' ] ) ) {
-				update_option( 'baspa_partners_subtitle', wp_kses_post( $_POST[ 'partners_subtitle' ] ) );
+				$partners_subtitle = wp_kses_post( $post_value( 'partners_subtitle' ) );
+				update_option( 'baspa_partners_subtitle', $partners_subtitle );
 			}
 		} ?>
 
@@ -55,6 +66,8 @@ if ( !function_exists( 'baspa_partners_admin_page_content' ) ) {
 			<h1><?php echo esc_html_x( 'Settings', 'admin', 'baspa' ); ?></h1>
 
 			<form method="post" action="">
+
+				<?php wp_nonce_field( 'baspa_partners_settings' ); ?>
 
 				<table class="form-table" role="presentation">
 
@@ -69,7 +82,7 @@ if ( !function_exists( 'baspa_partners_admin_page_content' ) ) {
 							<input type="text"
 							       id="partners_title"
 							       name="partners_title"
-							       value="<?php echo $_POST[ 'partners_title' ] ?? wp_kses_post( $partners_title ); ?>"
+							       value="<?php echo esc_attr( $partners_title ); ?>"
 							       class="regular-text">
 						</td>
 					</tr>
@@ -83,7 +96,7 @@ if ( !function_exists( 'baspa_partners_admin_page_content' ) ) {
 				<textarea id="partners_subtitle"
 				          name="partners_subtitle"
 				          rows="3"
-				          class="large-text"><?php echo $_POST[ 'partners_subtitle' ] ?? wp_kses_post( $partners_subtitle ); ?></textarea>
+				          class="large-text"><?php echo esc_textarea( $partners_subtitle ); ?></textarea>
 						</td>
 					</tr>
 					</tbody>

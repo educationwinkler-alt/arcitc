@@ -37,16 +37,27 @@ if ( !function_exists( 'baspa_references_admin_page_content' ) ) {
 	 */
 	function baspa_references_admin_page_content(): void {
 
+		if ( !current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'Sorry, you are not allowed to access this page.', 'baspa' ) );
+		}
+
+		$post_value = static function ( string $key, string $default = '' ): string {
+			return isset( $_POST[ $key ] ) ? (string) wp_unslash( $_POST[ $key ] ) : $default;
+		};
+
 		$references_title    = get_option( 'baspa_references_title' ) !== null ? get_option( 'baspa_references_title' ) : __( 'References', 'baspa' );
 		$references_subtitle = get_option( 'baspa_references_subtitle' );
 
 		if ( isset( $_POST[ 'submit' ] ) ) {
+			check_admin_referer( 'baspa_references_settings' );
 
 			if ( isset( $_POST[ 'references_title' ] ) ) {
-				update_option( 'baspa_references_title', wp_kses_post( $_POST[ 'references_title' ] ) );
+				$references_title = sanitize_text_field( $post_value( 'references_title' ) );
+				update_option( 'baspa_references_title', $references_title );
 			}
 			if ( isset( $_POST[ 'references_subtitle' ] ) ) {
-				update_option( 'baspa_references_subtitle', wp_kses_post( $_POST[ 'references_subtitle' ] ) );
+				$references_subtitle = wp_kses_post( $post_value( 'references_subtitle' ) );
+				update_option( 'baspa_references_subtitle', $references_subtitle );
 			}
 		} ?>
 
@@ -55,6 +66,8 @@ if ( !function_exists( 'baspa_references_admin_page_content' ) ) {
 			<h1><?php echo esc_html_x( 'Settings', 'admin', 'baspa' ); ?></h1>
 
 			<form method="post" action="">
+
+				<?php wp_nonce_field( 'baspa_references_settings' ); ?>
 
 				<table class="form-table" role="presentation">
 
@@ -69,7 +82,7 @@ if ( !function_exists( 'baspa_references_admin_page_content' ) ) {
 							<input type="text"
 							       id="references_title"
 							       name="references_title"
-							       value="<?php echo $_POST[ 'references_title' ] ?? wp_kses_post( $references_title ); ?>"
+							       value="<?php echo esc_attr( $references_title ); ?>"
 							       class="regular-text">
 						</td>
 					</tr>
@@ -83,7 +96,7 @@ if ( !function_exists( 'baspa_references_admin_page_content' ) ) {
 				<textarea id="references_subtitle"
 				          name="references_subtitle"
 				          rows="3"
-				          class="large-text"><?php echo $_POST[ 'references_subtitle' ] ?? wp_kses_post( $references_subtitle ); ?></textarea>
+				          class="large-text"><?php echo esc_textarea( $references_subtitle ); ?></textarea>
 						</td>
 					</tr>
 					</tbody>

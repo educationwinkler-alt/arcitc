@@ -117,6 +117,7 @@ Hotove veci:
 - Kontaktni formular ma local reCAPTCHA bypass, neposila maily v localu, nema hardcoded Bcc a jeden POST se zpracuje jen jednou.
 - Kontaktni formularovy pipeline je po Baspa auditu zpevneny: hodnoty z POSTu jdou pres `wp_unslash()` + sanitizaci, AJAX handler uz nebere cestu sablony z POSTu, Ecomail pouziva `wp_remote_post()` misto cURL a debug odpovedi se nevypisuji do frontendu.
 - AJAX vyhledavani uz nebere libovolne post typy/taxonomie z POSTu; hodnoty se sanitizuji a validuji proti registrovanym WordPress typum/taxonomiim.
+- Vlastni admin settings stranky modulu maji nonce, capability gate, `check_admin_referer()`, unslash/sanitizaci a escapovany vystup hodnot. Post metabox a term meta save handlery jsou stejne zpevnené proti slashovanym POST hodnotam.
 - Smartsupp uz nema ve forku hardcoded Baspa klic. Chat/preconnect se vypise jen v `production` prostredi a jen pokud je nastaveny `arctic_smartsupp_key`.
 - Smoke test hlavnich cest neukazuje `Baspa`, `baspa.cz`, Smartsupp, tracking preconnecty, Ecomail URL, Google Fonts ani Google map embed.
 - `npm run visual:smoke` prochazi hlavni URL vcetne `Dalsi sortiment`, kontroluje zakazane stringy, zakazane externi browser requesty, horizontalni overflow na desktopu/mobilu a uklada desktop/mobile screenshoty Figma stranek, katalogu `Swimspa`/`Další sortiment` i detailu `Husky`, `Athabascan` a `Covana`.
@@ -160,7 +161,7 @@ Importery budou v `tools/`. Prakticky vzniknou skripty pro produkty, stranky, do
 
 Media workflow bude Figma-first. Vsechny vizualni assety, ktere existuji ve Figme, se exportuji z Figma node ID a ulozi do `assets-source/figma/export/` plus do importni slozky WordPressu. Stary Arctic archiv se pouzije pro produktove fotky nebo dokumentacni assety jen tehdy, kdyz Figma konkretni asset nema. Kazda takova vyjimka se zapise do manifestu.
 
-Formulare se pred produkci dotahnou pres zbyvajici admin nastaveni. Frontendovy pipeline uz ma hotovy zakladni cleanup: raw `$_POST` nejde do vystupu bez escapovani, processing template z POSTu je nahrazeny server-side whitelistem, e-maily se validuji, hardcoded Bcc je odstraneny, Ecomail jede pres `wp_remote_post()` a local blokovani mailu zustava aktivni. Zbyva projit vlastni admin settings stranky a doplnit nonce/capability pattern vsude, kde Baspa pouziva vlastni ulozeni nastaveni. Staging nesmi posilat ostre poptavky bez zamerneho nastaveni.
+Formulare a vlastni admin nastaveni jsou po Baspa auditu zpevnené. Frontendovy pipeline uz ma hotovy zakladni cleanup: raw `$_POST` nejde do vystupu bez escapovani, processing template z POSTu je nahrazeny server-side whitelistem, e-maily se validuji, hardcoded Bcc je odstraneny, Ecomail jede pres `wp_remote_post()` a local blokovani mailu zustava aktivni. Admin settings stranky maji nonce/capability pattern, term meta save handlery a post metabox ukladaji az po `wp_unslash()` a sanitizaci. Staging nesmi posilat ostre poptavky bez zamerneho nastaveni.
 
 SEO se resi soubezne s migraci. Kazda stara `.php` URL dostane novou URL nebo 301 redirect. Title a meta description se prenesou tam, kde jsou uzitecne; duplicity se prepisou. Vznikne sitemap, robots, Open Graph obrazky a schema pro produkty/FAQ tam, kde to dava smysl. Vyradene produkty jdou redirectem na relevantni kategorii, ne do aktivniho katalogu.
 

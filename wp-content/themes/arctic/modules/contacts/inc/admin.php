@@ -70,6 +70,14 @@ if ( !function_exists( 'baspa_contacts_admin_page_content' ) ) {
 	 */
 	function baspa_contacts_admin_page_content(): void {
 
+		if ( !current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'Sorry, you are not allowed to access this page.', 'baspa' ) );
+		}
+
+		$post_value = static function ( string $key, string $default = '' ): string {
+			return isset( $_POST[ $key ] ) ? (string) wp_unslash( $_POST[ $key ] ) : $default;
+		};
+
 		// Contacts
 		$contacts_title    = get_option( 'baspa_contacts_title' );
 		$contacts_subtitle = get_option( 'baspa_contacts_subtitle' );
@@ -84,32 +92,41 @@ if ( !function_exists( 'baspa_contacts_admin_page_content' ) ) {
 		$service_form_content = get_option( 'baspa_service_form_content' );
 
 		if ( isset( $_POST[ 'submit' ] ) ) {
+			check_admin_referer( 'baspa_contacts_settings' );
 
 			// Contacts
 			if ( isset( $_POST[ 'contacts_title' ] ) ) {
-				update_option( 'baspa_contacts_title', wp_kses_post( $_POST[ 'contacts_title' ] ) );
+				$contacts_title = sanitize_text_field( $post_value( 'contacts_title' ) );
+				update_option( 'baspa_contacts_title', $contacts_title );
 			}
 			if ( isset( $_POST[ 'contacts_subtitle' ] ) ) {
-				update_option( 'baspa_contacts_subtitle', wp_kses_post( $_POST[ 'contacts_subtitle' ] ) );
+				$contacts_subtitle = wp_kses_post( $post_value( 'contacts_subtitle' ) );
+				update_option( 'baspa_contacts_subtitle', $contacts_subtitle );
 			}
 			if ( isset( $_POST[ 'contacts_form_title' ] ) ) {
-				update_option( 'baspa_contacts_form_title', wp_kses_post( $_POST[ 'contacts_form_title' ] ) );
+				$contacts_form_title = sanitize_text_field( $post_value( 'contacts_form_title' ) );
+				update_option( 'baspa_contacts_form_title', $contacts_form_title );
 			}
 			if ( isset( $_POST[ 'contacts_form_content' ] ) ) {
-				update_option( 'baspa_contacts_form_content', wp_kses_post( $_POST[ 'contacts_form_content' ] ) );
+				$contacts_form_content = wp_kses_post( $post_value( 'contacts_form_content' ) );
+				update_option( 'baspa_contacts_form_content', $contacts_form_content );
 			}
 			// Service
 			if ( isset( $_POST[ 'service_title' ] ) ) {
-				update_option( 'baspa_service_title', wp_kses_post( $_POST[ 'service_title' ] ) );
+				$service_title = sanitize_text_field( $post_value( 'service_title' ) );
+				update_option( 'baspa_service_title', $service_title );
 			}
 			if ( isset( $_POST[ 'service_subtitle' ] ) ) {
-				update_option( 'baspa_service_subtitle', wp_kses_post( $_POST[ 'service_subtitle' ] ) );
+				$service_subtitle = wp_kses_post( $post_value( 'service_subtitle' ) );
+				update_option( 'baspa_service_subtitle', $service_subtitle );
 			}
 			if ( isset( $_POST[ 'service_form_title' ] ) ) {
-				update_option( 'baspa_service_form_title', wp_kses_post( $_POST[ 'service_form_title' ] ) );
+				$service_form_title = sanitize_text_field( $post_value( 'service_form_title' ) );
+				update_option( 'baspa_service_form_title', $service_form_title );
 			}
 			if ( isset( $_POST[ 'service_form_content' ] ) ) {
-				update_option( 'baspa_service_form_content', wp_kses_post( $_POST[ 'service_form_content' ] ) );
+				$service_form_content = wp_kses_post( $post_value( 'service_form_content' ) );
+				update_option( 'baspa_service_form_content', $service_form_content );
 			}
 		} ?>
 
@@ -118,6 +135,8 @@ if ( !function_exists( 'baspa_contacts_admin_page_content' ) ) {
 			<h1><?php echo esc_html_x( 'Settings', 'admin', 'baspa' ); ?></h1>
 
 			<form method="post" action="">
+
+				<?php wp_nonce_field( 'baspa_contacts_settings' ); ?>
 
 				<h2><?php echo esc_html_x( 'Contacts', 'admin', 'baspa' ); ?></h2>
 
@@ -138,7 +157,7 @@ if ( !function_exists( 'baspa_contacts_admin_page_content' ) ) {
 							<input type="text"
 							       id="contacts_title"
 							       name="contacts_title"
-							       value="<?php echo $_POST[ 'contacts_title' ] ?? wp_kses_post( $contacts_title ); ?>"
+							       value="<?php echo esc_attr( $contacts_title ); ?>"
 							       class="regular-text">
 						</td>
 					</tr>
@@ -152,7 +171,7 @@ if ( !function_exists( 'baspa_contacts_admin_page_content' ) ) {
 				<textarea id="contacts_subtitle"
 				          name="contacts_subtitle"
 				          rows="2"
-				          class="large-text"><?php echo $_POST[ 'contacts_subtitle' ] ?? wp_kses_post( $contacts_subtitle ); ?></textarea>
+				          class="large-text"><?php echo esc_textarea( $contacts_subtitle ); ?></textarea>
 						</td>
 					</tr>
 					</tbody>
@@ -175,7 +194,7 @@ if ( !function_exists( 'baspa_contacts_admin_page_content' ) ) {
 							<input type="text"
 							       id="contacts_form_title"
 							       name="contacts_form_title"
-							       value="<?php echo $_POST[ 'contacts_form_title' ] ?? wp_kses_post( $contacts_form_title ); ?>"
+							       value="<?php echo esc_attr( $contacts_form_title ); ?>"
 							       class="regular-text">
 						</td>
 					</tr>
@@ -189,7 +208,7 @@ if ( !function_exists( 'baspa_contacts_admin_page_content' ) ) {
 				<textarea id="contacts_form_content"
 				          name="contacts_form_content"
 				          rows="5"
-				          class="large-text"><?php echo $_POST[ 'contacts_form_content' ] ?? wp_kses_post( $contacts_form_content ); ?></textarea>
+				          class="large-text"><?php echo esc_textarea( $contacts_form_content ); ?></textarea>
 						</td>
 					</tr>
 					</tbody>
@@ -216,7 +235,7 @@ if ( !function_exists( 'baspa_contacts_admin_page_content' ) ) {
 							<input type="text"
 							       id="service_title"
 							       name="service_title"
-							       value="<?php echo $_POST[ 'service_title' ] ?? wp_kses_post( $service_title ); ?>"
+							       value="<?php echo esc_attr( $service_title ); ?>"
 							       class="regular-text">
 						</td>
 					</tr>
@@ -230,7 +249,7 @@ if ( !function_exists( 'baspa_contacts_admin_page_content' ) ) {
 				<textarea id="service_subtitle"
 				          name="service_subtitle"
 				          rows="2"
-				          class="large-text"><?php echo $_POST[ 'service_subtitle' ] ?? wp_kses_post( $service_subtitle ); ?></textarea>
+				          class="large-text"><?php echo esc_textarea( $service_subtitle ); ?></textarea>
 						</td>
 					</tr>
 					</tbody>
@@ -253,7 +272,7 @@ if ( !function_exists( 'baspa_contacts_admin_page_content' ) ) {
 							<input type="text"
 							       id="service_form_title"
 							       name="service_form_title"
-							       value="<?php echo $_POST[ 'service_form_title' ] ?? wp_kses_post( $service_form_title ); ?>"
+							       value="<?php echo esc_attr( $service_form_title ); ?>"
 							       class="regular-text">
 						</td>
 					</tr>
@@ -267,7 +286,7 @@ if ( !function_exists( 'baspa_contacts_admin_page_content' ) ) {
 				<textarea id="service_form_content"
 				          name="service_form_content"
 				          rows="5"
-				          class="large-text"><?php echo $_POST[ 'service_form_content' ] ?? wp_kses_post( $service_form_content ); ?></textarea>
+				          class="large-text"><?php echo esc_textarea( $service_form_content ); ?></textarea>
 						</td>
 					</tr>
 					</tbody>

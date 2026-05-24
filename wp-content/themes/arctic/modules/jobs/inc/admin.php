@@ -37,16 +37,27 @@ if ( !function_exists( 'baspa_jobs_admin_page_content' ) ) {
 	 */
 	function baspa_jobs_admin_page_content(): void {
 
+		if ( !current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'Sorry, you are not allowed to access this page.', 'baspa' ) );
+		}
+
+		$post_value = static function ( string $key, string $default = '' ): string {
+			return isset( $_POST[ $key ] ) ? (string) wp_unslash( $_POST[ $key ] ) : $default;
+		};
+
 		$jobs_title    = get_option( 'baspa_jobs_title' ) !== null ? get_option( 'baspa_jobs_title' ) : __( 'Jobs', 'baspa' );
 		$jobs_subtitle = get_option( 'baspa_jobs_subtitle' );
 
 		if ( isset( $_POST[ 'submit' ] ) ) {
+			check_admin_referer( 'baspa_jobs_settings' );
 
 			if ( isset( $_POST[ 'jobs_title' ] ) ) {
-				update_option( 'baspa_jobs_title', wp_kses_post( $_POST[ 'jobs_title' ] ) );
+				$jobs_title = sanitize_text_field( $post_value( 'jobs_title' ) );
+				update_option( 'baspa_jobs_title', $jobs_title );
 			}
 			if ( isset( $_POST[ 'jobs_subtitle' ] ) ) {
-				update_option( 'baspa_jobs_subtitle', wp_kses_post( $_POST[ 'jobs_subtitle' ] ) );
+				$jobs_subtitle = wp_kses_post( $post_value( 'jobs_subtitle' ) );
+				update_option( 'baspa_jobs_subtitle', $jobs_subtitle );
 			}
 		} ?>
 
@@ -55,6 +66,8 @@ if ( !function_exists( 'baspa_jobs_admin_page_content' ) ) {
 			<h1><?php echo esc_html_x( 'Settings', 'admin', 'baspa' ); ?></h1>
 
 			<form method="post" action="">
+
+				<?php wp_nonce_field( 'baspa_jobs_settings' ); ?>
 
 				<table class="form-table" role="presentation">
 
@@ -69,7 +82,7 @@ if ( !function_exists( 'baspa_jobs_admin_page_content' ) ) {
 							<input type="text"
 							       id="jobs_title"
 							       name="jobs_title"
-							       value="<?php echo $_POST[ 'jobs_title' ] ?? wp_kses_post( $jobs_title ); ?>"
+							       value="<?php echo esc_attr( $jobs_title ); ?>"
 							       class="regular-text">
 						</td>
 					</tr>
@@ -83,7 +96,7 @@ if ( !function_exists( 'baspa_jobs_admin_page_content' ) ) {
 				<textarea id="jobs_subtitle"
 				          name="jobs_subtitle"
 				          rows="3"
-				          class="large-text"><?php echo $_POST[ 'jobs_subtitle' ] ?? wp_kses_post( $jobs_subtitle ); ?></textarea>
+				          class="large-text"><?php echo esc_textarea( $jobs_subtitle ); ?></textarea>
 						</td>
 					</tr>
 					</tbody>

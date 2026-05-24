@@ -60,8 +60,18 @@ if ( !function_exists( 'baspa_accessories_admin_category_fields_save' ) ) {
 	 */
 	function baspa_accessories_admin_category_fields_save( $term_id ): void {
 
+		$term = get_term( $term_id );
+		$tax  = $term && !is_wp_error( $term ) ? get_taxonomy( $term->taxonomy ) : null;
+		if ( !$tax || !current_user_can( $tax->cap->edit_terms ) ) {
+			return;
+		}
+
+		$post_value = static function ( string $key, string $default = '' ): string {
+			return isset( $_POST[ $key ] ) ? (string) wp_unslash( $_POST[ $key ] ) : $default;
+		};
+
 		if ( isset( $_POST[ 'product_category' ] ) ) {
-			update_term_meta( $term_id, 'product_category', sanitize_text_field( $_POST[ 'product_category' ] ) );
+			update_term_meta( $term_id, 'product_category', absint( $post_value( 'product_category' ) ) );
 		}
 
 	}

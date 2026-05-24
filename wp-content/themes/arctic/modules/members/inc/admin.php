@@ -37,16 +37,27 @@ if ( !function_exists( 'baspa_members_admin_page_content' ) ) {
 	 */
 	function baspa_members_admin_page_content(): void {
 
+		if ( !current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'Sorry, you are not allowed to access this page.', 'baspa' ) );
+		}
+
+		$post_value = static function ( string $key, string $default = '' ): string {
+			return isset( $_POST[ $key ] ) ? (string) wp_unslash( $_POST[ $key ] ) : $default;
+		};
+
 		$members_title    = get_option( 'baspa_members_title' ) !== null ? get_option( 'baspa_members_title' ) : __( 'Members', 'baspa' );
 		$members_subtitle = get_option( 'baspa_members_subtitle' );
 
 		if ( isset( $_POST[ 'submit' ] ) ) {
+			check_admin_referer( 'baspa_members_settings' );
 
 			if ( isset( $_POST[ 'members_title' ] ) ) {
-				update_option( 'baspa_members_title', wp_kses_post( $_POST[ 'members_title' ] ) );
+				$members_title = sanitize_text_field( $post_value( 'members_title' ) );
+				update_option( 'baspa_members_title', $members_title );
 			}
 			if ( isset( $_POST[ 'members_subtitle' ] ) ) {
-				update_option( 'baspa_members_subtitle', wp_kses_post( $_POST[ 'members_subtitle' ] ) );
+				$members_subtitle = wp_kses_post( $post_value( 'members_subtitle' ) );
+				update_option( 'baspa_members_subtitle', $members_subtitle );
 			}
 		} ?>
 
@@ -55,6 +66,8 @@ if ( !function_exists( 'baspa_members_admin_page_content' ) ) {
 			<h1><?php echo esc_html_x( 'Settings', 'admin', 'baspa' ); ?></h1>
 
 			<form method="post" action="">
+
+				<?php wp_nonce_field( 'baspa_members_settings' ); ?>
 
 				<table class="form-table" role="presentation">
 
@@ -69,7 +82,7 @@ if ( !function_exists( 'baspa_members_admin_page_content' ) ) {
 							<input type="text"
 							       id="members_title"
 							       name="members_title"
-							       value="<?php echo $_POST[ 'members_title' ] ?? wp_kses_post( $members_title ); ?>"
+							       value="<?php echo esc_attr( $members_title ); ?>"
 							       class="regular-text">
 						</td>
 					</tr>
@@ -83,7 +96,7 @@ if ( !function_exists( 'baspa_members_admin_page_content' ) ) {
 				<textarea id="members_subtitle"
 				          name="members_subtitle"
 				          rows="3"
-				          class="large-text"><?php echo $_POST[ 'members_subtitle' ] ?? wp_kses_post( $members_subtitle ); ?></textarea>
+				          class="large-text"><?php echo esc_textarea( $members_subtitle ); ?></textarea>
 						</td>
 					</tr>
 					</tbody>

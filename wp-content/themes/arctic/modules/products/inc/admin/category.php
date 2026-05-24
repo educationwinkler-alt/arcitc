@@ -109,14 +109,25 @@ if ( !function_exists( 'baspa_products_admin_category_fields_save' ) ) {
 	 */
 	function baspa_products_admin_category_fields_save( $term_id ): void {
 
+		$term = get_term( $term_id );
+		$tax  = $term && !is_wp_error( $term ) ? get_taxonomy( $term->taxonomy ) : null;
+		if ( !$tax || !current_user_can( $tax->cap->edit_terms ) ) {
+			return;
+		}
+
+		$post_value = static function ( string $key, string $default = '' ): string {
+			return isset( $_POST[ $key ] ) ? (string) wp_unslash( $_POST[ $key ] ) : $default;
+		};
+
 		if ( isset( $_POST[ 'category_description_short' ] ) ) {
-			update_term_meta( $term_id, 'category_description_short', sanitize_text_field( $_POST[ 'category_description_short' ] ) );
+			update_term_meta( $term_id, 'category_description_short', sanitize_text_field( $post_value( 'category_description_short' ) ) );
 		}
 		if ( isset( $_POST[ 'category_type' ] ) ) {
-			update_term_meta( $term_id, 'category_type', sanitize_text_field( $_POST[ 'category_type' ] ) );
+			$category_type = sanitize_key( $post_value( 'category_type' ) );
+			update_term_meta( $term_id, 'category_type', in_array( $category_type, array( 'accessories' ), true ) ? $category_type : '' );
 		}
 		if ( isset( $_POST[ 'category_image' ] ) ) {
-			update_term_meta( $term_id, 'category_image', absint( $_POST[ 'category_image' ] ) );
+			update_term_meta( $term_id, 'category_image', absint( $post_value( 'category_image' ) ) );
 		}
 
 	}

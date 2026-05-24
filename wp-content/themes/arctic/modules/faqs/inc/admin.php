@@ -37,16 +37,27 @@ if ( !function_exists( 'baspa_faqs_admin_page_content' ) ) {
 	 */
 	function baspa_faqs_admin_page_content(): void {
 
+		if ( !current_user_can( 'manage_options' ) ) {
+			wp_die( esc_html__( 'Sorry, you are not allowed to access this page.', 'baspa' ) );
+		}
+
+		$post_value = static function ( string $key, string $default = '' ): string {
+			return isset( $_POST[ $key ] ) ? (string) wp_unslash( $_POST[ $key ] ) : $default;
+		};
+
 		$faqs_title    = get_option( 'baspa_faqs_title' ) !== null ? get_option( 'baspa_faqs_title' ) : __( 'Faqs', 'baspa' );
 		$faqs_subtitle = get_option( 'baspa_faqs_subtitle' );
 
 		if ( isset( $_POST[ 'submit' ] ) ) {
+			check_admin_referer( 'baspa_faqs_settings' );
 
 			if ( isset( $_POST[ 'faqs_title' ] ) ) {
-				update_option( 'baspa_faqs_title', wp_kses_post( $_POST[ 'faqs_title' ] ) );
+				$faqs_title = sanitize_text_field( $post_value( 'faqs_title' ) );
+				update_option( 'baspa_faqs_title', $faqs_title );
 			}
 			if ( isset( $_POST[ 'faqs_subtitle' ] ) ) {
-				update_option( 'baspa_faqs_subtitle', wp_kses_post( $_POST[ 'faqs_subtitle' ] ) );
+				$faqs_subtitle = wp_kses_post( $post_value( 'faqs_subtitle' ) );
+				update_option( 'baspa_faqs_subtitle', $faqs_subtitle );
 			}
 		} ?>
 
@@ -55,6 +66,8 @@ if ( !function_exists( 'baspa_faqs_admin_page_content' ) ) {
 			<h1><?php echo esc_html_x( 'Settings', 'admin', 'baspa' ); ?></h1>
 
 			<form method="post" action="">
+
+				<?php wp_nonce_field( 'baspa_faqs_settings' ); ?>
 
 				<table class="form-table" role="presentation">
 
@@ -69,7 +82,7 @@ if ( !function_exists( 'baspa_faqs_admin_page_content' ) ) {
 							<input type="text"
 							       id="faqs_title"
 							       name="faqs_title"
-							       value="<?php echo $_POST[ 'faqs_title' ] ?? wp_kses_post( $faqs_title ); ?>"
+							       value="<?php echo esc_attr( $faqs_title ); ?>"
 							       class="regular-text">
 						</td>
 					</tr>
@@ -83,7 +96,7 @@ if ( !function_exists( 'baspa_faqs_admin_page_content' ) ) {
 				<textarea id="faqs_subtitle"
 				          name="faqs_subtitle"
 				          rows="3"
-				          class="large-text"><?php echo $_POST[ 'faqs_subtitle' ] ?? wp_kses_post( $faqs_subtitle ); ?></textarea>
+				          class="large-text"><?php echo esc_textarea( $faqs_subtitle ); ?></textarea>
 						</td>
 					</tr>
 					</tbody>

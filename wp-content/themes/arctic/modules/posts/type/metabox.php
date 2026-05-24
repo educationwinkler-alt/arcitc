@@ -89,8 +89,12 @@ if ( !function_exists( 'baspa_posts_type_metabox_save' ) ) {
 	 */
 	function baspa_posts_type_metabox_save( int $post_id, WP_Post $post ): void {
 
+		$post_value = static function ( string $key, string $default = '' ): string {
+			return isset( $_POST[ $key ] ) ? (string) wp_unslash( $_POST[ $key ] ) : $default;
+		};
+
 		// Verify nonce
-		if ( !isset( $_POST[ 'metabox_post_nonce' ] ) || !wp_verify_nonce( $_POST[ 'metabox_post_nonce' ], basename( __FILE__ ) ) ) {
+		if ( empty( $post_value( 'metabox_post_nonce' ) ) || !wp_verify_nonce( $post_value( 'metabox_post_nonce' ), basename( __FILE__ ) ) ) {
 			return;
 		}
 
@@ -111,10 +115,13 @@ if ( !function_exists( 'baspa_posts_type_metabox_save' ) ) {
 		 */
 		// Title
 		if ( isset( $_POST[ 'post_title_alter' ] ) ) {
-			update_post_meta( $post_id, 'post_title_alter', sanitize_text_field( $_POST[ 'post_title_alter' ] ) );
+			update_post_meta( $post_id, 'post_title_alter', sanitize_text_field( $post_value( 'post_title_alter' ) ) );
 		}
 		if ( isset( $_POST[ 'post_excerpt' ] ) ) {
-			wp_update_post( $post_id, 'post_excerpt', sanitize_textarea_field( $_POST[ 'post_excerpt' ] ) );
+			wp_update_post( array(
+				'ID'           => $post_id,
+				'post_excerpt' => sanitize_textarea_field( $post_value( 'post_excerpt' ) ),
+			), false, false );
 		}
 
 	}
