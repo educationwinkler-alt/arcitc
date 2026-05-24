@@ -15,6 +15,10 @@ if ( ! function_exists( 'forqy_form_recaptcha_badge_hide' ) ) {
 	 */
 	function forqy_form_recaptcha_badge_hide() {
 
+		if ( !apply_filters( 'forqy_form_recaptcha_hide_badge', false ) ) {
+			return;
+		}
+
 		echo "<style>.grecaptcha-badge { display: none; content-visibility: hidden; visibility: hidden; pointer-events: none; }</style>";
 
 	}

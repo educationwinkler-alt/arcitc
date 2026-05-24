@@ -119,6 +119,7 @@ Hotove veci:
 - AJAX vyhledavani uz nebere libovolne post typy/taxonomie z POSTu; hodnoty se sanitizuji a validuji proti registrovanym WordPress typum/taxonomiim. Endpoint ma nonce, lehky IP transient rate limit a limit 10 vysledku pro prispevky i termy.
 - Vlastni admin settings stranky modulu maji nonce, capability gate, `check_admin_referer()`, unslash/sanitizaci a escapovany vystup hodnot. Post metabox a term meta save handlery jsou stejne zpevnené proti slashovanym POST hodnotam.
 - SVG upload uz neni globalne povoleny jako v Baspa. Default je vypnuty; zapnout jde jen vedome konstantou/filtrem pro admina.
+- reCAPTCHA badge uz neni natvrdo schovany CSS jako v Baspa; skryti je mozne jen vedomym filtrem po vyreseni pravniho textu.
 - Smartsupp uz nema ve forku hardcoded Baspa klic. Chat/preconnect se vypise jen v `production` prostredi a jen pokud je nastaveny `arctic_smartsupp_key`.
 - Smoke test hlavnich cest neukazuje `Baspa`, `baspa.cz`, Smartsupp, tracking preconnecty, Ecomail URL, Google Fonts ani Google map embed.
 - `npm run visual:smoke` prochazi hlavni URL vcetne `Dalsi sortiment`, kontroluje zakazane stringy, zakazane externi browser requesty, horizontalni overflow na desktopu/mobilu a uklada desktop/mobile screenshoty Figma stranek, katalogu `Swimspa`/`Další sortiment` i detailu `Husky`, `Athabascan` a `Covana`.

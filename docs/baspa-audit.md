@@ -32,9 +32,10 @@ V `arctic-spas-2/wp-content/themes/arctic/` uz jsou opravené nejdulezitejsi fro
 - vlastni admin settings stranky modulu maji capability gate, nonce, `check_admin_referer()`, `wp_unslash()` pred sanitizaci a escapovany vystup hodnot,
 - post metabox a term meta save handlery nepouzivaji slashovane POST hodnoty a post excerpt se uklada korektnim `wp_update_post()` volanim bez rekurzivniho save hooku,
 - SVG upload uz neni globalne povoleny; defaultne je vypnuty a lze ho zapnout jen vedome konstantou/filtrem pro admina,
-- verejny AJAX search ma nonce, lehky IP transient rate limit a limit 10 vysledku pro prispevky i termy.
+- verejny AJAX search ma nonce, lehky IP transient rate limit a limit 10 vysledku pro prispevky i termy,
+- reCAPTCHA badge se uz neschovava natvrdo; skryti je mozne jen vedomym filtrem `forqy_form_recaptcha_hide_badge`.
 
-Zbyvajici technicky dluh pred produkci: zkontrolovat reCAPTCHA badge/legal text podle finalni cookie a pravni strategie.
+Zbyvajici technicky dluh pred produkci: pred produkci zkontrolovat finalni pravni texty u formulare podle zvolene cookie/consent strategie.
 
 ### Vysoke riziko
 
