@@ -121,3 +121,9 @@ Formularovy smoke test:
 - `npm run form:smoke`
 
 Test odesle lokalne kontaktni a servisni formular pres WordPress `admin-ajax.php`, overi uspech, ulozeni do `contact` CPT, metadata AJAX/local reCAPTCHA a po sobe testovaci zaznamy smaze.
+
+Redirect smoke test:
+
+- `npm run redirect:smoke`
+
+Test projde `docs/migration-map.csv`, overi 301 ze starych Arctic URL na lokalni nove URL/media soubory a hlida, ze zadny redirect nemiri na `baspa.cz` ani zive `arctic-spas.cz`.

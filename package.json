@@ -10,6 +10,7 @@
     "form:smoke": "node tools/form-smoke.js",
     "legacy:products": "node tools/extract-legacy-products.js",
     "migration:map": "node tools/build-migration-map.js",
+    "redirect:smoke": "node tools/redirect-smoke.js",
     "visual:smoke": "node tools/visual-smoke.js"
   },
   "devDependencies": {
