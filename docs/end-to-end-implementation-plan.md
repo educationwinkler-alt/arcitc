@@ -86,8 +86,8 @@ Hotove veci:
 - Produktove karty v kategorii pouzivaji Figma exporty `category-product-card-1/2/3.png`; stare Arctic produktove fotky zustavaji obsahova vyjimka pro detaily nebo galerie, ne UX karta kategorie.
 - Detail Timberwolf je hlavni Figma detail podle frame `DETAIL KONKRETNIHO PRODUKTU`; hero a produktova navigace sedi na souradnice frame, konfigurace sedi na `x=260/y=940`, karty na `y=1041/1283`, Figma konfigurator banner na `x=260/y=1608/w=1400/h=312`, barvy na `x=260/y=2022`, vyhody na `y=2866`, volitelna vybava na `y=4883`, realizace na `y=6027`, kontaktni CTA na `y=6552` a footer na `y=7035`.
 - Produktovy mini kontakt na Timberwolf detailu je nahrazen custom Figma komponentou: karta `x=1362/y=934/w=298/h=341`, kontaktni data `y=1018`, portret `1:50` na `x=1392/y=1115` a button `x=1392/y=1195`.
-- `Podpora` ma pracovni Figma pass a bude se dale rozsirovat podle Figma node/asset manifestu.
-- `Kontakt` ma pracovni Figma pass a map/showroom plocha pouziva Figma node export `1:1069`.
+- `Podpora` ma desktop Figma pass hornich sekci: heading `x=260/y=206`, tabs `x=260/y=394/w=1400/h=93`, FAQ `x=260/y=568`, 9 FAQ karet podle Figma rytmu a mini kontakt `x=1362/y=556/w=298/h=341` s portretem z node `1:50`.
+- `Kontakt` ma desktop Figma pass hornich sekci: heading `x=260/y=206`, kontakty `x=970`, CTA buttony `x=1424`, mapa/showroom z Figma node `1:1069` na `y=430/h=782`, karta `x=260/y=561/w=565/h=491` a pin `x=1226/y=786/w=42/h=42`.
 - Produktovy model ma konfigurace, barvy akrylu, sirsi typy produktu, taxonomie `product-kind` a `product-series`.
 - CPT `download` a shortcode `[arctic-downloads]` jsou implementovane.
 - Seed script zaklada homepage, menu, kontaktni data, kategorie a produkty. Figma pilot je Timberwolf; Lunar/Orion/Husky zustavaji obsahove produkty v katalogu.

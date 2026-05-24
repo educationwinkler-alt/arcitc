@@ -6,6 +6,8 @@
 
 get_header();
 get_template_part( 'templates/heading/default' );
+
+$support_avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
 ?>
 
 <main id="<?php echo sanitize_title( esc_attr_x( 'content', 'anchor', 'baspa' ) ); ?>"
@@ -57,6 +59,31 @@ get_template_part( 'templates/heading/default' );
 								'text'  => __( 'Údržba závisí na výbavě, četnosti používání a režimu filtrace. U Arctic Spas lze volit technologie, které péči výrazně zjednodušují.', 'baspa' ),
 								'tag'   => __( 'Provoz', 'baspa' ),
 							),
+							array(
+								'title' => __( 'Pomůžete s výběrem vhodné konfigurace?', 'baspa' ),
+								'text'  => __( 'Ano. Společně projdeme počet osob, umístění, izolaci, masážní trysky a volitelnou výbavu tak, aby model odpovídal reálnému používání.', 'baspa' ),
+								'tag'   => __( 'Obchodní', 'baspa' ),
+							),
+							array(
+								'title' => __( 'Lze si vířivku prohlédnout osobně?', 'baspa' ),
+								'text'  => __( 'Vybrané modely a technologie si můžete projít v showroomu v Moravanech u Brna. Návštěvu doporučujeme domluvit předem.', 'baspa' ),
+								'tag'   => __( 'Obchodní', 'baspa' ),
+							),
+							array(
+								'title' => __( 'Jak se řeší stavební připravenost?', 'baspa' ),
+								'text'  => __( 'Po výběru modelu připravíme podklady pro podkladovou desku, elektrický přívod, manipulační prostor a případné zapuštění.', 'baspa' ),
+								'tag'   => __( 'Stavební příprava', 'baspa' ),
+							),
+							array(
+								'title' => __( 'Umíte zajistit servis po instalaci?', 'baspa' ),
+								'text'  => __( 'Servisní požadavky řešíme přes kontaktní formulář nebo telefonicky. Pomůže model, rok pořízení a stručný popis problému.', 'baspa' ),
+								'tag'   => __( 'Servis', 'baspa' ),
+							),
+							array(
+								'title' => __( 'Jak rychle dostanu cenovou nabídku?', 'baspa' ),
+								'text'  => __( 'Po upřesnění modelu, konfigurace a montážních podmínek připravíme nezávaznou kalkulaci včetně navazující přípravy.', 'baspa' ),
+								'tag'   => __( 'Obchodní', 'baspa' ),
+							),
 						);
 
 						foreach ( $questions as $index => $question ) { ?>
@@ -83,8 +110,15 @@ get_template_part( 'templates/heading/default' );
 						<?php echo esc_html( get_theme_mod( 'baspa_phone', '+420 777 099 687' ) ); ?>
 					</a>
 					<small><?php echo esc_html__( 'Po - Pá 8:00-17:00 h', 'baspa' ); ?></small>
-					<strong><?php echo esc_html__( 'Lukáš Dušek', 'baspa' ); ?></strong>
-					<span><?php echo esc_html__( 'Bazénový specialista', 'baspa' ); ?></span>
+					<div class="f-support-help-card__person">
+						<span class="f-support-help-card__avatar" aria-hidden="true">
+							<img src="<?php echo esc_url( $support_avatar ); ?>" alt="" loading="lazy" decoding="async">
+						</span>
+						<div>
+							<strong><?php echo esc_html__( 'Lukáš Dušek', 'baspa' ); ?></strong>
+							<span><?php echo esc_html__( 'Bazénový specialista', 'baspa' ); ?></span>
+						</div>
+					</div>
 					<a class="f-button a-button a-button--outline" href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>">
 						<?php echo esc_html__( 'Napsat zprávu', 'baspa' ); ?>
 					</a>

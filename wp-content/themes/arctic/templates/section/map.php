@@ -36,6 +36,9 @@ $figma_map = get_posts( array(
 						'class' => 'f-local-map__image',
 					) ); ?>
 				<?php } ?>
+				<span class="f-local-map__label f-local-map__label--brno" aria-hidden="true">Brno</span>
+				<span class="f-local-map__label f-local-map__label--moravany" aria-hidden="true">Moravany</span>
+				<span class="f-local-map__pin" aria-hidden="true"></span>
 				<div class="f-local-map__card">
 					<h2><?php echo esc_html__( 'Kde nás najdete?', 'baspa' ); ?></h2>
 					<div class="f-local-map__grid">

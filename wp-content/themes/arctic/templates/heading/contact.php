@@ -49,6 +49,7 @@ $heading_class[] = get_post_meta( get_the_ID(), 'page_title', true ) == 0 ? 'f-h
 						get_template_part( 'templates/about/phone' );
 						get_template_part( 'templates/about/hours' );
 						?>
+						<small class="f-contact__note f-contact__note--hours"><?php echo esc_html__( 'Po - Pá 8:00-17:00 h', 'baspa' ); ?></small>
 					</div>
 					<div class="a-stack a-stack--align-start a-gap--0">
 						<?php
