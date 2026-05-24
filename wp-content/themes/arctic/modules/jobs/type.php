@@ -76,7 +76,7 @@ if ( !function_exists( 'baspa_jobs_type_content_default' ) ) {
 
 		if ( $post->post_type == 'job' ) {
 			$content = '<!-- wp:paragraph -->
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id es.</p>
+<p>Hledáme člověka, který chce pracovat s prémiovým wellness sortimentem Arctic Spas a umí být spolehlivým partnerem pro zákazníky od první konzultace až po předání hotové realizace.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:columns -->
@@ -87,23 +87,23 @@ if ( !function_exists( 'baspa_jobs_type_content_default' ) ) {
 
 <!-- wp:list -->
 <ul class="wp-block-list"><!-- wp:list-item -->
-<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+<li>spolehlivost, samostatnost a profesionální vystupování</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+<li>chuť učit se produktové detaily vířivek, swimspa a dalšího sortimentu</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li>Ut enim ad minim veniam, quis nostrud exercitation ullamco</li>
+<li>pečlivou komunikaci se zákazníky i interním týmem</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li>laboris nisi ut aliquip ex ea commodo consequat.</li>
+<li>řidičský průkaz skupiny B a ochotu jezdit za realizacemi</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li>Duis aute irure dolor in reprehenderit in voluptate velit e</li>
+<li>technické nebo obchodní zkušenosti jsou výhodou</li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list --></div>
 <!-- /wp:column -->
@@ -115,23 +115,23 @@ if ( !function_exists( 'baspa_jobs_type_content_default' ) ) {
 
 <!-- wp:list -->
 <ul class="wp-block-list"><!-- wp:list-item -->
-<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+<li>zázemí showroomu Arctic Spas v Moravanech u Brna</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+<li>práci s kvalitní značkou a jasným produktovým portfoliem</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li>Ut enim ad minim veniam, quis nostrud exercitation ullamco</li>
+<li>zaškolení v produktech, montážích a péči o zákazníky</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li>laboris nisi ut aliquip ex ea commodo consequat.</li>
+<li>dlouhodobou spolupráci v menším specializovaném týmu</li>
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
-<li>Duis aute irure dolor in reprehenderit in voluptate velit e</li>
+<li>férové podmínky podle zkušeností a domluvené role</li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list --></div>
 <!-- /wp:column --></div>
@@ -139,7 +139,7 @@ if ( !function_exists( 'baspa_jobs_type_content_default' ) ) {
 
 <!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-outline"} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="mailto:info@arctic-spas.cz">Kontakujte nás</a></div>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="mailto:lukas.dusek@arctic-spas.cz">Ozvěte se nám</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->';
 		}
