@@ -294,6 +294,7 @@ update_term_meta( $category_swimspa, 'category_heading_cta_text', 'Vybrat bazén
 update_term_meta( $category_covers, 'category_image', $covana_main );
 update_term_meta( $category_covers, 'category_description_short', 'Automaticke kryty, doplnky a navazujici sortiment pro pohodlnejsi provoz virivky.' );
 update_term_meta( $category_covers, 'category_heading_cta_text', 'Prohlédnout sortiment' );
+update_term_meta( $category_covers, 'category_type', 'accessories' );
 
 $reference_location_kv = arctic_seed_term( 'reference-category', 'Karlovy Vary', 'karlovy-vary' );
 $reference_year_2025   = arctic_seed_term( 'reference-category', '2025', '2025' );
@@ -436,42 +437,42 @@ $other_sortiment_products = array(
 	array(
 		'original_url' => 'https://www.arctic-spas.cz/sauny.php',
 		'slug'         => 'sauny',
-		'name'         => 'Luxusni sauny',
+		'name'         => 'Luxusní sauny',
 		'image'        => $sauna_main,
 		'kind'         => $kind_saunas,
-		'description'  => 'Luxusni sauny na miru, finske sauny a infrakabiny jako navazujici wellness sortiment.',
+		'description'  => 'Luxusní sauny na míru, finské sauny a infrakabiny jako navazující wellness sortiment.',
 	),
 	array(
 		'original_url' => 'https://www.arctic-spas.cz/koupaci-sudy-kirami.php',
 		'slug'         => 'koupaci-sudy-kirami',
-		'name'         => 'Koupaci sudy Kirami',
+		'name'         => 'Koupací sudy Kirami',
 		'image'        => $kirami_main,
 		'kind'         => $kind_tubs,
-		'description'  => 'Venkovni koupaci sudy od finskeho vyrobce Kirami pro relaxaci s ohrevem drevem.',
+		'description'  => 'Venkovní koupací sudy od finského výrobce Kirami pro relaxaci s ohřevem dřevem.',
 	),
 	array(
 		'original_url' => 'https://www.arctic-spas.cz/prislusenstvi-doplnky.php',
 		'slug'         => 'prislusenstvi-a-doplnky',
-		'name'         => 'Prislusenstvi a doplnky',
+		'name'         => 'Příslušenství a doplňky',
 		'image'        => $accessory_main,
 		'kind'         => $kind_accessories,
-		'description'  => 'Prakticke prislusenstvi, schody, kryty, cedrove doplnky a vybaveni pro pohodlnejsi pouzivani virivky.',
+		'description'  => 'Praktické příslušenství, schody, kryty, cedrové doplňky a vybavení pro pohodlnější používání vířivky.',
 	),
 	array(
 		'original_url' => 'https://www.nabytek-ikono.cz/',
 		'slug'         => 'ikono-nabytek',
-		'name'         => 'IKONO nabytek',
+		'name'         => 'IKONO nábytek',
 		'image'        => $ikono_main,
 		'kind'         => $kind_furniture,
-		'description'  => 'Venkovni nabytek IKONO jako doplnek showroomu a zahradniho wellness prostoru.',
+		'description'  => 'Venkovní nábytek IKONO jako doplněk showroomu a zahradního wellness prostoru.',
 	),
 	array(
 		'original_url' => 'https://www.arctic-spas.cz/ochlazovaci-bazenek.php',
 		'slug'         => 'ochlazovaci-bazenek',
-		'name'         => 'Ochlazovaci bazenek',
+		'name'         => 'Ochlazovací bazének',
 		'image'        => $cold_plunge_main,
 		'kind'         => $kind_cold_plunge,
-		'description'  => 'Ochlazovaci bazenek pro kontrastni terapii a doplneni domaciho wellness.',
+		'description'  => 'Ochlazovací bazének pro kontrastní terapii a doplnění domácího wellness.',
 	),
 );
 

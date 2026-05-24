@@ -87,6 +87,7 @@ Hotove veci:
 - Katalog virivek ma desktop Figma pass podle frame `KATEGORIE` az po footer: header, top kontakt, breadcrumb, hero, promo banner, Vlastnosti/Zaruka, series switcher, serie Custom/Classic/Core, produktove karty z Figma assetu, konfigurator, showroom, prubeh, reference, kontaktni CTA a footer sedi na Figma souradnice.
 - Katalogy `Celoroční bazény` a `Další sortiment` pouzivaji stejnou Figma kategorii, ale hero CTA text je uz rizeny pres term meta: `Vybrat bazén` a `Prohlédnout sortiment`, aby se nepropsal nesmyslny text `Vybrat vířivku` mimo kategorii virivek.
 - `Celoroční bazény` maji hero obraz z Figma assetu `hp-category-celorocni-bazeny.png`, ne obecny HP/virivkovy hero. Stare Arctic fotky zustavaji jen pro produktove karty/detail tam, kde Figma nema konkretni modelovy asset.
+- `Další sortiment` je v seedu oznacen jako accessory kategorie, proto frontend zobrazuje vsech 6 polozek sirsiho sortimentu (`Covana`, sauny, koupaci sudy, prislusenstvi, IKONO nabytek, ochlazovaci bazenek) misto pouhe serie Covana.
 - Produktove karty v kategorii pouzivaji Figma exporty `category-product-card-1/2/3.png`; stare Arctic produktove fotky zustavaji obsahova vyjimka pro detaily nebo galerie, ne UX karta kategorie.
 - Detail Timberwolf je hlavni Figma detail podle frame `DETAIL KONKRETNIHO PRODUKTU`; hero a produktova navigace sedi na souradnice frame, konfigurace sedi na `x=260/y=940`, karty na `y=1041/1283`, Figma konfigurator banner na `x=260/y=1608/w=1400/h=312`, barvy na `x=260/y=2022`, vyhody na `y=2866`, volitelna vybava na `y=4883`, realizace na `y=6027`, kontaktni CTA na `y=6552` a footer na `y=7035`.
 - Produktovy mini kontakt na Timberwolf detailu je nahrazen custom Figma komponentou: karta `x=1362/y=934/w=298/h=341`, kontaktni data `y=1018`, portret `1:50` na `x=1392/y=1115` a button `x=1392/y=1195`.
@@ -103,7 +104,7 @@ Hotove veci:
 - Smoke test hlavnich cest neukazuje `Baspa`, `baspa.cz`, Smartsupp, tracking preconnecty, Ecomail URL, Google Fonts ani Google map embed.
 - `npm run visual:smoke` prochazi hlavni URL vcetne `Dalsi sortiment`, kontroluje zakazane stringy, zakazane externi browser requesty, horizontalni overflow na desktopu/mobilu a uklada desktop/mobile screenshoty Figma stranek, katalogu `Swimspa`/`Další sortiment` i detailu `Husky`.
 - Defaultni WP obsah `Hello world!` a `Sample Page` seed odstranuje, aby se nepropsal do novinek ani navigace.
-- Posledni overeni: PHP lint upravenych sablon prosel, seed se propsal do lokalniho WordPressu, swimspa hero pouziva Figma kategoriovy asset, dlouhe hero CTA u `Další sortiment` nepretyka a `npm run visual:smoke` prosel bez externich requestu.
+- Posledni overeni: PHP lint upravenych sablon prosel, seed se propsal do lokalniho WordPressu, swimspa hero pouziva Figma kategoriovy asset, `Další sortiment` zobrazuje 6 polozek, dlouhe hero CTA nepretyka a `npm run visual:smoke` prosel bez externich requestu.
 - Aktualni kontrolni screenshoty jsou v `docs/screenshots/`, vcetne `home-desktop-playwright.png`, `category-swimspa-desktop-playwright.png`, `category-dalsi-sortiment-desktop-playwright.png`, `product-timberwolf-desktop-playwright.png`, `product-husky-desktop-playwright.png`, `product-husky-mobile-playwright.png` a dalsich hlavnich stran.
 
 ## Souvisly postup realizace
