@@ -61,6 +61,10 @@ Lokalni bezpecnost:
 - V local rezimu se nenacitaji Google/Fontshare fonty, tracking preconnecty, Smartsupp ani Google mapa.
 - WP-CLI i webovy kontejner jsou nastavene na `WP_ENVIRONMENT_TYPE=local`.
 
+Kontrola local safety:
+
+- `npm run local:safety`
+
 Admin:
 
 - URL: `http://localhost:8090/wp-admin/`
