@@ -23,6 +23,11 @@ if ( !function_exists( 'forqy_search_processing' ) ) {
 		$keyword    = sanitize_text_field( $post_value( 'keyword' ) );
 		$types      = array_filter( array_map( 'sanitize_key', explode( ',', $post_value( 'post_type', 'post' ) ) ), 'post_type_exists' );
 		$taxonomies = array_filter( array_map( 'sanitize_key', explode( ',', $post_value( 'post_taxonomy', 'category' ) ) ), 'taxonomy_exists' );
+		$nonce      = $post_value( 'search_nonce' );
+
+		if ( empty( $nonce ) || !wp_verify_nonce( $nonce, 'forqy_search_processing' ) ) {
+			wp_die( '', '', array( 'response' => 403 ) );
+		}
 
 		if ( empty( $keyword ) ) {
 			wp_die();
@@ -32,6 +37,16 @@ if ( !function_exists( 'forqy_search_processing' ) ) {
 			$types = array( 'post' );
 		}
 
+		$remote_addr = isset( $_SERVER[ 'REMOTE_ADDR' ] ) ? sanitize_text_field( wp_unslash( $_SERVER[ 'REMOTE_ADDR' ] ) ) : 'unknown';
+		$rate_key    = 'forqy_search_' . md5( $remote_addr );
+		$rate_count  = (int) get_transient( $rate_key );
+
+		if ( $rate_count >= 60 ) {
+			wp_die( '', '', array( 'response' => 429 ) );
+		}
+
+		set_transient( $rate_key, $rate_count + 1, MINUTE_IN_SECONDS );
+
 		/**
 		 * Posts
 		 */
@@ -39,7 +54,7 @@ if ( !function_exists( 'forqy_search_processing' ) ) {
 			'post_type'      => $types,
 			'post_status'    => 'publish',
 			's'              => $keyword,
-			'posts_per_page' => -1,
+			'posts_per_page' => 10,
 		) );
 
 		if ( $query->have_posts() ) { ?>
@@ -72,6 +87,7 @@ if ( !function_exists( 'forqy_search_processing' ) ) {
 				'fields'     => 'all',
 				'orderby'    => 'menu_order',
 				'order'      => 'ASC',
+				'number'     => 10,
 			);
 
 			if ( is_array( $taxonomies ) ) {

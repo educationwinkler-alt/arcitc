@@ -13,6 +13,7 @@ $search_id = get_query_var( 'baspa_search_id' ) ?: 'search';
 
 	<input type="hidden" name="post_type" value="post,page,product">
 	<input type="hidden" name="post_taxonomy" value="category,product-category">
+	<input type="hidden" name="search_nonce" value="<?php echo esc_attr( wp_create_nonce( 'forqy_search_processing' ) ); ?>">
 
 	<div class="f-search__field f-field--search f-field a-field">
 		<?php if ( function_exists( 'forqy_get_icon' ) ) { ?>

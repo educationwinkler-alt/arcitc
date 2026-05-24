@@ -116,7 +116,7 @@ Hotove veci:
 - Produktovy obsahovy audit 2026-05-24: prikaz `npm run legacy:products` extrahuje z `../Arctic-spas/www` obsah 24 dostupnych produktovych stranek do `wp-content/uploads/import/legacy-content/product-data.json`. Seed z nej doplnuje popisy a zakladni parametry produktu tam, kde Figma nema obsah a kde predtim zustaval pracovni placeholder.
 - Kontaktni formular ma local reCAPTCHA bypass, neposila maily v localu, nema hardcoded Bcc a jeden POST se zpracuje jen jednou.
 - Kontaktni formularovy pipeline je po Baspa auditu zpevneny: hodnoty z POSTu jdou pres `wp_unslash()` + sanitizaci, AJAX handler uz nebere cestu sablony z POSTu, Ecomail pouziva `wp_remote_post()` misto cURL a debug odpovedi se nevypisuji do frontendu.
-- AJAX vyhledavani uz nebere libovolne post typy/taxonomie z POSTu; hodnoty se sanitizuji a validuji proti registrovanym WordPress typum/taxonomiim.
+- AJAX vyhledavani uz nebere libovolne post typy/taxonomie z POSTu; hodnoty se sanitizuji a validuji proti registrovanym WordPress typum/taxonomiim. Endpoint ma nonce, lehky IP transient rate limit a limit 10 vysledku pro prispevky i termy.
 - Vlastni admin settings stranky modulu maji nonce, capability gate, `check_admin_referer()`, unslash/sanitizaci a escapovany vystup hodnot. Post metabox a term meta save handlery jsou stejne zpevnené proti slashovanym POST hodnotam.
 - SVG upload uz neni globalne povoleny jako v Baspa. Default je vypnuty; zapnout jde jen vedome konstantou/filtrem pro admina.
 - Smartsupp uz nema ve forku hardcoded Baspa klic. Chat/preconnect se vypise jen v `production` prostredi a jen pokud je nastaveny `arctic_smartsupp_key`.
