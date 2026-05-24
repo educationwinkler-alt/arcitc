@@ -255,6 +255,51 @@ body {
 .template--homepage .f-slide__background:before {
   background-image: linear-gradient(180deg, rgba(7, 24, 38, 0.5) 0%, rgba(7, 24, 38, 0.14) 18%, rgba(7, 24, 38, 0) 38%), linear-gradient(90deg, rgba(7, 24, 38, 0.74) 0%, rgba(7, 24, 38, 0.34) 36%, rgba(7, 24, 38, 0.05) 68%), linear-gradient(0deg, rgba(7, 24, 38, 0.22), rgba(7, 24, 38, 0.08));
 }
+.f-downloads--support-figma {
+  display: grid;
+  gap: 1rem;
+  width: min(100%, 1045px);
+}
+.f-download-group,
+.f-download-card {
+  background: var(--arctic-color-snow);
+  border-radius: 1.5rem;
+  box-shadow: var(--arctic-shadow-soft);
+}
+.f-download-group__header,
+.f-download-group--closed,
+.f-download-card {
+  display: grid;
+  align-items: center;
+}
+.f-download-group__icon {
+  display: grid;
+  place-items: center;
+  width: 33px;
+  height: 33px;
+  color: var(--arctic-color-snow);
+  font-weight: 800;
+  background: var(--arctic-color-red);
+  border-radius: 999px;
+}
+.f-download-group--open .f-download-group__icon {
+  background: var(--arctic-color-ink);
+}
+.f-download-group h3,
+.f-download-card h4,
+.f-download-card p {
+  margin: 0;
+}
+.f-download-group__tag {
+  justify-self: end;
+  color: var(--arctic-color-steel);
+  border: 1px solid rgba(7, 24, 38, 0.28);
+  border-radius: 999px;
+}
+.f-download-card__thumb {
+  display: block;
+  object-fit: cover;
+}
 @media (min-width: 1024px) {
   .template--homepage .f-slide--1 .f-slide__background {
     background-image: url("/wp-content/uploads/import/figma/hp-hero-arctic-spas-07.jpg");
@@ -5454,7 +5499,10 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     padding: 81px 0 84px;
   }
   .page-template-template-support .f-section--support-downloads {
-    padding: 0 0 84px;
+    padding: 0 0 96px;
+  }
+  .page-template-template-support .f-section--support-form {
+    padding: 0;
   }
   .page-template-template-support .f-support-layout {
     display: grid;
@@ -5473,6 +5521,7 @@ body:not(.template--homepage) .f-header__container > .a-flex {
   .page-template-template-support .f-chip-list {
     gap: 16px;
     height: 37px;
+    margin-top: 0;
     margin-bottom: 45px;
   }
   .page-template-template-support .f-chip-list span {
@@ -5619,6 +5668,97 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     font-size: 16px;
     line-height: 21px;
     white-space: nowrap;
+  }
+  .page-template-template-support .f-downloads--support-figma {
+    width: 1045px;
+    gap: 20px;
+  }
+  .page-template-template-support .f-download-group {
+    width: 1045px;
+    border-radius: 24px;
+  }
+  .page-template-template-support .f-download-group--open {
+    min-height: 503px;
+    padding: 32px 27px 36px 31px;
+  }
+  .page-template-template-support .f-download-group__header,
+  .page-template-template-support .f-download-group--closed {
+    grid-template-columns: 33px minmax(0, 1fr) max-content;
+    gap: 20px;
+  }
+  .page-template-template-support .f-download-group__header {
+    height: 33px;
+    margin-bottom: 28px;
+  }
+  .page-template-template-support .f-download-group--closed {
+    height: 96px;
+    padding: 32px 27px 31px 31px;
+  }
+  .page-template-template-support .f-download-group h3 {
+    height: 32px;
+    font-size: 18px;
+    line-height: 32px;
+  }
+  .page-template-template-support .f-download-group__tag {
+    min-width: 133px;
+    height: 32px;
+    padding: 5px 16px;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .page-template-template-support .f-download-group__items {
+    display: grid;
+    gap: 10px;
+    padding-left: 53px;
+  }
+  .page-template-template-support .f-download-card {
+    grid-template-columns: 56px minmax(0, 1fr) 145px;
+    gap: 23px;
+    width: 934px;
+    height: 118px;
+    padding: 20px 37px 20px 34px;
+    border-radius: 24px;
+    box-shadow: none;
+  }
+  .page-template-template-support .f-download-card__thumb {
+    width: 56px;
+    height: 78px;
+  }
+  .page-template-template-support .f-download-card h4 {
+    height: 32px;
+    font-size: 18px;
+    line-height: 32px;
+  }
+  .page-template-template-support .f-download-card p {
+    width: 359px;
+    margin-top: 3px;
+    color: var(--arctic-color-steel);
+    font-size: 14px;
+    line-height: 25px;
+  }
+  .page-template-template-support .f-download-card__button {
+    position: relative;
+    justify-self: end;
+    width: 145px;
+    height: 50px;
+    min-height: 50px;
+    padding: 0 20px 0 54px;
+    color: var(--arctic-color-red);
+    border-color: var(--arctic-color-red);
+    font-size: 16px;
+    line-height: 21px;
+  }
+  .page-template-template-support .f-download-card__button:before {
+    content: "";
+    position: absolute;
+    top: 13px;
+    left: 20px;
+    width: 24px;
+    height: 24px;
+    background: var(--arctic-color-red);
+    mask: url("../../vendor/forqys/icon/svg/arrow-down--small.svg") center / contain no-repeat;
   }
   .page-template-template-contact .f-section--map {
     height: 782px;
