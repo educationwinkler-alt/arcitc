@@ -97,6 +97,10 @@ Watch rezim:
 
 - `npm run css:watch`
 
+Figma audit HP/header/mobile top:
+
+- `npm run figma:audit`
+
 Vizualni smoke test hlavnich cest:
 
 - `npm run visual:smoke`

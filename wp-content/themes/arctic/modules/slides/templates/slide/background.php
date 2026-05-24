@@ -7,6 +7,8 @@
 // Background
 $background_class = array( 'f-slide__background', 'a-image--cover' );
 $background_args  = array();
+$thumbnail_id     = get_post_thumbnail_id();
+$use_figma_hero   = is_front_page() && 'home-hero-arctic' === get_post_meta( get_the_ID(), '_arctic_seed_key', true );
 if ( isset( $args[ 'slide_count' ] ) && $args[ 'slide_count' ] == 1 ) {
 	$background_args = array(
 		'data-slide'    => $args[ 'slide_count' ],
@@ -20,9 +22,20 @@ if ( has_post_thumbnail() ) { ?>
 
 	<figure <?php ( !function_exists( 'forqy_class' ) ) ?: forqy_class( $background_class ); ?>>
 		<?php
-		add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
-		the_post_thumbnail( get_template() . '-huge', $background_args );
-		remove_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
+		if ( $use_figma_hero ) {
+			$hero_alt = trim( (string) get_post_meta( $thumbnail_id, '_wp_attachment_image_alt', true ) );
+			?>
+			<img width="1920" height="795"
+			     src="<?php echo esc_url( content_url( 'uploads/import/figma/hp-hero-arctic-spas-07.jpg' ) ); ?>"
+			     alt="<?php echo esc_attr( $hero_alt ?: get_the_title( $thumbnail_id ) ); ?>"
+			     data-slide="<?php echo isset( $args[ 'slide_count' ] ) ? esc_attr( $args[ 'slide_count' ] ) : '1'; ?>"
+			     fetchpriority="high" loading="eager" decoding="async">
+			<?php
+		} else {
+			add_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
+			the_post_thumbnail( get_template() . '-huge', $background_args );
+			remove_filter( 'wp_calculate_image_srcset_meta', '__return_null' );
+		}
 		?>
 
 		<?php if ( get_the_post_thumbnail_caption() ) { ?>
