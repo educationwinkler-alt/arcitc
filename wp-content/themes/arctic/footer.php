@@ -32,10 +32,13 @@ do_action( 'baspa_footer' );
 wp_footer();
 ?>
 
-<?php if ( function_exists( 'wp_get_environment_type' ) && 'local' !== wp_get_environment_type() ) { ?>
+<?php
+$smartsupp_key = trim( (string) get_theme_mod( 'arctic_smartsupp_key', '' ) );
+if ( function_exists( 'wp_get_environment_type' ) && 'production' === wp_get_environment_type() && '' !== $smartsupp_key ) {
+	?>
 	<script defer>
 	    var _smartsupp = _smartsupp || {};
-	    _smartsupp.key = '8bb1ce83465608fcc3a4e6a22ac74583b3508b1d';
+	    _smartsupp.key = <?php echo wp_json_encode( $smartsupp_key ); ?>;
 	    window.smartsupp || (function (d) {
 	        var s, c, o = smartsupp = function () {
 	            o._.push(arguments)

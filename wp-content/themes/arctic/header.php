@@ -17,11 +17,10 @@
 	do_action( 'forqy_head_pre' );
 	?>
 
-	<?php if ( function_exists( 'wp_get_environment_type' ) && 'local' !== wp_get_environment_type() ) { ?>
-		<link rel='preconnect' href='https://connect.facebook.net'>
-		<link rel='preconnect' href='https://c.seznam.cz'>
-		<link rel='preconnect' href='https://www.clarity.ms'>
-		<link rel='preconnect' href='https://static.hotjar.com'>
+	<?php
+	$smartsupp_key = trim( (string) get_theme_mod( 'arctic_smartsupp_key', '' ) );
+	if ( function_exists( 'wp_get_environment_type' ) && 'production' === wp_get_environment_type() && '' !== $smartsupp_key ) {
+		?>
 		<link rel='preconnect' href='https://www.smartsuppchat.com'>
 	<?php } ?>
 

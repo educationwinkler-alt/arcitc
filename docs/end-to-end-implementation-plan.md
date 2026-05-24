@@ -103,10 +103,11 @@ Hotove veci:
 - Redirect MU plugin resi aktivni produkty, sirsi sortiment, Dreammaker, stare Core modely a hlavni review URL z crawlu.
 - Stare PDF URL se dynamicky presmeruji na importovany media soubor podle `download_original_url`; chybejici PDF padaji na `/ke-stazeni/`.
 - Kontaktni formular ma local reCAPTCHA bypass, neposila maily v localu, nema hardcoded Bcc a jeden POST se zpracuje jen jednou.
+- Smartsupp uz nema ve forku hardcoded Baspa klic. Chat/preconnect se vypise jen v `production` prostredi a jen pokud je nastaveny `arctic_smartsupp_key`.
 - Smoke test hlavnich cest neukazuje `Baspa`, `baspa.cz`, Smartsupp, tracking preconnecty, Ecomail URL, Google Fonts ani Google map embed.
 - `npm run visual:smoke` prochazi hlavni URL vcetne `Dalsi sortiment`, kontroluje zakazane stringy, zakazane externi browser requesty, horizontalni overflow na desktopu/mobilu a uklada desktop/mobile screenshoty Figma stranek, katalogu `Swimspa`/`Další sortiment` i detailu `Husky`, `Athabascan` a `Covana`.
 - Defaultni WP obsah `Hello world!` a `Sample Page` seed odstranuje, aby se nepropsal do novinek ani navigace.
-- Posledni overeni: PHP lint upravenych sablon prosel, seed se propsal do lokalniho WordPressu, swimspa hero pouziva Figma kategoriovy asset, `Další sortiment` zobrazuje 6 polozek, swimspa/Covana detaily nemaji falesny virivkovy nadpis ani irelevantni sekce a `npm run visual:smoke` prosel bez externich requestu.
+- Posledni overeni: PHP lint upravenych sablon prosel, seed se propsal do lokalniho WordPressu, swimspa hero pouziva Figma kategoriovy asset, `Další sortiment` zobrazuje 6 polozek, swimspa/Covana detaily nemaji falesny virivkovy nadpis ani irelevantni sekce, Smartsupp nema hardcoded Baspa klic a `npm run visual:smoke` prosel bez externich requestu.
 - Aktualni kontrolni screenshoty jsou v `docs/screenshots/`, vcetne `home-desktop-playwright.png`, `category-swimspa-desktop-playwright.png`, `category-dalsi-sortiment-desktop-playwright.png`, `product-timberwolf-desktop-playwright.png`, `product-husky-desktop-playwright.png`, `product-husky-mobile-playwright.png` a dalsich hlavnich stran.
 
 ## Souvisly postup realizace
