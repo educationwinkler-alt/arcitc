@@ -4,6 +4,8 @@
  * Search Form
  */
 
+$search_id = get_query_var( 'baspa_search_id' ) ?: 'search';
+
 ?>
 
 <form role="search" method="get" class="f-search js-search" action="<?php echo esc_url( home_url( '/' ) ); ?>"
@@ -19,16 +21,16 @@
 			</div>
 		<?php } ?>
 
-		<label for="search" class="f-label a-label screen-reader-text">
-			<?php echo esc_html_x( 'Search', 'label', 'baspa' ); ?>
+		<label for="<?php echo esc_attr( $search_id ); ?>" class="f-label a-label screen-reader-text">
+			<?php echo esc_html_x( 'Vyhledat', 'label', 'baspa' ); ?>
 		</label>
 
-		<input type="search" id="search" name="s" class="f-search__input f-input a-input"
-		       placeholder="<?php echo esc_attr_x( 'Search', 'placeholder', 'baspa' ); ?> ..."
+		<input type="search" id="<?php echo esc_attr( $search_id ); ?>" name="s" class="f-search__input f-input a-input"
+		       placeholder="<?php echo esc_attr_x( 'Zadejte hledaný výraz', 'placeholder', 'baspa' ); ?>"
 		       value="<?php echo get_search_query(); ?>" required>
 
 		<button type="submit" class="f-search__button f-button a-button a-button--outline">
-			<?php echo esc_html_x( 'Search', 'submit button', 'baspa' ); ?>
+			<?php echo esc_html_x( 'Vyhledat', 'submit button', 'baspa' ); ?>
 		</button>
 	</div>
 
