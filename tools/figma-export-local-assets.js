@@ -5,6 +5,7 @@ const ROOT = path.resolve(__dirname, '..');
 const RAW_PATHS = [
   path.join(ROOT, 'docs', 'figma-grafika-nodes.raw.json'),
   path.join(ROOT, 'docs', 'grafika-missing-pages.raw.json'),
+  path.join(ROOT, 'docs', 'grafika-remaining-pages.raw.json'),
 ];
 const LOCAL_IMAGES_DIR = path.join(ROOT, 'assets-source', 'figma', 'local-grafika', 'images');
 const OUT_DIR = path.join(ROOT, 'assets-source', 'figma', 'export', 'graphics');
@@ -55,6 +56,11 @@ const ASSETS = [
   { id: '1:716', name: 'certificate-tuv-1' },
   { id: '1:717', name: 'certificate-tuv-2' },
   { id: '1:718', name: 'certificate-tuv-3' },
+  { id: '1:446', name: 'showroom-hero-bazeny' },
+  { id: '1:987', name: 'about-team-vladimir' },
+  { id: '1:1003', name: 'about-team-lukas' },
+  { id: '1:1004', name: 'about-team-helena' },
+  { id: '1:985', name: 'about-team-service' },
 ];
 
 function walk(node, callback) {

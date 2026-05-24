@@ -37,6 +37,9 @@ Poznámka k auditu 2026-05-24: HP hero má ve Figma grafice jeden skutečný obr
 | Záruka | `124:1041` | Záruční přehled, tabulka záruk, CTA, footer |
 | Kolik stojí údržba | `124:1161` | Obsahová stránka provozních nákladů, CTA, footer |
 | Detail vlastnosti FreeHeat | `124:1262` | Hero, diagram, články, související vlastnosti, CTA, footer |
+| O nás | `1:945` | Figma profil firmy, tým, kariéra, CTA, footer |
+| Reference | `1:1127` | Figma 3x3 reference grid, CTA, footer |
+| Servis | `1:1426` | Figma servisní formulář, ceník servisních služeb, CTA, footer |
 
 ## Povinné grafické assety z Figmy
 
@@ -85,6 +88,11 @@ Poznámka k auditu 2026-05-24: HP hero má ve Figma grafice jeden skutečný obr
 | Certifikát TUV 1 | `1:716` | Figma imageRef | `graphics/certificate-tuv-1.png` | stránka Certifikáty |
 | Certifikát TUV 2 | `1:717` | Figma imageRef | `graphics/certificate-tuv-2.png` | stránka Certifikáty |
 | Certifikát TUV 3 | `1:718` | Figma imageRef | `graphics/certificate-tuv-3.png` | stránka Certifikáty |
+| Showroom hero | `1:446` | 1920 x 801 | `graphics/showroom-hero-bazeny.jpg` | Figma showroom/O nás obsahový obraz |
+| Tým Vladimír | `1:987` | 336 x 335 | `graphics/about-team-vladimir.png` | stránka O nás |
+| Tým Lukáš | `1:1003` | 336 x 335 | `graphics/about-team-lukas.png` | stránka O nás |
+| Tým Helena | `1:1004` | 336 x 335 | `graphics/about-team-helena.png` | stránka O nás |
+| Tým servis | `1:985` | 335 x 335 | `graphics/about-team-service.png` | stránka O nás |
 | Mobile logo | `1:1977` | 86 x 48 | `graphics/mobile-logo-arctic-spas.svg` | kontrola mobilního headeru |
 | Mobile hero | `1:1974` | 1343 x 556 | `graphics/mobile-hp-hero.jpg` | mobilní hero reference |
 | Mobile karta vířivky | `1:2000` | 335 x 221 | `graphics/mobile-category-virivky.jpg` | mobilní karta směru |

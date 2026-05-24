@@ -57,7 +57,7 @@ $items      = array(
 		'id'          => 'servis',
 		'title'       => 'Servis',
 		'description' => 'Záruční i pozáruční servis, zazimování a servisní požadavky.',
-		'url'         => home_url( '/podpora/#servis' ),
+		'url'         => home_url( '/servis/' ),
 	),
 	array(
 		'id'          => 'kontakt',

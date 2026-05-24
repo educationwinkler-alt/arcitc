@@ -113,6 +113,16 @@ function arctic_seed_set_multi_meta( int $post_id, string $key, array $values ):
 
 function arctic_seed_page( string $slug, string $title, string $content, string $template = '' ): int {
 	$page = get_page_by_path( $slug );
+	if ( !$page ) {
+		$pages = get_posts( array(
+			'post_type'      => 'page',
+			'post_status'    => array( 'publish', 'draft', 'private' ),
+			'posts_per_page' => 1,
+			'name'           => $slug,
+		) );
+		$page  = !empty( $pages ) ? $pages[0] : null;
+	}
+
 	$args = array(
 		'post_type'    => 'page',
 		'post_status'  => 'publish',
@@ -949,6 +959,14 @@ $services_id = arctic_seed_page(
 );
 update_post_meta( $services_id, 'page_description_text', 'K prémiovému sortimentu patří prvotřídní služby. Poskytneme vám mnohem víc, než je vůbec schopna nabídnout většina konkurence, mnohé naše služby přitom můžete využít nezávazně nebo zdarma v rámci ceny vířivky.' );
 
+$service_request_id = arctic_seed_page(
+	'servis',
+	'Servis vířivek Arctic Spas',
+	'',
+	'template-service-request.php'
+);
+update_post_meta( $service_request_id, 'page_description_text', 'Okamžikem zprovoznění vaší masážní vířivky nebo celoročního bazénu naše péče o vaše pohodlí nekončí. Kromě záručního a pozáručního servisu můžeme nabídnout telefonické poradenství, asistenci při výměně vody nebo zazimování.' );
+
 $certificates_id = arctic_seed_page(
 	'certifikaty',
 	'Certifikáty',
@@ -968,8 +986,10 @@ update_post_meta( $maintenance_id, 'page_description_text', 'Jedním z nejdůle�
 $about_id = arctic_seed_page(
 	'o-nas',
 	'O nás',
-	'<!-- wp:paragraph --><p>Arctic Spas CZ je specializovaná produktová prezentace pro kanadské vířivky, celoroční bazény a navazující wellness sortiment.</p><!-- /wp:paragraph -->'
+	'',
+	'template-about.php'
 );
+update_post_meta( $about_id, 'page_description_text', 'Pořízení bazénu nebo vířivky je investice, která by měla být pečlivě zvážena. Při výběru značky i dodavatele je rozumné seznámit se s profilem výrobce a prodejce.' );
 
 $downloads_page_id = arctic_seed_page(
 	'ke-stazeni',
@@ -1033,6 +1053,9 @@ arctic_seed_menu( 'Arctic paticka', 'navigation_footer', array(
 	array( 'title' => 'Vlastnosti vířivek', 'url' => get_permalink( $features_id ) ),
 	array( 'title' => 'Další informace', 'url' => get_permalink( $info_id ) ),
 	array( 'title' => 'Podpora', 'url' => get_permalink( $support_id ) ),
+	array( 'title' => 'Servis', 'url' => get_permalink( $service_request_id ) ),
+	array( 'title' => 'Reference', 'url' => get_permalink( $references_page_id ) ),
+	array( 'title' => 'O nás', 'url' => get_permalink( $about_id ) ),
 	array( 'title' => 'Showroom', 'url' => get_permalink( $showroom_id ) ),
 	array( 'title' => 'Kontakt', 'url' => get_permalink( $contact_id ) ),
 ) );

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-24T08:39:17.376Z",
+  "generatedAt": "2026-05-24T09:15:22.021Z",
   "source": "local .fig image refs from assets-source/figma/local-grafika/images",
   "exported": [
     {
@@ -513,6 +513,66 @@
       "imageMode": "direct",
       "archivePath": "assets-source/figma/export/graphics/certificate-tuv-3.png",
       "wpImportPath": "wp-content/uploads/import/figma/certificate-tuv-3.png"
+    },
+    {
+      "id": "1:446",
+      "name": "showroom-hero-bazeny",
+      "ok": true,
+      "format": "jpg",
+      "imageRef": "2f3a300de7575aa72654ed863183ca97f9d99bbb",
+      "imageNodeId": "1:446",
+      "imageNodeName": "Bazény - částečně zapuštěné",
+      "imageMode": "direct",
+      "archivePath": "assets-source/figma/export/graphics/showroom-hero-bazeny.jpg",
+      "wpImportPath": "wp-content/uploads/import/figma/showroom-hero-bazeny.jpg"
+    },
+    {
+      "id": "1:987",
+      "name": "about-team-vladimir",
+      "ok": true,
+      "format": "png",
+      "imageRef": "f979cb5fb41ffb735bca8625c9e49911c4ab0758",
+      "imageNodeId": "1:987",
+      "imageNodeName": "BASPA_24_VZ_01",
+      "imageMode": "direct",
+      "archivePath": "assets-source/figma/export/graphics/about-team-vladimir.png",
+      "wpImportPath": "wp-content/uploads/import/figma/about-team-vladimir.png"
+    },
+    {
+      "id": "1:1003",
+      "name": "about-team-lukas",
+      "ok": true,
+      "format": "png",
+      "imageRef": "616dec8090da56ce4b4de3bd98262fdf42daac59",
+      "imageNodeId": "1:1003",
+      "imageNodeName": "BASPA_24_LD_02",
+      "imageMode": "direct",
+      "archivePath": "assets-source/figma/export/graphics/about-team-lukas.png",
+      "wpImportPath": "wp-content/uploads/import/figma/about-team-lukas.png"
+    },
+    {
+      "id": "1:1004",
+      "name": "about-team-helena",
+      "ok": true,
+      "format": "png",
+      "imageRef": "b54bfe0449bf6b41041a8d330b7b8023e3b08525",
+      "imageNodeId": "1:1004",
+      "imageNodeName": "BASPA_24_HA_02",
+      "imageMode": "direct",
+      "archivePath": "assets-source/figma/export/graphics/about-team-helena.png",
+      "wpImportPath": "wp-content/uploads/import/figma/about-team-helena.png"
+    },
+    {
+      "id": "1:985",
+      "name": "about-team-service",
+      "ok": true,
+      "format": "png",
+      "imageRef": "60db8c06241163544095c6d3357aa65a5b8c7331",
+      "imageNodeId": "1:985",
+      "imageNodeName": "image",
+      "imageMode": "direct",
+      "archivePath": "assets-source/figma/export/graphics/about-team-service.png",
+      "wpImportPath": "wp-content/uploads/import/figma/about-team-service.png"
     }
   ]
 }

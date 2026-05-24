@@ -52,7 +52,7 @@ $groups = array(
 			__( 'Reference', 'baspa' )                   => home_url( '/reference/' ),
 			__( 'O nás', 'baspa' )                       => home_url( '/o-nas/' ),
 			__( 'Showroom', 'baspa' )                    => home_url( '/showroom/' ),
-			__( 'Servis', 'baspa' )                      => home_url( '/podpora/#servis' ),
+			__( 'Servis', 'baspa' )                      => home_url( '/servis/' ),
 			__( 'Kontakt', 'baspa' )                     => home_url( '/kontakt/' ),
 		),
 	),

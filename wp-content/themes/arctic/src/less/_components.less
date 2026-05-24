@@ -620,6 +620,589 @@
   }
 }
 
+@media (min-width: 1024px) {
+  :is(
+    .page-template-template-about,
+    .page-template-template-references,
+    .page-template-template-service-request
+  ) .f-heading:not(.f-heading--background) {
+    padding: 0;
+  }
+
+  :is(
+    .page-template-template-about,
+    .page-template-template-references,
+    .page-template-template-service-request
+  ) .f-heading__container {
+    position: relative;
+    width: min(1400px, calc(100% - 40px));
+    max-width: 1400px;
+    height: 100%;
+    padding: 0;
+  }
+
+  :is(
+    .page-template-template-about,
+    .page-template-template-references,
+    .page-template-template-service-request
+  ) .f-heading .f-breadcrumbs {
+    position: absolute;
+    top: 144px;
+    left: 0;
+    width: auto;
+    margin: 0;
+    font-size: 14px;
+    line-height: 19px;
+  }
+
+  :is(
+    .page-template-template-about,
+    .page-template-template-references
+  ) .f-heading__headline {
+    position: absolute;
+    top: 206px;
+    left: 0;
+    width: 911px;
+    max-width: 65%;
+    gap: 0;
+  }
+
+  .page-template-template-service-request .f-heading__headline {
+    position: absolute;
+    top: 206px;
+    left: 237px;
+    width: 922px;
+    max-width: 66%;
+    gap: 0;
+  }
+
+  :is(
+    .page-template-template-about,
+    .page-template-template-references,
+    .page-template-template-service-request
+  ) .f-heading h1 {
+    width: 896px;
+    max-width: 100%;
+    margin: 0;
+    font-size: 56px;
+    line-height: 61px;
+  }
+
+  .page-template-template-service-request .f-heading h1 {
+    width: 922px;
+    height: 122px;
+  }
+
+  :is(
+    .page-template-template-about,
+    .page-template-template-service-request
+  ) .f-heading__description {
+    width: 911px;
+    max-width: 100%;
+    margin-top: 22px;
+    font-size: 22px;
+    line-height: 31px;
+  }
+
+  .page-template-template-service-request .f-heading__description {
+    width: 856px;
+    margin-top: -40px;
+  }
+
+  .page-template-template-about .f-heading:not(.f-heading--background) {
+    height: 441px;
+    min-height: 441px;
+  }
+
+  .page-template-template-references .f-heading:not(.f-heading--background) {
+    height: 312px;
+    min-height: 312px;
+  }
+
+  .page-template-template-service-request .f-heading:not(.f-heading--background) {
+    height: 519px;
+    min-height: 519px;
+  }
+
+  .f-main--about-figma,
+  .f-main--references-figma,
+  .f-main--service-request {
+    padding: 0;
+  }
+
+  .f-main--about-figma .f-section,
+  .f-main--references-figma .f-section,
+  .f-main--service-request .f-section {
+    padding: 0;
+  }
+
+  :is(.f-main--about-figma, .f-main--references-figma, .f-main--service-request) .f-section__container {
+    position: relative;
+    width: min(1400px, calc(100% - 40px));
+    max-width: 1400px;
+    padding: 0;
+  }
+
+  .f-main--about-figma {
+    height: 2772px;
+  }
+
+  .f-section--about-figma,
+  .f-section--about-figma .f-section__container {
+    height: 2772px;
+  }
+
+  .f-about-figma__intro,
+  .f-about-figma__team-copy,
+  .f-about-figma__career {
+    position: absolute;
+    left: 0;
+    width: 815px;
+  }
+
+  .f-about-figma__intro {
+    top: 150px;
+  }
+
+  .f-about-figma__team-copy {
+    top: 934px;
+  }
+
+  .f-about-figma__career {
+    top: 1837px;
+  }
+
+  .f-about-figma__intro h2,
+  .f-about-figma__team-copy h2,
+  .f-about-figma__career h2,
+  .f-service-request__pricing h2 {
+    margin: 0 0 22px;
+    font-size: 36px;
+    line-height: 51px;
+  }
+
+  .f-about-figma__intro p,
+  .f-about-figma__team-copy p,
+  .f-about-figma__career p,
+  .f-service-request__pricing p,
+  .f-service-request__pricing li {
+    margin: 0;
+    font-size: 18px;
+    line-height: 29px;
+  }
+
+  .f-about-figma__intro p + p {
+    margin-top: 13px;
+  }
+
+  .f-about-figma__stats {
+    position: absolute;
+    top: 681px;
+    left: 0;
+    display: grid;
+    grid-template-columns: 171px 337px 79px;
+    gap: 183px;
+  }
+
+  .f-about-figma__stats div {
+    display: grid;
+    gap: 43px;
+  }
+
+  .f-about-figma__stats strong {
+    font-size: 36px;
+    line-height: 51px;
+  }
+
+  .f-about-figma__stats span {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .f-about-figma__team {
+    position: absolute;
+    top: 1217px;
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 336px);
+    gap: 21px;
+  }
+
+  .f-about-person {
+    width: 336px;
+  }
+
+  .f-about-person img {
+    display: block;
+    width: 336px;
+    height: 335px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .f-about-person h3 {
+    margin: 24px 0 0;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .f-about-person p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .f-about-person a {
+    display: inline-block;
+    margin-top: 19px;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 700;
+    color: var(--arctic-color-red);
+  }
+
+  .f-about-figma__jobs {
+    position: absolute;
+    top: 2016px;
+    left: 0;
+    width: 1401px;
+  }
+
+  .f-about-job {
+    position: relative;
+    min-height: 96px;
+    padding: 31px 84px;
+    background: var(--arctic-color-snow);
+    border-radius: 0;
+  }
+
+  .f-about-job + .f-about-job {
+    margin-top: 20px;
+  }
+
+  .f-about-job--open {
+    min-height: 526px;
+  }
+
+  .f-about-job h3 {
+    margin: 0;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .f-about-job p {
+    width: 975px;
+    margin: 14px 0 28px;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .f-about-job div {
+    display: inline-block;
+    width: 468px;
+    margin-right: 132px;
+    vertical-align: top;
+  }
+
+  .f-about-job strong {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .f-about-job ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .f-about-job .a-button {
+    margin-top: 30px;
+  }
+
+  .f-main--references-figma {
+    height: 1016px;
+  }
+
+  .f-section--references-figma,
+  .f-section--references-figma .f-section__container {
+    height: 1016px;
+  }
+
+  .f-reference-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 438px);
+    gap: 28px 45px;
+  }
+
+  .f-reference-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 438px;
+    height: 320px;
+    color: var(--arctic-color-snow);
+    text-decoration: none;
+    border-radius: 8px;
+  }
+
+  .f-reference-card:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7, 24, 38, 0.02), rgba(7, 24, 38, 0.7));
+  }
+
+  .f-reference-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .f-reference-card__meta,
+  .f-reference-card strong {
+    position: absolute;
+    z-index: 2;
+    left: 32px;
+  }
+
+  .f-reference-card__meta {
+    bottom: 58px;
+    display: flex;
+    gap: 24px;
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .f-reference-card strong {
+    right: 32px;
+    bottom: 27px;
+    font-size: 20px;
+    line-height: 29px;
+  }
+
+  .f-main--service-request {
+    height: 928px;
+  }
+
+  .f-section--service-request,
+  .f-section--service-request .f-section__container {
+    height: 928px;
+  }
+
+  .f-service-request__form {
+    position: absolute;
+    top: 0;
+    left: 237px;
+    width: 926px;
+    height: 674px;
+    padding: 59px 86px;
+    box-sizing: border-box;
+    background: var(--arctic-color-snow);
+  }
+
+  .f-service-request__form .f-form__header,
+  .f-service-request__form .f-form__loading {
+    display: none;
+  }
+
+  .f-service-request__form .f-form {
+    height: 100%;
+  }
+
+  .f-service-request__form .a-flex {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .f-service-request__form [class*="a-flex__item"] {
+    width: 100%;
+    max-width: none;
+  }
+
+  .f-service-request__form .f-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 700;
+  }
+
+  .f-service-request__form :is(input, textarea) {
+    width: 100%;
+    min-height: 50px;
+    margin: 0;
+    border-color: rgba(7, 24, 38, 0.18);
+    border-radius: 0;
+  }
+
+  .f-service-request__form textarea {
+    min-height: 146px;
+  }
+
+  .f-service-request__form .f-form__submit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .f-service-request__form .f-form__note {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .f-service-request__pricing {
+    position: absolute;
+    top: 743px;
+  }
+
+  .f-service-request__pricing--warranty {
+    left: 237px;
+    width: 402px;
+  }
+
+  .f-service-request__pricing--paid {
+    left: 709px;
+    width: 676px;
+  }
+
+  .f-service-request__pricing ul {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  :is(
+    .page-template-template-about,
+    .page-template-template-references,
+    .page-template-template-service-request
+  ) .f-section--contact {
+    height: 455px;
+    padding: 0;
+    background: var(--arctic-color-frost);
+  }
+
+  .page-template-template-about .f-section--contact {
+    margin-top: 115px;
+  }
+
+  .page-template-template-references .f-section--contact {
+    margin-top: 83px;
+  }
+
+  .page-template-template-service-request .f-section--contact {
+    margin-top: 105px;
+  }
+
+  :is(
+    .page-template-template-about,
+    .page-template-template-references,
+    .page-template-template-service-request
+  ) .f-section--contact .f-section__container {
+    width: min(1400px, calc(100% - 40px));
+    max-width: 1400px;
+    height: 455px;
+    padding: 0;
+  }
+
+  :is(
+    .page-template-template-about,
+    .page-template-template-references,
+    .page-template-template-service-request
+  ) .f-contact-cta {
+    position: relative;
+    width: 1400px;
+    height: 455px;
+    padding: 0;
+    border-radius: 40px;
+  }
+
+  :is(
+    .page-template-template-about,
+    .page-template-template-references,
+    .page-template-template-service-request
+  ) .f-contact-cta h2 {
+    position: absolute;
+    top: 100px;
+    left: 252px;
+    width: 896px;
+    margin: 0;
+    font-size: 36px;
+    line-height: 51px;
+  }
+
+  :is(
+    .page-template-template-about,
+    .page-template-template-references,
+    .page-template-template-service-request
+  ) .f-contact-cta > p {
+    position: absolute;
+    top: 161px;
+    left: 252px;
+    width: 896px;
+    margin: 0;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  :is(
+    .page-template-template-about,
+    .page-template-template-references,
+    .page-template-template-service-request
+  ) .f-contact-cta__bar {
+    position: absolute;
+    top: 226px;
+    left: 259px;
+    width: 882px;
+    height: 118px;
+    max-width: none;
+    padding: 30px 40px;
+    gap: 62px;
+    box-sizing: border-box;
+  }
+
+  :is(
+    .page-template-template-about,
+    .page-template-template-references,
+    .page-template-template-service-request
+  ) .f-contact-cta__avatar {
+    flex: 0 0 58px;
+    width: 58px;
+    height: 58px;
+  }
+
+  :is(
+    .page-template-template-about,
+    .page-template-template-references,
+    .page-template-template-service-request
+  ) .f-contact-cta__bar .a-button {
+    width: 149px;
+    min-width: 149px;
+    height: 50px;
+    min-height: 50px;
+    padding: 0 20px;
+    color: var(--arctic-color-snow);
+    white-space: nowrap;
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.74);
+  }
+
+  :is(
+    .page-template-template-about,
+    .page-template-template-references,
+    .page-template-template-service-request
+  ) .f-footer--arctic {
+    margin-top: 28px;
+  }
+}
+
 @media (max-width: 1023px) {
   .f-main--figma-page {
     padding-top: 0;
@@ -755,6 +1338,194 @@
     width: min(100%, 562px);
     height: auto;
     margin: 24px auto;
+  }
+
+  .f-main--about-figma,
+  .f-main--references-figma,
+  .f-main--service-request {
+    padding: 0;
+  }
+
+  .f-main--about-figma .f-section__container,
+  .f-main--references-figma .f-section__container,
+  .f-main--service-request .f-section__container {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .f-about-figma__intro h2,
+  .f-about-figma__team-copy h2,
+  .f-about-figma__career h2,
+  .f-service-request__pricing h2 {
+    margin: 32px 0 12px;
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .f-about-figma__intro p,
+  .f-about-figma__team-copy p,
+  .f-about-figma__career p,
+  .f-service-request__pricing p,
+  .f-service-request__pricing li {
+    margin: 0;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .f-about-figma__intro p + p {
+    margin-top: 12px;
+  }
+
+  .f-about-figma__stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin: 30px 0;
+  }
+
+  .f-about-figma__stats strong {
+    display: block;
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .f-about-figma__stats span {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .f-about-figma__team,
+  .f-reference-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .f-about-person,
+  .f-reference-card {
+    width: 100%;
+  }
+
+  .f-about-person img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .f-about-person h3,
+  .f-about-job h3 {
+    margin: 14px 0 2px;
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .f-about-person p,
+  .f-about-job p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 23px;
+  }
+
+  .f-about-person a {
+    display: inline-block;
+    margin: 10px 0 18px;
+    font-weight: 700;
+    color: var(--arctic-color-red);
+  }
+
+  .f-about-job {
+    padding: 22px;
+    margin-top: 14px;
+    background: var(--arctic-color-snow);
+  }
+
+  .f-about-job ul {
+    margin: 8px 0 0;
+    padding-left: 18px;
+  }
+
+  .f-about-job .a-button {
+    margin-top: 18px;
+  }
+
+  .f-reference-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    height: 260px;
+    color: var(--arctic-color-snow);
+    text-decoration: none;
+    border-radius: 8px;
+  }
+
+  .f-reference-card:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7, 24, 38, 0.02), rgba(7, 24, 38, 0.7));
+  }
+
+  .f-reference-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .f-reference-card__meta,
+  .f-reference-card strong {
+    position: absolute;
+    z-index: 2;
+    left: 24px;
+  }
+
+  .f-reference-card__meta {
+    bottom: 58px;
+    display: flex;
+    gap: 18px;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .f-reference-card strong {
+    right: 24px;
+    bottom: 24px;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .f-service-request__form {
+    padding: 22px;
+    background: var(--arctic-color-snow);
+  }
+
+  .f-service-request__form .f-form__header,
+  .f-service-request__form .f-form__loading {
+    display: none;
+  }
+
+  .f-service-request__form .a-flex {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .f-service-request__form [class*="a-flex__item"] {
+    width: 100%;
+    max-width: none;
+  }
+
+  .f-service-request__form .f-form__submit {
+    display: grid;
+    gap: 14px;
+  }
+
+  .f-service-request__pricing ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 }
 
