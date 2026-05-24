@@ -2,7 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const RAW_PATH = path.join(ROOT, 'docs', 'figma-grafika-nodes.raw.json');
+const RAW_PATHS = [
+  path.join(ROOT, 'docs', 'figma-grafika-nodes.raw.json'),
+  path.join(ROOT, 'docs', 'grafika-missing-pages.raw.json'),
+];
 const LOCAL_IMAGES_DIR = path.join(ROOT, 'assets-source', 'figma', 'local-grafika', 'images');
 const OUT_DIR = path.join(ROOT, 'assets-source', 'figma', 'export', 'graphics');
 const WP_IMPORT_DIR = path.join(ROOT, 'wp-content', 'uploads', 'import', 'figma');
@@ -48,6 +51,10 @@ const ASSETS = [
   { id: '1:1974', name: 'mobile-hp-hero' },
   { id: '1:2000', name: 'mobile-category-virivky' },
   { id: '1:2001', name: 'mobile-category-celorocni-bazeny' },
+  { id: '1:1327', name: 'feature-freeheat-diagram' },
+  { id: '1:716', name: 'certificate-tuv-1' },
+  { id: '1:717', name: 'certificate-tuv-2' },
+  { id: '1:718', name: 'certificate-tuv-3' },
 ];
 
 function walk(node, callback) {
@@ -57,13 +64,15 @@ function walk(node, callback) {
   }
 }
 
-function buildNodeMap(raw) {
+function buildNodeMap(raws) {
   const nodes = new Map();
-  for (const wrapper of Object.values(raw.nodes || {})) {
-    if (!wrapper.document) {
-      continue;
+  for (const raw of raws) {
+    for (const wrapper of Object.values(raw.nodes || {})) {
+      if (!wrapper.document) {
+        continue;
+      }
+      walk(wrapper.document, (node) => nodes.set(node.id, node));
     }
-    walk(wrapper.document, (node) => nodes.set(node.id, node));
   }
   return nodes;
 }
@@ -142,8 +151,10 @@ function exportSvg(asset) {
 }
 
 function main() {
-  const raw = JSON.parse(fs.readFileSync(RAW_PATH, 'utf8'));
-  const nodes = buildNodeMap(raw);
+  const raws = RAW_PATHS
+    .filter((rawPath) => fs.existsSync(rawPath))
+    .map((rawPath) => JSON.parse(fs.readFileSync(rawPath, 'utf8')));
+  const nodes = buildNodeMap(raws);
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.mkdirSync(WP_IMPORT_DIR, { recursive: true });
 

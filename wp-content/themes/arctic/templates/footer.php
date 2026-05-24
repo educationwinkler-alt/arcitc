@@ -32,13 +32,13 @@ $groups = array(
 	array(
 		'heading' => __( 'Vlastnosti vířivek', 'baspa' ),
 		'items'   => array(
-			__( 'Izolace vířivky', 'baspa' )        => home_url( '/vlastnosti/' ),
+			__( 'Izolace vířivky', 'baspa' )        => home_url( '/vlastnosti/izolace-virivky/' ),
 			__( 'Záruka na skořepinu', 'baspa' )    => home_url( '/zaruka/' ),
-			__( 'Termokryt', 'baspa' )              => home_url( '/vlastnosti/' ),
-			__( 'Podlaha vířivky', 'baspa' )        => home_url( '/vlastnosti/' ),
-			__( 'Servisní přístup', 'baspa' )       => home_url( '/podpora/' ),
-			__( 'Variabilita', 'baspa' )            => home_url( '/vlastnosti/' ),
-			__( 'Automatická dezinfekce', 'baspa' ) => home_url( '/vlastnosti/' ),
+			__( 'Termokryt', 'baspa' )              => home_url( '/vlastnosti/#termokryt' ),
+			__( 'Podlaha vířivky', 'baspa' )        => home_url( '/vlastnosti/#podlaha' ),
+			__( 'Servisní přístup', 'baspa' )       => home_url( '/podpora/#servis' ),
+			__( 'Variabilita', 'baspa' )            => home_url( '/vlastnosti/#variabilita' ),
+			__( 'Automatická dezinfekce', 'baspa' ) => home_url( '/vlastnosti/#automaticka-dezinfekce' ),
 		),
 	),
 	array(
@@ -52,7 +52,7 @@ $groups = array(
 			__( 'Reference', 'baspa' )                   => home_url( '/reference/' ),
 			__( 'O nás', 'baspa' )                       => home_url( '/o-nas/' ),
 			__( 'Showroom', 'baspa' )                    => home_url( '/showroom/' ),
-			__( 'Servis', 'baspa' )                      => home_url( '/servis/' ),
+			__( 'Servis', 'baspa' )                      => home_url( '/podpora/#servis' ),
 			__( 'Kontakt', 'baspa' )                     => home_url( '/kontakt/' ),
 		),
 	),

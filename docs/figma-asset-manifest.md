@@ -30,6 +30,13 @@ Poznámka k auditu 2026-05-24: HP hero má ve Figma grafice jeden skutečný obr
 | Detail produktu | `100:662` | Hero/fakta, navigace, konfigurace, barvy, výhody, volitelná výbava, realizace, CTA |
 | Podpora | `124:1926` | Rozcestník podpory, FAQ, downloady, servisní formulář, CTA |
 | Kontakt | `124:3882` | Kontaktní hero, mapa/showroom, důležité kontakty, fakturační údaje, CTA |
+| Vlastnosti | `123:85` | Rozcestník vlastností, 8 karet, CTA, footer |
+| Další informace | `123:619` | Rozcestník dalších informací, 10 karet, CTA, footer |
+| Služby | `123:468` | Služby, 6 servisních bloků, CTA, footer |
+| Certifikáty | `124:823` | Certifikáty, textové sekce a certifikační obrázky, CTA, footer |
+| Záruka | `124:1041` | Záruční přehled, tabulka záruk, CTA, footer |
+| Kolik stojí údržba | `124:1161` | Obsahová stránka provozních nákladů, CTA, footer |
+| Detail vlastnosti FreeHeat | `124:1262` | Hero, diagram, články, související vlastnosti, CTA, footer |
 
 ## Povinné grafické assety z Figmy
 
@@ -74,6 +81,10 @@ Poznámka k auditu 2026-05-24: HP hero má ve Figma grafice jeden skutečný obr
 | Podpora PDF 2 | `1:918` | 56 x 78 | `graphics/support-download-2.png` | ikona/thumbnail downloadu |
 | Podpora PDF 3 | `1:919` | 56 x 78 | `graphics/support-download-3.png` | ikona/thumbnail downloadu |
 | Kontakt mapa/showroom | `1:1069` | 3110 x 782 | `graphics/contact-map-showroom.png` | kontaktní mapa/hero |
+| Diagram FreeHeat | `1:1327` | Figma imageRef | `graphics/feature-freeheat-diagram.png` | detail vlastnosti FreeHeat |
+| Certifikát TUV 1 | `1:716` | Figma imageRef | `graphics/certificate-tuv-1.png` | stránka Certifikáty |
+| Certifikát TUV 2 | `1:717` | Figma imageRef | `graphics/certificate-tuv-2.png` | stránka Certifikáty |
+| Certifikát TUV 3 | `1:718` | Figma imageRef | `graphics/certificate-tuv-3.png` | stránka Certifikáty |
 | Mobile logo | `1:1977` | 86 x 48 | `graphics/mobile-logo-arctic-spas.svg` | kontrola mobilního headeru |
 | Mobile hero | `1:1974` | 1343 x 556 | `graphics/mobile-hp-hero.jpg` | mobilní hero reference |
 | Mobile karta vířivky | `1:2000` | 335 x 221 | `graphics/mobile-category-virivky.jpg` | mobilní karta směru |

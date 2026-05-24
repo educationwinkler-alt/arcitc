@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-24T03:15:07.356Z",
+  "generatedAt": "2026-05-24T08:39:17.376Z",
   "source": "local .fig image refs from assets-source/figma/local-grafika/images",
   "exported": [
     {
@@ -465,6 +465,54 @@
       "imageMode": "direct",
       "archivePath": "assets-source/figma/export/graphics/mobile-category-celorocni-bazeny.png",
       "wpImportPath": "wp-content/uploads/import/figma/mobile-category-celorocni-bazeny.png"
+    },
+    {
+      "id": "1:1327",
+      "name": "feature-freeheat-diagram",
+      "ok": true,
+      "format": "png",
+      "imageRef": "d4ee7fd6026c159a40117b500947580863b69db9",
+      "imageNodeId": "1:1327",
+      "imageNodeName": "image 1",
+      "imageMode": "direct",
+      "archivePath": "assets-source/figma/export/graphics/feature-freeheat-diagram.png",
+      "wpImportPath": "wp-content/uploads/import/figma/feature-freeheat-diagram.png"
+    },
+    {
+      "id": "1:716",
+      "name": "certificate-tuv-1",
+      "ok": true,
+      "format": "png",
+      "imageRef": "0c0f10766d68df897755fe50e838a0c38eaa24d7",
+      "imageNodeId": "1:716",
+      "imageNodeName": "image 2",
+      "imageMode": "direct",
+      "archivePath": "assets-source/figma/export/graphics/certificate-tuv-1.png",
+      "wpImportPath": "wp-content/uploads/import/figma/certificate-tuv-1.png"
+    },
+    {
+      "id": "1:717",
+      "name": "certificate-tuv-2",
+      "ok": true,
+      "format": "png",
+      "imageRef": "61bc168b718132c3b3d118450ce9507775b8c50c",
+      "imageNodeId": "1:717",
+      "imageNodeName": "image 3",
+      "imageMode": "direct",
+      "archivePath": "assets-source/figma/export/graphics/certificate-tuv-2.png",
+      "wpImportPath": "wp-content/uploads/import/figma/certificate-tuv-2.png"
+    },
+    {
+      "id": "1:718",
+      "name": "certificate-tuv-3",
+      "ok": true,
+      "format": "png",
+      "imageRef": "ff4a9fea44851a3f3a2601efc9ddaceea8b66c56",
+      "imageNodeId": "1:718",
+      "imageNodeName": "image 4",
+      "imageMode": "direct",
+      "archivePath": "assets-source/figma/export/graphics/certificate-tuv-3.png",
+      "wpImportPath": "wp-content/uploads/import/figma/certificate-tuv-3.png"
     }
   ]
 }

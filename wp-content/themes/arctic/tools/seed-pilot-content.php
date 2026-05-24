@@ -908,21 +908,62 @@ update_post_meta( $support_id, 'page_description_text', 'Zde naleznete odpovědi
 
 $features_id = arctic_seed_page(
 	'vlastnosti',
-	'Vlastnosti vířivek',
-	'<!-- wp:paragraph --><p>Stránka připravená podle Figma navigace pro izolaci, úpravu vody, termo kryt, servisní přístup a další vlastnosti vířivek Arctic Spas.</p><!-- /wp:paragraph -->'
+	'Vlastnosti a výhody venkovních vířivek a swimspa Arctic',
+	'',
+	'template-features.php'
 );
+update_post_meta( $features_id, 'page_description_text', 'Vířivky Arctic Spas jsou navrženy a vyrobeny tak, aby efektivně a spolehlivě fungovaly v extrémním klimatu severní Kanady. V místech, kde venkovní teploty kolísají od -30 °C v zimě do +30 °C v letních měsících, obstojí pouze skvěle tepelně izolovaná vířivka postavená z těch skutečně nejlepších komponentů.' );
+
+$feature_insulation_id = arctic_seed_page(
+	'izolace-virivky',
+	'Obvodová izolace FreeHeat™',
+	'',
+	'template-feature-detail.php'
+);
+wp_update_post( array(
+	'ID'          => $feature_insulation_id,
+	'post_parent' => $features_id,
+) );
+update_post_meta( $feature_insulation_id, 'page_description_text', 'Investice do výroby samonosné skořepiny umožňuje izolovat vířivky Arctic Spas® lépe, než jak to provádí kdokoliv z konkurence. Pro inspiraci jsme nemuseli chodit daleko, naše domovy v severní Kanadě nám poskytly vše, co potřebujeme vědět.' );
 
 $warranty_id = arctic_seed_page(
 	'zaruka',
 	'Záruka',
-	'<!-- wp:paragraph --><p>Arctic Spas používá konstrukci, izolaci a servisovatelnou technologii určenou pro celoroční provoz. Tato stránka bude rozvedená podle Figma sekce záruky a aktuálních podkladů Arctic Spas.</p><!-- /wp:paragraph -->'
+	'',
+	'template-warranty.php'
 );
+update_post_meta( $warranty_id, 'page_description_text', 'Ve společnosti Arctic Spas® jsme pyšní na kvalitu našeho technického řešení a na vysokou úroveň zpracování. Na naše výrobky poskytujeme tyto prodloužené záruky.' );
 
 $info_id = arctic_seed_page(
 	'dalsi-informace',
 	'Další informace',
-	'<!-- wp:paragraph --><p>Rozcestník pro průběh realizace, podporu, reference, často kladené otázky, servis a kontakt.</p><!-- /wp:paragraph -->'
+	'',
+	'template-more-info.php'
 );
+
+$services_id = arctic_seed_page(
+	'sluzby',
+	'Služby',
+	'',
+	'template-services.php'
+);
+update_post_meta( $services_id, 'page_description_text', 'K prémiovému sortimentu patří prvotřídní služby. Poskytneme vám mnohem víc, než je vůbec schopna nabídnout většina konkurence, mnohé naše služby přitom můžete využít nezávazně nebo zdarma v rámci ceny vířivky.' );
+
+$certificates_id = arctic_seed_page(
+	'certifikaty',
+	'Certifikáty',
+	'',
+	'template-certificates.php'
+);
+update_post_meta( $certificates_id, 'page_description_text', 'Návštěva jakékoliv výrobní haly firmy Arctic Spas® ukazuje to nejlepší z obou světů. Robotická technologie a ruční práce se spojují do nadčasové hodnoty pro váš domov.' );
+
+$maintenance_id = arctic_seed_page(
+	'kolik-stoji-udrzba',
+	'Kolik stojí provoz a údržba vířivky?',
+	'',
+	'template-maintenance.php'
+);
+update_post_meta( $maintenance_id, 'page_description_text', 'Jedním z nejdůležitějších parametrů, ve kterých značka Arctic Spas jednoznačně dominuje, jsou velmi nízké provozní náklady a s tím spojená kvalita izolací a termokrytů.' );
 
 $about_id = arctic_seed_page(
 	'o-nas',

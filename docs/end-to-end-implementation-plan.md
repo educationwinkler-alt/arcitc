@@ -8,11 +8,11 @@ Technicky vzor: `../baspa.cz/`
 Obsahovy zdroj: `../Arctic-spas/`, crawl `docs/crawl-live/`, live web jen pro overeni obsahu  
 Designovy zdroj: Figma wireframe + Figma grafika
 
-## TvrdĂ© pravidlo od 2026-05-23
+## Tvrde pravidlo od 2026-05-23
 
 Tato cast ma prednost pred starsimi formulacemi nize v dokumentu.
 
-Od ted je Figma jediny zdroj UX a grafiky. VizuĂˇlnĂ­ assety, layout, rozmery, logo, hero obrazky, bannery, ikony, karty, spacing a typografie se nesmi brat ze stareho `arctic-spas.cz` a nesmi se skladat odhadem. Stary Arctic web je pouze obsahovy zdroj: texty, produkty, parametry, dokumenty, stare URL a pripadne produktove fotky tam, kde ve Figme neni konkretni asset.
+Od ted je Figma jediny zdroj UX a grafiky. Vizualni assety, layout, rozmery, logo, hero obrazky, bannery, ikony, karty, spacing a typografie se nesmi brat ze stareho `arctic-spas.cz` a nesmi se skladat odhadem. Stary Arctic web je pouze obsahovy zdroj: texty, produkty, parametry, dokumenty, stare URL a pripadne produktove fotky tam, kde ve Figme neni konkretni asset.
 
 Pravidlo zdroju:
 
@@ -61,6 +61,9 @@ Hotove veci:
 - Crawl live webu je hotovy: 135 URL.
 - Prvni redirect-only seznam je hotovy.
 - Figma soubory jsou importovane a citelne pres API.
+- Figma missing pages jsou doplneny do lokalnich raw dumpu: grafika `docs/grafika-missing-pages.raw.json` a wireframe `docs/wireframe-missing-pages.raw.json`. Tim uz nejsou blokovane stranky `VLASTNOSTI`, `DALSI INFORMACE`, `SLUZBY`, `CERTIFIKATY`, `ZARUKA`, `KOLIK STOJI UDRZBA` ani `VLASTNOSTI DETAIL`.
+- Stranky `/vlastnosti/`, `/dalsi-informace/`, `/sluzby/`, `/certifikaty/`, `/zaruka/`, `/kolik-stoji-udrzba/` a `/vlastnosti/izolace-virivky/` maji vlastni Figma sablony. Uz nepouzivaji obecny `page.php`, placeholder obsah ani showroom jako nahradu.
+- Figma assety `feature-freeheat-diagram.png` a `certificate-tuv-1/2/3.png` jsou exportovane pres lokalni Figma imageRef flow do `assets-source/figma/export/graphics/` a `wp-content/uploads/import/figma/`.
 - Klientsky ZIP je rozbaleny do `assets-source/owner-info/`.
 - Baspa audit je hotovy v `docs/baspa-audit.md`.
 - Local safety guard existuje v `wp-content/mu-plugins/arctic-local-safety.php`.
@@ -110,6 +113,7 @@ Hotove veci:
 - Defaultni WP obsah `Hello world!` a `Sample Page` seed odstranuje, aby se nepropsal do novinek ani navigace.
 - Posledni overeni: PHP lint upravenych sablon prosel, seed se propsal do lokalniho WordPressu, swimspa hero pouziva Figma kategoriovy asset, `Další sortiment` zobrazuje 6 polozek, swimspa/Covana detaily a globalni CTA nemaji falesny virivkovy wording, Smartsupp nema hardcoded Baspa klic a `npm run visual:smoke` prosel bez externich requestu.
 - Aktualni kontrolni screenshoty jsou v `docs/screenshots/`, vcetne `home-desktop-playwright.png`, `category-swimspa-desktop-playwright.png`, `category-dalsi-sortiment-desktop-playwright.png`, `product-timberwolf-desktop-playwright.png`, `product-husky-desktop-playwright.png`, `product-husky-mobile-playwright.png` a dalsich hlavnich stran.
+- Overeni 2026-05-24: nove Figma informacni stranky maji v Playwright kontrole na desktopu 1920 px presne nastavene hlavni Figma souradnice. `/vlastnosti/`, `/dalsi-informace/`, `/sluzby/`, `/certifikaty/`, `/zaruka/`, `/kolik-stoji-udrzba/` a `/vlastnosti/izolace-virivky/` sedi na heading height, contact CTA y a footer y podle Figma frame; `npm run visual:smoke` prochazi i s temito URL.
 
 ## Souvisly postup realizace
 

@@ -3,6 +3,761 @@
   box-shadow: 0 0.5rem 1.5rem rgba(7, 24, 38, 0.04);
 }
 
+@media (min-width: 1024px) {
+  :is(
+    .page-template-template-features,
+    .page-template-template-more-info,
+    .page-template-template-services,
+    .page-template-template-certificates,
+    .page-template-template-warranty,
+    .page-template-template-maintenance,
+    .page-template-template-feature-detail
+  ) .f-heading:not(.f-heading--background) {
+    padding: 0;
+  }
+
+  :is(
+    .page-template-template-features,
+    .page-template-template-more-info,
+    .page-template-template-services,
+    .page-template-template-certificates,
+    .page-template-template-warranty,
+    .page-template-template-maintenance,
+    .page-template-template-feature-detail
+  ) .f-heading__container {
+    position: relative;
+    width: min(1400px, calc(100% - 40px));
+    max-width: 1400px;
+    height: 100%;
+    padding: 0;
+  }
+
+  :is(
+    .page-template-template-features,
+    .page-template-template-more-info,
+    .page-template-template-services,
+    .page-template-template-certificates,
+    .page-template-template-warranty,
+    .page-template-template-maintenance,
+    .page-template-template-feature-detail
+  ) .f-heading .f-breadcrumbs {
+    position: absolute;
+    top: 144px;
+    left: 0;
+    width: auto;
+    margin: 0;
+    font-size: 14px;
+    line-height: 19px;
+  }
+
+  :is(
+    .page-template-template-features,
+    .page-template-template-more-info,
+    .page-template-template-services,
+    .page-template-template-certificates,
+    .page-template-template-warranty,
+    .page-template-template-maintenance,
+    .page-template-template-feature-detail
+  ) .f-heading__headline {
+    position: absolute;
+    top: 206px;
+    left: 0;
+    width: 911px;
+    max-width: 65%;
+    gap: 0;
+  }
+
+  :is(
+    .page-template-template-features,
+    .page-template-template-more-info,
+    .page-template-template-services,
+    .page-template-template-certificates,
+    .page-template-template-warranty,
+    .page-template-template-maintenance,
+    .page-template-template-feature-detail
+  ) .f-heading h1 {
+    width: 896px;
+    max-width: 100%;
+    margin: 0;
+    font-size: 56px;
+    line-height: 61px;
+  }
+
+  :is(
+    .page-template-template-features,
+    .page-template-template-services,
+    .page-template-template-certificates,
+    .page-template-template-warranty,
+    .page-template-template-maintenance,
+    .page-template-template-feature-detail
+  ) .f-heading__description {
+    width: 911px;
+    max-width: 100%;
+    margin-top: 22px;
+    font-size: 22px;
+    line-height: 31px;
+  }
+
+  .page-template-template-features .f-heading:not(.f-heading--background) {
+    height: 551px;
+    min-height: 551px;
+  }
+
+  .page-template-template-features .f-heading h1 {
+    height: 122px;
+  }
+
+  .page-template-template-features .f-heading__description {
+    margin-top: 33px;
+  }
+
+  .page-template-template-more-info .f-heading:not(.f-heading--background) {
+    height: 306px;
+    min-height: 306px;
+  }
+
+  .page-template-template-services .f-heading:not(.f-heading--background) {
+    height: 447px;
+    min-height: 447px;
+  }
+
+  .page-template-template-certificates .f-heading:not(.f-heading--background) {
+    height: 529px;
+    min-height: 529px;
+  }
+
+  .page-template-template-warranty .f-heading:not(.f-heading--background),
+  .page-template-template-feature-detail .f-heading:not(.f-heading--background) {
+    height: 435px;
+    min-height: 435px;
+  }
+
+  .page-template-template-maintenance .f-heading:not(.f-heading--background) {
+    height: 581px;
+    min-height: 581px;
+  }
+
+  .page-template-template-maintenance .f-heading h1 {
+    width: 922px;
+  }
+
+  .f-main--figma-page {
+    padding: 0;
+  }
+
+  .f-main--figma-page .f-section {
+    padding: 0;
+  }
+
+  .f-main--figma-page .f-section__container {
+    width: min(1400px, calc(100% - 40px));
+    max-width: 1400px;
+    padding: 0;
+  }
+
+  .f-section--feature-cards {
+    height: 748px;
+  }
+
+  .f-figma-card-grid {
+    display: grid;
+    width: 100%;
+    margin: 0;
+  }
+
+  .f-figma-card-grid--features {
+    grid-template-columns: repeat(4, 334px);
+    gap: 20px;
+  }
+
+  .f-figma-card-grid--info {
+    grid-template-columns: repeat(4, 334px);
+    gap: 20px 20px;
+  }
+
+  .f-figma-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    color: var(--arctic-color-snow);
+    text-decoration: none;
+    background: var(--arctic-color-navy) var(--figma-card-image) center / cover no-repeat;
+    border-radius: 8px;
+  }
+
+  .f-figma-card:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7, 24, 38, 0.05) 0%, rgba(7, 24, 38, 0.76) 100%);
+  }
+
+  .f-figma-card--feature {
+    width: 334px;
+    height: 364px;
+  }
+
+  .f-figma-card--info {
+    width: 334px;
+    height: 128px;
+  }
+
+  .f-figma-card__content {
+    position: absolute;
+    z-index: 2;
+    display: grid;
+    width: 213px;
+  }
+
+  .f-figma-card--feature .f-figma-card__content {
+    left: 26px;
+    bottom: 26px;
+    gap: 7px;
+  }
+
+  .f-figma-card--info .f-figma-card__content {
+    top: 24px;
+    left: 24px;
+    gap: 4px;
+  }
+
+  .f-figma-card__content strong {
+    font-size: 20px;
+    line-height: 29px;
+  }
+
+  .f-figma-card--info .f-figma-card__content strong {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .f-figma-card__content span {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .f-figma-card--info .f-figma-card__content span {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .f-figma-card__arrow {
+    position: absolute;
+    right: 26px;
+    bottom: 26px;
+    z-index: 2;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    background: var(--arctic-color-red);
+  }
+
+  .f-figma-card--info .f-figma-card__arrow {
+    top: 43px;
+    bottom: auto;
+  }
+
+  .f-figma-card__arrow:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 14px;
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid var(--arctic-color-snow);
+    border-right: 2px solid var(--arctic-color-snow);
+    transform: rotate(45deg);
+  }
+
+  .f-section--info-cards {
+    height: 424px;
+  }
+
+  .f-section--figma-services {
+    height: 918px;
+  }
+
+  .f-service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 453px);
+    gap: 63px 22px;
+  }
+
+  .f-service-card {
+    width: 453px;
+  }
+
+  .f-service-card img {
+    display: block;
+    width: 453px;
+    height: 224px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .f-service-card h2 {
+    margin: 22px 0 9px;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .f-service-card p {
+    width: 427px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .f-section--certificates {
+    height: 665px;
+  }
+
+  .f-certificate-layout {
+    display: grid;
+    grid-template-columns: 657px 622px;
+    gap: 120px;
+    align-items: start;
+  }
+
+  .f-certificate-copy {
+    display: grid;
+    gap: 147px;
+    padding-top: 39px;
+  }
+
+  .f-certificate-copy h2,
+  .f-figma-article h2 {
+    margin: 0 0 16px;
+    font-size: 36px;
+    line-height: 51px;
+  }
+
+  .f-certificate-copy p,
+  .f-figma-article p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 29px;
+  }
+
+  .f-certificate-images {
+    display: grid;
+    grid-template-columns: repeat(2, 300px);
+    gap: 65px 22px;
+  }
+
+  .f-certificate-images img {
+    display: block;
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+  }
+
+  .f-section--warranty-table {
+    height: 525px;
+  }
+
+  .f-warranty-layout {
+    display: grid;
+    grid-template-columns: 888px 368px;
+    gap: 75px;
+    align-items: start;
+    padding-top: 217px;
+  }
+
+  .f-warranty-table {
+    width: 888px;
+    border-collapse: collapse;
+    font-size: 22px;
+    line-height: 40px;
+  }
+
+  .f-warranty-table th {
+    padding: 0 0 29px;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+  }
+
+  .f-warranty-table th:first-child,
+  .f-warranty-table td:first-child {
+    text-align: left;
+  }
+
+  .f-warranty-table td {
+    padding: 5px 0;
+    text-align: center;
+  }
+
+  .f-warranty-layout > p {
+    margin: 246px 0 0;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .f-section--figma-article {
+    min-height: 0;
+  }
+
+  .f-figma-article {
+    width: 927px;
+    margin-left: 237px;
+  }
+
+  .f-main--maintenance .f-figma-article {
+    min-height: 2384px;
+  }
+
+  .f-main--feature-detail .f-section--figma-article {
+    height: 2295px;
+  }
+
+  .f-figma-article section + section {
+    margin-top: 40px;
+  }
+
+  .f-figma-article__hero {
+    display: block;
+    width: 927px;
+    height: 384px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .f-figma-article__hero + section {
+    margin-top: 40px;
+  }
+
+  .f-figma-article__diagram {
+    display: block;
+    width: 562px;
+    height: 562px;
+    margin: 40px auto;
+    object-fit: contain;
+  }
+
+  .f-section--feature-related {
+    height: 829px;
+    margin-top: 110px;
+  }
+
+  .f-section--feature-related h2 {
+    width: 927px;
+    margin: 0 0 30px 237px;
+    font-size: 36px;
+    line-height: 51px;
+  }
+
+  .page-template-template-features .f-section--contact {
+    height: 455px;
+    margin-top: 115px;
+    padding: 0;
+    background: var(--arctic-color-frost);
+  }
+
+  .page-template-template-more-info .f-section--contact {
+    height: 455px;
+    margin-top: 83px;
+    padding: 0;
+    background: var(--arctic-color-frost);
+  }
+
+  :is(.page-template-template-services, .page-template-template-warranty) .f-section--contact {
+    height: 455px;
+    margin-top: 115px;
+    padding: 0;
+    background: var(--arctic-color-frost);
+  }
+
+  .page-template-template-certificates .f-section--contact {
+    height: 455px;
+    margin-top: 126px;
+    padding: 0;
+    background: var(--arctic-color-frost);
+  }
+
+  :is(.page-template-template-maintenance, .page-template-template-feature-detail) .f-section--contact {
+    height: 455px;
+    margin-top: 105px;
+    padding: 0;
+    background: var(--arctic-color-frost);
+  }
+
+  .page-template-template-feature-detail .f-section--contact {
+    margin-top: 81px;
+  }
+
+  :is(
+    .page-template-template-features,
+    .page-template-template-more-info,
+    .page-template-template-services,
+    .page-template-template-certificates,
+    .page-template-template-warranty,
+    .page-template-template-maintenance,
+    .page-template-template-feature-detail
+  ) .f-section--contact .f-section__container {
+    width: min(1400px, calc(100% - 40px));
+    max-width: 1400px;
+    height: 455px;
+    padding: 0;
+  }
+
+  :is(
+    .page-template-template-features,
+    .page-template-template-more-info,
+    .page-template-template-services,
+    .page-template-template-certificates,
+    .page-template-template-warranty,
+    .page-template-template-maintenance,
+    .page-template-template-feature-detail
+  ) .f-contact-cta {
+    position: relative;
+    width: 1400px;
+    height: 455px;
+    padding: 0;
+    border-radius: 40px;
+  }
+
+  :is(
+    .page-template-template-features,
+    .page-template-template-more-info,
+    .page-template-template-services,
+    .page-template-template-certificates,
+    .page-template-template-warranty,
+    .page-template-template-maintenance,
+    .page-template-template-feature-detail
+  ) .f-contact-cta h2 {
+    position: absolute;
+    top: 100px;
+    left: 252px;
+    width: 896px;
+    margin: 0;
+    font-size: 36px;
+    line-height: 51px;
+  }
+
+  :is(
+    .page-template-template-features,
+    .page-template-template-more-info,
+    .page-template-template-services,
+    .page-template-template-certificates,
+    .page-template-template-warranty,
+    .page-template-template-maintenance,
+    .page-template-template-feature-detail
+  ) .f-contact-cta > p {
+    position: absolute;
+    top: 161px;
+    left: 252px;
+    width: 896px;
+    margin: 0;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  :is(
+    .page-template-template-features,
+    .page-template-template-more-info,
+    .page-template-template-services,
+    .page-template-template-certificates,
+    .page-template-template-warranty,
+    .page-template-template-maintenance,
+    .page-template-template-feature-detail
+  ) .f-contact-cta__bar {
+    position: absolute;
+    top: 226px;
+    left: 259px;
+    width: 882px;
+    height: 118px;
+    max-width: none;
+    padding: 30px 40px;
+    gap: 62px;
+    box-sizing: border-box;
+  }
+
+  :is(
+    .page-template-template-features,
+    .page-template-template-more-info,
+    .page-template-template-services,
+    .page-template-template-certificates,
+    .page-template-template-warranty,
+    .page-template-template-maintenance,
+    .page-template-template-feature-detail
+  ) .f-contact-cta__avatar {
+    flex: 0 0 58px;
+    width: 58px;
+    height: 58px;
+  }
+
+  :is(
+    .page-template-template-features,
+    .page-template-template-more-info,
+    .page-template-template-services,
+    .page-template-template-certificates,
+    .page-template-template-warranty,
+    .page-template-template-maintenance,
+    .page-template-template-feature-detail
+  ) .f-contact-cta__bar .a-button {
+    width: 149px;
+    min-width: 149px;
+    height: 50px;
+    min-height: 50px;
+    padding: 0 20px;
+    color: var(--arctic-color-snow);
+    white-space: nowrap;
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.74);
+  }
+
+  :is(
+    .page-template-template-features,
+    .page-template-template-more-info,
+    .page-template-template-services,
+    .page-template-template-certificates,
+    .page-template-template-warranty,
+    .page-template-template-maintenance,
+    .page-template-template-feature-detail
+  ) .f-footer--arctic {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .f-main--figma-page {
+    padding-top: 0;
+  }
+
+  .f-main--figma-page .f-section__container {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .f-figma-card-grid,
+  .f-service-grid,
+  .f-certificate-layout,
+  .f-warranty-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .f-figma-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    min-height: 148px;
+    padding: 24px 76px 24px 24px;
+    color: var(--arctic-color-snow);
+    text-decoration: none;
+    background: var(--arctic-color-navy) var(--figma-card-image) center / cover no-repeat;
+    border-radius: 8px;
+  }
+
+  .f-figma-card:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(7, 24, 38, 0.78) 0%, rgba(7, 24, 38, 0.2) 100%);
+  }
+
+  .f-figma-card__content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 6px;
+  }
+
+  .f-figma-card__content strong {
+    font-size: 20px;
+    line-height: 27px;
+  }
+
+  .f-figma-card__content span {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .f-figma-card__arrow {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    z-index: 2;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    background: var(--arctic-color-red);
+  }
+
+  .f-figma-card__arrow:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 14px;
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid var(--arctic-color-snow);
+    border-right: 2px solid var(--arctic-color-snow);
+    transform: rotate(45deg);
+  }
+
+  .f-service-card img,
+  .f-figma-article__hero {
+    display: block;
+    width: 100%;
+    aspect-ratio: 453 / 224;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .f-service-card h2,
+  .f-certificate-copy h2,
+  .f-figma-article h2 {
+    margin: 18px 0 8px;
+    font-size: 26px;
+    line-height: 34px;
+  }
+
+  .f-service-card p,
+  .f-certificate-copy p,
+  .f-warranty-layout > p,
+  .f-figma-article p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .f-certificate-images {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .f-certificate-images img {
+    width: 100%;
+    height: auto;
+  }
+
+  .f-warranty-table {
+    width: 100%;
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .f-warranty-table th,
+  .f-warranty-table td {
+    padding: 8px 4px;
+  }
+
+  .f-figma-article {
+    width: auto;
+  }
+
+  .f-figma-article__diagram {
+    display: block;
+    width: min(100%, 562px);
+    height: auto;
+    margin: 24px auto;
+  }
+}
+
 .f-bar {
   color: var(--arctic-color-snow);
   background: var(--arctic-color-navy);
