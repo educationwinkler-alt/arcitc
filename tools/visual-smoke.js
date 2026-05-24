@@ -181,6 +181,18 @@ function isAllowedLegalEntity(path, html) {
       throw new Error(`External browser requests detected: ${Array.from(externalRequests).join(', ')}`);
     }
 
+    const robotsResponse = await page.goto(`${baseUrl}/robots.txt`, { waitUntil: 'domcontentloaded' });
+    const robotsText = robotsResponse ? await robotsResponse.text() : '';
+    if (!robotsResponse || robotsResponse.status() >= 400 || !robotsText.includes(`Sitemap: ${baseUrl}/wp-sitemap.xml`)) {
+      throw new Error('robots.txt is missing the local WordPress sitemap reference.');
+    }
+
+    const sitemapResponse = await page.goto(`${baseUrl}/wp-sitemap.xml`, { waitUntil: 'domcontentloaded' });
+    const sitemapText = sitemapResponse ? await sitemapResponse.text() : '';
+    if (!sitemapResponse || sitemapResponse.status() >= 400 || !sitemapText.includes('<sitemapindex') || !sitemapText.includes(`${baseUrl}/wp-sitemap-posts-page-1.xml`)) {
+      throw new Error('wp-sitemap.xml is missing the expected sitemap index.');
+    }
+
     for (const [path, fileName] of screenshotPaths) {
       await page.goto(`${baseUrl}${path}`, { waitUntil: 'networkidle' });
       await page.screenshot({ path: `${screenshotDir}/${fileName}`, fullPage: false });
