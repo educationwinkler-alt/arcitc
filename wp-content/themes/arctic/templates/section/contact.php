@@ -7,12 +7,19 @@
 $email = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
 $phone = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
 $avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
+$contact_title = __( 'Potřebujete poradit s výběrem vhodné vířivky?', 'baspa' );
+
+if ( is_tax( 'product-category', 'swimspa' ) || ( is_singular( 'product' ) && has_term( 'swimspa', 'product-category', get_the_ID() ) ) ) {
+	$contact_title = __( 'Potřebujete poradit s výběrem vhodného bazénu?', 'baspa' );
+} elseif ( is_tax( 'product-category', 'dalsi-sortiment' ) || ( is_singular( 'product' ) && has_term( 'dalsi-sortiment', 'product-category', get_the_ID() ) ) ) {
+	$contact_title = __( 'Potřebujete poradit s výběrem vhodného řešení?', 'baspa' );
+}
 ?>
 
 <section class="f-section f-section--contact">
 	<div class="f-section__container a-container">
 		<div class="f-contact-cta">
-			<h2><?php echo esc_html__( 'Potřebujete poradit s výběrem vhodné vířivky?', 'baspa' ); ?></h2>
+			<h2><?php echo esc_html( $contact_title ); ?></h2>
 			<p><?php echo esc_html__( 'Dejte nám vědět a naši specialisté na bazény se vám budou věnovat.', 'baspa' ); ?></p>
 			<div class="f-contact-cta__bar">
 				<div class="f-contact-cta__person">
