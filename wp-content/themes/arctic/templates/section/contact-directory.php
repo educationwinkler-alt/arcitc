@@ -31,6 +31,30 @@ $contacts = array(
 		'phone' => $phone,
 	),
 );
+
+$contacts = array_merge( $contacts, array(
+	array(
+		'name'  => __( 'Fakturace a logistika', 'baspa' ),
+		'role'  => __( 'Administrace zakázek', 'baspa' ),
+		'scope' => __( 'Dokumenty, fakturace a showroom Moravany', 'baspa' ),
+		'email' => $email,
+		'phone' => $phone,
+	),
+	array(
+		'name'  => __( 'Montáže', 'baspa' ),
+		'role'  => __( 'Realizace a technická příprava', 'baspa' ),
+		'scope' => __( 'Organizace montáží a příprava místa', 'baspa' ),
+		'email' => $email,
+		'phone' => $phone,
+	),
+	array(
+		'name'  => __( 'Příslušenství', 'baspa' ),
+		'role'  => __( 'Doplňky a péče o vodu', 'baspa' ),
+		'scope' => __( 'Termokryty, úprava vody a servisní doplňky', 'baspa' ),
+		'email' => $email,
+		'phone' => $phone,
+	),
+) );
 ?>
 
 <section class="f-section f-section--contact-directory">
