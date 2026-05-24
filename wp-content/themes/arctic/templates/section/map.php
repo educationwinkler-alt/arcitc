@@ -8,14 +8,7 @@ $map_embed = get_theme_mod( 'arctic_map_embed' );
 $map_link  = get_theme_mod( 'baspa_map' );
 $can_embed = !empty( $map_embed ) && ( !function_exists( 'wp_get_environment_type' ) || 'local' !== wp_get_environment_type() );
 
-$figma_map = get_posts( array(
-	'post_type'      => 'attachment',
-	'post_status'    => 'inherit',
-	'posts_per_page' => 1,
-	'fields'         => 'ids',
-	'meta_key'       => '_arctic_seed_key',
-	'meta_value'     => 'figma-node-1-1069-contact-map-showroom',
-) );
+$figma_map = content_url( 'uploads/import/figma/contact-map-showroom.png' );
 ?>
 
 <section class="f-section f-section--map">
@@ -31,11 +24,7 @@ $figma_map = get_posts( array(
 			        referrerpolicy="no-referrer-when-downgrade"></iframe>
 		<?php } else { ?>
 			<div class="f-local-map" aria-label="<?php echo esc_attr__( 'Mapa showroomu Moravany u Brna', 'baspa' ); ?>">
-				<?php if ( !empty( $figma_map ) ) { ?>
-					<?php echo wp_get_attachment_image( (int) $figma_map[0], 'huge', false, array(
-						'class' => 'f-local-map__image',
-					) ); ?>
-				<?php } ?>
+				<img class="f-local-map__image" src="<?php echo esc_url( $figma_map ); ?>" width="3110" height="782" alt="<?php echo esc_attr__( 'Kontaktní mapa a showroom podle grafiky', 'baspa' ); ?>" loading="lazy" decoding="async">
 				<span class="f-local-map__label f-local-map__label--brno" aria-hidden="true">Brno</span>
 				<span class="f-local-map__label f-local-map__label--moravany" aria-hidden="true">Moravany</span>
 				<span class="f-local-map__pin" aria-hidden="true"></span>

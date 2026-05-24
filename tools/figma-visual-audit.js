@@ -49,6 +49,23 @@ async function assertSourceContains(page, selector, expected, label) {
   }
 }
 
+async function assertHtmlContains(page, path, expectedItems, forbiddenItems = []) {
+  await page.goto(`${baseUrl}${path}`, { waitUntil: 'networkidle' });
+  const html = await page.content();
+
+  for (const expected of expectedItems) {
+    if (!html.includes(expected)) {
+      throw new Error(`${path}: expected HTML to include "${expected}"`);
+    }
+  }
+
+  for (const forbidden of forbiddenItems) {
+    if (html.includes(forbidden)) {
+      throw new Error(`${path}: forbidden generated asset source found "${forbidden}"`);
+    }
+  }
+}
+
 async function auditDesktop(page) {
   await page.setViewportSize({ width: 1920, height: 1080 });
   await page.goto(baseUrl, { waitUntil: 'networkidle' });
@@ -86,6 +103,28 @@ async function auditMobile(page) {
   await assertSourceContains(page, '.f-hero-promo__image', 'uploads/import/figma/hp-fixed-banner-product.png', 'mobile.heroPromoImageSource');
 }
 
+async function auditFigmaSources(page) {
+  await assertHtmlContains(page, '/catalog/virivky/', [
+    'uploads/import/figma/category-vlastnosti.jpg',
+    'uploads/import/figma/category-zaruka.jpg',
+    'uploads/import/figma/category-configurator.png',
+    'uploads/import/figma/showroom-1.png',
+    'uploads/import/figma/showroom-2.png',
+    'uploads/import/figma/showroom-3.png',
+  ], [
+    'category-vlastnosti-1024',
+    'category-zaruka-1024',
+    'category-configurator-1024',
+    'showroom-2-1024',
+  ]);
+
+  await assertHtmlContains(page, '/kontakt/', [
+    'uploads/import/figma/contact-map-showroom.png',
+  ], [
+    'contact-map-showroom-2048',
+  ]);
+}
+
 (async () => {
   const browser = await chromium.launch({ executablePath: chromePath });
   const page = await browser.newPage({ deviceScaleFactor: 1 });
@@ -93,6 +132,7 @@ async function auditMobile(page) {
   try {
     await auditDesktop(page);
     await auditMobile(page);
+    await auditFigmaSources(page);
     console.log('Figma visual audit passed.');
   } finally {
     await browser.close();

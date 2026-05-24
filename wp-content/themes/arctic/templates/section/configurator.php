@@ -7,14 +7,7 @@
 $hot_tubs_url = get_term_link( 'virivky', 'product-category' );
 $hot_tubs_url = is_wp_error( $hot_tubs_url ) ? home_url( '/catalog/virivky/' ) : $hot_tubs_url;
 
-$configurator_image = get_posts( array(
-	'post_type'      => 'attachment',
-	'post_status'    => 'inherit',
-	'posts_per_page' => 1,
-	'fields'         => 'ids',
-	'meta_key'       => '_arctic_seed_key',
-	'meta_value'     => 'figma-node-1-409-category-configurator',
-) );
+$configurator_image = content_url( 'uploads/import/figma/category-configurator.png' );
 ?>
 
 <section id="konfigurator" class="f-section f-section--configurator">
@@ -28,13 +21,7 @@ $configurator_image = get_posts( array(
 				</a>
 			</div>
 			<div class="f-configurator-cta__visual" aria-hidden="true">
-				<?php if ( !empty( $configurator_image ) ) { ?>
-					<?php echo wp_get_attachment_image( (int) $configurator_image[0], 'large', false, array(
-						'class' => 'f-configurator-cta__image',
-					) ); ?>
-				<?php } else { ?>
-					<div class="f-configurator-cta__screen"></div>
-				<?php } ?>
+				<img class="f-configurator-cta__image" src="<?php echo esc_url( $configurator_image ); ?>" width="667" height="312" alt="" loading="lazy" decoding="async">
 			</div>
 		</div>
 	</div>

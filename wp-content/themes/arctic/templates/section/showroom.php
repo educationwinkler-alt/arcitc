@@ -4,40 +4,24 @@
  * Arctic Showroom
  */
 
-$image_keys = array(
-	'figma-node-1-123-showroom-1',
-	'figma-node-1-125-showroom-3',
-	'figma-node-1-124-showroom-2',
+$showroom_images = array(
+	array( 'file' => 'showroom-1.png', 'width' => 384, 'height' => 210 ),
+	array( 'file' => 'showroom-3.png', 'width' => 334, 'height' => 341 ),
+	array( 'file' => 'showroom-2.png', 'width' => 454, 'height' => 285 ),
 );
-$image_ids  = array();
-
-foreach ( $image_keys as $image_key ) {
-	$found = get_posts( array(
-		'post_type'      => 'attachment',
-		'post_status'    => 'inherit',
-		'posts_per_page' => 1,
-		'fields'         => 'ids',
-		'meta_key'       => '_arctic_seed_key',
-		'meta_value'     => $image_key,
-	) );
-
-	if ( !empty( $found ) ) {
-		$image_ids[] = (int) $found[0];
-	}
-}
 ?>
 
 <section class="f-section f-section--showroom">
 	<div class="f-section__container a-container">
-		<div class="f-showroom-panel">
+			<div class="f-showroom-panel">
 			<div class="f-showroom-panel__media">
-				<?php foreach ( $image_ids as $index => $image_id ) { ?>
+				<?php foreach ( $showroom_images as $index => $image ) { ?>
 					<figure class="f-showroom-panel__image f-showroom-panel__image--<?php echo esc_attr( $index + 1 ); ?>">
-						<?php echo wp_get_attachment_image( $image_id, 'large', false, array(
-							'data-lazy' => 'false',
-							'loading'   => 'eager',
-							'decoding'  => 'async',
-						) ); ?>
+						<img src="<?php echo esc_url( content_url( 'uploads/import/figma/' . $image['file'] ) ); ?>"
+						     width="<?php echo esc_attr( $image['width'] ); ?>"
+						     height="<?php echo esc_attr( $image['height'] ); ?>"
+						     alt="<?php echo esc_attr__( 'Showroom Arctic Spas podle grafiky', 'baspa' ); ?>"
+						     loading="eager" decoding="async">
 					</figure>
 				<?php } ?>
 				<div class="f-showroom-panel__badge">

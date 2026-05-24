@@ -4,23 +4,8 @@
  * Category Intro
  */
 
-$showroom_image = get_posts( array(
-	'post_type'      => 'attachment',
-	'post_status'    => 'inherit',
-	'posts_per_page' => 1,
-	'fields'         => 'ids',
-	'meta_key'       => '_arctic_seed_key',
-	'meta_value'     => 'figma-node-1-273-category-vlastnosti',
-) );
-
-$category_image = get_posts( array(
-	'post_type'      => 'attachment',
-	'post_status'    => 'inherit',
-	'posts_per_page' => 1,
-	'fields'         => 'ids',
-	'meta_key'       => '_arctic_seed_key',
-	'meta_value'     => 'figma-node-1-274-category-zaruka',
-) );
+$features_image = content_url( 'uploads/import/figma/category-vlastnosti.jpg' );
+$warranty_image = content_url( 'uploads/import/figma/category-zaruka.jpg' );
 ?>
 
 <section class="f-section f-section--category-intro">
@@ -33,19 +18,15 @@ $category_image = get_posts( array(
 					<?php echo esc_html__( 'Více o vlastnostech', 'baspa' ); ?>
 				</a>
 			</div>
-			<?php if ( !empty( $showroom_image ) ) { ?>
-				<figure class="f-category-intro__image">
-					<?php echo wp_get_attachment_image( (int) $showroom_image[0], 'large' ); ?>
-				</figure>
-			<?php } ?>
+			<figure class="f-category-intro__image">
+				<img src="<?php echo esc_url( $features_image ); ?>" width="674" height="424" alt="<?php echo esc_attr__( 'Vlastnosti vířivek Arctic Spas podle grafiky', 'baspa' ); ?>" loading="lazy" decoding="async">
+			</figure>
 		</div>
 
 		<div class="f-category-intro f-category-intro--reverse">
-			<?php if ( !empty( $category_image ) ) { ?>
-				<figure class="f-category-intro__image">
-					<?php echo wp_get_attachment_image( (int) $category_image[0], 'large' ); ?>
-				</figure>
-			<?php } ?>
+			<figure class="f-category-intro__image">
+				<img src="<?php echo esc_url( $warranty_image ); ?>" width="674" height="424" alt="<?php echo esc_attr__( 'Záruka Arctic Spas podle grafiky', 'baspa' ); ?>" loading="lazy" decoding="async">
+			</figure>
 			<div class="f-category-intro__content">
 				<h2><?php echo esc_html__( 'Záruka', 'baspa' ); ?></h2>
 				<p><?php echo esc_html__( 'Na rozdíl od jiných výrobců nejsou pro nás výše uvedená tvrzení jenom líbivé fráze. Za kvalitou našich výrobků si stojímě, což jasně dokládá unikátní doživotní záruka Arctic Spas na vodotěsnost skořepiny a pětiletá záruka na většinu komponentů, včetně ohřevu.', 'baspa' ); ?></p>
