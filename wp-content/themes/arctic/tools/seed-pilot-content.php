@@ -817,7 +817,8 @@ $about_id = arctic_seed_page(
 $downloads_page_id = arctic_seed_page(
 	'ke-stazeni',
 	'Ke stazeni',
-	'<!-- wp:heading --><h2>Dokumenty ke stazeni</h2><!-- /wp:heading --><!-- wp:shortcode -->[arctic-downloads]<!-- /wp:shortcode -->'
+	'',
+	'template-downloads.php'
 );
 
 $references_page_id = arctic_seed_page(

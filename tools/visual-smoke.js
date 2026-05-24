@@ -22,6 +22,7 @@ const screenshotPaths = [
   ['/catalog/virivky/', 'category-virivky-desktop-playwright.png'],
   ['/product/timberwolf/', 'product-timberwolf-desktop-playwright.png'],
   ['/podpora/', 'support-desktop-playwright.png'],
+  ['/ke-stazeni/', 'downloads-desktop-playwright.png'],
   ['/kontakt/', 'contact-desktop-playwright.png'],
 ];
 
@@ -30,6 +31,7 @@ const mobileScreenshotPaths = [
   ['/catalog/virivky/', 'category-virivky-mobile-playwright.png'],
   ['/product/timberwolf/', 'product-timberwolf-mobile-playwright.png'],
   ['/podpora/', 'support-mobile-playwright.png'],
+  ['/ke-stazeni/', 'downloads-mobile-playwright.png'],
   ['/kontakt/', 'contact-mobile-playwright.png'],
 ];
 

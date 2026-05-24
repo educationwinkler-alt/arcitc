@@ -15,7 +15,7 @@ $downloads_query = new WP_Query( array(
 ) );
 
 if ( $downloads_query->have_posts() ) { ?>
-	<?php if ( is_page_template( 'template-support.php' ) ) {
+	<?php if ( is_page_template( 'template-support.php' ) || is_page_template( 'template-downloads.php' ) || is_page( 'ke-stazeni' ) ) {
 		$downloads = array();
 
 		while ( $downloads_query->have_posts() ) {
