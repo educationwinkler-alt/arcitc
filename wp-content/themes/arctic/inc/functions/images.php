@@ -47,7 +47,7 @@ if ( !function_exists( 'baspa_images_jpeg_quality' ) ) {
 if ( !function_exists( 'baspa_images_allow_svg' ) ) {
 
 	/**
-	 * Allow SVG Uploads
+	 * Allow SVG Uploads only when explicitly enabled for trusted admins.
 	 *
 	 * @param array<string> $mimes
 	 *
@@ -55,7 +55,16 @@ if ( !function_exists( 'baspa_images_allow_svg' ) ) {
 	 */
 	function baspa_images_allow_svg( array $mimes ): array {
 
-		$mimes[ 'svg' ] = 'image/svg+xml';
+		unset( $mimes[ 'svg' ] );
+
+		$allow_svg_uploads = apply_filters(
+			'baspa_images_allow_svg_uploads',
+			defined( 'ARCTIC_ALLOW_SVG_UPLOADS' ) && ARCTIC_ALLOW_SVG_UPLOADS
+		);
+
+		if ( $allow_svg_uploads && current_user_can( 'manage_options' ) ) {
+			$mimes[ 'svg' ] = 'image/svg+xml';
+		}
 
 		return $mimes;
 	}

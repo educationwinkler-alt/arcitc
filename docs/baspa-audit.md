@@ -30,9 +30,10 @@ V `arctic-spas-2/wp-content/themes/arctic/` uz jsou opravené nejdulezitejsi fro
 - Ecomail integrace pouziva `wp_remote_post()`, ma timeout, validaci e-mailu, local bypass a zadny frontend debug vypis,
 - AJAX search sanitizuje keyword, whitelistuje registrovane post typy/taxonomie a escapuje vystup odkazu/titulku,
 - vlastni admin settings stranky modulu maji capability gate, nonce, `check_admin_referer()`, `wp_unslash()` pred sanitizaci a escapovany vystup hodnot,
-- post metabox a term meta save handlery nepouzivaji slashovane POST hodnoty a post excerpt se uklada korektnim `wp_update_post()` volanim bez rekurzivniho save hooku.
+- post metabox a term meta save handlery nepouzivaji slashovane POST hodnoty a post excerpt se uklada korektnim `wp_update_post()` volanim bez rekurzivniho save hooku,
+- SVG upload uz neni globalne povoleny; defaultne je vypnuty a lze ho zapnout jen vedome konstantou/filtrem pro admina.
 
-Zbyvajici technicky dluh pred produkci: SVG upload strategii je potreba uzavrit podle finalnich rolí editoru a u verejneho AJAX search lze jeste doplnit nonce/rate limit podle finalni UX implementace.
+Zbyvajici technicky dluh pred produkci: u verejneho AJAX search lze jeste doplnit nonce/rate limit podle finalni UX implementace.
 
 ### Vysoke riziko
 

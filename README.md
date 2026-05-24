@@ -56,6 +56,7 @@ Lokalni bezpecnost:
 - Ecomail ve theme pouziva WordPress HTTP API a nevypisuje debug odpovedi do frontendu.
 - Formularovy AJAX handler nepousti cestu sablony z POSTu; pouziva server-side whitelist.
 - AJAX vyhledavani sanitizuje keyword a povoluje jen registrovane WordPress post typy/taxonomie.
+- SVG upload neni globalne povoleny; zapnout jde jen vedome pro admina.
 - V local rezimu se nenacitaji Google/Fontshare fonty, tracking preconnecty, Smartsupp ani Google mapa.
 - WP-CLI i webovy kontejner jsou nastavene na `WP_ENVIRONMENT_TYPE=local`.
 

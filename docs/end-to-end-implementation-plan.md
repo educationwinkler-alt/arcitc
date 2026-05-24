@@ -118,6 +118,7 @@ Hotove veci:
 - Kontaktni formularovy pipeline je po Baspa auditu zpevneny: hodnoty z POSTu jdou pres `wp_unslash()` + sanitizaci, AJAX handler uz nebere cestu sablony z POSTu, Ecomail pouziva `wp_remote_post()` misto cURL a debug odpovedi se nevypisuji do frontendu.
 - AJAX vyhledavani uz nebere libovolne post typy/taxonomie z POSTu; hodnoty se sanitizuji a validuji proti registrovanym WordPress typum/taxonomiim.
 - Vlastni admin settings stranky modulu maji nonce, capability gate, `check_admin_referer()`, unslash/sanitizaci a escapovany vystup hodnot. Post metabox a term meta save handlery jsou stejne zpevnené proti slashovanym POST hodnotam.
+- SVG upload uz neni globalne povoleny jako v Baspa. Default je vypnuty; zapnout jde jen vedome konstantou/filtrem pro admina.
 - Smartsupp uz nema ve forku hardcoded Baspa klic. Chat/preconnect se vypise jen v `production` prostredi a jen pokud je nastaveny `arctic_smartsupp_key`.
 - Smoke test hlavnich cest neukazuje `Baspa`, `baspa.cz`, Smartsupp, tracking preconnecty, Ecomail URL, Google Fonts ani Google map embed.
 - `npm run visual:smoke` prochazi hlavni URL vcetne `Dalsi sortiment`, kontroluje zakazane stringy, zakazane externi browser requesty, horizontalni overflow na desktopu/mobilu a uklada desktop/mobile screenshoty Figma stranek, katalogu `Swimspa`/`Další sortiment` i detailu `Husky`, `Athabascan` a `Covana`.
