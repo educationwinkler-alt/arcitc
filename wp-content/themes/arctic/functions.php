@@ -53,6 +53,8 @@ require_once get_theme_file_path( 'inc/admin.php' );
 require_once get_theme_file_path( 'inc/styles.php' );
 // Scripts
 require_once get_theme_file_path( 'inc/scripts.php' );
+// SEO
+require_once get_theme_file_path( 'inc/seo.php' );
 // Functions
 require_once get_theme_file_path( 'inc/functions.php' );
 // Customize

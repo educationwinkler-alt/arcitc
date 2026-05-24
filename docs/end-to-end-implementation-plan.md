@@ -122,8 +122,10 @@ Hotove veci:
 - SVG upload uz neni globalne povoleny jako v Baspa. Default je vypnuty; zapnout jde jen vedome konstantou/filtrem pro admina.
 - reCAPTCHA badge uz neni natvrdo schovany CSS jako v Baspa; skryti je mozne jen vedomym filtrem po vyreseni pravniho textu.
 - Smartsupp uz nema ve forku hardcoded Baspa klic. Chat/preconnect se vypise jen v `production` prostredi a jen pokud je nastaveny `arctic_smartsupp_key`.
+- Theme ma zakladni SEO vrstvu bez externiho pluginu: canonical, meta description, Open Graph, Twitter card, Product JSON-LD pro produktove detaily a `noindex,nofollow` pro non-production prostredi.
 - Smoke test hlavnich cest neukazuje `baspa.cz`, Smartsupp, tracking preconnecty, Ecomail URL, Google Fonts ani Google map embed. Jedina povolena viditelna zminka `BASPA s.r.o.` je fakturacni legal entity na `/kontakt/`, protoze je primo ve Figma wireframu.
 - Smoke test soucasne blokuje verejne placeholdery `Lorem ipsum`, `Hello world!`, `Sample Page`, `Hello Pattern`, `example.com` a pracovni texty typu `bude dopln`.
+- Smoke test hlida, ze kazda hlavni URL ma lokalni canonical, pouzitelnou meta description a zakladni Open Graph metadata.
 - `npm run visual:smoke` prochazi hlavni URL vcetne `Dalsi sortiment`, kontroluje zakazane stringy, zakazane externi browser requesty, horizontalni overflow na desktopu/mobilu a uklada desktop/mobile screenshoty Figma stranek, katalogu `Swimspa`/`Další sortiment` i detailu `Husky`, `Athabascan` a `Covana`.
 - Defaultni WP obsah `Hello world!` a `Sample Page` seed odstranuje, aby se nepropsal do novinek ani navigace.
 - Posledni overeni: PHP lint upravenych sablon prosel, seed se propsal do lokalniho WordPressu, swimspa hero pouziva Figma kategoriovy asset, `Další sortiment` zobrazuje 6 polozek, swimspa/Covana detaily a globalni CTA nemaji falesny virivkovy wording, Smartsupp nema hardcoded Baspa klic a `npm run visual:smoke` prosel bez externich requestu.

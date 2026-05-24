@@ -154,6 +154,23 @@ function isAllowedLegalEntity(path, html) {
         throw new Error(`${path} contains forbidden strings: ${hits.join(', ')}`);
       }
 
+      const canonical = await page.locator('link[rel="canonical"]').first().getAttribute('href');
+      if (!canonical || !canonical.startsWith(baseUrl)) {
+        throw new Error(`${path} is missing a local canonical URL.`);
+      }
+
+      const description = await page.locator('meta[name="description"]').first().getAttribute('content');
+      if (!description || description.trim().length < 40) {
+        throw new Error(`${path} is missing a useful meta description.`);
+      }
+
+      for (const property of ['og:title', 'og:description', 'og:url', 'og:image']) {
+        const value = await page.locator(`meta[property="${property}"]`).first().getAttribute('content');
+        if (!value || value.trim().length < 5) {
+          throw new Error(`${path} is missing ${property}.`);
+        }
+      }
+
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       if (overflow > 2) {
         throw new Error(`${path} has horizontal overflow of ${overflow}px on desktop.`);
