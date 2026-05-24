@@ -120,6 +120,8 @@ Hotove veci:
 - `npm run form:smoke` overuje realny AJAX pruchod kontaktniho a servisniho formulare, ulozeni do `contact` CPT, local reCAPTCHA metadata a uklid testovacich zaznamu.
 - `npm run redirect:smoke` overuje 133 starych Arctic URL z `docs/migration-map.csv`: aktivni produkty, vyrazene produkty, sloucene obsahove stranky, sirsi sortiment, PDF downloady a chybejici PDF fallback.
 - `npm run local:safety` overuje, ze WordPress bezi jako `local`, ma zapnute blokovani externich HTTP requestu i mailu a ze pokus o request na `baspa.cz`/Ecomail konci kodem `arctic_local_external_http_blocked`.
+- `npm run search:smoke` overuje AJAX vyhledavani na lokalni `admin-ajax.php`, nalezeni Timberwolfu a odmitnuti neplatneho nonce.
+- `npm run qa:local` spousti cely lokalni QA pruchod: CSS build, local safety, Figma audit, visual smoke, formulare, vyhledavani a redirecty.
 - AJAX vyhledavani uz nebere libovolne post typy/taxonomie z POSTu; hodnoty se sanitizuji a validuji proti registrovanym WordPress typum/taxonomiim. Endpoint ma nonce, lehky IP transient rate limit a limit 10 vysledku pro prispevky i termy.
 - Vlastni admin settings stranky modulu maji nonce, capability gate, `check_admin_referer()`, unslash/sanitizaci a escapovany vystup hodnot. Post metabox a term meta save handlery jsou stejne zpevnené proti slashovanym POST hodnotam.
 - SVG upload uz neni globalne povoleny jako v Baspa. Default je vypnuty; zapnout jde jen vedome konstantou/filtrem pro admina.

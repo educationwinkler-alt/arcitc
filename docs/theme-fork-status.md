@@ -70,7 +70,7 @@ Toto rozhodnuti chrani Baspa zaklad, zrychluje pilot a soucasne drzi Figma token
 - `Podpora` a `Kontakt` maji prvni Figma visual pass: svetly non-hero heading, taby/FAQ/download/form u podpory a lokalni mapovy fallback u kontaktu.
 - Footer je nahrazen vlastni Arctic strukturou s navigacnimi sloupci, rychlym kontaktem, lokanim obrazkem showroomu a krajinnym pozadim bez block-template vystupu Baspa.
 - Redirect MU plugin pokryva aktivni produkty, sirsi sortiment, vyradene modely, hlavni review URL a PDF.
-- `npm run css:build`, PHP lint upravenych souboru, `npm run local:safety`, `npm run form:smoke`, `npm run redirect:smoke` a `npm run visual:smoke` prosly.
+- `npm run qa:local` prosel: CSS build, local safety, Figma audit, visual smoke, form smoke, search smoke a redirect smoke.
 - Visual smoke kontroluje hlavni URL, zakazane externi requesty prohlizece, horizontalni overflow na desktopu/mobilu a uklada Figma kontrolni screenshoty.
 
 ## Dalsi technicke kroky
