@@ -6,6 +6,7 @@
     "css:watch": "lessc --watch wp-content/themes/arctic/src/less/arctic.less wp-content/themes/arctic/dist/css/arctic.css",
     "figma:export-assets": "node tools/figma-export-assets.js",
     "figma:export-local-assets": "node tools/figma-export-local-assets.js",
+    "migration:map": "node tools/build-migration-map.js",
     "visual:smoke": "node tools/visual-smoke.js"
   },
   "devDependencies": {
