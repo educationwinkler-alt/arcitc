@@ -46,7 +46,7 @@ To drzi technicky zaklad Baspa a soucasne umoznuje skin podle Arctic.
 
 ## Implementovane komponenty
 
-- Arctic logo placeholder v `images/logo.php`
+- Figma logo z node `1:1835` v `images/logo.svg`; ručně kreslený fallback `images/logo.php` je odstraněný, aby se nikdy nezobrazil nefigmový znak
 - header a top bar skin podle Figma HP/header
 - CTA button skin
 - mobilni navigation trigger layout
@@ -65,7 +65,7 @@ To drzi technicky zaklad Baspa a soucasne umoznuje skin podle Arctic.
 
 ## Dalsi Figma kroky
 
-- Exportovat finalni logo SVG a nahradit docasny wordmark.
+- Logo už je exportované z Figmy; dál se jen hlídá, že header používá `images/logo.svg` a žádný ruční fallback.
 - Vytahnout presne hodnoty fontu a zkontrolovat proti Baspa typografii.
 - Dodelat pixelove rozdily ve spacingu z `HP`, `KATEGORIE`, `DETAIL KONKRETNIHO PRODUKTU`, `PODPORA` a `KONTAKT`.
 - Porovnat mobilni frame `GM - HP menu` s aktualnim mobile headerem.

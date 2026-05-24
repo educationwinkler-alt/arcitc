@@ -23,12 +23,7 @@
              alt="<?php echo esc_attr( get_bloginfo( 'name' ) ) . ' &mdash; ' . esc_attr( get_bloginfo( 'description' ) ); ?>"
              fetchpriority="high" decoding="async">
 
-	<?php } else if ( ! empty( locate_template( 'images/logo.php' ) ) ) {
-		/**
-		 * Inline Logo
-		 */
-		get_template_part( 'images/logo' );
-	} else {
+	<?php } else {
 		/**
 		 * Text Logo
 		 */
