@@ -114,6 +114,12 @@ const forbidden = [
   'pavelrichter.cz',
   'wdsgn.agency',
   'updates.pavelrichter.cz',
+  'Lorem ipsum',
+  'Hello world!',
+  'Sample Page',
+  'Hello Pattern',
+  'example.com',
+  'bude dopln',
 ];
 
 const forbiddenBrand = [
