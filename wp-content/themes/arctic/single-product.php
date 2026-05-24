@@ -26,11 +26,11 @@ get_template_part( 'modules/products/templates/post/single/heading' );
 		<?php
 		get_template_part( 'modules/products/templates/post/single/navigation' );
 		get_template_part( 'modules/products/templates/post/single' );
-		get_template_part( 'modules/contacts/templates/section', 'catalog' );
 		get_template_part( 'modules/products/templates/post/single/acrylic-colors' );
 		get_template_part( 'templates/section/product-benefits' );
 		get_template_part( 'templates/section/product-options' );
 		get_template_part( 'modules/references/templates/section', 'recent' );
+		get_template_part( 'modules/contacts/templates/section', 'catalog' );
 		?>
 
 	</main>

@@ -80,7 +80,7 @@ Hotove veci:
 - Homepage pouziva Figma logo a hlavni obrazove assety z node/export manifestu.
 - Katalog virivek ma desktop Figma pass podle frame `KATEGORIE` az po footer: header, top kontakt, breadcrumb, hero, promo banner, Vlastnosti/Zaruka, series switcher, serie Custom/Classic/Core, produktove karty z Figma assetu, konfigurator, showroom, prubeh, reference, kontaktni CTA a footer sedi na Figma souradnice.
 - Produktove karty v kategorii pouzivaji Figma exporty `category-product-card-1/2/3.png`; stare Arctic produktove fotky zustavaji obsahova vyjimka pro detaily nebo galerie, ne UX karta kategorie.
-- Detail Timberwolf je hlavni Figma detail podle frame `DETAIL KONKRETNIHO PRODUKTU`; hero, konfigurace, barvy a samostatna sekce `Volitelna vybava` jsou napojene na Figma/wireframe strukturu.
+- Detail Timberwolf je hlavni Figma detail podle frame `DETAIL KONKRETNIHO PRODUKTU`; hero a produktova navigace sedi na souradnice frame, konfigurace sedi na `x=260/y=940`, karty na `y=1041/1283`, Figma konfigurator banner na `x=260/y=1608/w=1400/h=312` a barvy na `x=260/y=2022` podle node mapy.
 - `Podpora` ma pracovni Figma pass a bude se dale rozsirovat podle Figma node/asset manifestu.
 - `Kontakt` ma pracovni Figma pass a map/showroom plocha pouziva Figma node export `1:1069`.
 - Produktovy model ma konfigurace, barvy akrylu, sirsi typy produktu, taxonomie `product-kind` a `product-series`.
@@ -92,8 +92,8 @@ Hotove veci:
 - Smoke test hlavnich cest neukazuje `Baspa`, `baspa.cz`, Smartsupp, tracking preconnecty, Ecomail URL, Google Fonts ani Google map embed.
 - `npm run visual:smoke` prochazi hlavni URL vcetne `Dalsi sortiment`, kontroluje zakazane stringy, zakazane externi browser requesty, horizontalni overflow na desktopu/mobilu a uklada desktop/mobile screenshoty Figma stranek.
 - Defaultni WP obsah `Hello world!` a `Sample Page` seed odstranuje, aby se nepropsal do novinek ani navigace.
-- Posledni overeni: `npm run visual:smoke` prosel po mobilnim Figma passu showroomu/referenci a neodhalil externi browser requesty, `baspa.cz` requesty ani horizontalni overflow.
-- Aktualni kontrolni screenshoty jsou v `docs/screenshots/`, vcetne `home-desktop-1920-playwright.png`, `product-timberwolf-configurations-figma-pass.png` a `product-timberwolf-colors-figma-pass.png`.
+- Posledni overeni: `npm run visual:smoke` prosel po desktop Figma passu Timberwolf detailu a neodhalil externi browser requesty, `baspa.cz` requesty ani horizontalni overflow.
+- Aktualni kontrolni screenshoty jsou v `docs/screenshots/`, vcetne `home-desktop-1920-playwright.png`, `product-timberwolf-1920-current.png` a `product-timberwolf-desktop-current.png`.
 
 ## Souvisly postup realizace
 

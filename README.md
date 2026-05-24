@@ -70,7 +70,7 @@ Frontend je seednuty minimalnim, ale pruchodnym obsahem:
 - mobilni HP showroom a realizace podle Figma `GM - HP`, vcetne Figma kolaze, badge `280 m2`, referencni karty a CTA pod carousel,
 - mobilni menu podle Figma `GM - HP menu`, vcetne presne pozice loga, close buttonu, tmaveho panelu, vyhledavani a kontaktu,
 - desktop Figma pass pro katalog virivek podle frame `KATEGORIE` az po footer: hero, intro, series nav, produktove karty, konfigurator, showroom, prubeh, realizace, CTA a footer,
-- Figma/Baspa visual pass pro detail produktu Timberwolf podle frame `DETAIL KONKRETNIHO PRODUKTU`,
+- Figma visual pass pro detail produktu Timberwolf podle frame `DETAIL KONKRETNIHO PRODUKTU`: hero, navigace, konfigurace, konfigurator banner a barvy sedi na Figma souradnice,
 - Figma/Baspa visual pass pro `Podpora` a `Kontakt` vcetne lokalni mapove nahrady bez externiho embedu,
 - vlastni Arctic footer podle Figma logiky s rychlym kontaktem a bez puvodniho Baspa block-template vystupu,
 - kategorie `Vířivky`, `Celoroční bazény`, `Další sortiment`,

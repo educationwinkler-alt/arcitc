@@ -16,7 +16,7 @@ $price_suffix = get_post_meta( get_the_ID(), 'product_price_suffix', true );
 				<li><a href="#barvy"><?php echo esc_html__( 'Barvy', 'baspa' ); ?></a></li>
 				<li><a href="#vyhody"><?php echo esc_html__( 'Výhody', 'baspa' ); ?></a></li>
 				<li><a href="#volitelna-vybava"><?php echo esc_html__( 'Volitelná výbava', 'baspa' ); ?></a></li>
-				<li><a href="#<?php echo sanitize_title( esc_attr_x( 'references', 'anchor', 'baspa' ) ); ?>"><?php echo esc_html__( 'Ukázky realizací', 'baspa' ); ?></a></li>
+					<li><a href="#<?php echo sanitize_title( esc_attr_x( 'references', 'anchor', 'baspa' ) ); ?>"><?php echo esc_html__( 'Příklady realizací', 'baspa' ); ?></a></li>
 			</ul>
 		</nav>
 

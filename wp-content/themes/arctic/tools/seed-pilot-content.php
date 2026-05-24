@@ -511,7 +511,7 @@ $legacy_products = array(
 	array( 'source_slug' => 'virivka-mustang', 'slug' => 'mustang', 'name' => 'Mustang', 'type' => 'hot_tub', 'series' => $series_classic, 'dimensions' => '235 × 235 cm, výška: 98 cm' ),
 	array( 'source_slug' => 'virivka-totem', 'slug' => 'totem', 'name' => 'Totem', 'type' => 'hot_tub', 'series' => $series_classic, 'dimensions' => '217 × 217 cm, výška: 104 cm' ),
 	array( 'source_slug' => 'virivka-eagle', 'slug' => 'eagle', 'name' => 'Eagle', 'type' => 'hot_tub', 'series' => $series_classic, 'dimensions' => '217 × 217 cm, výška: 104 cm' ),
-	array( 'source_slug' => 'virivka-timberwolf', 'slug' => 'timberwolf', 'name' => 'Timberwolf', 'type' => 'hot_tub', 'series' => $series_classic, 'dimensions' => '174 × 217 cm, výška: 98 cm' ),
+	array( 'source_slug' => 'virivka-timberwolf', 'slug' => 'timberwolf', 'name' => 'Timberwolf', 'type' => 'hot_tub', 'series' => $series_classic, 'dimensions' => '217 x 174 x 98 cm' ),
 	array( 'source_slug' => 'virivka-husky', 'slug' => 'husky', 'name' => 'Husky', 'type' => 'hot_tub', 'series' => $series_core, 'price' => 'od 209 000 Kc', 'description' => 'Kompaktni virivka rady Core s peti sedadly, 20 tryskami a jednim cerpadlem.', 'dimensions' => '213 × 186 cm, výška: 99 cm' ),
 	array( 'source_slug' => 'bazen-athabascan', 'slug' => 'athabascan', 'name' => 'Athabascan', 'type' => 'swimspa', 'series' => $series_swimspa ),
 	array( 'source_slug' => 'bazen-hudson', 'slug' => 'hudson', 'name' => 'Hudson', 'type' => 'swimspa', 'series' => $series_swimspa ),
@@ -601,7 +601,7 @@ arctic_seed_set_multi_meta( $timberwolf_id, 'product_images', array( $figma_timb
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_model', array( 'Classic Timberwolf' ) );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_seats', array( '3 osoby' ) );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_nozzles', array( 'Prestige 15/1', 'Signature 30/2' ) );
-arctic_seed_set_multi_meta( $timberwolf_id, 'product_dimensions_external', array( '174 × 217 cm, výška: 98 cm' ) );
+arctic_seed_set_multi_meta( $timberwolf_id, 'product_dimensions_external', array( '217 x 174 x 98 cm' ) );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_water_volume', array( '884 litru' ) );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_acrylic_colors', array( 'Dakota', 'Kalahari', 'Odyssey', 'Platinum Swirl', 'Espresso' ) );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_cabinet_colors', array( 'Cedrovy kabinet standardni', 'Bezudrzbovy kabinet volitelny' ) );

@@ -9,7 +9,9 @@ $post_class = array( 'f-product--single', 'f-post', 'f-post--single' );
 ?>
 
 <article id="product-<?php the_ID(); ?>" <?php post_class( $post_class ); ?>>
-	<?php if ( baspa_products_query_product_has_parameters( get_the_ID() ) ) {
+	<?php if ( get_post_field( 'post_name', get_the_ID() ) === 'timberwolf' ) {
+		get_template_part( 'modules/products/templates/post/single/figma-detail-body' );
+	} else if ( baspa_products_query_product_has_parameters( get_the_ID() ) ) {
 		/**
 		 * Variation
 		 */
