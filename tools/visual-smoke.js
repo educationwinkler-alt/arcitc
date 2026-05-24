@@ -99,8 +99,6 @@ function trackExternalRequests(page) {
 
 const forbidden = [
   'baspa.cz',
-  'BASPA',
-  'Baspa',
   'smartsuppchat',
   'connect.facebook.net',
   'static.hotjar.com',
@@ -118,6 +116,15 @@ const forbidden = [
   'updates.pavelrichter.cz',
 ];
 
+const forbiddenBrand = [
+  'BASPA',
+  'Baspa',
+];
+
+function isAllowedLegalEntity(path, html) {
+  return path === '/kontakt/' && html.includes('BASPA s.r.o.');
+}
+
 (async () => {
   const browser = await chromium.launch({ executablePath: chromePath });
 
@@ -133,6 +140,10 @@ const forbidden = [
 
       const html = await page.content();
       const hits = forbidden.filter((needle) => html.includes(needle));
+      const brandHits = forbiddenBrand.filter((needle) => html.includes(needle));
+      if (brandHits.length && !isAllowedLegalEntity(path, html)) {
+        hits.push(...brandHits);
+      }
       if (hits.length) {
         throw new Error(`${path} contains forbidden strings: ${hits.join(', ')}`);
       }

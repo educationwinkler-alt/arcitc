@@ -713,8 +713,8 @@ foreach ( $legacy_products as $index => $product ) {
 	}
 
 	$default_content = $product['description'] ?? ( $legacy_text ?: ( $is_swimspa
-		? 'Swimspa ' . $product['name'] . ' bude doplněna podle aktuálního obsahu live webu a klientských podkladů.'
-		: 'Vířivka ' . $product['name'] . ' bude doplněna podle aktuálního obsahu live webu a klientských podkladů.' ) );
+		? 'Swimspa ' . $product['name'] . ' je celoroční bazén pro plavání, rehabilitaci a rodinnou relaxaci s technologií Arctic Spas.'
+		: 'Vířivka ' . $product['name'] . ' je model Arctic Spas pro celoroční provoz, odolnou konstrukci a úspornou relaxaci v exteriéru.' ) );
 	$order_offset    = $is_swimspa ? 200 : 40;
 	$model_label     = trim( ( $series_label ? $series_label . ' ' : '' ) . $product['name'] );
 

@@ -87,9 +87,11 @@ $contacts = array_merge( $contacts, array(
 		<div class="f-billing-box">
 			<h2><?php echo esc_html__( 'Fakturační údaje', 'baspa' ); ?></h2>
 			<p>
-				<strong><?php echo esc_html__( 'Arctic Spas CZ', 'baspa' ); ?></strong><br>
-				<?php echo esc_html__( 'Bohunická cesta 15, 664 48 Moravany u Brna', 'baspa' ); ?><br>
-				<?php echo esc_html__( 'IČ: bude doplněno před produkcí', 'baspa' ); ?>
+				<strong><?php echo esc_html__( 'BASPA s.r.o.', 'baspa' ); ?></strong><br>
+				<?php echo esc_html__( 'Bohunická cesta 727/15, 664 48 Moravany', 'baspa' ); ?><br><br>
+				<?php echo esc_html__( 'IČ 02257467', 'baspa' ); ?><br>
+				<?php echo esc_html__( 'DIČ CZ02257467', 'baspa' ); ?><br><br>
+				<?php echo esc_html__( 'Společnost je zapsána v obchodním rejstříku vedeném u Krajského soudu v Brně, oddíl C, vložka 80736.', 'baspa' ); ?>
 			</p>
 		</div>
 	</div>

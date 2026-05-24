@@ -242,7 +242,7 @@ async function auditContactDesktop(page) {
   await assertBox(page, '.f-contact-card:nth-child(2)', { x: 733, y: 1399, width: 453, height: 280 }, 3, 'contact.cardTwo');
   await assertBox(page, '.f-contact-card:nth-child(3)', { x: 1206, y: 1399, width: 453, height: 280 }, 3, 'contact.cardThree');
   await assertBox(page, '.f-contact-card:nth-child(4)', { x: 260, y: 1704, width: 453, height: 280 }, 3, 'contact.cardFour');
-  await assertBox(page, '.f-billing-box', { x: 260, y: 2071, width: 507, height: 165 }, 3, 'contact.billing');
+  await assertBox(page, '.f-billing-box', { x: 260, y: 2071, width: 507, height: 310 }, 3, 'contact.billing');
   await assertBox(page, '.f-footer', { x: 0, y: 2425, width: 1920, height: 605.5 }, 4, 'contact.footer');
 
   await assertSourceContains(page, '.f-local-map__image', 'uploads/import/figma/contact-map-showroom.png', 'contact.mapSource');
