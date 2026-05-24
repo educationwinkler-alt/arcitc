@@ -108,6 +108,7 @@ Hotove veci:
 - CPT `download` a shortcode `[arctic-downloads]` jsou implementovane.
 - Seed script zaklada homepage, menu, kontaktni data, kategorie a produkty. Figma pilot je Timberwolf; Lunar/Orion jsou obsahove produkty v katalogu, Husky uz ma doplnenou obsahovou konfiguraci podle puvodni Arctic stranky: 5 osob, 20 trysek, 1030 litru a jedno dvourychlostni cerpadlo.
 - Redirect MU plugin resi aktivni produkty, sirsi sortiment, Dreammaker, stare Core modely a hlavni review URL z crawlu.
+- Redirect audit 2026-05-24: stare obsahove URL jsou zpresnene na nove Figma stranky tam, kde uz existuji. `baspa.php` a `kariera.php` jdou na `/o-nas/`, `sluzby.php` na `/sluzby/`, `servis.php` na `/servis/`, `certifikaty.php` na `/certifikaty/`, `zaruka.php` na `/zaruka/`, provozni naklady na `/kolik-stoji-udrzba/`, izolace na `/vlastnosti/izolace-virivky/` a obecne obsahove technicke odkazy na `/vlastnosti/` nebo `/dalsi-informace/`.
 - Stare PDF URL se dynamicky presmeruji na importovany media soubor podle `download_original_url`; chybejici PDF padaji na `/ke-stazeni/`.
 - Kontaktni formular ma local reCAPTCHA bypass, neposila maily v localu, nema hardcoded Bcc a jeden POST se zpracuje jen jednou.
 - Smartsupp uz nema ve forku hardcoded Baspa klic. Chat/preconnect se vypise jen v `production` prostredi a jen pokud je nastaveny `arctic_smartsupp_key`.

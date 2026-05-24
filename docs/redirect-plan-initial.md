@@ -42,3 +42,22 @@ Crawl nasel take dalsi historicke produktove nebo produktove-podobne URL, ktere 
 - ponechat jako download/support asset.
 
 Priklad k rucni kontrole: `/virivka-frontier.php`.
+
+## Zpresneni po dokonceni Figma stranek
+
+Datum: 2026-05-24
+
+Po doplneni samostatnych Figma sablon uz cast starych obsahovych URL nesmi smerovat na obecnou podporu nebo katalog. Aktualni mapovani v `wp-content/mu-plugins/arctic-redirects.php`:
+
+| Stara URL | Novy cil | Duvod |
+| --- | --- | --- |
+| `/baspa.php` | `/o-nas/` | Obsahove jde o O nas / firmu, showroom ma vlastni samostatnou URL. |
+| `/kariera.php` | `/o-nas/` | Kariéra a tym patri do Figma stranky O nas. |
+| `/sluzby.php` | `/sluzby/` | Nova Figma sablona Sluzby existuje. |
+| `/servis.php` | `/servis/` | Nova Figma sablona Servis existuje. |
+| `/certifikaty.php` | `/certifikaty/` | Nova Figma sablona Certifikaty existuje. |
+| `/zaruka.php` | `/zaruka/` | Nova Figma sablona Zaruka existuje. |
+| `/kolik-stoji-provoz-udrzba-virivky.php` | `/kolik-stoji-udrzba/` | Nova Figma obsahova stranka pro provozni naklady existuje. |
+| `/izolace-virivky.php`, `/izolace-heatlock.php` | `/vlastnosti/izolace-virivky/` | Nova Figma detailova stranka vlastnosti existuje. |
+| `/uprava-vody.php`, `/stavebni-pripravenost.php` | `/dalsi-informace/` | Obsah patri do rozcestniku dalsich informaci; samostatny detail zatim neni. |
+| `/servisni-pristup.php`, `/servisni-pristup-core.php` | `/vlastnosti/` | Obsah patri do vlastnosti; samostatny detail zatim neni. |
