@@ -288,7 +288,7 @@ update_term_meta( $category_hot_tubs, 'category_heading_title', 'Venkovní víř
 update_term_meta( $category_hot_tubs, 'category_heading_text', 'Venkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily, byly jednoduché na obsluhu a pro svůj provoz spotřebovaly minimum energie.' );
 update_term_meta( $category_hot_tubs, 'category_heading_cta_text', 'Vybrat vířivku' );
 update_term_meta( $category_swimspa, 'category_image', $category_swimspa_life );
-update_term_meta( $category_swimspa, 'category_heading_image', $figma_hero );
+update_term_meta( $category_swimspa, 'category_heading_image', $category_swimspa_life );
 update_term_meta( $category_swimspa, 'category_description_short', 'Rodinný bazén na zahradě je snem řady domácností. Mnohé nicméně odradí nesmírná náročnost souvisejících zemních a stavebních prací a v našich klimatických podmínkách také žalostně limitované využití omezené na krátkou letní sezónu.' );
 update_term_meta( $category_swimspa, 'category_heading_cta_text', 'Vybrat bazén' );
 update_term_meta( $category_covers, 'category_image', $covana_main );
