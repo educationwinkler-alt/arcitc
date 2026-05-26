@@ -73,6 +73,7 @@ Open concern:
 3. Structured product configuration model migration (P1 data model) is still pending.
 4. Manual final sign-off sheet for all page/frame combinations is still pending.
 5. Text encoding regression exists in configurator section source strings (mojibake), must be cleaned.
+6. Homepage promo badge must be renamed from "Vyprodej" to "Akcni nabidka" and must not appear outside homepage.
 
 ## 3) New complete plan to finish the website
 
@@ -114,6 +115,22 @@ Exit criteria:
 - Homepage configurator section opens/embeds functional 3D viewer flow.
 - Product detail configurator can render model-specific viewer.
 - Fallback CTA still works when plugin is unavailable.
+
+## Phase 1A - Homepage promo badge scope (P0, 0.5 day)
+Goal: keep sale/promo badge compliant with content rules and page scope.
+
+Implementation:
+1. Change homepage promo copy from "Vyprodej skladovych virivek" to "Akcni nabidka skladovych virivek" (or exact approved CZ final text).
+2. Ensure the promo component is rendered only on homepage (`is_front_page()` or equivalent template-level guard).
+3. Explicitly prevent rendering on category, product detail, support, contact, showroom, references, and info pages.
+4. Add regression check:
+   - homepage must contain the approved promo text
+   - non-home templates must not contain the promo text/component
+
+Exit criteria:
+- Promo badge is visible on homepage only.
+- Promo badge text is "Akcni nabidka" (approved final variant).
+- Zero occurrences of this component on non-home pages.
 
 ## Phase 2 - Data model completion for product configurations (P1, 1-2 days)
 1. Replace `product_configurations` flat text fieldset with structured repeater/group:
