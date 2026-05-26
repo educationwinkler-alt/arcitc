@@ -11,7 +11,7 @@
 <div id="<?php echo sanitize_title( esc_attr_x( 'navigation', 'anchor', 'baspa' ) ); ?>"
      class="f-off f-off--navigation a-off js-off"
      data-off="navigation"
-     data-off-breakpoint="1280"
+     data-off-breakpoint="1400"
      data-off-position="top">
 
 	<?php if ( has_nav_menu( 'navigation' ) && function_exists( 'baspa_navigation' ) ) { ?>

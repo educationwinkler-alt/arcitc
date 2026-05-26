@@ -81,7 +81,7 @@ Still open:
 Status: gate-pass achieved, but visual sign-off still open (reopened 2026-05-26)
 
 Done evidence:
-- Breakpoint normalization is in place (`data-off-breakpoint="1280"`).
+- Previous breakpoint normalization existed, but Phase 5 reopened it because laptop/120% zoom states showed the desktop shell breaking before `1280`.
 - `npm run figma:audit` passes after clean build.
 - `npm run visual:smoke` and full `npm run qa:local` pass on 2026-05-26.
 
@@ -291,6 +291,13 @@ Exit criteria:
 - Owner/client has a clear list of content exceptions requiring approval.
 
 ## Phase 5 - Full visual sign-off loop (P0/P1, 2-3 days)
+Important responsive/zoom rule:
+- Figma does not contain every real responsive state.
+- Besides the exact Figma desktop/mobile frames, Phase 5 must validate real in-between laptop widths and browser zoom behavior.
+- Required resilience viewports include at least 1920, 1903, 1600, 1536, 1456, 1440, 1366, 1280, 1024, 768, 430, and 390 CSS pixels.
+- Browser zoom 120% must be treated as an effective narrower CSS viewport; the layout must not overlap, clip key CTAs, or create horizontal overflow.
+- If Figma is silent for a breakpoint, preserve the visual intent and usability: no collapsed header text, no off-screen promo cards, no cropped CTA text, no broken grids.
+
 1. Run manual Figma QA checklist page-by-page:
    - homepage desktop/mobile
    - header dropdowns
@@ -309,6 +316,11 @@ Exit criteria:
 
 Exit criteria:
 - Signed pass sheet for all required pages and breakpoints.
+
+Current Phase 5 technical sign-off:
+- `docs/visual-signoff-phase-5-2026-05-26.md`
+- Technical visual gates pass for the required responsive/zoom matrix.
+- Final owner/client approval is still required before production release.
 
 ## Phase 6 - Release readiness and deployment (P0, 1 day)
 1. Staging deploy + smoke suite + manual business walk-through.

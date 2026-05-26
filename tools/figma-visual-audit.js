@@ -8,7 +8,7 @@ function round(value) {
 }
 
 function desktopScale(width) {
-  if (width >= 1280 && width <= 1919) {
+  if (width >= 1400 && width <= 1919) {
     return Math.min(1, (width - 40) / 1400);
   }
 
@@ -16,11 +16,26 @@ function desktopScale(width) {
 }
 
 function heroScale(width) {
-  if (width >= 1280 && width <= 1919) {
+  if (width >= 1400 && width <= 1919) {
     return width / 1920;
   }
 
   return 1;
+}
+
+function promoBox(width) {
+  const scale = heroScale(width);
+  const promoWidth = 268 * scale;
+  const originalX = ((width - (1920 * scale)) / 2) + (1699 * scale);
+  const safeX = width - promoWidth - 20;
+
+  return {
+    x: Math.min(originalX, safeX),
+    y: 593 * scale,
+    width: promoWidth,
+    height: 288 * scale,
+    scale,
+  };
 }
 
 function assertClose(actual, expected, tolerance, label) {
@@ -155,6 +170,14 @@ async function assertHiddenBox(page, selector, label) {
   }
 }
 
+async function assertInsideViewport(page, selector, width, label, inset = 0) {
+  const rect = await box(page, selector, label);
+
+  if (rect.x < inset || rect.x + rect.width > width - inset) {
+    throw new Error(`${label}: expected ${selector} inside viewport ${width}px, got x=${round(rect.x)}, width=${round(rect.width)}`);
+  }
+}
+
 async function assertCompactHeader(page, width, path) {
   const label = `responsive:${width}:${path}`;
   await assertNoHorizontalOverflow(page, label);
@@ -173,8 +196,8 @@ async function assertCompactHeader(page, width, path) {
   await assertHiddenBox(page, '.f-header__cta-slot .a-button', `${label}.headerButton`);
 
   const breakpoint = await page.locator('.f-off--navigation').first().getAttribute('data-off-breakpoint');
-  if (breakpoint !== '1280') {
-    throw new Error(`${label}.navigationBreakpoint: expected 1280, got ${breakpoint}`);
+  if (breakpoint !== '1400') {
+    throw new Error(`${label}.navigationBreakpoint: expected 1400, got ${breakpoint}`);
   }
 }
 
@@ -188,10 +211,22 @@ async function assertDesktopHeader(page, width, path) {
 
   await assertNoHorizontalOverflow(page, label);
   await assertBox(page, '.f-header__container', { x: headerX, y: headerY, width: headerWidth, height: headerHeight }, 6, `${label}.headerContainer`);
+
+  const header = await box(page, '.f-header__container', `${label}.headerContainerBox`);
+  const nav = await box(page, '.f-header .js-off__container', `${label}.navigationBox`);
+  const button = await box(page, '.f-header__button .a-button', `${label}.headerButtonBox`);
+
+  if (nav.y < header.y + 40 || nav.y + nav.height > header.y + header.height + 2) {
+    throw new Error(`${label}.navigationOverlap: desktop navigation is not vertically contained in header`);
+  }
+
+  if (button.x + button.width > width - 20) {
+    throw new Error(`${label}.headerButtonOverflow: CTA reaches outside safe viewport`);
+  }
 }
 
 async function auditResponsiveShell(page) {
-  for (const width of [1903, 1536, 1456, 1440, 1366, 1280]) {
+  for (const width of [1903, 1600, 1536, 1456, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
     for (const path of ['/', '/swimspa/', '/virivky/', '/product/timberwolf/', '/kontakt/']) {
       await page.goto(`${baseUrl}${path}`, { waitUntil: 'load' });
@@ -199,8 +234,8 @@ async function auditResponsiveShell(page) {
     }
   }
 
-  for (const width of [1024, 390]) {
-    await page.setViewportSize({ width, height: width === 390 ? 900 : 1000 });
+  for (const width of [1366, 1280, 1024, 768, 430, 390]) {
+    await page.setViewportSize({ width, height: width <= 430 ? 900 : 1000 });
     for (const path of ['/', '/swimspa/', '/virivky/', '/product/timberwolf/', '/kontakt/']) {
       await page.goto(`${baseUrl}${path}`, { waitUntil: 'load' });
       await assertCompactHeader(page, width, path);
@@ -209,8 +244,8 @@ async function auditResponsiveShell(page) {
 }
 
 async function auditCompactNavigation(page) {
-  for (const width of [1024, 390]) {
-    await page.setViewportSize({ width, height: width === 390 ? 900 : 1000 });
+  for (const width of [1366, 1280, 1024, 768, 430, 390]) {
+    await page.setViewportSize({ width, height: width <= 430 ? 900 : 1000 });
     await page.goto(baseUrl, { waitUntil: 'load' });
     await page.locator('.f-navigation__trigger').first().click();
     await page.waitForTimeout(250);
@@ -307,6 +342,8 @@ async function auditDesktop(page) {
   await page.setViewportSize({ width: 1920, height: 1080 });
   await page.goto(baseUrl, { waitUntil: 'load' });
 
+  const promo = promoBox(1920);
+
   await assertBox(page, '.f-header__container', { x: 260, y: 18, width: 1400, height: 105 }, 2, 'desktop.headerContainer');
   await assertBox(page, '.f-logo__img', { x: 289, y: 24, width: 148, height: 83 }, 2, 'desktop.logo');
   await assertBox(page, '.f-header .js-off__container', { x: 615, y: 69, width: 639, height: 24 }, 3, 'desktop.navigation');
@@ -316,8 +353,9 @@ async function auditDesktop(page) {
   await assertBox(page, '.f-caption', { x: 266, y: 280, width: 488, height: 309 }, 3, 'desktop.heroCaption');
   await assertBox(page, '.f-slides__control--prev', { x: 125, y: 382, width: 42, height: 42 }, 2, 'desktop.heroPrevArrow');
   await assertBox(page, '.f-slides__control--next', { x: 1767, y: 382, width: 42, height: 42 }, 2, 'desktop.heroNextArrow');
-  await assertBox(page, '.f-hero-promo', { x: 1699, y: 593, width: 268, height: 288 }, 3, 'desktop.heroPromo');
-  await assertBox(page, '.f-hero-promo__image', { x: 1731, y: 593, width: 174, height: 131 }, 3, 'desktop.heroPromoImage');
+  await assertBox(page, '.f-hero-promo', { x: promo.x, y: promo.y, width: promo.width, height: promo.height }, 3, 'desktop.heroPromo');
+  await assertBox(page, '.f-hero-promo__image', { x: promo.x + (32 * promo.scale), y: promo.y, width: 174, height: 131 }, 3, 'desktop.heroPromoImage');
+  await assertInsideViewport(page, '.f-hero-promo', 1920, 'desktop.heroPromoInside', 20);
   await assertBox(page, '.f-category:nth-child(1)', { x: 258, y: 866, width: 674, height: 424 }, 3, 'desktop.categoryHotTubs');
   await assertBox(page, '.f-category:nth-child(2)', { x: 986, y: 866, width: 674, height: 424 }, 3, 'desktop.categorySwimspa');
   await assertBox(page, '.template--homepage .f-page__content', { x: 584, y: 1405, width: 752, height: 232 }, 3, 'desktop.exclusiveDealer');
@@ -341,7 +379,7 @@ async function auditDesktop(page) {
 }
 
 async function auditDesktopScaledMatrix(page) {
-  for (const width of [1903, 1536, 1456, 1440, 1366, 1280]) {
+  for (const width of [1903, 1600, 1536, 1456, 1440]) {
     const scale = heroScale(width);
     const heroHeight = 795 * scale;
     const captionWidth = 488 * scale;
@@ -352,10 +390,7 @@ async function auditDesktopScaledMatrix(page) {
     const arrowY = 382 * scale;
     const prevArrowX = 125 * scale;
     const nextArrowX = width - (111 * scale) - arrowSize;
-    const promoX = ((width - (1920 * scale)) / 2) + (1699 * scale);
-    const promoY = 593 * scale;
-    const promoWidth = 268 * scale;
-    const promoHeight = 288 * scale;
+    const promo = promoBox(width);
 
     await page.setViewportSize({ width, height: 1080 });
     await page.goto(baseUrl, { waitUntil: 'load' });
@@ -365,8 +400,15 @@ async function auditDesktopScaledMatrix(page) {
     await assertBox(page, '.f-caption', { x: captionX, y: captionY, width: captionWidth, height: captionHeight }, 6, `scaledDesktop:${width}.heroCaption`);
     await assertBox(page, '.f-slides__control--prev', { x: prevArrowX, y: arrowY, width: arrowSize, height: arrowSize }, 6, `scaledDesktop:${width}.heroPrevArrow`);
     await assertBox(page, '.f-slides__control--next', { x: nextArrowX, y: arrowY, width: arrowSize, height: arrowSize }, 6, `scaledDesktop:${width}.heroNextArrow`);
-    await assertBox(page, '.f-hero-promo', { x: promoX, y: promoY, width: promoWidth, height: promoHeight }, 8, `scaledDesktop:${width}.heroPromo`);
+    await assertBox(page, '.f-hero-promo', { x: promo.x, y: promo.y, width: promo.width, height: promo.height }, 8, `scaledDesktop:${width}.heroPromo`);
+    await assertInsideViewport(page, '.f-hero-promo', width, `scaledDesktop:${width}.heroPromoInside`, 20);
     await assertComputedStyle(page, '.template--homepage .f-slide--1 .f-slide__background', 'background-size', 'cover', `scaledDesktop:${width}.heroBackgroundFit`);
+  }
+
+  for (const width of [1366, 1280]) {
+    await page.setViewportSize({ width, height: 1080 });
+    await page.goto(baseUrl, { waitUntil: 'load' });
+    await assertHiddenBox(page, '.f-hero-promo', `scaledCompact:${width}.heroPromo`);
   }
 }
 
