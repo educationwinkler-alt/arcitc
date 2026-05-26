@@ -4,15 +4,14 @@
  * Section Template
  */
 
-// Query Arguments
 $references_query_args = array(
 	'post_type'      => 'reference',
-//	'meta_query'     => array(
-//		array(
-//			'key'   => 'reference_featured',
-//			'value' => 1,
-//		),
-//	),
+	'meta_query'     => array(
+		array(
+			'key'     => '_thumbnail_id',
+			'compare' => 'EXISTS',
+		),
+	),
 	'orderby'        => array(
 		'menu_order' => 'ASC',
 		'date'       => 'DESC',
@@ -20,13 +19,12 @@ $references_query_args = array(
 	'posts_per_page' => 7,
 );
 
-// Query
 $references_query = new WP_Query( $references_query_args );
 
 if ( $references_query->have_posts() ) { ?>
 
 	<section id="<?php echo sanitize_title( esc_attr_x( 'references', 'anchor', 'baspa' ) ); ?>"
-	         class="f-section f-section--references f-section--references-recent js-images js-links__section">
+		class="f-section f-section--references f-section--references-recent js-images js-links__section">
 
 		<div class="f-section__container a-container">
 
@@ -36,11 +34,13 @@ if ( $references_query->have_posts() ) { ?>
 					<div class="f-section__heading a-stack a-gap--s">
 						<header class="f-section__header">
 							<h2>
-								<?php if ( !empty( get_option( 'baspa_references_title' ) ) ) {
+								<?php
+								if ( !empty( get_option( 'baspa_references_title' ) ) ) {
 									echo wp_kses_post( get_option( 'baspa_references_title' ) );
 								} else {
-									echo wp_kses_post( __( 'References', 'baspa' ) );
-								} ?>
+									echo wp_kses_post( __( 'Reference', 'baspa' ) );
+								}
+								?>
 							</h2>
 						</header>
 
@@ -51,19 +51,15 @@ if ( $references_query->have_posts() ) { ?>
 						<?php } ?>
 
 						<?php if ( is_tax( 'product-category', 'virivky' ) ) { ?>
-
 							<div class="f-section__actions a-buttons">
 								<a class="f-button a-button a-button--outline" href="<?php echo esc_url( home_url( '/reference/' ) ); ?>">
 									<?php echo esc_html__( 'Zobrazit další reference', 'baspa' ); ?>
 								</a>
 							</div>
-
 						<?php } else if ( function_exists( 'forqy_get_page_by_template' ) && !empty( forqy_get_page_by_template( 'template-references.php' ) ) ) { ?>
-
 							<div class="f-section__actions a-buttons">
 								<?php echo function_exists( 'baspa_button_next' ) ? baspa_button_next( __( 'Zobrazit další reference', 'baspa' ), forqy_get_page_by_template( 'template-references.php' )[ 'permalink' ] ) : ''; ?>
 							</div>
-
 						<?php } ?>
 					</div>
 
@@ -78,9 +74,7 @@ if ( $references_query->have_posts() ) { ?>
 								$references_query->the_post(); ?>
 
 								<div class="f-carousel__item swiper-slide">
-									<?php
-									get_template_part( 'modules/references/templates/post/listing' );
-									?>
+									<?php get_template_part( 'modules/references/templates/post/listing' ); ?>
 								</div>
 
 							<?php } ?>
@@ -88,11 +82,13 @@ if ( $references_query->have_posts() ) { ?>
 						</div>
 
 						<button type="button"
-						        class="f-carousel__control f-carousel__control--prev f-button f-button--accent a-button a-button--accent js-carousel__prev">
-							<?php get_template_part( 'images/icon/arrow-left' ); ?></button>
+							class="f-carousel__control f-carousel__control--prev f-button f-button--accent a-button a-button--accent js-carousel__prev">
+							<?php get_template_part( 'images/icon/arrow-left' ); ?>
+						</button>
 						<button type="button"
-						        class="f-carousel__control f-carousel__control--next f-button f-button--accent a-button a-button--accent js-carousel__next">
-							<?php get_template_part( 'images/icon/arrow-right' ); ?></button>
+							class="f-carousel__control f-carousel__control--next f-button f-button--accent a-button a-button--accent js-carousel__next">
+							<?php get_template_part( 'images/icon/arrow-right' ); ?>
+						</button>
 
 					</div>
 

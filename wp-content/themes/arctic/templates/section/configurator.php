@@ -5,7 +5,7 @@
  */
 
 $hot_tubs_url = get_term_link( 'virivky', 'product-category' );
-$hot_tubs_url = is_wp_error( $hot_tubs_url ) ? home_url( '/catalog/virivky/' ) : $hot_tubs_url;
+$hot_tubs_url = is_wp_error( $hot_tubs_url ) ? home_url( '/virivky/' ) : $hot_tubs_url;
 
 $configurator_image = content_url( 'uploads/import/figma/category-configurator.png' );
 ?>

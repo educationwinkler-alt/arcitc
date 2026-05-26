@@ -11,18 +11,29 @@ if ( !function_exists( 'baspa_styles' ) ) {
 		/**
 		 * Theme
 		 */
-		wp_enqueue_style( get_template(), get_theme_file_uri( 'dist/css/style.css' ), array(), wp_get_theme()->get( 'Version' ) );
+		$is_local       = function_exists( 'wp_get_environment_type' ) && 'local' === wp_get_environment_type();
+		$theme_css_path = get_theme_file_path( 'dist/css/style.css' );
+		$theme_css_ver  = file_exists( $theme_css_path ) ? filemtime( $theme_css_path ) : wp_get_theme()->get( 'Version' );
+		$theme_css_ver  = $is_local ? $theme_css_ver . '-' . time() : $theme_css_ver;
+		wp_enqueue_style(
+			get_template(),
+			get_theme_file_uri( 'dist/css/style.css' ),
+			array(),
+			$theme_css_ver
+		);
 
 		/**
 		 * Arctic skin
 		 */
 		$arctic_css_path = get_theme_file_path( 'dist/css/arctic.css' );
 		if ( file_exists( $arctic_css_path ) ) {
+			$arctic_css_ver = filemtime( $arctic_css_path );
+			$arctic_css_ver = $is_local ? $arctic_css_ver . '-' . time() : $arctic_css_ver;
 			wp_enqueue_style(
 				get_template() . '-skin',
 				get_theme_file_uri( 'dist/css/arctic.css' ),
 				array( get_template() ),
-				filemtime( $arctic_css_path )
+				$arctic_css_ver
 			);
 		}
 

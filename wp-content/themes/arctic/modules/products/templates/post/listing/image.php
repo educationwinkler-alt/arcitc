@@ -4,32 +4,10 @@
  * Listing Image
  */
 
-$image_size  = $args[ 'image_size' ] ?? 'medium';
+$image_size  = $args[ 'image_size' ] ?? ( is_tax( 'product-category' ) ? 'large' : 'medium' );
 $image_ratio = $args[ 'image_ratio' ] ?? 'landscape-16-9';
 $image_position = $args[ 'image_position' ] ?? 'cover';
-
-if ( is_tax( 'product-category', 'virivky' ) ) {
-	if ( !isset( $GLOBALS['arctic_product_card_index'] ) ) {
-		$GLOBALS['arctic_product_card_index'] = 0;
-	}
-
-	$GLOBALS['arctic_product_card_index']++;
-	$product_card_index = ( ( $GLOBALS['arctic_product_card_index'] - 1 ) % 3 ) + 1;
-	$product_card_url   = content_url( 'uploads/import/figma/category-product-card-' . $product_card_index . '.png' );
-	?>
-	<figure class="f-listing__image f-listing__image--figma">
-		<a href="<?php the_permalink(); ?>"
-		   tabindex="-1"
-		   class="f-image a-image a-image--contain a-image--<?php echo esc_attr( $image_ratio ); ?>">
-			<img src="<?php echo esc_url( $product_card_url ); ?>"
-			     width="281"
-			     height="215"
-			     alt="<?php echo esc_attr( get_the_title() ); ?>">
-		</a>
-	</figure>
-	<?php
-	return;
-}
+$image_variant = is_tax( 'product-category' ) ? 'large' : get_template() . '-' . esc_attr( $image_size );
 
 // Meta
 $images = get_post_meta( get_the_ID(), 'product_image' );
@@ -46,7 +24,11 @@ if ( !empty( $images ) ) { ?>
 			<a href="<?php the_permalink(); ?>"
 			   tabindex="-1"
 			   class="f-image a-image a-image--<?php echo esc_attr( $image_position ); ?> a-image--<?php echo esc_attr( $image_ratio ); ?>">
-				<?php echo wp_get_attachment_image( $image_id, get_template() . '-' . esc_attr( $image_size ) ); ?>
+				<?php echo wp_get_attachment_image( $image_id, $image_variant, false, array(
+					'data-lazy' => 'false',
+					'loading'   => 'eager',
+					'decoding'  => 'async',
+				) ); ?>
 			</a>
 		<?php } ?>
 	</figure>
@@ -56,7 +38,11 @@ if ( !empty( $images ) ) { ?>
 			<a href="<?php the_permalink(); ?>"
 			   tabindex="-1"
 			   class="f-image a-image a-image--<?php echo esc_attr( $image_position ); ?> a-image--<?php echo esc_attr( $image_ratio ); ?>">
-				<?php the_post_thumbnail( get_template() . '-' . esc_attr( $image_size ) ); ?>
+				<?php the_post_thumbnail( $image_variant, array(
+					'data-lazy' => 'false',
+					'loading'   => 'eager',
+					'decoding'  => 'async',
+				) ); ?>
 			</a>
 		<?php } else {
 			get_template_part( 'templates/image/listing', 'placeholder', array(

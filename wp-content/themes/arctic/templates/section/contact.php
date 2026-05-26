@@ -4,9 +4,9 @@
  * Contact CTA Section
  */
 
-$email = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
-$phone = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
-$avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
+$email         = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
+$phone         = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
+$avatar        = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
 $contact_title = __( 'Potřebujete poradit s výběrem vhodné vířivky?', 'baspa' );
 
 if ( is_tax( 'product-category', 'swimspa' ) || ( is_singular( 'product' ) && has_term( 'swimspa', 'product-category', get_the_ID() ) ) ) {
@@ -34,20 +34,24 @@ if ( is_tax( 'product-category', 'swimspa' ) || ( is_singular( 'product' ) && ha
 				<div class="f-contact-cta__details">
 					<a href="mailto:<?php echo esc_attr( antispambot( $email ) ); ?>"><?php echo esc_html( antispambot( $email ) ); ?></a>
 					<a href="tel:<?php echo esc_attr( str_replace( ' ', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a>
-					<span><?php echo esc_html__( 'Po - Pá 8:00-17:00 h', 'baspa' ); ?></span>
+					<span class="f-contact-cta__hours"><?php echo esc_html__( 'Po - Pá 8:00-17:00 h', 'baspa' ); ?></span>
 				</div>
-				<?php get_template_part( 'templates/button/contact', '', array(
-					'text' => __( 'Napsat zprávu', 'baspa' ),
-					'class_replace' => array(
-						'f-button',
-						'f-button--outline',
-						'f-button--reversed',
-						'a-button',
-						'a-button--outline',
-						'f-off__trigger',
-						'js-off__trigger',
-					),
-				) ); ?>
+				<?php get_template_part(
+					'templates/button/contact',
+					'',
+					array(
+						'text'          => __( 'Napsat zprávu', 'baspa' ),
+						'class_replace' => array(
+							'f-button',
+							'f-button--outline',
+							'f-button--reversed',
+							'a-button',
+							'a-button--outline',
+							'f-off__trigger',
+							'js-off__trigger',
+						),
+					)
+				); ?>
 			</div>
 		</div>
 	</div>

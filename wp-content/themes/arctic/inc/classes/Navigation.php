@@ -3,6 +3,51 @@
 class Baspa_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 	/**
+	 * Start submenu level.
+	 *
+	 * @param string &$output
+	 * @param int $depth
+	 * @param null $args
+	 *
+	 * @return void
+	 */
+	function start_lvl( &$output, $depth = 0, $args = null ): void {
+		$indent = str_repeat( "\t", $depth );
+
+		if ( 0 === (int) $depth ) {
+			$output .= "\n" . $indent . '<ul class="f-navigation-sub">';
+			$output .= '<li class="f-navigation-sub__panel">';
+			$output .= '<div class="f-navigation-sub__container a-container">';
+			$output .= '<ul class="f-navigation-sub__list">' . "\n";
+
+			return;
+		}
+
+		$output .= "\n" . $indent . '<ul class="f-navigation-sub__list f-navigation-sub__list--nested">' . "\n";
+	}
+
+	/**
+	 * End submenu level.
+	 *
+	 * @param string &$output
+	 * @param int $depth
+	 * @param null $args
+	 *
+	 * @return void
+	 */
+	function end_lvl( &$output, $depth = 0, $args = null ): void {
+		$indent = str_repeat( "\t", $depth );
+
+		if ( 0 === (int) $depth ) {
+			$output .= $indent . '</ul></div></li></ul>' . "\n";
+
+			return;
+		}
+
+		$output .= $indent . '</ul>' . "\n";
+	}
+
+	/**
 	 * Start Element
 	 *
 	 * @param string &$output
@@ -28,6 +73,9 @@ class Baspa_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 		// Passed classes
 		$classes = empty( $data_object->classes ) ? array() : (array)$data_object->classes;
+		if ( in_array( 'menu-item-has-children', $classes, true ) ) {
+			$classes[] = 'has-sub';
+		}
 		if ( isset( $data_object->object ) && $data_object->object == 'product-category' ) {
 			$classes[] = 'has-sub';
 		}

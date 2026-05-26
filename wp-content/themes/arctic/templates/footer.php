@@ -8,23 +8,22 @@
 
 $phone = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
 $email = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
-$avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
 
 $groups = array(
 	array(
 		'heading' => __( 'Vířivky', 'baspa' ),
 		'items'   => array(
-			__( 'Série Core', 'baspa' )      => home_url( '/catalog/virivky/?series=core' ),
-			__( 'Série Classic', 'baspa' )   => home_url( '/catalog/virivky/?series=classic' ),
-			__( 'Série Custom', 'baspa' )    => home_url( '/catalog/virivky/?series=custom' ),
-			__( 'Výprodej vířivek', 'baspa' ) => home_url( '/catalog/virivky/' ),
+			__( 'Série Core', 'baspa' )      => home_url( '/virivky/?series=core' ),
+			__( 'Série Classic', 'baspa' )   => home_url( '/virivky/?series=classic' ),
+			__( 'Série Custom', 'baspa' )    => home_url( '/virivky/?series=custom' ),
+			__( 'Výprodej vířivek', 'baspa' ) => home_url( '/virivky/' ),
 		),
 		'sections' => array(
 			array(
 				'heading' => __( 'Celoroční bazény', 'baspa' ),
 				'items'   => array(
-					__( 'Série Core', 'baspa' )    => home_url( '/catalog/swimspa/?series=core' ),
-					__( 'Série Classic', 'baspa' ) => home_url( '/catalog/swimspa/?series=classic' ),
+					__( 'Série Core', 'baspa' )    => home_url( '/swimspa/?series=core' ),
+					__( 'Série Classic', 'baspa' ) => home_url( '/swimspa/?series=classic' ),
 				),
 			),
 		),
@@ -44,7 +43,7 @@ $groups = array(
 	array(
 		'heading' => __( 'Další informace', 'baspa' ),
 		'items'   => array(
-			__( 'Průběh realizace', 'baspa' )            => home_url( '/dalsi-informace/' ),
+			__( 'Průběh realizace', 'baspa' )            => home_url( '/#order-progress' ),
 			__( 'Podpora', 'baspa' )                     => home_url( '/podpora/' ),
 			__( 'Služby', 'baspa' )                      => home_url( '/sluzby/' ),
 			__( 'Kolik stojí provoz a údržba', 'baspa' ) => home_url( '/kolik-stoji-udrzba/' ),
@@ -87,9 +86,7 @@ $groups = array(
 				<div class="f-footer__quick-contact-body">
 					<h2><?php echo esc_html__( 'Rychlý kontakt', 'baspa' ); ?></h2>
 					<div class="f-footer__quick-person">
-						<span class="f-footer__quick-avatar" aria-hidden="true">
-							<img src="<?php echo esc_url( $avatar ); ?>" alt="" loading="lazy" decoding="async">
-						</span>
+						<span class="f-footer__quick-avatar" aria-hidden="true"></span>
 						<div>
 							<strong><?php echo esc_html__( 'Lukáš Dušek', 'baspa' ); ?></strong>
 							<span><?php echo esc_html__( 'Bazénový specialista', 'baspa' ); ?></span>
@@ -97,6 +94,7 @@ $groups = array(
 					</div>
 					<a href="mailto:<?php echo antispambot( esc_attr( $email ) ); ?>"><?php echo antispambot( esc_html( $email ) ); ?></a>
 					<a href="tel:<?php echo esc_attr( str_replace( ' ', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a>
+					<span class="f-footer__quick-hours"><?php echo esc_html__( 'Po - Pá 8:00-17:00 h', 'baspa' ); ?></span>
 					<?php get_template_part( 'templates/button/contact', '', array(
 						'text' => __( 'Nezávazná konzultace', 'baspa' ),
 					) ); ?>
@@ -104,14 +102,14 @@ $groups = array(
 				<div class="f-footer__quick-map">
 					<span><?php echo esc_html__( 'Bohunická cesta 15', 'baspa' ); ?></span>
 					<strong><?php echo esc_html__( 'Moravany u Brna', 'baspa' ); ?></strong>
-					<a href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>"><?php echo esc_html__( 'Zobrazit kontakt', 'baspa' ); ?></a>
+					<a href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>"><?php echo esc_html__( 'Zobrazit na mapě', 'baspa' ); ?></a>
 				</div>
 			</aside>
 		</div>
 
 		<div class="f-footer__bottom">
 			<div class="f-footer__copyright">
-				<?php echo '&copy;&nbsp;' . esc_html( date( 'Y' ) ) . '&nbsp;' . '<a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html( get_bloginfo( 'name' ) ) . '</a>. ' . esc_html__( 'Všechna práva vyhrazena.', 'baspa' ); ?>
+				<?php echo esc_html__( 'Copyright © 2024 Arctic Spas. Všechna práva vyhrazena.', 'baspa' ); ?>
 			</div>
 			<?php get_template_part( 'templates/logo' ); ?>
 			<a href="<?php echo esc_url( home_url( '/ochrana-osobnich-udaju/' ) ); ?>"><?php echo esc_html__( 'Ochrana osobních údajů', 'baspa' ); ?></a>

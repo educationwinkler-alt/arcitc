@@ -13,15 +13,15 @@ $showroom_images = array(
 
 <section class="f-section f-section--showroom">
 	<div class="f-section__container a-container">
-			<div class="f-showroom-panel">
+		<div class="f-showroom-panel">
 			<div class="f-showroom-panel__media">
 				<?php foreach ( $showroom_images as $index => $image ) { ?>
 					<figure class="f-showroom-panel__image f-showroom-panel__image--<?php echo esc_attr( $index + 1 ); ?>">
 						<img src="<?php echo esc_url( content_url( 'uploads/import/figma/' . $image['file'] ) ); ?>"
-						     width="<?php echo esc_attr( $image['width'] ); ?>"
-						     height="<?php echo esc_attr( $image['height'] ); ?>"
-						     alt="<?php echo esc_attr__( 'Showroom Arctic Spas podle grafiky', 'baspa' ); ?>"
-						     loading="eager" decoding="async">
+							width="<?php echo esc_attr( $image['width'] ); ?>"
+							height="<?php echo esc_attr( $image['height'] ); ?>"
+							alt="<?php echo esc_attr__( 'Showroom Arctic Spas podle grafiky', 'baspa' ); ?>"
+							loading="eager" decoding="async">
 					</figure>
 				<?php } ?>
 				<div class="f-showroom-panel__badge">

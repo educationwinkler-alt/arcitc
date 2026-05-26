@@ -205,13 +205,29 @@ function arctic_seed_menu( string $name, string $location, array $items ): int {
 		}
 	}
 
-	foreach ( $items as $item ) {
-		wp_update_nav_menu_item( $menu_id, 0, array(
-			'menu-item-title'  => $item['title'],
-			'menu-item-url'    => $item['url'],
-			'menu-item-status' => 'publish',
-			'menu-item-type'   => 'custom',
+	$add_item = function( array $item, int $parent_id = 0 ) use ( &$add_item, $menu_id ): int {
+		$menu_item_id = wp_update_nav_menu_item( $menu_id, 0, array(
+			'menu-item-title'     => $item['title'],
+			'menu-item-url'       => $item['url'],
+			'menu-item-status'    => 'publish',
+			'menu-item-type'      => 'custom',
+			'menu-item-parent-id' => $parent_id,
+			'menu-item-classes'   => implode( ' ', $item['classes'] ?? array() ),
 		) );
+
+		if ( is_wp_error( $menu_item_id ) ) {
+			throw new RuntimeException( $menu_item_id->get_error_message() );
+		}
+
+		foreach ( $item['children'] ?? array() as $child ) {
+			$add_item( $child, (int) $menu_item_id );
+		}
+
+		return (int) $menu_item_id;
+	};
+
+	foreach ( $items as $item ) {
+		$add_item( $item );
 	}
 
 	$locations              = get_theme_mod( 'nav_menu_locations', array() );
@@ -285,14 +301,19 @@ $orion_main   = arctic_seed_attachment( 'orion-main', 'uploads/import/orion-main
 $orion_life   = arctic_seed_attachment( 'orion-lifestyle', 'uploads/import/orion-lifestyle.jpg', 'Orion - lifestyle', 'Vířivka Orion v exteriéru' );
 $figma_hero   = arctic_seed_attachment( 'figma-node-1-15-hp-hero', 'uploads/import/figma/hp-hero-arctic-spas-07.jpg', 'Figma HP hero - Arctic Spas 07', 'Vířivka Arctic Spas v podzimní krajině' );
 $figma_category_hero_virivky = arctic_seed_attachment( 'figma-node-1-263-category-hero-virivky', 'uploads/import/figma/category-hero-virivky.jpg', 'Figma kategorie - hero vířivky', 'Hero fotografie kategorie vířivek Arctic Spas' );
-$category_hot_tubs_life = arctic_seed_attachment( 'figma-node-1-33-hp-category-virivky', 'uploads/import/figma/hp-category-virivky.jpg', 'Figma HP karta - venkovní vířivky', 'Venkovní vířivka Arctic Spas v zahradě' );
-$category_swimspa_life = arctic_seed_attachment( 'figma-node-1-34-hp-category-celorocni-bazeny', 'uploads/import/figma/hp-category-celorocni-bazeny.png', 'Figma HP karta - celoroční bazény', 'Celoroční bazén Arctic v zahradě' );
 $figma_category_vlastnosti = arctic_seed_attachment( 'figma-node-1-273-category-vlastnosti', 'uploads/import/figma/category-vlastnosti.jpg', 'Figma kategorie - vlastnosti', 'Fotografie k sekci vlastnosti vířivek Arctic Spas' );
 $figma_category_zaruka = arctic_seed_attachment( 'figma-node-1-274-category-zaruka', 'uploads/import/figma/category-zaruka.jpg', 'Figma kategorie - záruka', 'Fotografie k sekci záruka Arctic Spas' );
 $figma_configurator = arctic_seed_attachment( 'figma-node-1-409-category-configurator', 'uploads/import/figma/category-configurator.png', 'Figma konfigurátor', 'Konfigurátor vířivky Arctic Spas' );
-$reference_hot_tubs_life = arctic_seed_attachment( 'figma-node-1-179-realizace-1', 'uploads/import/figma/realizace-1.jpg', 'Figma realizace 1', 'Realizace vířivky Arctic Spas' );
-$figma_realizace_2 = arctic_seed_attachment( 'figma-node-1-187-realizace-2', 'uploads/import/figma/realizace-2.jpg', 'Figma realizace 2', 'Realizace vířivky Arctic Spas' );
-$figma_realizace_3 = arctic_seed_attachment( 'figma-node-1-195-realizace-3', 'uploads/import/figma/realizace-3.jpg', 'Figma realizace 3', 'Realizace vířivky Arctic Spas' );
+$legacy_category_hot_tubs_life = arctic_seed_attachment( 'legacy-category-virivky', 'uploads/import/legacy-categories/virivky.jpg', 'Arctic Spas - vířivky ze starého webu', 'Obsahová fotografie vířivky ze starého Arctic webu' );
+$legacy_category_swimspa_life = arctic_seed_attachment( 'legacy-category-swimspa', 'uploads/import/legacy-categories/swimspa.jpg', 'Arctic Spas - swimspa ze starého webu', 'Obsahová fotografie swimspa ze starého Arctic webu' );
+$legacy_reference_fox_life = arctic_seed_attachment( 'legacy-reference-arctic-fox-life', 'uploads/import/legacy-references/arctic-fox-lidi.jpg', 'Reference Arctic Fox', 'Reference zákazníka ze starého Arctic webu' );
+$legacy_reference_fox_life_2 = arctic_seed_attachment( 'legacy-reference-arctic-fox-life-2', 'uploads/import/legacy-references/arctic-fox-lidi-2.jpg', 'Reference Arctic Fox 2', 'Reference zákazníka ze starého Arctic webu' );
+$legacy_reference_zuz = arctic_seed_attachment( 'legacy-reference-zuz', 'uploads/import/legacy-references/reference-zuz.jpg', 'Reference zákazníka', 'Reference ze starého Arctic webu' );
+$legacy_reference_hot_tub_1 = arctic_seed_attachment( 'legacy-reference-virivka-arctic-g1', 'uploads/import/legacy-references/virivka-arctic-g1.jpg', 'Realizace vířivky ze starého webu', 'Obsahová fotografie vířivky ze starého Arctic webu' );
+$legacy_reference_hot_tub_2 = arctic_seed_attachment( 'legacy-reference-virivka-arctic-g7', 'uploads/import/legacy-references/virivka-arctic-g7.jpg', 'Realizace vířivky ze starého webu', 'Obsahová fotografie vířivky ze starého Arctic webu' );
+$legacy_reference_hot_tub_3 = arctic_seed_attachment( 'legacy-reference-virivka-arctic-g21', 'uploads/import/legacy-references/virivka-arctic-g21.jpg', 'Realizace vířivky ze starého webu', 'Obsahová fotografie vířivky ze starého Arctic webu' );
+$legacy_reference_swimspa_1 = arctic_seed_attachment( 'legacy-reference-swimspa-arctic-g1', 'uploads/import/legacy-references/swimspa-arctic-g1.jpg', 'Realizace swimspa ze starého webu', 'Obsahová fotografie swimspa ze starého Arctic webu' );
+$legacy_reference_swimspa_2 = arctic_seed_attachment( 'legacy-reference-swimspa-arctic-g4', 'uploads/import/legacy-references/swimspa-arctic-g4.jpg', 'Realizace swimspa ze starého webu', 'Obsahová fotografie swimspa ze starého Arctic webu' );
 $showroom = arctic_seed_attachment( 'figma-node-1-123-showroom-1', 'uploads/import/figma/showroom-1.png', 'Figma showroom 1', 'Showroom Arctic Spas podle grafiky' );
 $showroom_2 = arctic_seed_attachment( 'figma-node-1-124-showroom-2', 'uploads/import/figma/showroom-2.png', 'Figma showroom 2', 'Showroom Arctic Spas podle grafiky' );
 $figma_showroom_3 = arctic_seed_attachment( 'figma-node-1-125-showroom-3', 'uploads/import/figma/showroom-3.png', 'Figma showroom 3', 'Showroom Arctic Spas podle grafiky' );
@@ -301,9 +322,6 @@ $figma_showroom_detail_bazeny = arctic_seed_attachment( 'figma-node-1-443-showro
 $figma_showroom_detail_virivky = arctic_seed_attachment( 'figma-node-1-444-showroom-detail-virivky', 'uploads/import/figma/showroom-detail-virivky.png', 'Figma showroom detail vířivky', 'Vířivky v showroomu Arctic Spas podle grafiky' );
 $figma_footer_map = arctic_seed_attachment( 'figma-node-1-242-footer-map', 'uploads/import/figma/footer-map.png', 'Figma footer mapa', 'Showroom Arctic Spas ve footeru' );
 $figma_contact_map = arctic_seed_attachment( 'figma-node-1-1069-contact-map-showroom', 'uploads/import/figma/contact-map-showroom.png', 'Figma kontakt mapa/showroom', 'Kontaktní mapa a showroom podle grafiky' );
-$figma_timberwolf_hero = arctic_seed_attachment( 'figma-node-1-1462-detail-timberwolf-hero', 'uploads/import/figma/detail-timberwolf-hero.jpg', 'Figma Timberwolf hero', 'Hero fotografie detailu vířivky Timberwolf' );
-$figma_timberwolf_prestige = arctic_seed_attachment( 'figma-node-1-1472-detail-timberwolf-prestige', 'uploads/import/figma/detail-timberwolf-prestige.png', 'Figma Timberwolf Prestige', 'Konfigurace Timberwolf Prestige podle Figmy' );
-$figma_timberwolf_signature = arctic_seed_attachment( 'figma-node-1-1474-detail-timberwolf-signature', 'uploads/import/figma/detail-timberwolf-signature.png', 'Figma Timberwolf Signature', 'Konfigurace Timberwolf Signature podle Figmy' );
 $figma_color_dakota = arctic_seed_attachment( 'figma-node-1-1476-color-dakota', 'uploads/import/figma/color-dakota.png', 'Figma barva Dakota', 'Vzorek barvy Dakota podle Figmy' );
 $figma_color_kalahari = arctic_seed_attachment( 'figma-node-1-1479-color-kalahari', 'uploads/import/figma/color-kalahari.png', 'Figma barva Kalahari', 'Vzorek barvy Kalahari podle Figmy' );
 $figma_color_odyssey = arctic_seed_attachment( 'figma-node-1-1482-color-odyssey', 'uploads/import/figma/color-odyssey.png', 'Figma barva Odyssey', 'Vzorek barvy Odyssey podle Figmy' );
@@ -332,14 +350,14 @@ foreach ( array(
 	) );
 }
 
-update_term_meta( $category_hot_tubs, 'category_image', $category_hot_tubs_life );
-update_term_meta( $category_hot_tubs, 'category_heading_image', $figma_category_hero_virivky );
+update_term_meta( $category_hot_tubs, 'category_image', $legacy_category_hot_tubs_life );
+update_term_meta( $category_hot_tubs, 'category_heading_image', $legacy_category_hot_tubs_life );
 update_term_meta( $category_hot_tubs, 'category_description_short', 'Venkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily, byly jednoduché na obsluhu a pro svůj provoz spotřebovaly minimum energie.' );
 update_term_meta( $category_hot_tubs, 'category_heading_title', 'Venkovní vířivky Arctic Spas' );
 update_term_meta( $category_hot_tubs, 'category_heading_text', 'Venkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily, byly jednoduché na obsluhu a pro svůj provoz spotřebovaly minimum energie.' );
 update_term_meta( $category_hot_tubs, 'category_heading_cta_text', 'Vybrat vířivku' );
-update_term_meta( $category_swimspa, 'category_image', $category_swimspa_life );
-update_term_meta( $category_swimspa, 'category_heading_image', $category_swimspa_life );
+update_term_meta( $category_swimspa, 'category_image', $legacy_category_swimspa_life );
+update_term_meta( $category_swimspa, 'category_heading_image', $legacy_category_swimspa_life );
 update_term_meta( $category_swimspa, 'category_description_short', 'Rodinný bazén na zahradě je snem řady domácností. Mnohé nicméně odradí nesmírná náročnost souvisejících zemních a stavebních prací a v našich klimatických podmínkách také žalostně limitované využití omezené na krátkou letní sezónu.' );
 update_term_meta( $category_swimspa, 'category_heading_cta_text', 'Vybrat bazén' );
 update_term_meta( $category_covers, 'category_image', $covana_main );
@@ -347,30 +365,196 @@ update_term_meta( $category_covers, 'category_description_short', 'Automatické 
 update_term_meta( $category_covers, 'category_heading_cta_text', 'Prohlédnout sortiment' );
 update_term_meta( $category_covers, 'category_type', 'accessories' );
 
-$reference_location_kv = arctic_seed_term( 'reference-category', 'Karlovy Vary', 'karlovy-vary' );
-$reference_year_2025   = arctic_seed_term( 'reference-category', '2025', '2025' );
+$reference_customers = arctic_seed_term( 'reference-category', 'Reference zákazníků', 'reference-zakazniku' );
 
-foreach ( array(
-	array( 'key' => 'figma-reference-1', 'image' => $reference_hot_tubs_life, 'order' => 10 ),
-	array( 'key' => 'figma-reference-2', 'image' => $figma_realizace_2, 'order' => 20 ),
-	array( 'key' => 'figma-reference-3', 'image' => $figma_realizace_3, 'order' => 30 ),
-) as $reference_item ) {
+foreach ( array( 'figma-reference-1', 'figma-reference-2', 'figma-reference-3' ) as $stale_reference_key ) {
+	$stale_references = get_posts( array(
+		'post_type'      => 'reference',
+		'post_status'    => 'any',
+		'posts_per_page' => -1,
+		'fields'         => 'ids',
+		'meta_key'       => '_arctic_seed_key',
+		'meta_value'     => $stale_reference_key,
+	) );
+
+	foreach ( $stale_references as $stale_reference_id ) {
+		wp_delete_post( (int) $stale_reference_id, true );
+	}
+}
+
+$reference_items = array(
+	array(
+		'key'         => 'legacy-reference-arctic-fox-life',
+		'image'       => $legacy_reference_fox_life,
+		'title'       => 'Arctic Fox po letech provozu',
+		'description' => 'Téměř před patnácti lety jsme se rozhodli pořídit kanadskou venkovní vířivku Arctic Spas v provedení Fox. Od té doby ji s manželkou využíváme několikrát týdně, bez zásadních problémů a s perfektně vyřízenými dotazy v průběhu let.',
+		'location'    => 'Arctic Fox',
+		'year'        => '2021',
+	),
+	array(
+		'key'         => 'legacy-reference-arctic-fox-life-2',
+		'image'       => $legacy_reference_fox_life_2,
+		'title'       => 'Fox se systémem Spa Boy',
+		'description' => 'Po letech okukování nám na zahradě přistála čerstvá Foxka. Výborná domluva, instalace takřka na klíč, skvělá síla trysek a slaná voda se Spa Boy nám výrazně usnadnila péči o vodu.',
+		'location'    => 'Arctic Spas',
+		'year'        => '2016',
+	),
+	array(
+		'key'         => 'legacy-reference-swimspa-arctic-g1',
+		'image'       => $legacy_reference_swimspa_1,
+		'title'       => 'Swimspa Wolverine',
+		'description' => 'Swimspa používáme denně a hodnotíme ji jako jednu z nejlepších součástí domu. V zimní zahradě je použitelná kdykoliv a plavání na plovacím prutu nás baví víc než samotný protiproud.',
+		'location'    => 'Wolverine',
+		'year'        => '2016',
+	),
+	array(
+		'key'         => 'customer-reference-low-energy',
+		'image'       => $legacy_reference_hot_tub_1,
+		'title'       => 'Nízká spotřeba v zimním provozu',
+		'description' => 'Po jednoročním provozu jsme zjistili, že vířivka má velmi nízkou spotřebu i při častém zimním používání. Zakoupili jsme výjimečnou věc, kterou bychom doporučili každému.',
+		'location'    => 'Arctic Spas',
+		'year'        => '2014',
+	),
+	array(
+		'key'         => 'customer-reference-fox-service',
+		'image'       => $legacy_reference_hot_tub_2,
+		'title'       => 'Arctic Fox předčil očekávání',
+		'description' => 'Jsme rádi, že jsme při výběru dodavatele vířivky narazili na vaši firmu. Dodaná vířivka Arctic Fox předčila naše očekávání a poskytnuté služby odpovídají dobrému jménu firmy.',
+		'location'    => 'Arctic Fox',
+		'year'        => '2014',
+	),
+	array(
+		'key'         => 'customer-reference-pool',
+		'image'       => $legacy_reference_swimspa_2,
+		'title'       => 'Vstřícný přístup při výběru bazénu',
+		'description' => 'Velmi oceňujeme vstřícný přístup při prohlídce místa plánované instalace. Bazén jsme nakonec objednali a rychlé provedení i výsledný stav nám dělají radost.',
+		'location'    => 'Bazén',
+		'year'        => '2015',
+	),
+	array(
+		'key'         => 'customer-reference-swimspa-showroom',
+		'image'       => $legacy_reference_swimspa_1,
+		'title'       => 'Výběr celoročního bazénu',
+		'description' => 'Při výběru swimspa jsme navštívili hodně showroomů. Až u Arctic Spas jsme pochopili, co je důležité; dodávka proběhla v termínu, instalace rychle a zaškolení na vysoké úrovni.',
+		'location'    => 'Celoroční bazén',
+		'year'        => '2015',
+	),
+	array(
+		'key'         => 'customer-reference-arctic-spas',
+		'image'       => $legacy_reference_hot_tub_3,
+		'title'       => 'Vířivka bez poruchy',
+		'description' => 'Vířivka je super a bez poruchy. Parametry a dlouhodobá zkušenost nám potvrdily, že výběr kvalitní vířivky se opravdu vyplatí.',
+		'location'    => 'Arctic Spas',
+		'year'        => '2016',
+	),
+	array(
+		'key'         => 'customer-reference-new-year',
+		'image'       => $legacy_reference_zuz,
+		'title'       => 'Novoroční přání z vířivky',
+		'description' => 'Originální novoroční přání zákazníka vystihuje, proč lidé Arctic Spas používají: odpočinek, teplo a chvíle klidu přímo doma.',
+		'location'    => 'Arctic Spas',
+		'year'        => '2012',
+	),
+);
+
+foreach ( $reference_items as $index => $reference_item ) {
 	$reference_id = arctic_seed_post_by_meta( 'reference', '_arctic_seed_key', $reference_item['key'], array(
 		'post_status'  => 'publish',
-		'post_title'   => 'Venkovní vířivka Timberwolf',
+		'post_title'   => $reference_item['title'],
 		'post_name'    => $reference_item['key'],
-		'post_content' => '',
-		'menu_order'   => $reference_item['order'],
+		'post_content' => '<!-- wp:paragraph --><p>' . esc_html( $reference_item['description'] ) . '</p><!-- /wp:paragraph -->',
+		'menu_order'   => ( $index + 1 ) * 10,
 	) );
 
 	set_post_thumbnail( $reference_id, $reference_item['image'] );
-	update_post_meta( $reference_id, 'reference_single', 0 );
-	update_post_meta( $reference_id, 'reference_location', 'Karlovy Vary' );
-	update_post_meta( $reference_id, 'reference_year', '2025' );
-	wp_set_post_terms( $reference_id, array( $reference_location_kv, $reference_year_2025 ), 'reference-category' );
+	update_post_meta( $reference_id, 'reference_single', 1 );
+	update_post_meta( $reference_id, 'reference_description', $reference_item['description'] );
+	update_post_meta( $reference_id, 'reference_location', $reference_item['location'] );
+	update_post_meta( $reference_id, 'reference_year', $reference_item['year'] );
+	arctic_seed_set_multi_meta( $reference_id, 'reference_images', array( $reference_item['image'] ) );
+	wp_set_post_terms( $reference_id, array( $reference_customers ), 'reference-category' );
 }
 
 update_option( 'baspa_references_title', 'Ukázky realizací' );
+
+$faq_terms = array(
+	'obchodni'           => arctic_seed_term( 'faq-category', 'Obchodní', 'obchodni' ),
+	'stavebni-priprava' => arctic_seed_term( 'faq-category', 'Stavební příprava', 'stavebni-priprava' ),
+	'montaz'            => arctic_seed_term( 'faq-category', 'Montáž', 'montaz' ),
+	'provoz'            => arctic_seed_term( 'faq-category', 'Provoz a údržba', 'provoz-a-udrzba' ),
+	'servis'            => arctic_seed_term( 'faq-category', 'Servis', 'servis' ),
+);
+
+$faq_items = array(
+	array(
+		'key'      => 'support-faq-order',
+		'title'    => 'Jak probíhá výběr a objednávka vířivky?',
+		'text'     => 'Nejprve společně ověříme velikost, umístění a požadovanou výbavu. Poté připravíme konkrétní konfiguraci a navazující technickou přípravu.',
+		'category' => 'obchodni',
+	),
+	array(
+		'key'      => 'support-faq-installation',
+		'title'    => 'Co je potřeba připravit před instalací?',
+		'text'     => 'Důležitý je pevný podklad, přívod elektřiny a přístupová cesta pro usazení vířivky. Detaily řešíme podle konkrétního modelu.',
+		'category' => 'stavebni-priprava',
+	),
+	array(
+		'key'      => 'support-faq-delivery',
+		'title'    => 'Zajišťujete dopravu a montáž?',
+		'text'     => 'Ano, u nových realizací počítáme s dopravou, usazením a základním zaškolením obsluhy.',
+		'category' => 'montaz',
+	),
+	array(
+		'key'      => 'support-faq-water-care',
+		'title'    => 'Jak náročná je běžná údržba vody?',
+		'text'     => 'Údržba závisí na výbavě, četnosti používání a režimu filtrace. U Arctic Spas lze volit technologie, které péči výrazně zjednodušují.',
+		'category' => 'provoz',
+	),
+	array(
+		'key'      => 'support-faq-configuration',
+		'title'    => 'Pomůžete s výběrem vhodné konfigurace?',
+		'text'     => 'Ano. Společně projdeme počet osob, umístění, izolaci, masážní trysky a volitelnou výbavu tak, aby model odpovídal reálnému používání.',
+		'category' => 'obchodni',
+	),
+	array(
+		'key'      => 'support-faq-showroom',
+		'title'    => 'Lze si vířivku prohlédnout osobně?',
+		'text'     => 'Vybrané modely a technologie si můžete projít v showroomu v Moravanech u Brna. Návštěvu doporučujeme domluvit předem.',
+		'category' => 'obchodni',
+	),
+	array(
+		'key'      => 'support-faq-building-ready',
+		'title'    => 'Jak se řeší stavební připravenost?',
+		'text'     => 'Po výběru modelu připravíme podklady pro podkladovou desku, elektrický přívod, manipulační prostor a případné zapuštění.',
+		'category' => 'stavebni-priprava',
+	),
+	array(
+		'key'      => 'support-faq-service',
+		'title'    => 'Umíte zajistit servis po instalaci?',
+		'text'     => 'Servisní požadavky řešíme přes kontaktní formulář nebo telefonicky. Pomůže model, rok pořízení a stručný popis problému.',
+		'category' => 'servis',
+	),
+	array(
+		'key'      => 'support-faq-offer',
+		'title'    => 'Jak rychle dostanu cenovou nabídku?',
+		'text'     => 'Po upřesnění modelu, konfigurace a montážních podmínek připravíme nezávaznou kalkulaci včetně navazující přípravy.',
+		'category' => 'obchodni',
+	),
+);
+
+foreach ( $faq_items as $index => $faq_item ) {
+	$faq_id = arctic_seed_post_by_meta( 'faq', '_arctic_seed_key', $faq_item['key'], array(
+		'post_status'  => 'publish',
+		'post_title'   => $faq_item['title'],
+		'post_name'    => $faq_item['key'],
+		'post_content' => '<!-- wp:paragraph --><p>' . esc_html( $faq_item['text'] ) . '</p><!-- /wp:paragraph -->',
+		'menu_order'   => ( $index + 1 ) * 10,
+	) );
+
+	if ( !empty( $faq_terms[ $faq_item['category'] ] ) ) {
+		wp_set_post_terms( $faq_id, array( $faq_terms[ $faq_item['category'] ] ), 'faq-category' );
+	}
+}
 
 $lunar_id = arctic_seed_post_by_meta( 'product', 'product_original_url', 'https://www.arctic-spas.cz/virivka-lunar.php', array(
 	'post_status'  => 'publish',
@@ -695,6 +879,7 @@ foreach ( $legacy_products as $index => $product ) {
 	$legacy_jets     = arctic_seed_legacy_param( $legacy, array( 'Počet trysek' ) );
 	$legacy_volume   = arctic_seed_legacy_param( $legacy, array( 'Objem vody' ) );
 	$legacy_size     = arctic_seed_legacy_param( $legacy, array( 'Rozměry' ) );
+	$legacy_pump     = arctic_seed_legacy_param( $legacy, array( 'Čerpadlo 1', 'Čerpadlo 2', 'Čerpadla' ) );
 	$series_term     = get_term( (int) $product['series'], 'product-series' );
 	$series_label    = $series_term && !is_wp_error( $series_term ) ? $series_term->name : '';
 	$image_id        = arctic_seed_attachment(
@@ -717,6 +902,22 @@ foreach ( $legacy_products as $index => $product ) {
 		: 'Vířivka ' . $product['name'] . ' je model Arctic Spas pro celoroční provoz, odolnou konstrukci a úspornou relaxaci v exteriéru.' ) );
 	$order_offset    = $is_swimspa ? 200 : 40;
 	$model_label     = trim( ( $series_label ? $series_label . ' ' : '' ) . $product['name'] );
+	$configurations  = $product['configurations'] ?? array();
+
+	if ( empty( $configurations ) ) {
+		$default_configuration = array_filter( array(
+			'name'        => $model_label ?: $product['name'],
+			'seats'       => $legacy_seats,
+			'jets'        => $legacy_jets,
+			'pumps'       => $legacy_pump,
+			'dimensions'  => $product['dimensions'] ?? $legacy_size,
+			'description' => $default_content,
+		) );
+
+		if ( !empty( $default_configuration ) ) {
+			$configurations = array( $default_configuration );
+		}
+	}
 
 	$product_id = arctic_seed_post_by_meta( 'product', 'product_original_url', $original_url, array(
 		'post_status'  => 'publish',
@@ -744,7 +945,7 @@ foreach ( $legacy_products as $index => $product ) {
 	arctic_seed_set_multi_meta( $product_id, 'product_seats', $product['seats'] ?? arctic_seed_value_array( $legacy_seats ) );
 	arctic_seed_set_multi_meta( $product_id, 'product_nozzles', $product['nozzles'] ?? arctic_seed_value_array( $legacy_jets ) );
 	arctic_seed_set_multi_meta( $product_id, 'product_water_volume', $product['water_volume'] ?? arctic_seed_value_array( $legacy_volume ) );
-	arctic_seed_set_multi_meta( $product_id, 'product_configurations', $product['configurations'] ?? array() );
+	arctic_seed_set_multi_meta( $product_id, 'product_configurations', $configurations );
 	if ( !empty( $product['badge'] ) ) {
 		update_post_meta( $product_id, 'product_badge', $product['badge'] );
 	} else {
@@ -780,7 +981,7 @@ update_post_meta( $timberwolf_id, 'product_description', $timberwolf_description
 update_post_meta( $timberwolf_id, 'product_cta_text', 'Poptat Timberwolf' );
 set_post_thumbnail( $timberwolf_id, $timberwolf_signature );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_image', array( $timberwolf_signature ) );
-arctic_seed_set_multi_meta( $timberwolf_id, 'product_images', array( $figma_timberwolf_hero, $figma_timberwolf_prestige, $figma_timberwolf_signature, $timberwolf_signature, $timberwolf_side, $timberwolf_prestige ) );
+arctic_seed_set_multi_meta( $timberwolf_id, 'product_images', array( $timberwolf_signature, $timberwolf_side, $timberwolf_prestige ) );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_model', array( 'Classic Timberwolf' ) );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_seats', array( '3 osoby' ) );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_nozzles', array( 'Prestige 15/1', 'Signature 30/2' ) );
@@ -802,7 +1003,7 @@ arctic_seed_set_multi_meta( $timberwolf_id, 'product_cabinet_color_options', arr
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_configurations', array(
 	array(
 		'name'        => 'Prestige 15/1',
-		'image'       => $figma_timberwolf_prestige,
+		'image'       => $timberwolf_prestige,
 		'price'       => 'od 246 700 Kč',
 		'seats'       => '3 osoby',
 		'jets'        => '10 x 3" + 5 x 5"',
@@ -812,7 +1013,7 @@ arctic_seed_set_multi_meta( $timberwolf_id, 'product_configurations', array(
 	),
 	array(
 		'name'        => 'Signature 30/2',
-		'image'       => $figma_timberwolf_signature,
+		'image'       => $timberwolf_signature,
 		'price'       => 'na dotaz',
 		'seats'       => '3 osoby',
 		'jets'        => '25 x 3" + 5 x 5"',
@@ -924,12 +1125,10 @@ $slide_showroom_id = arctic_seed_post_by_meta( 'slide', '_arctic_seed_key', 'hom
 set_post_thumbnail( $slide_showroom_id, $showroom );
 update_post_meta( $slide_showroom_id, 'button_text', 'Navstivit showroom' );
 
-$hot_tubs_url = get_term_link( $category_hot_tubs, 'product-category' );
+$hot_tubs_url = home_url( '/virivky/' );
 $covers_url   = get_term_link( $category_covers, 'product-category' );
-$swimspa_url  = get_term_link( $category_swimspa, 'product-category' );
-$hot_tubs_url = is_wp_error( $hot_tubs_url ) ? home_url( '/catalog/virivky/' ) : $hot_tubs_url;
+$swimspa_url  = home_url( '/swimspa/' );
 $covers_url   = is_wp_error( $covers_url ) ? home_url( '/catalog/dalsi-sortiment/' ) : $covers_url;
-$swimspa_url  = is_wp_error( $swimspa_url ) ? home_url( '/catalog/swimspa/' ) : $swimspa_url;
 
 $home_id = arctic_seed_page(
 	'uvod',
@@ -1068,6 +1267,37 @@ $contact_id = arctic_seed_page(
 );
 update_post_meta( $contact_id, 'page_title_text', 'Jsme k dispozici pro vaše dotazy' );
 
+$privacy_content = <<<'HTML'
+<!-- wp:heading --><h2 class="wp-block-heading">Základní ustanovení</h2><!-- /wp:heading -->
+<!-- wp:paragraph --><p>Správcem osobních údajů podle čl. 4 bod 7 nařízení Evropského parlamentu a Rady (EU) 2016/679 (GDPR) je BASPA s.r.o., se sídlem Bohunická cesta 727/15, 664 48 Moravany, IČ 02257467, DIČ CZ02257467, zapsaná u Krajského soudu v Brně, oddíl C, vložka 80736.</p><!-- /wp:paragraph -->
+<!-- wp:list --><ul><li>Adresa: Bohunická cesta 727/15, 664 48 Moravany</li><li>E-mail: lukas.dusek@arctic-spas.cz</li><li>Telefon: +420 777 099 687</li></ul><!-- /wp:list -->
+<!-- wp:paragraph --><p>Osobními údaji se rozumí veškeré informace o identifikované nebo identifikovatelné fyzické osobě. Správce nejmenoval pověřence pro ochranu osobních údajů.</p><!-- /wp:paragraph -->
+<!-- wp:heading --><h2 class="wp-block-heading">Zdroje a kategorie zpracovávaných údajů</h2><!-- /wp:heading -->
+<!-- wp:paragraph --><p>Zpracováváme osobní údaje, které nám poskytnete prostřednictvím kontaktních formulářů, e-mailu, telefonu nebo při poptávce a realizaci zakázky. Jedná se zejména o identifikační a kontaktní údaje, údaje potřebné pro vyřízení poptávky, objednávky, servisu nebo plnění smlouvy.</p><!-- /wp:paragraph -->
+<!-- wp:heading --><h2 class="wp-block-heading">Zákonný důvod a účel zpracování</h2><!-- /wp:heading -->
+<!-- wp:paragraph --><p>Zákonným důvodem zpracování je plnění smlouvy nebo jednání o smlouvě, oprávněný zájem správce na komunikaci se zákazníky a poskytování přímého marketingu, případně váš souhlas se zasíláním obchodních sdělení, pokud je vyžadován.</p><!-- /wp:paragraph -->
+<!-- wp:list --><ul><li>vyřízení poptávky, objednávky, servisu nebo reklamace,</li><li>příprava nabídky a technické konzultace,</li><li>plnění práv a povinností ze smluvního vztahu,</li><li>zasílání obchodních sdělení a související marketingová komunikace.</li></ul><!-- /wp:list -->
+<!-- wp:paragraph --><p>Ze strany správce nedochází k automatickému individuálnímu rozhodování ve smyslu čl. 22 GDPR.</p><!-- /wp:paragraph -->
+<!-- wp:heading --><h2 class="wp-block-heading">Doba uchovávání údajů</h2><!-- /wp:heading -->
+<!-- wp:paragraph --><p>Osobní údaje uchováváme po dobu nezbytnou k vyřízení poptávky, plnění smlouvy, ochraně právních nároků a splnění zákonných povinností. Údaje zpracovávané na základě souhlasu uchováváme do odvolání souhlasu, nejdéle po dobu uvedenou při jeho udělení.</p><!-- /wp:paragraph -->
+<!-- wp:heading --><h2 class="wp-block-heading">Příjemci osobních údajů</h2><!-- /wp:heading -->
+<!-- wp:paragraph --><p>Příjemci osobních údajů mohou být osoby a společnosti podílející se na dodání zboží, služeb, servisu, účetnictví, provozu webové prezentace, správě poptávek a marketingové komunikaci. Osobní údaje nemáme v úmyslu předávat do třetí země mimo EU nebo mezinárodní organizaci.</p><!-- /wp:paragraph -->
+<!-- wp:heading --><h2 class="wp-block-heading">Vaše práva</h2><!-- /wp:heading -->
+<!-- wp:paragraph --><p>Za podmínek stanovených v GDPR máte právo na přístup ke svým osobním údajům, jejich opravu, výmaz, omezení zpracování, přenositelnost údajů, právo vznést námitku proti zpracování a právo odvolat souhlas se zpracováním. Máte také právo podat stížnost u Úřadu pro ochranu osobních údajů.</p><!-- /wp:paragraph -->
+<!-- wp:heading --><h2 class="wp-block-heading">Zabezpečení osobních údajů</h2><!-- /wp:heading -->
+<!-- wp:paragraph --><p>Správce přijal vhodná technická a organizační opatření k zabezpečení osobních údajů. K osobním údajům mají přístup pouze pověřené osoby a smluvní zpracovatelé v rozsahu potřebném pro zajištění služeb.</p><!-- /wp:paragraph -->
+<!-- wp:heading --><h2 class="wp-block-heading">Závěrečná ustanovení</h2><!-- /wp:heading -->
+<!-- wp:paragraph --><p>Odesláním kontaktního nebo poptávkového formuláře potvrzujete, že jste se seznámili s těmito zásadami zpracování osobních údajů. Správce je oprávněn tyto podmínky aktualizovat zveřejněním nové verze na webových stránkách.</p><!-- /wp:paragraph -->
+HTML;
+
+$privacy_id = arctic_seed_page(
+	'ochrana-osobnich-udaju',
+	'Ochrana osobních údajů',
+	$privacy_content
+);
+update_post_meta( $privacy_id, 'page_description_text', 'Informace o tom, jak BASPA s.r.o. jako provozovatel Arctic Spas CZ zpracovává osobní údaje z kontaktních formulářů, poptávek a zákaznické komunikace.' );
+update_option( 'wp_page_for_privacy_policy', $privacy_id );
+
 set_theme_mod( 'baspa_name', 'Arctic Spas CZ' );
 set_theme_mod( 'baspa_phone', '+420 777 099 687' );
 set_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
@@ -1089,10 +1319,59 @@ if ( $sample_page ) {
 }
 
 arctic_seed_menu( 'Arctic hlavni navigace', 'navigation', array(
-	array( 'title' => 'Vířivky', 'url' => $hot_tubs_url ),
-	array( 'title' => 'Celoroční bazény', 'url' => $swimspa_url ),
-	array( 'title' => 'Vlastnosti', 'url' => get_permalink( $features_id ) ),
-	array( 'title' => 'Další informace', 'url' => get_permalink( $info_id ) ),
+	array(
+		'title'    => 'Vířivky',
+		'url'      => $hot_tubs_url,
+		'classes'  => array( 'arctic-menu-products' ),
+		'children' => array(
+			array( 'title' => 'Vybrat podle parametrů', 'url' => $hot_tubs_url ),
+			array( 'title' => 'Výprodej vířivek', 'url' => $hot_tubs_url . '#vyprodej' ),
+			array( 'title' => 'Série Core', 'url' => $hot_tubs_url . '#serie-core' ),
+			array( 'title' => 'Série Classic', 'url' => $hot_tubs_url . '#serie-classic' ),
+			array( 'title' => 'Série Custom', 'url' => $hot_tubs_url . '#serie-custom' ),
+		),
+	),
+	array(
+		'title'    => 'Celoroční bazény',
+		'url'      => $swimspa_url,
+		'classes'  => array( 'arctic-menu-products' ),
+		'children' => array(
+			array( 'title' => 'Vybrat podle parametrů', 'url' => $swimspa_url ),
+			array( 'title' => 'Výprodej bazénů', 'url' => $swimspa_url . '#vyprodej' ),
+			array( 'title' => 'Série Core', 'url' => $swimspa_url . '#serie-core' ),
+			array( 'title' => 'Série Classic', 'url' => $swimspa_url . '#serie-classic' ),
+		),
+	),
+	array(
+		'title'    => 'Vlastnosti',
+		'url'      => '#',
+		'classes'  => array( 'arctic-menu-features' ),
+		'children' => array(
+			array( 'title' => 'Tepelná izolace', 'url' => get_permalink( $feature_insulation_id ) ),
+			array( 'title' => 'Skořepina', 'url' => home_url( '/vlastnosti/#skorepina' ) ),
+			array( 'title' => 'Termokryt', 'url' => home_url( '/vlastnosti/#termokryt' ) ),
+			array( 'title' => 'Podlaha', 'url' => home_url( '/vlastnosti/#podlaha' ) ),
+			array( 'title' => 'Servisní přístup', 'url' => home_url( '/podpora/#servis' ) ),
+			array( 'title' => 'Variabilita', 'url' => home_url( '/vlastnosti/#variabilita' ) ),
+		),
+	),
+	array(
+		'title'    => 'Další informace',
+		'url'      => '#',
+		'classes'  => array( 'arctic-menu-info' ),
+		'children' => array(
+			array( 'title' => 'Služby', 'url' => get_permalink( $services_id ) ),
+			array( 'title' => 'Certifikáty', 'url' => get_permalink( $certificates_id ) ),
+			array( 'title' => 'Záruka', 'url' => get_permalink( $warranty_id ) ),
+			array( 'title' => 'Kolik stojí provoz a údržba', 'url' => get_permalink( $maintenance_id ) ),
+			array( 'title' => 'Podpora', 'url' => get_permalink( $support_id ) ),
+			array( 'title' => 'Reference', 'url' => get_permalink( $references_page_id ) ),
+			array( 'title' => 'O nás', 'url' => get_permalink( $about_id ) ),
+			array( 'title' => 'Showroom', 'url' => get_permalink( $showroom_id ) ),
+			array( 'title' => 'Servis', 'url' => get_permalink( $service_request_id ) ),
+			array( 'title' => 'Kontakt', 'url' => get_permalink( $contact_id ) ),
+		),
+	),
 ) );
 
 arctic_seed_menu( 'Arctic horni lista', 'navigation_bar', array(
@@ -1106,7 +1385,7 @@ arctic_seed_menu( 'Arctic paticka', 'navigation_footer', array(
 	array( 'title' => 'Celoroční bazény', 'url' => $swimspa_url ),
 	array( 'title' => 'Další sortiment', 'url' => $covers_url ),
 	array( 'title' => 'Vlastnosti vířivek', 'url' => get_permalink( $features_id ) ),
-	array( 'title' => 'Další informace', 'url' => get_permalink( $info_id ) ),
+	array( 'title' => 'Průběh realizace', 'url' => home_url( '/#order-progress' ) ),
 	array( 'title' => 'Podpora', 'url' => get_permalink( $support_id ) ),
 	array( 'title' => 'Servis', 'url' => get_permalink( $service_request_id ) ),
 	array( 'title' => 'Reference', 'url' => get_permalink( $references_page_id ) ),

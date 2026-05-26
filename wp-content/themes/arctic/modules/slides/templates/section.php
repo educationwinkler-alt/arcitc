@@ -8,6 +8,7 @@
 $slide_count = 1;
 
 $is_homepage_slides = is_front_page();
+$inject_home_fallback_slide = false;
 
 // Query
 $slides_args = array(
@@ -29,6 +30,10 @@ $slides_query = new WP_Query( $slides_args );
 
 // Number
 $number = $slides_query->post_count;
+if ( $is_homepage_slides && 1 === (int) $number ) {
+	$inject_home_fallback_slide = true;
+	$number                     = 2;
+}
 set_query_var( 'baspa_slides_number', $number );
 
 if ( $slides_query->have_posts() ) {
@@ -68,6 +73,43 @@ if ( $slides_query->have_posts() ) {
 					<?php
 					$slide_count++;
 				} ?>
+
+				<?php if ( $inject_home_fallback_slide ) { ?>
+					<div class="f-slide swiper-slide f-slide--2">
+						<div class="f-caption__container a-container">
+							<div class="a-flex">
+								<div class="a-flex__item--100 a-flex__item--60:m">
+									<div class="f-caption a-stack a-stack--justify-start a-gap--s">
+										<header class="f-caption__header">
+											<h2><?php echo esc_html__( 'Venkovní vířivky Arctic Spas', 'baspa' ); ?></h2>
+										</header>
+
+										<div class="f-content a-content">
+											<p><?php echo esc_html__( 'Venkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily, byly jednoduché na obsluhu a pro svůj provoz spotřebovaly minimum energie.', 'baspa' ); ?></p>
+										</div>
+
+										<footer class="f-caption__footer">
+											<a href="<?php echo esc_url( home_url( '/virivky/' ) ); ?>"
+											   class="f-caption__button f-button f-button--outline a-button a-button--outline">
+												<?php echo esc_html__( 'Vybrat vířivku', 'baspa' ); ?>
+											</a>
+										</footer>
+									</div>
+								</div>
+								<div class="a-flex__item--100 a-flex__item--auto:m"></div>
+							</div>
+						</div>
+
+						<figure class="f-slide__background a-image--cover">
+							<img width="1600" height="1200"
+							     src="<?php echo esc_url( content_url( 'uploads/import/figma/category-hero-virivky.jpg' ) ); ?>"
+							     alt="<?php echo esc_attr__( 'Venkovní vířivky Arctic Spas', 'baspa' ); ?>"
+							     data-slide="2"
+							     loading="eager"
+							     decoding="async">
+						</figure>
+					</div>
+				<?php } ?>
 
 			</div>
 

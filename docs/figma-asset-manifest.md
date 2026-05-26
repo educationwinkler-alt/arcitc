@@ -6,14 +6,20 @@ Wireframe: `Arctic-spas.cz wireframe` (`puPBNFpuaXpRZR2TINaDvm`)
 
 ## Pravidlo
 
-Figma je jediný zdroj pro UX, layout, rozměry, logo, vizuální styl a obrazové plochy navržené ve stránkách. Starý web `arctic-spas.cz` a složka `../Arctic-spas/` se používají jen pro obsah, produktová data, dokumenty, staré URL a produktové fotky v případech, kde Figma konkrétní produktový snímek nedodává.
+Figma je jediny zdroj pro UX, layout, rozmery, logo, vizualni styl, komponenty a designove obrazove plochy. Stary web `arctic-spas.cz`, slozka `../Arctic-spas/` a `assets-source/owner-info/` jsou primarni zdroj pro obsahove fotografie: produkty, virivky, swimspa, reference a realizace.
 
-Každý Figma asset se exportuje podle node ID do:
+Kazdy Figma designovy asset se exportuje podle node ID do:
 
 - `assets-source/figma/export/graphics/`
 - `wp-content/uploads/import/figma/`
 
-WordPress seed pak používá soubory z `wp-content/uploads/import/figma/`, ne ručně pojmenované nebo dohledané obrázky bez node ID.
+WordPress seed pouziva `wp-content/uploads/import/figma/` pro designove assety a `wp-content/uploads/import/legacy-*` pro obsahove fotky. Produktove/reference obrazky se nedohledavaji nahodne; musi byt ze stareho Arctic webu nebo owner podkladu.
+
+Komponovane sekce se neprekresluji volne v HTML/CSS. Pokud ve Figme existuje cely node/frame pro header, footer, hero, CTA, banner, mapu nebo kolaz, implementace musi rozlisit obrazove vrstvy a semanticky obsah. Dekorativni/obrazove vrstvy se exportuji z Figmy 1:1; navigace, texty, kontakty, tlacitka a odkazy zustavaji realne HTML s CSS hodnotami z Figmy.
+
+Poznamka k footeru 2026-05-25: predchozi manifest uvadel jen `footer-background.jpg` (`1:210`) a `footer-map.png` (`1:242`). To nestaci pro 1:1 footer, ale spravna oprava neni cely footer jako PNG. Desktopovy zdroj pro mereni je cela Figma komponenta `footer` (`1:208`, `1920 x 773`) a jeji instance, napr. `1:440`, `1:1805`, `1:772`, `1:1050`. Mobilni zdroj je `1:2168` (`375 x 1396`). Textove nody footeru, navigace, kontakt, copyright a odkazy musi zustat realne HTML; z Figmy se berou jejich rozmery, typografie, barvy a pozice.
+
+Poznamka k exportu 2026-05-25: Figma API render pro `1:208`/`1:2168` vratil `429 Rate limit exceeded`. Cely footer PNG se nema pouzit jako zivy frontend asset; muze existovat jen jako QA/reference screenshot pro porovnani.
 
 Poznámka k 2026-05-23: Figma API v průběhu práce vrátilo rate limit `429`, proto jsou primární obrazové assety dočasně exportované přímo z lokálně importovaného `.fig` souboru přes Figma `imageRef`. Po uvolnění API limitu se může spustit `npm run figma:export-assets` pro přesný render složených frame výřezů; zdroj ale zůstává Figma, ne starý Arctic web.
 
@@ -46,7 +52,7 @@ Poznámka k auditu 2026-05-24: HP hero má ve Figma grafice jeden skutečný obr
 | Oblast | Figma node | Rozměr ve Figmě | Export | Použití ve WP |
 |---|---:|---:|---|---|
 | Header logo | `1:1835` | 148 x 83 | `graphics/logo-arctic-spas-header.svg` | `wp-content/themes/arctic/images/logo.svg` |
-| Homepage hero | `1:15` | 1920 x 795 | `graphics/hp-hero-arctic-spas-07.jpg` | hero slide + fallback produktového detailu Timberwolf podle Figma detailu |
+| Homepage hero | `1:15` | 1920 x 795 | `graphics/hp-hero-arctic-spas-07.jpg` | hero slide podle Figma grafiky |
 | Homepage karta vířivky | `1:33` | 674 x 424 | `graphics/hp-category-virivky.jpg` | karta směru Vířivky |
 | Homepage karta swimspa | `1:34` | 674 x 424 | `graphics/hp-category-celorocni-bazeny.png` | karta směru Celoroční bazény |
 | Hero promo produkt | `1:254` | 174 x 131 | `graphics/hp-fixed-banner-product.png` | pevný banner z grafiky |
@@ -61,18 +67,20 @@ Poznámka k auditu 2026-05-24: HP hero má ve Figma grafice jeden skutečný obr
 | Realizace 1 | `1:179` | 335 x 422 | `graphics/realizace-1.jpg` | realizace / reference |
 | Realizace 2 | `1:187` | 335 x 422 | `graphics/realizace-2.jpg` | realizace / reference |
 | Realizace 3 | `1:195` | 335 x 422 | `graphics/realizace-3.jpg` | realizace / reference |
-| Footer pozadí | `1:210` | 1920 x 1209 | `graphics/footer-background.jpg` | footer background |
-| Footer mapa/showroom | `1:242` | 262 x 299 | `graphics/footer-map.png` | footer kontaktní panel |
+| Footer design reference desktop | `1:208` | 1920 x 773 | bez ziveho frontend assetu | zdroj mereni pro HTML/CSS footer; neexportovat jako zivy PNG footer |
+| Footer design reference mobile | `1:2168` | 375 x 1396 | bez ziveho frontend assetu | zdroj mereni pro mobilni HTML/CSS footer; neexportovat jako zivy PNG footer |
+| Footer pozadí | `1:210` | 1920 x 1209 | `graphics/footer-background.jpg` | dekorativni Figma pozadi footeru |
+| Footer mapa/showroom | `1:242` | 262 x 299 | `graphics/footer-map.png` | obrazova vrstva kontaktniho panelu; texty/link zustavaji HTML |
 | Kategorie hero | `1:263` | 1920 x 795 | `graphics/category-hero-virivky.jpg` | hero kategorie |
 | Kategorie vlastnosti | `1:273` | 674 x 424 | `graphics/category-vlastnosti.jpg` | sekce Vlastnosti |
 | Kategorie záruka | `1:274` | 674 x 424 | `graphics/category-zaruka.jpg` | sekce Záruka |
-| Kategorie produktová karta 1 | `1:275` | 335 x 333 | `graphics/category-product-card-1.png` | Figma referenční karta produktu |
-| Kategorie produktová karta 2 | `1:280` | 335 x 333 | `graphics/category-product-card-2.png` | Figma referenční karta produktu |
-| Kategorie produktová karta 3 | `1:285` | 335 x 333 | `graphics/category-product-card-3.png` | Figma referenční karta produktu |
+| Kategorie produktova karta 1 | `1:275` | 335 x 333 | `graphics/category-product-card-1.png` | DEPRECATED jako obsahovy zdroj; jen Figma reference layoutu |
+| Kategorie produktova karta 2 | `1:280` | 335 x 333 | `graphics/category-product-card-2.png` | DEPRECATED jako obsahovy zdroj; jen Figma reference layoutu |
+| Kategorie produktova karta 3 | `1:285` | 335 x 333 | `graphics/category-product-card-3.png` | DEPRECATED jako obsahovy zdroj; jen Figma reference layoutu |
 | Konfigurátor obrázek | `1:409` | 667 x 312 | `graphics/category-configurator.png` | CTA konfigurátoru |
-| Detail Timberwolf hero | `1:1462` | 1920 x 795 | `graphics/detail-timberwolf-hero.jpg` | hero detailu Timberwolf |
-| Timberwolf Prestige | `1:1472` | 333 x 279 | `graphics/detail-timberwolf-prestige.png` | konfigurace Prestige |
-| Timberwolf Signature | `1:1474` | 333 x 279 | `graphics/detail-timberwolf-signature.png` | konfigurace Signature |
+| Detail Timberwolf hero | `1:1462` | 1920 x 795 | `graphics/detail-timberwolf-hero.jpg` | DEPRECATED jako obsahovy zdroj; detail pouziva legacy Timberwolf fotku v tomto layoutu |
+| Timberwolf Prestige | `1:1472` | 333 x 279 | `graphics/detail-timberwolf-prestige.png` | DEPRECATED jako obsahovy zdroj; konfigurace pouziva legacy produktovou fotku |
+| Timberwolf Signature | `1:1474` | 333 x 279 | `graphics/detail-timberwolf-signature.png` | DEPRECATED jako obsahovy zdroj; konfigurace pouziva legacy produktovou fotku |
 | Barva Dakota | `1:1476` | 106 x 106 | `graphics/color-dakota.png` | vzorek akrylu |
 | Barva Kalahari | `1:1479` | 106 x 106 | `graphics/color-kalahari.png` | vzorek akrylu |
 | Barva Odyssey | `1:1482` | 106 x 106 | `graphics/color-odyssey.png` | vzorek akrylu |
@@ -100,9 +108,9 @@ Poznámka k auditu 2026-05-24: HP hero má ve Figma grafice jeden skutečný obr
 | Mobile karta vířivky | `1:2000` | 335 x 221 | `graphics/mobile-category-virivky.jpg` | mobilní karta směru |
 | Mobile karta swimspa | `1:2001` | 335 x 221 | `graphics/mobile-category-celorocni-bazeny.png` | mobilní karta směru |
 
-## Dočasné výjimky ze starého Arctic obsahu
+## Obsahove assety ze stareho Arctic webu a owner podkladu
 
-Tyto assety nejsou zdroj UX ani grafiky. Smí sloužit pouze jako produktová nebo obsahová data, dokud Figma nemá konkrétní náhradu:
+Tyto assety nejsou zdroj UX ani grafiky. Jsou primarni zdroj obsahu a vkladaji se do rozmeru/cropu podle Figmy:
 
 | Asset | Původ | Důvod |
 |---|---|---|
@@ -110,14 +118,17 @@ Tyto assety nejsou zdroj UX ani grafiky. Smí sloužit pouze jako produktová ne
 | `orion-main.jpg`, `orion-lifestyle.jpg` | `../Arctic-spas/` | produktové fotky pro obsahový produkt Orion |
 | `legacy-products/*.jpg` | `../Arctic-spas/` | produktové fotky pro aktivní modely v katalogu |
 | `downloads/*.pdf` | `../Arctic-spas/` | dokumenty ke stažení |
+| `legacy-categories/*.jpg` | `../Arctic-spas/` | obsahove fotky kategorii Virivky a Swimspa |
+| `legacy-references/*.jpg` | `../Arctic-spas/` / owner podklady | obsahove fotky referenci a realizaci |
 | `other-sortiment/*.jpg` | klientský/obsahový archiv | obsahové fotky širšího sortimentu |
 
-`Timberwolf` je Figma pilot. Jeho hlavní hero a konfigurace se mají brát z Figma node exportů `1:1462`, `1:1472`, `1:1474`. Staré fotky Timberwolf se mohou ponechat jen jako doplňková produktová galerie, ne jako UX náhrada.
+`Timberwolf` je Figma pilot pro layout detailu. Hlavni hero, galerie a konfigurace pouzivaji legacy produktove fotky (`virivka-timberwolf.jpg`, `timberwolf-prestige.jpg`, `timberwolf-signature.jpg`) vlozene do Figma rozmeru; Figma `detail-timberwolf-*` zustava jen referencni design export.
 
 ## Kontrola před každým commitem
 
 - Nový vizuální asset má node ID v tomto manifestu.
 - Exportovaný soubor existuje v `assets-source/figma/export/graphics/`.
 - Stejný soubor existuje pro seed ve `wp-content/uploads/import/figma/`.
-- Starý Arctic asset není použitý pro hero, layoutovou kartu, banner, footer, showroom, kontaktní mapu ani navigační UX.
+- Komponovana sekce s vlastnim Figma node/frame ma Figma mereni cele kompozice; zive texty, odkazy a kontakty nesmi byt schovane v bitmapach.
+- Stary Arctic/owner asset se nepouziva pro logo, banner, footer, mapu, navigaci ani UI prvky; pro produktove/reference fotky je naopak primarni zdroj obsahu v ramci Figma layoutu.
 - Pokud se použije starý Arctic obrázek, je to produktová nebo obsahová výjimka uvedená výše.

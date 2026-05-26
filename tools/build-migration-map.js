@@ -124,7 +124,7 @@ function classify(row, sourcePath, redirectTarget) {
   }
 
   if (type === 'retired') {
-    return ['redirect_retired', redirectTarget || '/catalog/virivky/', 'retired_product', 'Retired product; do not create an active product page.'];
+    return ['redirect_retired', redirectTarget || '/virivky/', 'retired_product', 'Retired product; do not create an active product page.'];
   }
 
   if (type === 'download_asset' && row.ContentType !== 'application/pdf') {

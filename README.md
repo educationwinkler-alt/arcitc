@@ -74,6 +74,7 @@ Frontend je seednuty minimalnim, ale pruchodnym obsahem:
 
 - homepage se slide/hero obsahem podle Figma HP passu,
 - presny Figma pass pro homepage header, prvni viewport, vyprodejovy banner z Figma assetu a dve hlavni kategorie,
+- overeni 2026-05-25: desktop HP pri 1920 px sedi na Figma souradnice pro header `x=260/y=18/w=1400/h=105`, hero `1920x795`, sipky `x=125` a `x=1767`, tecky `x=932/y=767` a footer container `x=260/w=1400`,
 - desktop hero pouziva primo Figma `1920 x 795` background asset bez WordPress orezoveho media cropu,
 - mobilni HP top podle Figma `GM - HP`, vcetne specialniho mobile hero cropu a vyprodejoveho banneru,
 - mobilni HP showroom a realizace podle Figma `GM - HP`, vcetne Figma kolaze, badge `280 m2`, referencni karty a CTA pod carousel,
@@ -88,7 +89,9 @@ Frontend je seednuty minimalnim, ale pruchodnym obsahem:
 - detailnejsi piloty `Lunar`, `Orion`, `Husky`, `Covana`,
 - sirsi sortiment `Luxusni sauny`, `Koupaci sudy Kirami`, `Prislusenstvi a doplnky`, `IKONO nabytek`, `Ochlazovaci bazenek`,
 - 26 dostupnych PDF dokumentu z crawlu ve `download` CPT,
-- 3 reference z Figma realizaci pro sekci `Ukazky realizaci`,
+- 9 editovatelných FAQ položek v CPT `faq`, které živí sekci `Podpora`,
+- 9 editovatelnych zakaznickych referenci v CPT `reference`; texty i obsahove fotky vychazi ze stareho Arctic webu nebo owner podkladu a drzi Figma kartovy layout,
+- `/ochrana-osobnich-udaju/` je seednuta jako WordPress privacy policy stránka a formuláře i patička na ni vedou lokálně,
 - `Podpora`, `Ke stazeni`, `Showroom`, `Kontakt`,
 - menu v hlavni navigaci podle Figma grafiky, horni liste a paticce.
 
@@ -106,6 +109,8 @@ Kompletni lokalni QA pruchod:
 
 - `npm run qa:local`
 
+Spousti CSS build, local safety, Figma audit, visual smoke, product/content smoke, link smoke, formularovy smoke, vyhledavani a redirect smoke.
+
 Watch rezim:
 
 - `npm run css:watch`
@@ -114,7 +119,7 @@ Figma audit podle hlavních Figma passů:
 
 - `npm run figma:audit`
 
-Kontroluje homepage/header/mobile top, katalog vířivek, detail Timberwolf a kontakt proti Figma souřadnicím a Figma assetům.
+Kontroluje homepage/header/mobile top, desktopovou dolni cast HP, realny Chrome viewport 1903 px, katalog virivek, detail Timberwolf a kontakt proti Figma souradnicim. U designovych prvku hlida Figma assety, u produktu a referenci legacy/owner obsahove fotky.
 
 Vizualni smoke test hlavnich cest:
 
@@ -122,7 +127,19 @@ Vizualni smoke test hlavnich cest:
 
 Smoke test hlídá hlavní URL, externí browser requesty, horizontální overflow, veřejné placeholdery a zakázané živé integrace.
 
-Smoke test zahrnuje homepage, katalog virivek, swimspa, dalsi sortiment, produktove detaily, showroom, podporu, downloady a kontakt. Soucasne kontroluje zakazane externi requesty v prohlizeci, horizontalni overflow na desktopu i mobilu a uklada Playwright screenshoty hlavnich Figma stranek.
+Smoke test zahrnuje homepage, katalog virivek, swimspa, dalsi sortiment, produktove detaily, showroom, podporu, downloady, kontakt a 404 fallback. Soucasne kontroluje zakazane externi requesty v prohlizeci, horizontalni overflow na desktopu i mobilu, mojibake sekvence a uklada Playwright screenshoty hlavnich Figma stranek.
+
+Produktovy obsahovy smoke test:
+
+- `npm run product:smoke`
+
+Test prochazi aktivni virivky, swimspa i sirsi sortiment, hlida konfigurace standardnich produktu, Arctic identitu, placeholdery a mojibake v obsahu. Soucasne overuje editovatelne FAQ na `/podpora/` a zakaznicke reference na `/reference/`.
+
+Interni link smoke test:
+
+- `npm run link:smoke`
+
+Test projde 21 hlavnich vstupnich stran, hlida zakazane externi odkazy na stare/live sluzby (`baspa.cz`, `arctic-spas.cz`, Ecomail, Smartsupp) a overuje 61 realnych internich URL vcetne `/ochrana-osobnich-udaju/`.
 
 Formularovy smoke test:
 
@@ -135,6 +152,8 @@ Redirect smoke test:
 - `npm run redirect:smoke`
 
 Test projde `docs/migration-map.csv`, overi 301 ze starych Arctic URL na lokalni nove URL/media soubory a hlida, ze zadny redirect nemiri na `baspa.cz` ani zive `arctic-spas.cz`.
+
+Stare GDPR/cookies URL (`zasady-zpracovani-osobnich-udaju.php`, `cookies.php`) se presmeruji na `/ochrana-osobnich-udaju/`.
 
 Vyhledavaci smoke test:
 

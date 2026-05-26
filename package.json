@@ -9,9 +9,11 @@
     "figma:audit": "node tools/figma-visual-audit.js",
     "form:smoke": "node tools/form-smoke.js",
     "legacy:products": "node tools/extract-legacy-products.js",
+    "link:smoke": "node tools/link-smoke.js",
     "local:safety": "node tools/local-safety-smoke.js",
     "migration:map": "node tools/build-migration-map.js",
-    "qa:local": "npm run css:build && npm run local:safety && npm run figma:audit && npm run visual:smoke && npm run form:smoke && npm run search:smoke && npm run redirect:smoke",
+    "product:smoke": "node tools/product-content-smoke.js",
+    "qa:local": "npm run css:build && npm run local:safety && npm run figma:audit && npm run visual:smoke && npm run product:smoke && npm run link:smoke && npm run form:smoke && npm run search:smoke && npm run redirect:smoke",
     "redirect:smoke": "node tools/redirect-smoke.js",
     "search:smoke": "node tools/search-smoke.js",
     "visual:smoke": "node tools/visual-smoke.js"

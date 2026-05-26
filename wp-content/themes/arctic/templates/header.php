@@ -23,17 +23,17 @@
 				<?php get_template_part( 'templates/navigation' ); ?>
 			</div>
 
-			<div class="a-flex__item a-hide a-show:l a-show:xl">
+			<div class="f-header__search-slot a-flex__item">
 				<?php get_template_part( 'templates/search/trigger' ); ?>
 			</div>
 
-			<div class="a-flex__item a-hide a-show:s a-show:m a-show:l a-show:xl">
+			<div class="f-header__cta-slot a-flex__item">
 				<div class="f-header__button">
 					<?php get_template_part( 'templates/button/contact' ); ?>
 				</div>
 			</div>
 
-			<div class="a-flex__item a-flex__item--0:l a-hide:l">
+			<div class="f-header__nav-trigger-slot a-flex__item">
 				<?php get_template_part( 'templates/navigation/trigger' ); ?>
 			</div>
 

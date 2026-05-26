@@ -3,7 +3,7 @@
  * Template Name: Figma Detail Vlastnosti
  */
 
-$hero_image    = content_url( 'uploads/import/figma/detail-timberwolf-hero.jpg' );
+$hero_image    = content_url( 'uploads/import/legacy-categories/virivky.jpg' );
 $diagram_image = content_url( 'uploads/import/figma/feature-freeheat-diagram.png' );
 $feature_image = content_url( 'uploads/import/figma/category-hero-virivky.jpg' );
 $features      = array(

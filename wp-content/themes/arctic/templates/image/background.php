@@ -10,12 +10,32 @@ $page_id = is_home() && !is_front_page() ? get_option( 'page_for_posts' ) : get_
 $media_class = array( 'f-background', 'f-background__image' );
 
 if ( is_tax() ) {
-	$term_image_id      = get_term_meta( get_queried_object_id(), 'category_heading_image', true );
-	$term_image_id      = !empty( $term_image_id ) ? $term_image_id : get_term_meta( get_queried_object_id(), 'category_image', true );
+	$term_id            = get_queried_object_id();
+	$term               = get_queried_object();
+	$term_slug          = isset( $term->slug ) ? (string) $term->slug : '';
+	$forced_term_images = array(
+		'virivky' => content_url( 'uploads/import/figma/category-hero-virivky.jpg' ),
+	);
+	$term_image_id      = get_term_meta( $term_id, 'category_heading_image', true );
+	$term_image_id      = !empty( $term_image_id ) ? $term_image_id : get_term_meta( $term_id, 'category_image', true );
 	$term_image         = wp_get_attachment_image_src( $term_image_id, get_template() . '-huge' );
 	$term_image_caption = wp_get_attachment_caption( $term_image_id );
+	$forced_image_url   = ( is_tax( 'product-category' ) && isset( $forced_term_images[ $term_slug ] ) ) ? $forced_term_images[ $term_slug ] : '';
 
-	if ( !empty( $term_image ) ) {
+	if ( !empty( $forced_image_url ) ) {
+		$forced_alt = !empty( $term_image_caption ) ? $term_image_caption : single_term_title( '', false );
+		?>
+
+		<figure <?php ( !function_exists( 'forqy_class' ) ) ?: forqy_class( $media_class ); ?>>
+			<img src="<?php echo esc_url( $forced_image_url ); ?>"
+			     alt="<?php echo esc_attr( $forced_alt ); ?>"
+			     width="1600"
+			     height="1200"
+			     fetchpriority="high"
+			     decoding="async">
+		</figure>
+
+	<?php } else if ( !empty( $term_image ) ) {
 		/**
 		 * Term Image
 		 */

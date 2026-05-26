@@ -72,7 +72,7 @@
   --a--spacing--xxxl: clamp(calc(var(--a--spacing) * 2), calc(2rem + 10vw), calc(var(--a--spacing) * 4));
 }
 :root {
-  --a--container--width: 90rem;
+  --a--container--width: 87.5rem;
   --a--container--width-max: 120rem;
   --a--container--spacing: var(--a--spacing--xs);
 }
@@ -4243,7 +4243,7 @@ a.a-badge {
   --a--button--outline--shadow-width: 4px;
   --a--button--outline--shadow: 0 0 0 0 transparent;
   --a--button--outline--shadow--active: 0 0 0 var(--a--button--outline--shadow-width) rgba(var(--a--color-rgb), 30%);
-  --a--container--width: 90rem;
+  --a--container--width: 87.5rem;
   --a--container--spacing: var(--a--spacing--xs);
 }
 @media (min-width: 768px) {
@@ -7712,6 +7712,12 @@ body .cky-footer-shadow {
     background-color: var(--off--color--background);
   }
 }
+@media (max-width: 1399px) {
+  .f-off[data-off-breakpoint='1400'] {
+    color: var(--off--color);
+    background-color: var(--off--color--background);
+  }
+}
 @media (max-width: 1023px) {
   .f-off[data-off-breakpoint='1024'] {
     color: var(--off--color);
@@ -8392,20 +8398,18 @@ ul.f-tags {
   font-weight: var(--a--font-weight--bold);
 }
 .f-header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   min-width: 320px;
   z-index: var(--a--layer--6);
   color: var(--f--header--color);
-  background-color: var(--f--header--color--background);
+  background-color: transparent;
   --shadow--size: var(--a--spacing);
-  --shadow--color: rgba(var(--a--color--shadow-rgb), 5%);
-  box-shadow: 0 0 calc(var(--shadow--size) / 4) var(--shadow--color), 0 calc(var(--shadow--size) / 4) calc(var(--shadow--size) / 2) var(--shadow--color), 0 calc(var(--shadow--size) / 2) calc(var(--shadow--size) / 4 * 3) var(--shadow--color), 0 calc(var(--shadow--size) / 4 * 3) var(--shadow--size) var(--shadow--color);
-  transition-property: transform, box-shadow;
-  transition-duration: var(--a--transition--duration, 0.25s);
-  transition-timing-function: var(--a--transition--timing-function, ease-in-out);
+  --shadow--color: transparent;
+  box-shadow: none;
+  transition: none;
 }
 .admin-bar .f-header {
   top: 32px;
@@ -8419,7 +8423,7 @@ ul.f-tags {
   transform: translateY(0);
 }
 .f-header.is-autohide--hidden.is-autohide--zone-hidden {
-  transform: translateY(-100%);
+  transform: none;
   box-shadow: none;
 }
 .f-header:before {
@@ -8427,7 +8431,8 @@ ul.f-tags {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-color: var(--a--color--background);
+  display: none;
+  background-color: transparent;
 }
 @media (max-width: 1279px) {
   .f-header .f-off--navigation:where([data-off-breakpoint='1280']) {

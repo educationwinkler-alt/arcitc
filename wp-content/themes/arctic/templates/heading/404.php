@@ -16,7 +16,7 @@ $heading_class[] = has_post_thumbnail() || has_header_image() ? 'f-heading--back
 
 		<div class="f-heading__headline a-stack a-stack--align-start a-gap--s">
 
-			<h1><?php echo esc_html__( 'Page not Found', 'baspa' ); ?></h1>
+			<h1><?php echo esc_html__( 'Stránka nenalezena', 'baspa' ); ?></h1>
 
 		</div>
 

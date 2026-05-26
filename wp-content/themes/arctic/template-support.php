@@ -86,6 +86,36 @@ $support_avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
 							),
 						);
 
+						$faq_query = new WP_Query( array(
+							'post_type'      => 'faq',
+							'post_status'    => 'publish',
+							'posts_per_page' => 9,
+							'orderby'        => array(
+								'menu_order' => 'ASC',
+								'date'       => 'ASC',
+							),
+						) );
+
+						$editable_questions = array();
+						if ( $faq_query->have_posts() ) {
+							while ( $faq_query->have_posts() ) {
+								$faq_query->the_post();
+								$faq_terms = wp_get_post_terms( get_the_ID(), 'faq-category' );
+								$faq_tag   = !empty( $faq_terms ) && !is_wp_error( $faq_terms ) ? $faq_terms[0]->name : __( 'Podpora', 'baspa' );
+
+								$editable_questions[] = array(
+									'title' => get_the_title(),
+									'text'  => wp_strip_all_tags( apply_filters( 'the_content', get_the_content() ) ),
+									'tag'   => $faq_tag,
+								);
+							}
+							wp_reset_postdata();
+						}
+
+						if ( !empty( $editable_questions ) ) {
+							$questions = $editable_questions;
+						}
+
 						foreach ( $questions as $index => $question ) { ?>
 							<article class="f-support-faq-card <?php echo 0 === $index ? 'is-open' : ''; ?>">
 								<div class="f-support-faq-card__icon"><?php echo 0 === $index ? esc_html( '−' ) : esc_html( '+' ); ?></div>
