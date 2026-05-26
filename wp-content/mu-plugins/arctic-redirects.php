@@ -119,7 +119,7 @@ add_action( 'template_redirect', function (): void {
 		'/certifikaty.php'               => '/certifikaty/',
 		'/zaruka.php'                    => '/zaruka/',
 		'/odkazy.php'                    => '/podpora/',
-		'/diskuze.php'                   => '/podpora/',
+		'/diskuze.php'                   => '/reference/',
 		'/kariera.php'                   => '/o-nas/',
 		'/cookies.php'                   => '/ochrana-osobnich-udaju/',
 		'/zasady-zpracovani-osobnich-udaju.php' => '/ochrana-osobnich-udaju/',

@@ -248,6 +248,13 @@ Exit criteria:
 ## Phase 4 - Content parity with old Arctic Spas site (P0/P1, 1 day)
 Goal: verify the redesign uses the old Arctic Spas site as the content source, not Figma placeholders or Baspa content.
 
+Current status (2026-05-26):
+- Completed for the Phase 4 technical/content audit scope.
+- Content parity audit: `docs/content-parity-audit-2026-05-26.md`.
+- Automated gate added: `npm run content:parity`, now included in `npm run qa:local`.
+- Old `diskuze.php` redirect was corrected from `/podpora/` to `/reference/` because the source page contains customer reference/discussion content.
+- Remaining validation is owner/client approval of documented exceptions: Lunar, Orion, and one missing old PDF.
+
 Reference rule:
 - `../Arctic-spas/` is the content authority.
 - Figma controls presentation, not final business copy.
