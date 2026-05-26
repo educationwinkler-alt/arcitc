@@ -88,6 +88,12 @@ Exit criteria:
 ## Phase 1 - Jucra configurator integration (P0, 1-2 days)
 Goal: make section "Nakonfigurujte si vlastni virivku" functional with 3D builder.
 
+Current status (2026-05-26):
+- Code integration is done and pushed in commit `06d08ae`.
+- Runtime activation is blocked until the `Visao 3D Viewer` plugin is installed and activated in WordPress.
+- Final functional viewer verification cannot be closed without that plugin.
+- Continue with Phase 2 and Phase 3 first; return to final Jucra activation as soon as the plugin is available.
+
 Implementation:
 1. Add theme option (or constants) for:
    - `arctic_jucra_enabled` (bool)
@@ -116,8 +122,19 @@ Exit criteria:
 - Product detail configurator can render model-specific viewer.
 - Fallback CTA still works when plugin is unavailable.
 
+Exit criteria status (2026-05-26):
+- Fallback CTA works.
+- Inline viewer flow is code-ready, but not operationally verified.
+- Product detail model-specific viewer is code-ready, but not operationally verified.
+- Remaining effort after plugin availability: install/activate plugin, set plugin settings, fill `jucra_model_name` values, run final smoke check.
+
 ## Phase 1A - Homepage promo badge scope (P0, 0.5 day)
 Goal: keep sale/promo badge compliant with content rules and page scope.
+
+Current status (2026-05-26):
+- Done and pushed in commit `06d08ae`.
+- Promo badge is renamed and guarded to homepage-only rendering.
+- Regression coverage is in `tools/visual-smoke.js`.
 
 Implementation:
 1. Change homepage promo copy from "Vyprodej skladovych virivek" to "Akcni nabidka skladovych virivek" (or exact approved CZ final text).
