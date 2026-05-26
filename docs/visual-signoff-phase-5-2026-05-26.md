@@ -3,6 +3,12 @@
 Date: 2026-05-26
 Scope: technical visual sign-off for the Arctic Spas redesign.
 
+## Superseded Scope Note
+
+This document is not the final Phase 5 sign-off. It records the responsive/zoom resilience pass only.
+
+Phase 5 was reopened after manual review found that full Figma frame/state coverage was still missing, especially header search and product menu states. Use `docs/phase-5-figma-frame-by-frame-tracker-2026-05-26.md` as the active Phase 5 checklist.
+
 ## Source Rules
 
 - Figma is the visual and UX source of truth.

@@ -317,9 +317,11 @@ Important responsive/zoom rule:
 Exit criteria:
 - Signed pass sheet for all required pages and breakpoints.
 
-Current Phase 5 technical sign-off:
-- `docs/visual-signoff-phase-5-2026-05-26.md`
-- Technical visual gates pass for the required responsive/zoom matrix.
+Current Phase 5 status:
+- Phase 5 is reopened. The previous technical responsive pass was not a complete Figma frame-by-frame implementation.
+- `docs/visual-signoff-phase-5-2026-05-26.md` remains valid only as evidence for responsive/zoom resilience.
+- The active frame-by-frame tracker is `docs/phase-5-figma-frame-by-frame-tracker-2026-05-26.md`.
+- Header search and desktop product mega menu states from Figma are now implemented and covered by `npm run figma:audit`.
 - Final owner/client approval is still required before production release.
 
 ## Phase 6 - Release readiness and deployment (P0, 1 day)

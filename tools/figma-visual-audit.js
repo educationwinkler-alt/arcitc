@@ -268,6 +268,65 @@ async function auditCompactNavigation(page) {
   }
 }
 
+async function auditDesktopHeaderStates(page) {
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.goto(baseUrl, { waitUntil: 'load' });
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(300);
+
+  await page.locator('.f-search__trigger').first().click();
+  await page.waitForTimeout(250);
+
+  const activeSearch = await page.locator('.f-off--search.active').count();
+  if (!activeSearch) {
+    throw new Error('desktopHeaderSearch: Figma search header state did not open');
+  }
+
+  await assertBox(page, '.f-off--search .f-search-panel', { x: 260, y: 18, width: 1400, height: 105 }, 2, 'desktopHeaderSearch.panel');
+  await assertBox(page, '.f-off--search .f-search-panel__logo .f-logo__img', { x: 289, y: 24, width: 148, height: 83 }, 2, 'desktopHeaderSearch.logo');
+  await assertBox(page, '.f-off--search .f-search__field', { x: 730, y: 59, width: 409, height: 44 }, 2, 'desktopHeaderSearch.field');
+  await assertBox(page, '.f-off--search .f-search-panel__button .a-button', { x: 1431, y: 56, width: 208, height: 50 }, 2, 'desktopHeaderSearch.button');
+
+  const placeholder = await page.locator('.f-off--search .f-search__input').first().getAttribute('placeholder');
+  if (!placeholder || !placeholder.includes('Zadejte hledan')) {
+    throw new Error(`desktopHeaderSearch.placeholder: unexpected placeholder "${placeholder || ''}"`);
+  }
+
+  await page.locator('.f-off--search .js-off__close').first().click();
+  await page.waitForTimeout(250);
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(300);
+
+  const hotTubTrigger = await box(page, '.f-navigation__list > .arctic-menu-products:nth-child(1) > a', 'desktopHeaderMega.hotTubsTrigger');
+  await page.mouse.move(hotTubTrigger.x + (hotTubTrigger.width / 2), hotTubTrigger.y + (hotTubTrigger.height / 2));
+  await page.waitForTimeout(250);
+  await assertBox(page, '.f-mega-menu--hot-tubs', { x: 285, y: 38, width: 1350, height: 500 }, 3, 'desktopHeaderMega.hotTubs');
+
+  const hotTubHeadings = await page.locator('.f-mega-menu--hot-tubs h2').evaluateAll((headings) => headings.map((heading) => heading.textContent.trim()));
+  for (const expected of ['Série core', 'Série classic', 'Série custom']) {
+    if (!hotTubHeadings.includes(expected)) {
+      throw new Error(`desktopHeaderMega.hotTubs: missing heading "${expected}"`);
+    }
+  }
+
+  const hotTubProducts = await page.locator('.f-mega-menu--hot-tubs .f-mega-menu__product').count();
+  if (hotTubProducts < 10) {
+    throw new Error(`desktopHeaderMega.hotTubs: expected product links, got ${hotTubProducts}`);
+  }
+
+  const swimspaTrigger = await box(page, '.f-navigation__list > .arctic-menu-products:nth-child(2) > a', 'desktopHeaderMega.swimspaTrigger');
+  await page.mouse.move(swimspaTrigger.x + (swimspaTrigger.width / 2), swimspaTrigger.y + (swimspaTrigger.height / 2));
+  await page.waitForTimeout(250);
+  await assertBox(page, '.f-mega-menu--swimspa', { x: 285, y: 38, width: 1350, height: 500 }, 3, 'desktopHeaderMega.swimspa');
+
+  const swimspaProducts = await page.locator('.f-mega-menu--swimspa .f-mega-menu__product').evaluateAll((links) => links.map((link) => link.textContent.trim()));
+  for (const expected of ['Athabascan', 'Hudson', 'Wolverine']) {
+    if (!swimspaProducts.includes(expected)) {
+      throw new Error(`desktopHeaderMega.swimspa: missing product "${expected}"`);
+    }
+  }
+}
+
 async function assertFooterLayout(page, label, expectedY = null) {
   const footer = await box(page, '.f-footer--arctic', `${label}.footer`);
   assertClose(footer.x, 0, 2, `${label}.footer.x`);
@@ -568,6 +627,7 @@ async function auditSharedFooterDesktop(page) {
     await auditMobile(page);
     await auditResponsiveShell(page);
     await auditCompactNavigation(page);
+    await auditDesktopHeaderStates(page);
     await auditFigmaSources(page);
     await auditCatalogHotTubsDesktop(page);
     await auditTimberwolfDesktop(page);

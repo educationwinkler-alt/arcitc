@@ -16,7 +16,7 @@
        aria-labelledby="search-heading"
        aria-hidden="true">
 
-	<div class="f-off__container a-off__container a-off__container--75">
+	<div class="f-off__container f-search-panel a-off__container">
 
 		<button class="f-off__close a-off__close js-off__close"
 		        aria-controls="<?php echo sanitize_title( esc_attr_x( 'search-dialog', 'anchor', 'baspa' ) ); ?>"
@@ -26,6 +26,10 @@
 			} ?>
 			<span class="screen-reader-text"><?php echo esc_html__( 'Close', 'baspa' ); ?></span>
 		</button>
+
+		<div class="f-search-panel__logo">
+			<?php get_template_part( 'templates/logo' ); ?>
+		</div>
 
 		<header class="f-off__header a-off__header screen-reader-text">
 			<h2 id="search-heading">
@@ -38,6 +42,10 @@
 			set_query_var( 'baspa_search_id', 'search-off' );
 			get_search_form();
 			?>
+		</div>
+
+		<div class="f-search-panel__button">
+			<?php get_template_part( 'templates/button/contact' ); ?>
 		</div>
 
 	</div>
