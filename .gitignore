@@ -22,3 +22,16 @@ assets-source/owner-info/
 *.sql
 *.zip
 *.log
+
+# local debug / scratch artifacts
+tmp_*.css
+tmp_*.html
+
+# ad-hoc visual debug screenshots (keep canonical playwright snapshots tracked)
+docs/screenshots/live-*.png
+docs/screenshots/p0-*.png
+docs/screenshots/*-debug-*.png
+docs/screenshots/home1903-*.png
+docs/screenshots/swimspa1903-*.png
+docs/screenshots/virivky1903-*.png
+docs/screenshots/header-dalsi-informace-dropdown.png

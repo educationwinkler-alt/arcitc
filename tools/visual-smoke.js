@@ -3,11 +3,12 @@ const { chromium } = require('playwright-core');
 const baseUrl = process.env.ARCTIC_BASE_URL || 'http://localhost:8090';
 const chromePath = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const screenshotDir = 'docs/screenshots';
+const writeScreenshots = process.env.VISUAL_SMOKE_WRITE_SCREENSHOTS === '1';
 
 const paths = [
   '/',
-  '/catalog/virivky/',
-  '/catalog/swimspa/',
+  '/virivky/',
+  '/swimspa/',
   '/catalog/dalsi-sortiment/',
   '/product/timberwolf/',
   '/product/husky/',
@@ -31,8 +32,8 @@ const paths = [
 
 const screenshotPaths = [
   ['/', 'home-desktop-playwright.png'],
-  ['/catalog/virivky/', 'category-virivky-desktop-playwright.png'],
-  ['/catalog/swimspa/', 'category-swimspa-desktop-playwright.png'],
+  ['/virivky/', 'category-virivky-desktop-playwright.png'],
+  ['/swimspa/', 'category-swimspa-desktop-playwright.png'],
   ['/catalog/dalsi-sortiment/', 'category-dalsi-sortiment-desktop-playwright.png'],
   ['/product/timberwolf/', 'product-timberwolf-desktop-playwright.png'],
   ['/product/husky/', 'product-husky-desktop-playwright.png'],
@@ -56,8 +57,8 @@ const screenshotPaths = [
 
 const mobileScreenshotPaths = [
   ['/', 'home-mobile-playwright.png'],
-  ['/catalog/virivky/', 'category-virivky-mobile-playwright.png'],
-  ['/catalog/swimspa/', 'category-swimspa-mobile-playwright.png'],
+  ['/virivky/', 'category-virivky-mobile-playwright.png'],
+  ['/swimspa/', 'category-swimspa-mobile-playwright.png'],
   ['/catalog/dalsi-sortiment/', 'category-dalsi-sortiment-mobile-playwright.png'],
   ['/product/timberwolf/', 'product-timberwolf-mobile-playwright.png'],
   ['/product/husky/', 'product-husky-mobile-playwright.png'],
@@ -122,6 +123,16 @@ const forbidden = [
   'bude dopln',
 ];
 
+const mojibakeNeedles = [
+  '\u00c4',
+  '\u0102',
+  '\u0139',
+  '\u00c5',
+  '\u00c2',
+  '\u00e2',
+  '\ufffd',
+];
+
 const forbiddenBrand = [
   'BASPA',
   'Baspa',
@@ -146,9 +157,13 @@ function isAllowedLegalEntity(path, html) {
 
       const html = await page.content();
       const hits = forbidden.filter((needle) => html.includes(needle));
+      const mojibakeHits = mojibakeNeedles.filter((needle) => html.includes(needle));
       const brandHits = forbiddenBrand.filter((needle) => html.includes(needle));
       if (brandHits.length && !isAllowedLegalEntity(path, html)) {
         hits.push(...brandHits);
+      }
+      if (mojibakeHits.length) {
+        hits.push(...mojibakeHits.map((needle) => `mojibake U+${needle.charCodeAt(0).toString(16).toUpperCase()}`));
       }
       if (hits.length) {
         throw new Error(`${path} contains forbidden strings: ${hits.join(', ')}`);
@@ -193,9 +208,28 @@ function isAllowedLegalEntity(path, html) {
       throw new Error('wp-sitemap.xml is missing the expected sitemap index.');
     }
 
-    for (const [path, fileName] of screenshotPaths) {
-      await page.goto(`${baseUrl}${path}`, { waitUntil: 'networkidle' });
-      await page.screenshot({ path: `${screenshotDir}/${fileName}`, fullPage: false });
+    const notFoundPath = '/arctic-smoke-missing-page/';
+    const notFoundResponse = await page.goto(`${baseUrl}${notFoundPath}`, { waitUntil: 'networkidle' });
+    const notFoundHtml = await page.content();
+    if (!notFoundResponse || notFoundResponse.status() !== 404) {
+      throw new Error('Missing page smoke route did not return HTTP 404.');
+    }
+    for (const expected of ['Stránka nenalezena', 'Zpět na úvod']) {
+      if (!notFoundHtml.includes(expected)) {
+        throw new Error(`404 page is missing expected Czech text: ${expected}`);
+      }
+    }
+    for (const stale of ['Page not Found', 'Back to Homepage', 'It looks like nothing was found']) {
+      if (notFoundHtml.includes(stale)) {
+        throw new Error(`404 page still contains stale English text: ${stale}`);
+      }
+    }
+
+    if (writeScreenshots) {
+      for (const [path, fileName] of screenshotPaths) {
+        await page.goto(`${baseUrl}${path}`, { waitUntil: 'networkidle' });
+        await page.screenshot({ path: `${screenshotDir}/${fileName}`, fullPage: false });
+      }
     }
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 900 }, deviceScaleFactor: 1 });
@@ -212,14 +246,20 @@ function isAllowedLegalEntity(path, html) {
       if (overflow > 2) {
         throw new Error(`${path} has horizontal overflow of ${overflow}px on mobile.`);
       }
-      await mobile.screenshot({ path: `${screenshotDir}/${fileName}`, fullPage: false });
+      if (writeScreenshots) {
+        await mobile.screenshot({ path: `${screenshotDir}/${fileName}`, fullPage: false });
+      }
     }
 
     if (externalRequests.size) {
       throw new Error(`External browser requests detected: ${Array.from(externalRequests).join(', ')}`);
     }
 
-    console.log('Visual smoke passed.');
+    if (writeScreenshots) {
+      console.log('Visual smoke passed. Screenshots updated.');
+    } else {
+      console.log('Visual smoke passed. Screenshot writes skipped (set VISUAL_SMOKE_WRITE_SCREENSHOTS=1 to update).');
+    }
   } finally {
     await browser.close();
   }
