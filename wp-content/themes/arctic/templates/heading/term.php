@@ -63,9 +63,5 @@ $heading_class[] = !empty( $term_image_id ) ? 'f-heading--background' : '';
 		</div>
 	</div>
 
-	<?php if ( is_tax( 'product-category' ) ) {
-		get_template_part( 'templates/section/hero-promo' );
-	} ?>
-
 	<?php get_template_part( 'templates/image/background' ); ?>
 </header>

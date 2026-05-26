@@ -138,6 +138,9 @@ const forbiddenBrand = [
   'Baspa',
 ];
 
+const homepagePromoText = 'Akcni nabidka skladovych virivek';
+const legacyPromoText = 'Vyprodej skladovych virivek';
+
 function isAllowedLegalEntity(path, html) {
   return path === '/kontakt/' && html.includes('BASPA s.r.o.');
 }
@@ -156,6 +159,14 @@ function isAllowedLegalEntity(path, html) {
       }
 
       const html = await page.content();
+      const hasHeroPromo = html.includes('<aside class="f-hero-promo"');
+      const hasJucraWrapper = html.includes('data-jucra-model=');
+      let resolvedPathname = path;
+      try {
+        resolvedPathname = new URL(page.url()).pathname;
+      } catch (error) {
+        resolvedPathname = path;
+      }
       const hits = forbidden.filter((needle) => html.includes(needle));
       const mojibakeHits = mojibakeNeedles.filter((needle) => html.includes(needle));
       const brandHits = forbiddenBrand.filter((needle) => html.includes(needle));
@@ -167,6 +178,30 @@ function isAllowedLegalEntity(path, html) {
       }
       if (hits.length) {
         throw new Error(`${path} contains forbidden strings: ${hits.join(', ')}`);
+      }
+
+      if (resolvedPathname === '/') {
+        if (!hasHeroPromo) {
+          throw new Error('Homepage is missing the hero promo component.');
+        }
+
+        if (!html.includes(homepagePromoText)) {
+          throw new Error(`Homepage promo text mismatch. Expected: ${homepagePromoText}`);
+        }
+
+        if (html.includes(legacyPromoText)) {
+          throw new Error(`Homepage still contains legacy promo text: ${legacyPromoText}`);
+        }
+      } else if (hasHeroPromo) {
+        throw new Error(`${path} should not render the hero promo component outside homepage (resolved to ${resolvedPathname}).`);
+      }
+
+      if (html.includes('[visao_viewer')) {
+        throw new Error(`${path} contains unresolved visao_viewer shortcode text.`);
+      }
+
+      if (path === '/product/timberwolf/' && !hasJucraWrapper && !html.includes('category-configurator.png')) {
+        throw new Error('/product/timberwolf/ configurator section is missing both Jucra viewer wrapper and fallback image.');
       }
 
       const canonical = await page.locator('link[rel="canonical"]').first().getAttribute('href');

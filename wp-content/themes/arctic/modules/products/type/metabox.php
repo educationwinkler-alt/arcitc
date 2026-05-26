@@ -41,6 +41,12 @@ if ( !function_exists( 'baspa_products_metabox_register' ) ) {
 					'type' => 'url',
 				),
 				array(
+					'name' => esc_html_x( 'Jucra Model Name', 'admin', 'baspa' ),
+					'desc' => esc_html_x( 'Model value used in [visao_viewer model_name="..."] shortcode.', 'admin', 'baspa' ),
+					'id'   => 'jucra_model_name',
+					'type' => 'text',
+				),
+				array(
 					'name' => esc_html_x( 'CTA Text', 'admin', 'baspa' ),
 					'id'   => 'product_cta_text',
 					'type' => 'text',

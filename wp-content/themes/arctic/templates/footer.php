@@ -16,7 +16,7 @@ $groups = array(
 			__( 'Série Core', 'baspa' )      => home_url( '/virivky/?series=core' ),
 			__( 'Série Classic', 'baspa' )   => home_url( '/virivky/?series=classic' ),
 			__( 'Série Custom', 'baspa' )    => home_url( '/virivky/?series=custom' ),
-			__( 'Výprodej vířivek', 'baspa' ) => home_url( '/virivky/' ),
+			__( 'Skladove virivky', 'baspa' ) => home_url( '/virivky/' ),
 		),
 		'sections' => array(
 			array(

@@ -18,6 +18,7 @@ require_once get_theme_file_path( 'inc/functions/pagination.php' );
 require_once get_theme_file_path( 'inc/functions/button.php' );
 require_once get_theme_file_path( 'inc/functions/metabox.php' );
 require_once get_theme_file_path( 'inc/functions/terms.php' );
+require_once get_theme_file_path( 'inc/functions/jucra.php' );
 
 // CF7
 require_once get_theme_file_path( 'inc/functions/cf7/form.php' );
