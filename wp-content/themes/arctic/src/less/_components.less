@@ -9895,13 +9895,7 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     display: block;
     top: calc(593px * var(--arctic-fluid-desktop-scale));
     right: auto;
-    left: max(
-      12px,
-      min(
-        calc(((100vw - (1920px * var(--arctic-fluid-desktop-scale))) / 2) + (1699px * var(--arctic-fluid-desktop-scale))),
-        calc(100vw - (268px * var(--arctic-fluid-desktop-scale)) - 12px)
-      )
-    );
+    left: calc(((100vw - (1920px * var(--arctic-fluid-desktop-scale))) / 2) + (1699px * var(--arctic-fluid-desktop-scale)));
     width: calc(268px * var(--arctic-fluid-desktop-scale));
     height: calc(288px * var(--arctic-fluid-desktop-scale));
   }
