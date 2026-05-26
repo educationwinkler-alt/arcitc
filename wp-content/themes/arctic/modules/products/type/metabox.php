@@ -197,22 +197,6 @@ if ( !function_exists( 'baspa_products_metabox_register' ) ) {
 					'add_button' => esc_html__( '+ Add Volume', 'baspa' ),
 				),
 				array(
-					'name'       => esc_html_x( 'Configurations', 'admin', 'baspa' ),
-					'id'         => 'product_configurations',
-					'type'       => 'fieldset_text',
-					'clone'      => true,
-					'add_button' => esc_html_x( '+ Add Configuration', 'admin', 'baspa' ),
-					'options'    => array(
-						'name'        => esc_html_x( 'Name', 'admin', 'baspa' ),
-						'price'       => esc_html_x( 'Price', 'admin', 'baspa' ),
-						'seats'       => esc_html_x( 'Seats', 'admin', 'baspa' ),
-						'jets'        => esc_html_x( 'Jets', 'admin', 'baspa' ),
-						'pumps'       => esc_html_x( 'Pumps', 'admin', 'baspa' ),
-						'dimensions'  => esc_html_x( 'Dimensions', 'admin', 'baspa' ),
-						'description' => esc_html_x( 'Description', 'admin', 'baspa' ),
-					),
-				),
-				array(
 					'name'       => esc_html_x( 'Acrylic Colors', 'admin', 'baspa' ),
 					'id'         => 'product_acrylic_colors',
 					'type'       => 'text',

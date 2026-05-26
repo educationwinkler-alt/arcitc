@@ -42,17 +42,17 @@ Still open:
 - Manual business sign-off on all pages against Figma is still needed.
 
 ### B. `web-completion-plan.md`
-Status: partially done (P0 quality gate improved, P1 still open)
+Status: partially done (P0 quality gate improved, P1 data model done, visual sign-off still open)
 
 Done:
 - Core Figma geometry gate is passing.
 - Homepage hero promo x-position mismatch was fixed and validated by `figma:audit`.
 - CSS flow is stable enough to run full QA repeatedly.
+- Product configuration data model has been moved to structured `product_configuration_items` with legacy fallback.
 
 Still open:
-- `product_configurations` is still a `fieldset_text` model (not migrated to structured repeater/group model).
 - Full frame-by-frame manual Figma validation across all required templates is not closed as a signed checklist.
-- Configurator section is not yet wired to Jucra 3D builder workflow.
+- Jucra 3D builder workflow is code-ready, but final runtime activation still waits for the Visao plugin.
 
 ### C. `arctic-scaling-rebuild-plan.md`
 Status: gate-pass achieved, but visual sign-off still open (reopened 2026-05-26)
@@ -68,12 +68,11 @@ Open concern:
 
 ## 2) Current blocker list (what is not finished yet)
 
-1. Jucra 3D configurator is not integrated in frontend flow yet.
-2. Configurator CTA currently links to category page, not model-specific 3D viewer.
-3. Structured product configuration model migration (P1 data model) is still pending.
-4. Manual final sign-off sheet for all page/frame combinations is still pending.
-5. Text encoding regression exists in configurator section source strings (mojibake), must be cleaned.
-6. Homepage promo badge must be renamed from "Vyprodej" to "Akcni nabidka" and must not appear outside homepage.
+1. Jucra 3D configurator operational activation is still blocked by the missing Visao plugin.
+2. Final functional viewer verification is pending after plugin install/activation.
+3. Manual final sign-off sheet for all page/frame combinations is still pending.
+4. Text encoding regression exists in configurator section source strings (mojibake), must be cleaned.
+5. Manual review still reports visual mismatch against Figma despite automated gate pass.
 
 ## 3) New complete plan to finish the website
 
@@ -150,6 +149,14 @@ Exit criteria:
 - Zero occurrences of this component on non-home pages.
 
 ## Phase 2 - Data model completion for product configurations (P1, 1-2 days)
+Current status (2026-05-26):
+- Done in the Phase 2 implementation commit.
+- New structured primary meta key: `product_configuration_items`.
+- Legacy repeated meta key `product_configurations` remains as fallback for backwards compatibility.
+- Admin editing moved from weak `fieldset_text` to a native structured repeater metabox with active/sort order/image support.
+- Seed/import writes the new structured meta while keeping legacy meta populated during transition.
+- Regression coverage added to product content smoke tests.
+
 1. Replace `product_configurations` flat text fieldset with structured repeater/group:
    - `active`
    - `sort_order`
@@ -163,6 +170,11 @@ Exit criteria:
 Exit criteria:
 - Admin can edit configurations safely without formatting hacks.
 - Frontend output stable and fully backwards compatible.
+
+Exit criteria status (2026-05-26):
+- Completed in code.
+- Product frontend smoke passed against local pages.
+- Full `qa:local` should remain the release gate before Phase 3 sign-off.
 
 ## Phase 3 - Full visual sign-off loop (P0/P1, 2-3 days)
 1. Run manual Figma QA checklist page-by-page:

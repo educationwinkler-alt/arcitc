@@ -11,7 +11,7 @@ $is_hot_tub     = has_term( 'virivky', 'product-category', $product_id );
 $is_wider_range = has_term( 'dalsi-sortiment', 'product-category', $product_id );
 $nav_items      = array();
 
-if ( !empty( get_post_meta( $product_id, 'product_configurations' ) ) ) {
+if ( function_exists( 'baspa_products_product_has_configurations' ) && baspa_products_product_has_configurations( $product_id ) ) {
 	$nav_items['#konfigurace'] = __( 'Konfigurace', 'baspa' );
 }
 

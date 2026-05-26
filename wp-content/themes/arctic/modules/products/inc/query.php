@@ -48,7 +48,7 @@ if ( !function_exists( 'baspa_products_query_product_has_parameters' ) ) {
 		$product_water_volume        = get_post_meta( $product_id, 'product_water_volume', true );
 		$product_seats               = get_post_meta( $product_id, 'product_seats', true );
 		$product_nozzles             = get_post_meta( $product_id, 'product_nozzles', true );
-		$product_configurations      = get_post_meta( $product_id, 'product_configurations' );
+		$product_configurations      = function_exists( 'baspa_products_product_has_configurations' ) && baspa_products_product_has_configurations( $product_id );
 		$product_acrylic_colors      = get_post_meta( $product_id, 'product_acrylic_colors' );
 
 		if (
@@ -59,7 +59,7 @@ if ( !function_exists( 'baspa_products_query_product_has_parameters' ) ) {
 			!empty( $product_dimensions_external ) ||
 			!empty( $product_water_depth ) ||
 			!empty( $product_water_volume ) ||
-			!empty( $product_configurations ) ||
+			$product_configurations ||
 			!empty( $product_acrylic_colors ) ) {
 			return true;
 		} else {

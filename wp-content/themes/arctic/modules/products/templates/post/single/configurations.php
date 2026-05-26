@@ -4,10 +4,8 @@
  * Product Configurations
  */
 
-$configurations = get_post_meta( get_the_ID(), 'product_configurations' );
-$configurations = array_filter( $configurations, static function ( $configuration ) {
-	return is_array( $configuration ) && !empty( array_filter( $configuration ) );
-} );
+$product_id      = get_the_ID();
+$configurations  = function_exists( 'baspa_products_get_configurations' ) ? baspa_products_get_configurations( $product_id ) : array();
 
 if ( !empty( $configurations ) ) { ?>
 	<div id="konfigurace" class="f-product-configurations a-stack a-gap--s">
@@ -16,13 +14,13 @@ if ( !empty( $configurations ) ) { ?>
 		<div class="f-product-configurations__grid">
 			<?php foreach ( $configurations as $configuration ) {
 				$name        = $configuration['name'] ?? '';
-				$image       = isset( $configuration['image'] ) ? absint( $configuration['image'] ) : 0;
-				$price       = $configuration['price'] ?? '';
+				$image       = isset( $configuration['image_id'] ) ? absint( $configuration['image_id'] ) : 0;
+				$price       = !empty( $configuration['price_text'] ) ? $configuration['price_text'] : ( $configuration['price'] ?? '' );
 				$seats       = $configuration['seats'] ?? '';
 				$jets        = $configuration['jets'] ?? '';
 				$pumps       = $configuration['pumps'] ?? '';
 				$dimensions  = $configuration['dimensions'] ?? '';
-				$description = $configuration['description'] ?? '';
+				$description = $configuration['notes'] ?? '';
 				?>
 
 				<article class="f-product-configuration">

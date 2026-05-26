@@ -111,6 +111,17 @@ function arctic_seed_set_multi_meta( int $post_id, string $key, array $values ):
 	}
 }
 
+function arctic_seed_set_product_configurations( int $post_id, array $values ): void {
+	if ( function_exists( 'baspa_products_update_configurations' ) ) {
+		baspa_products_update_configurations( $post_id, $values );
+	} else {
+		update_post_meta( $post_id, 'product_configuration_items', $values );
+	}
+
+	// Keep the old repeated meta populated until every environment has migrated.
+	arctic_seed_set_multi_meta( $post_id, 'product_configurations', $values );
+}
+
 function arctic_seed_legacy_products(): array {
 	static $products = null;
 
@@ -579,7 +590,7 @@ arctic_seed_set_multi_meta( $lunar_id, 'product_seats', array( '1 lehátko + 4 s
 arctic_seed_set_multi_meta( $lunar_id, 'product_nozzles', array( 'Prestige: 20 trysek / 1 čerpadlo', 'Signature: 40 trysek / 2 čerpadla' ) );
 arctic_seed_set_multi_meta( $lunar_id, 'product_dimensions_external', array( '212 × 213 cm, výška: 99 cm' ) );
 arctic_seed_set_multi_meta( $lunar_id, 'product_acrylic_colors', array( 'Platinum Swirl', 'Espresso', 'Kalahari', 'Dakota' ) );
-arctic_seed_set_multi_meta( $lunar_id, 'product_configurations', array(
+arctic_seed_set_product_configurations( $lunar_id, array(
 	array(
 		'name'        => 'Prestige',
 		'price'       => '249 000 Kč',
@@ -624,7 +635,7 @@ arctic_seed_set_multi_meta( $orion_id, 'product_seats', array( '6 sedadel' ) );
 arctic_seed_set_multi_meta( $orion_id, 'product_nozzles', array( 'Prestige: 20 trysek / 1 čerpadlo', 'Signature: 40 trysek / 2 čerpadla' ) );
 arctic_seed_set_multi_meta( $orion_id, 'product_dimensions_external', array( '212 × 213 cm, výška: 99 cm' ) );
 arctic_seed_set_multi_meta( $orion_id, 'product_acrylic_colors', array( 'Platinum Swirl', 'Espresso', 'Kalahari', 'Dakota' ) );
-arctic_seed_set_multi_meta( $orion_id, 'product_configurations', array(
+arctic_seed_set_product_configurations( $orion_id, array(
 	array(
 		'name'        => 'Prestige',
 		'price'       => '249 000 Kč',
@@ -945,7 +956,7 @@ foreach ( $legacy_products as $index => $product ) {
 	arctic_seed_set_multi_meta( $product_id, 'product_seats', $product['seats'] ?? arctic_seed_value_array( $legacy_seats ) );
 	arctic_seed_set_multi_meta( $product_id, 'product_nozzles', $product['nozzles'] ?? arctic_seed_value_array( $legacy_jets ) );
 	arctic_seed_set_multi_meta( $product_id, 'product_water_volume', $product['water_volume'] ?? arctic_seed_value_array( $legacy_volume ) );
-	arctic_seed_set_multi_meta( $product_id, 'product_configurations', $configurations );
+	arctic_seed_set_product_configurations( $product_id, $configurations );
 	if ( !empty( $product['badge'] ) ) {
 		update_post_meta( $product_id, 'product_badge', $product['badge'] );
 	} else {
@@ -1000,7 +1011,7 @@ arctic_seed_set_multi_meta( $timberwolf_id, 'product_cabinet_color_options', arr
 	array( 'name' => 'Cedrový kabinet', 'image' => $figma_cabinet_cedar ),
 	array( 'name' => 'Bezúdržbový kabinet', 'image' => $figma_cabinet_maintenance_free ),
 ) );
-arctic_seed_set_multi_meta( $timberwolf_id, 'product_configurations', array(
+arctic_seed_set_product_configurations( $timberwolf_id, array(
 	array(
 		'name'        => 'Prestige 15/1',
 		'image'       => $timberwolf_prestige,

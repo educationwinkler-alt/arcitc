@@ -34,6 +34,21 @@ const accessoryProductSlugs = [
   'ochlazovaci-bazenek',
 ];
 
+const productExpectations = {
+  timberwolf: {
+    minConfigurationCards: 2,
+    expectedConfigurations: ['Prestige 15/1', 'Signature 30/2'],
+  },
+  lunar: {
+    minConfigurationCards: 2,
+    expectedConfigurations: ['Prestige', 'Signature'],
+  },
+  orion: {
+    minConfigurationCards: 2,
+    expectedConfigurations: ['Prestige', 'Signature'],
+  },
+};
+
 const mojibakeNeedles = [
   '\u00c4',
   '\u0102',
@@ -77,6 +92,10 @@ function countOccurrences(text, needle) {
   return text.split(needle).length - 1;
 }
 
+function countConfigurationCards(html) {
+  return (html.match(/<article\b[^>]*class=["'][^"']*\bf-product-configuration\b/g) || []).length;
+}
+
 function assertNoMojibake(path, text) {
   const hit = mojibakeNeedles.find((needle) => text.includes(needle));
 
@@ -87,7 +106,8 @@ function assertNoMojibake(path, text) {
 }
 
 async function assertProduct(path, options = {}) {
-  const text = await fetchText(path);
+  const html = await fetchHtml(path);
+  const text = textFromHtml(html);
   assertNoMojibake(path, text);
 
   if (!text.includes('Arctic Spas')) {
@@ -96,6 +116,23 @@ async function assertProduct(path, options = {}) {
 
   if (options.requireConfiguration && !text.includes('Konfigurace')) {
     throw new Error(`${path} is missing the product configuration section.`);
+  }
+
+  if (options.requireConfiguration) {
+    const cardCount = countConfigurationCards(html);
+    const minCards = options.minConfigurationCards || 1;
+
+    if (cardCount < minCards) {
+      throw new Error(`${path} has ${cardCount} configuration card(s), expected at least ${minCards}.`);
+    }
+  }
+
+  if (options.expectedConfigurations) {
+    for (const expected of options.expectedConfigurations) {
+      if (!text.includes(expected)) {
+        throw new Error(`${path} is missing configuration label: ${expected}`);
+      }
+    }
   }
 
   if (text.includes('Lorem ipsum') || text.includes('Sample Page') || text.includes('Hello world!')) {
@@ -145,7 +182,10 @@ async function assertReferenceContent() {
 
 (async () => {
   for (const slug of standardProductSlugs) {
-    await assertProduct(`/product/${slug}/`, { requireConfiguration: true });
+    await assertProduct(`/product/${slug}/`, {
+      requireConfiguration: true,
+      ...(productExpectations[slug] || {}),
+    });
   }
 
   for (const slug of accessoryProductSlugs) {
