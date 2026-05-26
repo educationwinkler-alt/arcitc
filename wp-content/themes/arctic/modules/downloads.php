@@ -7,6 +7,7 @@
 require_once get_theme_file_path( 'modules/downloads/type.php' );
 require_once get_theme_file_path( 'modules/downloads/type/taxonomy.php' );
 require_once get_theme_file_path( 'modules/downloads/type/metabox.php' );
+require_once get_theme_file_path( 'modules/downloads/inc/admin.php' );
 
 if ( !function_exists( 'arctic_downloads_shortcode' ) ) {
 

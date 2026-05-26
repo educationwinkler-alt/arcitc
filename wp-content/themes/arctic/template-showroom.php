@@ -10,6 +10,13 @@ $asset = static function ( string $filename ): string {
 
 $contact_email = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
 $contact_phone = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
+$contact_name  = get_theme_mod( 'arctic_showroom_contact_name', 'Lukas Dusek' );
+$street        = get_theme_mod( 'baspa_street', 'Bohunicka cesta 15' );
+$city          = get_theme_mod( 'baspa_city', 'Moravany u Brna' );
+$hours_title   = get_theme_mod( 'arctic_showroom_hours_title', 'Oteviraci doba' );
+$hours_label   = get_theme_mod( 'arctic_showroom_hours_label', 'Utery - Patek' );
+$hours_line_1  = get_theme_mod( 'arctic_showroom_hours_line_1', '9:00 - 11:30' );
+$hours_line_2  = get_theme_mod( 'arctic_showroom_hours_line_2', '12:30 - 16:00' );
 
 $reasons = array(
 	array(
@@ -74,7 +81,7 @@ get_header();
 				<div class="f-showroom-info__item f-showroom-info__item--contact">
 					<span class="f-showroom-icon f-showroom-icon--phone" aria-hidden="true"></span>
 					<h2><?php echo esc_html__( 'Kontakt', 'baspa' ); ?></h2>
-					<strong><?php echo esc_html__( 'Lukáš Dušek', 'baspa' ); ?></strong>
+					<strong><?php echo esc_html( $contact_name ); ?></strong>
 					<a href="mailto:<?php echo esc_attr( antispambot( $contact_email ) ); ?>"><?php echo esc_html( antispambot( $contact_email ) ); ?></a>
 					<a href="tel:<?php echo esc_attr( str_replace( ' ', '', $contact_phone ) ); ?>"><?php echo esc_html( $contact_phone ); ?></a>
 				</div>
@@ -82,17 +89,17 @@ get_header();
 				<div class="f-showroom-info__item">
 					<span class="f-showroom-icon f-showroom-icon--map" aria-hidden="true"></span>
 					<h2><?php echo esc_html__( 'Kde nás najdete', 'baspa' ); ?></h2>
-					<strong><?php echo esc_html__( 'Moravany u Brna', 'baspa' ); ?></strong>
-					<span><?php echo esc_html__( 'Bohunická cesta 15', 'baspa' ); ?></span>
+					<strong><?php echo esc_html( $city ); ?></strong>
+					<span><?php echo esc_html( $street ); ?></span>
 					<a href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>"><?php echo esc_html__( 'Zobrazit na mapě.', 'baspa' ); ?></a>
 				</div>
 
 				<div class="f-showroom-info__item">
 					<span class="f-showroom-icon f-showroom-icon--clock" aria-hidden="true"></span>
-					<h2><?php echo esc_html__( 'Otevírací doba', 'baspa' ); ?></h2>
-					<strong><?php echo esc_html__( 'Úterý - Pátek', 'baspa' ); ?></strong>
-					<span><?php echo esc_html__( '9:00 - 11:30', 'baspa' ); ?></span>
-					<span><?php echo esc_html__( '12:30 - 16:00', 'baspa' ); ?></span>
+					<h2><?php echo esc_html( $hours_title ); ?></h2>
+					<strong><?php echo esc_html( $hours_label ); ?></strong>
+					<span><?php echo esc_html( $hours_line_1 ); ?></span>
+					<span><?php echo esc_html( $hours_line_2 ); ?></span>
 				</div>
 			</div>
 		</section>

@@ -204,6 +204,13 @@ Exit criteria status (2026-05-26):
 ## Phase 3 - Admin parity with Baspa.cz (P0/P1, 1-2 days)
 Goal: make the WordPress administration comparable to Baspa.cz for all Arctic-relevant content sections.
 
+Current status (2026-05-26):
+- Completed for the Phase 3 code scope.
+- Admin parity matrix: `docs/admin-parity-matrix-2026-05-26.md`.
+- Arctic-specific editable controls were added for homepage promo, configurator CTA, showroom card, support page, and downloads page/listing copy.
+- Baspa-compatible admin modules were audited and either retained/adapted or explicitly marked not applicable/deferred in the matrix.
+- Remaining validation is client/admin walkthrough after Phase 4 content parity and Phase 5 visual QA.
+
 Reference rule:
 - Baspa.cz is the admin and functional pattern.
 - Arctic Spas sections must follow the Arctic content model and Figma structure, but should not lose expected admin editability.

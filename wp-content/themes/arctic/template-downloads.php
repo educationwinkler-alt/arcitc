@@ -6,6 +6,9 @@
 
 get_header();
 get_template_part( 'templates/heading/default' );
+
+$downloads_title        = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_page_title', 'Dokumenty ke stazeni' ) : 'Dokumenty ke stazeni';
+$download_filter_labels = function_exists( 'arctic_downloads_filter_labels' ) ? arctic_downloads_filter_labels() : array( 'Katalogy virivek', 'Navody', 'Rozmery', 'Zaruky' );
 ?>
 
 <main id="<?php echo sanitize_title( esc_attr_x( 'content', 'anchor', 'baspa' ) ); ?>"
@@ -13,12 +16,11 @@ get_template_part( 'templates/heading/default' );
 
 	<section id="ke-stazeni" class="f-section f-section--support-downloads">
 		<div class="f-section__container a-container">
-			<h2><?php echo esc_html__( 'Dokumenty ke stažení', 'baspa' ); ?></h2>
+			<h2><?php echo esc_html( $downloads_title ); ?></h2>
 			<div class="f-chip-list">
-				<span class="is-active"><?php echo esc_html__( 'Katalogy vířivek', 'baspa' ); ?></span>
-				<span><?php echo esc_html__( 'Návody', 'baspa' ); ?></span>
-				<span><?php echo esc_html__( 'Rozměry', 'baspa' ); ?></span>
-				<span><?php echo esc_html__( 'Záruky', 'baspa' ); ?></span>
+				<?php foreach ( $download_filter_labels as $index => $label ) { ?>
+					<span class="<?php echo 0 === $index ? 'is-active' : ''; ?>"><?php echo esc_html( $label ); ?></span>
+				<?php } ?>
 			</div>
 			<?php echo do_shortcode( '[arctic-downloads]' ); ?>
 		</div>

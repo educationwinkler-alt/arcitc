@@ -8,6 +8,18 @@ get_header();
 get_template_part( 'templates/heading/default' );
 
 $support_avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
+$support_faq_title       = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_faq_title', 'Caste dotazy' ) : 'Caste dotazy';
+$support_downloads_title = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_support_title', 'Ke stazeni' ) : 'Ke stazeni';
+$support_form_title      = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_form_title', 'Servisni formular' ) : 'Servisni formular';
+$support_form_content    = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_form_content', 'Popiste nam pozadavek a ozveme se s dalsim postupem. U servisniho pozadavku pomuze model virivky, rok porizeni a kratky popis situace.' ) : 'Popiste nam pozadavek a ozveme se s dalsim postupem. U servisniho pozadavku pomuze model virivky, rok porizeni a kratky popis situace.';
+$support_help_title      = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_help_title', 'Potrebujete poradit?' ) : 'Potrebujete poradit?';
+$support_help_name       = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_help_name', 'Lukas Dusek' ) : 'Lukas Dusek';
+$support_help_role       = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_help_role', 'Bazenovy specialista' ) : 'Bazenovy specialista';
+$support_help_hours      = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_help_hours', 'Po - Pa 8:00-17:00 h' ) : 'Po - Pa 8:00-17:00 h';
+$support_help_button     = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_help_button', 'Napsat zpravu' ) : 'Napsat zpravu';
+$support_help_button_url = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_help_button_url', '/kontakt/' ) : '/kontakt/';
+$support_help_button_url = function_exists( 'arctic_sections_url' ) ? arctic_sections_url( $support_help_button_url, '/kontakt/' ) : home_url( '/kontakt/' );
+$download_filter_labels  = function_exists( 'arctic_downloads_filter_labels' ) ? arctic_downloads_filter_labels() : array( 'Katalogy virivek', 'Navody', 'Rozmery', 'Zaruky' );
 ?>
 
 <main id="<?php echo sanitize_title( esc_attr_x( 'content', 'anchor', 'baspa' ) ); ?>"
@@ -16,9 +28,9 @@ $support_avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
 	<section class="f-section f-section--support-tabs">
 		<div class="f-section__container a-container">
 			<nav class="f-support-tabs" aria-label="<?php echo esc_attr__( 'Podpora', 'baspa' ); ?>">
-				<a href="#caste-dotazy"><?php echo esc_html__( 'Časté dotazy', 'baspa' ); ?></a>
-				<a href="#ke-stazeni"><?php echo esc_html__( 'Ke stažení', 'baspa' ); ?></a>
-				<a href="#servisni-formular"><?php echo esc_html__( 'Servisní formulář', 'baspa' ); ?></a>
+				<a href="#caste-dotazy"><?php echo esc_html( $support_faq_title ); ?></a>
+				<a href="#ke-stazeni"><?php echo esc_html( $support_downloads_title ); ?></a>
+				<a href="#servisni-formular"><?php echo esc_html( $support_form_title ); ?></a>
 			</nav>
 		</div>
 	</section>
@@ -27,7 +39,7 @@ $support_avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
 		<div class="f-section__container a-container">
 			<div class="f-support-layout">
 				<div class="f-support-layout__main">
-					<h2><?php echo esc_html__( 'Časté dotazy', 'baspa' ); ?></h2>
+					<h2><?php echo esc_html( $support_faq_title ); ?></h2>
 					<div class="f-chip-list">
 						<span class="is-active"><?php echo esc_html__( 'Všechny', 'baspa' ); ?></span>
 						<span><?php echo esc_html__( 'Obchodní', 'baspa' ); ?></span>
@@ -132,26 +144,24 @@ $support_avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
 				</div>
 
 				<aside class="f-support-help-card">
-					<h3><?php echo esc_html__( 'Potřebujete poradit?', 'baspa' ); ?></h3>
+					<h3><?php echo esc_html( $support_help_title ); ?></h3>
 					<a href="mailto:<?php echo antispambot( esc_attr( get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' ) ) ); ?>">
 						<?php echo antispambot( esc_html( get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' ) ) ); ?>
 					</a>
 					<a href="tel:<?php echo esc_attr( str_replace( ' ', '', get_theme_mod( 'baspa_phone', '+420 777 099 687' ) ) ); ?>">
 						<?php echo esc_html( get_theme_mod( 'baspa_phone', '+420 777 099 687' ) ); ?>
 					</a>
-					<small><?php echo esc_html__( 'Po - Pá 8:00-17:00 h', 'baspa' ); ?></small>
+					<small><?php echo esc_html( $support_help_hours ); ?></small>
 					<div class="f-support-help-card__person">
 						<span class="f-support-help-card__avatar" aria-hidden="true">
 							<img src="<?php echo esc_url( $support_avatar ); ?>" alt="" loading="lazy" decoding="async">
 						</span>
 						<div>
-							<strong><?php echo esc_html__( 'Lukáš Dušek', 'baspa' ); ?></strong>
-							<span><?php echo esc_html__( 'Bazénový specialista', 'baspa' ); ?></span>
+							<strong><?php echo esc_html( $support_help_name ); ?></strong>
+							<span><?php echo esc_html( $support_help_role ); ?></span>
 						</div>
 					</div>
-					<a class="f-button a-button a-button--outline" href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>">
-						<?php echo esc_html__( 'Napsat zprávu', 'baspa' ); ?>
-					</a>
+					<a class="f-button a-button a-button--outline" href="<?php echo esc_url( $support_help_button_url ); ?>"><?php echo esc_html( $support_help_button ); ?></a>
 				</aside>
 			</div>
 		</div>
@@ -159,12 +169,11 @@ $support_avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
 
 	<section id="ke-stazeni" class="f-section f-section--support-downloads">
 		<div class="f-section__container a-container">
-			<h2><?php echo esc_html__( 'Ke stažení', 'baspa' ); ?></h2>
+			<h2><?php echo esc_html( $support_downloads_title ); ?></h2>
 			<div class="f-chip-list">
-				<span class="is-active"><?php echo esc_html__( 'Katalogy vířivek', 'baspa' ); ?></span>
-				<span><?php echo esc_html__( 'Návody', 'baspa' ); ?></span>
-				<span><?php echo esc_html__( 'Rozměry', 'baspa' ); ?></span>
-				<span><?php echo esc_html__( 'Záruky', 'baspa' ); ?></span>
+				<?php foreach ( $download_filter_labels as $index => $label ) { ?>
+					<span class="<?php echo 0 === $index ? 'is-active' : ''; ?>"><?php echo esc_html( $label ); ?></span>
+				<?php } ?>
 			</div>
 			<?php echo do_shortcode( '[arctic-downloads]' ); ?>
 		</div>
@@ -174,8 +183,8 @@ $support_avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
 		<div class="f-section__container a-container">
 			<div class="f-support-form">
 				<header>
-					<h2><?php echo esc_html__( 'Servisní formulář', 'baspa' ); ?></h2>
-					<p><?php echo esc_html__( 'Popište nám požadavek a ozveme se s dalším postupem. U servisního požadavku pomůže model vířivky, rok pořízení a krátký popis situace.', 'baspa' ); ?></p>
+					<h2><?php echo esc_html( $support_form_title ); ?></h2>
+					<p><?php echo wp_kses_post( $support_form_content ); ?></p>
 				</header>
 				<form class="f-support-form__card" action="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>" method="get">
 					<label>

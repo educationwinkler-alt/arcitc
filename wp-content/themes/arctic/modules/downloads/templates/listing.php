@@ -14,6 +14,13 @@ $downloads_query = new WP_Query( array(
 	'posts_per_page' => -1,
 ) );
 
+$downloads_featured_group_title = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_featured_group_title', 'Serie custom' ) : 'Serie custom';
+$downloads_closed_group_1_title = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_closed_group_1_title', 'Serie classic' ) : 'Serie classic';
+$downloads_closed_group_2_title = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_closed_group_2_title', 'Serie core' ) : 'Serie core';
+$downloads_group_tag            = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_group_tag', 'Katalogy virivek' ) : 'Katalogy virivek';
+$downloads_card_description     = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_card_description', 'Dokument Arctic Spas, PDF ke stazeni.' ) : 'Dokument Arctic Spas, PDF ke stazeni.';
+$downloads_button_text          = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_button_text', 'Stahnout' ) : 'Stahnout';
+
 if ( $downloads_query->have_posts() ) { ?>
 	<?php if ( is_page_template( 'template-support.php' ) || is_page_template( 'template-downloads.php' ) || is_page( 'ke-stazeni' ) ) {
 		$downloads = array();
@@ -47,8 +54,8 @@ if ( $downloads_query->have_posts() ) { ?>
 			<section class="f-download-group f-download-group--open">
 				<header class="f-download-group__header">
 					<span class="f-download-group__icon" aria-hidden="true">−</span>
-					<h3><?php echo esc_html__( 'Série custom', 'baspa' ); ?></h3>
-					<span class="f-download-group__tag"><?php echo esc_html__( 'Katalogy vířivek', 'baspa' ); ?></span>
+					<h3><?php echo esc_html( $downloads_featured_group_title ); ?></h3>
+					<span class="f-download-group__tag"><?php echo esc_html( $downloads_group_tag ); ?></span>
 				</header>
 
 				<div class="f-download-group__items">
@@ -57,11 +64,11 @@ if ( $downloads_query->have_posts() ) { ?>
 							<img class="f-download-card__thumb" src="<?php echo esc_url( $thumbs[ $index ] ); ?>" alt="" loading="lazy" decoding="async">
 							<div class="f-download-card__body">
 								<h4><?php echo esc_html( $download['title'] ); ?></h4>
-								<p><?php echo esc_html__( 'Dokument Arctic Spas, PDF ke stažení.', 'baspa' ); ?></p>
+								<p><?php echo esc_html( $downloads_card_description ); ?></p>
 							</div>
 							<?php if ( !empty( $download['file'] ) ) { ?>
 								<a class="f-download-card__button f-button a-button a-button--outline" href="<?php echo esc_url( $download['file'] ); ?>">
-									<?php echo esc_html__( 'Stáhnout', 'baspa' ); ?>
+									<?php echo esc_html( $downloads_button_text ); ?>
 								</a>
 							<?php } ?>
 						</article>
@@ -71,14 +78,14 @@ if ( $downloads_query->have_posts() ) { ?>
 
 			<section class="f-download-group f-download-group--closed">
 				<span class="f-download-group__icon" aria-hidden="true">+</span>
-				<h3><?php echo esc_html__( 'Série classic', 'baspa' ); ?></h3>
-				<span class="f-download-group__tag"><?php echo esc_html__( 'Katalogy vířivek', 'baspa' ); ?></span>
+				<h3><?php echo esc_html( $downloads_closed_group_1_title ); ?></h3>
+				<span class="f-download-group__tag"><?php echo esc_html( $downloads_group_tag ); ?></span>
 			</section>
 
 			<section class="f-download-group f-download-group--closed">
 				<span class="f-download-group__icon" aria-hidden="true">+</span>
-				<h3><?php echo esc_html__( 'Série core', 'baspa' ); ?></h3>
-				<span class="f-download-group__tag"><?php echo esc_html__( 'Katalogy vířivek', 'baspa' ); ?></span>
+				<h3><?php echo esc_html( $downloads_closed_group_2_title ); ?></h3>
+				<span class="f-download-group__tag"><?php echo esc_html( $downloads_group_tag ); ?></span>
 			</section>
 		</div>
 	<?php } else { ?>
