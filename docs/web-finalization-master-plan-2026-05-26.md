@@ -102,6 +102,8 @@ Open concern:
 9. Windows 1920x1080 with 175% system display scaling must be treated as a real customer viewport, not as user error.
 10. Product detail layouts for both hot tubs and swimspas/pools need explicit responsive parity checks.
 11. Legacy Arctic product/category imagery needs a source-quality audit so cards and hero images do not use low-resolution thumbnails where larger originals exist.
+12. Footer and homepage section backgrounds expose white side gutters at scaled/zoomed states; this is a real layout bug, not a cache issue.
+13. The site needs a unified full-bleed/background/container width system so sections do not drift apart at zoom-out, zoom-in, or Windows display scaling.
 
 ## 3) New complete plan to finish the website
 
@@ -301,12 +303,16 @@ Important responsive/zoom rule:
 - Required resilience viewports include at least 1920, 1903, 1600, 1536, 1456, 1440, 1366, 1280, 1024, 768, 430, and 390 CSS pixels.
 - Browser zoom 120% must be treated as an effective narrower CSS viewport; the layout must not overlap, clip key CTAs, or create horizontal overflow.
 - Windows display scaling is also in scope. A common customer setup is 1920x1080 with 175% Windows scaling and Chrome at 100%; this must be simulated as an effective compact CSS viewport and must remain usable.
+- Browser zoom-out is also in scope. At zoomed-out states, full-width backgrounds, hero sections, cards, and footer must still cover the viewport consistently and must not reveal white side gutters.
 - If Figma is silent for a breakpoint, preserve the visual intent and usability: no collapsed header text, no off-screen promo cards, no cropped CTA text, no broken grids.
 - Passing at ideal desktop width is not enough. Phase 5 can close only after the real laptop/scaled states behave correctly.
 
 Hard Phase 5 blockers added from real review (2026-05-27):
 - Mega menu hover stability: product dropdowns must stay open while moving the cursor from the top nav item into the submenu panel. There must be no hover gap, flicker, or accidental close.
 - Homepage hero/category boundary: at 175% Windows scaling/effective laptop viewport, the section after the hero must not look glued to, hidden behind, or visually collapsed into the slider.
+- Full-bleed layout consistency: homepage sections, footer background, and large visual bands must fill the available viewport without white side gutters at browser zoom-out or Windows display scaling.
+- Container system consistency: page sections must share a deliberate width model. Fixed `max-width` content, section backgrounds, full-bleed wrappers, and footer artwork must not use conflicting widths that create visible seams.
+- Footer integrity: footer columns, quick contact card, copyright row, legal link, logo, and mountain background must remain visually aligned and centered without detached white margins.
 - Product detail parity: at least one hot tub detail and one swimspa/pool detail must be checked against Figma intent at desktop, compact laptop/scaled viewport, tablet, and mobile.
 - Product detail image quality: hero/background images must use the best available legacy Arctic source, not tiny thumbnails stretched into blurred backgrounds.
 - Catalog/card image quality: hot tub and swimspa listing cards must use appropriately sized product images. If the old Arctic source contains larger variants, use those instead of the smallest thumbnail.
@@ -325,6 +331,7 @@ Hard Phase 5 blockers added from real review (2026-05-27):
    - references
    - information pages
    - product/category image sharpness against available legacy Arctic originals
+   - footer and full-bleed section behavior at zoom-out, 100%, 120%, and Windows 175% scaling equivalent
 2. For each page record:
    - pass/fail
    - screenshot pair
@@ -341,7 +348,7 @@ Current Phase 5 status:
 - The active frame-by-frame tracker is `docs/phase-5-figma-frame-by-frame-tracker-2026-05-26.md`.
 - Header search and desktop product mega menu states from Figma are now implemented and covered by `npm run figma:audit`.
 - Additional desktop frame geometry is now covered for Swimspa category, showroom, product popup, info pages, support, references, about, and service. This is automated evidence, not final client sign-off.
-- Still open before Phase 5 can close: final screenshot pack, full mobile homepage/menu review, laptop/120% zoom visual review, Windows 175% scaling review, mega menu hover stability, homepage hero/category boundary spacing, `DALSI INFORMACE` route decision, popup/contact-modal scope decision, product variant spot-checks, product detail responsive parity, and product/category image source-quality audit.
+- Still open before Phase 5 can close: final screenshot pack, full mobile homepage/menu review, laptop/120% zoom visual review, zoom-out white-gutter review, Windows 175% scaling review, unified full-bleed/container width review, footer layout integrity, mega menu hover stability, homepage hero/category boundary spacing, `DALSI INFORMACE` route decision, popup/contact-modal scope decision, product variant spot-checks, product detail responsive parity, and product/category image source-quality audit.
 - Final owner/client approval is still required before production release.
 
 ## Phase 6 - Release readiness and deployment (P0, 1 day)
