@@ -178,6 +178,12 @@ async function assertInsideViewport(page, selector, width, label, inset = 0) {
   }
 }
 
+async function assertViewportSpan(page, selector, viewportWidth, label, tolerance = 2) {
+  const rect = await box(page, selector, label);
+  assertClose(rect.x, 0, tolerance, `${label}.x`);
+  assertClose(rect.width, viewportWidth, tolerance, `${label}.width`);
+}
+
 async function assertCompactHeader(page, width, path) {
   const label = `responsive:${width}:${path}`;
   await assertNoHorizontalOverflow(page, label);
@@ -345,6 +351,98 @@ async function auditDesktopHeaderRealViewport(page) {
   await assertComputedStyle(page, '.template--homepage .f-section--slides > .f-hero-promo', 'visibility', 'hidden', 'desktopHeaderRealViewport.homePromoHidden');
   await assertComputedStyle(page, '.template--homepage .f-section--slides > .f-hero-promo', 'opacity', '0', 'desktopHeaderRealViewport.homePromoTransparent');
   await assertNoHorizontalOverflow(page, 'desktopHeaderRealViewport');
+
+  await assertMegaHoverCursorTravel(page, 'desktopHeaderRealViewport');
+}
+
+async function auditZoomOutFullBleed(page) {
+  for (const width of [2240, 2560]) {
+    await page.setViewportSize({ width, height: 1200 });
+    await page.goto(baseUrl, { waitUntil: 'load' });
+
+    await assertNoHorizontalOverflow(page, `zoomOut:${width}`);
+    await assertViewportSpan(page, '.template--homepage .f-section--slides', width, `zoomOut:${width}.heroSection`);
+    await assertViewportSpan(page, '.template--homepage .f-section--product-categories', width, `zoomOut:${width}.categoriesSection`);
+    await assertViewportSpan(page, '.template--homepage .f-section--references', width, `zoomOut:${width}.referencesSection`);
+    await assertViewportSpan(page, '.template--homepage .f-section--contact', width, `zoomOut:${width}.contactSection`);
+    await assertViewportSpan(page, '.f-footer--arctic', width, `zoomOut:${width}.footer`);
+
+    const footerContainer = await box(page, '.f-footer--arctic .f-footer__container', `zoomOut:${width}.footerContainer`);
+    assertClose(footerContainer.width, 1400, 2, `zoomOut:${width}.footerContainer.width`);
+    assertClose(footerContainer.x, (width - 1400) / 2, 4, `zoomOut:${width}.footerContainer.x`);
+
+    const footerBackgroundSize = await page.locator('.f-footer--arctic').first().evaluate(
+      (element) => getComputedStyle(element).getPropertyValue('background-size').trim()
+    );
+    if (footerBackgroundSize.includes('1920px')) {
+      throw new Error(`zoomOut:${width}.footerBackground: fixed 1920px background size causes side gutters (${footerBackgroundSize})`);
+    }
+  }
+}
+
+async function auditScaledLaptopBoundary(page) {
+  await page.setViewportSize({ width: 1097, height: 617 });
+  await page.goto(baseUrl, { waitUntil: 'load' });
+
+  await assertNoHorizontalOverflow(page, 'scaledLaptopBoundary:1097');
+  await assertViewportSpan(page, '.template--homepage .f-section--slides', 1097, 'scaledLaptopBoundary:1097.heroSection');
+  await assertViewportSpan(page, '.template--homepage .f-section--product-categories', 1097, 'scaledLaptopBoundary:1097.categoriesSection');
+
+  const boundary = await page.evaluate(() => {
+    const slides = document.querySelector('.template--homepage .f-section--slides');
+    const categories = document.querySelector('.template--homepage .f-section--product-categories');
+    const firstCard = document.querySelector('.template--homepage .f-category:nth-child(1)');
+
+    if (!slides || !categories || !firstCard) {
+      return null;
+    }
+
+    const slidesRect = slides.getBoundingClientRect();
+    const categoriesRect = categories.getBoundingClientRect();
+    const firstCardRect = firstCard.getBoundingClientRect();
+
+    return {
+      slidesBottom: slidesRect.bottom,
+      categoriesTop: categoriesRect.top,
+      firstCardTop: firstCardRect.top,
+    };
+  });
+
+  if (!boundary) {
+    throw new Error('scaledLaptopBoundary:1097.missingElements');
+  }
+
+  if (boundary.categoriesTop < boundary.slidesBottom - 1) {
+    throw new Error(`scaledLaptopBoundary:1097.overlap: category section starts before hero ends (${round(boundary.categoriesTop)} < ${round(boundary.slidesBottom)})`);
+  }
+
+  const visualGap = boundary.firstCardTop - boundary.slidesBottom;
+  if (visualGap < 20) {
+    throw new Error(`scaledLaptopBoundary:1097.glued: first category card gap is only ${round(visualGap)}px`);
+  }
+}
+
+async function assertMegaHoverCursorTravel(page, labelPrefix) {
+  const triggerSelector = '.f-navigation__list > .arctic-menu-products:nth-child(1) > a';
+  const menuSelector = '.f-mega-menu--hot-tubs';
+  const targetSelector = '.f-mega-menu--hot-tubs .f-mega-menu__column:nth-child(1) .f-mega-menu__product:nth-child(1)';
+
+  const trigger = await box(page, triggerSelector, `${labelPrefix}.hoverTravel.trigger`);
+  await page.mouse.move(trigger.x + (trigger.width / 2), trigger.y + (trigger.height / 2));
+  await page.waitForTimeout(120);
+  await assertComputedStyle(page, menuSelector, 'visibility', 'visible', `${labelPrefix}.hoverTravel.visibleOnTrigger`);
+
+  const target = await box(page, targetSelector, `${labelPrefix}.hoverTravel.target`);
+  const bridgeX = trigger.x + (trigger.width / 2);
+  const bridgeY = Math.max(trigger.y + trigger.height + 8, Math.min(trigger.y + 96, target.y - 24));
+
+  await page.mouse.move(bridgeX, bridgeY);
+  await page.waitForTimeout(180);
+  await assertComputedStyle(page, menuSelector, 'visibility', 'visible', `${labelPrefix}.hoverTravel.visibleOnBridge`);
+
+  await page.mouse.move(target.x + Math.min(24, target.width / 2), target.y + (target.height / 2));
+  await page.waitForTimeout(180);
+  await assertComputedStyle(page, menuSelector, 'visibility', 'visible', `${labelPrefix}.hoverTravel.visibleOnTarget`);
 }
 
 async function assertFooterLayout(page, label, expectedY = null) {
@@ -935,6 +1033,8 @@ async function auditSharedFooterDesktop(page) {
     await auditCompactNavigation(page);
     await auditDesktopHeaderStates(page);
     await auditDesktopHeaderRealViewport(page);
+    await auditZoomOutFullBleed(page);
+    await auditScaledLaptopBoundary(page);
     await auditFigmaSources(page);
     await auditCatalogHotTubsDesktop(page);
     await auditCatalogSwimspaDesktop(page);

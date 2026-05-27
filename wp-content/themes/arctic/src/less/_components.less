@@ -6601,9 +6601,10 @@ body.off-active--benefit-shell .f-off__overlay {
     min-height: 773px;
     margin-top: 0;
     padding: 0;
+    background-color: #eef3f7;
     background:
       linear-gradient(180deg, rgba(238, 243, 247, 0.98) 0%, rgba(238, 243, 247, 0.94) 48%, rgba(238, 243, 247, 0.68) 76%, rgba(238, 243, 247, 0.1) 100%),
-      url("../../../../uploads/import/figma/footer-background.jpg") center top / 1920px 1209px no-repeat;
+      url("../../../../uploads/import/figma/footer-background.jpg") center top / cover no-repeat;
   }
 
   body.template--homepage .f-footer--arctic.f-footer--arctic {
@@ -7534,10 +7535,12 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
   }
 
+  .f-header.is-mega-hot-tubs .f-mega-menu--hot-tubs,
   .f-header:has(.f-navigation__list > .arctic-menu-products:nth-child(1):hover) .f-mega-menu--hot-tubs,
   .f-header:has(.f-navigation__list > .arctic-menu-products:nth-child(1):focus-within) .f-mega-menu--hot-tubs,
   .f-header:has(.f-mega-menu--hot-tubs:hover) .f-mega-menu--hot-tubs,
   .f-header:has(.f-mega-menu--hot-tubs:focus-within) .f-mega-menu--hot-tubs,
+  .f-header.is-mega-swimspa .f-mega-menu--swimspa,
   .f-header:has(.f-navigation__list > .arctic-menu-products:nth-child(2):hover) .f-mega-menu--swimspa,
   .f-header:has(.f-navigation__list > .arctic-menu-products:nth-child(2):focus-within) .f-mega-menu--swimspa,
   .f-header:has(.f-mega-menu--swimspa:hover) .f-mega-menu--swimspa,
@@ -7663,6 +7666,7 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     border-radius: 999px;
   }
 
+  .template--homepage.is-mega-active .f-section--slides > .f-hero-promo,
   .template--homepage:has(.f-navigation__list > .arctic-menu-products:hover) .f-section--slides > .f-hero-promo,
   .template--homepage:has(.f-navigation__list > .arctic-menu-products:focus-within) .f-section--slides > .f-hero-promo,
   .template--homepage:has(.f-mega-menu:hover) .f-section--slides > .f-hero-promo,

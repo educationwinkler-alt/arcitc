@@ -19,6 +19,20 @@ if ( !function_exists( 'baspa_scripts' ) ) {
 		wp_enqueue_script( get_template(), get_theme_file_uri( 'dist/js/theme.js' ), array(), '1.0.0', true );
 
 		/**
+		 * Arctic desktop mega menu hover stability
+		 */
+		$mega_hover_script_path = get_theme_file_path( 'dist/js/mega-hover-stability.js' );
+		if ( file_exists( $mega_hover_script_path ) ) {
+			wp_enqueue_script(
+				get_template() . '-mega-hover',
+				get_theme_file_uri( 'dist/js/mega-hover-stability.js' ),
+				array( get_template() ),
+				filemtime( $mega_hover_script_path ),
+				true
+			);
+		}
+
+		/**
 		 * Carousel
 		 */
 		// Swiper
