@@ -23,7 +23,9 @@ Current rule:
 | Header desktop menu real viewport | `1:1868` `menu` + laptop/120%-like viewport | Mega menu panel now uses the dark Figma styling, keeps the inner promo CTA visible, and hides the homepage promo behind the open menu at 1586x756 effective viewport | `desktopHeaderRealViewport` audit |
 | Header mega hover cursor-travel stability | `1:1868` `menu` interaction | Desktop mega menu now stays open while moving the cursor from the top trigger into submenu links (with delayed close guard), preventing accidental close/flicker during trigger-to-panel travel | `desktopHeaderRealViewport.hoverTravel` audit |
 | Zoom-out full-bleed/footer gutter guard | Homepage + footer in zoom-out-like wide desktop states | Footer background rendering changed from fixed 1920px image sizing to fluid cover behavior and audited at wide viewports so side gutters are not reintroduced | `zoomOut:2240`, `zoomOut:2560` audits |
-| Compact laptop / Windows 175% scaling layer | Homepage at `1024-1279px`, including effective `1097x617` viewport | Added a coherent compact-laptop scaling layer with shared variables, bounded hero height, hidden homepage promo, deliberate two-column category cards, and hero/category spacing | `compactLaptop:1024x617`, `compactLaptop:1097x617`, `compactLaptop:1279x720`, `scaledLaptopBoundary:1097` audits |
+| Compact laptop / Windows 175% scaling layer | Homepage at `904-1279px`, including docked-DevTools and effective `1097x617` viewport | Added coherent narrow and compact-laptop layers with shared variables, bounded hero height, default-hidden homepage promo outside explicit desktop opt-in, deliberate two-column category cards, and hero/category spacing | `narrowHomepage:904x617`, `narrowHomepage:1023x617`, `compactLaptop:1024x617`, `compactLaptop:1097x617`, `compactLaptop:1279x720`, `scaledLaptopBoundary:1097`, `scaledDesktopBoundary:1280`, `scaledDesktopBoundary:1366` audits |
+| Homepage hero/category boundary | Homepage desktop and compact widths | Inner slider/background height is now tied to the same hero height as the outer section, preventing category cards from being painted under the hero slide | `heroBoundary` checks inside desktop, scaled desktop, narrow, and compact audits |
+| Footer quick contact/copyright | Footer frame | Footer now renders Lukáš Dušek photo avatar, `BASPA s.r.o.` copyright text, single-line bottom privacy link/copyright, and no eboost credit | `sharedFooter`, `footerAvatarSource`, `footerText` audits |
 | Mobile menu search placement | `GM - HP menu` `1:2208` | Compact menu places search at 323x44 around y=527 on 375px viewport | Manual/spot check, needs fuller screenshot sign-off |
 | Swimspa category desktop | `KATEGORIE` `1:262` applied to `/swimspa/` | Swimspa category now renders the same Figma intro, series nav, showroom anchor, references, CTA, and footer pattern as hot tubs | `swimspaCatalog` audit |
 | Showroom page desktop | `SHOWROOM` `1:442` | Dedicated showroom route and Figma section geometry are audited | `showroom` audit |
@@ -55,7 +57,7 @@ Current rule:
 | KOLIK STOJI UDRZBA | `1:1395` | Maintenance cost page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
 | SERVIS | `1:1426` | Service page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
 | popup | `1:1959` | Popup/contact modal state | Product benefit popup state is automated. Contact modal state still needs explicit confirmation if it is a separate required interaction. |
-| GM - HP | `1:1973` | Mobile homepage | Partially automated: mobile hero, logo, menu button, promo, categories. Needs full mobile page scroll sign-off. |
+| GM - HP | `1:1973` | Mobile homepage | Partially automated: mobile hero, logo, menu button, hidden promo state, categories. Needs full mobile page scroll sign-off. |
 | GM - HP menu | `1:2208` | Mobile navigation state | Partially present: search placement is checked. Needs complete visual comparison beyond search placement. |
 
 ## Open Work Before Phase 5 Can Close
@@ -80,3 +82,12 @@ Passed after the real viewport mega menu correction:
 - `npm run figma:audit`
 - `npm run visual:smoke`
 - `npm run qa:local`
+
+Passed after the Phase 5A promo visibility / narrow viewport correction:
+- `npm run css:build`
+- `npm run figma:audit`
+- Local screenshot evidence: `docs/screenshots/phase-5a-homepage-904x617-2026-05-27.png`, `docs/screenshots/phase-5a-homepage-1097x617-2026-05-27.png`, `docs/screenshots/phase-5a-footer-element-1920-2026-05-27.png`
+
+Passed after the footer parity correction:
+- `npm run css:build`
+- `npm run figma:audit`

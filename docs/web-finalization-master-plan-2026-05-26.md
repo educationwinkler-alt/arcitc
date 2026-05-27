@@ -365,8 +365,14 @@ Current status (2026-05-27):
 - A dedicated `1024-1279px` compact-laptop scaling layer now defines shared homepage variables for hero height, container width, section gap, and compact scale.
 - Homepage hero, promo behavior, and product category cards are connected to this compact-laptop layer.
 - The homepage promo card is hidden in this range to prevent collision with hero content and category cards.
-- Automated coverage now checks `1024x617`, `1097x617`, and `1279x720` compact-laptop layouts.
-- Remaining validation before Phase 5 final close: physical or equivalent Windows `1920x1080`, display scaling `175%`, Chrome `100%` screenshot sign-off.
+- The promo visibility model is now default-hidden and opt-in only for the explicit homepage desktop hero state.
+- The `768-1023px` docked-DevTools / narrow-browser band now has a deliberate full-width hero and two-column category layout instead of inheriting the 375px mobile composition.
+- Mobile no longer reserves the old promo-height gap under the hero.
+- Desktop hero/category boundary now verifies that the inner slider/background height cannot extend under the category cards.
+- Footer parity audit now requires the Lukáš Dušek photo avatar, `BASPA s.r.o.` copyright text, no bottom-line wrapping regression, and no eboost credit.
+- Automated coverage now checks `904x617`, `1023x617`, `1024x617`, `1097x617`, `1279x720`, and desktop promo boundary behavior at `1280px` and `1366px`.
+- Local screenshot evidence was captured at `docs/screenshots/phase-5a-homepage-904x617-2026-05-27.png`, `docs/screenshots/phase-5a-homepage-1097x617-2026-05-27.png`, and `docs/screenshots/phase-5a-footer-element-1920-2026-05-27.png`.
+- Remaining validation before Phase 5 final close: owner/client acceptance of physical or equivalent Windows `1920x1080`, display scaling `175%`, Chrome `100%` screenshot sign-off.
 
 Promo rendering rule update:
 - The homepage hero promo must be opt-in, not opt-out.
@@ -394,6 +400,7 @@ Implementation:
    - category cards do not overflow, clip, or collapse visually
    - hero/category boundary has intentional spacing
    - no horizontal overflow
+   - docked-DevTools / narrow-browser state around `904x617` does not fall back to the mobile promo layout
 7. Add manual screenshot sign-off for physical or equivalent test:
    - Windows `1920x1080`
    - display scaling `175%`

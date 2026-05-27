@@ -164,6 +164,7 @@ function isAllowedLegalEntity(path, html) {
       }
 
       const html = await page.content();
+      const htmlWithoutFooter = html.replace(/<footer[^>]*f-footer--arctic[\s\S]*?<\/footer>/i, '');
       const hasHeroPromo = html.includes('<aside class="f-hero-promo"');
       const hasJucraWrapper = html.includes('data-jucra-model=');
       let resolvedPathname = path;
@@ -174,7 +175,7 @@ function isAllowedLegalEntity(path, html) {
       }
       const hits = forbidden.filter((needle) => html.includes(needle));
       const mojibakeHits = mojibakeNeedles.filter((needle) => html.includes(needle));
-      const brandHits = forbiddenBrand.filter((needle) => html.includes(needle));
+      const brandHits = forbiddenBrand.filter((needle) => htmlWithoutFooter.includes(needle));
       if (brandHits.length && !isAllowedLegalEntity(path, html)) {
         hits.push(...brandHits);
       }
@@ -187,6 +188,10 @@ function isAllowedLegalEntity(path, html) {
       }
       if (hits.length) {
         throw new Error(`${path} contains forbidden strings: ${hits.join(', ')}`);
+      }
+
+      if (html.includes('f-footer--arctic') && !html.includes('BASPA s.r.o.')) {
+        throw new Error(`${path} footer is missing BASPA s.r.o. copyright.`);
       }
 
       if (resolvedPathname === '/') {

@@ -2399,6 +2399,7 @@ body {
   opacity: 1;
 }
 .f-hero-promo {
+  display: none;
   position: absolute;
   top: 17.75rem;
   right: max(1rem, calc((100vw - var(--arctic-container-wide)) / 2 - 5.5rem));
@@ -2533,9 +2534,9 @@ body {
 }
 @media (max-width: 1023px) {
   .template--homepage .f-section--slides {
-    height: 842px;
-    min-height: 842px;
-    overflow: visible;
+    height: 556px;
+    min-height: 556px;
+    overflow: hidden;
     background: var(--arctic-color-frost);
   }
   .template--homepage .f-slides,
@@ -2543,7 +2544,7 @@ body {
     height: 556px;
   }
   .template--homepage .f-slides {
-    height: 842px;
+    height: 556px;
     overflow: hidden;
     background: var(--arctic-color-frost);
   }
@@ -2628,7 +2629,6 @@ body {
     transform: none;
   }
   .template--homepage .f-section--slides .f-hero-promo {
-    display: block;
     top: 562px;
     right: auto;
     left: 20px;
@@ -2724,8 +2724,8 @@ body {
     border-radius: 24px;
   }
   .template--homepage .f-section--slides .f-slides {
-    height: 842px;
-    min-height: 842px;
+    height: 556px;
+    min-height: 556px;
   }
   .template--homepage .f-caption__container {
     padding-top: 18rem;
@@ -5802,6 +5802,10 @@ body.off-active--benefit-shell .f-off__overlay {
     background: #dbe1e8;
     border-radius: 999px;
   }
+  .f-footer--arctic.f-footer--arctic .f-footer__quick-avatar img {
+    transform: scale(2.25);
+    transform-origin: 50% 24%;
+  }
   .f-footer--arctic.f-footer--arctic .f-footer__quick-person strong {
     width: 146px;
     margin-top: -1px;
@@ -5948,7 +5952,7 @@ body.off-active--benefit-shell .f-off__overlay {
     position: absolute;
     top: 7px;
     left: 2px;
-    width: 362px;
+    width: 520px;
     height: 34px;
     margin: 0;
     color: var(--arctic-color-menu);
@@ -5982,7 +5986,7 @@ body.off-active--benefit-shell .f-off__overlay {
     position: absolute;
     top: 7px;
     left: 1083px;
-    width: 154px;
+    width: 220px;
     height: 34px;
     color: var(--arctic-color-menu);
     font-size: 16px;
@@ -9110,11 +9114,19 @@ body:not(.template--homepage) .f-header__container > .a-flex {
 @media (min-width: 1400px) {
   :root {
     --arctic-fluid-desktop-scale: min(1, calc(100vw / 1920px));
+    --arctic-hero-height: calc(795px * var(--arctic-fluid-desktop-scale));
   }
   .template--homepage .f-section--slides {
-    height: calc(795px * var(--arctic-fluid-desktop-scale));
-    min-height: calc(795px * var(--arctic-fluid-desktop-scale));
+    height: var(--arctic-hero-height);
+    min-height: var(--arctic-hero-height);
     overflow: visible;
+  }
+  .template--homepage .f-section--slides .f-slides,
+  .template--homepage .f-section--slides .f-slides__wrapper,
+  .template--homepage .f-section--slides .f-slide,
+  .template--homepage .f-section--slides .f-slide__background {
+    height: var(--arctic-hero-height);
+    min-height: var(--arctic-hero-height);
   }
   .template--homepage .f-caption__container {
     width: min(calc(1400px * var(--arctic-fluid-desktop-scale)), calc(100% - 40px));
@@ -9196,6 +9208,200 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     min-height: calc(50px * var(--arctic-fluid-desktop-scale));
     font-size: calc(16px * var(--arctic-fluid-desktop-scale));
     line-height: calc(21.17px * var(--arctic-fluid-desktop-scale));
+  }
+}
+@media (min-width: 1280px) {
+  .template--homepage .f-section--slides > .f-hero-promo {
+    display: block;
+  }
+}
+@media (min-width: 1280px) and (max-width: 1399px) {
+  .template--homepage .f-section--slides > .f-hero-promo {
+    --arctic-promo-small-desktop-scale: calc(100vw / 1920px);
+    top: calc(593px * var(--arctic-promo-small-desktop-scale));
+    right: 20px;
+    left: auto;
+    width: calc(268px * var(--arctic-promo-small-desktop-scale));
+    height: calc(288px * var(--arctic-promo-small-desktop-scale));
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .template--homepage .f-section--slides > .f-hero-promo:before {
+    content: "";
+    position: absolute;
+    top: calc(39px * var(--arctic-promo-small-desktop-scale));
+    left: 0;
+    z-index: 0;
+    width: calc(268px * var(--arctic-promo-small-desktop-scale));
+    height: calc(249px * var(--arctic-promo-small-desktop-scale));
+    background: var(--arctic-color-red);
+    border-radius: calc(24px * var(--arctic-promo-small-desktop-scale));
+  }
+  .template--homepage .f-section--slides > .f-hero-promo .f-hero-promo__image {
+    top: 0;
+    left: calc(32px * var(--arctic-promo-small-desktop-scale));
+    width: calc(174px * var(--arctic-promo-small-desktop-scale));
+    height: calc(131px * var(--arctic-promo-small-desktop-scale));
+    transform: none;
+  }
+  .template--homepage .f-section--slides > .f-hero-promo .f-hero-promo__bubble {
+    top: calc(70px * var(--arctic-promo-small-desktop-scale));
+    left: calc(130px * var(--arctic-promo-small-desktop-scale));
+    width: calc(59px * var(--arctic-promo-small-desktop-scale));
+    height: calc(59px * var(--arctic-promo-small-desktop-scale));
+  }
+  .template--homepage .f-section--slides > .f-hero-promo .f-hero-promo__bubble:before {
+    font-size: calc(24px * var(--arctic-promo-small-desktop-scale));
+  }
+  .template--homepage .f-section--slides > .f-hero-promo strong {
+    position: absolute;
+    top: calc(143px * var(--arctic-promo-small-desktop-scale));
+    left: calc(23px * var(--arctic-promo-small-desktop-scale));
+    z-index: 2;
+    width: calc(192px * var(--arctic-promo-small-desktop-scale));
+    margin: 0;
+    font-size: calc(20px * var(--arctic-promo-small-desktop-scale));
+    line-height: calc(26.46px * var(--arctic-promo-small-desktop-scale));
+  }
+  .template--homepage .f-section--slides > .f-hero-promo .f-hero-promo__button {
+    position: absolute;
+    top: calc(213px * var(--arctic-promo-small-desktop-scale));
+    left: calc(35px * var(--arctic-promo-small-desktop-scale));
+    z-index: 2;
+    width: calc(168px * var(--arctic-promo-small-desktop-scale));
+    min-height: calc(50px * var(--arctic-promo-small-desktop-scale));
+    padding: 0 calc(20px * var(--arctic-promo-small-desktop-scale));
+    font-size: calc(16px * var(--arctic-promo-small-desktop-scale));
+    line-height: calc(21.17px * var(--arctic-promo-small-desktop-scale));
+  }
+}
+/* Phase 5A: narrow browser pane / docked DevTools viewport */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --arctic-narrow-hero-height: clamp(500px, 58vw, 532px);
+    --arctic-narrow-container-width: min(840px, calc(100% - 64px));
+  }
+  .template--homepage .f-section--slides {
+    height: var(--arctic-narrow-hero-height);
+    min-height: var(--arctic-narrow-hero-height);
+    overflow: hidden;
+    background: var(--arctic-color-ink);
+  }
+  .template--homepage .f-section--slides .f-slides,
+  .template--homepage .f-section--slides .f-slides__wrapper,
+  .template--homepage .f-section--slides .f-slide,
+  .template--homepage .f-section--slides .f-slide__background {
+    width: 100%;
+    height: var(--arctic-narrow-hero-height);
+    min-height: var(--arctic-narrow-hero-height);
+  }
+  .template--homepage .f-section--slides .f-slide__background {
+    background-image: url("/wp-content/uploads/import/figma/hp-hero-arctic-spas-07.jpg");
+    background-repeat: no-repeat;
+    background-position: center 38%;
+    background-size: cover;
+  }
+  .template--homepage .f-section--slides .f-slide__background img {
+    display: none;
+  }
+  .template--homepage .f-caption__container {
+    left: calc((100% - var(--arctic-narrow-container-width)) / 2);
+    width: var(--arctic-narrow-container-width);
+    max-width: var(--arctic-narrow-container-width);
+    height: var(--arctic-narrow-hero-height);
+    padding: 0;
+    transform: none;
+  }
+  .template--homepage .f-caption__container > .a-flex {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .template--homepage .f-caption__container > .a-flex > .a-flex__item--100:first-child {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .template--homepage .f-caption {
+    position: relative;
+    display: block;
+    width: min(500px, 100%);
+    max-width: 500px;
+    height: var(--arctic-narrow-hero-height);
+    min-height: 0;
+    margin: 0;
+    text-align: left;
+  }
+  .template--homepage .f-caption__header h2 {
+    top: clamp(130px, 18vw, 168px);
+    left: 0;
+    width: min(460px, 100%);
+    max-width: 460px;
+    height: auto;
+    font-size: 42px;
+    line-height: 46px;
+    text-align: left;
+  }
+  .template--homepage .f-caption .f-content {
+    top: clamp(244px, 31vw, 292px);
+    left: 0;
+    width: min(500px, 100%);
+    height: auto;
+    max-height: 130px;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: left;
+  }
+  .template--homepage .f-slides__controls--pagination {
+    top: calc(var(--arctic-narrow-hero-height) - 32px);
+    bottom: auto;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 10px;
+    transform: none;
+  }
+  .template--homepage .f-slides__pagination {
+    position: static;
+    width: 45px;
+    transform: none;
+  }
+  .template--homepage .f-section--product-categories {
+    padding-top: 32px;
+    padding-bottom: 48px;
+  }
+  .template--homepage .f-section--product-categories .f-section__container {
+    width: var(--arctic-narrow-container-width);
+    max-width: var(--arctic-narrow-container-width);
+    padding: 0;
+  }
+  .template--homepage .f-categories--product {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+  .template--homepage .f-category {
+    width: 100%;
+    height: clamp(240px, 29vw, 280px);
+    min-height: clamp(240px, 29vw, 280px);
+    border-radius: 24px;
+  }
+  .template--homepage .f-category h3 {
+    width: auto;
+    max-width: 100%;
+    font-size: 36px;
+    line-height: 40px;
+  }
+  .template--homepage .f-category p {
+    max-height: 66px;
+    overflow: hidden;
+    font-size: 15px;
+    line-height: 22px;
   }
 }
 /* Phase 5A: compact laptop / Windows 175% scaling viewport */

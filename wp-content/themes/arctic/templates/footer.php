@@ -16,7 +16,7 @@ $groups = array(
 			__( 'Série Core', 'baspa' )      => home_url( '/virivky/?series=core' ),
 			__( 'Série Classic', 'baspa' )   => home_url( '/virivky/?series=classic' ),
 			__( 'Série Custom', 'baspa' )    => home_url( '/virivky/?series=custom' ),
-			__( 'Skladove virivky', 'baspa' ) => home_url( '/virivky/' ),
+			__( 'Skladové vířivky', 'baspa' ) => home_url( '/virivky/' ),
 		),
 		'sections' => array(
 			array(
@@ -43,16 +43,16 @@ $groups = array(
 	array(
 		'heading' => __( 'Další informace', 'baspa' ),
 		'items'   => array(
-			__( 'Průběh realizace', 'baspa' )            => home_url( '/#order-progress' ),
-			__( 'Podpora', 'baspa' )                     => home_url( '/podpora/' ),
-			__( 'Služby', 'baspa' )                      => home_url( '/sluzby/' ),
-			__( 'Kolik stojí provoz a údržba', 'baspa' ) => home_url( '/kolik-stoji-udrzba/' ),
-			__( 'Časté otázky', 'baspa' )                => home_url( '/podpora/#faq' ),
-			__( 'Reference', 'baspa' )                   => home_url( '/reference/' ),
-			__( 'O nás', 'baspa' )                       => home_url( '/o-nas/' ),
-			__( 'Showroom', 'baspa' )                    => home_url( '/showroom/' ),
-			__( 'Servis', 'baspa' )                      => home_url( '/servis/' ),
-			__( 'Kontakt', 'baspa' )                     => home_url( '/kontakt/' ),
+			__( 'Průběh realizace', 'baspa' )             => home_url( '/#order-progress' ),
+			__( 'Podpora', 'baspa' )                      => home_url( '/podpora/' ),
+			__( 'Služby', 'baspa' )                       => home_url( '/sluzby/' ),
+			__( 'Kolik stojí provoz a údržba', 'baspa' )  => home_url( '/kolik-stoji-udrzba/' ),
+			__( 'Časté otázky', 'baspa' )                 => home_url( '/podpora/#faq' ),
+			__( 'Reference', 'baspa' )                    => home_url( '/reference/' ),
+			__( 'O nás', 'baspa' )                        => home_url( '/o-nas/' ),
+			__( 'Showroom', 'baspa' )                     => home_url( '/showroom/' ),
+			__( 'Servis', 'baspa' )                       => home_url( '/servis/' ),
+			__( 'Kontakt', 'baspa' )                      => home_url( '/kontakt/' ),
 		),
 	),
 );
@@ -86,7 +86,9 @@ $groups = array(
 				<div class="f-footer__quick-contact-body">
 					<h2><?php echo esc_html__( 'Rychlý kontakt', 'baspa' ); ?></h2>
 					<div class="f-footer__quick-person">
-						<span class="f-footer__quick-avatar" aria-hidden="true"></span>
+						<span class="f-footer__quick-avatar" aria-hidden="true">
+							<img src="<?php echo esc_url( content_url( 'uploads/import/figma/contact-lukas-dusek.png' ) ); ?>" width="58" height="58" alt="" loading="lazy" decoding="async">
+						</span>
 						<div>
 							<strong><?php echo esc_html__( 'Lukáš Dušek', 'baspa' ); ?></strong>
 							<span><?php echo esc_html__( 'Bazénový specialista', 'baspa' ); ?></span>
@@ -109,7 +111,7 @@ $groups = array(
 
 		<div class="f-footer__bottom">
 			<div class="f-footer__copyright">
-				<?php echo esc_html__( 'Copyright © 2024 Arctic Spas. Všechna práva vyhrazena.', 'baspa' ); ?>
+				<?php echo esc_html__( 'Copyright © 2024 BASPA s.r.o. Všechna práva vyhrazena.', 'baspa' ); ?>
 			</div>
 			<?php get_template_part( 'templates/logo' ); ?>
 			<a href="<?php echo esc_url( home_url( '/ochrana-osobnich-udaju/' ) ); ?>"><?php echo esc_html__( 'Ochrana osobních údajů', 'baspa' ); ?></a>

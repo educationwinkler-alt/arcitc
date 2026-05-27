@@ -178,6 +178,74 @@ async function assertInsideViewport(page, selector, width, label, inset = 0) {
   }
 }
 
+async function assertHeroBoundaryIsClear(page, label) {
+  const boundary = await page.evaluate(() => {
+    const read = (selector) => {
+      const element = document.querySelector(selector);
+
+      if (!element) {
+        return null;
+      }
+
+      const rect = element.getBoundingClientRect();
+
+      return {
+        x: rect.x,
+        y: rect.y,
+        width: rect.width,
+        height: rect.height,
+        bottom: rect.bottom,
+      };
+    };
+
+    const hero = read('.template--homepage .f-section--slides');
+    const slides = read('.template--homepage .f-section--slides .f-slides');
+    const background = read('.template--homepage .f-section--slides .f-slide__background');
+    const categories = read('.template--homepage .f-section--product-categories');
+
+    if (!hero || !slides || !background || !categories) {
+      return null;
+    }
+
+    const sampleX = Math.min(window.innerWidth - 4, Math.max(4, window.innerWidth / 2));
+    const sampleY = Math.min(window.innerHeight - 4, hero.bottom + 2);
+    const elementsAtBoundary = document.elementsFromPoint(sampleX, sampleY).map((element) => ({
+      tag: element.tagName,
+      className: String(element.className || ''),
+      id: element.id || '',
+    }));
+
+    return {
+      hero,
+      slides,
+      background,
+      categories,
+      elementsAtBoundary,
+    };
+  });
+
+  if (!boundary) {
+    throw new Error(`${label}.heroBoundary: missing homepage hero/category elements`);
+  }
+
+  if (boundary.slides.bottom > boundary.hero.bottom + 2) {
+    throw new Error(`${label}.heroBoundary: inner slider extends past hero section (${round(boundary.slides.bottom)} > ${round(boundary.hero.bottom)})`);
+  }
+
+  if (boundary.background.bottom > boundary.hero.bottom + 2) {
+    throw new Error(`${label}.heroBoundary: hero background extends past hero section (${round(boundary.background.bottom)} > ${round(boundary.hero.bottom)})`);
+  }
+
+  if (boundary.categories.y < boundary.hero.bottom - 1) {
+    throw new Error(`${label}.heroBoundary: categories start under hero section (${round(boundary.categories.y)} < ${round(boundary.hero.bottom)})`);
+  }
+
+  const topClass = boundary.elementsAtBoundary[0]?.className || '';
+  if (/f-slide|f-slides|f-slide__background/.test(topClass)) {
+    throw new Error(`${label}.heroBoundary: slider is still painted over category boundary (${topClass})`);
+  }
+}
+
 async function assertViewportSpan(page, selector, viewportWidth, label, tolerance = 2) {
   const rect = await box(page, selector, label);
   assertClose(rect.x, 0, tolerance, `${label}.x`);
@@ -570,9 +638,9 @@ async function assertFooterLayout(page, label, expectedY = null) {
     ['.f-footer__quick-map', { x: 1375, y: 84, width: 262, height: 299 }, 'quickMap'],
     ['.f-footer__quick-map a', { x: 1409, y: 309, width: 200, height: 50 }, 'quickMapButton'],
     ['.f-footer__bottom', { x: 260, y: 514, width: 1400, height: 57 }, 'bottom'],
-    ['.f-footer__copyright', { x: 262, y: 521, width: 362, height: 34 }, 'copyright'],
+    ['.f-footer__copyright', { x: 262, y: 521, width: 520, height: 34 }, 'copyright'],
     ['.f-footer__bottom .f-logo', { x: 909, y: 514, width: 102, height: 57 }, 'bottomLogo'],
-    ['.f-footer__bottom > a', { x: 1343, y: 521, width: 154, height: 34 }, 'privacy'],
+    ['.f-footer__bottom > a', { x: 1343, y: 521, width: 220, height: 34 }, 'privacy'],
   ];
 
   for (const [selector, expected, name] of checks) {
@@ -600,15 +668,20 @@ async function assertFooterLayout(page, label, expectedY = null) {
     }
   }
 
+  if (!footerText.includes('BASPA s.r.o.')) {
+    throw new Error(`${label}.footerText: footer copyright must name BASPA s.r.o.`);
+  }
+
   const flattenedFooterImages = await page.locator('.f-footer--arctic img[src*="footer-desktop"], .f-footer--arctic img[src*="footer-mobile"]').count();
   if (flattenedFooterImages > 0) {
     throw new Error(`${label}.footer: footer must not be rendered as a flattened PNG`);
   }
 
   const avatarImages = await page.locator('.f-footer__quick-avatar img').count();
-  if (avatarImages > 0) {
-    throw new Error(`${label}.footerAvatar: Figma footer avatar is a placeholder ellipse, not a photo`);
+  if (avatarImages !== 1) {
+    throw new Error(`${label}.footerAvatar: expected Lukáš Dušek photo in footer avatar, got ${avatarImages}`);
   }
+  await assertSourceContains(page, '.f-footer__quick-avatar img', 'uploads/import/figma/contact-lukas-dusek.png', `${label}.footerAvatarSource`);
 
   const eboostSignature = await page.locator('.f-footer--arctic .f-signature--eboost').count();
   if (eboostSignature > 0) {
@@ -628,6 +701,7 @@ async function auditDesktop(page) {
   await assertBox(page, '.f-header .f-search__trigger', { x: 1229.5, y: 68.5, width: 24, height: 24 }, 2, 'desktop.search');
   await assertBox(page, '.f-header__button .a-button', { x: 1431, y: 56, width: 208, height: 50 }, 2, 'desktop.headerButton');
   await assertBox(page, '.f-section--slides', { x: 0, y: 0, width: 1920, height: 795 }, 2, 'desktop.heroSection');
+  await assertHeroBoundaryIsClear(page, 'desktop');
   await assertBox(page, '.f-caption', { x: 266, y: 280, width: 488, height: 309 }, 3, 'desktop.heroCaption');
   await assertBox(page, '.f-slides__control--prev', { x: 125, y: 382, width: 42, height: 42 }, 2, 'desktop.heroPrevArrow');
   await assertBox(page, '.f-slides__control--next', { x: 1767, y: 382, width: 42, height: 42 }, 2, 'desktop.heroNextArrow');
@@ -657,7 +731,7 @@ async function auditDesktop(page) {
 }
 
 async function auditDesktopScaledMatrix(page) {
-  for (const width of [1903, 1600, 1536, 1456, 1440]) {
+  for (const width of [1903, 1600, 1536, 1456, 1440, 1400]) {
     const scale = heroScale(width);
     const heroHeight = 795 * scale;
     const captionWidth = 488 * scale;
@@ -681,12 +755,20 @@ async function auditDesktopScaledMatrix(page) {
     await assertBox(page, '.f-hero-promo', { x: promo.x, y: promo.y, width: promo.width, height: promo.height }, 8, `scaledDesktop:${width}.heroPromo`);
     await assertInsideViewport(page, '.f-hero-promo', width, `scaledDesktop:${width}.heroPromoInside`, 20);
     await assertComputedStyle(page, '.template--homepage .f-slide--1 .f-slide__background', 'background-size', 'cover', `scaledDesktop:${width}.heroBackgroundFit`);
+    await assertHeroBoundaryIsClear(page, `scaledDesktop:${width}`);
   }
 
   for (const width of [1366, 1280]) {
     await page.setViewportSize({ width, height: 1080 });
     await page.goto(baseUrl, { waitUntil: 'load' });
-    await assertHiddenBox(page, '.f-hero-promo', `scaledCompact:${width}.heroPromo`);
+    const promo = await box(page, '.f-hero-promo', `scaledDesktopBoundary:${width}.heroPromo`);
+
+    if (promo.width < 170 || promo.height < 185) {
+      throw new Error(`scaledDesktopBoundary:${width}.heroPromoSize: expected visible desktop promo, got ${round(promo.width)}x${round(promo.height)}`);
+    }
+
+    await assertInsideViewport(page, '.f-hero-promo', width, `scaledDesktopBoundary:${width}.heroPromoInside`, 18);
+    await assertHeroBoundaryIsClear(page, `scaledDesktopBoundary:${width}`);
   }
 }
 
@@ -696,13 +778,117 @@ async function auditMobile(page) {
 
   await assertBox(page, '.f-logo__img', { x: 20, y: 7, width: 85.6, height: 48 }, 2, 'mobile.logo');
   await assertBox(page, '.f-navigation__trigger', { x: 325, y: 8.5, width: 45, height: 45 }, 2, 'mobile.menuButton');
-  await assertBox(page, '.f-section--slides', { x: 0, y: 0, width: 390, height: 842 }, 2, 'mobile.heroSection');
-  await assertBox(page, '.f-hero-promo', { x: 20, y: 562, width: 335, height: 288 }, 3, 'mobile.heroPromo');
-  await assertBox(page, '.f-category:nth-child(1)', { x: 27.5, y: 842, width: 335, height: 221 }, 3, 'mobile.categoryHotTubs');
-  await assertBox(page, '.f-category:nth-child(2)', { x: 27.5, y: 1081, width: 335, height: 221 }, 3, 'mobile.categorySwimspa');
+  await assertBox(page, '.f-section--slides', { x: 0, y: 0, width: 390, height: 556 }, 2, 'mobile.heroSection');
+  await assertHiddenBox(page, '.f-hero-promo', 'mobile.heroPromo');
+  await assertBox(page, '.f-category:nth-child(1)', { x: 27.5, y: 556, width: 335, height: 221 }, 3, 'mobile.categoryHotTubs');
+  await assertBox(page, '.f-category:nth-child(2)', { x: 27.5, y: 798, width: 335, height: 221 }, 4, 'mobile.categorySwimspa');
 
   await assertSourceContains(page, '.f-logo__img', 'images/logo.svg', 'mobile.logoSource');
-  await assertSourceContains(page, '.f-hero-promo__image', 'uploads/import/figma/hp-fixed-banner-product.png', 'mobile.heroPromoImageSource');
+}
+
+async function auditNarrowHomepageLayout(page) {
+  for (const { width, height } of [
+    { width: 904, height: 617 },
+    { width: 1023, height: 617 },
+  ]) {
+    const label = `narrowHomepage:${width}x${height}`;
+
+    await page.setViewportSize({ width, height });
+    await page.goto(baseUrl, { waitUntil: 'load' });
+
+    await assertNoHorizontalOverflow(page, label);
+    await assertViewportSpan(page, '.template--homepage .f-section--slides', width, `${label}.heroSection`);
+    await assertViewportSpan(page, '.template--homepage .f-section--product-categories', width, `${label}.categoriesSection`);
+    await assertHeroBoundaryIsClear(page, label);
+    await assertHiddenBox(page, '.template--homepage .f-hero-promo', `${label}.heroPromo`);
+    await assertComputedStyle(page, '.template--homepage .f-slide--1 .f-slide__background', 'background-size', 'cover', `${label}.heroBackgroundFit`);
+    await assertHeroBoundaryIsClear(page, label);
+
+    const layout = await page.evaluate(() => {
+      const box = (selector) => {
+        const element = document.querySelector(selector);
+        if (!element) {
+          return null;
+        }
+
+        const rect = element.getBoundingClientRect();
+        const style = getComputedStyle(element);
+
+        return {
+          x: rect.x,
+          y: rect.y,
+          width: rect.width,
+          height: rect.height,
+          bottom: rect.bottom,
+          display: style.display,
+          gridTemplateColumns: style.gridTemplateColumns,
+        };
+      };
+
+      return {
+        narrowHeroVariable: getComputedStyle(document.documentElement).getPropertyValue('--arctic-narrow-hero-height').trim(),
+        slides: box('.template--homepage .f-section--slides'),
+        background: box('.template--homepage .f-slide__background'),
+        categories: box('.template--homepage .f-section--product-categories'),
+        caption: box('.template--homepage .f-caption'),
+        headline: box('.template--homepage .f-caption__header h2'),
+        grid: box('.template--homepage .f-categories--product'),
+        firstCard: box('.template--homepage .f-category:nth-child(1)'),
+        secondCard: box('.template--homepage .f-category:nth-child(2)'),
+      };
+    });
+
+    if (!layout.slides || !layout.background || !layout.categories || !layout.caption || !layout.headline || !layout.grid || !layout.firstCard || !layout.secondCard) {
+      throw new Error(`${label}.missingElements`);
+    }
+
+    if (!layout.narrowHeroVariable) {
+      throw new Error(`${label}.variables: narrow homepage variables are not active`);
+    }
+
+    if (layout.slides.height < 500 || layout.slides.height > 558) {
+      throw new Error(`${label}.heroHeight: expected narrow hero height, got ${round(layout.slides.height)}px`);
+    }
+
+    assertClose(layout.background.width, width, 2, `${label}.background.width`);
+    assertClose(layout.background.height, layout.slides.height, 2, `${label}.background.height`);
+
+    if (layout.caption.x < 24 || layout.caption.x > 96) {
+      throw new Error(`${label}.caption.x: expected narrow caption to stay in the content gutter, got ${round(layout.caption.x)}px`);
+    }
+
+    if (layout.headline.x + layout.headline.width > width - 24) {
+      throw new Error(`${label}.headline.overflow: headline reaches outside viewport (${round(layout.headline.x + layout.headline.width)} > ${width - 24})`);
+    }
+
+    if (layout.categories.y < layout.slides.bottom - 1) {
+      throw new Error(`${label}.overlap: category section starts before hero ends (${round(layout.categories.y)} < ${round(layout.slides.bottom)})`);
+    }
+
+    const cardGap = layout.firstCard.y - layout.slides.bottom;
+    if (cardGap < 24 || cardGap > 40) {
+      throw new Error(`${label}.categoryBoundary: expected compact hero/category gap, got ${round(cardGap)}px`);
+    }
+
+    const columns = layout.grid.gridTemplateColumns.split(' ').filter(Boolean);
+    if (columns.length !== 2) {
+      throw new Error(`${label}.categoryGrid: expected 2 narrow columns, got "${layout.grid.gridTemplateColumns}"`);
+    }
+
+    for (const [name, card] of [['firstCard', layout.firstCard], ['secondCard', layout.secondCard]]) {
+      if (card.width < 360 || card.width > 430) {
+        throw new Error(`${label}.${name}.width: expected narrow card width, got ${round(card.width)}px`);
+      }
+
+      if (card.height < 238 || card.height > 282) {
+        throw new Error(`${label}.${name}.height: expected narrow card height, got ${round(card.height)}px`);
+      }
+    }
+
+    if (layout.firstCard.y > height - 40) {
+      throw new Error(`${label}.firstViewport: category cards are not visible enough in the first viewport`);
+    }
+  }
 }
 
 async function auditFigmaSources(page) {
@@ -1130,6 +1316,7 @@ async function auditSharedFooterDesktop(page) {
     await auditDesktop(page);
     await auditDesktopScaledMatrix(page);
     await auditMobile(page);
+    await auditNarrowHomepageLayout(page);
     await auditResponsiveShell(page);
     await auditCompactNavigation(page);
     await auditDesktopHeaderStates(page);
