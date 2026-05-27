@@ -360,6 +360,14 @@ Observed issue (2026-05-27):
 - `--arctic-desktop-scale` starts at `1280px`, while mobile/card rules start below `1024px`.
 - The `1024-1279px` band can therefore inherit a mixed layout: oversized hero, visible promo card competing with hero content, and category cards using rules that were not designed as a complete compact-laptop composition.
 
+Current status (2026-05-27):
+- Technical implementation is complete for the code/audit scope.
+- A dedicated `1024-1279px` compact-laptop scaling layer now defines shared homepage variables for hero height, container width, section gap, and compact scale.
+- Homepage hero, promo behavior, and product category cards are connected to this compact-laptop layer.
+- The homepage promo card is hidden in this range to prevent collision with hero content and category cards.
+- Automated coverage now checks `1024x617`, `1097x617`, and `1279x720` compact-laptop layouts.
+- Remaining validation before Phase 5 final close: physical or equivalent Windows `1920x1080`, display scaling `175%`, Chrome `100%` screenshot sign-off.
+
 Implementation:
 1. Add an explicit `1024-1279px` compact laptop scaling layer.
 2. Define shared compact variables first, before component-specific fixes:

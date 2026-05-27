@@ -380,6 +380,107 @@ async function auditZoomOutFullBleed(page) {
   }
 }
 
+async function auditCompactLaptopLayout(page) {
+  for (const { width, height } of [
+    { width: 1024, height: 617 },
+    { width: 1097, height: 617 },
+    { width: 1279, height: 720 },
+  ]) {
+    const label = `compactLaptop:${width}x${height}`;
+
+    await page.setViewportSize({ width, height });
+    await page.goto(baseUrl, { waitUntil: 'load' });
+
+    await assertNoHorizontalOverflow(page, label);
+    await assertViewportSpan(page, '.template--homepage .f-section--slides', width, `${label}.heroSection`);
+    await assertViewportSpan(page, '.template--homepage .f-section--product-categories', width, `${label}.categoriesSection`);
+
+    const layout = await page.evaluate(() => {
+      const root = getComputedStyle(document.documentElement);
+      const box = (selector) => {
+        const element = document.querySelector(selector);
+        if (!element) {
+          return null;
+        }
+
+        const rect = element.getBoundingClientRect();
+        const style = getComputedStyle(element);
+
+        return {
+          x: rect.x,
+          y: rect.y,
+          width: rect.width,
+          height: rect.height,
+          bottom: rect.bottom,
+          display: style.display,
+          gridTemplateColumns: style.gridTemplateColumns,
+        };
+      };
+
+      return {
+        compactScale: root.getPropertyValue('--arctic-compact-scale').trim(),
+        heroVariable: root.getPropertyValue('--arctic-hero-height').trim(),
+        containerVariable: root.getPropertyValue('--arctic-container-width').trim(),
+        slides: box('.template--homepage .f-section--slides'),
+        caption: box('.template--homepage .f-caption'),
+        promo: box('.template--homepage .f-hero-promo'),
+        categories: box('.template--homepage .f-section--product-categories'),
+        grid: box('.template--homepage .f-categories--product'),
+        firstCard: box('.template--homepage .f-category:nth-child(1)'),
+        secondCard: box('.template--homepage .f-category:nth-child(2)'),
+      };
+    });
+
+    if (!layout.slides || !layout.caption || !layout.promo || !layout.categories || !layout.grid || !layout.firstCard || !layout.secondCard) {
+      throw new Error(`${label}.missingElements`);
+    }
+
+    if (!layout.compactScale || layout.heroVariable === '49.6875rem') {
+      throw new Error(`${label}.variables: compact laptop variables are not active`);
+    }
+
+    if (layout.slides.height < 490 || layout.slides.height > 562) {
+      throw new Error(`${label}.heroHeight: expected bounded compact hero, got ${round(layout.slides.height)}px`);
+    }
+
+    if (layout.caption.bottom > layout.slides.bottom - 24) {
+      throw new Error(`${label}.caption: caption reaches too close to hero boundary (${round(layout.caption.bottom)} / ${round(layout.slides.bottom)})`);
+    }
+
+    if (layout.promo.display !== 'none') {
+      throw new Error(`${label}.promo: promo card must be hidden in compact laptop layout, got display=${layout.promo.display}`);
+    }
+
+    if (layout.categories.y < layout.slides.bottom - 1) {
+      throw new Error(`${label}.overlap: category section starts before hero ends (${round(layout.categories.y)} < ${round(layout.slides.bottom)})`);
+    }
+
+    const cardGap = layout.firstCard.y - layout.slides.bottom;
+    if (cardGap < 24 || cardGap > 80) {
+      throw new Error(`${label}.categoryBoundary: expected intentional hero/category gap, got ${round(cardGap)}px`);
+    }
+
+    const columns = layout.grid.gridTemplateColumns.split(' ').filter(Boolean);
+    if (columns.length !== 2) {
+      throw new Error(`${label}.categoryGrid: expected 2 compact columns, got "${layout.grid.gridTemplateColumns}"`);
+    }
+
+    for (const [name, card] of [['firstCard', layout.firstCard], ['secondCard', layout.secondCard]]) {
+      if (card.width < 430 || card.width > 520) {
+        throw new Error(`${label}.${name}.width: expected compact card width, got ${round(card.width)}px`);
+      }
+
+      if (card.height < 278 || card.height > 330) {
+        throw new Error(`${label}.${name}.height: expected compact card height, got ${round(card.height)}px`);
+      }
+    }
+
+    if (layout.firstCard.y > height - 40) {
+      throw new Error(`${label}.firstViewport: category cards are not visible enough in the first viewport`);
+    }
+  }
+}
+
 async function auditScaledLaptopBoundary(page) {
   await page.setViewportSize({ width: 1097, height: 617 });
   await page.goto(baseUrl, { waitUntil: 'load' });
@@ -1034,6 +1135,7 @@ async function auditSharedFooterDesktop(page) {
     await auditDesktopHeaderStates(page);
     await auditDesktopHeaderRealViewport(page);
     await auditZoomOutFullBleed(page);
+    await auditCompactLaptopLayout(page);
     await auditScaledLaptopBoundary(page);
     await auditFigmaSources(page);
     await auditCatalogHotTubsDesktop(page);

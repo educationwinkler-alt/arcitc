@@ -23,7 +23,7 @@ Current rule:
 | Header desktop menu real viewport | `1:1868` `menu` + laptop/120%-like viewport | Mega menu panel now uses the dark Figma styling, keeps the inner promo CTA visible, and hides the homepage promo behind the open menu at 1586x756 effective viewport | `desktopHeaderRealViewport` audit |
 | Header mega hover cursor-travel stability | `1:1868` `menu` interaction | Desktop mega menu now stays open while moving the cursor from the top trigger into submenu links (with delayed close guard), preventing accidental close/flicker during trigger-to-panel travel | `desktopHeaderRealViewport.hoverTravel` audit |
 | Zoom-out full-bleed/footer gutter guard | Homepage + footer in zoom-out-like wide desktop states | Footer background rendering changed from fixed 1920px image sizing to fluid cover behavior and audited at wide viewports so side gutters are not reintroduced | `zoomOut:2240`, `zoomOut:2560` audits |
-| 175% scaling hero/category boundary guard | Homepage at effective compact desktop width (1097x617) | Added explicit automated check that the category section starts after hero and first category card keeps visible separation from the hero boundary | `scaledLaptopBoundary:1097` audit |
+| Compact laptop / Windows 175% scaling layer | Homepage at `1024-1279px`, including effective `1097x617` viewport | Added a coherent compact-laptop scaling layer with shared variables, bounded hero height, hidden homepage promo, deliberate two-column category cards, and hero/category spacing | `compactLaptop:1024x617`, `compactLaptop:1097x617`, `compactLaptop:1279x720`, `scaledLaptopBoundary:1097` audits |
 | Mobile menu search placement | `GM - HP menu` `1:2208` | Compact menu places search at 323x44 around y=527 on 375px viewport | Manual/spot check, needs fuller screenshot sign-off |
 | Swimspa category desktop | `KATEGORIE` `1:262` applied to `/swimspa/` | Swimspa category now renders the same Figma intro, series nav, showroom anchor, references, CTA, and footer pattern as hot tubs | `swimspaCatalog` audit |
 | Showroom page desktop | `SHOWROOM` `1:442` | Dedicated showroom route and Figma section geometry are audited | `showroom` audit |
@@ -60,7 +60,7 @@ Current rule:
 
 ## Open Work Before Phase 5 Can Close
 
-1. Export final screenshot pack at desktop, mobile, and real laptop/zoom-like widths.
+1. Export final screenshot pack at desktop, mobile, real laptop/zoom-like widths, and physical/equivalent Windows 175% scaling.
 2. Complete manual screenshot review for all desktop frames that are now under automated geometry gates.
 3. Finish full mobile homepage and mobile menu visual comparison, not only the first viewport/search placement.
 4. Confirm whether `DALSI INFORMACE` is intentionally a navigation hub/redirect or must become a standalone page.
