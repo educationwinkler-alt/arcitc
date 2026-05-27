@@ -368,6 +368,13 @@ Current status (2026-05-27):
 - Automated coverage now checks `1024x617`, `1097x617`, and `1279x720` compact-laptop layouts.
 - Remaining validation before Phase 5 final close: physical or equivalent Windows `1920x1080`, display scaling `175%`, Chrome `100%` screenshot sign-off.
 
+Promo rendering rule update:
+- The homepage hero promo must be opt-in, not opt-out.
+- `.f-hero-promo` should have `display: none` as its default state.
+- It may become visible only through an explicit homepage/full-desktop rule, initially `@media (min-width: 1280px)` scoped to `.template--homepage .f-section--slides > .f-hero-promo`.
+- Compact laptop, tablet, mobile, DevTools-narrowed, and Windows scaling states must not need their own repeated suppression rules.
+- Automated audit should verify that promo is hidden outside the allowed homepage desktop hero state.
+
 Implementation:
 1. Add an explicit `1024-1279px` compact laptop scaling layer.
 2. Define shared compact variables first, before component-specific fixes:
@@ -376,13 +383,14 @@ Implementation:
    - `--arctic-container-width`
    - `--arctic-section-gap`
 3. Reconnect homepage hero, promo card, product category cards, header spacing, and hero/category boundary to these shared variables.
-4. Decide the compact promo behavior:
-   - either hide the homepage promo card in this range
-   - or render it as a smaller non-overlapping compact variant outside the main hero composition
+4. Apply the promo rendering rule update:
+   - default hidden
+   - explicit homepage/full-desktop opt-in only
+   - no repeated breakpoint-by-breakpoint suppression as the primary control
 5. Ensure category cards at `1024-1279px` use a deliberate compact layout, not leftover desktop/mobile rules.
 6. Extend automated visual audit for at least `1097x617`:
    - hero height is bounded for the visible viewport
-   - promo card does not collide with hero content or categories
+   - promo card is hidden outside the allowed homepage desktop hero state
    - category cards do not overflow, clip, or collapse visually
    - hero/category boundary has intentional spacing
    - no horizontal overflow
