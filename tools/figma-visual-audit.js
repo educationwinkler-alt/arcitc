@@ -131,6 +131,40 @@ async function assertComputedStyle(page, selector, property, expected, label) {
   }
 }
 
+async function assertComputedStyleIncludes(page, selector, property, expected, label) {
+  const locator = page.locator(selector).first();
+  const count = await locator.count();
+
+  if (!count) {
+    throw new Error(`${label}: missing selector ${selector}`);
+  }
+
+  const actual = await locator.evaluate((element, propertyName) => getComputedStyle(element).getPropertyValue(propertyName), property);
+
+  if (!actual.toLowerCase().includes(expected.toLowerCase())) {
+    throw new Error(`${label}: expected ${property} to include "${expected}", got "${actual}"`);
+  }
+}
+
+async function assertOptionalComputedStyleIncludes(page, selector, property, expected, label) {
+  const locator = page.locator(selector).first();
+  const count = await locator.count();
+
+  if (!count) {
+    return;
+  }
+
+  await assertComputedStyleIncludes(page, selector, property, expected, label);
+}
+
+async function assertRootVariable(page, variable, expected, label) {
+  const actual = await page.evaluate((name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim(), variable);
+
+  if (actual !== expected) {
+    throw new Error(`${label}: expected ${variable} to be "${expected}", got "${actual}"`);
+  }
+}
+
 async function assertHtmlContains(page, path, expectedItems, forbiddenItems = []) {
   await page.goto(`${baseUrl}${path}`, { waitUntil: 'load' });
   const html = await page.content();
@@ -243,6 +277,48 @@ async function assertHeroBoundaryIsClear(page, label) {
   const topClass = boundary.elementsAtBoundary[0]?.className || '';
   if (/f-slide|f-slides|f-slide__background/.test(topClass)) {
     throw new Error(`${label}.heroBoundary: slider is still painted over category boundary (${topClass})`);
+  }
+}
+
+async function auditFigmaTokenAndComponentStyles(page) {
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.goto(baseUrl, { waitUntil: 'load' });
+  await page.evaluate(async () => document.fonts && document.fonts.ready ? document.fonts.ready : true);
+
+  await assertRootVariable(page, '--arctic-color-frost', '#eef1f5', 'figmaTokens.background');
+  await assertRootVariable(page, '--arctic-color-red', '#a31f37', 'figmaTokens.red');
+  await assertRootVariable(page, '--arctic-color-menu', '#23282f', 'figmaTokens.dark');
+  await assertRootVariable(page, '--a--button--border-radius', '50px', 'figmaTokens.buttonRadius');
+
+  await assertComputedStyleIncludes(page, 'body', 'font-family', 'Red Hat Display', 'figmaTokens.bodyFont');
+  await assertComputedStyle(page, 'body', 'background-color', 'rgb(238, 241, 245)', 'figmaTokens.bodyBackground');
+  await assertComputedStyleIncludes(page, '.template--homepage .f-section--references h2', 'font-family', 'Red Hat Display', 'figmaTokens.headingFont');
+
+  await assertComputedStyle(page, '.f-section--contact .f-contact-cta', 'background-color', 'rgb(163, 31, 55)', 'figmaComponents.contactCtaBackground');
+  await assertComputedStyle(page, '.f-section--contact .f-contact-cta', 'border-radius', '40px', 'figmaComponents.contactCtaRadius');
+  await assertComputedStyle(page, '.f-section--contact .f-contact-cta__bar .a-button', 'border-radius', '50px', 'figmaComponents.contactButtonRadius');
+  await assertComputedStyleIncludes(page, '.f-section--contact .f-contact-cta__bar .a-button', 'font-family', 'Red Hat Display', 'figmaComponents.contactButtonFont');
+
+  await assertComputedStyle(page, '.template--homepage .f-section--references .f-section__actions .a-button', 'border-radius', '50px', 'figmaComponents.referencesButtonRadius');
+  await assertComputedStyle(page, '.template--homepage .f-section--references .f-section__actions .a-button', 'border-color', 'rgb(163, 31, 55)', 'figmaComponents.referencesButtonBorder');
+  await assertComputedStyle(page, '.template--homepage .f-section--references .f-carousel__control--next', 'background-color', 'rgb(255, 255, 255)', 'figmaComponents.referencesArrowBackground');
+  await assertComputedStyle(page, '.template--homepage .f-section--references .f-carousel__control--next', 'color', 'rgb(0, 0, 0)', 'figmaComponents.referencesArrowColor');
+  await assertBox(page, '.template--homepage .f-section--references .f-carousel__control--next', { x: 1639, y: 3638, width: 42, height: 42 }, 4, 'figmaComponents.referencesArrowPosition');
+  await assertComputedStyle(page, '.template--homepage .f-section--references .f-listing__metas .f-meta:first-child', 'background-color', 'rgb(35, 40, 47)', 'figmaComponents.referencesMetaDarkPill');
+  await assertComputedStyle(page, '.template--homepage .f-section--references .f-listing__metas .f-meta:nth-child(2)', 'background-color', 'rgb(255, 255, 255)', 'figmaComponents.referencesMetaLightPill');
+
+  await assertComputedStyle(page, '.template--homepage .f-showroom-panel', 'background-color', 'rgb(35, 40, 47)', 'figmaComponents.showroomBackground');
+  await assertComputedStyle(page, '.template--homepage .f-showroom-panel', 'border-radius', '40px', 'figmaComponents.showroomRadius');
+
+  await assertComputedStyle(page, '.f-footer--arctic.f-footer--arctic .f-footer__quick-contact', 'border-radius', '40px', 'figmaComponents.footerQuickContactRadius');
+  await assertComputedStyle(page, '.f-footer--arctic.f-footer--arctic .f-footer__quick-map', 'border-radius', '30px', 'figmaComponents.footerMapRadius');
+
+  for (const path of ['/', '/virivky/', '/swimspa/', '/product/timberwolf/', '/showroom/', '/reference/', '/kontakt/', '/podpora/', '/o-nas/', '/servis/', '/sluzby/', '/vlastnosti/', '/certifikaty/', '/zaruka/', '/kolik-stoji-udrzba/', '/vlastnosti/izolace-virivky/']) {
+    await page.goto(`${baseUrl}${path}`, { waitUntil: 'load' });
+    await assertComputedStyleIncludes(page, 'body', 'font-family', 'Red Hat Display', `figmaTypography:${path}.body`);
+    await assertComputedStyle(page, 'body', 'background-color', 'rgb(238, 241, 245)', `figmaTypography:${path}.background`);
+    await assertOptionalComputedStyleIncludes(page, 'h1', 'font-family', 'Red Hat Display', `figmaTypography:${path}.h1`);
+    await assertOptionalComputedStyleIncludes(page, 'main h2, .f-main h2, h2', 'font-family', 'Red Hat Display', `figmaTypography:${path}.h2`);
   }
 }
 
@@ -1047,7 +1123,7 @@ async function auditShowroomDesktop(page) {
   await assertBox(page, '.f-showroom-page', { x: 0, y: 0, width: 1920, height: 2879 }, 4, 'showroom.page');
   await assertBox(page, '.f-showroom-hero', { x: 0, y: 0, width: 1920, height: 801 }, 3, 'showroom.hero');
   await assertBox(page, '.f-showroom-hero__container', { x: 260, y: 0, width: 1400, height: 801 }, 3, 'showroom.heroContainer');
-  await assertBox(page, '.f-showroom-breadcrumb', { x: 262, y: 144, width: 227.4, height: 19 }, 3, 'showroom.breadcrumb');
+  await assertBox(page, '.f-showroom-breadcrumb', { x: 262, y: 144, width: 224, height: 19 }, 3, 'showroom.breadcrumb');
   await assertBox(page, '.f-showroom-hero__content', { x: 262, y: 329, width: 488, height: 236 }, 4, 'showroom.heroContent');
   await assertBox(page, '.f-showroom-hero__content h1', { x: 262, y: 329, width: 454, height: 61 }, 3, 'showroom.heroTitle');
   await assertBox(page, '.f-showroom-hero__content p', { x: 262, y: 403, width: 488, height: 93 }, 3, 'showroom.heroLead');
@@ -1314,6 +1390,7 @@ async function auditSharedFooterDesktop(page) {
 
   try {
     await auditDesktop(page);
+    await auditFigmaTokenAndComponentStyles(page);
     await auditDesktopScaledMatrix(page);
     await auditMobile(page);
     await auditNarrowHomepageLayout(page);

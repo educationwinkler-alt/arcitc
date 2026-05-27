@@ -343,13 +343,23 @@ Exit criteria:
 - Signed pass sheet for all required pages and breakpoints.
 
 Current Phase 5 status:
-- Phase 5 is reopened. The previous technical responsive pass was not a complete Figma frame-by-frame implementation.
+- Phase 5 implementation is complete for the repository code/audit/screenshot scope as of 2026-05-27.
 - `docs/visual-signoff-phase-5-2026-05-26.md` remains valid only as evidence for responsive/zoom resilience.
 - The active frame-by-frame tracker is `docs/phase-5-figma-frame-by-frame-tracker-2026-05-26.md`.
 - Header search and desktop product mega menu states from Figma are now implemented and covered by `npm run figma:audit`.
-- Additional desktop frame geometry is now covered for Swimspa category, showroom, product popup, info pages, support, references, about, and service. This is automated evidence, not final client sign-off.
-- Still open before Phase 5 can close: final screenshot pack, full mobile homepage/menu review, laptop/120% zoom visual review, zoom-out white-gutter review, Windows 175% scaling review, unified full-bleed/container width review, footer layout integrity, mega menu hover stability, homepage hero/category boundary spacing, `DALSI INFORMACE` route decision, popup/contact-modal scope decision, product variant spot-checks, product detail responsive parity, and product/category image source-quality audit.
-- Final owner/client approval is still required before production release.
+- Additional desktop frame geometry is now covered for Swimspa category, showroom, product popup, info pages, support, references, about, service, contact, and the shared footer.
+- Final visual-token parity is now automated in `tools/figma-visual-audit.js`: local Red Hat Display font usage, Figma background/red/dark color tokens, button and card radii, contact CTA styling, reference cards, showroom panel, footer quick contact card, footer map card, and shared page typography.
+- Shared repeated modules have been normalized instead of patched page-by-page: contact CTA, recent references, showroom panel, footer quick contact/map, local-map pin styling, and button radii now inherit one Figma-aligned token/component layer.
+- Homepage references now use Figma-style realization metadata pills and white underlined card titles over the image gradient instead of category/excerpt copy.
+- Phase 5 screenshot evidence was captured at:
+  - `docs/screenshots/phase-5-homepage-figma-parity-1920-2026-05-27.png`
+  - `docs/screenshots/phase-5-homepage-showroom-1920-2026-05-27.png`
+  - `docs/screenshots/phase-5-homepage-references-1920-2026-05-27.png`
+  - `docs/screenshots/phase-5-homepage-contact-cta-1920-2026-05-27.png`
+  - `docs/screenshots/phase-5-contact-page-1920-2026-05-27.png`
+  - `docs/screenshots/phase-5-reference-page-1920-2026-05-27.png`
+- Verification passed on 2026-05-27: `npm run css:build`, `npm run figma:audit`, and full `npm run qa:local`.
+- Remaining non-code release requirement: owner/client visual acceptance of the screenshot pack and physical/equivalent Windows `1920x1080`, display scaling `175%`, Chrome `100%` screenshot sign-off before production release.
 
 ## Phase 5A - Compact laptop / Windows 175% scaling (P0, 0.5-1 day)
 Goal: make `1920x1080` Windows display scaling at `175%` with Chrome at `100%` behave as a first-class release viewport, not an accidental mix of desktop and mobile rules.

@@ -1,22 +1,60 @@
 :root {
+  --a--font-family--primary: var(--arctic-font-heading);
+  --a--font-family--secondary: var(--arctic-font-body);
+  --a--heading--font-family: var(--arctic-font-heading);
+  --a--button--font-family: var(--arctic-font-body);
+  --a--button--border-radius: 50px;
+  --a--border--radius: 50px;
+}
+
+@font-face {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/red-hat-display-400.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/red-hat-display-500.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/red-hat-display-700.ttf") format("truetype");
+}
+
+:root {
   --a--color: var(--arctic-color-ink);
-  --a--color-rgb: 7, 24, 38;
-  --a--color--accent: var(--arctic-color-blue);
-  --a--color--accent-rgb: 31, 120, 180;
+  --a--color-rgb: 35, 40, 47;
+  --a--color--accent: var(--arctic-color-red);
+  --a--color--accent-rgb: 163, 31, 55;
   --a--color--highlight: var(--arctic-color-red);
-  --a--color--highlight-rgb: 200, 32, 50;
+  --a--color--highlight-rgb: 163, 31, 55;
   --a--color--soft: var(--arctic-color-ice);
   --a--color--soft-rgb: 234, 246, 251;
   --a--color--shadow: var(--arctic-color-ink);
-  --a--color--shadow-rgb: 7, 24, 38;
+  --a--color--shadow-rgb: 35, 40, 47;
   --a--link--color-rgb: var(--a--color--accent-rgb);
   --a--link--color--active-rgb: var(--a--color--highlight-rgb);
   --a--button--background-color: var(--arctic-color-navy);
-  --a--button--background-color--active: var(--arctic-color-red);
+  --a--button--background-color--active: var(--arctic-color-red-dark);
   --a--button--accent--background-color: var(--arctic-color-red);
-  --a--button--accent--background-color--active: #a81928;
+  --a--button--accent--background-color--active: var(--arctic-color-red-dark);
+  --a--button--outline--color: var(--arctic-color-red);
+  --a--button--outline--color--active: var(--arctic-color-red-dark);
+  --a--button--outline--border-color: var(--arctic-color-red);
+  --a--button--outline--border-color--active: var(--arctic-color-red-dark);
 }
 
 body {
   color: var(--arctic-color-ink);
+  font-family: var(--arctic-font-body);
 }

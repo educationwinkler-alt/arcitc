@@ -17,10 +17,10 @@ if ( !function_exists( 'baspa_theme' ) ) {
 
 		// Fonts
 		$settings[ 'font_api' ]              = 'google';
-		$settings[ 'font_primary' ]          = 'Unbounded';
-		$settings[ 'font_primary_styles' ]   = '200,400,500,700';
-		$settings[ 'font_secondary' ]        = 'Poppins';
-		$settings[ 'font_secondary_styles' ] = '400,700';
+		$settings[ 'font_primary' ]          = 'Red Hat Display';
+		$settings[ 'font_primary_styles' ]   = '400,500,700';
+		$settings[ 'font_secondary' ]        = 'Red Hat Display';
+		$settings[ 'font_secondary_styles' ] = '400,500,700';
 		$settings[ 'font_display' ]          = 'swap';
 
 		// Tracking

@@ -1,13 +1,15 @@
 :root {
-  --arctic-color-ink: #071826;
+  --arctic-font-body: "Red Hat Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --arctic-font-heading: "Red Hat Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --arctic-color-ink: #23282f;
   --arctic-color-menu: #23282f;
-  --arctic-color-navy: #0b2437;
+  --arctic-color-navy: #23282f;
   --arctic-color-blue: #1f78b4;
   --arctic-color-ice: #eaf6fb;
-  --arctic-color-frost: #eef3f7;
+  --arctic-color-frost: #eef1f5;
   --arctic-color-snow: #ffffff;
-  --arctic-color-red: #b51d3a;
-  --arctic-color-red-dark: #95152c;
+  --arctic-color-red: #a31f37;
+  --arctic-color-red-dark: #8f1b31;
   --arctic-color-steel: #5e7180;
   --arctic-desktop-scale: 1;
   --arctic-container-wide: 87.5rem;
@@ -16,32 +18,66 @@
   --arctic-header-panel-inner-height: 5.25rem;
   --arctic-hero-height: 49.6875rem;
   --arctic-hero-height-mobile: 33.75rem;
-  --arctic-radius-s: 0.3125rem;
-  --arctic-radius-m: 0.5rem;
-  --arctic-radius-l: 1.5rem;
+  --arctic-radius-s: 3.125rem;
+  --arctic-radius-m: 2.5rem;
+  --arctic-radius-l: 2.5rem;
   --arctic-shadow-soft: 0 1rem 2.5rem rgba(7, 24, 38, 0.1);
   --arctic-shadow-header: 0 0.875rem 2.25rem rgba(7, 24, 38, 0.18);
 }
 :root {
+  --a--font-family--primary: var(--arctic-font-heading);
+  --a--font-family--secondary: var(--arctic-font-body);
+  --a--heading--font-family: var(--arctic-font-heading);
+  --a--button--font-family: var(--arctic-font-body);
+  --a--button--border-radius: 50px;
+  --a--border--radius: 50px;
+}
+@font-face {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/red-hat-display-400.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/red-hat-display-500.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/red-hat-display-700.ttf") format("truetype");
+}
+:root {
   --a--color: var(--arctic-color-ink);
-  --a--color-rgb: 7, 24, 38;
-  --a--color--accent: var(--arctic-color-blue);
-  --a--color--accent-rgb: 31, 120, 180;
+  --a--color-rgb: 35, 40, 47;
+  --a--color--accent: var(--arctic-color-red);
+  --a--color--accent-rgb: 163, 31, 55;
   --a--color--highlight: var(--arctic-color-red);
-  --a--color--highlight-rgb: 200, 32, 50;
+  --a--color--highlight-rgb: 163, 31, 55;
   --a--color--soft: var(--arctic-color-ice);
   --a--color--soft-rgb: 234, 246, 251;
   --a--color--shadow: var(--arctic-color-ink);
-  --a--color--shadow-rgb: 7, 24, 38;
+  --a--color--shadow-rgb: 35, 40, 47;
   --a--link--color-rgb: var(--a--color--accent-rgb);
   --a--link--color--active-rgb: var(--a--color--highlight-rgb);
   --a--button--background-color: var(--arctic-color-navy);
-  --a--button--background-color--active: var(--arctic-color-red);
+  --a--button--background-color--active: var(--arctic-color-red-dark);
   --a--button--accent--background-color: var(--arctic-color-red);
-  --a--button--accent--background-color--active: #a81928;
+  --a--button--accent--background-color--active: var(--arctic-color-red-dark);
+  --a--button--outline--color: var(--arctic-color-red);
+  --a--button--outline--color--active: var(--arctic-color-red-dark);
+  --a--button--outline--border-color: var(--arctic-color-red);
+  --a--button--outline--border-color--active: var(--arctic-color-red-dark);
 }
 body {
   color: var(--arctic-color-ink);
+  font-family: var(--arctic-font-body);
 }
 html,
 body {
@@ -9566,5 +9602,250 @@ body:not(.template--homepage) .f-header__container > .a-flex {
   }
   .f-section--contact .f-contact-cta__bar .a-button {
     border-color: rgba(255, 255, 255, 0.86);
+  }
+}
+/* Phase 5 final Figma parity: shared tokens must win over legacy theme defaults. */
+body {
+  background: var(--arctic-color-frost);
+  font-family: var(--arctic-font-body);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.f-heading,
+.f-section__header,
+.f-listing__header {
+  font-family: var(--arctic-font-heading);
+}
+.f-button,
+.a-button,
+.wp-block-button__link {
+  border-radius: 50px;
+  font-family: var(--arctic-font-body);
+}
+.a-button--outline,
+.f-button--outline {
+  color: var(--arctic-color-red);
+  background: transparent;
+  border-color: var(--arctic-color-red);
+}
+.a-button--accent,
+.f-button--accent,
+.wp-block-button .has-accent-background-color {
+  background-color: var(--arctic-color-red);
+}
+.a-button--accent:hover,
+.a-button--accent:focus-visible,
+.f-button--accent:hover,
+.f-button--accent:focus-visible,
+.wp-block-button .has-accent-background-color:hover,
+.wp-block-button .has-accent-background-color:focus-visible {
+  background-color: var(--arctic-color-red-dark);
+}
+.f-section--contact .f-contact-cta {
+  background: var(--arctic-color-red);
+  border-radius: 40px;
+}
+.f-section--contact .f-contact-cta h2,
+.f-section--contact .f-contact-cta > p,
+.f-section--contact .f-contact-cta__bar,
+.f-section--contact .f-contact-cta__bar * {
+  font-family: var(--arctic-font-body);
+}
+.f-section--contact .f-contact-cta h2 {
+  font-weight: 700;
+}
+.f-section--contact .f-contact-cta > p {
+  color: rgba(255, 255, 255, 0.94);
+  font-weight: 500;
+}
+.f-section--contact .f-contact-cta__bar {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 40px;
+}
+.f-section--contact .f-contact-cta__person strong,
+.f-section--contact .f-contact-cta__details a {
+  font-weight: 700;
+}
+.f-section--contact .f-contact-cta__person span {
+  font-weight: 400;
+}
+.f-section--contact .f-contact-cta__bar .a-button {
+  color: var(--arctic-color-snow);
+  background: transparent;
+  border-color: var(--arctic-color-snow);
+  border-radius: 50px;
+}
+.f-showroom-panel {
+  background: var(--arctic-color-menu);
+  border-radius: 40px;
+}
+.template--homepage .f-section--showroom .f-showroom-panel,
+.tax-product-category .f-section--showroom .f-showroom-panel,
+.f-section--showroom .f-showroom-panel {
+  background: var(--arctic-color-menu);
+  border-radius: 40px;
+}
+.f-showroom-panel__badge {
+  background: var(--arctic-color-red);
+}
+.f-showroom-panel__content,
+.f-showroom-panel__content h2,
+.f-showroom-panel__content p,
+.f-showroom-panel__actions,
+.f-showroom-panel__actions * {
+  font-family: var(--arctic-font-body);
+}
+.f-showroom-panel__content h2 {
+  font-weight: 700;
+}
+.f-showroom-panel__content p {
+  font-weight: 500;
+}
+.f-showroom-panel__actions .a-button {
+  color: var(--arctic-color-snow);
+  border-color: rgba(255, 255, 255, 0.82);
+  border-radius: 50px;
+}
+.f-showroom-panel__actions span:before {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+}
+.f-footer--arctic .f-footer__quick-contact {
+  border-radius: 40px;
+}
+.f-footer--arctic .f-footer__quick-map {
+  border-radius: 30px;
+}
+.f-footer--arctic.f-footer--arctic .f-footer__quick-contact {
+  border-radius: 40px;
+}
+.f-footer--arctic.f-footer--arctic .f-footer__quick-map {
+  border-radius: 30px;
+}
+.f-footer--arctic.f-footer--arctic .f-footer__quick-hours {
+  width: 147px;
+  box-sizing: border-box;
+}
+.f-footer--arctic .f-footer__quick-contact,
+.f-footer--arctic .f-footer__quick-contact *,
+.f-footer--arctic .f-footer__quick-map,
+.f-footer--arctic .f-footer__quick-map * {
+  font-family: var(--arctic-font-body);
+}
+.f-local-map__pin {
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 0;
+  border-radius: 999px;
+  box-shadow: 0 14px 24px rgba(35, 40, 47, 0.16);
+}
+.f-local-map__pin:after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  width: 24px;
+  height: 24px;
+  background: var(--arctic-color-snow);
+  clip-path: path("M12 2C7.6 2 4 5.55 4 9.94c0 5.95 8 12.06 8 12.06s8-6.11 8-12.06C20 5.55 16.4 2 12 2Zm0 10.5a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z");
+}
+@media (min-width: 1280px) {
+  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-section__actions .a-button {
+    color: var(--arctic-color-red);
+    background: transparent;
+    border-color: var(--arctic-color-red);
+    border-radius: 50px;
+    font-family: var(--arctic-font-body);
+  }
+  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-carousel__control--next {
+    right: 9px;
+    color: #000000;
+    background: var(--arctic-color-snow);
+    border-color: transparent;
+    border-radius: 999px;
+    box-shadow: 0 14px 24px rgba(35, 40, 47, 0.12);
+  }
+  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-carousel__control--next svg {
+    color: currentColor;
+  }
+  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas {
+    position: absolute;
+    bottom: 68px;
+    left: 32px;
+    z-index: 3;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+  }
+  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas .a-container {
+    width: auto;
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas ul {
+    display: flex;
+    gap: 4px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas .f-meta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 0 10px;
+    color: var(--arctic-color-snow);
+    font-family: var(--arctic-font-body);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+    background: var(--arctic-color-menu);
+    border-radius: 40px;
+  }
+  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas .f-meta + .f-meta {
+    color: var(--arctic-color-menu);
+    background: var(--arctic-color-snow);
+  }
+  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference .f-listing__header :is(h2, h3) {
+    width: 334px;
+    margin: 0;
+    color: var(--arctic-color-snow);
+    font-family: var(--arctic-font-body);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 34px;
+    text-decoration: underline;
+    text-shadow: none;
+  }
+  .f-reference-card__meta {
+    gap: 4px;
+  }
+  .f-reference-card__meta > span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 0 10px;
+    color: var(--arctic-color-snow);
+    font-family: var(--arctic-font-body);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+    background: var(--arctic-color-menu);
+    border-radius: 40px;
+  }
+  .f-reference-card__meta > span + span {
+    color: var(--arctic-color-menu);
+    background: var(--arctic-color-snow);
+  }
+  .f-reference-card strong {
+    font-family: var(--arctic-font-body);
+    font-weight: 500;
+    text-decoration: underline;
   }
 }

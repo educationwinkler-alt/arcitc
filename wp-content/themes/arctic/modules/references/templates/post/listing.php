@@ -22,16 +22,12 @@ if ( get_post_meta( get_the_ID(), 'reference_single', true ) != 0 ) {
 		<?php
 		get_template_part( 'modules/references/templates/post/listing/image' );
 
-		if ( !is_category() ) {
-			get_template_part( 'modules/references/templates/post/listing/categories' );
-		} ?>
+		get_template_part( 'modules/references/templates/post/listing/meta' ); ?>
 	</div>
 
 	<div class="f-listing__container a-stack a-stack--start a-gap--xs">
 		<?php
-		get_template_part( 'modules/references/templates/post/listing/description' );
 		get_template_part( 'modules/references/templates/post/listing/header' );
-//		get_template_part( 'modules/references/templates/post/listing/meta' );
 //		get_template_part( 'modules/references/templates/post/listing/buttons' );
 		?>
 	</div>
