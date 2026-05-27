@@ -11,7 +11,7 @@ $showroom_images = array(
 );
 ?>
 
-<section class="f-section f-section--showroom">
+<section id="<?php echo sanitize_title( esc_attr_x( 'showroom', 'anchor', 'baspa' ) ); ?>" class="f-section f-section--showroom">
 	<div class="f-section__container a-container">
 		<div class="f-showroom-panel">
 			<div class="f-showroom-panel__media">

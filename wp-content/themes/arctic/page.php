@@ -33,6 +33,11 @@ if ( !empty( $page_product_category ) ) {
 	exit;
 }
 
+if ( is_page( 'showroom' ) ) {
+	require get_theme_file_path( 'template-showroom.php' );
+	exit;
+}
+
 get_header();
 get_template_part( 'templates/heading' );
 ?>

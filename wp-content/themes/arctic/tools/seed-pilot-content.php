@@ -1230,7 +1230,7 @@ $service_request_id = arctic_seed_page(
 	'',
 	'template-service-request.php'
 );
-update_post_meta( $service_request_id, 'page_description_text', 'Okamžikem zprovoznění vaší masážní vířivky nebo celoročního bazénu naše péče o vaše pohodlí nekončí. Kromě záručního a pozáručního servisu můžeme nabídnout telefonické poradenství, asistenci při výměně vody nebo zazimování.' );
+update_post_meta( $service_request_id, 'page_description_text', 'Okamžikem zprovoznění vaší masážní vířivky nebo celoročního bazénu naše péče o vaše pohodlí nekončí. Kromě záručního a pozáručního servisu můžeme nabídnout např. telefonické poradenství, asistenci při výměně vody nebo zazimování. Vyplňte prosím pečlivě náš servisní formulář, ozveme se co nejdříve. Veškeré servisní služby provádíme jen na vířivkách námi instalovaných, tedy Arctic Spas, Coyote Spas, Dream Maker Spas, Novitek.' );
 
 $certificates_id = arctic_seed_page(
 	'certifikaty',
@@ -1238,7 +1238,7 @@ $certificates_id = arctic_seed_page(
 	'',
 	'template-certificates.php'
 );
-update_post_meta( $certificates_id, 'page_description_text', 'Návštěva jakékoliv výrobní haly firmy Arctic Spas® ukazuje to nejlepší z obou světů. Robotická technologie a ruční práce se spojují do nadčasové hodnoty pro váš domov.' );
+update_post_meta( $certificates_id, 'page_description_text', 'Návštěva jakékoliv výrobní haly firmy Arctic Spas® ukazuje to nejlepší z obou světů. Otvory pro vodní trysky jsou ve skořepině vyřezávány precizní robotickou technologií, zatímco odborně vyškolení pracovníci ručně sestavují dřevěné cedrové kabinety. Tyto postupy jsou kombinovány do optimálního poměru vyspělé technologie a ruční práce, což dodává vířivkám Arctic Spas® skutečně unikátní a nadčasovou hodnotu pro Váš domov!' );
 
 $maintenance_id = arctic_seed_page(
 	'kolik-stoji-udrzba',
@@ -1246,7 +1246,7 @@ $maintenance_id = arctic_seed_page(
 	'',
 	'template-maintenance.php'
 );
-update_post_meta( $maintenance_id, 'page_description_text', 'Jedním z nejdůležitějších parametrů, ve kterých značka Arctic Spas jednoznačně dominuje, jsou velmi nízké provozní náklady a s tím spojená kvalita izolací a termokrytů.' );
+update_post_meta( $maintenance_id, 'page_description_text', 'Jedním z nejdůležitějších parametrů ve kterých značka Arctic Spas jednoznačně dominuje jsou velmi nízké provozní náklady a s tím spojená kvalita izolací a termo krytů. Žádná značka vířivek nemá obvodovou izolaci silnou 8 - 10 cm jako vířivky Arctic Spas a neexistují žádné alternativy, které takovouto izolaci nahradí. Vířivky Arctic Spas jsou vyráběny u nejseverněji položeného výrobce vířivek a i proto patří mezi nejúspornější vířivky na světě, číslo jedna na trhu jsou ve Skandinávii, Kanadě a na severu Spojených států.' );
 
 $about_id = arctic_seed_page(
 	'o-nas',

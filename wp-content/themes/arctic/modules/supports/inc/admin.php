@@ -42,7 +42,7 @@ if ( !function_exists( 'arctic_support_admin_fields' ) ) {
 			'baspa_supports_subtitle'       => array( 'Support module subtitle', 'textarea', '' ),
 			'arctic_support_faq_title'      => array( 'FAQ section title', 'text', 'Caste dotazy' ),
 			'arctic_support_form_title'     => array( 'Service form title', 'text', arctic_support_get_option( 'baspa_service_form_title', 'Servisni formular' ) ),
-			'arctic_support_form_content'   => array( 'Service form text', 'textarea', arctic_support_get_option( 'baspa_service_form_content', 'Popiste nam pozadavek a ozveme se s dalsim postupem. U servisniho pozadavku pomuze model virivky, rok porizeni a kratky popis situace.' ) ),
+			'arctic_support_form_content'   => array( 'Service form text', 'textarea', arctic_support_get_option( 'baspa_service_form_content', 'Samozřejmostí je pro nás záruční i pozáruční servis u zákazníka, k dispozici je Vám formulář servisního požadavku, na který budeme co nejdříve reagovat. Objednat si u nás můžete odborné zazimování bazénu či vířivky stejně jako jarní zprovoznění.' ) ),
 			'arctic_support_help_title'     => array( 'Help card title', 'text', 'Potrebujete poradit?' ),
 			'arctic_support_help_name'      => array( 'Help card person', 'text', 'Lukas Dusek' ),
 			'arctic_support_help_role'      => array( 'Help card role', 'text', 'Bazenovy specialista' ),

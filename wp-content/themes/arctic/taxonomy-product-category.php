@@ -18,7 +18,7 @@ get_template_part( 'templates/heading/term' );
 	      class="f-main f-main--term f-main--category f-main--top-0">
 
 		<?php
-		if ( is_tax( 'product-category', 'virivky' ) ) {
+		if ( is_tax( 'product-category', array( 'virivky', 'swimspa' ) ) ) {
 			get_template_part( 'templates/section/category-intro' );
 			get_template_part( 'templates/section/product-series-nav' );
 		}

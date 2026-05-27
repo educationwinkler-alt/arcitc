@@ -120,7 +120,7 @@ if ( isset( $_POST[ 'f-form--submitted' ] ) ) {
 
 						<button type="submit" name="f-form--submitted" value="true"
 						        class="f-form--submit a-button a-button--accent">
-							<?php echo esc_html__( 'Odeslat', 'baspa' ) ?>
+							<?php echo esc_html__( 'Odeslat požadavek', 'baspa' ) ?>
 						</button>
 
 					</div>

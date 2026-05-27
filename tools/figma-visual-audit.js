@@ -544,6 +544,36 @@ async function auditCatalogHotTubsDesktop(page) {
   await assertSourceContains(page, '.f-showroom-panel__image--3 img', 'uploads/import/figma/showroom-2.png', 'catalog.showroomThreeSource');
 }
 
+async function auditCatalogSwimspaDesktop(page) {
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.goto(`${baseUrl}/swimspa/`, { waitUntil: 'load' });
+
+  await assertBox(page, '.f-heading--term', { x: 0, y: 0, width: 1920, height: 795 }, 2, 'swimspaCatalog.heading');
+  await assertBox(page, '.f-heading__container', { x: 260, y: 0, width: 1400, height: 795 }, 2, 'swimspaCatalog.headingContainer');
+  await assertBox(page, '.f-section--category-intro', { x: 0, y: 795, width: 1920, height: 1195 }, 3, 'swimspaCatalog.categoryIntroSection');
+  await assertBox(page, '.f-category-intro--split', { x: 260, y: 910, width: 1400, height: 424 }, 3, 'swimspaCatalog.categoryIntroBenefits');
+  await assertBox(page, '.f-category-intro--reverse', { x: 260, y: 1472, width: 1400, height: 424 }, 3, 'swimspaCatalog.categoryIntroOperation');
+  await assertBox(page, '.f-section--series-nav', { x: 0, y: 1990, width: 1920, height: 93 }, 3, 'swimspaCatalog.seriesNavSection');
+  await assertBox(page, '.f-series-nav', { x: 313, y: 2012, width: 603, height: 51 }, 4, 'swimspaCatalog.seriesNav');
+  await assertBox(page, '.f-section--products-grouped', { x: 0, y: 2083, width: 1920, height: 780 }, 4, 'swimspaCatalog.productsSection');
+  await assertBox(page, '.f-products-series--swimspa', { x: 260, y: 2177, width: 1400, height: 686 }, 4, 'swimspaCatalog.swimspaSeries');
+  await assertBox(page, '.f-products-series--swimspa .f-listing--product:nth-child(1)', { x: 615, y: 2177, width: 335, height: 333 }, 3, 'swimspaCatalog.productCardOne');
+  await assertBox(page, '.f-products-series--swimspa .f-listing--product:nth-child(2)', { x: 970, y: 2177, width: 335, height: 333 }, 3, 'swimspaCatalog.productCardTwo');
+  await assertBox(page, '.f-products-series--swimspa .f-listing--product:nth-child(3)', { x: 1325, y: 2177, width: 335, height: 333 }, 3, 'swimspaCatalog.productCardThree');
+  await assertBox(page, '.f-configurator-cta', { x: 260, y: 2978, width: 1400, height: 312 }, 3, 'swimspaCatalog.configurator');
+  await assertBox(page, '.f-showroom-panel', { x: 260, y: 3575, width: 1400, height: 525 }, 4, 'swimspaCatalog.showroomPanel');
+  await assertBox(page, '.f-progress-layout', { x: 264, y: 4336, width: 1392, height: 444 }, 4, 'swimspaCatalog.progress');
+  await assertBox(page, '.f-section--references', { x: 0, y: 4891, width: 1920, height: 422 }, 4, 'swimspaCatalog.references');
+  await assertBox(page, '.f-contact-cta', { x: 260, y: 5418, width: 1400, height: 455 }, 4, 'swimspaCatalog.contactCta');
+  await assertFooterLayout(page, 'swimspaCatalog', 5901);
+
+  await assertSourceContains(page, '.f-category-intro--split .f-category-intro__image img', 'uploads/import/figma-category-celorocni-bazeny.jpg', 'swimspaCatalog.benefitsSource');
+  await assertSourceContains(page, '.f-category-intro--reverse .f-category-intro__image img', 'uploads/import/legacy-categories/swimspa.jpg', 'swimspaCatalog.operationSource');
+  await assertSourceContains(page, '.f-products-series--swimspa .f-listing--product:nth-child(1) .f-listing__image img', 'bazen-athabascan.jpg', 'swimspaCatalog.productCardOneSource');
+  await assertSourceContains(page, '.f-products-series--swimspa .f-listing--product:nth-child(2) .f-listing__image img', 'bazen-hudson.jpg', 'swimspaCatalog.productCardTwoSource');
+  await assertSourceContains(page, '.f-products-series--swimspa .f-listing--product:nth-child(3) .f-listing__image img', 'bazen-kingfisher.jpg', 'swimspaCatalog.productCardThreeSource');
+}
+
 async function auditTimberwolfDesktop(page) {
   await page.setViewportSize({ width: 1920, height: 1080 });
   await page.goto(`${baseUrl}/product/timberwolf/`, { waitUntil: 'load' });
@@ -572,6 +602,261 @@ async function auditTimberwolfDesktop(page) {
   await assertSourceContains(page, '.f-product-detail-configurator .f-configurator-cta__image', 'uploads/import/figma/category-configurator.png', 'timberwolf.configuratorSource');
   await assertSourceContains(page, '.f-product-contact-card__avatar img', 'uploads/import/figma/contact-lukas-dusek.png', 'timberwolf.contactAvatarSource');
   await assertComputedStyle(page, '.f-heading--product-detail .f-gallery__slide:nth-child(1) img', 'object-fit', 'cover', 'timberwolf.heroImageFit');
+}
+
+async function auditBenefitPopupDesktop(page) {
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.goto(`${baseUrl}/product/timberwolf/`, { waitUntil: 'load' });
+
+  await page.locator('.f-product-benefit--has-popup .f-product-benefit__trigger').first().click();
+  await page.waitForTimeout(250);
+
+  const activePopup = await page.locator('.f-off--benefit-popup.active').count();
+  if (!activePopup) {
+    throw new Error('benefitPopup: shell benefit popup did not open');
+  }
+
+  await assertBox(page, '.f-benefit-popup', { x: 546, y: 91, width: 828, height: 1098 }, 3, 'benefitPopup.panel');
+  await assertBox(page, '.f-benefit-popup__close', { x: 1311, y: 109, width: 47, height: 47 }, 3, 'benefitPopup.close');
+  await assertBox(page, '.f-benefit-popup h2', { x: 601, y: 137, width: 594, height: 102 }, 4, 'benefitPopup.title');
+  await assertBox(page, '.f-benefit-popup__media', { x: 602, y: 265, width: 697, height: 364 }, 4, 'benefitPopup.media');
+  await assertBox(page, '.f-benefit-popup__content', { x: 601, y: 670, width: 671, height: 480 }, 4, 'benefitPopup.content');
+  await assertBox(page, '.f-benefit-popup__button', { x: 601, y: 1101, width: 129, height: 55 }, 6, 'benefitPopup.button');
+  await assertSourceContains(page, '.f-benefit-popup__media img', 'uploads/import/figma/popup-shell-detail.png', 'benefitPopup.mediaSource');
+
+  const popupText = await page.locator('.f-benefit-popup').innerText();
+  for (const expected of ['Samonosná kompozitní skořepina', 'Aristech', 'Bio-Lok']) {
+    if (!popupText.includes(expected)) {
+      throw new Error(`benefitPopup.text: missing "${expected}"`);
+    }
+  }
+
+  await page.locator('.f-benefit-popup__close').first().click();
+  await page.waitForTimeout(250);
+}
+
+async function auditShowroomDesktop(page) {
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.goto(`${baseUrl}/showroom/`, { waitUntil: 'load' });
+
+  await assertBox(page, '.f-showroom-page', { x: 0, y: 0, width: 1920, height: 2879 }, 4, 'showroom.page');
+  await assertBox(page, '.f-showroom-hero', { x: 0, y: 0, width: 1920, height: 801 }, 3, 'showroom.hero');
+  await assertBox(page, '.f-showroom-hero__container', { x: 260, y: 0, width: 1400, height: 801 }, 3, 'showroom.heroContainer');
+  await assertBox(page, '.f-showroom-breadcrumb', { x: 262, y: 144, width: 227.4, height: 19 }, 3, 'showroom.breadcrumb');
+  await assertBox(page, '.f-showroom-hero__content', { x: 262, y: 329, width: 488, height: 236 }, 4, 'showroom.heroContent');
+  await assertBox(page, '.f-showroom-hero__content h1', { x: 262, y: 329, width: 454, height: 61 }, 3, 'showroom.heroTitle');
+  await assertBox(page, '.f-showroom-hero__content p', { x: 262, y: 403, width: 488, height: 93 }, 3, 'showroom.heroLead');
+  await assertBox(page, '.f-showroom-gallery-button', { x: 262, y: 515, width: 161, height: 50 }, 3, 'showroom.galleryButton');
+  await assertBox(page, '.f-showroom-area-badge', { x: 648, y: 256, width: 121, height: 123 }, 3, 'showroom.areaBadge');
+  await assertBox(page, '.f-showroom-mini-cta', { x: 1167, y: 725, width: 498, height: 299 }, 4, 'showroom.miniCta');
+  await assertBox(page, '.f-showroom-info', { x: 0, y: 801, width: 1920, height: 335 }, 4, 'showroom.info');
+  await assertBox(page, '.f-showroom-info__container', { x: 260, y: 801, width: 1400, height: 215 }, 4, 'showroom.infoContainer');
+  await assertBox(page, '.f-showroom-info__item:nth-child(1)', { x: 260, y: 886, width: 264, height: 130 }, 4, 'showroom.infoContact');
+  await assertBox(page, '.f-showroom-info__item:nth-child(2)', { x: 557, y: 886, width: 264, height: 130 }, 4, 'showroom.infoMap');
+  await assertBox(page, '.f-showroom-info__item:nth-child(3)', { x: 854, y: 886, width: 264, height: 130 }, 4, 'showroom.infoHours');
+  await assertBox(page, '.f-showroom-reasons', { x: 0, y: 1136, width: 1920, height: 526 }, 4, 'showroom.reasons');
+  await assertBox(page, '.f-showroom-reasons__container', { x: 260, y: 1136, width: 1400, height: 404 }, 4, 'showroom.reasonsContainer');
+  await assertBox(page, '.f-showroom-reasons h2', { x: 673, y: 1199, width: 575, height: 51 }, 4, 'showroom.reasonsTitle');
+  await assertBox(page, '.f-showroom-reasons__grid', { x: 313, y: 1300, width: 1293, height: 172 }, 4, 'showroom.reasonsGrid');
+  await assertBox(page, '.f-showroom-split--first', { x: 0, y: 1662, width: 1920, height: 562 }, 4, 'showroom.splitFirst');
+  await assertBox(page, '.f-showroom-split--first .f-showroom-split__copy', { x: 260, y: 1743, width: 575, height: 237 }, 4, 'showroom.splitFirstCopy');
+  await assertBox(page, '.f-showroom-split--first img', { x: 986, y: 1662, width: 674, height: 424 }, 4, 'showroom.splitFirstImage');
+  await assertBox(page, '.f-showroom-split--second', { x: 0, y: 2224, width: 1920, height: 655 }, 4, 'showroom.splitSecond');
+  await assertBox(page, '.f-showroom-split--second img', { x: 260, y: 2224, width: 674, height: 424 }, 4, 'showroom.splitSecondImage');
+  await assertBox(page, '.f-showroom-split--second .f-showroom-split__copy', { x: 1024, y: 2338, width: 575, height: 135 }, 4, 'showroom.splitSecondCopy');
+  await assertBox(page, '.page-template-template-showroom .f-section--contact', { x: 0, y: 2879, width: 1920, height: 455 }, 4, 'showroom.contactSection');
+  await assertBox(page, '.page-template-template-showroom .f-contact-cta', { x: 260, y: 2899, width: 1400, height: 382.4 }, 4, 'showroom.contactCta');
+  await assertFooterLayout(page, 'showroom', 3362);
+
+  await assertSourceContains(page, '.f-showroom-hero', 'uploads/import/figma/showroom-hero-bazeny.jpg', 'showroom.heroSource');
+  await assertSourceContains(page, '.f-showroom-split--first img', 'uploads/import/figma/showroom-detail-bazeny.png', 'showroom.splitFirstSource');
+  await assertSourceContains(page, '.f-showroom-split--second img', 'uploads/import/figma/showroom-detail-virivky.png', 'showroom.splitSecondSource');
+}
+
+async function auditFigmaInfoPagesDesktop(page) {
+  await page.setViewportSize({ width: 1920, height: 1080 });
+
+  await page.goto(`${baseUrl}/vlastnosti/`, { waitUntil: 'load' });
+  await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 551 }, 3, 'features.heading');
+  await assertBox(page, '.f-heading__headline h1', { x: 260, y: 206, width: 896, height: 122 }, 4, 'features.title');
+  await assertBox(page, '.f-heading__description', { x: 260, y: 361, width: 856, height: 124 }, 4, 'features.description');
+  await assertBox(page, '.f-section--feature-cards', { x: 0, y: 551, width: 1920, height: 748 }, 3, 'features.cardsSection');
+  await assertBox(page, '.f-figma-card-grid--features', { x: 260, y: 551, width: 1400, height: 748 }, 3, 'features.cardsGrid');
+  await assertBox(page, '.f-figma-card--feature:nth-child(1)', { x: 260, y: 551, width: 334, height: 364 }, 3, 'features.cardOne');
+  await assertBox(page, '.f-figma-card--feature:nth-child(8)', { x: 1322, y: 935, width: 334, height: 364 }, 3, 'features.cardEight');
+  await assertBox(page, '.page-template-template-features .f-section--contact', { x: 0, y: 1414, width: 1920, height: 483 }, 4, 'features.contactSection');
+  await assertBox(page, '.page-template-template-features .f-contact-cta', { x: 260, y: 1414, width: 1400, height: 455 }, 4, 'features.contactCta');
+  await assertFooterLayout(page, 'features', 1897);
+  await assertSourceContains(page, '.f-figma-card--feature:nth-child(1)', 'uploads/import/figma/category-hero-virivky.jpg', 'features.cardSource');
+
+  await page.goto(`${baseUrl}/sluzby/`, { waitUntil: 'load' });
+  await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 447 }, 3, 'services.heading');
+  await assertBox(page, '.f-heading__headline h1', { x: 260, y: 206, width: 896, height: 61 }, 4, 'services.title');
+  await assertBox(page, '.f-heading__description', { x: 260, y: 289, width: 856, height: 93 }, 4, 'services.description');
+  await assertBox(page, '.f-section--figma-services', { x: 0, y: 447, width: 1920, height: 918 }, 3, 'services.section');
+  await assertBox(page, '.f-service-grid', { x: 260, y: 447, width: 1400, height: 862 }, 4, 'services.grid');
+  await assertBox(page, '.f-service-card:nth-child(1) img', { x: 260, y: 447, width: 453, height: 224 }, 3, 'services.cardOneImage');
+  await assertBox(page, '.f-service-card:nth-child(1) h2', { x: 260, y: 693, width: 453, height: 32 }, 4, 'services.cardOneTitle');
+  await assertBox(page, '.f-service-card:nth-child(1) p', { x: 260, y: 734, width: 427, height: 125 }, 4, 'services.cardOneText');
+  await assertBox(page, '.f-service-card:nth-child(6) img', { x: 1210, y: 922, width: 453, height: 224 }, 4, 'services.cardSixImage');
+  await assertBox(page, '.page-template-template-services .f-section--contact', { x: 0, y: 1480, width: 1920, height: 483 }, 4, 'services.contactSection');
+  await assertBox(page, '.page-template-template-services .f-contact-cta', { x: 260, y: 1480, width: 1400, height: 455 }, 4, 'services.contactCta');
+  await assertFooterLayout(page, 'services', 1963);
+
+  await page.goto(`${baseUrl}/certifikaty/`, { waitUntil: 'load' });
+  await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 529 }, 3, 'certificates.heading');
+  await assertBox(page, '.f-heading__headline h1', { x: 260, y: 206, width: 896, height: 61 }, 4, 'certificates.title');
+  await assertBox(page, '.f-heading__description', { x: 260, y: 289, width: 910, height: 155 }, 4, 'certificates.description');
+  await assertBox(page, '.f-section--certificates', { x: 0, y: 529, width: 1920, height: 665 }, 4, 'certificates.section');
+  await assertBox(page, '.f-certificate-copy section:nth-child(1) h2', { x: 260, y: 568, width: 734, height: 51 }, 4, 'certificates.firstTitle');
+  await assertBox(page, '.f-certificate-copy section:nth-child(1) p', { x: 260, y: 635, width: 657, height: 116 }, 8, 'certificates.firstText');
+  await assertBox(page, '.f-certificate-copy section:nth-child(2) h2', { x: 260, y: 933, width: 734, height: 51 }, 4, 'certificates.secondTitle');
+  await assertBox(page, '.f-certificate-images img:nth-child(1)', { x: 1037, y: 529, width: 300, height: 300 }, 4, 'certificates.imageOne');
+  await assertBox(page, '.f-certificate-images img:nth-child(2)', { x: 1359, y: 529, width: 300, height: 300 }, 4, 'certificates.imageTwo');
+  await assertBox(page, '.f-certificate-images img:nth-child(3)', { x: 1037, y: 894, width: 300, height: 300 }, 4, 'certificates.imageThree');
+  await assertBox(page, '.page-template-template-certificates .f-contact-cta', { x: 260, y: 1320, width: 1400, height: 455 }, 4, 'certificates.contactCta');
+  await assertFooterLayout(page, 'certificates', 1803);
+
+  await page.goto(`${baseUrl}/zaruka/`, { waitUntil: 'load' });
+  await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 435 }, 3, 'warranty.heading');
+  await assertBox(page, '.f-heading__headline h1', { x: 260, y: 206, width: 896, height: 61 }, 4, 'warranty.title');
+  await assertBox(page, '.f-heading__description', { x: 260, y: 289, width: 910, height: 62 }, 4, 'warranty.description');
+  await assertBox(page, '.f-section--warranty-table', { x: 0, y: 435, width: 1920, height: 525 }, 4, 'warranty.section');
+  await assertBox(page, '.f-warranty-table', { x: 260, y: 652, width: 888, height: 283 }, 4, 'warranty.table');
+  await assertBox(page, '.f-warranty-layout > p', { x: 1223, y: 898, width: 368, height: 150 }, 4, 'warranty.note');
+  await assertBox(page, '.page-template-template-warranty .f-contact-cta', { x: 260, y: 1075, width: 1400, height: 455 }, 4, 'warranty.contactCta');
+  await assertFooterLayout(page, 'warranty', 1558);
+
+  await page.goto(`${baseUrl}/kolik-stoji-udrzba/`, { waitUntil: 'load' });
+  await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 581 }, 3, 'maintenance.heading');
+  await assertBox(page, '.f-heading__headline h1', { x: 497, y: 206, width: 922, height: 61 }, 4, 'maintenance.title');
+  await assertBox(page, '.f-heading__description', { x: 497, y: 289, width: 856, height: 217 }, 12, 'maintenance.description');
+  await assertBox(page, '.f-section--figma-article', { x: 0, y: 581, width: 1920, height: 2384 }, 4, 'maintenance.articleSection');
+  await assertBox(page, '.f-main--maintenance .f-figma-article', { x: 497, y: 581, width: 927, height: 2384 }, 4, 'maintenance.article');
+  await assertBox(page, '.f-main--maintenance .f-figma-article section:nth-of-type(1)', { x: 497, y: 581, width: 927, height: 1651 }, 4, 'maintenance.blockOne');
+  await assertBox(page, '.f-main--maintenance .f-figma-article section:nth-of-type(2)', { x: 497, y: 2272, width: 927, height: 246 }, 4, 'maintenance.blockTwo');
+  await assertBox(page, '.f-main--maintenance .f-figma-article section:nth-of-type(3)', { x: 497, y: 2558, width: 927, height: 171 }, 4, 'maintenance.blockThree');
+  await assertBox(page, '.f-main--maintenance .f-figma-article section:nth-of-type(4)', { x: 497, y: 2769, width: 927, height: 196 }, 4, 'maintenance.blockFour');
+  await assertBox(page, '.page-template-template-maintenance .f-contact-cta', { x: 260, y: 3070, width: 1400, height: 455 }, 4, 'maintenance.contactCta');
+  await assertFooterLayout(page, 'maintenance', 3553);
+
+  await page.goto(`${baseUrl}/vlastnosti/izolace-virivky/`, { waitUntil: 'load' });
+  await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 435 }, 3, 'featureDetail.heading');
+  await assertBox(page, '.f-heading__headline h1', { x: 497, y: 206, width: 896, height: 61 }, 4, 'featureDetail.title');
+  await assertBox(page, '.f-heading__description', { x: 497, y: 289, width: 856, height: 93 }, 4, 'featureDetail.description');
+  await assertBox(page, '.f-figma-article--feature-detail', { x: 497, y: 435, width: 927, height: 2295 }, 4, 'featureDetail.article');
+  await assertBox(page, '.f-figma-article__hero', { x: 497, y: 435, width: 927, height: 384 }, 4, 'featureDetail.heroImage');
+  await assertBox(page, '.f-figma-article--feature-detail section:nth-of-type(1)', { x: 497, y: 859, width: 927, height: 477 }, 4, 'featureDetail.blockOne');
+  await assertBox(page, '.f-figma-article__diagram', { x: 679.5, y: 1376, width: 562, height: 562 }, 4, 'featureDetail.diagram');
+  await assertBox(page, '.f-figma-article--feature-detail section:nth-of-type(2)', { x: 497, y: 2037, width: 927, height: 246 }, 4, 'featureDetail.blockTwo');
+  await assertBox(page, '.f-figma-article--feature-detail section:nth-of-type(3)', { x: 497, y: 2323, width: 927, height: 171 }, 4, 'featureDetail.blockThree');
+  await assertBox(page, '.f-figma-article--feature-detail section:nth-of-type(4)', { x: 497, y: 2534, width: 927, height: 196 }, 4, 'featureDetail.blockFour');
+  await assertBox(page, '.f-section--feature-related', { x: 0, y: 2840, width: 1920, height: 829 }, 4, 'featureDetail.relatedSection');
+  await assertBox(page, '.f-section--feature-related h2', { x: 497, y: 2840, width: 927, height: 51 }, 4, 'featureDetail.relatedTitle');
+  await assertBox(page, '.f-section--feature-related .f-figma-card-grid--features', { x: 260, y: 2921, width: 1400, height: 748 }, 4, 'featureDetail.relatedGrid');
+  await assertBox(page, '.page-template-template-feature-detail .f-contact-cta', { x: 260, y: 3750, width: 1400, height: 455 }, 4, 'featureDetail.contactCta');
+  await assertFooterLayout(page, 'featureDetail', 4233);
+  await assertSourceContains(page, '.f-figma-article__hero', 'uploads/import/legacy-categories/virivky.jpg', 'featureDetail.heroSource');
+  await assertSourceContains(page, '.f-figma-article__diagram', 'uploads/import/figma/feature-freeheat-diagram.png', 'featureDetail.diagramSource');
+}
+
+async function auditSupportDesktop(page) {
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.goto(`${baseUrl}/podpora/`, { waitUntil: 'load' });
+
+  await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 394 }, 3, 'support.heading');
+  await assertBox(page, '.f-heading__headline h1', { x: 260, y: 206, width: 896, height: 61 }, 4, 'support.title');
+  await assertBox(page, '.f-heading__description', { x: 260, y: 289, width: 910, height: 62 }, 4, 'support.description');
+  await assertBox(page, '.f-section--support-tabs', { x: 0, y: 394, width: 1920, height: 93 }, 3, 'support.tabsSection');
+  await assertBox(page, '.f-support-tabs', { x: 260, y: 394, width: 1400, height: 93 }, 3, 'support.tabs');
+  await assertBox(page, '.f-section--support-faq', { x: 0, y: 487, width: 1920, height: 1466 }, 4, 'support.faqSection');
+  await assertBox(page, '.f-section--support-faq h2', { x: 260, y: 568, width: 1045, height: 51 }, 4, 'support.faqTitle');
+  await assertBox(page, '.f-section--support-faq .f-chip-list', { x: 260, y: 642, width: 1045, height: 37 }, 4, 'support.faqChips');
+  await assertBox(page, '.f-support-accordion', { x: 260, y: 724, width: 1045, height: 1145 }, 8, 'support.faqAccordion');
+  await assertBox(page, '.f-support-faq-card:nth-child(1)', { x: 260, y: 724, width: 1045, height: 217 }, 8, 'support.faqCardOpen');
+  await assertBox(page, '.f-support-faq-card:nth-child(2)', { x: 260, y: 961, width: 1045, height: 96 }, 4, 'support.faqCardClosed');
+  await assertBox(page, '.f-support-help-card', { x: 1362, y: 556, width: 298, height: 341 }, 4, 'support.helpCard');
+  await assertBox(page, '.f-section--support-downloads', { x: 0, y: 1953, width: 1920, height: 987 }, 4, 'support.downloadsSection');
+  await assertBox(page, '.f-section--support-downloads h2', { x: 260, y: 1953, width: 1400, height: 51 }, 4, 'support.downloadsTitle');
+  await assertBox(page, '.f-section--support-downloads .f-chip-list', { x: 260, y: 2027, width: 1400, height: 37 }, 4, 'support.downloadsChips');
+  await assertBox(page, '.f-downloads--support-figma', { x: 260, y: 2109, width: 1045, height: 735 }, 8, 'support.downloadsList');
+  await assertBox(page, '.f-download-group:nth-child(1)', { x: 260, y: 2109, width: 1045, height: 503 }, 4, 'support.downloadGroupOpen');
+  await assertBox(page, '.f-download-card:nth-child(1)', { x: 344, y: 2202, width: 934, height: 118 }, 4, 'support.downloadCardOne');
+  await assertBox(page, '.f-section--support-form', { x: 0, y: 2940, width: 1920, height: 848 }, 4, 'support.formSection');
+  await assertBox(page, '.f-support-form', { x: 260, y: 2940, width: 1045, height: 848 }, 4, 'support.form');
+  await assertBox(page, '.f-support-form header p', { x: 260, y: 3001, width: 819, height: 75 }, 12, 'support.formIntro');
+  await assertBox(page, '.f-support-form__card', { x: 260, y: 3114, width: 1045, height: 674 }, 4, 'support.formCard');
+  await assertBox(page, '.f-support-form__card label:nth-of-type(1)', { x: 346, y: 3173, width: 893, height: 113 }, 4, 'support.formName');
+  await assertBox(page, '.f-support-form__card label:nth-of-type(4)', { x: 346, y: 3452, width: 893, height: 211 }, 4, 'support.formMessage');
+  await assertBox(page, '.f-support-form__card button', { x: 1053, y: 3668, width: 186, height: 50 }, 4, 'support.formButton');
+  await assertBox(page, '.page-template-template-support .f-section--contact', { x: 0, y: 3945, width: 1920, height: 483 }, 4, 'support.contactSection');
+  await assertBox(page, '.page-template-template-support .f-contact-cta', { x: 260, y: 3945, width: 1400, height: 455 }, 4, 'support.contactCta');
+  await assertFooterLayout(page, 'support', 4428);
+}
+
+async function auditReferenceDesktop(page) {
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.goto(`${baseUrl}/reference/`, { waitUntil: 'load' });
+
+  await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 312 }, 3, 'reference.heading');
+  await assertBox(page, '.f-heading__headline h1', { x: 260, y: 206, width: 896, height: 61 }, 4, 'reference.title');
+  await assertBox(page, '.f-section--references-figma', { x: 0, y: 312, width: 1920, height: 1016 }, 4, 'reference.section');
+  await assertBox(page, '.f-reference-grid', { x: 260, y: 312, width: 1400, height: 1016 }, 4, 'reference.grid');
+  await assertBox(page, '.f-reference-card:nth-child(1)', { x: 260, y: 312, width: 438, height: 320 }, 4, 'reference.cardOne');
+  await assertBox(page, '.f-reference-card:nth-child(4)', { x: 260, y: 660, width: 438, height: 320 }, 4, 'reference.cardFour');
+  await assertBox(page, '.f-reference-card:nth-child(9)', { x: 1226, y: 1008, width: 438, height: 320 }, 4, 'reference.cardNine');
+  await assertBox(page, '.page-template-template-references .f-section--contact', { x: 0, y: 1411, width: 1920, height: 483 }, 4, 'reference.contactSection');
+  await assertBox(page, '.page-template-template-references .f-contact-cta', { x: 260, y: 1411, width: 1400, height: 455 }, 4, 'reference.contactCta');
+  await assertFooterLayout(page, 'reference', 1894);
+}
+
+async function auditAboutDesktop(page) {
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.goto(`${baseUrl}/o-nas/`, { waitUntil: 'load' });
+
+  await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 441 }, 3, 'about.heading');
+  await assertBox(page, '.f-heading__headline h1', { x: 260, y: 206, width: 896, height: 61 }, 4, 'about.title');
+  await assertBox(page, '.f-heading__description', { x: 260, y: 289, width: 910, height: 62 }, 4, 'about.description');
+  await assertBox(page, '.f-main--about-figma', { x: 0, y: 441, width: 1920, height: 2772 }, 4, 'about.main');
+  await assertBox(page, '.f-about-figma__intro h2', { x: 260, y: 591, width: 815, height: 51 }, 4, 'about.introTitle');
+  await assertBox(page, '.f-about-figma__stats', { x: 260, y: 1122, width: 1040, height: 119 }, 4, 'about.stats');
+  await assertBox(page, '.f-about-figma__stats > div:nth-child(1) strong', { x: 260, y: 1122, width: 171, height: 51 }, 4, 'about.statOneValue');
+  await assertBox(page, '.f-about-figma__stats > div:nth-child(2) strong', { x: 614, y: 1122, width: 337, height: 51 }, 4, 'about.statTwoValue');
+  await assertBox(page, '.f-about-figma__stats > div:nth-child(3) strong', { x: 1207, y: 1122, width: 79, height: 51 }, 4, 'about.statThreeValue');
+  await assertBox(page, '.f-about-figma__team-copy h2', { x: 260, y: 1375, width: 815, height: 51 }, 4, 'about.teamTitle');
+  await assertBox(page, '.f-about-figma__team', { x: 260, y: 1658, width: 1407, height: 461.2 }, 8, 'about.teamGrid');
+  await assertBox(page, '.f-about-person:nth-child(1) img', { x: 260, y: 1658, width: 336, height: 335 }, 4, 'about.teamImageOne');
+  await assertBox(page, '.f-about-person:nth-child(4) img', { x: 1331, y: 1658, width: 336, height: 335 }, 8, 'about.teamImageFour');
+  await assertBox(page, '.f-about-figma__career h2', { x: 260, y: 2278, width: 815, height: 51 }, 4, 'about.careerTitle');
+  await assertBox(page, '.f-about-figma__jobs', { x: 260, y: 2457, width: 1401, height: 758 }, 4, 'about.jobs');
+  await assertBox(page, '.f-about-job:nth-child(1)', { x: 260, y: 2457, width: 1401, height: 526 }, 4, 'about.jobOpen');
+  await assertBox(page, '.f-about-job:nth-child(2)', { x: 260, y: 3003, width: 1401, height: 96 }, 4, 'about.jobClosed');
+  await assertBox(page, '.page-template-template-about .f-section--contact', { x: 0, y: 3328, width: 1920, height: 483 }, 4, 'about.contactSection');
+  await assertBox(page, '.page-template-template-about .f-contact-cta', { x: 260, y: 3328, width: 1400, height: 455 }, 4, 'about.contactCta');
+  await assertFooterLayout(page, 'about', 3811);
+}
+
+async function auditServiceRequestDesktop(page) {
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.goto(`${baseUrl}/servis/`, { waitUntil: 'load' });
+
+  await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 519 }, 3, 'serviceRequest.heading');
+  await assertBox(page, '.f-heading__headline h1', { x: 497, y: 206, width: 922, height: 122 }, 4, 'serviceRequest.title');
+  await assertBox(page, '.f-heading__description', { x: 497, y: 288, width: 856, height: 186 }, 4, 'serviceRequest.description');
+  await assertBox(page, '.f-section--service-request', { x: 0, y: 519, width: 1920, height: 928 }, 4, 'serviceRequest.section');
+  await assertBox(page, '.f-service-request__form', { x: 497, y: 519, width: 926, height: 674 }, 4, 'serviceRequest.formCard');
+  await assertBox(page, '.f-service-request__form form', { x: 583, y: 578, width: 766, height: 615 }, 8, 'serviceRequest.form');
+  await assertBox(page, '.f-service-request__form :is(input, textarea)', { x: 583, y: 617.3, width: 766, height: 50 }, 8, 'serviceRequest.firstInput');
+  await assertBox(page, '.f-service-request__form textarea', { x: 583, y: 927, width: 766, height: 146 }, 8, 'serviceRequest.message');
+  await assertBox(page, '.f-service-request__form .f-form__note', { x: 583, y: 1083, width: 437, height: 25 }, 4, 'serviceRequest.consent');
+  await assertBox(page, '.f-service-request__form .f-form--submit', { x: 1167, y: 1071, width: 186, height: 50 }, 4, 'serviceRequest.submit');
+  await assertBox(page, '.f-service-request__pricing--warranty h2', { x: 497, y: 1262, width: 402, height: 51 }, 4, 'serviceRequest.warrantyTitle');
+  await assertBox(page, '.f-service-request__pricing--warranty p, .f-service-request__pricing--warranty ul', { x: 497, y: 1335, width: 402, height: 87 }, 8, 'serviceRequest.warrantyText');
+  await assertBox(page, '.f-service-request__pricing--paid h2', { x: 969, y: 1262, width: 676, height: 51 }, 4, 'serviceRequest.paidTitle');
+  await assertBox(page, '.f-service-request__pricing--paid p, .f-service-request__pricing--paid ul', { x: 969, y: 1335, width: 676, height: 116 }, 8, 'serviceRequest.paidText');
+  await assertBox(page, '.page-template-template-service-request .f-section--contact', { x: 0, y: 1552, width: 1920, height: 483 }, 4, 'serviceRequest.contactSection');
+  await assertBox(page, '.page-template-template-service-request .f-contact-cta', { x: 260, y: 1552, width: 1400, height: 455 }, 4, 'serviceRequest.contactCta');
+  await assertFooterLayout(page, 'serviceRequest', 2035);
 }
 
 async function auditContactDesktop(page) {
@@ -606,6 +891,7 @@ async function auditSharedFooterDesktop(page) {
     '/showroom/',
     '/reference/',
     '/o-nas/',
+    '/servis/',
     '/sluzby/',
     '/vlastnosti/',
     '/certifikaty/',
@@ -630,7 +916,15 @@ async function auditSharedFooterDesktop(page) {
     await auditDesktopHeaderStates(page);
     await auditFigmaSources(page);
     await auditCatalogHotTubsDesktop(page);
+    await auditCatalogSwimspaDesktop(page);
     await auditTimberwolfDesktop(page);
+    await auditBenefitPopupDesktop(page);
+    await auditShowroomDesktop(page);
+    await auditFigmaInfoPagesDesktop(page);
+    await auditSupportDesktop(page);
+    await auditReferenceDesktop(page);
+    await auditAboutDesktop(page);
+    await auditServiceRequestDesktop(page);
     await auditContactDesktop(page);
     await auditSharedFooterDesktop(page);
     console.log('Figma visual audit passed.');

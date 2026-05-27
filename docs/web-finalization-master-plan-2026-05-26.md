@@ -322,6 +322,8 @@ Current Phase 5 status:
 - `docs/visual-signoff-phase-5-2026-05-26.md` remains valid only as evidence for responsive/zoom resilience.
 - The active frame-by-frame tracker is `docs/phase-5-figma-frame-by-frame-tracker-2026-05-26.md`.
 - Header search and desktop product mega menu states from Figma are now implemented and covered by `npm run figma:audit`.
+- Additional desktop frame geometry is now covered for Swimspa category, showroom, product popup, info pages, support, references, about, and service. This is automated evidence, not final client sign-off.
+- Still open before Phase 5 can close: final screenshot pack, full mobile homepage/menu review, laptop/120% zoom visual review, `DALSI INFORMACE` route decision, popup/contact-modal scope decision, and product variant spot-checks.
 - Final owner/client approval is still required before production release.
 
 ## Phase 6 - Release readiness and deployment (P0, 1 day)
