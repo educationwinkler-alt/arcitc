@@ -20,6 +20,7 @@ Current rule:
 | Header default | `Arctic Spas grafika`, component set `1:1831`, variant `1:1832` | Existing desktop header retained and kept above menu overlay | `npm run figma:audit` |
 | Header search state | `1:1855` `hledani` | Search opens as a header-shaped Figma panel with logo, 409x44 search field, CTA button, and correct placeholder | `desktopHeaderSearch` audit |
 | Header desktop menu state | `1:1868` `menu` | Product mega menu for `Virivky` and `Celorocni bazeny`, with product columns, round thumbnails, separators, and promo card | `desktopHeaderMega` audit |
+| Header desktop menu real viewport | `1:1868` `menu` + laptop/120%-like viewport | Mega menu panel now uses the dark Figma styling, keeps the inner promo CTA visible, and hides the homepage promo behind the open menu at 1586x756 effective viewport | `desktopHeaderRealViewport` audit |
 | Mobile menu search placement | `GM - HP menu` `1:2208` | Compact menu places search at 323x44 around y=527 on 375px viewport | Manual/spot check, needs fuller screenshot sign-off |
 | Swimspa category desktop | `KATEGORIE` `1:262` applied to `/swimspa/` | Swimspa category now renders the same Figma intro, series nav, showroom anchor, references, CTA, and footer pattern as hot tubs | `swimspaCatalog` audit |
 | Showroom page desktop | `SHOWROOM` `1:442` | Dedicated showroom route and Figma section geometry are audited | `showroom` audit |
@@ -68,6 +69,11 @@ Current rule:
 
 Passed after the corrective frame-by-frame implementation:
 - `npm run css:build`
+- `npm run figma:audit`
+- `npm run visual:smoke`
+- `npm run qa:local`
+
+Passed after the real viewport mega menu correction:
 - `npm run figma:audit`
 - `npm run visual:smoke`
 - `npm run qa:local`

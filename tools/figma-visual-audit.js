@@ -327,6 +327,26 @@ async function auditDesktopHeaderStates(page) {
   }
 }
 
+async function auditDesktopHeaderRealViewport(page) {
+  await page.setViewportSize({ width: 1586, height: 756 });
+  await page.goto(baseUrl, { waitUntil: 'load' });
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(300);
+
+  const hotTubTrigger = await box(page, '.f-navigation__list > .arctic-menu-products:nth-child(1) > a', 'desktopHeaderRealViewport.hotTubsTrigger');
+  await page.mouse.move(hotTubTrigger.x + (hotTubTrigger.width / 2), hotTubTrigger.y + (hotTubTrigger.height / 2));
+  await page.waitForTimeout(250);
+
+  await assertBox(page, '.f-mega-menu--hot-tubs', { x: 118, y: 38, width: 1350, height: 500 }, 4, 'desktopHeaderRealViewport.hotTubs');
+  await assertBox(page, '.f-mega-menu--hot-tubs .f-mega-menu__grid', { x: 178, y: 156, width: 1230, height: 409.2 }, 6, 'desktopHeaderRealViewport.grid');
+  await assertBox(page, '.f-mega-menu--hot-tubs .f-mega-menu__column:nth-child(3) .f-mega-menu__product:nth-child(6)', { x: 782, y: 487.2, width: 310, height: 38 }, 8, 'desktopHeaderRealViewport.lastCustomVisible');
+  await assertComputedStyle(page, '.f-mega-menu--hot-tubs', 'background-color', 'rgb(35, 40, 47)', 'desktopHeaderRealViewport.panelBackground');
+  await assertComputedStyle(page, '.f-mega-menu--hot-tubs .f-mega-menu__promo span', 'background-color', 'rgb(248, 137, 68)', 'desktopHeaderRealViewport.promoButtonBackground');
+  await assertComputedStyle(page, '.template--homepage .f-section--slides > .f-hero-promo', 'visibility', 'hidden', 'desktopHeaderRealViewport.homePromoHidden');
+  await assertComputedStyle(page, '.template--homepage .f-section--slides > .f-hero-promo', 'opacity', '0', 'desktopHeaderRealViewport.homePromoTransparent');
+  await assertNoHorizontalOverflow(page, 'desktopHeaderRealViewport');
+}
+
 async function assertFooterLayout(page, label, expectedY = null) {
   const footer = await box(page, '.f-footer--arctic', `${label}.footer`);
   assertClose(footer.x, 0, 2, `${label}.footer.x`);
@@ -914,6 +934,7 @@ async function auditSharedFooterDesktop(page) {
     await auditResponsiveShell(page);
     await auditCompactNavigation(page);
     await auditDesktopHeaderStates(page);
+    await auditDesktopHeaderRealViewport(page);
     await auditFigmaSources(page);
     await auditCatalogHotTubsDesktop(page);
     await auditCatalogSwimspaDesktop(page);

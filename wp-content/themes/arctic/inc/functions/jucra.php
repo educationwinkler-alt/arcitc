@@ -235,7 +235,7 @@ if ( !function_exists( 'arctic_jucra_get_pricing_url' ) ) {
 if ( !function_exists( 'arctic_jucra_filter_sale_menu_items' ) ) {
 
 	/**
-	 * Keep "sale" menu item homepage-only and rename to "Akcni nabidka".
+	 * Keep the sale menu item homepage-only and rename it to the approved promo label.
 	 *
 	 * @param array    $sorted_menu_items
 	 * @param stdClass $args
@@ -260,7 +260,7 @@ if ( !function_exists( 'arctic_jucra_filter_sale_menu_items' ) ) {
 			}
 
 			if ( $is_root_homepage ) {
-				$item->title               = 'Akcni nabidka';
+				$item->title               = 'Akční nabídka';
 				$sorted_menu_items[$index] = $item;
 			} else {
 				unset( $sorted_menu_items[$index] );

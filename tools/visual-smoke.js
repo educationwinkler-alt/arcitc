@@ -138,8 +138,13 @@ const forbiddenBrand = [
   'Baspa',
 ];
 
-const homepagePromoText = 'Akcni nabidka skladovych virivek';
-const legacyPromoText = 'Vyprodej skladovych virivek';
+const homepagePromoText = 'Akční nabídka skladových vířivek';
+const legacyPromoTexts = [
+  'Vyprodej skladovych virivek',
+  'Výprodej skladových vířivek',
+  'Výprodej vířivek',
+  'Výprodej bazénů',
+];
 
 function isAllowedLegalEntity(path, html) {
   return path === '/kontakt/' && html.includes('BASPA s.r.o.');
@@ -176,6 +181,10 @@ function isAllowedLegalEntity(path, html) {
       if (mojibakeHits.length) {
         hits.push(...mojibakeHits.map((needle) => `mojibake U+${needle.charCodeAt(0).toString(16).toUpperCase()}`));
       }
+      const legacyPromoHits = legacyPromoTexts.filter((text) => html.includes(text));
+      if (legacyPromoHits.length) {
+        hits.push(...legacyPromoHits);
+      }
       if (hits.length) {
         throw new Error(`${path} contains forbidden strings: ${hits.join(', ')}`);
       }
@@ -189,9 +198,6 @@ function isAllowedLegalEntity(path, html) {
           throw new Error(`Homepage promo text mismatch. Expected: ${homepagePromoText}`);
         }
 
-        if (html.includes(legacyPromoText)) {
-          throw new Error(`Homepage still contains legacy promo text: ${legacyPromoText}`);
-        }
       } else if (hasHeroPromo) {
         throw new Error(`${path} should not render the hero promo component outside homepage (resolved to ${resolvedPathname}).`);
       }

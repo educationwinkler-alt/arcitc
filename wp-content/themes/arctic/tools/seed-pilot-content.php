@@ -1336,7 +1336,6 @@ arctic_seed_menu( 'Arctic hlavni navigace', 'navigation', array(
 		'classes'  => array( 'arctic-menu-products' ),
 		'children' => array(
 			array( 'title' => 'Vybrat podle parametrů', 'url' => $hot_tubs_url ),
-			array( 'title' => 'Výprodej vířivek', 'url' => $hot_tubs_url . '#vyprodej' ),
 			array( 'title' => 'Série Core', 'url' => $hot_tubs_url . '#serie-core' ),
 			array( 'title' => 'Série Classic', 'url' => $hot_tubs_url . '#serie-classic' ),
 			array( 'title' => 'Série Custom', 'url' => $hot_tubs_url . '#serie-custom' ),
@@ -1348,7 +1347,6 @@ arctic_seed_menu( 'Arctic hlavni navigace', 'navigation', array(
 		'classes'  => array( 'arctic-menu-products' ),
 		'children' => array(
 			array( 'title' => 'Vybrat podle parametrů', 'url' => $swimspa_url ),
-			array( 'title' => 'Výprodej bazénů', 'url' => $swimspa_url . '#vyprodej' ),
 			array( 'title' => 'Série Core', 'url' => $swimspa_url . '#serie-core' ),
 			array( 'title' => 'Série Classic', 'url' => $swimspa_url . '#serie-classic' ),
 		),

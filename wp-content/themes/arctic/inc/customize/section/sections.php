@@ -104,8 +104,8 @@ if ( !function_exists( 'arctic_customize_settings_add_sections' ) ) {
 
 		$settings = array(
 			'arctic_home_promo_enabled'         => array( 1, 'absint' ),
-			'arctic_home_promo_title'           => array( 'Akcni nabidka skladovych virivek', 'sanitize_text_field' ),
-			'arctic_home_promo_button_text'     => array( 'Zobrazit nabidku', 'sanitize_text_field' ),
+			'arctic_home_promo_title'           => array( 'Akční nabídka skladových vířivek', 'sanitize_text_field' ),
+			'arctic_home_promo_button_text'     => array( 'Zobrazit nabídku', 'sanitize_text_field' ),
 			'arctic_home_promo_url'             => array( '/virivky/', 'arctic_sections_sanitize_url_path' ),
 			'arctic_configurator_title'         => array( 'Nakonfigurujte si vlastni virivku', 'sanitize_text_field' ),
 			'arctic_configurator_text'          => array( 'Vyberte si model, vybavu a barvy. Pripravime vam konkretni doporuceni i cenovou nabidku.', 'wp_kses_post' ),
