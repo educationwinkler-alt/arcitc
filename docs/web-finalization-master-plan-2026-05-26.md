@@ -351,6 +351,44 @@ Current Phase 5 status:
 - Still open before Phase 5 can close: final screenshot pack, full mobile homepage/menu review, laptop/120% zoom visual review, zoom-out white-gutter review, Windows 175% scaling review, unified full-bleed/container width review, footer layout integrity, mega menu hover stability, homepage hero/category boundary spacing, `DALSI INFORMACE` route decision, popup/contact-modal scope decision, product variant spot-checks, product detail responsive parity, and product/category image source-quality audit.
 - Final owner/client approval is still required before production release.
 
+## Phase 5A - Compact laptop / Windows 175% scaling (P0, 0.5-1 day)
+Goal: make `1920x1080` Windows display scaling at `175%` with Chrome at `100%` behave as a first-class release viewport, not an accidental mix of desktop and mobile rules.
+
+Observed issue (2026-05-27):
+- Windows `175%` scaling on a `1920x1080` display creates an effective viewport around `1097x617` CSS pixels.
+- The current responsive system does not define a coherent scaling layer for `1024-1279px`.
+- `--arctic-desktop-scale` starts at `1280px`, while mobile/card rules start below `1024px`.
+- The `1024-1279px` band can therefore inherit a mixed layout: oversized hero, visible promo card competing with hero content, and category cards using rules that were not designed as a complete compact-laptop composition.
+
+Implementation:
+1. Add an explicit `1024-1279px` compact laptop scaling layer.
+2. Define shared compact variables first, before component-specific fixes:
+   - `--arctic-compact-scale`
+   - `--arctic-hero-height`
+   - `--arctic-container-width`
+   - `--arctic-section-gap`
+3. Reconnect homepage hero, promo card, product category cards, header spacing, and hero/category boundary to these shared variables.
+4. Decide the compact promo behavior:
+   - either hide the homepage promo card in this range
+   - or render it as a smaller non-overlapping compact variant outside the main hero composition
+5. Ensure category cards at `1024-1279px` use a deliberate compact layout, not leftover desktop/mobile rules.
+6. Extend automated visual audit for at least `1097x617`:
+   - hero height is bounded for the visible viewport
+   - promo card does not collide with hero content or categories
+   - category cards do not overflow, clip, or collapse visually
+   - hero/category boundary has intentional spacing
+   - no horizontal overflow
+7. Add manual screenshot sign-off for physical or equivalent test:
+   - Windows `1920x1080`
+   - display scaling `175%`
+   - Chrome zoom `100%`
+
+Exit criteria:
+- Homepage at effective `1097x617` CSS viewport is visually usable and intentionally composed.
+- The `1024-1279px` band has one coherent compact-laptop scaling model.
+- Automated audit covers the compact laptop geometry and interaction risks.
+- Manual Windows `175%` scaling screenshot is accepted.
+
 ## Phase 6 - Release readiness and deployment (P0, 1 day)
 1. Staging deploy + smoke suite + manual business walk-through.
 2. Production deploy window.
