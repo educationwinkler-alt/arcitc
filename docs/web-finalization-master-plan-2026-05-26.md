@@ -104,6 +104,9 @@ Open concern:
 11. Legacy Arctic product/category imagery needs a source-quality audit so cards and hero images do not use low-resolution thumbnails where larger originals exist.
 12. Footer and homepage section backgrounds expose white side gutters at scaled/zoomed states; this is a real layout bug, not a cache issue.
 13. The site needs a unified full-bleed/background/container width system so sections do not drift apart at zoom-out, zoom-in, or Windows display scaling.
+14. Product submenu automation is only partial: desktop mega menu in `templates/navigation/mega.php` still uses hardcoded category/series slugs and fixed item caps (`6` per hot-tub series, `18` swimspa total), so new/deleted products are not guaranteed to stay visible without manual curation.
+15. Conversion UI parity is not closed: the communicator/chat widget and the "NezĂˇvaznĂˇ konzultace" menu/off-contact modal are visually off-brand (layout + colors) versus Arctic Figma wireframe/grafika and must be normalized.
+16. Site identity/favicon parity is not fully deterministic across environments: WordPress DB `site_icon` can override theme fallback, so Baspa icon can reappear after DB import unless migration/seed enforces Arctic icon assignment.
 
 ## 3) New complete plan to finish the website
 
@@ -375,6 +378,9 @@ Execution sequence:
 5. PR4 `map/location parity`
 6. PR5 `image quality pass`
 7. PR6 `QA hardening + Phase 5C manual sign-off`
+8. PR6D `site identity/favicon DB hardening`
+9. PR6C `conversion UI parity (communicator + consultation CTA/modal)`
+10. PR6B `products <-> submenu automation hardening`
 
 Task board checklist + DoD:
 - [x] PR0 IA decision + docs sync
@@ -402,6 +408,22 @@ Task board checklist + DoD:
   - Scope: add missing automated checks (reference archive radius, product reference radius, contact buttons, showroom button, image natural-size checks) and complete manual page-by-page sign-off.
   - DoD: all known Phase 5B mismatches are covered by automated checks and final manual sign-off records.
   - Verification (2026-05-28): `tools/figma-visual-audit.js` now asserts reference archive/product reference radii, contact/showroom button radii, and critical image upscale limits (`<= 1.25x`); `npm run figma:audit` and full `npm run qa:local` passed; manual records stored in `docs/phase-5c-manual-signoff-2026-05-28.md`.
+- [x] PR6B products <-> submenu automation hardening
+  - Scope: remove hardcoded dependency in `templates/navigation/mega.php` (`virivky`/`swimspa` + fixed `core/classic/custom` columns + fixed caps `6` and `18`) and replace it with taxonomy-driven menu assembly and overflow handling rules.
+  - Implementation note: taxonomy-driven assembly must not introduce heavy uncached DB work on every page load; add caching/invalidation strategy and define deterministic visual behavior for asymmetrical series sizes.
+  - DoD: adding/deleting a product in WP admin with correct `product-category`/`product-series` assignment is reflected in desktop mega submenu without code edits; overflow behavior is deterministic and documented; empty series do not leave broken/empty columns; query/caching behavior is documented with explicit invalidation triggers.
+  - Verification (2026-05-28): `inc/mega-menu.php` now builds desktop mega panels from taxonomy/page metadata (no hardcoded series/category slugs in template), cache is stored via transient with invalidation on product + term mutations, and targeted Playwright smoke confirms 3 populated hot-tub columns after render.
+- [x] PR6C conversion UI parity (communicator + consultation CTA/modal)
+  - Scope: align communicator/chat widget visual skin and "Nezávazná konzultace" CTA + off-contact modal (`.f-off--contact`) to Arctic Figma (tokens, spacing, radii, typography, icon treatment, overlay layering, close button placement, and mobile behavior).
+  - Implementation note: communicator runtime is third-party (`Smartsupp`) and currently production-gated by `arctic_smartsupp_key`; use provider theming/API where available and keep a deterministic fallback wrapper style for unsupported widget internals.
+  - DoD: communicator appears in approved Arctic palette and does not clash with hero/header/footer; menu CTA and modal are compositionally stable (no broken geometry/overflow) and match Figma intent on desktop + mobile; local QA can validate style state without requiring live production chat traffic.
+  - Verification (2026-05-28): consultation CTA now uses shared `f-button--consultation` contract; contact modal skin is normalized in `_component-contracts.less`; Smartsupp runtime now receives Arctic brand config (`color`, offsets, privacy URL) in production script bootstrap; targeted Playwright smoke validates CTA/modal color + radius.
+
+- [x] PR6D site identity/favicon DB hardening
+  - Scope: make Arctic favicon deterministic in local/stage/prod by enforcing `site_icon` assignment during seed/migration/import and keeping theme fallback as safety net.
+  - Implementation note: no manual admin setup required from owner/client; implementation must include scripted DB update path and environment-safe asset resolution.
+  - DoD: after fresh DB import, browser tab icon resolves to Arctic without manual Customizer action; `site_icon` points to Arctic media attachment and does not regress to Baspa after subsequent imports.
+  - Verification (2026-05-28): `tools/seed-pilot-content.php` now sets `site_icon` to seeded Arctic favicon attachment; `inc/site-icon.php` enforces/repairs `site_icon` attachment and keeps local URL fallback; `npm run local:safety` now asserts Arctic `site_icon` option + asset marker, and targeted Playwright smoke verifies homepage favicon URL resolves to Arctic asset.
 
 ## Phase 5A - Compact laptop / Windows 175% scaling (P0, 0.5-1 day)
 Goal: make `1920x1080` Windows display scaling at `175%` with Chrome at `100%` behave as a first-class release viewport, not an accidental mix of desktop and mobile rules.
@@ -421,7 +443,7 @@ Current status (2026-05-27):
 - The `768-1023px` docked-DevTools / narrow-browser band now has a deliberate full-width hero and two-column category layout instead of inheriting the 375px mobile composition.
 - Mobile no longer reserves the old promo-height gap under the hero.
 - Desktop hero/category boundary now verifies that the inner slider/background height cannot extend under the category cards.
-- Footer parity audit now requires the Lukáš Dušek photo avatar, `BASPA s.r.o.` copyright text, no bottom-line wrapping regression, and no eboost credit.
+- Footer parity audit now requires the LukĂˇĹˇ DuĹˇek photo avatar, `BASPA s.r.o.` copyright text, no bottom-line wrapping regression, and no eboost credit.
 - Automated coverage now checks `904x617`, `1023x617`, `1024x617`, `1097x617`, `1279x720`, and desktop promo boundary behavior at `1280px` and `1366px`.
 - Local screenshot evidence was captured at `docs/screenshots/phase-5a-homepage-904x617-2026-05-27.png`, `docs/screenshots/phase-5a-homepage-1097x617-2026-05-27.png`, and `docs/screenshots/phase-5a-footer-element-1920-2026-05-27.png`.
 - Remaining validation before Phase 5 final close: owner/client acceptance of physical or equivalent Windows `1920x1080`, display scaling `175%`, Chrome `100%` screenshot sign-off.

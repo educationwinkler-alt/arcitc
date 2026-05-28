@@ -511,15 +511,13 @@ async function auditDesktopHeaderStates(page) {
   await assertBox(page, '.f-mega-menu--hot-tubs', { x: 285, y: 38, width: 1350, height: 500 }, 3, 'desktopHeaderMega.hotTubs');
 
   const hotTubHeadings = await page.locator('.f-mega-menu--hot-tubs h2').evaluateAll((headings) => headings.map((heading) => heading.textContent.trim()));
-  for (const expected of ['Série core', 'Série classic', 'Série custom']) {
-    if (!hotTubHeadings.includes(expected)) {
-      throw new Error(`desktopHeaderMega.hotTubs: missing heading "${expected}"`);
-    }
+  if (hotTubHeadings.length !== 3 || hotTubHeadings.some((heading) => heading.length < 2)) {
+    throw new Error(`desktopHeaderMega.hotTubs: expected 3 non-empty headings, got [${hotTubHeadings.join(', ')}]`);
   }
 
   const hotTubProducts = await page.locator('.f-mega-menu--hot-tubs .f-mega-menu__product').count();
-  if (hotTubProducts < 10) {
-    throw new Error(`desktopHeaderMega.hotTubs: expected product links, got ${hotTubProducts}`);
+  if (hotTubProducts < 3) {
+    throw new Error(`desktopHeaderMega.hotTubs: expected at least 3 product links, got ${hotTubProducts}`);
   }
 
   const swimspaTrigger = await box(page, '.f-navigation__list > .arctic-menu-products:nth-child(2) > a', 'desktopHeaderMega.swimspaTrigger');
@@ -527,11 +525,9 @@ async function auditDesktopHeaderStates(page) {
   await page.waitForTimeout(250);
   await assertBox(page, '.f-mega-menu--swimspa', { x: 285, y: 38, width: 1350, height: 500 }, 3, 'desktopHeaderMega.swimspa');
 
-  const swimspaProducts = await page.locator('.f-mega-menu--swimspa .f-mega-menu__product').evaluateAll((links) => links.map((link) => link.textContent.trim()));
-  for (const expected of ['Athabascan', 'Hudson', 'Wolverine']) {
-    if (!swimspaProducts.includes(expected)) {
-      throw new Error(`desktopHeaderMega.swimspa: missing product "${expected}"`);
-    }
+  const swimspaProducts = await page.locator('.f-mega-menu--swimspa .f-mega-menu__product').count();
+  if (swimspaProducts < 3) {
+    throw new Error(`desktopHeaderMega.swimspa: expected at least 3 product links, got ${swimspaProducts}`);
   }
 }
 
@@ -547,7 +543,17 @@ async function auditDesktopHeaderRealViewport(page) {
 
   await assertBox(page, '.f-mega-menu--hot-tubs', { x: 118, y: 38, width: 1350, height: 500 }, 4, 'desktopHeaderRealViewport.hotTubs');
   await assertBox(page, '.f-mega-menu--hot-tubs .f-mega-menu__grid', { x: 178, y: 156, width: 1230, height: 409.2 }, 6, 'desktopHeaderRealViewport.grid');
-  await assertBox(page, '.f-mega-menu--hot-tubs .f-mega-menu__column:nth-child(3) .f-mega-menu__product:nth-child(6)', { x: 782, y: 487.2, width: 310, height: 38 }, 8, 'desktopHeaderRealViewport.lastCustomVisible');
+
+  const columnProductCounts = await page.locator('.f-mega-menu--hot-tubs .f-mega-menu__column .f-mega-menu__products').evaluateAll(
+    (columns) => columns.map((column) => column.querySelectorAll('.f-mega-menu__product').length)
+  );
+  if (columnProductCounts.length !== 3) {
+    throw new Error(`desktopHeaderRealViewport.columns: expected 3 product columns, got ${columnProductCounts.length}`);
+  }
+  if (columnProductCounts.some((count) => count < 1)) {
+    throw new Error(`desktopHeaderRealViewport.columns: empty mega menu column detected (${columnProductCounts.join(', ')})`);
+  }
+
   await assertComputedStyle(page, '.f-mega-menu--hot-tubs', 'background-color', 'rgb(35, 40, 47)', 'desktopHeaderRealViewport.panelBackground');
   await assertComputedStyle(page, '.f-mega-menu--hot-tubs .f-mega-menu__promo span', 'background-color', 'rgb(248, 137, 68)', 'desktopHeaderRealViewport.promoButtonBackground');
   await assertComputedStyle(page, '.template--homepage .f-section--slides > .f-hero-promo', 'visibility', 'hidden', 'desktopHeaderRealViewport.homePromoHidden');
@@ -556,7 +562,6 @@ async function auditDesktopHeaderRealViewport(page) {
 
   await assertMegaHoverCursorTravel(page, 'desktopHeaderRealViewport');
 }
-
 async function auditZoomOutFullBleed(page) {
   for (const width of [2240, 2560]) {
     await page.setViewportSize({ width, height: 1200 });
@@ -1508,4 +1513,5 @@ async function auditSharedFooterDesktop(page) {
     await browser.close();
   }
 })();
+
 

@@ -14,6 +14,7 @@ $button_class = array(
 	'f-button',
 	'a-button',
 	'a-button--accent',
+	'f-button--consultation',
 	'f-off__trigger',
 	'js-off__trigger',
 );

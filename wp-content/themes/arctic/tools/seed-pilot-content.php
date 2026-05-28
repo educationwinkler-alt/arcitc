@@ -347,6 +347,13 @@ $ikono_main   = arctic_seed_attachment( 'other-venkovni-nabytek-ikono', 'uploads
 $accessory_main = arctic_seed_attachment( 'other-doplnky-cedr', 'uploads/import/other-sortiment/doplnky-cedr.jpg', 'Cedrové doplňky', 'Cedrové doplňky k vířivkám' );
 $cold_plunge_main = arctic_seed_attachment( 'other-ochlazovaci-bazenek', 'uploads/import/other-sortiment/ochlazovaci-bazenek.jpg', 'Ochlazovací bazének', 'Ochlazovací bazének pro domácí wellness' );
 $prep_pdf     = arctic_seed_attachment( 'stavebni-pripravenost-pdf', 'uploads/import/stavebni-pripravenost.pdf', 'Stavební připravenost Arctic Spas' );
+$site_icon_attachment = arctic_seed_attachment(
+	'arctic-site-icon',
+	'themes/arctic/images/icon.png',
+	'Arctic Spas favicon',
+	'Arctic Spas favicon'
+);
+update_post_meta( $site_icon_attachment, '_arctic_site_icon_asset', '1' );
 
 foreach ( array(
 	$sauna_main       => 'media-other-sauna-luxus-1',
@@ -1317,6 +1324,7 @@ set_theme_mod( 'baspa_zip', '664 48' );
 set_theme_mod( 'baspa_city', 'Moravany u Brna' );
 set_theme_mod( 'baspa_map', '' );
 set_theme_mod( 'arctic_map_embed', '' );
+update_option( 'site_icon', $site_icon_attachment );
 
 update_option( 'show_on_front', 'page' );
 update_option( 'page_on_front', $home_id );

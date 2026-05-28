@@ -51,6 +51,10 @@ require_once get_theme_file_path( 'inc/updates.php' );
 require_once get_theme_file_path( 'inc/admin.php' );
 // Styles
 require_once get_theme_file_path( 'inc/styles.php' );
+// Site Icon
+require_once get_theme_file_path( 'inc/site-icon.php' );
+// Mega Menu
+require_once get_theme_file_path( 'inc/mega-menu.php' );
 // Scripts
 require_once get_theme_file_path( 'inc/scripts.php' );
 // SEO

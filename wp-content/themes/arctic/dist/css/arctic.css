@@ -9566,6 +9566,10 @@ body:not(.template--homepage) .f-header__container > .a-flex {
   --arctic-contract-contact-bar-bg: rgba(0, 0, 0, 0.1);
   --arctic-contract-showroom-bg: var(--arctic-color-menu);
   --arctic-contract-showroom-button-border: rgba(255, 255, 255, 0.82);
+  --arctic-contract-modal-radius: 50px;
+  --arctic-contract-modal-surface: linear-gradient(165deg, #f1f5f8 0%, #e6edf3 100%);
+  --arctic-contract-modal-overlay: rgba(7, 24, 38, 0.68);
+  --arctic-contract-chat-shadow: 0 16px 34px rgba(35, 40, 47, 0.22);
 }
 body {
   background: var(--arctic-color-frost);
@@ -9716,6 +9720,149 @@ h6,
   height: 24px;
   background: var(--arctic-color-snow);
   clip-path: path("M12 2C7.6 2 4 5.55 4 9.94c0 5.95 8 12.06 8 12.06s8-6.11 8-12.06C20 5.55 16.4 2 12 2Zm0 10.5a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z");
+}
+.f-button--consultation {
+  min-height: 50px;
+  padding: 0 28px;
+  color: var(--arctic-color-snow);
+  font-family: var(--arctic-contract-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  background: var(--arctic-color-red);
+  border: 1px solid var(--arctic-color-red);
+  border-radius: var(--arctic-contract-radius-button);
+  box-shadow: none;
+}
+.f-button--consultation:hover,
+.f-button--consultation:focus-visible {
+  color: var(--arctic-color-snow);
+  background: var(--arctic-color-red-dark);
+  border-color: var(--arctic-color-red-dark);
+  box-shadow: none;
+}
+.f-off--contact {
+  background: var(--arctic-contract-modal-overlay) !important;
+}
+.f-off--contact .f-off__container {
+  max-width: min(860px, calc(100vw - 40px));
+  background: var(--arctic-color-snow);
+  border-radius: var(--arctic-contract-modal-radius);
+  box-shadow: 0 28px 70px rgba(7, 24, 38, 0.26);
+  overflow: hidden;
+}
+.f-off--contact .f-off__icon {
+  top: 0;
+  width: 84px;
+  height: 84px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--arctic-color-snow);
+  background: var(--arctic-color-red);
+  border-radius: var(--arctic-contract-radius-pill);
+}
+.f-off--contact .f-off__close {
+  top: 18px;
+  right: 18px;
+  width: 50px;
+  height: 50px;
+  min-height: 50px;
+  color: var(--arctic-color-snow);
+  background: var(--arctic-color-red);
+  border: 0;
+  border-radius: var(--arctic-contract-radius-pill);
+  box-shadow: none;
+}
+.f-off--contact .f-off__close:hover,
+.f-off--contact .f-off__close:focus-visible {
+  color: var(--arctic-color-snow);
+  background: var(--arctic-color-red-dark);
+}
+.f-off--contact .f-off__header {
+  padding: 66px 40px 28px;
+}
+.f-off--contact .f-off__header h2 {
+  margin: 0;
+  color: var(--arctic-color-ink);
+  font-family: var(--arctic-font-heading);
+  font-size: clamp(44px, 5vw, 60px);
+  font-weight: 700;
+  line-height: 1.08;
+}
+.f-off--contact .f-off__form {
+  margin-inline: 0;
+}
+.f-off--contact .f-off__form .f-form {
+  padding: 42px 44px 46px;
+  background-image: var(--arctic-contract-modal-surface);
+  border-bottom-left-radius: var(--arctic-contract-modal-radius);
+  border-bottom-right-radius: var(--arctic-contract-modal-radius);
+}
+.f-off--contact .f-form .f-label {
+  color: var(--arctic-color-ink);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.f-off--contact .f-form .f-required {
+  color: var(--arctic-color-red);
+}
+.f-off--contact .f-form :is(.f-input, .f-select, .f-textarea) {
+  height: 62px;
+  min-height: 62px;
+  color: var(--arctic-color-ink);
+  font-size: 16px;
+  border: 0;
+  border-radius: 32px;
+  box-shadow: 0 8px 20px rgba(35, 40, 47, 0.08);
+}
+.f-off--contact .f-form .f-textarea {
+  min-height: 164px;
+  padding-top: 16px;
+}
+.f-off--contact .f-form--submit {
+  min-width: 182px;
+  min-height: 50px;
+  padding-inline: 24px;
+  border-radius: var(--arctic-contract-radius-button);
+}
+.f-off--navigation .f-buttons .f-button--consultation {
+  width: 100%;
+  justify-content: center;
+}
+.smartsupp-widget-container {
+  border-radius: 32px;
+  filter: drop-shadow(var(--arctic-contract-chat-shadow));
+}
+@media (max-width: 1399px) {
+  .f-header .f-off--navigation > .f-buttons {
+    position: absolute;
+    top: 476px;
+    left: 26px;
+    display: block;
+    width: 323px;
+    margin: 0;
+  }
+}
+@media (max-width: 1023px) {
+  .f-off--contact .f-off__header {
+    padding: 56px 24px 18px;
+  }
+  .f-off--contact .f-off__header h2 {
+    font-size: clamp(38px, 9vw, 52px);
+  }
+  .f-off--contact .f-off__form .f-form {
+    padding: 28px 22px 30px;
+  }
+  .f-off--contact .f-form .f-label {
+    font-size: 32px;
+  }
+  .f-off--contact .f-form :is(.f-input, .f-select, .f-textarea) {
+    height: 56px;
+    min-height: 56px;
+  }
 }
 @media (min-width: 1280px) {
   .f-section--contact .f-contact-cta__details a {

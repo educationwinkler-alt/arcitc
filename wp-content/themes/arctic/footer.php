@@ -35,10 +35,22 @@ wp_footer();
 <?php
 $smartsupp_key = trim( (string) get_theme_mod( 'arctic_smartsupp_key', '' ) );
 if ( function_exists( 'wp_get_environment_type' ) && 'production' === wp_get_environment_type() && '' !== $smartsupp_key ) {
+	$smartsupp_color = '#a31f37';
+	$smartsupp_offset_x = 22;
+	$smartsupp_offset_y = 24;
+	$privacy_url = function_exists( 'get_privacy_policy_url' ) ? (string) get_privacy_policy_url() : '';
 	?>
 	<script defer>
 	    var _smartsupp = _smartsupp || {};
 	    _smartsupp.key = <?php echo wp_json_encode( $smartsupp_key ); ?>;
+	    _smartsupp.color = <?php echo wp_json_encode( $smartsupp_color ); ?>;
+	    _smartsupp.offsetX = <?php echo (int) $smartsupp_offset_x; ?>;
+	    _smartsupp.offsetY = <?php echo (int) $smartsupp_offset_y; ?>;
+	    _smartsupp.ratingEnabled = true;
+	    <?php if ( '' !== $privacy_url ) { ?>
+	    _smartsupp.privacyNoticeEnabled = true;
+	    _smartsupp.privacyNoticeUrl = <?php echo wp_json_encode( $privacy_url ); ?>;
+	    <?php } ?>
 	    window.smartsupp || (function (d) {
 	        var s, c, o = smartsupp = function () {
 	            o._.push(arguments)

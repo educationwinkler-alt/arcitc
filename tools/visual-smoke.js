@@ -220,6 +220,23 @@ function isAllowedLegalEntity(path, html) {
         throw new Error(`${path} is missing a local canonical URL.`);
       }
 
+      if (resolvedPathname === '/') {
+        const iconHref = await page.locator('link[rel="icon"]').first().getAttribute('href');
+        if (!iconHref) {
+          throw new Error('Homepage is missing rel=\"icon\" link.');
+        }
+
+        const normalizedIconHref = iconHref.toLowerCase();
+        const isArcticIcon = normalizedIconHref.includes('arctic-site-icon')
+          || normalizedIconHref.includes('/themes/arctic/images/icon.png');
+        if (!isArcticIcon) {
+          throw new Error(`Homepage favicon is not Arctic branded: ${iconHref}`);
+        }
+        if (normalizedIconHref.includes('baspa')) {
+          throw new Error(`Homepage favicon still points to Baspa asset: ${iconHref}`);
+        }
+      }
+
       const description = await page.locator('meta[name="description"]').first().getAttribute('content');
       if (!description || description.trim().length < 40) {
         throw new Error(`${path} is missing a useful meta description.`);
