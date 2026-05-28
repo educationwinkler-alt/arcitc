@@ -1,7 +1,7 @@
 # Phase 5B: Design System & Component Parity Audit
 
 Datum: 2026-05-27
-Status: audit hotovy, PR0-PR4 uzavrene, implementace PR5-PR6 ceka
+Status: audit hotovy, PR0-PR5 uzavrene, implementace PR6 ceka
 Navazuje na: Phase 5A compact laptop / hero / promo / footer stabilizace
 
 Update 2026-05-28 (PR2):
@@ -12,6 +12,10 @@ Update 2026-05-28 (PR3):
 
 Update 2026-05-28 (PR4):
 - Map/location parity byla uzavrena: `/kontakt/` map card je sjednocena na contract radius `40px` a footer quick map drzi `30px` napric desktop/mobile.
+
+Update 2026-05-28 (PR5):
+- Image quality pass uzavren: kriticke low-res produktove karty a Timberwolf hero byly nahrazeny high-res legacy source assety.
+- Lokalne overeno: `/virivky/` a `/swimspa/` product cards uz nejsou upscalovane, `/product/timberwolf/` hero je na max `1.20x` upscale (pod cilem `1.25x`).
 
 ## Executive Summary
 
@@ -86,14 +90,14 @@ Tyto body jsou potvrzene live renderem nebo prime porovnanim Figma API + local:
 
 | Oblast | Local stav | Figma stav | Dopad |
 |---|---:|---:|---|
-| `/reference/` reference cards | radius `8px` | radius `40px` | viditelne spatne zaobleni karet |
-| `/product/timberwolf/` reference cards | radius `16px` desktop | radius `40px` | product detail nema stejny modul realizaci |
-| Compact/mobile reference cards | ruzne `8px` / `50px` | sjednoceny modul | nekonzistentni responsivni vzhled |
+| `/reference/` reference cards | resolved v PR2: `40px` | radius `40px` | closed |
+| `/product/timberwolf/` reference cards | resolved v PR2: `40px` | radius `40px` | closed |
+| Compact/mobile reference cards | resolved v PR2: contract `40px` | sjednoceny modul | closed |
 | `/kontakt/` top buttons | resolved v PR3: `50px` | radius `50px` | closed |
 | `/kontakt/` map/location card | resolved v PR4: `40px` desktop/mobile | radius `40px` | closed |
 | `/showroom/` CTA button | resolved v PR3: `50px` | radius `50px` | closed |
 | `/dalsi-informace/` | redirect na `/#order-progress` | samostatny Figma frame | resolved: vedoma IA odchylka (redirect-only hub) |
-| Product/card images | casto upscalovane z malych zdroju | Figma predpoklada ostre obrazky | ani spravne CSS nezachrani vizualni kvalitu |
+| Product/card images | resolved v PR5: high-res legacy sources nasazene | Figma predpoklada ostre obrazky | critical upscale closed |
 
 ## Image Quality Findings
 
@@ -103,17 +107,16 @@ Priklady:
 
 | Stranka | Priklad | Local display | Natural source | Problem |
 |---|---|---:|---:|---|
-| `/virivky/` | product card images | cca `281x215` | cca `127x79` | silny upscale |
-| `/swimspa/` | hero `swimspa.jpg` | cca `1920x795` | `800x600` | velky upscale |
-| `/swimspa/` | product card images | cca `281x215` | cca `127x79` | silny upscale |
-| `/product/timberwolf/` | hero image | cca `1920x795` | `800x800` | hero upscale/crop risk |
-| `/reference/` | reference image | cca `438x320` | napr. `168x168` | nekvalitni reference karta |
+| `/virivky/` | product card images | cca `281x215` | `1265x1600` az `1600x1600` | resolved v PR5 |
+| `/swimspa/` | product card images | cca `281x215` | `1080x1950` az `1080x2082` | resolved v PR5 |
+| `/product/timberwolf/` | hero image | cca `1920x795` | `1600x1600` | max upscale `1.20x` (OK) |
+| `/reference/` | reference image | cca `438x320` | `500x333` az `1024x337` | bez kritickeho upscalu |
 
 Zaver:
 
 - Image parity neni jen CSS problem.
-- Je potreba doplnit/vymenit assety ve spravnem rozliseni.
-- Audit by mel hlidat pomer `display size / natural size`.
+- Kriticke image bottlenecky byly uzavreny v PR5 vymenou zdrojovych assetu.
+- PR6 ma doplnit trvale automatizovane image natural-size checks.
 
 ## Component Architecture Findings
 
@@ -167,10 +170,7 @@ Figma:
 
 Local:
 
-- Homepage/reference recent je nejbliz Figme.
-- `/reference/` archive ma radius `8px`.
-- Product detail reference card ma desktop radius `16px`.
-- Compact/mobile varianty maji dalsi odchylky, vcetne radiusu `50px`.
+- Resolved v PR2: homepage, `/reference/` archive i `/product/timberwolf/` references pouzivaji sjednoceny contract radius `40px`.
 
 Verdikt:
 

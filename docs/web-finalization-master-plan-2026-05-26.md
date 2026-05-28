@@ -393,9 +393,10 @@ Task board checklist + DoD:
   - Scope: set `/kontakt/` map card to `40px` and keep footer map card parity at `30px` without regressions.
   - DoD: contact and footer map modules match agreed radius tokens across desktop/mobile.
   - Verification (2026-05-28): local Playwright computed-style check confirms `/kontakt/` map card = `40px` and footer quick map = `30px` on desktop, scaled-laptop, and mobile viewports.
-- [ ] PR5 image quality pass
+- [x] PR5 image quality pass
   - Scope: replace visibly upscaled product/reference/hero assets with higher-quality sources where available.
   - DoD: no critical hero/reference/product card remains obviously upscaled from undersized source art.
+  - Verification (2026-05-28): local Playwright natural-size check confirms `/virivky/` and `/swimspa/` product cards now render from high-res sources (no upscale), `/product/timberwolf/` hero max upscale is `1.20x` (1920x795 render from 1600x1600 source), and `/reference/` cards render from >=500x333 sources.
 - [ ] PR6 QA hardening + Phase 5C sign-off
   - Scope: add missing automated checks (reference archive radius, product reference radius, contact buttons, showroom button, image natural-size checks) and complete manual page-by-page sign-off.
   - DoD: all known Phase 5B mismatches are covered by automated checks and final manual sign-off records.

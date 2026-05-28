@@ -108,3 +108,12 @@ Passed after PR4 map/location parity correction (2026-05-28):
   - `/kontakt/` map card -> `40px` radius (desktop, scaled-laptop, mobile)
   - footer quick map -> `30px` radius (desktop, scaled-laptop, mobile)
 - `npm run figma:audit`
+
+Passed after PR5 image quality pass (2026-05-28):
+- Source asset replacement: `wp-content/uploads/import/legacy-products/*.jpg` (targeted hot tub + swimspa cards) and `wp-content/uploads/import/timberwolf-{signature,prestige}.jpg` upgraded to high-res legacy originals.
+- Local Playwright natural-size check:
+  - `/virivky/` product cards: render `281x215` from `1265x1600` to `1600x1600` sources (no upscale)
+  - `/swimspa/` product cards: render `281x215` from `1080x1950` to `1080x2082` sources (no upscale)
+  - `/product/timberwolf/` hero: render `1920x795` from `1600x1600` source (max upscale `1.20x`)
+  - `/reference/` cards: render `438x320` from `500x333` to `1024x337` sources (no critical upscale)
+- `npm run figma:audit`
