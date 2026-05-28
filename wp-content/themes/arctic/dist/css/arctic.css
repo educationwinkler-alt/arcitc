@@ -984,7 +984,7 @@ body {
     height: 320px;
     color: var(--arctic-color-snow);
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: var(--arctic-contract-reference-card-radius);
   }
   .f-reference-card:after {
     content: "";
@@ -1447,7 +1447,7 @@ body {
     height: 260px;
     color: var(--arctic-color-snow);
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: var(--arctic-contract-reference-card-radius);
   }
   .f-reference-card:after {
     content: "";
@@ -4139,7 +4139,7 @@ body {
   .single-product .f-section--references .f-listing--reference img {
     width: 438px;
     height: 320px;
-    border-radius: 16px;
+    border-radius: var(--arctic-contract-reference-card-radius);
   }
   .single-product .f-section--references .f-carousel__control--prev {
     display: none;
@@ -5457,7 +5457,7 @@ body.off-active--benefit-shell .f-off__overlay {
     width: 438px;
     height: 320px;
     overflow: hidden;
-    border-radius: 40px;
+    border-radius: var(--arctic-contract-reference-card-radius);
   }
   .template--homepage .f-section--references .f-listing--reference .f-listing__image--container,
   .template--homepage .f-section--references .f-listing--reference .f-listing__image,
@@ -6221,7 +6221,7 @@ body.off-active--benefit-shell .f-off__overlay {
     width: 318px;
     height: 232px;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: var(--arctic-contract-reference-card-radius);
   }
   .template--homepage .f-section--references .f-listing--reference .f-listing__image--container,
   .template--homepage .f-section--references .f-listing--reference .f-listing__image,
@@ -8133,7 +8133,7 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     width: 438px;
     height: 320px;
     overflow: hidden;
-    border-radius: 40px;
+    border-radius: var(--arctic-contract-reference-card-radius);
   }
   .tax-product-category .f-section--references .f-listing--reference .f-listing__image--container,
   .tax-product-category .f-section--references .f-listing--reference .f-listing__image,
@@ -8287,7 +8287,7 @@ body:not(.template--homepage) .f-header__container > .a-flex {
   .single-product .f-section--references .f-listing--reference img {
     width: 438px;
     height: 320px;
-    border-radius: 16px;
+    border-radius: var(--arctic-contract-reference-card-radius);
   }
   .single-product .f-section--references .f-carousel__control--prev {
     display: none;
@@ -9037,14 +9037,9 @@ body:not(.template--homepage) .f-header__container > .a-flex {
   .template--homepage .f-slide--1 .f-slide__background {
     background-position: 50% 18%;
   }
-  .template--homepage .f-section--showroom .f-showroom-panel,
-  .tax-product-category .f-section--showroom .f-showroom-panel {
-    background: #252b38;
-  }
   .template--homepage .f-showroom-panel__actions .a-button,
   .tax-product-category .f-showroom-panel__actions .a-button {
     border-color: rgba(255, 255, 255, 0.78);
-    border-radius: 999px;
   }
   .template--homepage .f-showroom-panel__actions span,
   .tax-product-category .f-showroom-panel__actions span {
@@ -9132,9 +9127,6 @@ body:not(.template--homepage) .f-header__container > .a-flex {
   }
   .f-footer--arctic .f-footer__group a {
     color: #6f7781;
-  }
-  .f-footer--arctic .f-footer__quick-contact {
-    border-radius: 32px;
   }
   .f-footer--arctic .f-footer__bottom .f-signature--eboost {
     display: none !important;
@@ -9559,55 +9551,25 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     display: none;
   }
 }
-/* Figma color/typography cleanup for shared contact CTA */
-@media (min-width: 1280px) {
-  .f-section--contact .f-contact-cta {
-    background: #b51d3a;
-  }
-  .f-section--contact .f-contact-cta > p {
-    color: rgba(255, 255, 255, 0.94);
-  }
-  .f-section--contact .f-contact-cta__bar {
-    background: #a91937;
-    border-radius: 40px;
-  }
-  .f-section--contact .f-contact-cta__details a {
-    font-weight: 700;
-    text-decoration: none;
-  }
-  .f-section--contact .f-contact-cta__details a:hover,
-  .f-section--contact .f-contact-cta__details a:focus-visible {
-    text-decoration: underline;
-    text-decoration-color: rgba(255, 255, 255, 0.8);
-  }
-  .f-section--contact .f-contact-cta__hours {
-    display: inline-flex;
-    align-items: center;
-    height: 28px;
-    width: fit-content;
-    padding: 0 12px;
-    font-size: 14px;
-    line-height: 1.2;
-    color: rgba(255, 255, 255, 0.72);
-    background: rgba(123, 11, 35, 0.76);
-    border-radius: 999px;
-  }
-  .f-section--contact .f-contact-cta__hours:before {
-    content: "";
-    width: 9px;
-    height: 9px;
-    margin-right: 8px;
-    background: #27ce69;
-    border-radius: 999px;
-  }
-  .f-section--contact .f-contact-cta__bar .a-button {
-    border-color: rgba(255, 255, 255, 0.86);
-  }
+/* Phase 5B PR1: shared component contracts.
+ * Keep cross-page component behavior in one layer so follow-up PRs change values,
+ * not by adding another page-specific override stack.
+ */
+:root {
+  --arctic-contract-radius-panel: 40px;
+  --arctic-contract-radius-button: 50px;
+  --arctic-contract-radius-map-card: 30px;
+  --arctic-contract-radius-pill: 999px;
+  --arctic-contract-reference-card-radius: 40px;
+  --arctic-contract-font-family: var(--arctic-font-body);
+  --arctic-contract-contact-bg: var(--arctic-color-red);
+  --arctic-contract-contact-bar-bg: rgba(0, 0, 0, 0.1);
+  --arctic-contract-showroom-bg: var(--arctic-color-menu);
+  --arctic-contract-showroom-button-border: rgba(255, 255, 255, 0.82);
 }
-/* Phase 5 final Figma parity: shared tokens must win over legacy theme defaults. */
 body {
   background: var(--arctic-color-frost);
-  font-family: var(--arctic-font-body);
+  font-family: var(--arctic-contract-font-family);
 }
 h1,
 h2,
@@ -9623,8 +9585,8 @@ h6,
 .f-button,
 .a-button,
 .wp-block-button__link {
-  border-radius: 50px;
-  font-family: var(--arctic-font-body);
+  border-radius: var(--arctic-contract-radius-button);
+  font-family: var(--arctic-contract-font-family);
 }
 .a-button--outline,
 .f-button--outline {
@@ -9646,14 +9608,14 @@ h6,
   background-color: var(--arctic-color-red-dark);
 }
 .f-section--contact .f-contact-cta {
-  background: var(--arctic-color-red);
-  border-radius: 40px;
+  background: var(--arctic-contract-contact-bg);
+  border-radius: var(--arctic-contract-radius-panel);
 }
 .f-section--contact .f-contact-cta h2,
 .f-section--contact .f-contact-cta > p,
 .f-section--contact .f-contact-cta__bar,
 .f-section--contact .f-contact-cta__bar * {
-  font-family: var(--arctic-font-body);
+  font-family: var(--arctic-contract-font-family);
 }
 .f-section--contact .f-contact-cta h2 {
   font-weight: 700;
@@ -9663,8 +9625,8 @@ h6,
   font-weight: 500;
 }
 .f-section--contact .f-contact-cta__bar {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 40px;
+  background: var(--arctic-contract-contact-bar-bg);
+  border-radius: var(--arctic-contract-radius-panel);
 }
 .f-section--contact .f-contact-cta__person strong,
 .f-section--contact .f-contact-cta__details a {
@@ -9677,17 +9639,14 @@ h6,
   color: var(--arctic-color-snow);
   background: transparent;
   border-color: var(--arctic-color-snow);
-  border-radius: 50px;
+  border-radius: var(--arctic-contract-radius-button);
 }
-.f-showroom-panel {
-  background: var(--arctic-color-menu);
-  border-radius: 40px;
-}
+.f-showroom-panel,
 .template--homepage .f-section--showroom .f-showroom-panel,
 .tax-product-category .f-section--showroom .f-showroom-panel,
 .f-section--showroom .f-showroom-panel {
-  background: var(--arctic-color-menu);
-  border-radius: 40px;
+  background: var(--arctic-contract-showroom-bg);
+  border-radius: var(--arctic-contract-radius-panel);
 }
 .f-showroom-panel__badge {
   background: var(--arctic-color-red);
@@ -9697,7 +9656,7 @@ h6,
 .f-showroom-panel__content p,
 .f-showroom-panel__actions,
 .f-showroom-panel__actions * {
-  font-family: var(--arctic-font-body);
+  font-family: var(--arctic-contract-font-family);
 }
 .f-showroom-panel__content h2 {
   font-weight: 700;
@@ -9707,24 +9666,28 @@ h6,
 }
 .f-showroom-panel__actions .a-button {
   color: var(--arctic-color-snow);
-  border-color: rgba(255, 255, 255, 0.82);
-  border-radius: 50px;
+  border-color: var(--arctic-contract-showroom-button-border);
+  border-radius: var(--arctic-contract-radius-button);
 }
 .f-showroom-panel__actions span:before {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 25px;
 }
-.f-footer--arctic .f-footer__quick-contact {
-  border-radius: 40px;
+.f-reference-card,
+:is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference,
+:is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference .f-listing__image--container,
+:is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference .f-listing__image,
+:is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference .f-image,
+:is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference img {
+  border-radius: var(--arctic-contract-reference-card-radius);
 }
-.f-footer--arctic .f-footer__quick-map {
-  border-radius: 30px;
-}
+.f-footer--arctic .f-footer__quick-contact,
 .f-footer--arctic.f-footer--arctic .f-footer__quick-contact {
-  border-radius: 40px;
+  border-radius: var(--arctic-contract-radius-panel);
 }
+.f-footer--arctic .f-footer__quick-map,
 .f-footer--arctic.f-footer--arctic .f-footer__quick-map {
-  border-radius: 30px;
+  border-radius: var(--arctic-contract-radius-map-card);
 }
 .f-footer--arctic.f-footer--arctic .f-footer__quick-hours {
   width: 147px;
@@ -9734,14 +9697,14 @@ h6,
 .f-footer--arctic .f-footer__quick-contact *,
 .f-footer--arctic .f-footer__quick-map,
 .f-footer--arctic .f-footer__quick-map * {
-  font-family: var(--arctic-font-body);
+  font-family: var(--arctic-contract-font-family);
 }
 .f-local-map__pin {
   width: 42px;
   height: 42px;
   background: rgba(255, 255, 255, 0.78);
   border: 0;
-  border-radius: 999px;
+  border-radius: var(--arctic-contract-radius-pill);
   box-shadow: 0 14px 24px rgba(35, 40, 47, 0.16);
 }
 .f-local-map__pin:after {
@@ -9755,19 +9718,50 @@ h6,
   clip-path: path("M12 2C7.6 2 4 5.55 4 9.94c0 5.95 8 12.06 8 12.06s8-6.11 8-12.06C20 5.55 16.4 2 12 2Zm0 10.5a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z");
 }
 @media (min-width: 1280px) {
+  .f-section--contact .f-contact-cta__details a {
+    text-decoration: none;
+  }
+  .f-section--contact .f-contact-cta__details a:hover,
+  .f-section--contact .f-contact-cta__details a:focus-visible {
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.8);
+  }
+  .f-section--contact .f-contact-cta__hours {
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    width: fit-content;
+    padding: 0 12px;
+    font-size: 14px;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.72);
+    background: rgba(123, 11, 35, 0.76);
+    border-radius: var(--arctic-contract-radius-pill);
+  }
+  .f-section--contact .f-contact-cta__hours:before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    margin-right: 8px;
+    background: #27ce69;
+    border-radius: var(--arctic-contract-radius-pill);
+  }
+  .f-section--contact .f-contact-cta__bar .a-button {
+    border-color: rgba(255, 255, 255, 0.86);
+  }
   :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-section__actions .a-button {
     color: var(--arctic-color-red);
     background: transparent;
     border-color: var(--arctic-color-red);
-    border-radius: 50px;
-    font-family: var(--arctic-font-body);
+    border-radius: var(--arctic-contract-radius-button);
+    font-family: var(--arctic-contract-font-family);
   }
   :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-carousel__control--next {
     right: 9px;
     color: #000000;
     background: var(--arctic-color-snow);
     border-color: transparent;
-    border-radius: 999px;
+    border-radius: var(--arctic-contract-radius-pill);
     box-shadow: 0 14px 24px rgba(35, 40, 47, 0.12);
   }
   :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-carousel__control--next svg {
@@ -9801,12 +9795,12 @@ h6,
     min-height: 26px;
     padding: 0 10px;
     color: var(--arctic-color-snow);
-    font-family: var(--arctic-font-body);
+    font-family: var(--arctic-contract-font-family);
     font-size: 16px;
     font-weight: 500;
     line-height: 26px;
     background: var(--arctic-color-menu);
-    border-radius: 40px;
+    border-radius: var(--arctic-contract-radius-panel);
   }
   :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas .f-meta + .f-meta {
     color: var(--arctic-color-menu);
@@ -9816,7 +9810,7 @@ h6,
     width: 334px;
     margin: 0;
     color: var(--arctic-color-snow);
-    font-family: var(--arctic-font-body);
+    font-family: var(--arctic-contract-font-family);
     font-size: 22px;
     font-weight: 500;
     line-height: 34px;
@@ -9832,19 +9826,19 @@ h6,
     min-height: 26px;
     padding: 0 10px;
     color: var(--arctic-color-snow);
-    font-family: var(--arctic-font-body);
+    font-family: var(--arctic-contract-font-family);
     font-size: 16px;
     font-weight: 500;
     line-height: 26px;
     background: var(--arctic-color-menu);
-    border-radius: 40px;
+    border-radius: var(--arctic-contract-radius-panel);
   }
   .f-reference-card__meta > span + span {
     color: var(--arctic-color-menu);
     background: var(--arctic-color-snow);
   }
   .f-reference-card strong {
-    font-family: var(--arctic-font-body);
+    font-family: var(--arctic-contract-font-family);
     font-weight: 500;
     text-decoration: underline;
   }

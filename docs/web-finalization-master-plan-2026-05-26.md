@@ -361,6 +361,43 @@ Current Phase 5 status:
 - Verification passed on 2026-05-27: `npm run css:build`, `npm run figma:audit`, and full `npm run qa:local`.
 - Remaining non-code release requirement: owner/client visual acceptance of the screenshot pack and physical/equivalent Windows `1920x1080`, display scaling `175%`, Chrome `100%` screenshot sign-off before production release.
 
+## Phase 5B/5C execution track (PR0-PR6)
+Decision lock (PR0, 2026-05-27):
+- `/dalsi-informace/` is an intentional navigation-hub route and remains a `301` redirect to `/#order-progress`.
+- This frame is treated as a conscious IA deviation, not an open implementation bug.
+
+Execution sequence:
+1. PR0 `IA decision + docs sync`
+2. PR1 `component contracts refactor`
+3. PR2 `reference cards parity`
+4. PR3 `button system parity`
+5. PR4 `map/location parity`
+6. PR5 `image quality pass`
+7. PR6 `QA hardening + Phase 5C manual sign-off`
+
+Task board checklist + DoD:
+- [x] PR0 IA decision + docs sync
+  - Scope: lock `/dalsi-informace/` behavior and align master plan, tracker, and Phase 5B audit.
+  - DoD: no document in repo describes `/dalsi-informace/` as unresolved.
+- [x] PR1 component contracts refactor
+  - Scope: define one shared contract layer for `.f-section--references`, `.f-contact-cta`, `.f-showroom-panel`, `.f-footer--arctic`, `.f-local-map`; remove conflicting duplicate overrides.
+  - DoD: follow-up PRs only change values against shared contracts, not by adding another page-specific override layer.
+- [x] PR2 reference cards parity
+  - Scope: unify reference card radius and shared card shell across homepage, `/reference/`, and `/product/timberwolf/`.
+  - DoD: all target reference cards use the same agreed component radius and shell behavior.
+- [ ] PR3 button system parity
+  - Scope: fix `/kontakt/` top buttons and `/showroom/` appointment CTA to pill `50px` via shared button contract.
+  - DoD: no target CTA/button falls back to `0px` or `8px` radius.
+- [ ] PR4 map/location parity
+  - Scope: set `/kontakt/` map card to `40px` and keep footer map card parity at `30px` without regressions.
+  - DoD: contact and footer map modules match agreed radius tokens across desktop/mobile.
+- [ ] PR5 image quality pass
+  - Scope: replace visibly upscaled product/reference/hero assets with higher-quality sources where available.
+  - DoD: no critical hero/reference/product card remains obviously upscaled from undersized source art.
+- [ ] PR6 QA hardening + Phase 5C sign-off
+  - Scope: add missing automated checks (reference archive radius, product reference radius, contact buttons, showroom button, image natural-size checks) and complete manual page-by-page sign-off.
+  - DoD: all known Phase 5B mismatches are covered by automated checks and final manual sign-off records.
+
 ## Phase 5A - Compact laptop / Windows 175% scaling (P0, 0.5-1 day)
 Goal: make `1920x1080` Windows display scaling at `175%` with Chrome at `100%` behave as a first-class release viewport, not an accidental mix of desktop and mobile rules.
 

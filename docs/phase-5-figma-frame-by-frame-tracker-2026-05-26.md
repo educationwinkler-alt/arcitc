@@ -12,6 +12,7 @@ Current rule:
 - Automated geometry gates are evidence, not a replacement for manual visual review.
 - Figma covers the visual/UX layer, Baspa.cz covers admin/function patterns, and the old Arctic PHP site covers content.
 - Figma does not define every in-between responsive state. Laptop widths and 120% browser zoom must be validated as real release conditions, not as optional polish.
+- Decision lock (2026-05-27): `/dalsi-informace/` is intentionally handled as a navigation-hub redirect (`301` to `/#order-progress`) and is not in standalone-frame implementation scope.
 
 ## Implemented in This Corrective Pass
 
@@ -53,7 +54,7 @@ Current rule:
 | O NAS | `1:945` | About page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
 | KONTAKT | `1:1037` | Contact page | Desktop geometry and map source are automated. Needs manual final sign-off. |
 | REFERENCE | `1:1127` | Reference page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
-| DALSI INFORMACE | `1:1216` | Additional information hub | Route is treated as navigation/dropdown hub, not a standalone page in the current build. Must be confirmed as not applicable or implemented before Phase 5 closes. |
+| DALSI INFORMACE | `1:1216` | Additional information hub | Resolved: intentional navigation/dropdown hub behavior. Route stays as `301` to `/#order-progress`; standalone page is marked not applicable in current IA scope. |
 | KOLIK STOJI UDRZBA | `1:1395` | Maintenance cost page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
 | SERVIS | `1:1426` | Service page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
 | popup | `1:1959` | Popup/contact modal state | Product benefit popup state is automated. Contact modal state still needs explicit confirmation if it is a separate required interaction. |
@@ -65,10 +66,13 @@ Current rule:
 1. Export final screenshot pack at desktop, mobile, real laptop/zoom-like widths, and physical/equivalent Windows 175% scaling.
 2. Complete manual screenshot review for all desktop frames that are now under automated geometry gates.
 3. Finish full mobile homepage and mobile menu visual comparison, not only the first viewport/search placement.
-4. Confirm whether `DALSI INFORMACE` is intentionally a navigation hub/redirect or must become a standalone page.
-5. Confirm whether `popup` requires only the product benefit popup or also a separate contact modal state.
-6. Spot-check non-Timberwolf product details and category variants for content-length/galleries.
-7. Get owner/client visual sign-off after all deltas are closed.
+4. Confirm whether `popup` requires only the product benefit popup or also a separate contact modal state.
+5. Spot-check non-Timberwolf product details and category variants for content-length/galleries.
+6. Get owner/client visual sign-off after all deltas are closed.
+
+## Resolved Decisions
+
+- `DALSI INFORMACE` (`1:1216`) is closed as a conscious IA deviation: redirect-only hub route (`301` to `/#order-progress`), no standalone implementation in current scope.
 
 ## Latest Automated Evidence
 

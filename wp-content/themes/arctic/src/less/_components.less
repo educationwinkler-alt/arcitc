@@ -1052,7 +1052,7 @@ body {
     height: 320px;
     color: var(--arctic-color-snow);
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: var(--arctic-contract-reference-card-radius);
   }
 
   .f-reference-card:after {
@@ -1586,7 +1586,7 @@ body {
     height: 260px;
     color: var(--arctic-color-snow);
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: var(--arctic-contract-reference-card-radius);
   }
 
   .f-reference-card:after {
@@ -4749,7 +4749,7 @@ body {
   .single-product .f-section--references .f-listing--reference img {
     width: 438px;
     height: 320px;
-    border-radius: 16px;
+    border-radius: var(--arctic-contract-reference-card-radius);
   }
 
   .single-product .f-section--references .f-carousel__control--prev {
@@ -6285,7 +6285,7 @@ body.off-active--benefit-shell .f-off__overlay {
     width: 438px;
     height: 320px;
     overflow: hidden;
-    border-radius: 40px;
+    border-radius: var(--arctic-contract-reference-card-radius);
   }
 
   .template--homepage .f-section--references .f-listing--reference .f-listing__image--container,
@@ -7169,7 +7169,7 @@ body.off-active--benefit-shell .f-off__overlay {
     width: 318px;
     height: 232px;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: var(--arctic-contract-reference-card-radius);
   }
 
   .template--homepage .f-section--references .f-listing--reference .f-listing__image--container,
@@ -9351,7 +9351,7 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     width: 438px;
     height: 320px;
     overflow: hidden;
-    border-radius: 40px;
+    border-radius: var(--arctic-contract-reference-card-radius);
   }
 
   .tax-product-category .f-section--references .f-listing--reference .f-listing__image--container,
@@ -9528,7 +9528,7 @@ body:not(.template--homepage) .f-header__container > .a-flex {
   .single-product .f-section--references .f-listing--reference img {
     width: 438px;
     height: 320px;
-    border-radius: 16px;
+    border-radius: var(--arctic-contract-reference-card-radius);
   }
 
   .single-product .f-section--references .f-carousel__control--prev {
@@ -10394,15 +10394,9 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     background-position: 50% 18%;
   }
 
-  .template--homepage .f-section--showroom .f-showroom-panel,
-  .tax-product-category .f-section--showroom .f-showroom-panel {
-    background: #252b38;
-  }
-
   .template--homepage .f-showroom-panel__actions .a-button,
   .tax-product-category .f-showroom-panel__actions .a-button {
     border-color: rgba(255, 255, 255, 0.78);
-    border-radius: 999px;
   }
 
   .template--homepage .f-showroom-panel__actions span,
@@ -10504,10 +10498,6 @@ body:not(.template--homepage) .f-header__container > .a-flex {
 
   .f-footer--arctic .f-footer__group a {
     color: #6f7781;
-  }
-
-  .f-footer--arctic .f-footer__quick-contact {
-    border-radius: 32px;
   }
 
   .f-footer--arctic .f-footer__bottom .f-signature--eboost {
@@ -11009,346 +10999,6 @@ body:not(.template--homepage) .f-header__container > .a-flex {
   }
 }
 
-/* Figma color/typography cleanup for shared contact CTA */
-@media (min-width: 1280px) {
-  .f-section--contact .f-contact-cta {
-    background: #b51d3a;
-  }
-
-  .f-section--contact .f-contact-cta > p {
-    color: rgba(255, 255, 255, 0.94);
-  }
-
-  .f-section--contact .f-contact-cta__bar {
-    background: #a91937;
-    border-radius: 40px;
-  }
-
-  .f-section--contact .f-contact-cta__details a {
-    font-weight: 700;
-    text-decoration: none;
-  }
-
-  .f-section--contact .f-contact-cta__details a:hover,
-  .f-section--contact .f-contact-cta__details a:focus-visible {
-    text-decoration: underline;
-    text-decoration-color: rgba(255, 255, 255, 0.8);
-  }
-
-  .f-section--contact .f-contact-cta__hours {
-    display: inline-flex;
-    align-items: center;
-    height: 28px;
-    width: fit-content;
-    padding: 0 12px;
-    font-size: 14px;
-    line-height: 1.2;
-    color: rgba(255, 255, 255, 0.72);
-    background: rgba(123, 11, 35, 0.76);
-    border-radius: 999px;
-  }
-
-  .f-section--contact .f-contact-cta__hours:before {
-    content: "";
-    width: 9px;
-    height: 9px;
-    margin-right: 8px;
-    background: #27ce69;
-    border-radius: 999px;
-  }
-
-  .f-section--contact .f-contact-cta__bar .a-button {
-    border-color: rgba(255, 255, 255, 0.86);
-  }
-}
-
-/* Phase 5 final Figma parity: shared tokens must win over legacy theme defaults. */
-body {
-  background: var(--arctic-color-frost);
-  font-family: var(--arctic-font-body);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.f-heading,
-.f-section__header,
-.f-listing__header {
-  font-family: var(--arctic-font-heading);
-}
-
-.f-button,
-.a-button,
-.wp-block-button__link {
-  border-radius: 50px;
-  font-family: var(--arctic-font-body);
-}
-
-.a-button--outline,
-.f-button--outline {
-  color: var(--arctic-color-red);
-  background: transparent;
-  border-color: var(--arctic-color-red);
-}
-
-.a-button--accent,
-.f-button--accent,
-.wp-block-button .has-accent-background-color {
-  background-color: var(--arctic-color-red);
-}
-
-.a-button--accent:hover,
-.a-button--accent:focus-visible,
-.f-button--accent:hover,
-.f-button--accent:focus-visible,
-.wp-block-button .has-accent-background-color:hover,
-.wp-block-button .has-accent-background-color:focus-visible {
-  background-color: var(--arctic-color-red-dark);
-}
-
-.f-section--contact .f-contact-cta {
-  background: var(--arctic-color-red);
-  border-radius: 40px;
-}
-
-.f-section--contact .f-contact-cta h2,
-.f-section--contact .f-contact-cta > p,
-.f-section--contact .f-contact-cta__bar,
-.f-section--contact .f-contact-cta__bar * {
-  font-family: var(--arctic-font-body);
-}
-
-.f-section--contact .f-contact-cta h2 {
-  font-weight: 700;
-}
-
-.f-section--contact .f-contact-cta > p {
-  color: rgba(255, 255, 255, 0.94);
-  font-weight: 500;
-}
-
-.f-section--contact .f-contact-cta__bar {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 40px;
-}
-
-.f-section--contact .f-contact-cta__person strong,
-.f-section--contact .f-contact-cta__details a {
-  font-weight: 700;
-}
-
-.f-section--contact .f-contact-cta__person span {
-  font-weight: 400;
-}
-
-.f-section--contact .f-contact-cta__bar .a-button {
-  color: var(--arctic-color-snow);
-  background: transparent;
-  border-color: var(--arctic-color-snow);
-  border-radius: 50px;
-}
-
-.f-showroom-panel {
-  background: var(--arctic-color-menu);
-  border-radius: 40px;
-}
-
-.template--homepage .f-section--showroom .f-showroom-panel,
-.tax-product-category .f-section--showroom .f-showroom-panel,
-.f-section--showroom .f-showroom-panel {
-  background: var(--arctic-color-menu);
-  border-radius: 40px;
-}
-
-.f-showroom-panel__badge {
-  background: var(--arctic-color-red);
-}
-
-.f-showroom-panel__content,
-.f-showroom-panel__content h2,
-.f-showroom-panel__content p,
-.f-showroom-panel__actions,
-.f-showroom-panel__actions * {
-  font-family: var(--arctic-font-body);
-}
-
-.f-showroom-panel__content h2 {
-  font-weight: 700;
-}
-
-.f-showroom-panel__content p {
-  font-weight: 500;
-}
-
-.f-showroom-panel__actions .a-button {
-  color: var(--arctic-color-snow);
-  border-color: rgba(255, 255, 255, 0.82);
-  border-radius: 50px;
-}
-
-.f-showroom-panel__actions span:before {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 25px;
-}
-
-.f-footer--arctic .f-footer__quick-contact {
-  border-radius: 40px;
-}
-
-.f-footer--arctic .f-footer__quick-map {
-  border-radius: 30px;
-}
-
-.f-footer--arctic.f-footer--arctic .f-footer__quick-contact {
-  border-radius: 40px;
-}
-
-.f-footer--arctic.f-footer--arctic .f-footer__quick-map {
-  border-radius: 30px;
-}
-
-.f-footer--arctic.f-footer--arctic .f-footer__quick-hours {
-  width: 147px;
-  box-sizing: border-box;
-}
-
-.f-footer--arctic .f-footer__quick-contact,
-.f-footer--arctic .f-footer__quick-contact *,
-.f-footer--arctic .f-footer__quick-map,
-.f-footer--arctic .f-footer__quick-map * {
-  font-family: var(--arctic-font-body);
-}
-
-.f-local-map__pin {
-  width: 42px;
-  height: 42px;
-  background: rgba(255, 255, 255, 0.78);
-  border: 0;
-  border-radius: 999px;
-  box-shadow: 0 14px 24px rgba(35, 40, 47, 0.16);
-}
-
-.f-local-map__pin:after {
-  content: "";
-  position: absolute;
-  top: 9px;
-  left: 9px;
-  width: 24px;
-  height: 24px;
-  background: var(--arctic-color-snow);
-  clip-path: path("M12 2C7.6 2 4 5.55 4 9.94c0 5.95 8 12.06 8 12.06s8-6.11 8-12.06C20 5.55 16.4 2 12 2Zm0 10.5a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z");
-}
-
-@media (min-width: 1280px) {
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-section__actions .a-button {
-    color: var(--arctic-color-red);
-    background: transparent;
-    border-color: var(--arctic-color-red);
-    border-radius: 50px;
-    font-family: var(--arctic-font-body);
-  }
-
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-carousel__control--next {
-    right: 9px;
-    color: #000000;
-    background: var(--arctic-color-snow);
-    border-color: transparent;
-    border-radius: 999px;
-    box-shadow: 0 14px 24px rgba(35, 40, 47, 0.12);
-  }
-
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-carousel__control--next svg {
-    color: currentColor;
-  }
-
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas {
-    position: absolute;
-    bottom: 68px;
-    left: 32px;
-    z-index: 3;
-    padding: 0;
-    margin: 0;
-    pointer-events: none;
-  }
-
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas .a-container {
-    width: auto;
-    max-width: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas ul {
-    display: flex;
-    gap: 4px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas .f-meta {
-    display: inline-flex;
-    align-items: center;
-    min-height: 26px;
-    padding: 0 10px;
-    color: var(--arctic-color-snow);
-    font-family: var(--arctic-font-body);
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 26px;
-    background: var(--arctic-color-menu);
-    border-radius: 40px;
-  }
-
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas .f-meta + .f-meta {
-    color: var(--arctic-color-menu);
-    background: var(--arctic-color-snow);
-  }
-
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference .f-listing__header :is(h2, h3) {
-    width: 334px;
-    margin: 0;
-    color: var(--arctic-color-snow);
-    font-family: var(--arctic-font-body);
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 34px;
-    text-decoration: underline;
-    text-shadow: none;
-  }
-
-  .f-reference-card__meta {
-    gap: 4px;
-  }
-
-  .f-reference-card__meta > span {
-    display: inline-flex;
-    align-items: center;
-    min-height: 26px;
-    padding: 0 10px;
-    color: var(--arctic-color-snow);
-    font-family: var(--arctic-font-body);
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 26px;
-    background: var(--arctic-color-menu);
-    border-radius: 40px;
-  }
-
-  .f-reference-card__meta > span + span {
-    color: var(--arctic-color-menu);
-    background: var(--arctic-color-snow);
-  }
-
-  .f-reference-card strong {
-    font-family: var(--arctic-font-body);
-    font-weight: 500;
-    text-decoration: underline;
-  }
-}
 
 
 
