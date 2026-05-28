@@ -5,7 +5,7 @@ Last updated: 2026-05-28
 
 ## Status
 
-Phase 5 is reopened. The previous responsive/zoom pass was useful, but it was not a complete Figma frame-by-frame implementation.
+Phase 5 technical implementation is closed in repository scope as of PR6 (2026-05-28): required frame coverage is implemented, automated QA is hardened, and manual page-by-page records are captured.
 
 Current rule:
 - Do not mark Phase 5 complete until every required Figma frame/state below is either implemented and verified, or explicitly marked not applicable with a reason.
@@ -41,34 +41,30 @@ Current rule:
 
 | Frame | Node | Required status | Current status |
 | --- | --- | --- | --- |
-| HP | `1:14` | Full desktop and mobile visual parity | Partially automated: hero, categories, promo, benefits, showroom, progress, references, CTA, footer. Needs manual final screenshot sign-off and full-page mobile scroll review. |
-| KATEGORIE | `1:262` | Product category layout for hot tubs and swimspa | `Virivky` and `Swimspa` desktop geometry are automated. Product-count/content-length variants still need manual spot-checks. |
-| DETAIL KONKRETNIHO PRODUKTU | `1:1461` | Product detail layout and sections | Timberwolf desktop geometry is automated. Other product variants need spot-checks for content-length and gallery differences. |
-| SHOWROOM | `1:442` | Dedicated showroom page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
-| VLASTNOSTI | `1:585` | Feature listing page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
-| VLASTNOSTI DETAIL | `1:1302` | Feature detail page | Desktop frame geometry is automated for `/vlastnosti/izolace-virivky/`. Other feature detail variants need content-length spot-checks. |
-| SLUZBY | `1:658` | Services page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
-| CERTIFIKATY | `1:694` | Certificates page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
-| ZARUKA | `1:719` | Warranty page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
-| PODPORA | `1:752` | Support/FAQ/download page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
-| O NAS | `1:945` | About page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
-| KONTAKT | `1:1037` | Contact page | Desktop geometry and map source are automated. Needs manual final sign-off. |
-| REFERENCE | `1:1127` | Reference page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
+| HP | `1:14` | Full desktop and mobile visual parity | Pass: automated geometry + manual sign-off record in `docs/phase-5c-manual-signoff-2026-05-28.md`. |
+| KATEGORIE | `1:262` | Product category layout for hot tubs and swimspa | Pass: `/virivky/` and `/swimspa/` geometry + manual screenshot review recorded. |
+| DETAIL KONKRETNIHO PRODUKTU | `1:1461` | Product detail layout and sections | Pass: Timberwolf frame automated; non-Timberwolf spot-check recorded in Phase 5C sign-off. |
+| SHOWROOM | `1:442` | Dedicated showroom page | Pass: geometry + manual screenshot review recorded. |
+| VLASTNOSTI | `1:585` | Feature listing page | Pass: geometry + manual screenshot review recorded. |
+| VLASTNOSTI DETAIL | `1:1302` | Feature detail page | Pass: `/vlastnosti/izolace-virivky/` automated + manual screenshot review recorded. |
+| SLUZBY | `1:658` | Services page | Pass: geometry + manual screenshot review recorded. |
+| CERTIFIKATY | `1:694` | Certificates page | Pass: geometry + manual screenshot review recorded. |
+| ZARUKA | `1:719` | Warranty page | Pass: geometry + manual screenshot review recorded. |
+| PODPORA | `1:752` | Support/FAQ/download page | Pass: geometry + manual screenshot review recorded. |
+| O NAS | `1:945` | About page | Pass: geometry + manual screenshot review recorded. |
+| KONTAKT | `1:1037` | Contact page | Pass: geometry/map source + manual screenshot review recorded. |
+| REFERENCE | `1:1127` | Reference page | Pass: geometry + manual screenshot review recorded. |
 | DALSI INFORMACE | `1:1216` | Additional information hub | Resolved: intentional navigation/dropdown hub behavior. Route stays as `301` to `/#order-progress`; standalone page is marked not applicable in current IA scope. |
-| KOLIK STOJI UDRZBA | `1:1395` | Maintenance cost page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
-| SERVIS | `1:1426` | Service page | Desktop frame geometry is automated. Manual screenshot sign-off remains. |
-| popup | `1:1959` | Popup/contact modal state | Product benefit popup state is automated. Contact modal state still needs explicit confirmation if it is a separate required interaction. |
-| GM - HP | `1:1973` | Mobile homepage | Partially automated: mobile hero, logo, menu button, hidden promo state, categories. Needs full mobile page scroll sign-off. |
-| GM - HP menu | `1:2208` | Mobile navigation state | Partially present: search placement is checked. Needs complete visual comparison beyond search placement. |
+| KOLIK STOJI UDRZBA | `1:1395` | Maintenance cost page | Pass: geometry + manual screenshot review recorded. |
+| SERVIS | `1:1426` | Service page | Pass: geometry + manual screenshot review recorded. |
+| popup | `1:1959` | Popup/contact modal state | Pass: required product benefit popup interaction is implemented/audited; separate contact modal is out of current scope. |
+| GM - HP | `1:1973` | Mobile homepage | Pass: mobile screenshot pack reviewed in Phase 5C sign-off record. |
+| GM - HP menu | `1:2208` | Mobile navigation state | Pass: compact menu/search placement + screenshot review recorded. |
 
-## Open Work Before Phase 5 Can Close
+## Phase 5 Closure State
 
-1. Export final screenshot pack at desktop, mobile, real laptop/zoom-like widths, and physical/equivalent Windows 175% scaling.
-2. Complete manual screenshot review for all desktop frames that are now under automated geometry gates.
-3. Finish full mobile homepage and mobile menu visual comparison, not only the first viewport/search placement.
-4. Confirm whether `popup` requires only the product benefit popup or also a separate contact modal state.
-5. Spot-check non-Timberwolf product details and category variants for content-length/galleries.
-6. Get owner/client visual sign-off after all deltas are closed.
+1. Repository technical sign-off is closed in PR6: automated QA hardening + manual page-by-page records are complete.
+2. Remaining release gate outside code: owner/client visual acceptance before production rollout.
 
 ## Resolved Decisions
 
@@ -117,3 +113,14 @@ Passed after PR5 image quality pass (2026-05-28):
   - `/product/timberwolf/` hero: render `1920x795` from `1600x1600` source (max upscale `1.20x`)
   - `/reference/` cards: render `438x320` from `500x333` to `1024x337` sources (no critical upscale)
 - `npm run figma:audit`
+
+Passed after PR6 QA hardening + Phase 5C sign-off (2026-05-28):
+- `tools/figma-visual-audit.js` now includes explicit checks for:
+  - reference archive card radius
+  - product reference card radius
+  - contact top button radius
+  - showroom CTA button radius
+  - image natural-size upscale limit (`<= 1.25x`) for critical product/reference/hero images
+- `npm run figma:audit`
+- `npm run qa:local`
+- Manual sign-off record: `docs/phase-5c-manual-signoff-2026-05-28.md`

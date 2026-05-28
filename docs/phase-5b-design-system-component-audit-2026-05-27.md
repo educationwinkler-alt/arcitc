@@ -1,7 +1,7 @@
 # Phase 5B: Design System & Component Parity Audit
 
 Datum: 2026-05-27
-Status: audit hotovy, PR0-PR5 uzavrene, implementace PR6 ceka
+Status: audit hotovy, PR0-PR6 uzavrene (Phase 5B implementation closed)
 Navazuje na: Phase 5A compact laptop / hero / promo / footer stabilizace
 
 Update 2026-05-28 (PR2):
@@ -16,6 +16,11 @@ Update 2026-05-28 (PR4):
 Update 2026-05-28 (PR5):
 - Image quality pass uzavren: kriticke low-res produktove karty a Timberwolf hero byly nahrazeny high-res legacy source assety.
 - Lokalne overeno: `/virivky/` a `/swimspa/` product cards uz nejsou upscalovane, `/product/timberwolf/` hero je na max `1.20x` upscale (pod cilem `1.25x`).
+
+Update 2026-05-28 (PR6):
+- QA hardening doplnen: `tools/figma-visual-audit.js` nyni explicitne hlida reference archive radius, product reference radius, contact top buttons, showroom CTA button a image natural-size upscale limity.
+- Posledni kriticky low-res reference asset (`reference-zuz.jpg`) byl nahrazen high-res legacy fallbackem, aby reference archive neobsahoval 2.6x upscale card.
+- Phase 5C manual sign-off record byl uzavren v `docs/phase-5c-manual-signoff-2026-05-28.md`.
 
 ## Executive Summary
 
@@ -116,7 +121,7 @@ Zaver:
 
 - Image parity neni jen CSS problem.
 - Kriticke image bottlenecky byly uzavreny v PR5 vymenou zdrojovych assetu.
-- PR6 ma doplnit trvale automatizovane image natural-size checks.
+- PR6 doplnil trvale automatizovane image natural-size checks.
 
 ## Component Architecture Findings
 
@@ -313,25 +318,17 @@ Verdikt:
 
 ## QA Coverage Gaps
 
-Aktualni `tools/figma-visual-audit.js` kontroluje hodne geometrie, ale nechyta vsechny stylove odchylky.
+Status po PR6:
 
-Nechyta nebo nedostatecne hlida:
-
-- `/reference/` card radius assertion (`40px`).
-- Product detail reference card radius assertion (`40px`).
-- Contact top buttons radius assertion (`50px`).
-- Showroom CTA button radius assertion (`50px`).
-- Contact map card radius assertion (`40px`).
-- Image upscaling pomer.
-- Plny mobile visual sign-off vsech stranek.
-- Konzistenci opakovanych komponent napric sablonami.
-
-Nutne doplnit do QA:
-
-- Component contract assertions.
-- Cross-page module assertions.
-- Image natural size vs rendered size checks.
-- Manual screenshot checklist.
+- Predchozi kriticke mezery jsou uzavrene:
+  - `/reference/` card radius assertion (`40px`)
+  - product detail reference radius assertion (`40px`)
+  - contact top buttons radius assertion (`50px`)
+  - showroom CTA button radius assertion (`50px`)
+  - contact map card radius assertion (`40px`)
+  - image natural size vs rendered size checks (`<= 1.25x` pro kriticke image)
+- Manual screenshot checklist je zaznamenan v `docs/phase-5c-manual-signoff-2026-05-28.md`.
+- Zbyvajici non-code gate: owner/client vizualni akceptace pred produkcnim releasem.
 
 ## Confirmed Priority Order
 
@@ -400,6 +397,6 @@ Nutne doplnit do QA:
 
 ## Final Verdict
 
-Phase 5A stabilizovala cast problemu, ale neuzavrela Figma parity. Phase 5B musi byt systemovy refactor design komponent, protoze hlavni pricina je nekonzistentni komponentova vrstva.
+Phase 5B refactor i navazujici Phase 5C QA/sign-off jsou v repository scope uzavrene (PR0-PR6).
 
-Globalni tokeny jsou prevazne spravne. Komponenty nejsou.
+Globalni tokeny i klicove sdilene komponenty jsou sjednocene, automatizovane checks pokryvaji predchozi kriticke mismatchy a manual sign-off record je ulozen.

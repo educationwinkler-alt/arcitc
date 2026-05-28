@@ -157,6 +157,64 @@ async function assertOptionalComputedStyleIncludes(page, selector, property, exp
   await assertComputedStyleIncludes(page, selector, property, expected, label);
 }
 
+async function assertImageMaxUpscale(page, selector, maxScale, label, options = {}) {
+  const { limit = 1, skipDataSvg = true } = options;
+  const locator = page.locator(selector);
+  const count = await locator.count();
+
+  if (!count) {
+    throw new Error(`${label}: missing selector ${selector}`);
+  }
+
+  const metrics = await locator.evaluateAll((elements, config) => {
+    const limit = config.limit > 0 ? config.limit : elements.length;
+    return elements.slice(0, limit).map((element) => {
+      const rect = element.getBoundingClientRect();
+      const source = element.currentSrc || element.src || '';
+      return {
+        source,
+        naturalWidth: Number(element.naturalWidth || 0),
+        naturalHeight: Number(element.naturalHeight || 0),
+        renderedWidth: Number(rect.width || 0),
+        renderedHeight: Number(rect.height || 0),
+      };
+    });
+  }, { limit });
+
+  let checked = 0;
+
+  for (const metric of metrics) {
+    if (metric.renderedWidth <= 1 || metric.renderedHeight <= 1) {
+      continue;
+    }
+
+    if (skipDataSvg && metric.source.startsWith('data:image/svg+xml')) {
+      continue;
+    }
+
+    if (metric.naturalWidth < 1 || metric.naturalHeight < 1) {
+      throw new Error(`${label}: image has invalid natural size (${metric.naturalWidth}x${metric.naturalHeight}) for source ${metric.source}`);
+    }
+
+    checked += 1;
+
+    const scaleWidth = metric.renderedWidth / metric.naturalWidth;
+    const scaleHeight = metric.renderedHeight / metric.naturalHeight;
+    const maxObservedScale = Math.max(scaleWidth, scaleHeight);
+
+    if (maxObservedScale > maxScale) {
+      throw new Error(
+        `${label}: image exceeds upscale limit ${maxScale}x with ${round(maxObservedScale)}x ` +
+        `(render ${round(metric.renderedWidth)}x${round(metric.renderedHeight)} from ${metric.naturalWidth}x${metric.naturalHeight}, source ${metric.source})`,
+      );
+    }
+  }
+
+  if (!checked) {
+    throw new Error(`${label}: no visible raster image matched selector ${selector}`);
+  }
+}
+
 async function assertRootVariable(page, variable, expected, label) {
   const actual = await page.evaluate((name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim(), variable);
 
@@ -989,6 +1047,36 @@ async function auditFigmaSources(page) {
   ]);
 }
 
+async function auditPhase5BHardening(page) {
+  await page.setViewportSize({ width: 1920, height: 1080 });
+
+  await page.goto(`${baseUrl}/reference/`, { waitUntil: 'load' });
+  await assertComputedStyle(page, '.f-reference-card', 'border-radius', '40px', 'phase5b.referenceArchiveRadius');
+  await assertImageMaxUpscale(page, '.f-reference-card img', 1.25, 'phase5b.referenceArchiveImageUpscale', { limit: 9 });
+
+  await page.goto(`${baseUrl}/product/timberwolf/`, { waitUntil: 'load' });
+  await assertComputedStyle(page, '.f-section--references .f-listing--reference', 'border-radius', '40px', 'phase5b.productReferenceRadius');
+  await assertImageMaxUpscale(page, '.f-section--references .f-listing--reference img', 1.25, 'phase5b.productReferenceImageUpscale', { limit: 6 });
+  await assertImageMaxUpscale(page, '.f-heading--product-detail .f-gallery__slide:nth-child(1) img', 1.25, 'phase5b.timberwolfHeroUpscale');
+
+  await page.goto(`${baseUrl}/kontakt/`, { waitUntil: 'load' });
+  await assertComputedStyle(page, '.f-heading__buttons .a-button', 'border-radius', '50px', 'phase5b.contactTopButtonsRadius');
+
+  await page.goto(`${baseUrl}/showroom/`, { waitUntil: 'load' });
+  await assertComputedStyle(page, '.f-showroom-gallery-button', 'border-radius', '50px', 'phase5b.showroomGalleryButtonRadius');
+  await assertComputedStyle(page, '.f-showroom-mini-cta .a-button', 'border-radius', '50px', 'phase5b.showroomAppointmentButtonRadius');
+
+  await page.goto(`${baseUrl}/virivky/`, { waitUntil: 'load' });
+  await assertImageMaxUpscale(page, '.f-products-series--custom .f-listing--product:nth-child(1) .f-listing__image img', 1.25, 'phase5b.hotTubsCardOneUpscale');
+  await assertImageMaxUpscale(page, '.f-products-series--custom .f-listing--product:nth-child(2) .f-listing__image img', 1.25, 'phase5b.hotTubsCardTwoUpscale');
+  await assertImageMaxUpscale(page, '.f-products-series--custom .f-listing--product:nth-child(3) .f-listing__image img', 1.25, 'phase5b.hotTubsCardThreeUpscale');
+
+  await page.goto(`${baseUrl}/swimspa/`, { waitUntil: 'load' });
+  await assertImageMaxUpscale(page, '.f-products-series--swimspa .f-listing--product:nth-child(1) .f-listing__image img', 1.25, 'phase5b.swimspaCardOneUpscale');
+  await assertImageMaxUpscale(page, '.f-products-series--swimspa .f-listing--product:nth-child(2) .f-listing__image img', 1.25, 'phase5b.swimspaCardTwoUpscale');
+  await assertImageMaxUpscale(page, '.f-products-series--swimspa .f-listing--product:nth-child(3) .f-listing__image img', 1.25, 'phase5b.swimspaCardThreeUpscale');
+}
+
 async function auditCatalogHotTubsDesktop(page) {
   await page.setViewportSize({ width: 1920, height: 1080 });
   await page.goto(`${baseUrl}/virivky/`, { waitUntil: 'load' });
@@ -1402,6 +1490,7 @@ async function auditSharedFooterDesktop(page) {
     await auditCompactLaptopLayout(page);
     await auditScaledLaptopBoundary(page);
     await auditFigmaSources(page);
+    await auditPhase5BHardening(page);
     await auditCatalogHotTubsDesktop(page);
     await auditCatalogSwimspaDesktop(page);
     await auditTimberwolfDesktop(page);

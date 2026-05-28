@@ -343,9 +343,10 @@ Exit criteria:
 - Signed pass sheet for all required pages and breakpoints.
 
 Current Phase 5 status:
-- Phase 5 implementation is complete for the repository code/audit/screenshot scope as of 2026-05-27.
+- Phase 5 implementation is complete for the repository code/audit/screenshot scope as of PR6 on 2026-05-28.
 - `docs/visual-signoff-phase-5-2026-05-26.md` remains valid only as evidence for responsive/zoom resilience.
 - The active frame-by-frame tracker is `docs/phase-5-figma-frame-by-frame-tracker-2026-05-26.md`.
+- Technical manual sign-off record is `docs/phase-5c-manual-signoff-2026-05-28.md`.
 - Header search and desktop product mega menu states from Figma are now implemented and covered by `npm run figma:audit`.
 - Additional desktop frame geometry is now covered for Swimspa category, showroom, product popup, info pages, support, references, about, service, contact, and the shared footer.
 - Final visual-token parity is now automated in `tools/figma-visual-audit.js`: local Red Hat Display font usage, Figma background/red/dark color tokens, button and card radii, contact CTA styling, reference cards, showroom panel, footer quick contact card, footer map card, and shared page typography.
@@ -397,9 +398,10 @@ Task board checklist + DoD:
   - Scope: replace visibly upscaled product/reference/hero assets with higher-quality sources where available.
   - DoD: no critical hero/reference/product card remains obviously upscaled from undersized source art.
   - Verification (2026-05-28): local Playwright natural-size check confirms `/virivky/` and `/swimspa/` product cards now render from high-res sources (no upscale), `/product/timberwolf/` hero max upscale is `1.20x` (1920x795 render from 1600x1600 source), and `/reference/` cards render from >=500x333 sources.
-- [ ] PR6 QA hardening + Phase 5C sign-off
+- [x] PR6 QA hardening + Phase 5C sign-off
   - Scope: add missing automated checks (reference archive radius, product reference radius, contact buttons, showroom button, image natural-size checks) and complete manual page-by-page sign-off.
   - DoD: all known Phase 5B mismatches are covered by automated checks and final manual sign-off records.
+  - Verification (2026-05-28): `tools/figma-visual-audit.js` now asserts reference archive/product reference radii, contact/showroom button radii, and critical image upscale limits (`<= 1.25x`); `npm run figma:audit` and full `npm run qa:local` passed; manual records stored in `docs/phase-5c-manual-signoff-2026-05-28.md`.
 
 ## Phase 5A - Compact laptop / Windows 175% scaling (P0, 0.5-1 day)
 Goal: make `1920x1080` Windows display scaling at `175%` with Chrome at `100%` behave as a first-class release viewport, not an accidental mix of desktop and mobile rules.

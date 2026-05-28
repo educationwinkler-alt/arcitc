@@ -7,7 +7,8 @@ Scope: technical visual sign-off for the Arctic Spas redesign.
 
 This document is not the final Phase 5 sign-off. It records the responsive/zoom resilience pass only.
 
-Phase 5 was reopened after manual review found that full Figma frame/state coverage was still missing, especially header search and product menu states. Use `docs/phase-5-figma-frame-by-frame-tracker-2026-05-26.md` as the active Phase 5 checklist.
+Phase 5 was reopened after manual review found that full Figma frame/state coverage was still missing, especially header search and product menu states.
+Use `docs/phase-5-figma-frame-by-frame-tracker-2026-05-26.md` as the active tracker and `docs/phase-5c-manual-signoff-2026-05-28.md` as the current technical manual sign-off record.
 
 ## Source Rules
 
