@@ -1,7 +1,13 @@
 # Phase 5C Manual Sign-Off Record
 
 Date: 2026-05-28
-Scope: repository-level technical manual sign-off after PR6 (`QA hardening + Phase 5C sign-off`).
+Scope: repository-level technical manual sign-off after PR6 (`QA hardening + Phase 5C sign-off`) and PR6C reopen fixes.
+
+Update 2026-05-28 (PR6C reopen closure):
+- Showroom panel location pin no longer uses bitmap background (`hp-pin-showroom.png`); icon is now pure CSS glyph over circular chip.
+- Footer quick-hours chip is forced to one line (no orphan trailing `h` line break).
+- Homepage/category/product reference cards use explicit reference overlay/link contracts (lighter gradient, fixed white link color, no hover darkening scale drift).
+- Manual screenshot pack was regenerated via `VISUAL_SMOKE_WRITE_SCREENSHOTS=1 npm run visual:smoke`.
 
 ## Sign-Off Method
 

@@ -141,9 +141,25 @@ h6,
   border-radius: var(--arctic-contract-radius-button);
 }
 
+.template--homepage .f-showroom-panel__actions span:before,
+.tax-product-category .f-showroom-panel__actions span:before,
 .f-showroom-panel__actions span:before {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--arctic-contract-radius-pill);
+}
+
+.template--homepage .f-showroom-panel__actions span:after,
+.tax-product-category .f-showroom-panel__actions span:after,
+.f-showroom-panel__actions span:after {
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  width: 24px;
+  height: 24px;
+  background: var(--arctic-color-snow);
+  clip-path: path("M12 2C7.6 2 4 5.55 4 9.94c0 5.95 8 12.06 8 12.06s8-6.11 8-12.06C20 5.55 16.4 2 12 2Zm0 10.5a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z");
+  pointer-events: none;
 }
 
 .f-reference-card,
@@ -166,7 +182,9 @@ h6,
 }
 
 .f-footer--arctic.f-footer--arctic .f-footer__quick-hours {
-  width: 147px;
+  width: max-content;
+  max-width: 100%;
+  white-space: nowrap;
   box-sizing: border-box;
 }
 
@@ -422,6 +440,15 @@ h6,
     color: currentColor;
   }
 
+  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference {
+    --listing--image--scale: 1;
+    --listing--image--scale--active: 1;
+    --listing--image--overlay--gradient: linear-gradient(180deg, rgba(7, 24, 38, 0.04) 0%, rgba(7, 24, 38, 0.62) 100%);
+    --listing--image--overlay--color: transparent;
+    --listing--image--overlay--color--active: transparent;
+    --listing--header--color: var(--arctic-color-snow);
+  }
+
   :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas {
     position: absolute;
     bottom: 68px;
@@ -476,6 +503,13 @@ h6,
     line-height: 34px;
     text-decoration: underline;
     text-shadow: none;
+  }
+
+  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference .f-listing__header :is(a, a:visited) {
+    color: inherit;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
   }
 
   .f-reference-card__meta {

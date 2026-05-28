@@ -418,6 +418,7 @@ Task board checklist + DoD:
   - Implementation note: communicator runtime is third-party (`Smartsupp`) and currently production-gated by `arctic_smartsupp_key`; use provider theming/API where available and keep a deterministic fallback wrapper style for unsupported widget internals.
   - DoD: communicator appears in approved Arctic palette and does not clash with hero/header/footer; menu CTA and modal are compositionally stable (no broken geometry/overflow) and match Figma intent on desktop + mobile; local QA can validate style state without requiring live production chat traffic.
   - Verification (2026-05-28): consultation CTA now uses shared `f-button--consultation` contract; contact modal skin is normalized in `_component-contracts.less`; Smartsupp runtime now receives Arctic brand config (`color`, offsets, privacy URL) in production script bootstrap; targeted Playwright smoke validates CTA/modal color + radius.
+  - Reopen verification (2026-05-28): showroom location pin icon no longer uses `hp-pin-showroom.png` bitmap background (square artifact removed), footer quick-hours chip is single-line stable, and reference card overlay/link contract was tightened to Figma-style visual behavior; `npm run figma:audit`, `npm run visual:smoke`, and full `npm run qa:local` passed.
 
 - [x] PR6D site identity/favicon DB hardening
   - Scope: make Arctic favicon deterministic in local/stage/prod by enforcing `site_icon` assignment during seed/migration/import and keeping theme fallback as safety net.

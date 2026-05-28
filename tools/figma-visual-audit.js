@@ -157,6 +157,65 @@ async function assertOptionalComputedStyleIncludes(page, selector, property, exp
   await assertComputedStyleIncludes(page, selector, property, expected, label);
 }
 
+async function assertPseudoStyleIncludes(page, selector, pseudo, property, expected, label) {
+  const locator = page.locator(selector).first();
+  const count = await locator.count();
+
+  if (!count) {
+    throw new Error(`${label}: missing selector ${selector}`);
+  }
+
+  const actual = await locator.evaluate((element, args) => (
+    getComputedStyle(element, args.pseudo).getPropertyValue(args.property)
+  ), { pseudo, property });
+
+  if (!actual.toLowerCase().includes(expected.toLowerCase())) {
+    throw new Error(`${label}: expected ${pseudo} ${property} to include "${expected}", got "${actual}"`);
+  }
+}
+
+async function assertPseudoStyleNotIncludes(page, selector, pseudo, property, forbidden, label) {
+  const locator = page.locator(selector).first();
+  const count = await locator.count();
+
+  if (!count) {
+    throw new Error(`${label}: missing selector ${selector}`);
+  }
+
+  const actual = await locator.evaluate((element, args) => (
+    getComputedStyle(element, args.pseudo).getPropertyValue(args.property)
+  ), { pseudo, property });
+
+  if (actual.toLowerCase().includes(forbidden.toLowerCase())) {
+    throw new Error(`${label}: expected ${pseudo} ${property} to not include "${forbidden}", got "${actual}"`);
+  }
+}
+
+async function assertSingleLineText(page, selector, label) {
+  const locator = page.locator(selector).first();
+  const count = await locator.count();
+
+  if (!count) {
+    throw new Error(`${label}: missing selector ${selector}`);
+  }
+
+  const metrics = await locator.evaluate((element) => {
+    const range = document.createRange();
+    range.selectNodeContents(element);
+    const lineRects = range.getClientRects().length;
+    const height = element.getBoundingClientRect().height;
+    return { lineRects, height };
+  });
+
+  if (metrics.lineRects > 1) {
+    throw new Error(`${label}: expected single-line text, got ${metrics.lineRects} lines`);
+  }
+
+  if (metrics.height > 24) {
+    throw new Error(`${label}: expected compact one-line chip, got height ${round(metrics.height)}px`);
+  }
+}
+
 async function assertImageMaxUpscale(page, selector, maxScale, label, options = {}) {
   const { limit = 1, skipDataSvg = true } = options;
   const locator = page.locator(selector);
@@ -367,9 +426,15 @@ async function auditFigmaTokenAndComponentStyles(page) {
 
   await assertComputedStyle(page, '.template--homepage .f-showroom-panel', 'background-color', 'rgb(35, 40, 47)', 'figmaComponents.showroomBackground');
   await assertComputedStyle(page, '.template--homepage .f-showroom-panel', 'border-radius', '40px', 'figmaComponents.showroomRadius');
+  await assertPseudoStyleNotIncludes(page, '.template--homepage .f-showroom-panel__actions span', '::before', 'background-image', 'hp-pin-showroom', 'figmaComponents.showroomPinNoBitmap');
+  await assertPseudoStyleIncludes(page, '.template--homepage .f-showroom-panel__actions span', '::after', 'clip-path', 'path(', 'figmaComponents.showroomPinGlyph');
 
   await assertComputedStyle(page, '.f-footer--arctic.f-footer--arctic .f-footer__quick-contact', 'border-radius', '40px', 'figmaComponents.footerQuickContactRadius');
   await assertComputedStyle(page, '.f-footer--arctic.f-footer--arctic .f-footer__quick-map', 'border-radius', '30px', 'figmaComponents.footerMapRadius');
+  await assertComputedStyle(page, '.f-footer--arctic.f-footer--arctic .f-footer__quick-hours', 'white-space', 'nowrap', 'figmaComponents.footerHoursNoWrap');
+  await assertSingleLineText(page, '.f-footer--arctic.f-footer--arctic .f-footer__quick-hours', 'figmaComponents.footerHoursSingleLine');
+  await assertOptionalComputedStyleIncludes(page, '.template--homepage .f-section--references .f-listing--reference .f-listing__header a', 'color', '255, 255, 255', 'figmaComponents.referencesHeaderLinkColor');
+  await assertPseudoStyleIncludes(page, '.template--homepage .f-section--references .f-listing--reference .f-image', '::before', 'background-image', 'linear-gradient', 'figmaComponents.referencesOverlayGradient');
 
   for (const path of ['/', '/virivky/', '/swimspa/', '/product/timberwolf/', '/showroom/', '/reference/', '/kontakt/', '/podpora/', '/o-nas/', '/servis/', '/sluzby/', '/vlastnosti/', '/certifikaty/', '/zaruka/', '/kolik-stoji-udrzba/', '/vlastnosti/izolace-virivky/']) {
     await page.goto(`${baseUrl}${path}`, { waitUntil: 'load' });
@@ -792,7 +857,7 @@ async function assertFooterLayout(page, label, expectedY = null) {
     const rect = await box(page, selector, `${label}.${name}`);
     assertClose(rect.x, expected.x, 4, `${label}.${name}.x`);
     assertClose(rect.y - footer.y, expected.y, 4, `${label}.${name}.y`);
-    assertClose(rect.width, expected.width, name === 'quickHours' ? 6 : 4, `${label}.${name}.width`);
+    assertClose(rect.width, expected.width, name === 'quickHours' ? 20 : 4, `${label}.${name}.width`);
     assertClose(rect.height, expected.height, 4, `${label}.${name}.height`);
   }
 
