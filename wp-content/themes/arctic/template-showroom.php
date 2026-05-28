@@ -10,13 +10,13 @@ $asset = static function ( string $filename ): string {
 
 $contact_email = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
 $contact_phone = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
-$contact_name  = get_theme_mod( 'arctic_showroom_contact_name', 'Lukas Dusek' );
-$street        = get_theme_mod( 'baspa_street', 'Bohunicka cesta 15' );
+$contact_name  = function_exists( 'arctic_sections_get_theme_mod' ) ? arctic_sections_get_theme_mod( 'arctic_showroom_contact_name', 'Lukáš Dušek' ) : get_theme_mod( 'arctic_showroom_contact_name', 'Lukáš Dušek' );
+$street        = get_theme_mod( 'baspa_street', 'Bohunická cesta 15' );
 $city          = get_theme_mod( 'baspa_city', 'Moravany u Brna' );
-$hours_title   = get_theme_mod( 'arctic_showroom_hours_title', 'Oteviraci doba' );
-$hours_label   = get_theme_mod( 'arctic_showroom_hours_label', 'Utery - Patek' );
-$hours_line_1  = get_theme_mod( 'arctic_showroom_hours_line_1', '9:00 - 11:30' );
-$hours_line_2  = get_theme_mod( 'arctic_showroom_hours_line_2', '12:30 - 16:00' );
+$hours_title   = function_exists( 'arctic_sections_get_theme_mod' ) ? arctic_sections_get_theme_mod( 'arctic_showroom_hours_title', 'Otevírací doba' ) : get_theme_mod( 'arctic_showroom_hours_title', 'Otevírací doba' );
+$hours_label   = function_exists( 'arctic_sections_get_theme_mod' ) ? arctic_sections_get_theme_mod( 'arctic_showroom_hours_label', 'Úterý - Pátek' ) : get_theme_mod( 'arctic_showroom_hours_label', 'Úterý - Pátek' );
+$hours_line_1  = function_exists( 'arctic_sections_get_theme_mod' ) ? arctic_sections_get_theme_mod( 'arctic_showroom_hours_line_1', '9:00 - 11:30' ) : get_theme_mod( 'arctic_showroom_hours_line_1', '9:00 - 11:30' );
+$hours_line_2  = function_exists( 'arctic_sections_get_theme_mod' ) ? arctic_sections_get_theme_mod( 'arctic_showroom_hours_line_2', '12:30 - 16:00' ) : get_theme_mod( 'arctic_showroom_hours_line_2', '12:30 - 16:00' );
 
 $reasons = array(
 	array(

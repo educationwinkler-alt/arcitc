@@ -8,18 +8,41 @@ get_header();
 get_template_part( 'templates/heading/default' );
 
 $support_avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
-$support_faq_title       = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_faq_title', 'Caste dotazy' ) : 'Caste dotazy';
-$support_downloads_title = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_support_title', 'Ke stazeni' ) : 'Ke stazeni';
-$support_form_title      = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_form_title', 'Servisni formular' ) : 'Servisni formular';
-$support_form_content    = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_form_content', 'Samozřejmostí je pro nás záruční i pozáruční servis u zákazníka, k dispozici je Vám formulář servisního požadavku, na který budeme co nejdříve reagovat. Objednat si u nás můžete odborné zazimování bazénu či vířivky stejně jako jarní zprovoznění.' ) : 'Samozřejmostí je pro nás záruční i pozáruční servis u zákazníka, k dispozici je Vám formulář servisního požadavku, na který budeme co nejdříve reagovat. Objednat si u nás můžete odborné zazimování bazénu či vířivky stejně jako jarní zprovoznění.';
-$support_help_title      = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_help_title', 'Potrebujete poradit?' ) : 'Potrebujete poradit?';
-$support_help_name       = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_help_name', 'Lukas Dusek' ) : 'Lukas Dusek';
-$support_help_role       = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_help_role', 'Bazenovy specialista' ) : 'Bazenovy specialista';
-$support_help_hours      = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_help_hours', 'Po - Pa 8:00-17:00 h' ) : 'Po - Pa 8:00-17:00 h';
-$support_help_button     = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_help_button', 'Napsat zpravu' ) : 'Napsat zpravu';
+$support_defaults = function_exists( 'arctic_support_option_defaults' ) ? arctic_support_option_defaults() : array();
+$downloads_defaults = function_exists( 'arctic_downloads_option_defaults' ) ? arctic_downloads_option_defaults() : array();
+
+$support_faq_title = function_exists( 'arctic_support_get_option' )
+	? arctic_support_get_option( 'arctic_support_faq_title', $support_defaults['arctic_support_faq_title'] ?? 'Časté dotazy' )
+	: 'Časté dotazy';
+$support_downloads_title = function_exists( 'arctic_downloads_get_option' )
+	? arctic_downloads_get_option( 'arctic_downloads_support_title', $downloads_defaults['arctic_downloads_support_title'] ?? 'Ke stažení' )
+	: 'Ke stažení';
+$support_form_title = function_exists( 'arctic_support_get_option' )
+	? arctic_support_get_option( 'arctic_support_form_title', $support_defaults['arctic_support_form_title'] ?? 'Servisní formulář' )
+	: 'Servisní formulář';
+$support_form_content = function_exists( 'arctic_support_get_option' )
+	? arctic_support_get_option( 'arctic_support_form_content', $support_defaults['arctic_support_form_content'] ?? 'Samozřejmostí je pro nás záruční i pozáruční servis u zákazníka, k dispozici je Vám formulář servisního požadavku, na který budeme co nejdříve reagovat. Objednat si u nás můžete odborné zazimování bazénu či vířivky stejně jako jarní zprovoznění.' )
+	: 'Samozřejmostí je pro nás záruční i pozáruční servis u zákazníka, k dispozici je Vám formulář servisního požadavku, na který budeme co nejdříve reagovat. Objednat si u nás můžete odborné zazimování bazénu či vířivky stejně jako jarní zprovoznění.';
+$support_help_title = function_exists( 'arctic_support_get_option' )
+	? arctic_support_get_option( 'arctic_support_help_title', $support_defaults['arctic_support_help_title'] ?? 'Potřebujete poradit?' )
+	: 'Potřebujete poradit?';
+$support_help_name = function_exists( 'arctic_support_get_option' )
+	? arctic_support_get_option( 'arctic_support_help_name', $support_defaults['arctic_support_help_name'] ?? 'Lukáš Dušek' )
+	: 'Lukáš Dušek';
+$support_help_role = function_exists( 'arctic_support_get_option' )
+	? arctic_support_get_option( 'arctic_support_help_role', $support_defaults['arctic_support_help_role'] ?? 'Bazénový specialista' )
+	: 'Bazénový specialista';
+$support_help_hours = function_exists( 'arctic_support_get_option' )
+	? arctic_support_get_option( 'arctic_support_help_hours', $support_defaults['arctic_support_help_hours'] ?? 'Po - Pá 8:00-17:00 h' )
+	: 'Po - Pá 8:00-17:00 h';
+$support_help_button = function_exists( 'arctic_support_get_option' )
+	? arctic_support_get_option( 'arctic_support_help_button', $support_defaults['arctic_support_help_button'] ?? 'Napsat zprávu' )
+	: 'Napsat zprávu';
 $support_help_button_url = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_help_button_url', '/kontakt/' ) : '/kontakt/';
 $support_help_button_url = function_exists( 'arctic_sections_url' ) ? arctic_sections_url( $support_help_button_url, '/kontakt/' ) : home_url( '/kontakt/' );
-$download_filter_labels  = function_exists( 'arctic_downloads_filter_labels' ) ? arctic_downloads_filter_labels() : array( 'Katalogy virivek', 'Navody', 'Rozmery', 'Zaruky' );
+$download_filter_labels = function_exists( 'arctic_downloads_filter_labels' )
+	? arctic_downloads_filter_labels()
+	: array( 'Katalogy vířivek', 'Návody', 'Rozměry', 'Záruky' );
 ?>
 
 <main id="<?php echo sanitize_title( esc_attr_x( 'content', 'anchor', 'baspa' ) ); ?>"

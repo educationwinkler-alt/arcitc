@@ -7,8 +7,13 @@
 get_header();
 get_template_part( 'templates/heading/default' );
 
-$downloads_title        = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_page_title', 'Dokumenty ke stazeni' ) : 'Dokumenty ke stazeni';
-$download_filter_labels = function_exists( 'arctic_downloads_filter_labels' ) ? arctic_downloads_filter_labels() : array( 'Katalogy virivek', 'Navody', 'Rozmery', 'Zaruky' );
+$downloads_defaults = function_exists( 'arctic_downloads_option_defaults' ) ? arctic_downloads_option_defaults() : array();
+$downloads_title = function_exists( 'arctic_downloads_get_option' )
+	? arctic_downloads_get_option( 'arctic_downloads_page_title', $downloads_defaults['arctic_downloads_page_title'] ?? 'Dokumenty ke stažení' )
+	: 'Dokumenty ke stažení';
+$download_filter_labels = function_exists( 'arctic_downloads_filter_labels' )
+	? arctic_downloads_filter_labels()
+	: array( 'Katalogy vířivek', 'Návody', 'Rozměry', 'Záruky' );
 ?>
 
 <main id="<?php echo sanitize_title( esc_attr_x( 'content', 'anchor', 'baspa' ) ); ?>"

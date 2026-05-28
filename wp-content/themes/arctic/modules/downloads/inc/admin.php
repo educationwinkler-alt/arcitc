@@ -4,6 +4,72 @@
  * Downloads admin settings.
  */
 
+if ( !function_exists( 'arctic_downloads_option_defaults' ) ) {
+
+	/**
+	 * Canonical downloads option defaults.
+	 *
+	 * @return array<string, string>
+	 */
+	function arctic_downloads_option_defaults(): array {
+
+		return array(
+			'arctic_downloads_page_title'           => 'Dokumenty ke stažení',
+			'arctic_downloads_support_title'        => 'Ke stažení',
+			'arctic_downloads_filter_catalogs'      => 'Katalogy vířivek',
+			'arctic_downloads_filter_manuals'       => 'Návody',
+			'arctic_downloads_filter_dimensions'    => 'Rozměry',
+			'arctic_downloads_filter_warranty'      => 'Záruky',
+			'arctic_downloads_featured_group_title' => 'Série custom',
+			'arctic_downloads_closed_group_1_title' => 'Série classic',
+			'arctic_downloads_closed_group_2_title' => 'Série core',
+			'arctic_downloads_group_tag'            => 'Katalogy vířivek',
+			'arctic_downloads_card_description'     => 'Dokument Arctic Spas, PDF ke stažení.',
+			'arctic_downloads_button_text'          => 'Stáhnout',
+		);
+
+	}
+
+}
+
+if ( !function_exists( 'arctic_downloads_normalize_legacy_value' ) ) {
+
+	/**
+	 * Normalize legacy ASCII/mojibake downloads values.
+	 *
+	 * @param string $key
+	 * @param string $value
+	 *
+	 * @return string
+	 */
+	function arctic_downloads_normalize_legacy_value( string $key, string $value ): string {
+
+		$defaults = arctic_downloads_option_defaults();
+		$legacy_map = array(
+			'arctic_downloads_page_title'           => array( 'Dokumenty ke stazeni' ),
+			'arctic_downloads_support_title'        => array( 'Ke stazeni' ),
+			'arctic_downloads_filter_catalogs'      => array( 'Katalogy virivek' ),
+			'arctic_downloads_filter_manuals'       => array( 'Navody' ),
+			'arctic_downloads_filter_dimensions'    => array( 'Rozmery' ),
+			'arctic_downloads_filter_warranty'      => array( 'Zaruky' ),
+			'arctic_downloads_featured_group_title' => array( 'Serie custom' ),
+			'arctic_downloads_closed_group_1_title' => array( 'Serie classic' ),
+			'arctic_downloads_closed_group_2_title' => array( 'Serie core' ),
+			'arctic_downloads_group_tag'            => array( 'Katalogy virivek' ),
+			'arctic_downloads_card_description'     => array( 'Dokument Arctic Spas, PDF ke stazeni.' ),
+			'arctic_downloads_button_text'          => array( 'Stahnout' ),
+		);
+
+		if ( isset( $legacy_map[ $key ] ) && in_array( $value, $legacy_map[ $key ], true ) && isset( $defaults[ $key ] ) ) {
+			return $defaults[ $key ];
+		}
+
+		return $value;
+
+	}
+
+}
+
 if ( !function_exists( 'arctic_downloads_get_option' ) ) {
 
 	/**
@@ -22,9 +88,40 @@ if ( !function_exists( 'arctic_downloads_get_option' ) ) {
 			return $default;
 		}
 
-		return (string) $value;
+		return arctic_downloads_normalize_legacy_value( $key, (string) $value );
 
 	}
+
+}
+
+if ( !function_exists( 'arctic_downloads_migrate_legacy_defaults' ) ) {
+
+	/**
+	 * One-way migration for legacy defaults stored in options.
+	 *
+	 * @return void
+	 */
+	function arctic_downloads_migrate_legacy_defaults(): void {
+
+		$defaults = arctic_downloads_option_defaults();
+
+		foreach ( $defaults as $key => $default ) {
+			$current = get_option( $key, null );
+
+			if ( !is_string( $current ) || $current === '' ) {
+				continue;
+			}
+
+			$normalized = arctic_downloads_normalize_legacy_value( $key, $current );
+
+			if ( $normalized !== $current ) {
+				update_option( $key, $normalized );
+			}
+		}
+
+	}
+
+	add_action( 'init', 'arctic_downloads_migrate_legacy_defaults', 20 );
 
 }
 
@@ -37,11 +134,13 @@ if ( !function_exists( 'arctic_downloads_filter_labels' ) ) {
 	 */
 	function arctic_downloads_filter_labels(): array {
 
+		$defaults = arctic_downloads_option_defaults();
+
 		return array(
-			arctic_downloads_get_option( 'arctic_downloads_filter_catalogs', 'Katalogy virivek' ),
-			arctic_downloads_get_option( 'arctic_downloads_filter_manuals', 'Navody' ),
-			arctic_downloads_get_option( 'arctic_downloads_filter_dimensions', 'Rozmery' ),
-			arctic_downloads_get_option( 'arctic_downloads_filter_warranty', 'Zaruky' ),
+			arctic_downloads_get_option( 'arctic_downloads_filter_catalogs', $defaults['arctic_downloads_filter_catalogs'] ),
+			arctic_downloads_get_option( 'arctic_downloads_filter_manuals', $defaults['arctic_downloads_filter_manuals'] ),
+			arctic_downloads_get_option( 'arctic_downloads_filter_dimensions', $defaults['arctic_downloads_filter_dimensions'] ),
+			arctic_downloads_get_option( 'arctic_downloads_filter_warranty', $defaults['arctic_downloads_filter_warranty'] ),
 		);
 
 	}
@@ -57,19 +156,21 @@ if ( !function_exists( 'arctic_downloads_admin_fields' ) ) {
 	 */
 	function arctic_downloads_admin_fields(): array {
 
+		$defaults = arctic_downloads_option_defaults();
+
 		return array(
-			'arctic_downloads_page_title'           => array( 'Downloads page title', 'text', 'Dokumenty ke stazeni' ),
-			'arctic_downloads_support_title'        => array( 'Support downloads title', 'text', 'Ke stazeni' ),
-			'arctic_downloads_filter_catalogs'      => array( 'Filter label: catalogs', 'text', 'Katalogy virivek' ),
-			'arctic_downloads_filter_manuals'       => array( 'Filter label: manuals', 'text', 'Navody' ),
-			'arctic_downloads_filter_dimensions'    => array( 'Filter label: dimensions', 'text', 'Rozmery' ),
-			'arctic_downloads_filter_warranty'      => array( 'Filter label: warranty', 'text', 'Zaruky' ),
-			'arctic_downloads_featured_group_title' => array( 'Featured group title', 'text', 'Serie custom' ),
-			'arctic_downloads_closed_group_1_title' => array( 'Closed group 1 title', 'text', 'Serie classic' ),
-			'arctic_downloads_closed_group_2_title' => array( 'Closed group 2 title', 'text', 'Serie core' ),
-			'arctic_downloads_group_tag'            => array( 'Group tag', 'text', 'Katalogy virivek' ),
-			'arctic_downloads_card_description'     => array( 'Card description', 'textarea', 'Dokument Arctic Spas, PDF ke stazeni.' ),
-			'arctic_downloads_button_text'          => array( 'Download button text', 'text', 'Stahnout' ),
+			'arctic_downloads_page_title'           => array( 'Downloads page title', 'text', $defaults['arctic_downloads_page_title'] ),
+			'arctic_downloads_support_title'        => array( 'Support downloads title', 'text', $defaults['arctic_downloads_support_title'] ),
+			'arctic_downloads_filter_catalogs'      => array( 'Filter label: catalogs', 'text', $defaults['arctic_downloads_filter_catalogs'] ),
+			'arctic_downloads_filter_manuals'       => array( 'Filter label: manuals', 'text', $defaults['arctic_downloads_filter_manuals'] ),
+			'arctic_downloads_filter_dimensions'    => array( 'Filter label: dimensions', 'text', $defaults['arctic_downloads_filter_dimensions'] ),
+			'arctic_downloads_filter_warranty'      => array( 'Filter label: warranty', 'text', $defaults['arctic_downloads_filter_warranty'] ),
+			'arctic_downloads_featured_group_title' => array( 'Featured group title', 'text', $defaults['arctic_downloads_featured_group_title'] ),
+			'arctic_downloads_closed_group_1_title' => array( 'Closed group 1 title', 'text', $defaults['arctic_downloads_closed_group_1_title'] ),
+			'arctic_downloads_closed_group_2_title' => array( 'Closed group 2 title', 'text', $defaults['arctic_downloads_closed_group_2_title'] ),
+			'arctic_downloads_group_tag'            => array( 'Group tag', 'text', $defaults['arctic_downloads_group_tag'] ),
+			'arctic_downloads_card_description'     => array( 'Card description', 'textarea', $defaults['arctic_downloads_card_description'] ),
+			'arctic_downloads_button_text'          => array( 'Download button text', 'text', $defaults['arctic_downloads_button_text'] ),
 		);
 
 	}

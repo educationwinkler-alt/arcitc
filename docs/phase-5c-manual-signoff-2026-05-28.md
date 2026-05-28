@@ -1,7 +1,11 @@
-# Phase 5C Manual Sign-Off Record
+﻿# Phase 5C Manual Sign-Off Record
 
 Date: 2026-05-28
 Scope: repository-level technical manual sign-off after PR6 (`QA hardening + Phase 5C sign-off`) and PR6C reopen fixes.
+
+Reopen note (2026-05-28, later audit pass):
+- A new cross-page content/language/function audit (`docs/content-language-function-audit-2026-05-28.md`) identified additional unresolved issues (fake-interactive support/download controls, dead anchors, ASCII fallback copy, and figma-page geometry gaps).
+- Phase 5C remains valid as geometry evidence, but end-state acceptance is reopened until PR7A-PR7F are closed.
 
 Update 2026-05-28 (PR6C reopen closure):
 - Showroom panel location pin no longer uses bitmap background (`hp-pin-showroom.png`); icon is now pure CSS glyph over circular chip.
@@ -57,5 +61,6 @@ Update 2026-05-28 (PR6C reopen closure):
 
 ## Final Technical Sign-Off Status
 
-- Phase 5B + 5C repository technical sign-off: **Pass** (2026-05-28).
+- Phase 5B + 5C repository technical sign-off: **Conditionally passed then reopened** (2026-05-28) due follow-up content/language/function blockers tracked as PR7A-PR7F.
 - Remaining release requirement outside repository code: owner/client visual approval before production rollout.
+

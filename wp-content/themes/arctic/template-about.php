@@ -1,27 +1,27 @@
 <?php
 /**
- * Template Name: Figma O nas
+ * Template Name: Figma O nás
  */
 
 $team = array(
 	array(
-		'name'  => 'Vladimir Zajic',
-		'role'  => 'Vedouci showroomu',
+		'name'  => 'Vladimír Zajíč',
+		'role'  => 'Vedoucí showroomu',
 		'image' => content_url( 'uploads/import/figma/about-team-vladimir.png' ),
 	),
 	array(
-		'name'  => 'Lukas Dusek',
-		'role'  => 'Obchodni konzultant',
+		'name'  => 'Lukáš Dušek',
+		'role'  => 'Obchodní konzultant',
 		'image' => content_url( 'uploads/import/figma/about-team-lukas.png' ),
 	),
 	array(
-		'name'  => 'Helena Antonyova',
-		'role'  => 'Pecuje o zakazniky',
+		'name'  => 'Helena Antonyová',
+		'role'  => 'Pečuje o zákazníky',
 		'image' => content_url( 'uploads/import/figma/about-team-helena.png' ),
 	),
 	array(
-		'name'  => 'Servisni tym',
-		'role'  => 'Montaz a servis',
+		'name'  => 'Servisní tým',
+		'role'  => 'Montáž a servis',
 		'image' => content_url( 'uploads/import/figma/about-team-service.png' ),
 	),
 );

@@ -4,6 +4,81 @@
  * Support admin settings.
  */
 
+if ( !function_exists( 'arctic_support_option_defaults' ) ) {
+
+	/**
+	 * Canonical support option defaults.
+	 *
+	 * @return array<string, string>
+	 */
+	function arctic_support_option_defaults(): array {
+
+		return array(
+			'arctic_support_faq_title'    => 'Časté dotazy',
+			'arctic_support_form_title'   => 'Servisní formulář',
+			'arctic_support_form_content' => 'Samozřejmostí je pro nás záruční i pozáruční servis u zákazníka, k dispozici je Vám formulář servisního požadavku, na který budeme co nejdříve reagovat. Objednat si u nás můžete odborné zazimování bazénu či vířivky stejně jako jarní zprovoznění.',
+			'arctic_support_help_title'   => 'Potřebujete poradit?',
+			'arctic_support_help_name'    => 'Lukáš Dušek',
+			'arctic_support_help_role'    => 'Bazénový specialista',
+			'arctic_support_help_hours'   => 'Po - Pá 8:00-17:00 h',
+			'arctic_support_help_button'  => 'Napsat zprávu',
+		);
+
+	}
+
+}
+
+if ( !function_exists( 'arctic_support_normalize_legacy_value' ) ) {
+
+	/**
+	 * Normalize legacy ASCII/mojibake support values.
+	 *
+	 * @param string $key
+	 * @param string $value
+	 *
+	 * @return string
+	 */
+	function arctic_support_normalize_legacy_value( string $key, string $value ): string {
+
+		$defaults = arctic_support_option_defaults();
+		$legacy_map = array(
+			'arctic_support_faq_title'    => array( 'Caste dotazy' ),
+			'arctic_support_form_title'   => array( 'Servisni formular' ),
+			'arctic_support_form_content' => array(
+				'Samozřejmostí je pro nás záruční i pozáruční servis u zákazníka, k dispozici je Vám formulář servisního požadavku, na který budeme co nejdříve reagovat. Objednat si u nás můžete odborné zazimování bazénu či vířivky stejně jako jarní zprovoznění.',
+				'SamozĹ™ejmostĂ­ je pro nĂˇs zĂˇruÄŤnĂ­ i pozĂˇruÄŤnĂ­ servis u zĂˇkaznĂ­ka, k dispozici je VĂˇm formulĂˇĹ™ servisnĂ­ho poĹľadavku, na kterĂ˝ budeme co nejdĹ™Ă­ve reagovat. Objednat si u nĂˇs mĹŻĹľete odbornĂ© zazimovĂˇnĂ­ bazĂ©nu ÄŤi vĂ­Ĺ™ivky stejnÄ› jako jarnĂ­ zprovoznÄ›nĂ­.',
+			),
+			'arctic_support_help_title'   => array( 'Potrebujete poradit?' ),
+			'arctic_support_help_name'    => array( 'Lukas Dusek' ),
+			'arctic_support_help_role'    => array( 'Bazenovy specialista' ),
+			'arctic_support_help_hours'   => array( 'Po - Pa 8:00-17:00 h' ),
+			'arctic_support_help_button'  => array( 'Napsat zpravu' ),
+			'baspa_service_form_title'    => array( 'Servisni formular' ),
+			'baspa_service_form_content'  => array(
+				'SamozĹ™ejmostĂ­ je pro nĂˇs zĂˇruÄŤnĂ­ i pozĂˇruÄŤnĂ­ servis u zĂˇkaznĂ­ka, k dispozici je VĂˇm formulĂˇĹ™ servisnĂ­ho poĹľadavku, na kterĂ˝ budeme co nejdĹ™Ă­ve reagovat. Objednat si u nĂˇs mĹŻĹľete odbornĂ© zazimovĂˇnĂ­ bazĂ©nu ÄŤi vĂ­Ĺ™ivky stejnÄ› jako jarnĂ­ zprovoznÄ›nĂ­.',
+			),
+		);
+
+		if ( isset( $legacy_map[ $key ] ) && in_array( $value, $legacy_map[ $key ], true ) ) {
+			if ( $key === 'baspa_service_form_title' ) {
+				return $defaults['arctic_support_form_title'];
+			}
+
+			if ( $key === 'baspa_service_form_content' ) {
+				return $defaults['arctic_support_form_content'];
+			}
+
+			if ( isset( $defaults[ $key ] ) ) {
+				return $defaults[ $key ];
+			}
+		}
+
+		return $value;
+
+	}
+
+}
+
 if ( !function_exists( 'arctic_support_get_option' ) ) {
 
 	/**
@@ -22,9 +97,40 @@ if ( !function_exists( 'arctic_support_get_option' ) ) {
 			return $default;
 		}
 
-		return (string) $value;
+		return arctic_support_normalize_legacy_value( $key, (string) $value );
 
 	}
+
+}
+
+if ( !function_exists( 'arctic_support_migrate_legacy_defaults' ) ) {
+
+	/**
+	 * One-way migration for legacy defaults stored in options.
+	 *
+	 * @return void
+	 */
+	function arctic_support_migrate_legacy_defaults(): void {
+
+		$defaults = arctic_support_option_defaults();
+
+		foreach ( $defaults as $key => $default ) {
+			$current = get_option( $key, null );
+
+			if ( !is_string( $current ) || $current === '' ) {
+				continue;
+			}
+
+			$normalized = arctic_support_normalize_legacy_value( $key, $current );
+
+			if ( $normalized !== $current ) {
+				update_option( $key, $normalized );
+			}
+		}
+
+	}
+
+	add_action( 'init', 'arctic_support_migrate_legacy_defaults', 20 );
 
 }
 
@@ -37,17 +143,21 @@ if ( !function_exists( 'arctic_support_admin_fields' ) ) {
 	 */
 	function arctic_support_admin_fields(): array {
 
+		$defaults = arctic_support_option_defaults();
+		$legacy_form_title = arctic_support_get_option( 'baspa_service_form_title', $defaults['arctic_support_form_title'] );
+		$legacy_form_content = arctic_support_get_option( 'baspa_service_form_content', $defaults['arctic_support_form_content'] );
+
 		return array(
-			'baspa_supports_title'          => array( 'Support module title', 'text', 'Podpora' ),
-			'baspa_supports_subtitle'       => array( 'Support module subtitle', 'textarea', '' ),
-			'arctic_support_faq_title'      => array( 'FAQ section title', 'text', 'Caste dotazy' ),
-			'arctic_support_form_title'     => array( 'Service form title', 'text', arctic_support_get_option( 'baspa_service_form_title', 'Servisni formular' ) ),
-			'arctic_support_form_content'   => array( 'Service form text', 'textarea', arctic_support_get_option( 'baspa_service_form_content', 'Samozřejmostí je pro nás záruční i pozáruční servis u zákazníka, k dispozici je Vám formulář servisního požadavku, na který budeme co nejdříve reagovat. Objednat si u nás můžete odborné zazimování bazénu či vířivky stejně jako jarní zprovoznění.' ) ),
-			'arctic_support_help_title'     => array( 'Help card title', 'text', 'Potrebujete poradit?' ),
-			'arctic_support_help_name'      => array( 'Help card person', 'text', 'Lukas Dusek' ),
-			'arctic_support_help_role'      => array( 'Help card role', 'text', 'Bazenovy specialista' ),
-			'arctic_support_help_hours'     => array( 'Help card hours', 'text', 'Po - Pa 8:00-17:00 h' ),
-			'arctic_support_help_button'    => array( 'Help card button text', 'text', 'Napsat zpravu' ),
+			'baspa_supports_title'           => array( 'Support module title', 'text', 'Podpora' ),
+			'baspa_supports_subtitle'        => array( 'Support module subtitle', 'textarea', '' ),
+			'arctic_support_faq_title'       => array( 'FAQ section title', 'text', $defaults['arctic_support_faq_title'] ),
+			'arctic_support_form_title'      => array( 'Service form title', 'text', arctic_support_normalize_legacy_value( 'arctic_support_form_title', $legacy_form_title ) ),
+			'arctic_support_form_content'    => array( 'Service form text', 'textarea', arctic_support_normalize_legacy_value( 'arctic_support_form_content', $legacy_form_content ) ),
+			'arctic_support_help_title'      => array( 'Help card title', 'text', $defaults['arctic_support_help_title'] ),
+			'arctic_support_help_name'       => array( 'Help card person', 'text', $defaults['arctic_support_help_name'] ),
+			'arctic_support_help_role'       => array( 'Help card role', 'text', $defaults['arctic_support_help_role'] ),
+			'arctic_support_help_hours'      => array( 'Help card hours', 'text', $defaults['arctic_support_help_hours'] ),
+			'arctic_support_help_button'     => array( 'Help card button text', 'text', $defaults['arctic_support_help_button'] ),
 			'arctic_support_help_button_url' => array( 'Help card button URL', 'text', '/kontakt/' ),
 		);
 

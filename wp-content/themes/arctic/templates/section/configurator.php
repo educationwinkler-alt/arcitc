@@ -14,8 +14,12 @@ $model_name  = function_exists( 'arctic_jucra_get_default_model' ) ? arctic_jucr
 $show_viewer = function_exists( 'arctic_jucra_can_render_viewer' ) && arctic_jucra_can_render_viewer( $model_name );
 $shortcode   = $show_viewer && function_exists( 'arctic_jucra_build_shortcode' ) ? arctic_jucra_build_shortcode( $model_name ) : '';
 
-$title       = get_theme_mod( 'arctic_configurator_title', 'Nakonfigurujte si vlastni virivku' );
-$text        = get_theme_mod( 'arctic_configurator_text', 'Vyberte si model, vybavu a barvy. Pripravime vam konkretni doporuceni i cenovou nabidku.' );
+$title = function_exists( 'arctic_sections_get_theme_mod' )
+	? arctic_sections_get_theme_mod( 'arctic_configurator_title', 'Nakonfigurujte si vlastní vířivku' )
+	: get_theme_mod( 'arctic_configurator_title', 'Nakonfigurujte si vlastní vířivku' );
+$text = function_exists( 'arctic_sections_get_theme_mod' )
+	? arctic_sections_get_theme_mod( 'arctic_configurator_text', 'Vyberte si model, výbavu a barvy. Připravíme vám konkrétní doporučení i cenovou nabídku.' )
+	: get_theme_mod( 'arctic_configurator_text', 'Vyberte si model, výbavu a barvy. Připravíme vám konkrétní doporučení i cenovou nabídku.' );
 $button_text = get_theme_mod( 'arctic_configurator_button_text', 'Konfigurovat' );
 $button_url  = $show_viewer ? $pricing_url : $fallback_url;
 

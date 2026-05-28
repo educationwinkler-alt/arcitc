@@ -14,12 +14,13 @@ $downloads_query = new WP_Query( array(
 	'posts_per_page' => -1,
 ) );
 
-$downloads_featured_group_title = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_featured_group_title', 'Serie custom' ) : 'Serie custom';
-$downloads_closed_group_1_title = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_closed_group_1_title', 'Serie classic' ) : 'Serie classic';
-$downloads_closed_group_2_title = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_closed_group_2_title', 'Serie core' ) : 'Serie core';
-$downloads_group_tag            = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_group_tag', 'Katalogy virivek' ) : 'Katalogy virivek';
-$downloads_card_description     = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_card_description', 'Dokument Arctic Spas, PDF ke stazeni.' ) : 'Dokument Arctic Spas, PDF ke stazeni.';
-$downloads_button_text          = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_button_text', 'Stahnout' ) : 'Stahnout';
+$downloads_defaults = function_exists( 'arctic_downloads_option_defaults' ) ? arctic_downloads_option_defaults() : array();
+$downloads_featured_group_title = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_featured_group_title', $downloads_defaults['arctic_downloads_featured_group_title'] ?? 'Série custom' ) : 'Série custom';
+$downloads_closed_group_1_title = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_closed_group_1_title', $downloads_defaults['arctic_downloads_closed_group_1_title'] ?? 'Série classic' ) : 'Série classic';
+$downloads_closed_group_2_title = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_closed_group_2_title', $downloads_defaults['arctic_downloads_closed_group_2_title'] ?? 'Série core' ) : 'Série core';
+$downloads_group_tag = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_group_tag', $downloads_defaults['arctic_downloads_group_tag'] ?? 'Katalogy vířivek' ) : 'Katalogy vířivek';
+$downloads_card_description = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_card_description', $downloads_defaults['arctic_downloads_card_description'] ?? 'Dokument Arctic Spas, PDF ke stažení.' ) : 'Dokument Arctic Spas, PDF ke stažení.';
+$downloads_button_text = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_button_text', $downloads_defaults['arctic_downloads_button_text'] ?? 'Stáhnout' ) : 'Stáhnout';
 
 if ( $downloads_query->have_posts() ) { ?>
 	<?php if ( is_page_template( 'template-support.php' ) || is_page_template( 'template-downloads.php' ) || is_page( 'ke-stazeni' ) ) {

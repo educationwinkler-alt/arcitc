@@ -1,11 +1,11 @@
-# Phase 5 Figma Frame-by-Frame Tracker
+﻿# Phase 5 Figma Frame-by-Frame Tracker
 
 Date: 2026-05-26
 Last updated: 2026-05-28
 
 ## Status
 
-Phase 5 technical implementation is closed in repository scope as of PR6 (2026-05-28): required frame coverage is implemented, automated QA is hardened, and manual page-by-page records are captured.
+Phase 5 geometry implementation remains closed in repository scope as of PR6 (2026-05-28), but end-state closure is reopened for additional content/language/function debt identified on 2026-05-28.
 
 Current rule:
 - Do not mark Phase 5 complete until every required Figma frame/state below is either implemented and verified, or explicitly marked not applicable with a reason.
@@ -13,6 +13,7 @@ Current rule:
 - Figma covers the visual/UX layer, Baspa.cz covers admin/function patterns, and the old Arctic PHP site covers content.
 - Figma does not define every in-between responsive state. Laptop widths and 120% browser zoom must be validated as real release conditions, not as optional polish.
 - Decision lock (2026-05-27): `/dalsi-informace/` is intentionally handled as a navigation-hub redirect (`301` to `/#order-progress`) and is not in standalone-frame implementation scope.
+- Reopen addendum (2026-05-28): unresolved items from `docs/content-language-function-audit-2026-05-28.md` are tracked as PR7A-PR7F in the master plan and must be closed before final release sign-off.
 
 ## Implemented in This Corrective Pass
 
@@ -26,7 +27,7 @@ Current rule:
 | Zoom-out full-bleed/footer gutter guard | Homepage + footer in zoom-out-like wide desktop states | Footer background rendering changed from fixed 1920px image sizing to fluid cover behavior and audited at wide viewports so side gutters are not reintroduced | `zoomOut:2240`, `zoomOut:2560` audits |
 | Compact laptop / Windows 175% scaling layer | Homepage at `904-1279px`, including docked-DevTools and effective `1097x617` viewport | Added coherent narrow and compact-laptop layers with shared variables, bounded hero height, default-hidden homepage promo outside explicit desktop opt-in, deliberate two-column category cards, and hero/category spacing | `narrowHomepage:904x617`, `narrowHomepage:1023x617`, `compactLaptop:1024x617`, `compactLaptop:1097x617`, `compactLaptop:1279x720`, `scaledLaptopBoundary:1097`, `scaledDesktopBoundary:1280`, `scaledDesktopBoundary:1366` audits |
 | Homepage hero/category boundary | Homepage desktop and compact widths | Inner slider/background height is now tied to the same hero height as the outer section, preventing category cards from being painted under the hero slide | `heroBoundary` checks inside desktop, scaled desktop, narrow, and compact audits |
-| Footer quick contact/copyright | Footer frame | Footer now renders Lukáš Dušek photo avatar, `BASPA s.r.o.` copyright text, single-line bottom privacy link/copyright, and no eboost credit | `sharedFooter`, `footerAvatarSource`, `footerText` audits |
+| Footer quick contact/copyright | Footer frame | Footer now renders Lukas Dusek photo avatar, `BASPA s.r.o.` copyright text, single-line bottom privacy link/copyright, and no eboost credit | `sharedFooter`, `footerAvatarSource`, `footerText` audits |
 | Mobile menu search placement | `GM - HP menu` `1:2208` | Compact menu places search at 323x44 around y=527 on 375px viewport | Manual/spot check, needs fuller screenshot sign-off |
 | Swimspa category desktop | `KATEGORIE` `1:262` applied to `/swimspa/` | Swimspa category now renders the same Figma intro, series nav, showroom anchor, references, CTA, and footer pattern as hot tubs | `swimspaCatalog` audit |
 | Showroom page desktop | `SHOWROOM` `1:442` | Dedicated showroom route and Figma section geometry are audited | `showroom` audit |
@@ -63,8 +64,9 @@ Current rule:
 
 ## Phase 5 Closure State
 
-1. Repository technical sign-off is closed in PR6: automated QA hardening + manual page-by-page records are complete.
-2. Remaining release gate outside code: owner/client visual acceptance before production rollout.
+1. Repository geometry sign-off is closed in PR6: automated geometry QA + manual page/frame records are complete.
+2. Repository release sign-off is reopened for PR7A-PR7F (content/language/function hardening).
+3. Remaining release gates outside code: owner/client visual acceptance before production rollout.
 
 ## Resolved Decisions
 
@@ -124,3 +126,4 @@ Passed after PR6 QA hardening + Phase 5C sign-off (2026-05-28):
 - `npm run figma:audit`
 - `npm run qa:local`
 - Manual sign-off record: `docs/phase-5c-manual-signoff-2026-05-28.md`
+

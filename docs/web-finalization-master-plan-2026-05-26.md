@@ -1,4 +1,4 @@
-# Arctic Spas - Master Finalization Plan
+﻿# Arctic Spas - Master Finalization Plan
 
 Date: 2026-05-26  
 Workspace: `arctic-spas-2/`  
@@ -105,8 +105,16 @@ Open concern:
 12. Footer and homepage section backgrounds expose white side gutters at scaled/zoomed states; this is a real layout bug, not a cache issue.
 13. The site needs a unified full-bleed/background/container width system so sections do not drift apart at zoom-out, zoom-in, or Windows display scaling.
 14. Product submenu automation is only partial: desktop mega menu in `templates/navigation/mega.php` still uses hardcoded category/series slugs and fixed item caps (`6` per hot-tub series, `18` swimspa total), so new/deleted products are not guaranteed to stay visible without manual curation.
-15. Conversion UI parity is not closed: the communicator/chat widget and the "NezĂˇvaznĂˇ konzultace" menu/off-contact modal are visually off-brand (layout + colors) versus Arctic Figma wireframe/grafika and must be normalized.
+15. Conversion UI parity is not closed: the communicator/chat widget and the "Nezavazna konzultace" menu/off-contact modal are visually off-brand (layout + colors) versus Arctic Figma wireframe/grafika and must be normalized.
 16. Site identity/favicon parity is not fully deterministic across environments: WordPress DB `site_icon` can override theme fallback, so Baspa icon can reappear after DB import unless migration/seed enforces Arctic icon assignment.
+17. Support and downloads affordances are partially fake-interactive: plus/minus UI and chips imply accordion/filter behavior but have no functional handler in the current template/JS layer.
+18. Internal anchor integrity is not closed: links to `/podpora/#servis` and `/kontakt/#formular` do not map to current target IDs, which creates dead or misleading navigation.
+19. Several Czech UI defaults are still ASCII-only (missing diacritics) in support/downloads/customizer/showroom/about fallback values.
+20. Figma info-page geometry still contains hardcoded desktop frame heights/min-heights (`warranty`, `maintenance`, selected support/layout blocks), producing excessive empty vertical gaps in real browsing.
+21. Services and reference fallback content handling still exposes placeholder behavior (single repeated service image; reference archive clone-fill), which weakens content quality/sign-off trust.
+22. Support page desktop composition is still unstable in real runtime: constrained shell geometry can create uneven gutters, break the intended left-column rhythm, and detach the right help card from the FAQ/download flow.
+23. Product-series navigation still relies on fixed `a:nth-child(...)` widths, so longer Czech labels can overlap (for example `Vlastni konfiguraceShowroom`) on real viewport/font combinations.
+24. Downloads listing row composition is not parity-safe: CTA alignment can drift and appear visually detached from file metadata blocks in long real-content lists.
 
 ## 3) New complete plan to finish the website
 
@@ -381,6 +389,12 @@ Execution sequence:
 8. PR6D `site identity/favicon DB hardening`
 9. PR6C `conversion UI parity (communicator + consultation CTA/modal)`
 10. PR6B `products <-> submenu automation hardening`
+11. PR7A `language/default-copy normalization`
+12. PR7B `support/download interactions + anchor integrity`
+13. PR7C `figma-page geometry de-hardcoding`
+14. PR7D `content placeholder cleanup (services/reference)`
+15. PR7E `QA hardening + manual sign-off reopen for content/language/function`
+16. PR7F `support/download desktop composition + product-series-nav parity`
 
 Task board checklist + DoD:
 - [x] PR0 IA decision + docs sync
@@ -414,7 +428,7 @@ Task board checklist + DoD:
   - DoD: adding/deleting a product in WP admin with correct `product-category`/`product-series` assignment is reflected in desktop mega submenu without code edits; overflow behavior is deterministic and documented; empty series do not leave broken/empty columns; query/caching behavior is documented with explicit invalidation triggers.
   - Verification (2026-05-28): `inc/mega-menu.php` now builds desktop mega panels from taxonomy/page metadata (no hardcoded series/category slugs in template), cache is stored via transient with invalidation on product + term mutations, and targeted Playwright smoke confirms 3 populated hot-tub columns after render.
 - [x] PR6C conversion UI parity (communicator + consultation CTA/modal)
-  - Scope: align communicator/chat widget visual skin and "Nezávazná konzultace" CTA + off-contact modal (`.f-off--contact`) to Arctic Figma (tokens, spacing, radii, typography, icon treatment, overlay layering, close button placement, and mobile behavior).
+  - Scope: align communicator/chat widget visual skin and "NezĂˇvaznĂˇ konzultace" CTA + off-contact modal (`.f-off--contact`) to Arctic Figma (tokens, spacing, radii, typography, icon treatment, overlay layering, close button placement, and mobile behavior).
   - Implementation note: communicator runtime is third-party (`Smartsupp`) and currently production-gated by `arctic_smartsupp_key`; use provider theming/API where available and keep a deterministic fallback wrapper style for unsupported widget internals.
   - DoD: communicator appears in approved Arctic palette and does not clash with hero/header/footer; menu CTA and modal are compositionally stable (no broken geometry/overflow) and match Figma intent on desktop + mobile; local QA can validate style state without requiring live production chat traffic.
   - Verification (2026-05-28): consultation CTA now uses shared `f-button--consultation` contract; contact modal skin is normalized in `_component-contracts.less`; Smartsupp runtime now receives Arctic brand config (`color`, offsets, privacy URL) in production script bootstrap; targeted Playwright smoke validates CTA/modal color + radius.
@@ -425,6 +439,34 @@ Task board checklist + DoD:
   - Implementation note: no manual admin setup required from owner/client; implementation must include scripted DB update path and environment-safe asset resolution.
   - DoD: after fresh DB import, browser tab icon resolves to Arctic without manual Customizer action; `site_icon` points to Arctic media attachment and does not regress to Baspa after subsequent imports.
   - Verification (2026-05-28): `tools/seed-pilot-content.php` now sets `site_icon` to seeded Arctic favicon attachment; `inc/site-icon.php` enforces/repairs `site_icon` attachment and keeps local URL fallback; `npm run local:safety` now asserts Arctic `site_icon` option + asset marker, and targeted Playwright smoke verifies homepage favicon URL resolves to Arctic asset.
+
+- [x] PR7A language/default-copy normalization
+  - Scope: normalize Czech diacritics and wording in fallback/default copy for support/downloads/customizer/showroom/about (`template-support.php`, `modules/supports/inc/admin.php`, `modules/downloads/inc/admin.php`, `modules/downloads/templates/listing.php`, `inc/customize/section/sections.php`, `template-showroom.php`, `template-about.php`, related labels).
+  - DoD: no visible customer-facing default label in the audited scope remains ASCII-only where Czech diacritics are expected; existing custom admin values are preserved.
+  - Verification (2026-05-28): canonical CZ defaults + one-way legacy normalization/migration were added for theme mods and support/download options (`arctic_sections_*`, `arctic_support_*`, `arctic_downloads_*`); templates now consume normalized defaults; syntax checks passed on all touched PHP files; local snapshot check found zero legacy ASCII hits on `/podpora/`, `/ke-stazeni/`, `/showroom/`, `/o-nas/`, and `/`.
+
+- [ ] PR7B support/download interactions + anchor integrity
+  - Scope: remove fake interaction affordance by implementing real accordion behavior for `f-support-faq-card` and `f-download-group--closed`; keep chip semantics explicit (real filter or neutral non-interactive badge only); repair dead anchors (`#servis` -> valid support target, showroom `/kontakt/#formular` target strategy).
+  - DoD: any visible `+`/`−` control is keyboard/mouse functional, chip behavior is explicit, and every internal anchor points to an existing target.
+  - Verification: Playwright interaction checks for accordion expand/collapse, chip behavior, keyboard accessibility, and anchor target existence.
+- [ ] PR7C figma-page geometry de-hardcoding
+  - Scope: remove critical fixed desktop frame heights/min-heights/padding hacks that create long blank zones on `/zaruka/`, `/kolik-stoji-udrzba/`, `/podpora/`, and related figma pages; preserve visual intent with intrinsic layout and spacing tokens.
+  - DoD: audited pages have no unexplained large blank vertical gaps at desktop and compact-laptop widths, and support tab/faq/download sections keep stable vertical rhythm.
+  - Verification: before/after screenshots + computed layout guardrails (section heights/gaps) on target routes.
+- [ ] PR7D content placeholder cleanup (services/reference)
+  - Scope: replace single repeated service image pattern with per-card assets/fields; revise reference archive clone-fill fallback so repeated cards are not silently duplicated.
+  - DoD: services cards are visually distinct and reference fallback behavior is explicit, deterministic, and sign-off safe.
+  - Verification: manual content review + screenshot evidence on `/sluzby/` and `/reference/`.
+
+- [ ] PR7E QA hardening + manual sign-off reopen for content/language/function
+  - Scope: extend automated QA for dead anchors, fake-interactive affordances, Czech default-copy quality, and large blank-gap guardrails; reopen and close manual sign-off for the affected pages.
+  - DoD: newly reported issues are covered by automated checks and linked to updated manual sign-off evidence.
+  - Verification: `npm run figma:audit`, `npm run visual:smoke`, `npm run qa:local` all pass; updated sign-off doc references new screenshot pack.
+
+- [ ] PR7F support/download desktop composition + product-series-nav parity
+  - Scope: replace hardcoded `a:nth-child(...)` widths in product series nav with an intrinsic/flex contract; fix `/podpora/` desktop two-column composition and `/ke-stazeni/` row action alignment so long real data does not break parity.
+  - DoD: product-series labels never overlap, support left column keeps Figma-aligned gutters/spacing with stable right-card placement, and downloads CTA alignment remains visually attached to row content on long lists.
+  - Verification: screenshot pack + computed-style checks for nav label overlap, support column widths/gutters, and downloads row CTA alignment at 1920, 1600, 1366, and 1097-equivalent viewports.
 
 ## Phase 5A - Compact laptop / Windows 175% scaling (P0, 0.5-1 day)
 Goal: make `1920x1080` Windows display scaling at `175%` with Chrome at `100%` behave as a first-class release viewport, not an accidental mix of desktop and mobile rules.
@@ -444,7 +486,7 @@ Current status (2026-05-27):
 - The `768-1023px` docked-DevTools / narrow-browser band now has a deliberate full-width hero and two-column category layout instead of inheriting the 375px mobile composition.
 - Mobile no longer reserves the old promo-height gap under the hero.
 - Desktop hero/category boundary now verifies that the inner slider/background height cannot extend under the category cards.
-- Footer parity audit now requires the LukĂˇĹˇ DuĹˇek photo avatar, `BASPA s.r.o.` copyright text, no bottom-line wrapping regression, and no eboost credit.
+- Footer parity audit now requires the Lukas Dusek photo avatar, `BASPA s.r.o.` copyright text, no bottom-line wrapping regression, and no eboost credit.
 - Automated coverage now checks `904x617`, `1023x617`, `1024x617`, `1097x617`, `1279x720`, and desktop promo boundary behavior at `1280px` and `1366px`.
 - Local screenshot evidence was captured at `docs/screenshots/phase-5a-homepage-904x617-2026-05-27.png`, `docs/screenshots/phase-5a-homepage-1097x617-2026-05-27.png`, and `docs/screenshots/phase-5a-footer-element-1920-2026-05-27.png`.
 - Remaining validation before Phase 5 final close: owner/client acceptance of physical or equivalent Windows `1920x1080`, display scaling `175%`, Chrome `100%` screenshot sign-off.
@@ -511,3 +553,4 @@ Code status:
 Operational status:
 - Phase 1 is not fully closed because the external `Visao 3D Viewer` plugin still must be installed and activated in WordPress.
 - Final live viewer verification remains blocked until that plugin exists in the runtime environment.
+

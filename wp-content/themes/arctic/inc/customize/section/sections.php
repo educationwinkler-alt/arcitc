@@ -67,6 +67,119 @@ if ( !function_exists( 'arctic_sections_url' ) ) {
 
 }
 
+if ( !function_exists( 'arctic_sections_theme_mod_defaults' ) ) {
+
+	/**
+	 * Canonical defaults for Arctic section copy.
+	 *
+	 * @return array<string, string>
+	 */
+	function arctic_sections_theme_mod_defaults(): array {
+
+		return array(
+			'arctic_home_promo_title'       => 'Akční nabídka skladových vířivek',
+			'arctic_home_promo_button_text' => 'Zobrazit nabídku',
+			'arctic_configurator_title'     => 'Nakonfigurujte si vlastní vířivku',
+			'arctic_configurator_text'      => 'Vyberte si model, výbavu a barvy. Připravíme vám konkrétní doporučení i cenovou nabídku.',
+			'arctic_showroom_contact_name'  => 'Lukáš Dušek',
+			'arctic_showroom_hours_title'   => 'Otevírací doba',
+			'arctic_showroom_hours_label'   => 'Úterý - Pátek',
+			'arctic_showroom_hours_line_1'  => '9:00 - 11:30',
+			'arctic_showroom_hours_line_2'  => '12:30 - 16:00',
+		);
+
+	}
+
+}
+
+if ( !function_exists( 'arctic_sections_normalize_theme_mod_value' ) ) {
+
+	/**
+	 * Normalize legacy ASCII/mojibake defaults to canonical Czech copy.
+	 *
+	 * @param string $key
+	 * @param string $value
+	 *
+	 * @return string
+	 */
+	function arctic_sections_normalize_theme_mod_value( string $key, string $value ): string {
+
+		$legacy_map = array(
+			'arctic_home_promo_title'       => array( 'AkÄŤnĂ­ nabĂ­dka skladovĂ˝ch vĂ­Ĺ™ivek', 'Akcni nabidka skladovych virivek' ),
+			'arctic_home_promo_button_text' => array( 'Zobrazit nabĂ­dku', 'Zobrazit nabidku' ),
+			'arctic_configurator_title'     => array( 'Nakonfigurujte si vlastni virivku' ),
+			'arctic_configurator_text'      => array( 'Vyberte si model, vybavu a barvy. Pripravime vam konkretni doporuceni i cenovou nabidku.' ),
+			'arctic_showroom_contact_name'  => array( 'Lukas Dusek' ),
+			'arctic_showroom_hours_title'   => array( 'Oteviraci doba' ),
+			'arctic_showroom_hours_label'   => array( 'Utery - Patek' ),
+		);
+
+		if ( isset( $legacy_map[ $key ] ) && in_array( $value, $legacy_map[ $key ], true ) ) {
+			$defaults = arctic_sections_theme_mod_defaults();
+
+			if ( isset( $defaults[ $key ] ) ) {
+				return $defaults[ $key ];
+			}
+		}
+
+		return $value;
+
+	}
+
+}
+
+if ( !function_exists( 'arctic_sections_get_theme_mod' ) ) {
+
+	/**
+	 * Read theme mod with normalized legacy fallback.
+	 *
+	 * @param string $key
+	 * @param string $default
+	 *
+	 * @return string
+	 */
+	function arctic_sections_get_theme_mod( string $key, string $default ): string {
+
+		$value = get_theme_mod( $key, $default );
+		$value = is_string( $value ) ? $value : $default;
+
+		return arctic_sections_normalize_theme_mod_value( $key, $value );
+
+	}
+
+}
+
+if ( !function_exists( 'arctic_sections_migrate_legacy_theme_mod_defaults' ) ) {
+
+	/**
+	 * One-way migration for legacy defaults stored in DB.
+	 *
+	 * @return void
+	 */
+	function arctic_sections_migrate_legacy_theme_mod_defaults(): void {
+
+		$defaults = arctic_sections_theme_mod_defaults();
+
+		foreach ( $defaults as $key => $default ) {
+			$current = get_theme_mod( $key, null );
+
+			if ( !is_string( $current ) || $current === '' ) {
+				continue;
+			}
+
+			$normalized = arctic_sections_normalize_theme_mod_value( $key, $current );
+
+			if ( $normalized !== $current ) {
+				set_theme_mod( $key, $normalized );
+			}
+		}
+
+	}
+
+	add_action( 'init', 'arctic_sections_migrate_legacy_theme_mod_defaults', 20 );
+
+}
+
 if ( !function_exists( 'arctic_customize_section_add_sections' ) ) {
 
 	/**
@@ -107,13 +220,13 @@ if ( !function_exists( 'arctic_customize_settings_add_sections' ) ) {
 			'arctic_home_promo_title'           => array( 'Akční nabídka skladových vířivek', 'sanitize_text_field' ),
 			'arctic_home_promo_button_text'     => array( 'Zobrazit nabídku', 'sanitize_text_field' ),
 			'arctic_home_promo_url'             => array( '/virivky/', 'arctic_sections_sanitize_url_path' ),
-			'arctic_configurator_title'         => array( 'Nakonfigurujte si vlastni virivku', 'sanitize_text_field' ),
-			'arctic_configurator_text'          => array( 'Vyberte si model, vybavu a barvy. Pripravime vam konkretni doporuceni i cenovou nabidku.', 'wp_kses_post' ),
+			'arctic_configurator_title'         => array( 'Nakonfigurujte si vlastní vířivku', 'sanitize_text_field' ),
+			'arctic_configurator_text'          => array( 'Vyberte si model, výbavu a barvy. Připravíme vám konkrétní doporučení i cenovou nabídku.', 'wp_kses_post' ),
 			'arctic_configurator_button_text'   => array( 'Konfigurovat', 'sanitize_text_field' ),
 			'arctic_configurator_fallback_url'  => array( '/virivky/', 'arctic_sections_sanitize_url_path' ),
-			'arctic_showroom_contact_name'      => array( 'Lukas Dusek', 'sanitize_text_field' ),
-			'arctic_showroom_hours_title'       => array( 'Oteviraci doba', 'sanitize_text_field' ),
-			'arctic_showroom_hours_label'       => array( 'Utery - Patek', 'sanitize_text_field' ),
+			'arctic_showroom_contact_name'      => array( 'Lukáš Dušek', 'sanitize_text_field' ),
+			'arctic_showroom_hours_title'       => array( 'Otevírací doba', 'sanitize_text_field' ),
+			'arctic_showroom_hours_label'       => array( 'Úterý - Pátek', 'sanitize_text_field' ),
 			'arctic_showroom_hours_line_1'      => array( '9:00 - 11:30', 'sanitize_text_field' ),
 			'arctic_showroom_hours_line_2'      => array( '12:30 - 16:00', 'sanitize_text_field' ),
 		);
