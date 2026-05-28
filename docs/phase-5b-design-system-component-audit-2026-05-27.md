@@ -1,7 +1,7 @@
 # Phase 5B: Design System & Component Parity Audit
 
 Datum: 2026-05-27
-Status: audit hotovy, PR0-PR3 uzavrene, implementace PR4-PR6 ceka
+Status: audit hotovy, PR0-PR4 uzavrene, implementace PR5-PR6 ceka
 Navazuje na: Phase 5A compact laptop / hero / promo / footer stabilizace
 
 Update 2026-05-28 (PR2):
@@ -9,6 +9,9 @@ Update 2026-05-28 (PR2):
 
 Update 2026-05-28 (PR3):
 - Button parity pro `/kontakt/` top buttons a `/showroom/` CTA byla sjednocena na contract radius `50px`.
+
+Update 2026-05-28 (PR4):
+- Map/location parity byla uzavrena: `/kontakt/` map card je sjednocena na contract radius `40px` a footer quick map drzi `30px` napric desktop/mobile.
 
 ## Executive Summary
 
@@ -87,7 +90,7 @@ Tyto body jsou potvrzene live renderem nebo prime porovnanim Figma API + local:
 | `/product/timberwolf/` reference cards | radius `16px` desktop | radius `40px` | product detail nema stejny modul realizaci |
 | Compact/mobile reference cards | ruzne `8px` / `50px` | sjednoceny modul | nekonzistentni responsivni vzhled |
 | `/kontakt/` top buttons | resolved v PR3: `50px` | radius `50px` | closed |
-| `/kontakt/` map/location card | cca `24px` desktop, cca `21px` mobile | radius `40px` | mapa/kontakt karta nesedi podle Figmy |
+| `/kontakt/` map/location card | resolved v PR4: `40px` desktop/mobile | radius `40px` | closed |
 | `/showroom/` CTA button | resolved v PR3: `50px` | radius `50px` | closed |
 | `/dalsi-informace/` | redirect na `/#order-progress` | samostatny Figma frame | resolved: vedoma IA odchylka (redirect-only hub) |
 | Product/card images | casto upscalovane z malych zdroju | Figma predpoklada ostre obrazky | ani spravne CSS nezachrani vizualni kvalitu |
@@ -244,8 +247,8 @@ Figma:
 
 Local:
 
-- `/kontakt/` map card ma cca `24px`, mobile cca `21px`.
-- Footer map je blizko `30px`.
+- Resolved v PR4: `/kontakt/` map card je sjednocena na `40px` napric desktop/mobile.
+- Footer map drzi `30px`.
 - Nektere location prvky vypadaji jako lokalni ad hoc reseni.
 
 Verdikt:
@@ -314,11 +317,11 @@ Aktualni `tools/figma-visual-audit.js` kontroluje hodne geometrie, ale nechyta v
 
 Nechyta nebo nedostatecne hlida:
 
-- `/reference/` card radius `8px`.
-- Product detail reference card radius `16px`.
-- Contact top buttons radius `8px`.
-- Showroom CTA button radius `0px`.
-- Contact map card radius cca `24px`.
+- `/reference/` card radius assertion (`40px`).
+- Product detail reference card radius assertion (`40px`).
+- Contact top buttons radius assertion (`50px`).
+- Showroom CTA button radius assertion (`50px`).
+- Contact map card radius assertion (`40px`).
 - Image upscaling pomer.
 - Plny mobile visual sign-off vsech stranek.
 - Konzistenci opakovanych komponent napric sablonami.

@@ -101,3 +101,10 @@ Passed after PR3 button parity correction (2026-05-28):
 - Local Playwright computed-style check:
   - `/kontakt/` top buttons -> `50px` radius
   - `/showroom/` gallery + appointment CTA -> `50px` radius
+
+Passed after PR4 map/location parity correction (2026-05-28):
+- `npm run css:build`
+- Local Playwright computed-style check:
+  - `/kontakt/` map card -> `40px` radius (desktop, scaled-laptop, mobile)
+  - footer quick map -> `30px` radius (desktop, scaled-laptop, mobile)
+- `npm run figma:audit`

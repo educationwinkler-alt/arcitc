@@ -389,9 +389,10 @@ Task board checklist + DoD:
   - Scope: fix `/kontakt/` top buttons and `/showroom/` appointment CTA to pill `50px` via shared button contract.
   - DoD: no target CTA/button falls back to `0px` or `8px` radius.
   - Verification (2026-05-28): local Playwright computed-style check confirms `/kontakt/` top buttons = `50px`, `/showroom/` gallery + appointment CTA = `50px`.
-- [ ] PR4 map/location parity
+- [x] PR4 map/location parity
   - Scope: set `/kontakt/` map card to `40px` and keep footer map card parity at `30px` without regressions.
   - DoD: contact and footer map modules match agreed radius tokens across desktop/mobile.
+  - Verification (2026-05-28): local Playwright computed-style check confirms `/kontakt/` map card = `40px` and footer quick map = `30px` on desktop, scaled-laptop, and mobile viewports.
 - [ ] PR5 image quality pass
   - Scope: replace visibly upscaled product/reference/hero assets with higher-quality sources where available.
   - DoD: no critical hero/reference/product card remains obviously upscaled from undersized source art.
