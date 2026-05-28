@@ -1,11 +1,14 @@
 # Phase 5B: Design System & Component Parity Audit
 
 Datum: 2026-05-27
-Status: audit hotovy, PR0-PR2 uzavrene, implementace PR3-PR6 ceka
+Status: audit hotovy, PR0-PR3 uzavrene, implementace PR4-PR6 ceka
 Navazuje na: Phase 5A compact laptop / hero / promo / footer stabilizace
 
 Update 2026-05-28 (PR2):
 - Reference card radius contract byl sjednocen na `40px` pro homepage references, `/reference/` archive cards a `/product/timberwolf/` references.
+
+Update 2026-05-28 (PR3):
+- Button parity pro `/kontakt/` top buttons a `/showroom/` CTA byla sjednocena na contract radius `50px`.
 
 ## Executive Summary
 
@@ -83,9 +86,9 @@ Tyto body jsou potvrzene live renderem nebo prime porovnanim Figma API + local:
 | `/reference/` reference cards | radius `8px` | radius `40px` | viditelne spatne zaobleni karet |
 | `/product/timberwolf/` reference cards | radius `16px` desktop | radius `40px` | product detail nema stejny modul realizaci |
 | Compact/mobile reference cards | ruzne `8px` / `50px` | sjednoceny modul | nekonzistentni responsivni vzhled |
-| `/kontakt/` top buttons | radius `8px` | radius `50px` | form buttony nejsou Figma pill |
+| `/kontakt/` top buttons | resolved v PR3: `50px` | radius `50px` | closed |
 | `/kontakt/` map/location card | cca `24px` desktop, cca `21px` mobile | radius `40px` | mapa/kontakt karta nesedi podle Figmy |
-| `/showroom/` CTA button | radius `0px` | radius `50px` | ostre tlacitko misto pill |
+| `/showroom/` CTA button | resolved v PR3: `50px` | radius `50px` | closed |
 | `/dalsi-informace/` | redirect na `/#order-progress` | samostatny Figma frame | resolved: vedoma IA odchylka (redirect-only hub) |
 | Product/card images | casto upscalovane z malych zdroju | Figma predpoklada ostre obrazky | ani spravne CSS nezachrani vizualni kvalitu |
 
@@ -182,8 +185,8 @@ Figma:
 Local:
 
 - Global button token existuje, ale ne vsechny buttony ho zdedi.
-- `/kontakt/` form buttons maji radius `8px`.
-- `/showroom/` appointment button ma radius `0px`.
+- `/kontakt/` top/form buttons byly v PR3 sjednoceny na radius `50px`.
+- `/showroom/` appointment/gallery CTA byly v PR3 sjednoceny na radius `50px`.
 - Nektere buttony maji `999px`, coz je opticky podobne pillu, ale neni sjednocene s Figma tokenem `50px`.
 
 Verdikt:

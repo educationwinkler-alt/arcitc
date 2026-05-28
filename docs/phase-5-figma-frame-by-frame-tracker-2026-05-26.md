@@ -1,7 +1,7 @@
 # Phase 5 Figma Frame-by-Frame Tracker
 
 Date: 2026-05-26
-Last updated: 2026-05-27
+Last updated: 2026-05-28
 
 ## Status
 
@@ -95,3 +95,9 @@ Passed after the Phase 5A promo visibility / narrow viewport correction:
 Passed after the footer parity correction:
 - `npm run css:build`
 - `npm run figma:audit`
+
+Passed after PR3 button parity correction (2026-05-28):
+- `npm run css:build`
+- Local Playwright computed-style check:
+  - `/kontakt/` top buttons -> `50px` radius
+  - `/showroom/` gallery + appointment CTA -> `50px` radius

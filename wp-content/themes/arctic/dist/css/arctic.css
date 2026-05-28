@@ -1730,7 +1730,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 50px;
-  border-radius: 0;
+  border-radius: var(--arctic-contract-radius-button);
 }
 .f-showroom-gallery-button {
   gap: 10px;
@@ -8440,7 +8440,7 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     height: 50px;
     min-height: 50px;
     padding: 0 20px 0 54px;
-    border-radius: 8px;
+    border-radius: var(--arctic-contract-radius-button);
     font-size: 16px;
     line-height: 21px;
   }

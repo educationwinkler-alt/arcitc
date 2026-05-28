@@ -385,9 +385,10 @@ Task board checklist + DoD:
 - [x] PR2 reference cards parity
   - Scope: unify reference card radius and shared card shell across homepage, `/reference/`, and `/product/timberwolf/`.
   - DoD: all target reference cards use the same agreed component radius and shell behavior.
-- [ ] PR3 button system parity
+- [x] PR3 button system parity
   - Scope: fix `/kontakt/` top buttons and `/showroom/` appointment CTA to pill `50px` via shared button contract.
   - DoD: no target CTA/button falls back to `0px` or `8px` radius.
+  - Verification (2026-05-28): local Playwright computed-style check confirms `/kontakt/` top buttons = `50px`, `/showroom/` gallery + appointment CTA = `50px`.
 - [ ] PR4 map/location parity
   - Scope: set `/kontakt/` map card to `40px` and keep footer map card parity at `30px` without regressions.
   - DoD: contact and footer map modules match agreed radius tokens across desktop/mobile.
