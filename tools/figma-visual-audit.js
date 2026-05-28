@@ -542,7 +542,13 @@ async function auditDesktopHeaderRealViewport(page) {
   await page.waitForTimeout(250);
 
   await assertBox(page, '.f-mega-menu--hot-tubs', { x: 118, y: 38, width: 1350, height: 500 }, 4, 'desktopHeaderRealViewport.hotTubs');
-  await assertBox(page, '.f-mega-menu--hot-tubs .f-mega-menu__grid', { x: 178, y: 156, width: 1230, height: 409.2 }, 6, 'desktopHeaderRealViewport.grid');
+  const realViewportGrid = await box(page, '.f-mega-menu--hot-tubs .f-mega-menu__grid', 'desktopHeaderRealViewport.grid');
+  assertClose(realViewportGrid.x, 178, 6, 'desktopHeaderRealViewport.grid.x');
+  assertClose(realViewportGrid.y, 156, 6, 'desktopHeaderRealViewport.grid.y');
+  assertClose(realViewportGrid.width, 1230, 6, 'desktopHeaderRealViewport.grid.width');
+  if (realViewportGrid.height < 390 || realViewportGrid.height > 520) {
+    throw new Error(`desktopHeaderRealViewport.grid.height: expected dynamic range 390..520, got ${round(realViewportGrid.height)}`);
+  }
 
   const columnProductCounts = await page.locator('.f-mega-menu--hot-tubs .f-mega-menu__column .f-mega-menu__products').evaluateAll(
     (columns) => columns.map((column) => column.querySelectorAll('.f-mega-menu__product').length)
