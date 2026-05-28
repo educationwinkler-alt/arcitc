@@ -1368,7 +1368,7 @@ arctic_seed_menu( 'Arctic hlavni navigace', 'navigation', array(
 			array( 'title' => 'Skořepina', 'url' => home_url( '/vlastnosti/#skorepina' ) ),
 			array( 'title' => 'Termokryt', 'url' => home_url( '/vlastnosti/#termokryt' ) ),
 			array( 'title' => 'Podlaha', 'url' => home_url( '/vlastnosti/#podlaha' ) ),
-			array( 'title' => 'Servisní přístup', 'url' => home_url( '/podpora/#servis' ) ),
+			array( 'title' => 'Servisní přístup', 'url' => home_url( '/podpora/#servisni-formular' ) ),
 			array( 'title' => 'Variabilita', 'url' => home_url( '/vlastnosti/#variabilita' ) ),
 		),
 	),

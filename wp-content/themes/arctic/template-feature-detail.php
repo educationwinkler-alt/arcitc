@@ -30,7 +30,7 @@ $features      = array(
 	array(
 		'title'       => 'Servis',
 		'description' => 'Snadný přístup pro servis a upgrade vířivky.',
-		'url'         => home_url( '/podpora/#servis' ),
+		'url'         => home_url( '/podpora/#servisni-formular' ),
 	),
 	array(
 		'title'       => 'Variabilita',

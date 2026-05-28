@@ -33,6 +33,20 @@ if ( !function_exists( 'baspa_scripts' ) ) {
 		}
 
 		/**
+		 * Support/download interactions + anchor integrity helpers
+		 */
+		$support_interactions_path = get_theme_file_path( 'dist/js/support-download-interactions.js' );
+		if ( file_exists( $support_interactions_path ) ) {
+			wp_enqueue_script(
+				get_template() . '-support-download-interactions',
+				get_theme_file_uri( 'dist/js/support-download-interactions.js' ),
+				array( get_template() ),
+				filemtime( $support_interactions_path ),
+				true
+			);
+		}
+
+		/**
 		 * Carousel
 		 */
 		// Swiper

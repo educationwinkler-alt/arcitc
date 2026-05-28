@@ -2294,6 +2294,13 @@ body {
 .f-download-group__header {
   margin-bottom: 1.25rem;
 }
+.f-download-group__header[data-download-group-toggle] {
+  cursor: pointer;
+}
+.f-download-group__header[data-download-group-toggle]:focus-visible {
+  outline: 2px solid rgba(163, 31, 55, 0.35);
+  outline-offset: 2px;
+}
 .f-download-group__tag {
   grid-column: 2;
   justify-self: start;
@@ -2301,6 +2308,19 @@ body {
 .f-download-group__items {
   display: grid;
   gap: 0.875rem;
+  grid-column: 1 / -1;
+}
+.f-download-group__items[hidden] {
+  display: none;
+}
+.f-download-group--closed.is-open {
+  padding: 1.25rem;
+}
+.f-download-group--closed.is-open .f-download-group__icon {
+  background: var(--arctic-color-ink);
+}
+.f-download-group--closed.is-open .f-download-group__header {
+  margin-bottom: 1.25rem;
 }
 .f-download-card {
   grid-template-columns: 56px minmax(0, 1fr);
@@ -4494,7 +4514,8 @@ body.off-active--benefit-shell .f-off__overlay {
   gap: 0.5rem;
   margin-bottom: 1.5rem;
 }
-.f-chip-list span {
+.f-chip-list span,
+.f-chip-list button {
   display: inline-flex;
   align-items: center;
   min-height: 1.75rem;
@@ -4504,6 +4525,14 @@ body.off-active--benefit-shell .f-off__overlay {
   font-weight: 700;
   border: 1px solid rgba(7, 24, 38, 0.28);
   border-radius: 999px;
+}
+.f-chip-list button {
+  background: transparent;
+  cursor: pointer;
+}
+.f-chip-list button:focus-visible {
+  outline: 2px solid rgba(163, 31, 55, 0.35);
+  outline-offset: 2px;
 }
 .f-chip-list .is-active {
   color: var(--arctic-color-snow);
@@ -4522,6 +4551,13 @@ body.off-active--benefit-shell .f-off__overlay {
   padding: 1.125rem;
   background: rgba(255, 255, 255, 0.62);
   border-radius: 1.25rem;
+}
+.f-support-faq-card[data-support-faq-card] {
+  cursor: pointer;
+}
+.f-support-faq-card[data-support-faq-card]:focus-visible {
+  outline: 2px solid rgba(163, 31, 55, 0.35);
+  outline-offset: 2px;
 }
 .f-support-faq-card.is-open {
   background: var(--arctic-color-snow);
@@ -8521,7 +8557,8 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     margin-top: 0;
     margin-bottom: 45px;
   }
-  .page-template-template-support .f-chip-list span {
+  .page-template-template-support .f-chip-list span,
+  .page-template-template-support .f-chip-list button {
     min-height: 37px;
     padding: 0 16px;
     font-size: 16px;
@@ -8669,6 +8706,7 @@ body:not(.template--homepage) .f-header__container > .a-flex {
   .page-template-template-support .f-downloads--support-figma {
     width: 1045px;
     gap: 20px;
+    margin-top: 0;
   }
   .page-template-template-support .f-download-group {
     width: 1045px;
@@ -8691,6 +8729,11 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     height: 96px;
     padding: 32px 27px 31px 31px;
   }
+  .page-template-template-support .f-download-group--closed.is-open {
+    height: auto;
+    min-height: 503px;
+    padding: 32px 27px 36px 31px;
+  }
   .page-template-template-support .f-download-group h3 {
     height: 32px;
     font-size: 18px;
@@ -8709,6 +8752,9 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     display: grid;
     gap: 10px;
     padding-left: 53px;
+  }
+  .page-template-template-support .f-download-group__items[hidden] {
+    display: none;
   }
   .page-template-template-support .f-download-card {
     grid-template-columns: 56px minmax(0, 1fr) 145px;

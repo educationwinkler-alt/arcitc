@@ -43,6 +43,112 @@ $support_help_button_url = function_exists( 'arctic_sections_url' ) ? arctic_sec
 $download_filter_labels = function_exists( 'arctic_downloads_filter_labels' )
 	? arctic_downloads_filter_labels()
 	: array( 'Katalogy vířivek', 'Návody', 'Rozměry', 'Záruky' );
+$download_filter_keys = array( 'catalog', 'manual', 'dimensions', 'warranty' );
+
+$questions = array(
+	array(
+		'title' => __( 'Jak probíhá výběr a objednávka vířivky?', 'baspa' ),
+		'text'  => __( 'Nejprve společně ověříme velikost, umístění a požadovanou výbavu. Poté připravíme konkrétní konfiguraci a navazující technickou přípravu.', 'baspa' ),
+		'tag'   => __( 'Obchodní', 'baspa' ),
+	),
+	array(
+		'title' => __( 'Co je potřeba připravit před instalací?', 'baspa' ),
+		'text'  => __( 'Důležitý je pevný podklad, přívod elektřiny a přístupová cesta pro usazení vířivky. Detaily řešíme podle konkrétního modelu.', 'baspa' ),
+		'tag'   => __( 'Stavební příprava', 'baspa' ),
+	),
+	array(
+		'title' => __( 'Zajišťujete dopravu a montáž?', 'baspa' ),
+		'text'  => __( 'Ano, u nových realizací počítáme s dopravou, usazením a základním zaškolením obsluhy.', 'baspa' ),
+		'tag'   => __( 'Montáž', 'baspa' ),
+	),
+	array(
+		'title' => __( 'Jak náročná je běžná údržba vody?', 'baspa' ),
+		'text'  => __( 'Údržba závisí na výbavě, četnosti používání a režimu filtrace. U Arctic Spas lze volit technologie, které péči výrazně zjednodušují.', 'baspa' ),
+		'tag'   => __( 'Provoz a údržba', 'baspa' ),
+	),
+	array(
+		'title' => __( 'Pomůžete s výběrem vhodné konfigurace?', 'baspa' ),
+		'text'  => __( 'Ano. Společně projdeme počet osob, umístění, izolaci, masážní trysky a volitelnou výbavu tak, aby model odpovídal reálnému používání.', 'baspa' ),
+		'tag'   => __( 'Obchodní', 'baspa' ),
+	),
+	array(
+		'title' => __( 'Lze si vířivku prohlédnout osobně?', 'baspa' ),
+		'text'  => __( 'Vybrané modely a technologie si můžete projít v showroomu v Moravanech u Brna. Návštěvu doporučujeme domluvit předem.', 'baspa' ),
+		'tag'   => __( 'Obchodní', 'baspa' ),
+	),
+	array(
+		'title' => __( 'Jak se řeší stavební připravenost?', 'baspa' ),
+		'text'  => __( 'Po výběru modelu připravíme podklady pro podkladovou desku, elektrický přívod, manipulační prostor a případné zapuštění.', 'baspa' ),
+		'tag'   => __( 'Stavební příprava', 'baspa' ),
+	),
+	array(
+		'title' => __( 'Umíte zajistit servis po instalaci?', 'baspa' ),
+		'text'  => __( 'Servisní požadavky řešíme přes kontaktní formulář nebo telefonicky. Pomůže model, rok pořízení a stručný popis problému.', 'baspa' ),
+		'tag'   => __( 'Servis', 'baspa' ),
+	),
+	array(
+		'title' => __( 'Jak rychle dostanu cenovou nabídku?', 'baspa' ),
+		'text'  => __( 'Po upřesnění modelu, konfigurace a montážních podmínek připravíme nezávaznou kalkulaci včetně navazující přípravy.', 'baspa' ),
+		'tag'   => __( 'Obchodní', 'baspa' ),
+	),
+);
+
+$faq_query = new WP_Query( array(
+	'post_type'      => 'faq',
+	'post_status'    => 'publish',
+	'posts_per_page' => 9,
+	'orderby'        => array(
+		'menu_order' => 'ASC',
+		'date'       => 'ASC',
+	),
+) );
+
+$editable_questions = array();
+if ( $faq_query->have_posts() ) {
+	while ( $faq_query->have_posts() ) {
+		$faq_query->the_post();
+		$faq_terms = wp_get_post_terms( get_the_ID(), 'faq-category' );
+		$faq_tag   = !empty( $faq_terms ) && !is_wp_error( $faq_terms ) ? $faq_terms[0]->name : __( 'Podpora', 'baspa' );
+
+		$editable_questions[] = array(
+			'title' => get_the_title(),
+			'text'  => wp_strip_all_tags( apply_filters( 'the_content', get_the_content() ) ),
+			'tag'   => $faq_tag,
+		);
+	}
+	wp_reset_postdata();
+}
+
+if ( !empty( $editable_questions ) ) {
+	$questions = $editable_questions;
+}
+
+$faq_filters = array(
+	array(
+		'key'   => 'all',
+		'label' => __( 'Všechny', 'baspa' ),
+	),
+);
+$faq_filter_seen = array( 'all' => true );
+
+foreach ( $questions as $index => $question ) {
+	$tag_slug = sanitize_title( (string) ( $question['tag'] ?? '' ) );
+	if ( $tag_slug === '' ) {
+		$tag_slug = 'podpora';
+	}
+
+	$questions[ $index ]['tag_slug'] = $tag_slug;
+
+	if ( isset( $faq_filter_seen[ $tag_slug ] ) ) {
+		continue;
+	}
+
+	$faq_filters[] = array(
+		'key'   => $tag_slug,
+		'label' => (string) ( $question['tag'] ?? __( 'Podpora', 'baspa' ) ),
+	);
+	$faq_filter_seen[ $tag_slug ] = true;
+}
 ?>
 
 <main id="<?php echo sanitize_title( esc_attr_x( 'content', 'anchor', 'baspa' ) ); ?>"
@@ -63,102 +169,36 @@ $download_filter_labels = function_exists( 'arctic_downloads_filter_labels' )
 			<div class="f-support-layout">
 				<div class="f-support-layout__main">
 					<h2><?php echo esc_html( $support_faq_title ); ?></h2>
-					<div class="f-chip-list">
-						<span class="is-active"><?php echo esc_html__( 'Všechny', 'baspa' ); ?></span>
-						<span><?php echo esc_html__( 'Obchodní', 'baspa' ); ?></span>
-						<span><?php echo esc_html__( 'Stavební příprava', 'baspa' ); ?></span>
-						<span><?php echo esc_html__( 'Montáž', 'baspa' ); ?></span>
-						<span><?php echo esc_html__( 'Provoz a údržba', 'baspa' ); ?></span>
+					<div class="f-chip-list f-chip-list--interactive" role="tablist" aria-label="<?php echo esc_attr__( 'Kategorie dotazů', 'baspa' ); ?>">
+						<?php foreach ( $faq_filters as $filter_index => $filter ) { ?>
+							<button type="button"
+							        class="<?php echo $filter_index === 0 ? 'is-active' : ''; ?>"
+							        data-support-filter="<?php echo esc_attr( $filter['key'] ); ?>"
+							        role="tab"
+							        aria-selected="<?php echo $filter_index === 0 ? 'true' : 'false'; ?>">
+								<?php echo esc_html( $filter['label'] ); ?>
+							</button>
+						<?php } ?>
 					</div>
 
 					<div class="f-support-accordion">
-						<?php
-						$questions = array(
-							array(
-								'title' => __( 'Jak probíhá výběr a objednávka vířivky?', 'baspa' ),
-								'text'  => __( 'Nejprve společně ověříme velikost, umístění a požadovanou výbavu. Poté připravíme konkrétní konfiguraci a navazující technickou přípravu.', 'baspa' ),
-								'tag'   => __( 'Obchodní', 'baspa' ),
-							),
-							array(
-								'title' => __( 'Co je potřeba připravit před instalací?', 'baspa' ),
-								'text'  => __( 'Důležitý je pevný podklad, přívod elektřiny a přístupová cesta pro usazení vířivky. Detaily řešíme podle konkrétního modelu.', 'baspa' ),
-								'tag'   => __( 'Stavební příprava', 'baspa' ),
-							),
-							array(
-								'title' => __( 'Zajišťujete dopravu a montáž?', 'baspa' ),
-								'text'  => __( 'Ano, u nových realizací počítáme s dopravou, usazením a základním zaškolením obsluhy.', 'baspa' ),
-								'tag'   => __( 'Montáž', 'baspa' ),
-							),
-							array(
-								'title' => __( 'Jak náročná je běžná údržba vody?', 'baspa' ),
-								'text'  => __( 'Údržba závisí na výbavě, četnosti používání a režimu filtrace. U Arctic Spas lze volit technologie, které péči výrazně zjednodušují.', 'baspa' ),
-								'tag'   => __( 'Provoz', 'baspa' ),
-							),
-							array(
-								'title' => __( 'Pomůžete s výběrem vhodné konfigurace?', 'baspa' ),
-								'text'  => __( 'Ano. Společně projdeme počet osob, umístění, izolaci, masážní trysky a volitelnou výbavu tak, aby model odpovídal reálnému používání.', 'baspa' ),
-								'tag'   => __( 'Obchodní', 'baspa' ),
-							),
-							array(
-								'title' => __( 'Lze si vířivku prohlédnout osobně?', 'baspa' ),
-								'text'  => __( 'Vybrané modely a technologie si můžete projít v showroomu v Moravanech u Brna. Návštěvu doporučujeme domluvit předem.', 'baspa' ),
-								'tag'   => __( 'Obchodní', 'baspa' ),
-							),
-							array(
-								'title' => __( 'Jak se řeší stavební připravenost?', 'baspa' ),
-								'text'  => __( 'Po výběru modelu připravíme podklady pro podkladovou desku, elektrický přívod, manipulační prostor a případné zapuštění.', 'baspa' ),
-								'tag'   => __( 'Stavební příprava', 'baspa' ),
-							),
-							array(
-								'title' => __( 'Umíte zajistit servis po instalaci?', 'baspa' ),
-								'text'  => __( 'Servisní požadavky řešíme přes kontaktní formulář nebo telefonicky. Pomůže model, rok pořízení a stručný popis problému.', 'baspa' ),
-								'tag'   => __( 'Servis', 'baspa' ),
-							),
-							array(
-								'title' => __( 'Jak rychle dostanu cenovou nabídku?', 'baspa' ),
-								'text'  => __( 'Po upřesnění modelu, konfigurace a montážních podmínek připravíme nezávaznou kalkulaci včetně navazující přípravy.', 'baspa' ),
-								'tag'   => __( 'Obchodní', 'baspa' ),
-							),
-						);
-
-						$faq_query = new WP_Query( array(
-							'post_type'      => 'faq',
-							'post_status'    => 'publish',
-							'posts_per_page' => 9,
-							'orderby'        => array(
-								'menu_order' => 'ASC',
-								'date'       => 'ASC',
-							),
-						) );
-
-						$editable_questions = array();
-						if ( $faq_query->have_posts() ) {
-							while ( $faq_query->have_posts() ) {
-								$faq_query->the_post();
-								$faq_terms = wp_get_post_terms( get_the_ID(), 'faq-category' );
-								$faq_tag   = !empty( $faq_terms ) && !is_wp_error( $faq_terms ) ? $faq_terms[0]->name : __( 'Podpora', 'baspa' );
-
-								$editable_questions[] = array(
-									'title' => get_the_title(),
-									'text'  => wp_strip_all_tags( apply_filters( 'the_content', get_the_content() ) ),
-									'tag'   => $faq_tag,
-								);
-							}
-							wp_reset_postdata();
-						}
-
-						if ( !empty( $editable_questions ) ) {
-							$questions = $editable_questions;
-						}
-
-						foreach ( $questions as $index => $question ) { ?>
-							<article class="f-support-faq-card <?php echo 0 === $index ? 'is-open' : ''; ?>">
-								<div class="f-support-faq-card__icon"><?php echo 0 === $index ? esc_html( '−' ) : esc_html( '+' ); ?></div>
+						<?php foreach ( $questions as $index => $question ) {
+							$panel_id = 'support-faq-panel-' . $index;
+							$is_open  = 0 === $index;
+							?>
+							<article class="f-support-faq-card <?php echo $is_open ? 'is-open' : ''; ?>"
+							         data-support-faq-card
+							         data-support-category="<?php echo esc_attr( $question['tag_slug'] ?? 'podpora' ); ?>"
+							         role="button"
+							         tabindex="0"
+							         aria-expanded="<?php echo $is_open ? 'true' : 'false'; ?>"
+							         aria-controls="<?php echo esc_attr( $panel_id ); ?>">
+								<div class="f-support-faq-card__icon" aria-hidden="true"><?php echo $is_open ? '−' : '+'; ?></div>
 								<div class="f-support-faq-card__body">
 									<h3><?php echo esc_html( $question['title'] ); ?></h3>
-									<?php if ( 0 === $index ) { ?>
-										<p><?php echo esc_html( $question['text'] ); ?></p>
-									<?php } ?>
+									<p id="<?php echo esc_attr( $panel_id ); ?>" <?php echo $is_open ? '' : 'hidden'; ?>>
+										<?php echo esc_html( $question['text'] ); ?>
+									</p>
 								</div>
 								<span class="f-support-faq-card__tag"><?php echo esc_html( $question['tag'] ); ?></span>
 							</article>
@@ -193,12 +233,17 @@ $download_filter_labels = function_exists( 'arctic_downloads_filter_labels' )
 	<section id="ke-stazeni" class="f-section f-section--support-downloads">
 		<div class="f-section__container a-container">
 			<h2><?php echo esc_html( $support_downloads_title ); ?></h2>
-			<div class="f-chip-list">
+			<div class="f-chip-list f-chip-list--interactive" role="tablist" aria-label="<?php echo esc_attr__( 'Kategorie ke stažení', 'baspa' ); ?>">
 				<?php foreach ( $download_filter_labels as $index => $label ) { ?>
-					<span class="<?php echo 0 === $index ? 'is-active' : ''; ?>"><?php echo esc_html( $label ); ?></span>
+					<button type="button"
+					        class=""
+					        data-download-filter="<?php echo esc_attr( $download_filter_keys[ $index ] ?? 'catalog' ); ?>"
+					        role="tab"
+					        aria-selected="false">
+						<?php echo esc_html( $label ); ?>
+					</button>
 				<?php } ?>
-			</div>
-			<?php echo do_shortcode( '[arctic-downloads]' ); ?>
+			</div><?php echo trim( (string) do_shortcode( '[arctic-downloads]' ) ); ?>
 		</div>
 	</section>
 

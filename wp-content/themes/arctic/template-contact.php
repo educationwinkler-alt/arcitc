@@ -11,6 +11,8 @@ get_template_part( 'templates/heading/contact' );
 	<main id="<?php echo sanitize_title( esc_attr_x( 'content', 'anchor', 'baspa' ) ); ?>"
 	      class="f-main f-main--contact f-main--top-0">
 
+		<span id="formular" class="screen-reader-text"><?php echo esc_html__( 'Kontaktní formulář', 'baspa' ); ?></span>
+
 		<?php
 		get_template_part( 'templates/section/map' );
 		get_template_part( 'templates/section/contact-directory' );
