@@ -446,7 +446,7 @@ async function auditFigmaTokenAndComponentStyles(page) {
   await assertComputedStyle(page, '.f-footer--arctic.f-footer--arctic .f-footer__quick-hours', 'white-space', 'nowrap', 'figmaComponents.footerHoursNoWrap');
   await assertSingleLineText(page, '.f-footer--arctic.f-footer--arctic .f-footer__quick-hours', 'figmaComponents.footerHoursSingleLine');
   await assertOptionalComputedStyleIncludes(page, '.template--homepage .f-section--references .f-listing--reference .f-listing__header a', 'color', '255, 255, 255', 'figmaComponents.referencesHeaderLinkColor');
-  await assertPseudoStyleIncludes(page, '.template--homepage .f-section--references .f-listing--reference .f-image', '::before', 'background-image', 'linear-gradient', 'figmaComponents.referencesOverlayGradient');
+  await assertPseudoStyleIncludes(page, '.template--homepage .f-section--references .f-listing--reference .f-image', '::before', 'background-image', 'none', 'figmaComponents.referencesOverlayDisabled');
 
   for (const path of ['/', '/virivky/', '/swimspa/', '/product/timberwolf/', '/showroom/', '/reference/', '/kontakt/', '/podpora/', '/o-nas/', '/servis/', '/sluzby/', '/vlastnosti/', '/certifikaty/', '/zaruka/', '/kolik-stoji-udrzba/', '/vlastnosti/izolace-virivky/']) {
     await page.goto(`${baseUrl}${path}`, { waitUntil: 'load' });

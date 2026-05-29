@@ -443,10 +443,19 @@ h6,
   :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference {
     --listing--image--scale: 1;
     --listing--image--scale--active: 1;
+    --listing--header--color: var(--arctic-color-snow);
+  }
+
+  .template--homepage .f-section--references .f-listing--reference {
+    --listing--image--overlay--gradient: none;
+    --listing--image--overlay--color: transparent;
+    --listing--image--overlay--color--active: transparent;
+  }
+
+  :is(.tax-product-category, .single-product) .f-section--references .f-listing--reference {
     --listing--image--overlay--gradient: linear-gradient(180deg, rgba(7, 24, 38, 0.04) 0%, rgba(7, 24, 38, 0.62) 100%);
     --listing--image--overlay--color: transparent;
     --listing--image--overlay--color--active: transparent;
-    --listing--header--color: var(--arctic-color-snow);
   }
 
   :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas {
