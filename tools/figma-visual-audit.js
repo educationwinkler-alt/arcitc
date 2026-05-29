@@ -452,6 +452,77 @@ async function assertMajorSectionGapLimit(page, path, width, maxGap, label) {
   }
 }
 
+async function assertSeriesNavNoOverlap(page, selector, label) {
+  const links = await page.locator(`${selector} a`).evaluateAll((elements) => elements.map((element) => {
+    const rect = element.getBoundingClientRect();
+    const range = document.createRange();
+    range.selectNodeContents(element);
+
+    return {
+      text: element.textContent.trim(),
+      x: rect.x,
+      right: rect.right,
+      width: rect.width,
+      height: rect.height,
+      lineRects: range.getClientRects().length,
+    };
+  }));
+
+  if (links.length < 2) {
+    throw new Error(`${label}: expected at least two nav links, got ${links.length}`);
+  }
+
+  for (let index = 0; index < links.length; index += 1) {
+    if (links[index].width < 20 || links[index].height < 20) {
+      throw new Error(`${label}.${index}: link "${links[index].text}" is too small (${round(links[index].width)}x${round(links[index].height)})`);
+    }
+
+    if (links[index].lineRects > 1) {
+      throw new Error(`${label}.${index}: link "${links[index].text}" wraps to ${links[index].lineRects} lines`);
+    }
+
+    if (index > 0 && links[index].x < links[index - 1].right + 8) {
+      throw new Error(`${label}: links overlap or touch too closely (${links[index - 1].text} -> ${links[index].text})`);
+    }
+  }
+}
+
+async function assertDownloadRowsAttached(page, label) {
+  const metrics = await page.locator('.f-download-card').evaluateAll((cards) => cards.slice(0, 3).map((card) => {
+    const row = card.getBoundingClientRect();
+    const body = card.querySelector('.f-download-card__body')?.getBoundingClientRect();
+    const button = card.querySelector('.f-download-card__button')?.getBoundingClientRect();
+
+    return {
+      row: { x: row.x, right: row.right, width: row.width },
+      body: body ? { x: body.x, right: body.right, width: body.width } : null,
+      button: button ? { x: button.x, right: button.right, width: button.width } : null,
+    };
+  }));
+
+  if (!metrics.length) {
+    throw new Error(`${label}: missing download cards`);
+  }
+
+  for (const [index, metric] of metrics.entries()) {
+    if (!metric.body || !metric.button) {
+      throw new Error(`${label}.${index}: download row is missing body or CTA`);
+    }
+
+    if (metric.button.x < metric.body.right + 12) {
+      throw new Error(`${label}.${index}: CTA is visually detached/overlapping body (gap ${round(metric.button.x - metric.body.right)}px)`);
+    }
+
+    if (metric.button.right > metric.row.right - 16) {
+      throw new Error(`${label}.${index}: CTA exceeds row padding (${round(metric.button.right)} > ${round(metric.row.right - 16)})`);
+    }
+
+    if (metric.row.width < 700) {
+      throw new Error(`${label}.${index}: row width collapsed to ${round(metric.row.width)}px`);
+    }
+  }
+}
+
 async function assertHiddenBox(page, selector, label) {
   const locator = page.locator(selector).first();
   const count = await locator.count();
@@ -1308,7 +1379,12 @@ async function auditCatalogHotTubsDesktop(page) {
   await assertBox(page, '.f-category-intro--split', { x: 260, y: 910, width: 1400, height: 424 }, 3, 'catalog.categoryIntroFeatures');
   await assertBox(page, '.f-category-intro--reverse', { x: 260, y: 1472, width: 1400, height: 424 }, 3, 'catalog.categoryIntroWarranty');
   await assertBox(page, '.f-section--series-nav', { x: 0, y: 1990, width: 1920, height: 93 }, 3, 'catalog.seriesNavSection');
-  await assertBox(page, '.f-series-nav', { x: 313, y: 2012, width: 603, height: 51 }, 4, 'catalog.seriesNav');
+  const catalogSeriesNav = await box(page, '.f-series-nav', 'catalog.seriesNav');
+  assertClose(catalogSeriesNav.x, 313, 4, 'catalog.seriesNav.x');
+  assertClose(catalogSeriesNav.y, 2012, 4, 'catalog.seriesNav.y');
+  assertBetween(catalogSeriesNav.width, 560, 620, 'catalog.seriesNav.width');
+  assertClose(catalogSeriesNav.height, 51, 4, 'catalog.seriesNav.height');
+  await assertSeriesNavNoOverlap(page, '.f-series-nav', 'catalog.seriesNavNoOverlap');
   await assertBox(page, '.f-products-series--custom', { x: 260, y: 2177, width: 1400, height: 1039 }, 4, 'catalog.customSeries');
   await assertBox(page, '.f-products-series--classic', { x: 260, y: 3331, width: 1400, height: 686 }, 4, 'catalog.classicSeries');
   await assertBox(page, '.f-products-series--core', { x: 260, y: 4132, width: 1400, height: 686 }, 4, 'catalog.coreSeries');
@@ -1344,7 +1420,12 @@ async function auditCatalogSwimspaDesktop(page) {
   await assertBox(page, '.f-category-intro--split', { x: 260, y: 910, width: 1400, height: 424 }, 3, 'swimspaCatalog.categoryIntroBenefits');
   await assertBox(page, '.f-category-intro--reverse', { x: 260, y: 1472, width: 1400, height: 424 }, 3, 'swimspaCatalog.categoryIntroOperation');
   await assertBox(page, '.f-section--series-nav', { x: 0, y: 1990, width: 1920, height: 93 }, 3, 'swimspaCatalog.seriesNavSection');
-  await assertBox(page, '.f-series-nav', { x: 313, y: 2012, width: 603, height: 51 }, 4, 'swimspaCatalog.seriesNav');
+  const swimspaSeriesNav = await box(page, '.f-series-nav', 'swimspaCatalog.seriesNav');
+  assertClose(swimspaSeriesNav.x, 313, 4, 'swimspaCatalog.seriesNav.x');
+  assertClose(swimspaSeriesNav.y, 2012, 4, 'swimspaCatalog.seriesNav.y');
+  assertBetween(swimspaSeriesNav.width, 560, 620, 'swimspaCatalog.seriesNav.width');
+  assertClose(swimspaSeriesNav.height, 51, 4, 'swimspaCatalog.seriesNav.height');
+  await assertSeriesNavNoOverlap(page, '.f-series-nav', 'swimspaCatalog.seriesNavNoOverlap');
   await assertBox(page, '.f-section--products-grouped', { x: 0, y: 2083, width: 1920, height: 780 }, 4, 'swimspaCatalog.productsSection');
   await assertBox(page, '.f-products-series--swimspa', { x: 260, y: 2177, width: 1400, height: 686 }, 4, 'swimspaCatalog.swimspaSeries');
   await assertBox(page, '.f-products-series--swimspa .f-listing--product:nth-child(1)', { x: 615, y: 2177, width: 335, height: 333 }, 3, 'swimspaCatalog.productCardOne');
@@ -1740,6 +1821,47 @@ async function auditPr7EQualityGuards(page) {
   }
 }
 
+async function auditPr7FComposition(page) {
+  for (const width of [1920, 1600, 1366, 1097]) {
+    for (const path of ['/virivky/', '/swimspa/']) {
+      await page.setViewportSize({ width, height: 1100 });
+      await page.goto(`${baseUrl}${path}`, { waitUntil: 'load' });
+      await assertNoHorizontalOverflow(page, `pr7f.seriesNav:${width}:${path}`);
+      await assertSeriesNavNoOverlap(page, '.f-series-nav', `pr7f.seriesNav:${width}:${path}`);
+    }
+
+    await page.setViewportSize({ width, height: 1100 });
+    await page.goto(`${baseUrl}/podpora/`, { waitUntil: 'load' });
+    await assertNoHorizontalOverflow(page, `pr7f.support:${width}`);
+
+    const supportContainer = await box(page, '.page-template-template-support .f-section--support-faq .f-section__container', `pr7f.support:${width}.container`);
+    const supportMain = await box(page, '.page-template-template-support .f-support-layout__main', `pr7f.support:${width}.main`);
+    const supportHelp = await box(page, '.page-template-template-support .f-support-help-card', `pr7f.support:${width}.help`);
+    const supportFaqCard = await box(page, '.page-template-template-support .f-support-faq-card:nth-child(1)', `pr7f.support:${width}.faqCard`);
+
+    if (supportHelp.right > supportContainer.right + 2) {
+      throw new Error(`pr7f.support:${width}: help card exceeds support container`);
+    }
+
+    if (supportMain.right > supportHelp.x - 16) {
+      throw new Error(`pr7f.support:${width}: support main column overlaps help card`);
+    }
+
+    if (supportFaqCard.right > supportMain.right + 2) {
+      throw new Error(`pr7f.support:${width}: FAQ card exceeds main column`);
+    }
+
+    assertBetween(supportMain.width, width >= 1400 ? 1000 : 620, 1050, `pr7f.support:${width}.main.width`);
+    assertBetween(supportHelp.width, 260, 300, `pr7f.support:${width}.help.width`);
+
+    await assertDownloadRowsAttached(page, `pr7f.supportDownloads:${width}`);
+
+    await page.goto(`${baseUrl}/ke-stazeni/`, { waitUntil: 'load' });
+    await assertNoHorizontalOverflow(page, `pr7f.downloads:${width}`);
+    await assertDownloadRowsAttached(page, `pr7f.downloads:${width}`);
+  }
+}
+
 async function auditReferenceDesktop(page) {
   await page.setViewportSize({ width: 1920, height: 1080 });
   await page.goto(`${baseUrl}/reference/`, { waitUntil: 'load' });
@@ -1877,6 +1999,7 @@ async function auditSharedFooterDesktop(page) {
     await auditSupportDesktop(page);
     await auditInfoSupportCompact1097(page);
     await auditPr7EQualityGuards(page);
+    await auditPr7FComposition(page);
     await auditReferenceDesktop(page);
     await auditAboutDesktop(page);
     await auditServiceRequestDesktop(page);

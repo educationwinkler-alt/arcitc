@@ -13,6 +13,10 @@ Update 2026-05-29 (PR7E closure):
 - Manual evidence and screenshot pack are recorded in `docs/phase-5d-pr7e-manual-signoff-2026-05-29.md`.
 - PR7F remains open as a separate composition/parity scope.
 
+Update 2026-05-29 (PR7F closure):
+- Support/download desktop composition and product-series navigation parity are now closed for the repository scope.
+- Manual evidence and screenshot pack are recorded in `docs/phase-5d-pr7f-manual-signoff-2026-05-29.md`.
+
 Update 2026-05-28 (PR6C reopen closure):
 - Showroom panel location pin no longer uses bitmap background (`hp-pin-showroom.png`); icon is now pure CSS glyph over circular chip.
 - Footer quick-hours chip is forced to one line (no orphan trailing `h` line break).
@@ -67,6 +71,6 @@ Update 2026-05-28 (PR6C reopen closure):
 
 ## Final Technical Sign-Off Status
 
-- Phase 5B + 5C repository technical sign-off: **Conditionally passed**; PR7E content/language/function reopen is closed as of 2026-05-29, with PR7F still tracked separately.
+- Phase 5B + 5C repository technical sign-off: **Conditionally passed**; PR7E and PR7F follow-up repository scopes are closed as of 2026-05-29.
 - Remaining release requirement outside repository code: owner/client visual approval before production rollout.
 

@@ -463,10 +463,10 @@ Task board checklist + DoD:
   - DoD: newly reported issues are covered by automated checks and linked to updated manual sign-off evidence.
   - Verification (2026-05-29): `tools/link-smoke.js` now validates internal fragment anchors, `tools/visual-smoke.js` blocks visible legacy ASCII Czech fallback copy, and `tools/figma-visual-audit.js` verifies support/download interaction affordances plus major section gap limits at desktop and compact-laptop widths. Stale menu anchors are normalized for retired sale/swimspa/support targets. Screenshot/manual sign-off evidence is recorded in `docs/phase-5d-pr7e-manual-signoff-2026-05-29.md`; `npm run figma:audit`, `npm run visual:smoke`, and `npm run qa:local` passed.
 
-- [ ] PR7F support/download desktop composition + product-series-nav parity
+- [x] PR7F support/download desktop composition + product-series-nav parity
   - Scope: replace hardcoded `a:nth-child(...)` widths in product series nav with an intrinsic/flex contract; fix `/podpora/` desktop two-column composition and `/ke-stazeni/` row action alignment so long real data does not break parity.
   - DoD: product-series labels never overlap, support left column keeps Figma-aligned gutters/spacing with stable right-card placement, and downloads CTA alignment remains visually attached to row content on long lists.
-  - Verification: screenshot pack + computed-style checks for nav label overlap, support column widths/gutters, and downloads row CTA alignment at 1920, 1600, 1366, and 1097-equivalent viewports.
+  - Verification (2026-05-29): `.f-series-nav` no longer uses hardcoded `a:nth-child(...)` widths and now uses intrinsic flex sizing; compact product nav resets inherited negative link margins; `/podpora/` uses a fluid `1024-1399px` two-column support composition; support/download cards keep CTA rows in a three-column grid without text overlap. `tools/figma-visual-audit.js` now checks series nav overlap, support card containment, and download row CTA attachment at `1920`, `1600`, `1366`, and `1097` CSS px. Screenshot/manual sign-off evidence is recorded in `docs/phase-5d-pr7f-manual-signoff-2026-05-29.md`; `npm run figma:audit` and full `npm run qa:local` passed.
 
 ## Phase 5A - Compact laptop / Windows 175% scaling (P0, 0.5-1 day)
 Goal: make `1920x1080` Windows display scaling at `175%` with Chrome at `100%` behave as a first-class release viewport, not an accidental mix of desktop and mobile rules.

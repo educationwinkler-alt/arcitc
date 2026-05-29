@@ -8835,37 +8835,27 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     position: absolute;
     top: 22px;
     left: 53px;
-    display: flex;
+    display: inline-flex;
     flex-wrap: nowrap;
     align-items: flex-start;
-    gap: 42px;
+    gap: clamp(24px, 2.2vw, 42px);
+    width: auto;
+    max-width: calc(100% - 106px);
     height: 51px;
     white-space: nowrap;
   }
 
   .tax-product-category .f-series-nav a {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    width: auto;
+    min-width: max-content;
     height: 51px;
     margin: 0;
     padding: 0;
     font-size: 18px;
     line-height: 51px;
-  }
-
-  .tax-product-category .f-series-nav a:nth-child(1) {
-    width: 115px;
-  }
-
-  .tax-product-category .f-series-nav a:nth-child(2) {
-    width: 107px;
-  }
-
-  .tax-product-category .f-series-nav a:nth-child(3) {
-    width: 90px;
-  }
-
-  .tax-product-category .f-series-nav a:nth-child(4) {
-    width: 165px;
   }
 
   .tax-product-category .f-section--products-grouped {
@@ -10136,6 +10126,7 @@ body:not(.template--homepage) .f-header__container > .a-flex {
 
   .page-template-template-support .f-download-card__button {
     position: relative;
+    grid-column: auto;
     justify-self: end;
     width: 145px;
     height: 50px;
@@ -11189,6 +11180,91 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     top: auto;
     left: auto;
     justify-self: end;
+  }
+}
+
+/* PR7F: keep support/download composition intrinsic at laptop and scaled viewports. */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .tax-product-category .f-series-nav {
+    align-items: center;
+    gap: clamp(18px, 2.4vw, 32px);
+  }
+
+  .tax-product-category .f-series-nav a {
+    display: inline-flex;
+    flex: 0 0 auto;
+    width: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  .page-template-template-support .f-support-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 298px);
+    gap: clamp(24px, 3vw, 40px);
+  }
+
+  .page-template-template-support .f-support-layout__main,
+  .page-template-template-support .f-support-accordion,
+  .page-template-template-support .f-support-faq-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .page-template-template-support .f-chip-list {
+    height: auto;
+    min-height: 37px;
+  }
+
+  .page-template-template-support .f-support-faq-card {
+    grid-template-columns: 33px minmax(0, 1fr);
+    padding-right: clamp(24px, 3vw, 37px);
+    padding-left: clamp(24px, 3vw, 31px);
+  }
+
+  .page-template-template-support .f-support-faq-card__tag {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .page-template-template-support .f-support-help-card {
+    justify-self: end;
+    width: min(298px, 100%);
+  }
+
+  .page-template-template-support .f-downloads--support-figma,
+  .page-template-template-support .f-download-group {
+    width: min(1045px, 100%);
+    max-width: 100%;
+  }
+
+  .page-template-template-support .f-download-group--open,
+  .page-template-template-support .f-download-group--closed.is-open {
+    min-height: 0;
+  }
+
+  .page-template-template-support .f-download-group__items {
+    padding-left: clamp(0px, 5vw, 53px);
+  }
+
+  .page-template-template-support .f-download-card {
+    grid-template-columns: 56px minmax(0, 1fr) max-content;
+    width: 100%;
+    max-width: 100%;
+    gap: 23px;
+  }
+
+  .page-template-template-support .f-download-card__body {
+    min-width: 0;
+  }
+
+  .page-template-template-support .f-download-card p {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .page-template-template-support .f-download-card__button {
+    grid-column: auto;
+    align-self: center;
   }
 }
 
