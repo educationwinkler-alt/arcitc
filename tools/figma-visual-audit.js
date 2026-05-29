@@ -860,6 +860,7 @@ async function auditDesktopHeaderStates(page) {
   if (hotTubProducts < 3) {
     throw new Error(`desktopHeaderMega.hotTubs: expected at least 3 product links, got ${hotTubProducts}`);
   }
+  await assertMegaMenuProductsWrappedNoScroll(page, '.f-mega-menu--hot-tubs', 'desktopHeaderMega.hotTubsWrap');
 
   const swimspaTrigger = await box(page, '.f-navigation__list > .arctic-menu-products:nth-child(2) > a', 'desktopHeaderMega.swimspaTrigger');
   await page.mouse.move(swimspaTrigger.x + (swimspaTrigger.width / 2), swimspaTrigger.y + (swimspaTrigger.height / 2));
@@ -870,6 +871,7 @@ async function auditDesktopHeaderStates(page) {
   if (swimspaProducts < 3) {
     throw new Error(`desktopHeaderMega.swimspa: expected at least 3 product links, got ${swimspaProducts}`);
   }
+  await assertMegaMenuProductsWrappedNoScroll(page, '.f-mega-menu--swimspa', 'desktopHeaderMega.swimspaWrap');
 }
 
 async function auditDesktopHeaderRealViewport(page) {
@@ -887,8 +889,8 @@ async function auditDesktopHeaderRealViewport(page) {
   assertClose(realViewportGrid.x, 178, 6, 'desktopHeaderRealViewport.grid.x');
   assertClose(realViewportGrid.y, 156, 6, 'desktopHeaderRealViewport.grid.y');
   assertClose(realViewportGrid.width, 1230, 6, 'desktopHeaderRealViewport.grid.width');
-  if (realViewportGrid.height < 390 || realViewportGrid.height > 520) {
-    throw new Error(`desktopHeaderRealViewport.grid.height: expected dynamic range 390..520, got ${round(realViewportGrid.height)}`);
+  if (realViewportGrid.height < 340 || realViewportGrid.height > 520) {
+    throw new Error(`desktopHeaderRealViewport.grid.height: expected dynamic range 340..520, got ${round(realViewportGrid.height)}`);
   }
 
   const columnProductCounts = await page.locator('.f-mega-menu--hot-tubs .f-mega-menu__column .f-mega-menu__products').evaluateAll(
@@ -906,6 +908,7 @@ async function auditDesktopHeaderRealViewport(page) {
   await assertComputedStyle(page, '.template--homepage .f-section--slides > .f-hero-promo', 'visibility', 'hidden', 'desktopHeaderRealViewport.homePromoHidden');
   await assertComputedStyle(page, '.template--homepage .f-section--slides > .f-hero-promo', 'opacity', '0', 'desktopHeaderRealViewport.homePromoTransparent');
   await assertNoHorizontalOverflow(page, 'desktopHeaderRealViewport');
+  await assertMegaMenuProductsWrappedNoScroll(page, '.f-mega-menu--hot-tubs', 'desktopHeaderRealViewport.hotTubsWrap');
 
   await assertMegaHoverCursorTravel(page, 'desktopHeaderRealViewport');
 }
@@ -1077,6 +1080,133 @@ async function auditScaledLaptopBoundary(page) {
   }
 }
 
+async function assertHomepageCategoryCardsClickable(page, label) {
+  const cards = await page.locator('.template--homepage .f-categories--product > .f-category').evaluateAll((elements) => elements.map((card) => {
+    const link = card.querySelector(':scope > a.f-category__container');
+    const number = (value) => {
+      const parsed = Number.parseFloat(value || '0');
+      return Number.isFinite(parsed) ? parsed : 0;
+    };
+
+    if (!link) {
+      return {
+        title: card.querySelector('h3')?.textContent.trim() || '',
+        tagName: '',
+        href: '',
+        nestedLinks: -1,
+        textDecorationLine: '',
+        arrow: null,
+        circle: null,
+      };
+    }
+
+    const style = getComputedStyle(link);
+    const arrow = getComputedStyle(link, '::before');
+    const circle = getComputedStyle(link, '::after');
+
+    return {
+      title: card.querySelector('h3')?.textContent.trim() || '',
+      tagName: link.tagName,
+      href: link.getAttribute('href') || '',
+      nestedLinks: link.querySelectorAll('a').length,
+      textDecorationLine: style.textDecorationLine,
+      arrow: {
+        x: number(arrow.right) + (number(arrow.width) / 2),
+        y: number(arrow.bottom) + (number(arrow.height) / 2),
+      },
+      circle: {
+        x: number(circle.right) + (number(circle.width) / 2),
+        y: number(circle.bottom) + (number(circle.height) / 2),
+        width: number(circle.width),
+        height: number(circle.height),
+      },
+    };
+  }));
+
+  if (cards.length !== 2) {
+    throw new Error(`${label}: expected 2 homepage category cards, got ${cards.length}`);
+  }
+
+  for (const [index, card] of cards.entries()) {
+    if (card.tagName !== 'A') {
+      throw new Error(`${label}.${index}: expected whole category container to be the link for "${card.title}"`);
+    }
+
+    if (!card.href || card.href === '#') {
+      throw new Error(`${label}.${index}: missing real category href for "${card.title}"`);
+    }
+
+    if (card.nestedLinks !== 0) {
+      throw new Error(`${label}.${index}: category link for "${card.title}" must not contain nested links`);
+    }
+
+    if (card.textDecorationLine !== 'none') {
+      throw new Error(`${label}.${index}: category link for "${card.title}" must not be underlined`);
+    }
+
+    if (!card.circle || card.circle.width < 30 || card.circle.height < 30) {
+      throw new Error(`${label}.${index}: missing circular arrow affordance for "${card.title}"`);
+    }
+
+    if (Math.abs(card.arrow.x - card.circle.x) > 2 || Math.abs(card.arrow.y - card.circle.y) > 2) {
+      throw new Error(`${label}.${index}: arrow is not centered in the red circle for "${card.title}"`);
+    }
+  }
+}
+
+async function assertMegaMenuProductsWrappedNoScroll(page, menuSelector, label) {
+  const columns = await page.locator(`${menuSelector} .f-mega-menu__column`).evaluateAll((elements) => elements.map((column) => {
+    const menuRect = column.closest('.f-mega-menu').getBoundingClientRect();
+    const products = [...column.querySelectorAll('.f-mega-menu__product')];
+    const overflowY = getComputedStyle(column).overflowY;
+    const productRects = products.map((product) => {
+      const rect = product.getBoundingClientRect();
+      return {
+        text: product.textContent.trim(),
+        x: rect.x,
+        top: rect.top,
+        bottom: rect.bottom,
+      };
+    });
+    const productColumns = [...new Set(productRects.map((rect) => Math.round(rect.x / 20) * 20))].length;
+
+    const result = {
+      heading: column.querySelector('h2')?.textContent.trim() || '',
+      productCount: products.length,
+      overflowY,
+      productColumns,
+      products: productRects,
+      menu: { top: menuRect.top, bottom: menuRect.bottom },
+    };
+
+    return result;
+  }));
+
+  if (!columns.length) {
+    throw new Error(`${label}: missing mega menu columns`);
+  }
+
+  for (const [index, column] of columns.entries()) {
+    if (column.productCount < 1) {
+      throw new Error(`${label}.${index}: column "${column.heading}" has no products`);
+    }
+
+    if (['auto', 'scroll', 'overlay'].includes(column.overflowY)) {
+      throw new Error(`${label}.${index}: column "${column.heading}" must wrap products, not scroll (overflow-y: ${column.overflowY})`);
+    }
+
+    if (column.productCount > 5 && column.productColumns < 2) {
+      throw new Error(`${label}.${index}: long column "${column.heading}" did not wrap into another product column`);
+    }
+
+    for (const product of column.products) {
+      if (product.bottom > column.menu.bottom + 1 || product.top < column.menu.top - 1) {
+        throw new Error(`${label}.${index}: product "${product.text}" is clipped outside the mega menu`);
+      }
+    }
+  }
+}
+
 async function assertMegaHoverCursorTravel(page, labelPrefix) {
   const triggerSelector = '.f-navigation__list > .arctic-menu-products:nth-child(1) > a';
   const menuSelector = '.f-mega-menu--hot-tubs';
@@ -1201,6 +1331,7 @@ async function auditDesktop(page) {
   await assertInsideViewport(page, '.f-hero-promo', 1920, 'desktop.heroPromoInside', 20);
   await assertBox(page, '.f-category:nth-child(1)', { x: 258, y: 866, width: 674, height: 424 }, 3, 'desktop.categoryHotTubs');
   await assertBox(page, '.f-category:nth-child(2)', { x: 986, y: 866, width: 674, height: 424 }, 3, 'desktop.categorySwimspa');
+  await assertHomepageCategoryCardsClickable(page, 'desktop.categoryCards');
   await assertBox(page, '.template--homepage .f-page__content', { x: 584, y: 1405, width: 752, height: 232 }, 3, 'desktop.exclusiveDealer');
   await assertBox(page, '.template--homepage .f-arctic-benefits', { x: 260, y: 1703, width: 1400, height: 175 }, 3, 'desktop.benefits');
   await assertBox(page, '.template--homepage .f-arctic-benefit:nth-child(1)', { x: 260, y: 1703, width: 416, height: 175 }, 3, 'desktop.benefitInstallation');
@@ -1218,6 +1349,8 @@ async function auditDesktop(page) {
   await assertSourceContains(page, '.template--homepage .f-slide--1 .f-slide__background', 'uploads/import/figma/hp-hero-arctic-spas-07.jpg', 'desktop.heroBackgroundSource');
   await assertSourceContains(page, '.f-slide__background img', 'uploads/import/figma/hp-hero-arctic-spas-07.jpg', 'desktop.heroImageSource');
   await assertSourceContains(page, '.f-hero-promo__image', 'uploads/import/figma/hp-fixed-banner-product.png', 'desktop.heroPromoImageSource');
+  await assertSourceContains(page, '.template--homepage .f-category:nth-child(1) .f-category__image img', 'uploads/import/figma/hp-category-virivky.jpg', 'desktop.categoryHotTubsImageSource');
+  await assertSourceContains(page, '.template--homepage .f-category:nth-child(2) .f-category__image img', 'uploads/import/figma/hp-category-celorocni-bazeny.png', 'desktop.categorySwimspaImageSource');
   await assertComputedStyle(page, '.template--homepage .f-slide--1 .f-slide__background', 'background-size', 'cover', 'desktop.heroBackgroundFit');
 }
 
@@ -1273,8 +1406,11 @@ async function auditMobile(page) {
   await assertHiddenBox(page, '.f-hero-promo', 'mobile.heroPromo');
   await assertBox(page, '.f-category:nth-child(1)', { x: 27.5, y: 556, width: 335, height: 221 }, 3, 'mobile.categoryHotTubs');
   await assertBox(page, '.f-category:nth-child(2)', { x: 27.5, y: 798, width: 335, height: 221 }, 4, 'mobile.categorySwimspa');
+  await assertHomepageCategoryCardsClickable(page, 'mobile.categoryCards');
 
   await assertSourceContains(page, '.f-logo__img', 'images/logo.svg', 'mobile.logoSource');
+  await assertSourceContains(page, '.template--homepage .f-category:nth-child(1) .f-category__image img', 'uploads/import/figma/mobile-category-virivky.jpg', 'mobile.categoryHotTubsImageSource');
+  await assertSourceContains(page, '.template--homepage .f-category:nth-child(2) .f-category__image img', 'uploads/import/figma/mobile-category-celorocni-bazeny.png', 'mobile.categorySwimspaImageSource');
 }
 
 async function auditNarrowHomepageLayout(page) {

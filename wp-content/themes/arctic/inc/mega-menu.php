@@ -6,7 +6,7 @@
 
 if ( !function_exists( 'arctic_mega_menu_cache_key' ) ) {
 	function arctic_mega_menu_cache_key(): string {
-		return 'arctic_mega_menu_v1';
+		return 'arctic_mega_menu_v3';
 	}
 }
 
@@ -144,13 +144,35 @@ if ( !function_exists( 'arctic_mega_menu_products_by_series' ) ) {
 
 		$grouped = array_values( $groups );
 		usort( $grouped, static function ( array $left, array $right ): int {
-			if ( $left['count'] === $right['count'] ) {
-				$left_name = $left['term'] instanceof WP_Term ? $left['term']->name : '';
-				$right_name = $right['term'] instanceof WP_Term ? $right['term']->name : '';
-				return strcmp( $left_name, $right_name );
+			$series_order = static function ( ?WP_Term $term ): int {
+				if ( !( $term instanceof WP_Term ) ) {
+					return 100;
+				}
+
+				$key = strtolower( sanitize_title( $term->slug ?: $term->name ) );
+				$order = array(
+					'core'    => 10,
+					'classic' => 20,
+					'custom'  => 30,
+				);
+
+				return $order[ $key ] ?? 100;
+			};
+
+			$left_order = $series_order( $left['term'] ?? null );
+			$right_order = $series_order( $right['term'] ?? null );
+
+			if ( $left_order !== $right_order ) {
+				return $left_order <=> $right_order;
 			}
 
-			return $right['count'] <=> $left['count'];
+			if ( $left['count'] !== $right['count'] ) {
+				return $right['count'] <=> $left['count'];
+			}
+
+			$left_name = $left['term'] instanceof WP_Term ? $left['term']->name : '';
+			$right_name = $right['term'] instanceof WP_Term ? $right['term']->name : '';
+			return strcmp( $left_name, $right_name );
 		} );
 
 		if ( !empty( $plain ) ) {

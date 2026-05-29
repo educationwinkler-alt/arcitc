@@ -2567,6 +2567,16 @@ body {
 .template--homepage .f-category a {
   border-radius: var(--arctic-radius-l);
 }
+.template--homepage .f-category > a.f-category__container,
+.template--homepage .f-category > a.f-category__container:is(:hover, :focus) {
+  color: var(--arctic-color-snow);
+  text-decoration: none;
+  text-decoration-color: transparent;
+}
+.template--homepage .f-category > a.f-category__container:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.72);
+  outline-offset: -8px;
+}
 .template--homepage .f-category figure:before {
   background-image: linear-gradient(180deg, rgba(7, 24, 38, 0.04) 0%, rgba(7, 24, 38, 0.88) 100%);
 }
@@ -2577,6 +2587,11 @@ body {
   inset: 0;
   width: 100%;
   max-height: none;
+}
+.template--homepage .f-category__image picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .template--homepage .f-category__image img {
   width: 100%;
@@ -5106,7 +5121,7 @@ body.off-active--benefit-shell .f-off__overlay {
     content: "";
     position: absolute;
     right: 54px;
-    bottom: 58px;
+    bottom: 60px;
     z-index: 2;
     width: 8px;
     height: 8px;
@@ -6140,8 +6155,8 @@ body.off-active--benefit-shell .f-off__overlay {
   .template--homepage .f-category .f-category__container:before {
     content: "";
     position: absolute;
-    right: 43px;
-    bottom: 37px;
+    right: 44px;
+    bottom: 40px;
     z-index: 2;
     width: 8px;
     height: 8px;
@@ -6648,7 +6663,7 @@ body:not(.template--homepage) .f-header__container > .a-flex {
   }
   .f-header .f-mega-menu__grid {
     display: grid;
-    grid-template-columns: 260px 260px 310px 268px;
+    grid-template-columns: 220px 220px minmax(330px, 1fr) 268px;
     gap: 42px;
     align-items: start;
     width: 100%;
@@ -6675,7 +6690,10 @@ body:not(.template--homepage) .f-header__container > .a-flex {
   }
   .f-header .f-mega-menu__products {
     display: grid;
-    gap: 12px;
+    grid-auto-flow: column;
+    grid-auto-columns: 150px;
+    grid-template-rows: repeat(5, minmax(38px, auto));
+    gap: 12px 32px;
   }
   .f-header .f-mega-menu__product {
     display: grid;
