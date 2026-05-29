@@ -44,6 +44,18 @@ function assertClose(actual, expected, tolerance, label) {
   }
 }
 
+function assertBetween(actual, min, max, label) {
+  if (actual < min || actual > max) {
+    throw new Error(`${label}: expected ${min}..${max}, got ${round(actual)}`);
+  }
+}
+
+async function verticalGap(page, upperSelector, lowerSelector, label) {
+  const upper = await box(page, upperSelector, `${label}.upper`);
+  const lower = await box(page, lowerSelector, `${label}.lower`);
+  return lower.y - (upper.y + upper.height);
+}
+
 async function box(page, selector, label) {
   const locator = page.locator(selector).first();
   const count = await locator.count();
@@ -1366,24 +1378,84 @@ async function auditFigmaInfoPagesDesktop(page) {
   await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 435 }, 3, 'warranty.heading');
   await assertBox(page, '.f-heading__headline h1', { x: 260, y: 206, width: 896, height: 61 }, 4, 'warranty.title');
   await assertBox(page, '.f-heading__description', { x: 260, y: 289, width: 910, height: 62 }, 4, 'warranty.description');
-  await assertBox(page, '.f-section--warranty-table', { x: 0, y: 435, width: 1920, height: 525 }, 4, 'warranty.section');
-  await assertBox(page, '.f-warranty-table', { x: 260, y: 652, width: 888, height: 283 }, 4, 'warranty.table');
-  await assertBox(page, '.f-warranty-layout > p', { x: 1223, y: 898, width: 368, height: 150 }, 4, 'warranty.note');
-  await assertBox(page, '.page-template-template-warranty .f-contact-cta', { x: 260, y: 1075, width: 1400, height: 455 }, 4, 'warranty.contactCta');
-  await assertFooterLayout(page, 'warranty', 1558);
+
+  const warrantySection = await box(page, '.f-section--warranty-table', 'warranty.section');
+  assertClose(warrantySection.x, 0, 4, 'warranty.section.x');
+  assertClose(warrantySection.y, 435, 4, 'warranty.section.y');
+  assertClose(warrantySection.width, 1920, 4, 'warranty.section.width');
+  assertBetween(warrantySection.height, 360, 560, 'warranty.section.height');
+
+  const warrantyTable = await box(page, '.f-warranty-table', 'warranty.table');
+  assertClose(warrantyTable.x, 260, 8, 'warranty.table.x');
+  assertBetween(warrantyTable.y, 490, 560, 'warranty.table.y');
+  assertClose(warrantyTable.width, 888, 8, 'warranty.table.width');
+  assertClose(warrantyTable.height, 283, 8, 'warranty.table.height');
+
+  const warrantyNote = await box(page, '.f-warranty-layout > p', 'warranty.note');
+  assertBetween(warrantyNote.x, 1180, 1265, 'warranty.note.x');
+  assertBetween(warrantyNote.y, 640, 880, 'warranty.note.y');
+  assertClose(warrantyNote.width, 368, 12, 'warranty.note.width');
+  assertClose(warrantyNote.height, 150, 12, 'warranty.note.height');
+
+  const warrantyDescriptionToTableGap = await verticalGap(page, '.f-heading__description', '.f-warranty-table', 'warranty.descriptionToTableGap');
+  assertBetween(warrantyDescriptionToTableGap, 110, 220, 'warranty.descriptionToTableGap');
+
+  const warrantySectionToContactGap = await verticalGap(page, '.f-section--warranty-table', '.page-template-template-warranty .f-contact-cta', 'warranty.sectionToContactGap');
+  assertBetween(warrantySectionToContactGap, 80, 180, 'warranty.sectionToContactGap');
+
+  const warrantyContactCta = await box(page, '.page-template-template-warranty .f-contact-cta', 'warranty.contactCta');
+  assertClose(warrantyContactCta.x, 260, 4, 'warranty.contactCta.x');
+  assertBetween(warrantyContactCta.y, 920, 1120, 'warranty.contactCta.y');
+  assertClose(warrantyContactCta.width, 1400, 4, 'warranty.contactCta.width');
+  assertClose(warrantyContactCta.height, 455, 4, 'warranty.contactCta.height');
+  await assertFooterLayout(page, 'warranty');
 
   await page.goto(`${baseUrl}/kolik-stoji-udrzba/`, { waitUntil: 'load' });
   await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 581 }, 3, 'maintenance.heading');
   await assertBox(page, '.f-heading__headline h1', { x: 497, y: 206, width: 922, height: 61 }, 4, 'maintenance.title');
   await assertBox(page, '.f-heading__description', { x: 497, y: 289, width: 856, height: 217 }, 12, 'maintenance.description');
-  await assertBox(page, '.f-section--figma-article', { x: 0, y: 581, width: 1920, height: 2384 }, 4, 'maintenance.articleSection');
-  await assertBox(page, '.f-main--maintenance .f-figma-article', { x: 497, y: 581, width: 927, height: 2384 }, 4, 'maintenance.article');
-  await assertBox(page, '.f-main--maintenance .f-figma-article section:nth-of-type(1)', { x: 497, y: 581, width: 927, height: 1651 }, 4, 'maintenance.blockOne');
-  await assertBox(page, '.f-main--maintenance .f-figma-article section:nth-of-type(2)', { x: 497, y: 2272, width: 927, height: 246 }, 4, 'maintenance.blockTwo');
-  await assertBox(page, '.f-main--maintenance .f-figma-article section:nth-of-type(3)', { x: 497, y: 2558, width: 927, height: 171 }, 4, 'maintenance.blockThree');
-  await assertBox(page, '.f-main--maintenance .f-figma-article section:nth-of-type(4)', { x: 497, y: 2769, width: 927, height: 196 }, 4, 'maintenance.blockFour');
-  await assertBox(page, '.page-template-template-maintenance .f-contact-cta', { x: 260, y: 3070, width: 1400, height: 455 }, 4, 'maintenance.contactCta');
-  await assertFooterLayout(page, 'maintenance', 3553);
+
+  const maintenanceSection = await box(page, '.f-section--figma-article', 'maintenance.articleSection');
+  assertClose(maintenanceSection.x, 0, 4, 'maintenance.articleSection.x');
+  assertClose(maintenanceSection.y, 581, 4, 'maintenance.articleSection.y');
+  assertClose(maintenanceSection.width, 1920, 4, 'maintenance.articleSection.width');
+  assertBetween(maintenanceSection.height, 650, 1200, 'maintenance.articleSection.height');
+
+  const maintenanceArticle = await box(page, '.f-main--maintenance .f-figma-article', 'maintenance.article');
+  assertBetween(maintenanceArticle.x, 488, 506, 'maintenance.article.x');
+  assertBetween(maintenanceArticle.y, 640, 760, 'maintenance.article.y');
+  assertClose(maintenanceArticle.width, 927, 8, 'maintenance.article.width');
+  assertBetween(maintenanceArticle.height, 600, 1200, 'maintenance.article.height');
+
+  const sectionSelectors = [
+    '.f-main--maintenance .f-figma-article section:nth-of-type(1)',
+    '.f-main--maintenance .f-figma-article section:nth-of-type(2)',
+    '.f-main--maintenance .f-figma-article section:nth-of-type(3)',
+    '.f-main--maintenance .f-figma-article section:nth-of-type(4)',
+  ];
+
+  for (const [index, selector] of sectionSelectors.entries()) {
+    const sectionRect = await box(page, selector, `maintenance.block${index + 1}`);
+    assertClose(sectionRect.width, 927, 8, `maintenance.block${index + 1}.width`);
+    assertBetween(sectionRect.height, 110, 420, `maintenance.block${index + 1}.height`);
+  }
+
+  const maintenanceGapOne = await verticalGap(page, sectionSelectors[0], sectionSelectors[1], 'maintenance.blockOneToTwoGap');
+  const maintenanceGapTwo = await verticalGap(page, sectionSelectors[1], sectionSelectors[2], 'maintenance.blockTwoToThreeGap');
+  const maintenanceGapThree = await verticalGap(page, sectionSelectors[2], sectionSelectors[3], 'maintenance.blockThreeToFourGap');
+  assertBetween(maintenanceGapOne, 24, 80, 'maintenance.blockOneToTwoGap');
+  assertBetween(maintenanceGapTwo, 24, 80, 'maintenance.blockTwoToThreeGap');
+  assertBetween(maintenanceGapThree, 24, 80, 'maintenance.blockThreeToFourGap');
+
+  const maintenanceArticleToContactGap = await verticalGap(page, '.f-main--maintenance .f-figma-article', '.page-template-template-maintenance .f-contact-cta', 'maintenance.articleToContactGap');
+  assertBetween(maintenanceArticleToContactGap, 80, 180, 'maintenance.articleToContactGap');
+
+  const maintenanceContactCta = await box(page, '.page-template-template-maintenance .f-contact-cta', 'maintenance.contactCta');
+  assertClose(maintenanceContactCta.x, 260, 4, 'maintenance.contactCta.x');
+  assertBetween(maintenanceContactCta.y, 1380, 2400, 'maintenance.contactCta.y');
+  assertClose(maintenanceContactCta.width, 1400, 4, 'maintenance.contactCta.width');
+  assertClose(maintenanceContactCta.height, 455, 4, 'maintenance.contactCta.height');
+  await assertFooterLayout(page, 'maintenance');
 
   await page.goto(`${baseUrl}/vlastnosti/izolace-virivky/`, { waitUntil: 'load' });
   await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 435 }, 3, 'featureDetail.heading');
@@ -1427,16 +1499,93 @@ async function auditSupportDesktop(page) {
   await assertBox(page, '.f-downloads--support-figma', { x: 260, y: 2109, width: 1045, height: 735 }, 8, 'support.downloadsList');
   await assertBox(page, '.f-download-group:nth-child(1)', { x: 260, y: 2109, width: 1045, height: 503 }, 4, 'support.downloadGroupOpen');
   await assertBox(page, '.f-download-card:nth-child(1)', { x: 344, y: 2202, width: 934, height: 118 }, 4, 'support.downloadCardOne');
-  await assertBox(page, '.f-section--support-form', { x: 0, y: 2940, width: 1920, height: 848 }, 4, 'support.formSection');
-  await assertBox(page, '.f-support-form', { x: 260, y: 2940, width: 1045, height: 848 }, 4, 'support.form');
-  await assertBox(page, '.f-support-form header p', { x: 260, y: 3001, width: 819, height: 75 }, 12, 'support.formIntro');
-  await assertBox(page, '.f-support-form__card', { x: 260, y: 3114, width: 1045, height: 674 }, 4, 'support.formCard');
-  await assertBox(page, '.f-support-form__card label:nth-of-type(1)', { x: 346, y: 3173, width: 893, height: 113 }, 4, 'support.formName');
-  await assertBox(page, '.f-support-form__card label:nth-of-type(4)', { x: 346, y: 3452, width: 893, height: 211 }, 4, 'support.formMessage');
-  await assertBox(page, '.f-support-form__card button', { x: 1053, y: 3668, width: 186, height: 50 }, 4, 'support.formButton');
-  await assertBox(page, '.page-template-template-support .f-section--contact', { x: 0, y: 3945, width: 1920, height: 483 }, 4, 'support.contactSection');
-  await assertBox(page, '.page-template-template-support .f-contact-cta', { x: 260, y: 3945, width: 1400, height: 455 }, 4, 'support.contactCta');
-  await assertFooterLayout(page, 'support', 4428);
+
+  const supportFormSection = await box(page, '.f-section--support-form', 'support.formSection');
+  assertClose(supportFormSection.x, 0, 4, 'support.formSection.x');
+  assertClose(supportFormSection.y, 2940, 4, 'support.formSection.y');
+  assertClose(supportFormSection.width, 1920, 4, 'support.formSection.width');
+  assertBetween(supportFormSection.height, 1080, 1500, 'support.formSection.height');
+
+  const supportForm = await box(page, '.f-support-form', 'support.form');
+  assertClose(supportForm.x, 260, 4, 'support.form.x');
+  assertClose(supportForm.y, 2940, 4, 'support.form.y');
+  assertClose(supportForm.width, 1045, 4, 'support.form.width');
+  assertBetween(supportForm.height, 980, 1300, 'support.form.height');
+
+  const supportFormIntro = await box(page, '.f-support-form header p', 'support.formIntro');
+  assertClose(supportFormIntro.x, 260, 4, 'support.formIntro.x');
+  assertBetween(supportFormIntro.y, 3000, 3070, 'support.formIntro.y');
+  assertClose(supportFormIntro.width, 819, 8, 'support.formIntro.width');
+  assertClose(supportFormIntro.height, 75, 4, 'support.formIntro.height');
+
+  const supportFormCard = await box(page, '.f-support-form__card', 'support.formCard');
+  assertClose(supportFormCard.x, 260, 4, 'support.formCard.x');
+  assertBetween(supportFormCard.y, 3110, 3160, 'support.formCard.y');
+  assertClose(supportFormCard.width, 1045, 4, 'support.formCard.width');
+  assertBetween(supportFormCard.height, 760, 980, 'support.formCard.height');
+
+  const supportNameField = await box(page, '.f-support-form__card label:nth-of-type(1)', 'support.formName');
+  assertBetween(supportNameField.x, 340, 352, 'support.formName.x');
+  assertBetween(supportNameField.y, 3170, 3230, 'support.formName.y');
+  assertBetween(supportNameField.width, 840, 900, 'support.formName.width');
+  assertClose(supportNameField.height, 113, 6, 'support.formName.height');
+
+  const supportMessageField = await box(page, '.f-support-form__card label:nth-of-type(4)', 'support.formMessage');
+  assertBetween(supportMessageField.x, 340, 352, 'support.formMessage.x');
+  assertBetween(supportMessageField.y, 3560, 3640, 'support.formMessage.y');
+  assertBetween(supportMessageField.width, 840, 900, 'support.formMessage.width');
+  assertClose(supportMessageField.height, 211, 8, 'support.formMessage.height');
+
+  await assertBox(page, '.f-support-form__card button', { x: 1033, y: 3880, width: 186, height: 50 }, 6, 'support.formButton');
+
+  const supportIntroToCardGap = await verticalGap(page, '.f-support-form header p', '.f-support-form__card', 'support.formIntroToCardGap');
+  assertBetween(supportIntroToCardGap, 24, 80, 'support.formIntroToCardGap');
+
+  const supportFormToContactGap = await verticalGap(page, '.f-section--support-form', '.page-template-template-support .f-section--contact', 'support.formToContactGap');
+  assertBetween(supportFormToContactGap, 120, 220, 'support.formToContactGap');
+
+  const supportContactSection = await box(page, '.page-template-template-support .f-section--contact', 'support.contactSection');
+  assertClose(supportContactSection.x, 0, 4, 'support.contactSection.x');
+  assertBetween(supportContactSection.y, 4200, 4500, 'support.contactSection.y');
+  assertClose(supportContactSection.width, 1920, 4, 'support.contactSection.width');
+  assertClose(supportContactSection.height, 483, 4, 'support.contactSection.height');
+
+  const supportContactCta = await box(page, '.page-template-template-support .f-contact-cta', 'support.contactCta');
+  assertClose(supportContactCta.x, 260, 4, 'support.contactCta.x');
+  assertBetween(supportContactCta.y, 4200, 4500, 'support.contactCta.y');
+  assertClose(supportContactCta.width, 1400, 4, 'support.contactCta.width');
+  assertClose(supportContactCta.height, 455, 4, 'support.contactCta.height');
+  await assertFooterLayout(page, 'support');
+}
+
+async function auditInfoSupportCompact1097(page) {
+  await page.setViewportSize({ width: 1097, height: 1000 });
+
+  await page.goto(`${baseUrl}/zaruka/`, { waitUntil: 'load' });
+  await assertNoHorizontalOverflow(page, 'pr7c:1097:warranty');
+  const warrantyDescriptionToTableGap = await verticalGap(page, '.f-heading__description', '.f-warranty-table', 'pr7c:1097:warranty.descriptionToTableGap');
+  const warrantyTableToNoteGap = await verticalGap(page, '.f-warranty-table', '.f-warranty-layout > p', 'pr7c:1097:warranty.tableToNoteGap');
+  assertBetween(warrantyDescriptionToTableGap, 100, 180, 'pr7c:1097:warranty.descriptionToTableGap');
+  assertBetween(warrantyTableToNoteGap, 30, 120, 'pr7c:1097:warranty.tableToNoteGap');
+
+  await page.goto(`${baseUrl}/kolik-stoji-udrzba/`, { waitUntil: 'load' });
+  await assertNoHorizontalOverflow(page, 'pr7c:1097:maintenance');
+  const maintenanceArticle = await box(page, '.f-main--maintenance .f-figma-article', 'pr7c:1097:maintenance.article');
+  assertBetween(maintenanceArticle.x, 20, 120, 'pr7c:1097:maintenance.article.x');
+  assertBetween(maintenanceArticle.width, 860, 940, 'pr7c:1097:maintenance.article.width');
+  const maintenanceDescriptionToSectionGap = await verticalGap(page, '.f-heading__description', '.f-section--figma-article', 'pr7c:1097:maintenance.descriptionToSectionGap');
+  const maintenanceBlockOneToTwoGap = await verticalGap(page, '.f-main--maintenance .f-figma-article section:nth-of-type(1)', '.f-main--maintenance .f-figma-article section:nth-of-type(2)', 'pr7c:1097:maintenance.blockOneToTwoGap');
+  assertBetween(maintenanceDescriptionToSectionGap, 60, 120, 'pr7c:1097:maintenance.descriptionToSectionGap');
+  assertBetween(maintenanceBlockOneToTwoGap, 24, 80, 'pr7c:1097:maintenance.blockOneToTwoGap');
+
+  await page.goto(`${baseUrl}/podpora/`, { waitUntil: 'load' });
+  await assertNoHorizontalOverflow(page, 'pr7c:1097:support');
+  const supportFaqToDownloadsGap = await verticalGap(page, '.f-section--support-faq', '.f-section--support-downloads', 'pr7c:1097:support.faqToDownloadsGap');
+  const supportDownloadsToFormGap = await verticalGap(page, '.f-section--support-downloads', '.f-section--support-form', 'pr7c:1097:support.downloadsToFormGap');
+  const supportFormToContactGap = await verticalGap(page, '.f-section--support-form', '.page-template-template-support .f-section--contact', 'pr7c:1097:support.formToContactGap');
+  assertBetween(supportFaqToDownloadsGap, -2, 2, 'pr7c:1097:support.faqToDownloadsGap');
+  assertBetween(supportDownloadsToFormGap, -2, 2, 'pr7c:1097:support.downloadsToFormGap');
+  assertBetween(supportFormToContactGap, 120, 220, 'pr7c:1097:support.formToContactGap');
 }
 
 async function auditReferenceDesktop(page) {
@@ -1574,6 +1723,7 @@ async function auditSharedFooterDesktop(page) {
     await auditShowroomDesktop(page);
     await auditFigmaInfoPagesDesktop(page);
     await auditSupportDesktop(page);
+    await auditInfoSupportCompact1097(page);
     await auditReferenceDesktop(page);
     await auditAboutDesktop(page);
     await auditServiceRequestDesktop(page);

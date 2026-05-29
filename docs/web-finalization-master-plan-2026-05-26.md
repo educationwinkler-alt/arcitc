@@ -445,14 +445,14 @@ Task board checklist + DoD:
   - DoD: no visible customer-facing default label in the audited scope remains ASCII-only where Czech diacritics are expected; existing custom admin values are preserved.
   - Verification (2026-05-28): canonical CZ defaults + one-way legacy normalization/migration were added for theme mods and support/download options (`arctic_sections_*`, `arctic_support_*`, `arctic_downloads_*`); templates now consume normalized defaults; syntax checks passed on all touched PHP files; local snapshot check found zero legacy ASCII hits on `/podpora/`, `/ke-stazeni/`, `/showroom/`, `/o-nas/`, and `/`.
 
-- [ ] PR7B support/download interactions + anchor integrity
+- [x] PR7B support/download interactions + anchor integrity
   - Scope: remove fake interaction affordance by implementing real accordion behavior for `f-support-faq-card` and `f-download-group--closed`; keep chip semantics explicit (real filter or neutral non-interactive badge only); repair dead anchors (`#servis` -> valid support target, showroom `/kontakt/#formular` target strategy).
   - DoD: any visible `+`/`−` control is keyboard/mouse functional, chip behavior is explicit, and every internal anchor points to an existing target.
-  - Verification: Playwright interaction checks for accordion expand/collapse, chip behavior, keyboard accessibility, and anchor target existence.
-- [ ] PR7C figma-page geometry de-hardcoding
+  - Verification (2026-05-28): support/download accordions now toggle via keyboard/mouse with ARIA state updates, dead internal anchors were replaced by valid page anchors, and automated checks passed in `npm run figma:audit`.
+- [x] PR7C figma-page geometry de-hardcoding
   - Scope: remove critical fixed desktop frame heights/min-heights/padding hacks that create long blank zones on `/zaruka/`, `/kolik-stoji-udrzba/`, `/podpora/`, and related figma pages; preserve visual intent with intrinsic layout and spacing tokens.
   - DoD: audited pages have no unexplained large blank vertical gaps at desktop and compact-laptop widths, and support tab/faq/download sections keep stable vertical rhythm.
-  - Verification: before/after screenshots + computed layout guardrails (section heights/gaps) on target routes.
+  - Verification (2026-05-28): de-hardcoding overrides shipped for warranty/maintenance/support pages (intrinsic section heights, removed fixed per-block min-heights, flow-based support form card layout), `tools/figma-visual-audit.js` now uses range-based geometry guardrails + compact `1097px` checks, measured desktop gaps were reduced from `301px -> 156px` on `/zaruka/` and `1537px -> 40px` between maintenance article blocks, and all QA gates passed: `npm run figma:audit`, `npm run visual:smoke`, `npm run link:smoke`.
 - [ ] PR7D content placeholder cleanup (services/reference)
   - Scope: replace single repeated service image pattern with per-card assets/fields; revise reference archive clone-fill fallback so repeated cards are not silently duplicated.
   - DoD: services cards are visually distinct and reference fallback behavior is explicit, deterministic, and sign-off safe.

@@ -9597,6 +9597,127 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     display: none;
   }
 }
+/* PR7C: de-hardcode info/support desktop geometry to avoid runtime blank zones */
+@media (min-width: 1024px) {
+  .page-template-template-warranty .f-section--warranty-table {
+    height: auto;
+    min-height: 0;
+    padding: 72px 0 0;
+  }
+  .page-template-template-warranty .f-warranty-layout {
+    grid-template-columns: minmax(0, 888px) minmax(0, 368px);
+    gap: clamp(32px, 4vw, 75px);
+    align-items: end;
+    padding-top: 0;
+  }
+  .page-template-template-warranty .f-warranty-layout > p {
+    margin: 0;
+    align-self: end;
+  }
+  .page-template-template-maintenance .f-section--figma-article {
+    height: auto;
+    min-height: 0;
+    padding: 72px 0 0;
+  }
+  .page-template-template-maintenance .f-main--maintenance .f-figma-article {
+    width: min(927px, 100%);
+    margin: 0 auto;
+    min-height: 0;
+  }
+  .page-template-template-maintenance .f-main--maintenance .f-figma-article section,
+  .page-template-template-maintenance .f-main--maintenance .f-figma-article section:nth-of-type(1),
+  .page-template-template-maintenance .f-main--maintenance .f-figma-article section:nth-of-type(2),
+  .page-template-template-maintenance .f-main--maintenance .f-figma-article section:nth-of-type(3),
+  .page-template-template-maintenance .f-main--maintenance .f-figma-article section:nth-of-type(4) {
+    min-height: 0;
+  }
+  .page-template-template-support .f-section--support-form {
+    height: auto;
+    min-height: 0;
+    padding: 0 0 96px;
+  }
+  .page-template-template-support .f-support-form {
+    position: static;
+    width: 1045px;
+    max-width: 100%;
+    height: auto;
+  }
+  .page-template-template-support .f-support-form header p {
+    position: static;
+    top: auto;
+    left: auto;
+    width: min(819px, 100%);
+    max-width: 100%;
+    margin: 0 0 38px;
+  }
+  .page-template-template-support .f-support-form__card {
+    position: static;
+    top: auto;
+    left: auto;
+    display: grid;
+    gap: 24px;
+    width: 100%;
+    height: auto;
+    padding: 56px 86px 70px;
+  }
+  .page-template-template-support .f-support-form__card label,
+  .page-template-template-support .f-support-form__card label:nth-of-type(1),
+  .page-template-template-support .f-support-form__card label:nth-of-type(2),
+  .page-template-template-support .f-support-form__card label:nth-of-type(3),
+  .page-template-template-support .f-support-form__card label:nth-of-type(4) {
+    position: static;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+  }
+  .page-template-template-support .f-support-form__card input,
+  .page-template-template-support .f-support-form__card textarea {
+    width: 100%;
+  }
+  .page-template-template-support .f-support-form__consent {
+    position: static;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+  .page-template-template-support .f-support-form__card button {
+    position: static;
+    top: auto;
+    left: auto;
+    justify-self: end;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .page-template-template-warranty .f-warranty-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+  .page-template-template-warranty .f-warranty-table {
+    width: min(100%, 888px);
+  }
+  .page-template-template-warranty .f-warranty-layout > p {
+    max-width: 46rem;
+  }
+  .page-template-template-maintenance .f-heading__headline {
+    left: 0;
+    width: min(927px, 100%);
+    max-width: 100%;
+  }
+  .page-template-template-maintenance .f-heading h1 {
+    width: min(922px, 100%);
+  }
+  .page-template-template-maintenance .f-heading__description {
+    width: min(856px, 100%);
+    max-width: 100%;
+  }
+  .page-template-template-support .f-support-form__card {
+    padding-right: 48px;
+    padding-left: 48px;
+  }
+}
 /* Phase 5B PR1: shared component contracts.
  * Keep cross-page component behavior in one layer so follow-up PRs change values,
  * not by adding another page-specific override stack.
