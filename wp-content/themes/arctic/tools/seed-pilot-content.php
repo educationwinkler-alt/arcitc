@@ -485,7 +485,7 @@ foreach ( $reference_items as $index => $reference_item ) {
 	) );
 
 	set_post_thumbnail( $reference_id, $reference_item['image'] );
-	update_post_meta( $reference_id, 'reference_single', 1 );
+	update_post_meta( $reference_id, 'reference_single', 0 );
 	update_post_meta( $reference_id, 'reference_description', $reference_item['description'] );
 	update_post_meta( $reference_id, 'reference_location', $reference_item['location'] );
 	update_post_meta( $reference_id, 'reference_year', $reference_item['year'] );

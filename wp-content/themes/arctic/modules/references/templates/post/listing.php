@@ -11,7 +11,7 @@ if ( !has_post_thumbnail() ) {
 	$post_class[] = 'f-listing--no-image';
 }
 
-if ( get_post_meta( get_the_ID(), 'reference_single', true ) != 0 ) {
+if ( get_post_meta( get_the_ID(), 'reference_single', true ) != 0 && apply_filters( 'arctic_reference_single_public_enabled', false, get_the_ID() ) ) {
 	$post_class[] = 'f-listing--single';
 }
 ?>

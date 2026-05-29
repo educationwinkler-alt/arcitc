@@ -96,6 +96,10 @@ function countConfigurationCards(html) {
   return (html.match(/<article\b[^>]*class=["'][^"']*\bf-product-configuration\b/g) || []).length;
 }
 
+function referenceProjectLinks(html) {
+  return html.match(/href=["'][^"']*\/project\//gi) || [];
+}
+
 function assertNoMojibake(path, text) {
   const hit = mojibakeNeedles.find((needle) => text.includes(needle));
 
@@ -165,6 +169,20 @@ async function assertReferenceContent() {
   const text = textFromHtml(html);
   assertNoMojibake('/reference/', text);
 
+  if (!html.includes('f-reference-section--archive-grid')) {
+    throw new Error('/reference/ is missing the archive-grid reference component contract.');
+  }
+
+  if (!html.includes('f-reference-card--lightbox')) {
+    throw new Error('/reference/ is missing lightbox reference cards.');
+  }
+
+  const forbiddenLinks = referenceProjectLinks(html);
+
+  if (forbiddenLinks.length > 0) {
+    throw new Error(`/reference/ exposes reference detail links: ${forbiddenLinks.slice(0, 3).join(', ')}`);
+  }
+
   if (countOccurrences(html, 'f-reference-card') < 9) {
     throw new Error('/reference/ is missing seeded reference cards.');
   }
@@ -176,6 +194,33 @@ async function assertReferenceContent() {
   ]) {
     if (!text.includes(expected)) {
       throw new Error(`/reference/ is missing reference content: ${expected}`);
+    }
+  }
+}
+
+async function assertReferenceComponentContracts() {
+  const expectations = [
+    ['/', 'f-reference-section--homepage-context'],
+    ['/virivky/', 'f-reference-section--category-context'],
+    ['/swimspa/', 'f-reference-section--category-context'],
+    ['/product/timberwolf/', 'f-reference-section--product-context'],
+  ];
+
+  for (const [path, contextClass] of expectations) {
+    const html = await fetchHtml(path);
+
+    if (!html.includes('f-reference-section--recent-carousel')) {
+      throw new Error(`${path} is missing the recent-carousel reference component contract.`);
+    }
+
+    if (!html.includes(contextClass)) {
+      throw new Error(`${path} is missing reference context class ${contextClass}.`);
+    }
+
+    const forbiddenLinks = referenceProjectLinks(html);
+
+    if (forbiddenLinks.length > 0) {
+      throw new Error(`${path} exposes reference detail links: ${forbiddenLinks.slice(0, 3).join(', ')}`);
     }
   }
 }
@@ -194,6 +239,7 @@ async function assertReferenceContent() {
 
   await assertSupportContent();
   await assertReferenceContent();
+  await assertReferenceComponentContracts();
 
   console.log('Product and editable content smoke passed.');
 })().catch((error) => {

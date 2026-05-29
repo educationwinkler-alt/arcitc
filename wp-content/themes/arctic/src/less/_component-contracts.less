@@ -163,11 +163,11 @@ h6,
 }
 
 .f-reference-card,
-:is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference,
-:is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference .f-listing__image--container,
-:is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference .f-listing__image,
-:is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference .f-image,
-:is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference img {
+.f-reference-section--recent-carousel .f-listing--reference,
+.f-reference-section--recent-carousel .f-listing--reference .f-listing__image--container,
+.f-reference-section--recent-carousel .f-listing--reference .f-listing__image,
+.f-reference-section--recent-carousel .f-listing--reference .f-image,
+.f-reference-section--recent-carousel .f-listing--reference img {
   border-radius: var(--arctic-contract-reference-card-radius);
 }
 
@@ -419,7 +419,7 @@ h6,
     border-color: rgba(255, 255, 255, 0.86);
   }
 
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-section__actions .a-button {
+  .f-reference-section--recent-carousel .f-section__actions .a-button {
     color: var(--arctic-color-red);
     background: transparent;
     border-color: var(--arctic-color-red);
@@ -427,7 +427,7 @@ h6,
     font-family: var(--arctic-contract-font-family);
   }
 
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-carousel__control--next {
+  .f-reference-section--recent-carousel .f-carousel__control--next {
     right: 9px;
     color: #000000;
     background: var(--arctic-color-snow);
@@ -436,29 +436,29 @@ h6,
     box-shadow: 0 14px 24px rgba(35, 40, 47, 0.12);
   }
 
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-carousel__control--next svg {
+  .f-reference-section--recent-carousel .f-carousel__control--next svg {
     color: currentColor;
   }
 
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference {
+  .f-reference-section--recent-carousel .f-listing--reference {
     --listing--image--scale: 1;
     --listing--image--scale--active: 1;
     --listing--header--color: var(--arctic-color-snow);
   }
 
-  .template--homepage .f-section--references .f-listing--reference {
+  .f-reference-section--homepage-context .f-listing--reference {
     --listing--image--overlay--gradient: none;
     --listing--image--overlay--color: transparent;
     --listing--image--overlay--color--active: transparent;
   }
 
-  :is(.tax-product-category, .single-product) .f-section--references .f-listing--reference {
+  :is(.f-reference-section--category-context, .f-reference-section--product-context) .f-listing--reference {
     --listing--image--overlay--gradient: linear-gradient(180deg, rgba(7, 24, 38, 0.04) 0%, rgba(7, 24, 38, 0.62) 100%);
     --listing--image--overlay--color: transparent;
     --listing--image--overlay--color--active: transparent;
   }
 
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas {
+  .f-reference-section--recent-carousel .f-listing__metas {
     position: absolute;
     bottom: 68px;
     left: 32px;
@@ -468,14 +468,14 @@ h6,
     pointer-events: none;
   }
 
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas .a-container {
+  .f-reference-section--recent-carousel .f-listing__metas .a-container {
     width: auto;
     max-width: none;
     padding: 0;
     margin: 0;
   }
 
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas ul {
+  .f-reference-section--recent-carousel .f-listing__metas ul {
     display: flex;
     gap: 4px;
     padding: 0;
@@ -483,7 +483,7 @@ h6,
     list-style: none;
   }
 
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas .f-meta {
+  .f-reference-section--recent-carousel .f-listing__metas .f-meta {
     display: inline-flex;
     align-items: center;
     min-height: 26px;
@@ -497,12 +497,12 @@ h6,
     border-radius: var(--arctic-contract-radius-panel);
   }
 
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing__metas .f-meta + .f-meta {
+  .f-reference-section--recent-carousel .f-listing__metas .f-meta + .f-meta {
     color: var(--arctic-color-menu);
     background: var(--arctic-color-snow);
   }
 
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference .f-listing__header :is(h2, h3) {
+  .f-reference-section--recent-carousel .f-listing--reference .f-listing__header :is(h2, h3) {
     width: 334px;
     margin: 0;
     color: var(--arctic-color-snow);
@@ -514,7 +514,7 @@ h6,
     text-shadow: none;
   }
 
-  :is(.template--homepage, .tax-product-category, .single-product) .f-section--references .f-listing--reference .f-listing__header :is(a, a:visited) {
+  .f-reference-section--recent-carousel .f-listing--reference .f-listing__header :is(a, a:visited) {
     color: inherit;
     text-decoration-color: currentColor;
     text-decoration-thickness: 1px;

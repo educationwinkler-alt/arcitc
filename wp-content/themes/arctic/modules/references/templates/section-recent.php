@@ -21,10 +21,30 @@ $references_query_args = array(
 
 $references_query = new WP_Query( $references_query_args );
 
+$reference_section_class = array(
+	'f-section',
+	'f-section--references',
+	'f-section--references-recent',
+	'f-reference-section',
+	'f-reference-section--recent-carousel',
+	'js-images',
+	'js-links__section',
+);
+
+if ( is_home() || is_front_page() ) {
+	$reference_section_class[] = 'f-reference-section--homepage-context';
+} else if ( is_tax( 'product-category' ) ) {
+	$reference_section_class[] = 'f-reference-section--category-context';
+} else if ( is_singular( 'product' ) ) {
+	$reference_section_class[] = 'f-reference-section--product-context';
+} else {
+	$reference_section_class[] = 'f-reference-section--default-context';
+}
+
 if ( $references_query->have_posts() ) { ?>
 
 	<section id="<?php echo sanitize_title( esc_attr_x( 'references', 'anchor', 'baspa' ) ); ?>"
-		class="f-section f-section--references f-section--references-recent js-images js-links__section">
+		<?php ( !function_exists( 'forqy_class' ) ) ?: forqy_class( $reference_section_class ); ?>>
 
 		<div class="f-section__container a-container">
 
