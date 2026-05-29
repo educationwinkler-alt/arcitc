@@ -5659,6 +5659,20 @@ body.off-active--benefit-shell .f-off__overlay {
   border-radius: var(--arctic-contract-radius-map-card);
 }
 
+.f-footer__quick-map-address {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.1rem;
+}
+
+.f-footer__quick-map-address span,
+.f-footer__quick-map-address strong {
+  display: block;
+  max-width: 100%;
+  line-height: 1.35;
+}
+
 .f-footer__quick-map a {
   display: inline-flex;
   align-items: center;
@@ -6918,24 +6932,31 @@ body.off-active--benefit-shell .f-off__overlay {
     clip-path: path("M12 2C7.6 2 4 5.55 4 9.94c0 5.95 8 12.06 8 12.06s8-6.11 8-12.06C20 5.55 16.4 2 12 2Zm0 10.5a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z");
   }
 
-  .f-footer--arctic.f-footer--arctic .f-footer__quick-map span,
-  .f-footer--arctic.f-footer--arctic .f-footer__quick-map strong {
+  .f-footer--arctic.f-footer--arctic .f-footer__quick-map-address {
     position: absolute;
-    left: 93px;
+    top: 164px;
+    left: 84px;
     z-index: 1;
-    display: block;
-    width: 137px;
-    font-size: 16px;
-    line-height: 22px;
+    display: grid;
+    gap: 0;
+    width: 150px;
   }
 
-  .f-footer--arctic.f-footer--arctic .f-footer__quick-map span {
-    top: 164px;
+  .f-footer--arctic.f-footer--arctic .f-footer__quick-map-address span,
+  .f-footer--arctic.f-footer--arctic .f-footer__quick-map-address strong {
+    position: static;
+    display: block;
+    width: auto;
+    font-size: 16px;
+    line-height: 22px;
+    white-space: nowrap;
+  }
+
+  .f-footer--arctic.f-footer--arctic .f-footer__quick-map-address span {
     font-weight: 600;
   }
 
-  .f-footer--arctic.f-footer--arctic .f-footer__quick-map strong {
-    top: 186px;
+  .f-footer--arctic.f-footer--arctic .f-footer__quick-map-address strong {
     font-weight: 800;
   }
 

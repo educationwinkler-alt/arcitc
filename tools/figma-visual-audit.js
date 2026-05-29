@@ -228,6 +228,16 @@ async function assertSingleLineText(page, selector, label) {
   }
 }
 
+async function assertNoVerticalOverlap(page, upperSelector, lowerSelector, label, minGap = 0) {
+  const upper = await box(page, upperSelector, `${label}.upper`);
+  const lower = await box(page, lowerSelector, `${label}.lower`);
+  const gap = lower.y - (upper.y + upper.height);
+
+  if (gap < minGap) {
+    throw new Error(`${label}: expected at least ${minGap}px vertical gap, got ${round(gap)}px`);
+  }
+}
+
 async function assertImageMaxUpscale(page, selector, maxScale, label, options = {}) {
   const { limit = 1, skipDataSvg = true } = options;
   const locator = page.locator(selector);
@@ -1076,6 +1086,11 @@ async function assertFooterLayout(page, label, expectedY = null) {
     assertClose(rect.width, expected.width, name === 'quickHours' ? 20 : 4, `${label}.${name}.width`);
     assertClose(rect.height, expected.height, 4, `${label}.${name}.height`);
   }
+
+  await assertSingleLineText(page, '.f-footer__quick-map-address span', `${label}.quickMapStreetSingleLine`);
+  await assertSingleLineText(page, '.f-footer__quick-map-address strong', `${label}.quickMapCitySingleLine`);
+  await assertNoVerticalOverlap(page, '.f-footer__quick-map-address span', '.f-footer__quick-map-address strong', `${label}.quickMapStreetToCity`);
+  await assertNoVerticalOverlap(page, '.f-footer__quick-map-address', '.f-footer__quick-map a', `${label}.quickMapAddressToButton`, 12);
 
   const footerText = await page.locator('.f-footer--arctic').innerText();
   for (const expected of [

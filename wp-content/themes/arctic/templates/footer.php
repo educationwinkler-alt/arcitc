@@ -102,8 +102,10 @@ $groups = array(
 					) ); ?>
 				</div>
 				<div class="f-footer__quick-map">
-					<span><?php echo esc_html__( 'Bohunická cesta 15', 'baspa' ); ?></span>
-					<strong><?php echo esc_html__( 'Moravany u Brna', 'baspa' ); ?></strong>
+					<div class="f-footer__quick-map-address">
+						<span><?php echo esc_html__( 'Bohunická cesta 15', 'baspa' ); ?></span>
+						<strong><?php echo esc_html__( 'Moravany u Brna', 'baspa' ); ?></strong>
+					</div>
 					<a href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>"><?php echo esc_html__( 'Zobrazit na mapě', 'baspa' ); ?></a>
 				</div>
 			</aside>
