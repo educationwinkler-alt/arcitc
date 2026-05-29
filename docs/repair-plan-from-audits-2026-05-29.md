@@ -205,6 +205,8 @@ Tahle vlna má dvě části:
 | Dostupné assety | Použít old Arctic, import uploads, existující owner podklady a schválené relevantní fallback fotky. | Nevymýšlet showroom, team, material swatches nebo product photos, pokud nejsou v podkladech. |
 | Chybějící assety | Označit jako `WAITING_ON_OWNER` v asset mapě. | Neblokovat kód, ale neprezentovat náhodnou náhradu jako finální obsah. |
 
+PR-C asset source map: `docs/asset-source-map-2026-05-29.md`.
+
 ### Problémové oblasti
 
 | Oblast | Problém |

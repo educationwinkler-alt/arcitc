@@ -1523,14 +1523,10 @@ async function auditFigmaSources(page) {
     'uploads/import/figma/category-vlastnosti.jpg',
     'uploads/import/figma/category-zaruka.jpg',
     'uploads/import/figma/category-configurator.png',
-    'uploads/import/figma/showroom-1.png',
-    'uploads/import/figma/showroom-2.png',
-    'uploads/import/figma/showroom-3.png',
   ], [
     'category-vlastnosti-1024',
     'category-zaruka-1024',
     'category-configurator-1024',
-    'showroom-2-1024',
   ]);
 
   await assertHtmlContains(page, '/kontakt/', [
@@ -1606,9 +1602,9 @@ async function auditCatalogHotTubsDesktop(page) {
   await assertSourceContains(page, '.f-products-series--custom .f-listing--product:nth-child(2) .f-listing__image img', 'virivka-summit.jpg', 'catalog.productCardTwoSource');
   await assertSourceContains(page, '.f-products-series--custom .f-listing--product:nth-child(3) .f-listing__image img', 'virivka-tundra.jpg', 'catalog.productCardThreeSource');
   await assertSourceContains(page, '.f-configurator-cta__image', 'uploads/import/figma/category-configurator.png', 'catalog.configuratorSource');
-  await assertSourceContains(page, '.f-showroom-panel__image--1 img', 'uploads/import/figma/showroom-1.png', 'catalog.showroomOneSource');
-  await assertSourceContains(page, '.f-showroom-panel__image--2 img', 'uploads/import/figma/showroom-3.png', 'catalog.showroomTwoSource');
-  await assertSourceContains(page, '.f-showroom-panel__image--3 img', 'uploads/import/figma/showroom-2.png', 'catalog.showroomThreeSource');
+  await assertSourceContains(page, '.f-showroom-panel__image--1 img', 'uploads/import/owner-showroom/showroom-main-web.jpg', 'catalog.showroomOneSource');
+  await assertSourceContains(page, '.f-showroom-panel__image--2 img', 'uploads/import/owner-showroom/showroom-covana-interior-web.jpg', 'catalog.showroomTwoSource');
+  await assertSourceContains(page, '.f-showroom-panel__image--3 img', 'uploads/import/owner-showroom/showroom-detail-web.jpg', 'catalog.showroomThreeSource');
 }
 
 async function auditCatalogSwimspaDesktop(page) {
@@ -1661,12 +1657,12 @@ async function auditTimberwolfDesktop(page) {
   await assertBox(page, '.f-product-contact-card__avatar', { x: 1392, y: 1115, width: 58, height: 58 }, 2, 'timberwolf.contactAvatar');
   await assertBox(page, '.f-product-contact-card__button', { x: 1392, y: 1195, width: 149, height: 50 }, 2, 'timberwolf.contactButton');
   await assertBox(page, '.f-product-detail-configurator', { x: 260, y: 1608, width: 1400, height: 312 }, 3, 'timberwolf.configurator');
-  await assertBox(page, '.f-product-colors', { x: 260, y: 2022, width: 1400, height: 739 }, 4, 'timberwolf.colors');
-  await assertBox(page, '.f-section--product-benefits', { x: 0, y: 2866, width: 1920, height: 2017 }, 4, 'timberwolf.benefits');
-  await assertBox(page, '.f-section--product-options', { x: 0, y: 4883, width: 1920, height: 1144 }, 4, 'timberwolf.options');
-  await assertBox(page, '.f-section--references', { x: 0, y: 6027, width: 1920, height: 525 }, 4, 'timberwolf.references');
-  await assertBox(page, '.f-contact-cta', { x: 260, y: 6552, width: 1400, height: 455 }, 4, 'timberwolf.contactCta');
-  await assertFooterLayout(page, 'timberwolf', 7035);
+  await assertBox(page, '.f-product-colors', { x: 260, y: 2022, width: 1400, height: 391 }, 4, 'timberwolf.colors');
+  await assertBox(page, '.f-section--product-benefits', { x: 0, y: 2518, width: 1920, height: 2017 }, 4, 'timberwolf.benefits');
+  await assertBox(page, '.f-section--product-options', { x: 0, y: 4535, width: 1920, height: 1144 }, 4, 'timberwolf.options');
+  await assertBox(page, '.f-section--references', { x: 0, y: 5679, width: 1920, height: 525 }, 4, 'timberwolf.references');
+  await assertBox(page, '.f-contact-cta', { x: 260, y: 6204, width: 1400, height: 455 }, 4, 'timberwolf.contactCta');
+  await assertFooterLayout(page, 'timberwolf', 6687);
 
   await assertSourceContains(page, '.f-heading--product-detail .f-gallery__slide:nth-child(1) img', 'timberwolf-signature.jpg', 'timberwolf.heroSource');
   await assertSourceContains(page, '.f-product-configuration:nth-child(1) .f-product-configuration__thumb img', 'timberwolf-prestige.jpg', 'timberwolf.prestigeSource');
@@ -1740,9 +1736,9 @@ async function auditShowroomDesktop(page) {
   await assertBox(page, '.page-template-template-showroom .f-contact-cta', { x: 260, y: 2899, width: 1400, height: 382.4 }, 4, 'showroom.contactCta');
   await assertFooterLayout(page, 'showroom', 3362);
 
-  await assertSourceContains(page, '.f-showroom-hero', 'uploads/import/figma/showroom-hero-bazeny.jpg', 'showroom.heroSource');
-  await assertSourceContains(page, '.f-showroom-split--first img', 'uploads/import/figma/showroom-detail-bazeny.png', 'showroom.splitFirstSource');
-  await assertSourceContains(page, '.f-showroom-split--second img', 'uploads/import/figma/showroom-detail-virivky.png', 'showroom.splitSecondSource');
+  await assertSourceContains(page, '.f-showroom-hero', 'uploads/import/owner-showroom/showroom-main-web.jpg', 'showroom.heroSource');
+  await assertSourceContains(page, '.f-showroom-split--first img', 'uploads/import/owner-showroom/showroom-detail-web.jpg', 'showroom.splitFirstSource');
+  await assertSourceContains(page, '.f-showroom-split--second img', 'uploads/import/owner-showroom/showroom-covana-interior-web.jpg', 'showroom.splitSecondSource');
 }
 
 async function auditFigmaInfoPagesDesktop(page) {
@@ -2098,8 +2094,8 @@ async function auditAboutDesktop(page) {
   await assertBox(page, '.f-about-figma__stats > div:nth-child(3) strong', { x: 1207, y: 1122, width: 79, height: 51 }, 4, 'about.statThreeValue');
   await assertBox(page, '.f-about-figma__team-copy h2', { x: 260, y: 1375, width: 815, height: 51 }, 4, 'about.teamTitle');
   await assertBox(page, '.f-about-figma__team', { x: 260, y: 1658, width: 1407, height: 461.2 }, 8, 'about.teamGrid');
-  await assertBox(page, '.f-about-person:nth-child(1) img', { x: 260, y: 1658, width: 336, height: 335 }, 4, 'about.teamImageOne');
-  await assertBox(page, '.f-about-person:nth-child(4) img', { x: 1331, y: 1658, width: 336, height: 335 }, 8, 'about.teamImageFour');
+  await assertBox(page, '.f-about-person:nth-child(1) .f-about-person__media', { x: 260, y: 1658, width: 336, height: 335 }, 4, 'about.teamImageOne');
+  await assertBox(page, '.f-about-person:nth-child(4) .f-about-person__media', { x: 1331, y: 1658, width: 336, height: 335 }, 8, 'about.teamImageFour');
   await assertBox(page, '.f-about-figma__career h2', { x: 260, y: 2278, width: 815, height: 51 }, 4, 'about.careerTitle');
   await assertBox(page, '.f-about-figma__jobs', { x: 260, y: 2457, width: 1401, height: 758 }, 4, 'about.jobs');
   await assertBox(page, '.f-about-job:nth-child(1)', { x: 260, y: 2457, width: 1401, height: 526 }, 4, 'about.jobOpen');

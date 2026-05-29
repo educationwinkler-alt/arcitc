@@ -946,6 +946,36 @@ body {
     border-radius: 8px;
   }
 
+  .f-about-person__media {
+    display: grid;
+    width: 336px;
+    height: 335px;
+    place-items: center;
+    border-radius: 8px;
+  }
+
+  .f-about-person__media--waiting {
+    color: var(--arctic-color-graphite);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(217, 222, 226, 0.72)),
+      repeating-linear-gradient(-45deg, rgba(9, 23, 36, 0.08) 0 1px, transparent 1px 18px);
+    border: 1px dashed rgba(9, 23, 36, 0.22);
+  }
+
+  .f-about-person__media--waiting span {
+    display: grid;
+    width: 94px;
+    height: 94px;
+    place-items: center;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    background: var(--arctic-color-snow);
+    border-radius: 999px;
+    box-shadow: 0 16px 38px rgba(9, 23, 36, 0.14);
+  }
+
   .f-about-person h3 {
     margin: 24px 0 0;
     font-size: 24px;
@@ -1562,6 +1592,12 @@ body {
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 8px;
+  }
+
+  .f-about-person__media {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
   }
 
   .f-about-person h3,

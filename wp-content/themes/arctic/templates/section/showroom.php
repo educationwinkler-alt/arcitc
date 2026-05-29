@@ -5,9 +5,9 @@
  */
 
 $showroom_images = array(
-	array( 'file' => 'showroom-1.png', 'width' => 384, 'height' => 210 ),
-	array( 'file' => 'showroom-3.png', 'width' => 334, 'height' => 341 ),
-	array( 'file' => 'showroom-2.png', 'width' => 454, 'height' => 285 ),
+	array( 'file' => 'owner-showroom/showroom-main-web.jpg', 'width' => 1920, 'height' => 1440 ),
+	array( 'file' => 'owner-showroom/showroom-covana-interior-web.jpg', 'width' => 1400, 'height' => 1050 ),
+	array( 'file' => 'owner-showroom/showroom-detail-web.jpg', 'width' => 1400, 'height' => 1050 ),
 );
 ?>
 
@@ -17,10 +17,10 @@ $showroom_images = array(
 			<div class="f-showroom-panel__media">
 				<?php foreach ( $showroom_images as $index => $image ) { ?>
 					<figure class="f-showroom-panel__image f-showroom-panel__image--<?php echo esc_attr( $index + 1 ); ?>">
-						<img src="<?php echo esc_url( content_url( 'uploads/import/figma/' . $image['file'] ) ); ?>"
+						<img src="<?php echo esc_url( content_url( 'uploads/import/' . $image['file'] ) ); ?>"
 							width="<?php echo esc_attr( $image['width'] ); ?>"
 							height="<?php echo esc_attr( $image['height'] ); ?>"
-							alt="<?php echo esc_attr__( 'Showroom Arctic Spas podle grafiky', 'baspa' ); ?>"
+							alt="<?php echo esc_attr__( 'Showroom Arctic Spas v Moravanech', 'baspa' ); ?>"
 							loading="eager" decoding="async">
 					</figure>
 				<?php } ?>

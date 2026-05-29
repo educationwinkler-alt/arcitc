@@ -5,8 +5,14 @@
  */
 
 $asset = static function ( string $filename ): string {
-	return content_url( 'uploads/import/figma/' . ltrim( $filename, '/' ) );
+	return content_url( 'uploads/import/' . ltrim( $filename, '/' ) );
 };
+
+$showroom_assets = array(
+	'hero'           => $asset( 'owner-showroom/showroom-main-web.jpg' ),
+	'pool_detail'    => $asset( 'owner-showroom/showroom-detail-web.jpg' ),
+	'hot_tub_detail' => $asset( 'owner-showroom/showroom-covana-interior-web.jpg' ),
+);
 
 $contact_email = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
 $contact_phone = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
@@ -43,7 +49,7 @@ get_header();
 	<main id="<?php echo sanitize_title( esc_attr_x( 'content', 'anchor', 'baspa' ) ); ?>"
 	      class="f-showroom-page">
 
-		<section class="f-showroom-hero" style="--showroom-hero-image: url('<?php echo esc_url( $asset( 'showroom-hero-bazeny.jpg' ) ); ?>');">
+		<section class="f-showroom-hero" style="--showroom-hero-image: url('<?php echo esc_url( $showroom_assets['hero'] ); ?>');">
 			<div class="f-showroom-hero__container a-container">
 				<nav class="f-showroom-breadcrumb" aria-label="<?php echo esc_attr_x( 'Breadcrumbs', 'navigation', 'baspa' ); ?>">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr__( 'Úvod', 'baspa' ); ?>"></a>
@@ -124,7 +130,7 @@ get_header();
 					<h2><?php echo esc_html__( 'Naše bazény a vířivky si prohlédnete, případně vyzkoušíte', 'baspa' ); ?></h2>
 					<p><?php echo esc_html__( 'Naše hlavní vzorková prodejna se nachází v Moravanech u Brna a je velmi dobře dostupná z dálnice D1. Vystavené vířivky, swimspa a vybrané příslušenství si u nás můžete nejen prohlédnout. Minimálně dvě vířivky míváme zprovozněné pro mokrý test, k dispozici je samozřejmě kompletní zázemí.', 'baspa' ); ?></p>
 				</div>
-				<img src="<?php echo esc_url( $asset( 'showroom-detail-bazeny.png' ) ); ?>"
+				<img src="<?php echo esc_url( $showroom_assets['pool_detail'] ); ?>"
 				     alt="<?php echo esc_attr__( 'Showroom Arctic Spas v Moravanech', 'baspa' ); ?>"
 				     loading="lazy" decoding="async">
 			</div>
@@ -132,7 +138,7 @@ get_header();
 
 		<section class="f-showroom-split f-showroom-split--second">
 			<div class="f-showroom-split__container a-container">
-				<img src="<?php echo esc_url( $asset( 'showroom-detail-virivky.png' ) ); ?>"
+				<img src="<?php echo esc_url( $showroom_assets['hot_tub_detail'] ); ?>"
 				     alt="<?php echo esc_attr__( 'Vířivky Arctic Spas v showroomu', 'baspa' ); ?>"
 				     loading="lazy" decoding="async">
 				<div class="f-showroom-split__copy">

@@ -4,15 +4,43 @@
  * Product Acrylic Colors
  */
 
-$colors          = array_filter( get_post_meta( get_the_ID(), 'product_acrylic_colors' ) );
-$color_options   = array_filter( get_post_meta( get_the_ID(), 'product_acrylic_color_options' ), 'is_array' );
-$cabinet_options = array_filter( get_post_meta( get_the_ID(), 'product_cabinet_color_options' ), 'is_array' );
+$colors = array_filter( get_post_meta( get_the_ID(), 'product_acrylic_colors' ) );
+
+$normalize_image_options = static function ( array $options ): array {
+	$normalized = array();
+
+	foreach ( $options as $option ) {
+		if ( !is_array( $option ) ) {
+			continue;
+		}
+
+		$name  = trim( (string) ( $option['name'] ?? '' ) );
+		$image = isset( $option['image'] ) ? absint( $option['image'] ) : 0;
+
+		if ( '' === $name || 0 === $image || !wp_attachment_is_image( $image ) ) {
+			continue;
+		}
+
+		$normalized[] = array(
+			'name'  => $name,
+			'image' => $image,
+		);
+	}
+
+	return $normalized;
+};
+
+$color_options   = $normalize_image_options( get_post_meta( get_the_ID(), 'product_acrylic_color_options' ) );
+$cabinet_options = $normalize_image_options( get_post_meta( get_the_ID(), 'product_cabinet_color_options' ) );
+$section_title   = !empty( $cabinet_options )
+	? _x( 'Vyberte si barvu skořepiny a kabinetu', 'product colors', 'baspa' )
+	: _x( 'Vyberte si barvu skořepiny', 'product colors', 'baspa' );
 
 if ( !empty( $color_options ) || !empty( $colors ) || !empty( $cabinet_options ) ) { ?>
 	<section id="barvy" class="f-section f-section--product-colors js-links__section">
 		<div class="f-section__container a-container">
 			<div class="f-product-colors a-stack a-gap--xs">
-				<h2><?php echo esc_html_x( 'Vyberte si barvu skořepiny a kabinetu', 'product colors', 'baspa' ); ?></h2>
+				<h2><?php echo esc_html( $section_title ); ?></h2>
 
 				<?php if ( !empty( $color_options ) ) { ?>
 					<h3><?php echo esc_html__( 'Barvy skořepiny', 'baspa' ); ?></h3>

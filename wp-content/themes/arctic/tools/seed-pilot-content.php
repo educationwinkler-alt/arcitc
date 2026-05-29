@@ -325,21 +325,15 @@ $legacy_reference_hot_tub_2 = arctic_seed_attachment( 'legacy-reference-virivka-
 $legacy_reference_hot_tub_3 = arctic_seed_attachment( 'legacy-reference-virivka-arctic-g21', 'uploads/import/legacy-references/virivka-arctic-g21.jpg', 'Realizace vířivky ze starého webu', 'Obsahová fotografie vířivky ze starého Arctic webu' );
 $legacy_reference_swimspa_1 = arctic_seed_attachment( 'legacy-reference-swimspa-arctic-g1', 'uploads/import/legacy-references/swimspa-arctic-g1.jpg', 'Realizace swimspa ze starého webu', 'Obsahová fotografie swimspa ze starého Arctic webu' );
 $legacy_reference_swimspa_2 = arctic_seed_attachment( 'legacy-reference-swimspa-arctic-g4', 'uploads/import/legacy-references/swimspa-arctic-g4.jpg', 'Realizace swimspa ze starého webu', 'Obsahová fotografie swimspa ze starého Arctic webu' );
-$showroom = arctic_seed_attachment( 'figma-node-1-123-showroom-1', 'uploads/import/figma/showroom-1.png', 'Figma showroom 1', 'Showroom Arctic Spas podle grafiky' );
-$showroom_2 = arctic_seed_attachment( 'figma-node-1-124-showroom-2', 'uploads/import/figma/showroom-2.png', 'Figma showroom 2', 'Showroom Arctic Spas podle grafiky' );
-$figma_showroom_3 = arctic_seed_attachment( 'figma-node-1-125-showroom-3', 'uploads/import/figma/showroom-3.png', 'Figma showroom 3', 'Showroom Arctic Spas podle grafiky' );
-$figma_showroom_hero = arctic_seed_attachment( 'figma-node-1-446-showroom-hero-bazeny', 'uploads/import/figma/showroom-hero-bazeny.jpg', 'Figma showroom hero', 'Hero showroomu Arctic Spas podle grafiky' );
-$figma_showroom_detail_bazeny = arctic_seed_attachment( 'figma-node-1-443-showroom-detail-bazeny', 'uploads/import/figma/showroom-detail-bazeny.png', 'Figma showroom detail bazény', 'Detail showroomu Arctic Spas podle grafiky' );
-$figma_showroom_detail_virivky = arctic_seed_attachment( 'figma-node-1-444-showroom-detail-virivky', 'uploads/import/figma/showroom-detail-virivky.png', 'Figma showroom detail vířivky', 'Vířivky v showroomu Arctic Spas podle grafiky' );
+$showroom = arctic_seed_attachment( 'owner-showroom-main-web', 'uploads/import/owner-showroom/showroom-main-web.jpg', 'Showroom Arctic Spas Moravany', 'Showroom Arctic Spas v Moravanech' );
+$showroom_2 = arctic_seed_attachment( 'owner-showroom-detail-web', 'uploads/import/owner-showroom/showroom-detail-web.jpg', 'Showroom Arctic Spas - vířivka', 'Vířivka v showroomu Arctic Spas v Moravanech' );
+$showroom_3 = arctic_seed_attachment( 'owner-showroom-covana-interior-web', 'uploads/import/owner-showroom/showroom-covana-interior-web.jpg', 'Showroom Arctic Spas - Covana', 'Covana a vířivka v showroomu Arctic Spas' );
 $figma_footer_map = arctic_seed_attachment( 'figma-node-1-242-footer-map', 'uploads/import/figma/footer-map.png', 'Figma footer mapa', 'Showroom Arctic Spas ve footeru' );
 $figma_contact_map = arctic_seed_attachment( 'figma-node-1-1069-contact-map-showroom', 'uploads/import/figma/contact-map-showroom.png', 'Figma kontakt mapa/showroom', 'Kontaktní mapa a showroom podle grafiky' );
-$figma_color_dakota = arctic_seed_attachment( 'figma-node-1-1476-color-dakota', 'uploads/import/figma/color-dakota.png', 'Figma barva Dakota', 'Vzorek barvy Dakota podle Figmy' );
-$figma_color_kalahari = arctic_seed_attachment( 'figma-node-1-1479-color-kalahari', 'uploads/import/figma/color-kalahari.png', 'Figma barva Kalahari', 'Vzorek barvy Kalahari podle Figmy' );
-$figma_color_odyssey = arctic_seed_attachment( 'figma-node-1-1482-color-odyssey', 'uploads/import/figma/color-odyssey.png', 'Figma barva Odyssey', 'Vzorek barvy Odyssey podle Figmy' );
-$figma_color_platinum = arctic_seed_attachment( 'figma-node-1-1485-color-platinum-swirl', 'uploads/import/figma/color-platinum-swirl.png', 'Figma barva Platinum Swirl', 'Vzorek barvy Platinum Swirl podle Figmy' );
-$figma_color_espresso = arctic_seed_attachment( 'figma-node-1-1488-color-espresso', 'uploads/import/figma/color-espresso.png', 'Figma barva Espresso', 'Vzorek barvy Espresso podle Figmy' );
-$figma_cabinet_cedar = arctic_seed_attachment( 'figma-node-1-1492-cabinet-cedar', 'uploads/import/figma/cabinet-cedar.png', 'Figma kabinet cedr', 'Vzorek cedrového kabinetu podle Figmy' );
-$figma_cabinet_maintenance_free = arctic_seed_attachment( 'figma-node-1-1495-cabinet-maintenance-free', 'uploads/import/figma/cabinet-maintenance-free.png', 'Figma kabinet bezúdržbový', 'Vzorek bezúdržbového kabinetu podle Figmy' );
+$owner_color_dakota = arctic_seed_attachment( 'owner-acrylic-dakota', 'uploads/import/owner-swatches/acrylic-dakota.jpg', 'Dakota acrylic swatch', 'Owner supplied acrylic swatch Dakota' );
+$owner_color_kalahari = arctic_seed_attachment( 'owner-acrylic-kalahari', 'uploads/import/owner-swatches/acrylic-kalahari.jpg', 'Kalahari acrylic swatch', 'Owner supplied acrylic swatch Kalahari' );
+$owner_color_odyssey = arctic_seed_attachment( 'owner-acrylic-odyssey', 'uploads/import/owner-swatches/acrylic-odyssey.jpg', 'Odyssey acrylic swatch', 'Owner supplied acrylic swatch Odyssey' );
+$owner_color_espresso = arctic_seed_attachment( 'owner-acrylic-espresso', 'uploads/import/owner-swatches/acrylic-espresso.jpg', 'Espresso acrylic swatch', 'Owner supplied acrylic swatch Espresso' );
 $covana_main  = arctic_seed_attachment( 'covana-slide-1', 'uploads/import/covana-slide-1.jpg', 'Covana automatický kryt', 'Automatický kryt vířivky Covana' );
 $sauna_main   = arctic_seed_attachment( 'other-sauna-luxus-1', 'uploads/import/other-sortiment/sauna-luxus-1.jpg', 'Luxusní sauna', 'Luxusní sauna na míru' );
 $kirami_main  = arctic_seed_attachment( 'other-koupaci-sud-s1', 'uploads/import/other-sortiment/koupaci-sud-s1.jpg', 'Koupací sud Kirami', 'Koupací sud Kirami' );
@@ -1008,16 +1002,12 @@ arctic_seed_set_multi_meta( $timberwolf_id, 'product_water_volume', array( '884 
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_acrylic_colors', array( 'Dakota', 'Kalahari', 'Odyssey', 'Platinum Swirl', 'Espresso' ) );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_cabinet_colors', array( 'Cedrový kabinet standardní', 'Bezúdržbový kabinet volitelný' ) );
 arctic_seed_set_multi_meta( $timberwolf_id, 'product_acrylic_color_options', array(
-	array( 'name' => 'Dakota', 'image' => $figma_color_dakota ),
-	array( 'name' => 'Kalahari', 'image' => $figma_color_kalahari ),
-	array( 'name' => 'Odyssey', 'image' => $figma_color_odyssey ),
-	array( 'name' => 'Platinum Swirl', 'image' => $figma_color_platinum ),
-	array( 'name' => 'Espresso', 'image' => $figma_color_espresso ),
+	array( 'name' => 'Dakota', 'image' => $owner_color_dakota ),
+	array( 'name' => 'Kalahari', 'image' => $owner_color_kalahari ),
+	array( 'name' => 'Odyssey', 'image' => $owner_color_odyssey ),
+	array( 'name' => 'Espresso', 'image' => $owner_color_espresso ),
 ) );
-arctic_seed_set_multi_meta( $timberwolf_id, 'product_cabinet_color_options', array(
-	array( 'name' => 'Cedrový kabinet', 'image' => $figma_cabinet_cedar ),
-	array( 'name' => 'Bezúdržbový kabinet', 'image' => $figma_cabinet_maintenance_free ),
-) );
+arctic_seed_set_multi_meta( $timberwolf_id, 'product_cabinet_color_options', array() );
 arctic_seed_set_product_configurations( $timberwolf_id, array(
 	array(
 		'name'        => 'Prestige 15/1',
@@ -1177,7 +1167,7 @@ $showroom_id = arctic_seed_page(
 	'',
 	'template-showroom.php'
 );
-set_post_thumbnail( $showroom_id, $figma_showroom_hero );
+set_post_thumbnail( $showroom_id, $showroom );
 update_post_meta( $slide_showroom_id, 'button_url', get_permalink( $showroom_id ) );
 
 $support_id = arctic_seed_page(

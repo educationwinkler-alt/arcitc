@@ -7,22 +7,26 @@ $team = array(
 	array(
 		'name'  => 'Vladimír Zajíč',
 		'role'  => 'Vedoucí showroomu',
-		'image' => content_url( 'uploads/import/figma/about-team-vladimir.png' ),
+		'initials'     => 'VZ',
+		'asset_status' => 'WAITING_ON_OWNER',
 	),
 	array(
 		'name'  => 'Lukáš Dušek',
 		'role'  => 'Obchodní konzultant',
-		'image' => content_url( 'uploads/import/figma/about-team-lukas.png' ),
+		'initials'     => 'LD',
+		'asset_status' => 'WAITING_ON_OWNER',
 	),
 	array(
 		'name'  => 'Helena Antonyová',
 		'role'  => 'Pečuje o zákazníky',
-		'image' => content_url( 'uploads/import/figma/about-team-helena.png' ),
+		'initials'     => 'HA',
+		'asset_status' => 'WAITING_ON_OWNER',
 	),
 	array(
 		'name'  => 'Servisní tým',
 		'role'  => 'Montáž a servis',
-		'image' => content_url( 'uploads/import/figma/about-team-service.png' ),
+		'initials'     => 'ST',
+		'asset_status' => 'WAITING_ON_OWNER',
 	),
 );
 
@@ -50,7 +54,11 @@ get_template_part( 'templates/heading' );
 			<div class="f-about-figma__team">
 				<?php foreach ( $team as $person ) { ?>
 					<article class="f-about-person">
-						<img src="<?php echo esc_url( $person['image'] ); ?>" alt="" loading="lazy" decoding="async">
+						<div class="f-about-person__media f-about-person__media--waiting"
+						     data-asset-status="<?php echo esc_attr( $person['asset_status'] ); ?>"
+						     aria-hidden="true">
+							<span><?php echo esc_html( $person['initials'] ); ?></span>
+						</div>
 						<h3><?php echo esc_html( $person['name'] ); ?></h3>
 						<p><?php echo esc_html( $person['role'] ); ?></p>
 						<a href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>"><?php echo esc_html__( 'Kontaktovat', 'baspa' ); ?></a>
