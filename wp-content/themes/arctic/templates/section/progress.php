@@ -16,7 +16,7 @@ $steps = array(
 
 <section id="<?php echo sanitize_title( esc_attr_x( 'order-progress', 'anchor', 'baspa' ) ); ?>" class="f-section f-section--progress">
 	<div class="f-section__container a-container">
-		<div class="f-progress-layout">
+		<div class="f-progress-layout f-progress-layout--shared">
 			<div class="f-progress-layout__intro">
 				<h2><?php echo esc_html__( 'Průběh zakázky', 'baspa' ); ?></h2>
 				<p><?php echo esc_html__( 'Od první poptávky až po odbornou montáž vás provedeme celým procesem tak, aby byl výběr vířivky nebo bazénu jednoduchý a přehledný.', 'baspa' ); ?></p>

@@ -25,7 +25,7 @@ $pricing_url            = function_exists( 'arctic_jucra_get_pricing_url' ) ? ar
 		</div>
 
 		<section class="f-product-detail-configurator" aria-labelledby="product-configurator-title">
-			<div class="f-configurator-cta">
+			<div class="f-configurator-cta f-configurator-cta--shared f-configurator-cta--product">
 				<div class="f-configurator-cta__content">
 					<h2 id="product-configurator-title"><?php echo esc_html__( 'Nakonfigurujte si vlastní vířivku', 'baspa' ); ?></h2>
 					<p><?php echo esc_html__( 'Vyberte si konfiguraci, barvu skořepiny, kabinet a další výbavu podle vlastních představ.', 'baspa' ); ?></p>

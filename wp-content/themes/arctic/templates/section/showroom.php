@@ -13,7 +13,7 @@ $showroom_images = array(
 
 <section id="<?php echo sanitize_title( esc_attr_x( 'showroom', 'anchor', 'baspa' ) ); ?>" class="f-section f-section--showroom">
 	<div class="f-section__container a-container">
-		<div class="f-showroom-panel">
+		<div class="f-showroom-panel f-showroom-panel--collage">
 			<div class="f-showroom-panel__media">
 				<?php foreach ( $showroom_images as $index => $image ) { ?>
 					<figure class="f-showroom-panel__image f-showroom-panel__image--<?php echo esc_attr( $index + 1 ); ?>">

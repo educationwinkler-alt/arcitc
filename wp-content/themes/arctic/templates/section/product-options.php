@@ -25,11 +25,10 @@ $options = array(
 
 		<div class="f-product-benefits f-product-benefits--options">
 			<?php foreach ( $options as $option ) { ?>
-				<article class="f-product-benefit">
+				<article class="f-product-benefit f-product-benefit--static">
 					<span class="f-product-benefit__media" aria-hidden="true"></span>
 					<h3><?php echo esc_html( $option ); ?></h3>
 					<p><?php echo esc_html__( 'Konkrétní dostupnost a doporučenou kombinaci potvrdíme v nabídce pro vybraný model.', 'baspa' ); ?></p>
-					<span class="f-product-benefit__more" aria-hidden="true">+</span>
 				</article>
 			<?php } ?>
 		</div>

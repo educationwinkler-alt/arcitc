@@ -254,6 +254,8 @@ Poznámka ke scope: Wave 4 až Wave 6 nejsou jen drobné bugfixy. Jsou to podsta
 
 Architektonická poznámka: Wave 4 se nesmí dělat jako sada lokálních patchů pro jednotlivé stránky. Každý opakovaný blok musí nejdřív dostat canonical component contract, usage map a pojmenované varianty. Teprve potom se ladí konkrétní stránkové umístění.
 
+PR-D usage map: `docs/component-contract-usage-map-2026-05-30.md`.
+
 ### 4-0 - Component contract cleanup
 
 | Akce | Soubory |

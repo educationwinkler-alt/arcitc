@@ -43,13 +43,12 @@ $popup_id = sanitize_title( esc_attr_x( 'shell-benefit-popup', 'anchor', 'baspa'
 			<?php foreach ( $benefits as $benefit ) {
 				$has_popup = !empty( $benefit['popup'] );
 				?>
-				<article class="f-product-benefit<?php echo $has_popup ? ' f-product-benefit--has-popup' : ''; ?>">
+				<article class="f-product-benefit <?php echo $has_popup ? 'f-product-benefit--has-popup f-product-benefit--interactive' : 'f-product-benefit--static'; ?>">
 					<span class="f-product-benefit__media" aria-hidden="true"></span>
 					<h3><?php echo esc_html( $benefit['title'] ); ?></h3>
 					<p><?php echo esc_html( $benefit['summary'] ?? __( 'Návrh vychází z požadavků na provoz v chladném klimatu, jednoduchou údržbu a stabilní výkon po mnoho sezon.', 'baspa' ) ); ?></p>
-					<span class="f-product-benefit__more" aria-hidden="true">+</span>
-
 					<?php if ( $has_popup ) { ?>
+						<span class="f-product-benefit__more" aria-hidden="true">+</span>
 						<button type="button"
 							class="f-product-benefit__trigger f-off__trigger js-off__trigger"
 							data-off="benefit-shell"

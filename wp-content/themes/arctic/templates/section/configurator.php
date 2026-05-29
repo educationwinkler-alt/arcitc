@@ -13,13 +13,24 @@ $pricing_url = function_exists( 'arctic_jucra_get_pricing_url' ) ? arctic_jucra_
 $model_name  = function_exists( 'arctic_jucra_get_default_model' ) ? arctic_jucra_get_default_model() : '';
 $show_viewer = function_exists( 'arctic_jucra_can_render_viewer' ) && arctic_jucra_can_render_viewer( $model_name );
 $shortcode   = $show_viewer && function_exists( 'arctic_jucra_build_shortcode' ) ? arctic_jucra_build_shortcode( $model_name ) : '';
+$is_swimspa_context = is_tax( 'product-category', 'swimspa' )
+	|| ( is_singular( 'product' ) && has_term( 'swimspa', 'product-category', get_the_ID() ) );
+$configurator_context = $is_swimspa_context ? 'swimspa' : 'hot-tub';
+$default_title = $is_swimspa_context
+	? __( 'Nakonfigurujte si vlastní swimspa', 'baspa' )
+	: __( 'Nakonfigurujte si vlastní vířivku', 'baspa' );
+$default_text = $is_swimspa_context
+	? __( 'Vyberte si model, výbavu a barvy. Připravíme vám konkrétní doporučení i cenovou nabídku pro celoroční bazén.', 'baspa' )
+	: __( 'Vyberte si model, výbavu a barvy. Připravíme vám konkrétní doporučení i cenovou nabídku.', 'baspa' );
+$title_mod_key = $is_swimspa_context ? 'arctic_configurator_swimspa_title' : 'arctic_configurator_title';
+$text_mod_key  = $is_swimspa_context ? 'arctic_configurator_swimspa_text' : 'arctic_configurator_text';
 
 $title = function_exists( 'arctic_sections_get_theme_mod' )
-	? arctic_sections_get_theme_mod( 'arctic_configurator_title', 'Nakonfigurujte si vlastní vířivku' )
-	: get_theme_mod( 'arctic_configurator_title', 'Nakonfigurujte si vlastní vířivku' );
+	? arctic_sections_get_theme_mod( $title_mod_key, $default_title )
+	: get_theme_mod( $title_mod_key, $default_title );
 $text = function_exists( 'arctic_sections_get_theme_mod' )
-	? arctic_sections_get_theme_mod( 'arctic_configurator_text', 'Vyberte si model, výbavu a barvy. Připravíme vám konkrétní doporučení i cenovou nabídku.' )
-	: get_theme_mod( 'arctic_configurator_text', 'Vyberte si model, výbavu a barvy. Připravíme vám konkrétní doporučení i cenovou nabídku.' );
+	? arctic_sections_get_theme_mod( $text_mod_key, $default_text )
+	: get_theme_mod( $text_mod_key, $default_text );
 $button_text = get_theme_mod( 'arctic_configurator_button_text', 'Konfigurovat' );
 $button_url  = $show_viewer ? $pricing_url : $fallback_url;
 
@@ -28,7 +39,7 @@ $configurator_image = content_url( 'uploads/import/figma/category-configurator.p
 
 <section id="konfigurator" class="f-section f-section--configurator">
 	<div class="f-section__container a-container">
-		<div class="f-configurator-cta">
+		<div class="f-configurator-cta f-configurator-cta--shared f-configurator-cta--<?php echo esc_attr( $configurator_context ); ?>">
 			<div class="f-configurator-cta__content">
 				<h2><?php echo esc_html( $title ); ?></h2>
 				<p><?php echo wp_kses_post( $text ); ?></p>

@@ -16,9 +16,9 @@ if ( is_tax( 'product-category', 'swimspa' ) || ( is_singular( 'product' ) && ha
 }
 ?>
 
-<section class="f-section f-section--contact">
+<section class="f-section f-section--contact f-section--component-contact">
 	<div class="f-section__container a-container">
-		<div class="f-contact-cta">
+		<div class="f-contact-cta f-contact-cta--shared">
 			<h2><?php echo esc_html( $contact_title ); ?></h2>
 			<p><?php echo esc_html__( 'Dejte nám vědět a naši specialisté na bazény se vám budou věnovat.', 'baspa' ); ?></p>
 			<div class="f-contact-cta__bar">
