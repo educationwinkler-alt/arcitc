@@ -17,8 +17,7 @@
 		   class="f-image a-image a-image--cover a-image--landscape js-image"
 		   data-pswp-width="<?php echo esc_attr( $image_width ); ?>"
 		   data-pswp-height="<?php echo esc_attr( $image_height ); ?>"
-		   data-cropped="true"
-		   target="_blank">
+		   data-cropped="true">
 			<?php echo get_the_post_thumbnail( get_the_ID(), get_template() . '-medium', array(
 				'data-lazy' => 'false',
 				'loading'   => 'eager',

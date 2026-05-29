@@ -92,7 +92,6 @@ get_template_part( 'templates/heading' );
 						   data-pswp-width="<?php echo esc_attr( $reference['image_width'] ); ?>"
 						   data-pswp-height="<?php echo esc_attr( $reference['image_height'] ); ?>"
 						   data-cropped="true"
-						   target="_blank"
 						   aria-label="<?php echo esc_attr( $reference['title'] ); ?>">
 					<?php } ?>
 						<img src="<?php echo esc_url( $reference['image'] ); ?>" alt="" loading="lazy" decoding="async">
