@@ -1,0 +1,280 @@
+[
+  {
+    "name": "hp",
+    "route": "/",
+    "title": "Arctic Spas Local",
+    "url": "http://localhost:8090/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 5201,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\nKanadské luxusní vířivky\n\nVířivky Arctic jsou vyrobeny tak, aby efektivně pracovaly v extrémních severských podmínkách a přinesly vám tak garanci nejnižších nákladů, dlouhé životnosti a pohodovou relaxaci, ať se nacházíte kdekoliv.\n\nVenkovní vířivky Arctic Spas\n\nVenkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily, byly jednoduché na obsluhu a pro svůj pro"
+  },
+  {
+    "name": "kategorie-virivky",
+    "route": "/virivky/",
+    "title": "Vířivky – Arctic Spas Local",
+    "url": "http://localhost:8090/virivky/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 8583,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "Venkovní vířivky Arctic Spas",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\nVenkovní vířivky Arctic Spas\nVenkovní vířivky Arctic Spas\n\nVenkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily, byly jednoduché na obsluhu a pro svůj provoz spotřebovaly minimum energie.\n\nVybrat vířivku\nVlastnosti vířivek\n\nVenkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily, byly "
+  },
+  {
+    "name": "kategorie-swimspa",
+    "route": "/swimspa/",
+    "title": "Celoroční bazény – Arctic Spas Local",
+    "url": "http://localhost:8090/swimspa/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 6674,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "Celoroční bazény",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\nCeloroční bazény\nCeloroční bazény\nVybrat bazén\nVýhody celoročních bazénů Arctic\n\nRodinný bazén na zahradě je snem řady domácností. Swimspa Arctic přivezeme kompletní, včetně filtrace, automatické dezinfekce, elektroohřevu, obvodové izolace FreeHeat™ a bezpečného termokrytu. Stačí ji postavit na rovnou plochu, připojit k elektřině a napustit vodou.\n\nVíce o vlastnostech\nCeloroční provoz bez stavebních prací\n\nCeloroční bazén Arctic "
+  },
+  {
+    "name": "detail-timberwolf",
+    "route": "/product/timberwolf/",
+    "title": "Timberwolf – Arctic Spas Local",
+    "url": "http://localhost:8090/product/timberwolf/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 7808,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "Venkovní vířivka Timberwolf",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\n—\nVířivky\n—\nTimberwolf\nClassic\nVenkovní vířivka Timberwolf\nMaximální terapii naleznete ve dvou pohodlných lehátkách, navíc je zde místo i pro třetího. Maximální komfort na minimálním prostoru.\n3\nmíst\n217 x 174 x 98 cm\nrozměr\n884\nlitrů\nKonfigurace\nBarvy\nVýhody\nVolitelná výbava\nPříklady realizací\nod 246 700 Kč\nvč. montáže\nNezávazná konzultace\nKonfigurace\nPrestige 15/1\nTrysky10 x 3\" + 5 x 5\"\nČerpadla1 dvourychlostní\nSignature 30/2\nT"
+  },
+  {
+    "name": "showroom",
+    "route": "/showroom/",
+    "title": "Showroom – Arctic Spas Local",
+    "url": "http://localhost:8090/showroom/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 4135,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "Showroom",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\nDalší informace\nShowroom\nShowroom\n\nU nás najdete od každého něco a obvykle alespoň dva modely vířivek napuštěné vodou, abyste je mohli podrobit mokré zkoušce.\n\nFotogalerie\n280 m²\nprezentační\nplochy\nPřijďte se pobavit o své nové vířivce nebo swimspa\n\nNa pobočce nebo online s vámi vaše představy rádi probereme. Že žádné nemáte? Tím spíš se zastavte pro inspiraci.\n\nDomluvit si schůzku\nKontakt\nLukáš Dušek\nlukas.dusek@arctic-spas.cz\n+"
+  },
+  {
+    "name": "vlastnosti",
+    "route": "/vlastnosti/",
+    "title": "Vlastnosti a výhody venkovních vířivek a swimspa Arctic – Arctic Spas Local",
+    "url": "http://localhost:8090/vlastnosti/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 2670,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "Vlastnosti a výhody venkovních vířivek a swimspa Arctic",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\n—\nVlastnosti a výhody venkovních vířivek a swimspa Arctic\nVlastnosti a výhody venkovních vířivek a swimspa Arctic\nVířivky Arctic Spas jsou navrženy a vyrobeny tak, aby efektivně a spolehlivě fungovaly v extrémním klimatu severní Kanady. V místech, kde venkovní teploty kolísají od -30 °C v zimě do +30 °C v letních měsících, obstojí pouze skvěle tepelně izolovaná vířivka postavená z těch skutečně nejlepších komponentů.\nIzolace víři"
+  },
+  {
+    "name": "vlastnosti-detail",
+    "route": "/vlastnosti/izolace-virivky/",
+    "title": "Obvodová izolace FreeHeat™ – Arctic Spas Local",
+    "url": "http://localhost:8090/vlastnosti/izolace-virivky/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 5006,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "Obvodová izolace FreeHeat™",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\n—\nVlastnosti a výhody venkovních vířivek a swimspa Arctic\n—\nObvodová izolace FreeHeat™\nObvodová izolace FreeHeat™\nInvestice do výroby samonosné skořepiny umožňuje izolovat vířivky Arctic Spas® lépe, než jak to provádí kdokoliv z konkurence. Pro inspiraci jsme nemuseli chodit daleko, naše domovy v severní Kanadě nám poskytly vše, co potřebujeme vědět.\nIzolace na správném místě šetří vaše peníze každý den!\n\nIzolujeme vnější stěny, "
+  },
+  {
+    "name": "sluzby",
+    "route": "/sluzby/",
+    "title": "Služby – Arctic Spas Local",
+    "url": "http://localhost:8090/sluzby/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 2736,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "Služby",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\n—\nSlužby\nSlužby\nK prémiovému sortimentu patří prvotřídní služby. Poskytneme vám mnohem víc, než je vůbec schopna nabídnout většina konkurence, mnohé naše služby přitom můžete využít nezávazně nebo zdarma v rámci ceny vířivky.\nKonzultace\n\nPokud si ještě nejste jisti, že skutečně chcete koupit vířivku, využijte naši nabídku nezávazné konzultace. Obrátit se na nás můžete telefonicky či e-mailem. Obecná doporučení, jak postupovat při"
+  },
+  {
+    "name": "certifikaty",
+    "route": "/certifikaty/",
+    "title": "Certifikáty – Arctic Spas Local",
+    "url": "http://localhost:8090/certifikaty/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 2576,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "Certifikáty",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\n—\nCertifikáty\nCertifikáty\nNávštěva jakékoliv výrobní haly firmy Arctic Spas® ukazuje to nejlepší z obou světů. Otvory pro vodní trysky jsou ve skořepině vyřezávány precizní robotickou technologií, zatímco odborně vyškolení pracovníci ručně sestavují dřevěné cedrové kabinety. Tyto postupy jsou kombinovány do optimálního poměru vyspělé technologie a ruční práce, což dodává vířivkám Arctic Spas® skutečně unikátní a nadčasovou hodnot"
+  },
+  {
+    "name": "zaruka",
+    "route": "/zaruka/",
+    "title": "Záruka – Arctic Spas Local",
+    "url": "http://localhost:8090/zaruka/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 2201,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "Záruka",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\n—\nZáruka\nZáruka\nVe společnosti Arctic Spas® jsme pyšní na kvalitu našeho technického řešení a na vysokou úroveň zpracování. Na naše výrobky poskytujeme tyto prodloužené záruky.\n\tCustom\tClassic\tCore\nSkořepina\tDoživotní\t10 let\t7 let\nAkrylát\t5 let\t4 roky\t1 rok\nPodlaha\tDoživotní\t3 roky\t3 roky\nNáhradní díly\t5 let\t3 roky\t3 roky\nPráce\t5 let\t3 roky\t1 rok\n\nDopravné: první dva roky záruky hradí cestu servisního technika prodávající a od tř"
+  },
+  {
+    "name": "podpora",
+    "route": "/podpora/",
+    "title": "Podpora – Arctic Spas Local",
+    "url": "http://localhost:8090/podpora/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 5509,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "Podpora",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\n—\nPodpora\nPodpora\nZde naleznete odpovědi na časté otázky k problematice koupě, plánování, stavby a provozu domácího bazénu či vířivky.\nČasté dotazy\nKe stažení\nServisní formulář\nČasté dotazy\nVšechny\nObchodní\nStavební příprava\nMontáž\nProvoz a údržba\nServis\n−\nJak probíhá výběr a objednávka vířivky?\n\nNejprve společně ověříme velikost, umístění a požadovanou výbavu. Poté připravíme konkrétní konfiguraci a navazující technickou příprav"
+  },
+  {
+    "name": "o-nas",
+    "route": "/o-nas/",
+    "title": "O nás – Arctic Spas Local",
+    "url": "http://localhost:8090/o-nas/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 4584,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "O nás",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\n—\nO nás\nO nás\nPořízení bazénu nebo vířivky je investice, která by měla být pečlivě zvážena. Při výběru značky i dodavatele je rozumné seznámit se s profilem výrobce a prodejce.\nNaše společnost\n\nProdejem vířivek Arctic Spas se zabýváme již od roku 2005 a základ našeho týmu se za tu dobu nezměnil. Máme více než 15 let osobních zkušeností s dovozem, prodejem, instalacemi a servisem vířivek Arctic Spas, které se zúročily při stovkách"
+  },
+  {
+    "name": "kontakt",
+    "route": "/kontakt/",
+    "title": "Kontakt – Arctic Spas Local",
+    "url": "http://localhost:8090/kontakt/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 3198,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "Jsme k dispozici pro vaše dotazy",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\n—\nKontakt\nJsme k dispozici pro vaše dotazy\n+420 777 099 687\nPo - Pá 8:00-17:00 h\nlukas.dusek@arctic-spas.cz\nOdpovíme do dvou pracovních dní\nPoptávkový formulář\nServisní formulář\nKontaktní formulář\nBrno\nMoravany\nKde nás najdete?\nAdresa\n\nBohunická cesta 15\n664 48 Moravany u Brna\n\nOtevírací doba\n\nPo - Pá 8:00-17:00 h\n\nChcete si osobně prohlédnout řešení a pobavit se o možnostech realizace? Rádi se vám budeme věnovat v showroomu.\n\nVí"
+  },
+  {
+    "name": "reference",
+    "route": "/reference/",
+    "title": "Reference – Arctic Spas Local",
+    "url": "http://localhost:8090/reference/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 2667,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "Reference",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\n—\nReference\nReference\nArctic Fox\n2021\nArctic Fox po letech provozu\nArctic Spas\n2016\nFox se systémem Spa Boy\nWolverine\n2016\nSwimspa Wolverine\nArctic Spas\n2014\nNízká spotřeba v zimním provozu\nArctic Fox\n2014\nArctic Fox předčil očekávání\nBazén\n2015\nVstřícný přístup při výběru bazénu\nCeloroční bazén\n2015\nVýběr celoročního bazénu\nArctic Spas\n2016\nVířivka bez poruchy\nArctic Spas\n2012\nNovoroční přání z vířivky\nPotřebujete poradit s výbě"
+  },
+  {
+    "name": "maintenance",
+    "route": "/kolik-stoji-udrzba/",
+    "title": "Kolik stojí provoz a údržba vířivky? – Arctic Spas Local",
+    "url": "http://localhost:8090/kolik-stoji-udrzba/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 2692,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "Kolik stojí provoz a údržba vířivky?",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\n—\nKolik stojí provoz a údržba vířivky?\nKolik stojí provoz a údržba vířivky?\nJedním z nejdůležitějších parametrů ve kterých značka Arctic Spas jednoznačně dominuje jsou velmi nízké provozní náklady a s tím spojená kvalita izolací a termo krytů. Žádná značka vířivek nemá obvodovou izolaci silnou 8 - 10 cm jako vířivky Arctic Spas a neexistují žádné alternativy, které takovouto izolaci nahradí. Vířivky Arctic Spas jsou vyráběny u ne"
+  },
+  {
+    "name": "servis",
+    "route": "/servis/",
+    "title": "Servis vířivek Arctic Spas – Arctic Spas Local",
+    "url": "http://localhost:8090/servis/",
+    "scrollWidth": 1920,
+    "clientWidth": 1920,
+    "pageHeight": 2808,
+    "headerBox": {
+      "x": 260,
+      "y": 18,
+      "width": 1400,
+      "height": 105
+    },
+    "firstH1": "Servis vířivek Arctic Spas",
+    "visibleTextSample": "Skip to navigation\nSkip to content\nSkip to footer\nMáte dotaz? Volejte na\n+420 777 099 687\nPo - Pá 8:00-17:00 h\n\nVířivky\nCeloroční bazény\nVlastnosti\nTepelná izolace\nSkořepina\nTermokryt\nPodlaha\nServisní přístup\nVariabilita\nDalší informace\nSlužby\nCertifikáty\nZáruka\nKolik stojí provoz a údržba\nPodpora\nReference\nO nás\nShowroom\nServis\nKontakt\nSearch\nNezávazná konzultace\n—\nServis vířivek Arctic Spas\nServis vířivek Arctic Spas\nOkamžikem zprovoznění vaší masážní vířivky nebo celoročního bazénu naše péče o vaše pohodlí nekončí. Kromě záručního a pozáručního servisu můžeme nabídnout např. telefonické poradenství, asistenci při výměně vody nebo zazimování. Vyplňte prosím pečlivě náš servisní formulář, ozveme se co nejdříve. Veškeré servisní služby provádíme jen na vířivkách námi instalovaných, tedy Ar"
+  },
+  {
+    "name": "hp-mobile",
+    "route": "/",
+    "mobile": true,
+    "pageHeight": 6114
+  }
+]

@@ -6,6 +6,10 @@ Source plans:
 - `docs/end-to-end-implementation-plan.md`
 - `docs/web-completion-plan.md`
 - `docs/arctic-scaling-rebuild-plan.md`
+- `docs/wireframe-content-source-audit-2026-05-29.md`
+- `docs/repair-plan-from-audits-2026-05-29.md`
+- `docs/pr-a-source-signoff-checklist-2026-05-29.md`
+- `docs/brutal-figma-audit-2026-05-29-errata.md`
 
 ## Working Figma Context (sensitive)
 
@@ -44,6 +48,20 @@ This project is a redesign and functional rebuild with three separate source rol
 
 Conflict rule:
 - If sources disagree, use Figma for visual/layout decisions, old Arctic for content/business meaning, and Baspa.cz for comparable WordPress functionality/admin workflow.
+
+## 0) Repair Reopen Addendum (2026-05-29)
+
+This repository has a reopened repair track driven by the 2026-05-29 audits.
+
+- Historical evidence docs (for example `docs/phase-5-figma-frame-by-frame-tracker-2026-05-26.md` and `docs/phase-5c-manual-signoff-2026-05-28.md`) remain valid as implementation history, but are not the final pass authority for reopened scope.
+- Final pass authority for reopened scope is:
+  - `docs/repair-plan-from-audits-2026-05-29.md`
+  - `docs/pr-a-source-signoff-checklist-2026-05-29.md`
+  - `docs/brutal-figma-audit-2026-05-29-errata.md`
+- Source-role rule for all reopened checks:
+  - Figma decides visual/UX structure and states.
+  - Old Arctic + owner materials decide business content.
+  - Baspa decides admin/workflow parity.
 
 ## 1) Status from the 3 existing plans
 
@@ -343,10 +361,13 @@ Hard Phase 5 blockers added from real review (2026-05-27):
    - information pages
    - product/category image sharpness against available legacy Arctic originals
    - footer and full-bleed section behavior at zoom-out, 100%, 120%, and Windows 175% scaling equivalent
+   - source-role validation for each finding (`visual` vs `content-source` vs `wireframe` vs `admin-workflow` vs `interaction`)
 2. For each page record:
    - pass/fail
    - screenshot pair
    - exact delta note
+   - source-role decision note (`figma-visual`, `figma-wireframe`, `old-arctic-content`, `owner-content`, `baspa-workflow`)
+   - issue type tag (`visual`, `wireframe`, `content-source`, `admin-workflow`, `interaction`)
    - fix commit reference
 3. Close only when all high-priority deltas are resolved.
 
@@ -356,8 +377,8 @@ Exit criteria:
 Current Phase 5 status:
 - Phase 5 implementation is complete for the repository code/audit/screenshot scope as of PR6 on 2026-05-28.
 - `docs/visual-signoff-phase-5-2026-05-26.md` remains valid only as evidence for responsive/zoom resilience.
-- The active frame-by-frame tracker is `docs/phase-5-figma-frame-by-frame-tracker-2026-05-26.md`.
-- Technical manual sign-off record is `docs/phase-5c-manual-signoff-2026-05-28.md`.
+- `docs/phase-5-figma-frame-by-frame-tracker-2026-05-26.md` and `docs/phase-5c-manual-signoff-2026-05-28.md` are historical evidence, not a standalone final pass for reopened scope.
+- Reopened final pass is governed by `docs/repair-plan-from-audits-2026-05-29.md` plus `docs/pr-a-source-signoff-checklist-2026-05-29.md`.
 - Header search and desktop product mega menu states from Figma are now implemented and covered by `npm run figma:audit`.
 - Additional desktop frame geometry is now covered for Swimspa category, showroom, product popup, info pages, support, references, about, service, contact, and the shared footer.
 - Final visual-token parity is now automated in `tools/figma-visual-audit.js`: local Red Hat Display font usage, Figma background/red/dark color tokens, button and card radii, contact CTA styling, reference cards, showroom panel, footer quick contact card, footer map card, and shared page typography.
