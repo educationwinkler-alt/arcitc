@@ -31,18 +31,21 @@ Dostat local do stavu, kdy:
 | Figma obrázek není vždy final foto. | Reálné foto může být jiné, ale musí sedět rozměr, ostrost, crop a component treatment. |
 | Žádné nevhodné fallbacky. | Když chybí fotka, použít rozměrově správný neutrální placeholder nebo relevantní fallback foto, ne náhodné ikony. |
 | Klientské rozhodnutí se nesmí maskovat jako technický fix. | Pokud Figma neukazuje samostatný UX tok, implementujeme výchozí wireframe chování a alternativu bereme jako nový potvrzený scope. |
+| Opakované bloky se nesmí lepit stránku po stránce. | Reference, showroom, CTA/footer, configurator, progress, product cards a podobné opakované prvky musí mít jeden sdílený template/CSS contract a jasné varianty; stránka smí řešit jen umístění a povolenou variantu. |
+| Page-specific CSS override je výjimka, ne architektura. | Selektory typu `.template--homepage .f-section--references ...` nebo `.tax-product-category .f-section--references ...` nesmí být hlavním zdrojem pravdy pro sdílený component. |
 
 ## Prioritní pořadí oprav
 
 | Pořadí | Balík | Priorita | Proč první |
 |---:|---|---:|---|
 | 1 | Source/UX contract hardening | P0 | Zabrání dalšímu míchání Figma copy, Baspa workflow a Arctic obsahu. |
-| 2 | Reference UX reset | P0 | Teď local zavádí standalone detailní stránky, které Figma neprokazuje; single detail je pouze klientské rozhodnutí / nový mini-scope. |
-| 3 | Media/asset mapping | P0 | Prázdné obrázky a špatné assety ničí většinu stránek; chybějící owner assety se nesmí domýšlet. |
-| 4 | Shared visual components | P0 | Showroom, CTA/footer, configurator, popup a cards se opakují napříč webem. |
-| 5 | Page-specific P0 stránky | P0 | Záruka, údržba, kontakt, o nás, showroom, produkt detail mají vlastní větší odchylky. |
-| 6 | Mobile/responsive parity | P0/P1 | Mobile homepage a menu musí sedět po velkých strukturálních opravách. |
-| 7 | QA/sign-off automation | P1 | Aby se znovu nestalo, že gate projde a vizuál je mimo. |
+| 2 | Component architecture hardening | P0 | Nejdřív zastavit drift opakovaných bloků. Stejný prvek nesmí mít tři ručně lepené CSS implementace podle stránky. |
+| 3 | Reference UX reset | P0 | Teď local zavádí standalone detailní stránky, které Figma neprokazuje; single detail je pouze klientské rozhodnutí / nový mini-scope. Součástí je sjednocení reference componentu globálně. |
+| 4 | Media/asset mapping | P0 | Prázdné obrázky a špatné assety ničí většinu stránek; chybějící owner assety se nesmí domýšlet. |
+| 5 | Shared visual components | P0 | Showroom, CTA/footer, configurator, popup a cards se opakují napříč webem. |
+| 6 | Page-specific P0 stránky | P0 | Záruka, údržba, kontakt, o nás, showroom, produkt detail mají vlastní větší odchylky. |
+| 7 | Mobile/responsive parity | P0/P1 | Mobile homepage a menu musí sedět po velkých strukturálních opravách. |
+| 8 | QA/sign-off automation | P1 | Aby se znovu nestalo, že gate projde a vizuál je mimo. |
 
 ## Repair Wave 0 - Freeze a bezpečnostní baseline
 
@@ -90,11 +93,51 @@ Cíl: zabránit opakování špatného výkladu zdrojů.
 | Každý nález má typ chyby. | P0/P1 tabulka je kategorizovaná. |
 | Figma vs content konflikty mají rozhodovací pravidlo. | Figma = UX/vizuál, old Arctic = obsah, Baspa = workflow. |
 
+## Architektonická brána před Wave 2+
+
+Priorita: P0  
+Typ: component architecture / CSS contract cleanup  
+Cíl: zastavit opakované opravování stejného prvku na více stránkách.
+
+Tahle brána platí pro PR-B a všechny další visual/component PR. Neopravovat jeden výskyt komponenty izolovaně, pokud stejný HTML/CSS pattern existuje na dalších stránkách.
+
+### Zjištěný anti-pattern
+
+| Problém | Dopad |
+|---|---|
+| Sdílený PHP template existuje, ale vzhled se ručně přepisuje přes page-specific selektory. | Oprava homepage se automaticky nepropíše do `/virivky/`, `/swimspa/`, product detailu atd. |
+| Stejná komponenta má samostatné CSS bloky pro `.template--homepage`, `.tax-product-category`, `.single-product` a podobné kontexty. | Vzniká drift, větší CSS, složitější cascade a vyšší riziko regresí. |
+| QA kontroluje hlavně stránky, ne komponentu ve všech místech použití. | Gate může projít pro jednu stránku, zatímco stejný prvek zůstane rozbitý jinde. |
+
+### Povinný postup pro opakované prvky
+
+| Krok | Akce | Výstup |
+|---:|---|---|
+| 1 | Najít všechny výskyty opakovaného prvku. | usage map: template + CSS selectors + screenshot evidence |
+| 2 | Určit jeden canonical template a jeden canonical CSS contract. | např. `reference recent carousel`, `reference archive grid`, `showroom panel`, `contact CTA` |
+| 3 | Povolit jen pojmenované varianty. | `recent-carousel`, `archive-grid`, `product-context`, ne náhodný page override |
+| 4 | Přesunout společná pravidla z page-specific bloků do component contractu. | méně duplicit v `_components.less`, jasnější `_component-contracts.less` nebo component LESS |
+| 5 | Page-specific CSS nechat jen pro layoutové umístění celé sekce. | stránka řeší pořadí/mezery, ne vnitřní card/button/overlay pravidla |
+| 6 | Přidat QA guard, že komponenta sedí ve všech použitích. | homepage + category + product + archive podle typu komponenty |
+
+### Acceptance criteria
+
+| Kritérium | Ověření |
+|---|---|
+| Žádný sdílený P0/P1 prvek není opravovaný jen pro jednu stránku. | diff + usage map |
+| Každá opakovaná komponenta má canonical contract a seznam povolených variant. | docs nebo comment v component source |
+| Page-specific override má vysvětlený důvod. | krátká poznámka v PR/fix evidence |
+| QA se ptá komponentově i stránkově. | screenshot matrix zahrnuje všechny výskyty daného componentu |
+
 ## Repair Wave 2 - Reference UX reset
 
 Priorita: P0  
 Typ: template + seed + interaction  
-Cíl: reference nejsou defaultně standalone detailní stránky. Výchozí implementace má odpovídat archive/grid + případný lightbox/popup/fotogalerie záměr. Samostatný detail reference je legitimní jen po explicitním potvrzení klientem/vlastníkem.
+Cíl: reference nejsou defaultně standalone detailní stránky a zároveň nesmí být udržované jako několik různých page-specific implementací. Výchozí implementace má odpovídat archive/grid + případný lightbox/popup/fotogalerie záměr. Samostatný detail reference je legitimní jen po explicitním potvrzení klientem/vlastníkem.
+
+Poznámka k architektuře: PR-B musí nejdřív sjednotit reference component contract pro homepage, kategorii, product detail a `/reference/` archive. Až potom se řeší konkrétní UX archive/lightbox reset. Jinak se stejná chyba bude vracet v dalších výskytech.
+
+Scope poznámka: usage map pro reference component je netriviální krok. `.template--homepage`, `.tax-product-category`, `.single-product` a `/reference/` archive dohromady obsahují stovky řádků page-specific CSS pro stejný opakovaný prvek. PR-B proto plánovat jako větší refaktor component contractu, ne jako kosmetickou úpravu.
 
 ### Rozhodovací rámec
 
@@ -124,13 +167,16 @@ Figma/old Arctic záměr:
 | Krok | Akce | Soubory |
 |---:|---|---|
 | 1 | Změnit seed default na `reference_single = 0` pro výchozí Figma UX. | `wp-content/themes/arctic/tools/seed-pilot-content.php` |
-| 2 | Upravit `template-references.php`, aby karta defaultně nevedla na permalink. | `wp-content/themes/arctic/template-references.php` |
-| 3 | U referencí s fotkou použít PhotoSwipe/lightbox trigger nebo Figma-like popup, pokud je pro kartu galerie. | `template-references.php`, reference listing templates |
-| 4 | Pokud karta nemá galerii, zůstane vizuální karta bez falešného linku. | `template-references.php` |
-| 5 | `single-reference.php` ponechat jako technický/admin fallback, ale neodkazovat na něj z veřejného gridu. | `single-reference.php`, templates |
-| 6 | Noindex/redirect pro `/project/...` řešit až po rozhodnutí vlastníka; bez potvrzení jen odstranit veřejné odkazy. | `modules/references/type.php`, redirect logic |
-| 7 | Opravit metadata/pilulky a overlay tak, aby real content seděl do Figma karty. | LESS/CSS reference card styles |
-| 8 | Přidat QA check, že `/reference/` neobsahuje `href="/project/` pro běžné karty. | `tools/*audit*` |
+| 2 | Udělat usage map všech reference výskytů: homepage, `/virivky/`, `/swimspa/`, product detail, `/reference/`. | templates + LESS selectors + screenshots |
+| 3 | Sjednotit canonical reference component contract a pojmenované varianty (`recent-carousel`, `archive-grid`, `product-context`). | reference template/LESS contract |
+| 4 | Přesunout duplicitní page-specific reference CSS do component contractu; page-specific ponechat jen pro umístění celé sekce. | `_components.less`, `_component-contracts.less`, module LESS |
+| 5 | Upravit `template-references.php`, aby karta defaultně nevedla na permalink. | `wp-content/themes/arctic/template-references.php` |
+| 6 | U referencí s fotkou použít PhotoSwipe/lightbox trigger nebo Figma-like popup, pokud je pro kartu galerie. | `template-references.php`, reference listing templates |
+| 7 | Pokud karta nemá galerii, zůstane vizuální karta bez falešného linku. | `template-references.php` |
+| 8 | `single-reference.php` ponechat jako technický/admin fallback, ale neodkazovat na něj z veřejného gridu. | `single-reference.php`, templates |
+| 9 | Noindex/redirect pro `/project/...` řešit až po rozhodnutí vlastníka; bez potvrzení jen odstranit veřejné odkazy. | `modules/references/type.php`, redirect logic |
+| 10 | Opravit metadata/pilulky a overlay tak, aby real content seděl do Figma karty napříč všemi výskyty. | LESS/CSS reference card styles |
+| 11 | Přidat QA check, že `/reference/` neobsahuje `href="/project/` pro běžné karty a že recent reference component sedí ve všech použitích. | `tools/*audit*` |
 
 ### Acceptance criteria
 
@@ -139,6 +185,7 @@ Figma/old Arctic záměr:
 | `/reference/` nevytváří povinné detailní URL pro každou kartu, pokud klient nepotvrdil portfolio detail jako nový scope. | HTML smoke + source decision note. |
 | Klik na fotku otevírá lightbox/popup, pokud je galerie. | Playwright interaction smoke. |
 | Reference se skládají jako grid/listing podle Figmy. | Screenshot diff. |
+| Reference recent carousel je jeden sdílený component contract, ne tři page-specific kopie. | usage map + CSS diff. |
 | Obsah referencí vychází z old Arctic/owner, ne z Figma placeholderu. | Content parity check. |
 | Pokud klient chce `/project/...`, existuje samostatný mini-scope s wireframem, obsahem a QA. | Sign-off doc. |
 
@@ -202,6 +249,24 @@ Typ: CSS/LESS + template komponenty
 Cíl: opravit věci, které se opakují napříč stránkami.
 
 Poznámka ke scope: Wave 4 až Wave 6 nejsou jen drobné bugfixy. Jsou to podstatné vizuální a strukturální opravy sdílených komponent a stránek. Pokud chybí owner assety nebo rozhodnutí, implementuje se pouze kódová připravenost a dostupné části; finální vizuální pass čeká na podklady.
+
+Architektonická poznámka: Wave 4 se nesmí dělat jako sada lokálních patchů pro jednotlivé stránky. Každý opakovaný blok musí nejdřív dostat canonical component contract, usage map a pojmenované varianty. Teprve potom se ladí konkrétní stránkové umístění.
+
+### 4-0 - Component contract cleanup
+
+| Akce | Soubory |
+|---|---|
+| Auditovat opakované bloky: reference, showroom, contact CTA/footer, configurator, progress, product cards. | templates + `_components.less` + `_component-contracts.less` |
+| Najít duplicitní page-specific CSS implementace pro stejný component. | `.template--homepage`, `.tax-product-category`, `.single-product`, page-template selektory |
+| Přesunout společný vzhled do component contractu a ponechat page-specific CSS jen pro layoutové umístění. | LESS/CSS component layer |
+| Přidat screenshot matrix podle componentu, ne jen podle stránky. | QA docs/tools |
+
+Acceptance:
+
+| Kritérium | Ověření |
+|---|---|
+| Oprava sdíleného componentu se propíše do všech jeho výskytů bez dalšího ručního kopírování. | diff + screenshot matrix |
+| CSS objem a cascade pro opakované prvky neroste page-by-page. | selector audit |
 
 ### 4A - CTA/footer handoff
 
@@ -467,15 +532,17 @@ Cíl: už nikdy neoznačit rozbitou stránku jako pass jen kvůli token/geometry
 | PR | Název | Obsah | Blokuje |
 |---|---|---|---|
 | PR-A | Source rules + audit errata | Master plan link, source-role checklist, audit errata. | všechny další |
-| PR-B | Reference archive/lightbox reset | Default archive/grid podle Figmy, žádný standalone detail bez klientského potvrzení, případný popup/lightbox, QA guard. | product/home references |
+| PR-B | Reference component contract + archive/lightbox reset | Nejprve sjednotit reference component napříč homepage/kategoriemi/product detailem/archive, odstranit page-specific CSS drift; potom default archive/grid podle Figmy, žádný standalone detail bez klientského potvrzení, případný popup/lightbox, QA guard. | product/home references |
 | PR-C | Asset mapping and fallbacks | Asset source map, dostupné product images, dostupné swatche/team/contact/showroom assets, services fallback policy, `WAITING_ON_OWNER` položky. | visual komponenty |
-| PR-D | Shared components parity | Footer handoff, showroom collage, configurator banner, popup pattern; finální media pass jen s dostupnými assety. | page-specific polish |
+| PR-D | Shared component contracts parity | Globální component contract cleanup pro footer/contact CTA, showroom collage, configurator banner, progress, popup pattern a cards; page-specific CSS jen pro umístění; finální media pass jen s dostupnými assety. | page-specific polish |
 | PR-E | Product/category parity | Product cards, detail hero, swatches, mega menu, swimspa text; asset-dependent části podle PR-C. | final visual QA |
 | PR-F | Special pages P0 | Warranty, maintenance, contact, about, showroom, service; owner-asset části mohou zůstat čekací. | final visual QA |
 | PR-G | Support/download/mobile polish | support/download compactness, mobile HP/menu. | final sign-off |
 | PR-H | Final QA/sign-off | screenshot matrix, automation guardy, docs. | release |
 
 ## Page-by-page checklist
+
+Tahle tabulka je validační checklist, ne implementační strategie. Pokud se stejný problém opakuje ve sdílené komponentě, řeší se globálně v component contractu a stránkový checklist jen potvrzuje všechny výskyty.
 
 | Stránka | P0 opravy | P1 opravy | Zdroj obsahu |
 |---|---|---|---|
@@ -502,6 +569,7 @@ Cíl: už nikdy neoznačit rozbitou stránku jako pass jen kvůli token/geometry
 |---|---|
 | Source correctness | Žádný viditelný text není Figma lorem, Baspa marketing copy nebo vymyšlený placeholder, pokud má existovat old/owner zdroj. |
 | UX correctness | Figma wireframe stavy jsou respektované: popup, accordion, slider, archive/grid. |
+| Component architecture correctness | Opakované prvky mají jeden canonical template/CSS contract a jasné varianty; stránkové selektory nepřepisují vnitřní vzhled komponenty jako hlavní zdroj pravdy. |
 | Visual correctness | Figma grafika sedí ve sdílených komponentech a stránkách bez P0 rozdílů. |
 | Media correctness | Žádné prázdné image bloky, žádné nevhodné fallback ikony, žádné roztažené thumbnails. |
 | Functional correctness | Klikatelné prvky něco dělají; neklikatelné prvky tak nevypadají. |
@@ -510,24 +578,26 @@ Cíl: už nikdy neoznačit rozbitou stránku jako pass jen kvůli token/geometry
 
 ## Doporučení pro implementaci
 
-Nedělat to stránku po stránce odshora dolů. To by vedlo k dalším lokálním hackům.
+Nedělat to stránku po stránce odshora dolů. To by vedlo k dalším lokálním hackům, duplicitnímu CSS a regresím, kde oprava homepage neopraví stejný prvek na kategorii nebo detailu.
 
 Správný postup:
 
 1. Nejprve reference/source logic.
-2. PR-B implementovat jako Figma-default archive/grid; single reference řešit pouze po klientském potvrzení.
-3. Potom asset mapping, ale jen s tím, co existuje nebo je dodané; zbytek označit `WAITING_ON_OWNER`.
-4. Potom shared komponenty.
-5. Potom special pages.
-6. Nakonec mobile/responsive a final sign-off.
+2. Před PR-B udělat component architecture gate: usage map, canonical contract, pojmenované varianty.
+3. PR-B implementovat jako reference component contract + Figma-default archive/grid; single reference řešit pouze po klientském potvrzení.
+4. Potom asset mapping, ale jen s tím, co existuje nebo je dodané; zbytek označit `WAITING_ON_OWNER`.
+5. Potom shared komponenty globálně, ne stránku po stránce.
+6. Potom special pages.
+7. Nakonec mobile/responsive a final sign-off.
 
 Praktický start:
 
 | Krok | Doporučení |
 |---:|---|
 | 1 | Začít PR-A, protože narovnává pravidla a brání dalšímu zmatku. |
-| 2 | Pokračovat PR-B s výchozím UX: reference na jedné stránce, případně popup/lightbox, žádné domyšlené single detaily. |
-| 3 | Rozjet PR-C pouze pro assety, které reálně máme; zbytek se dokumentuje jako čekající na owner podklady. |
-| 4 | Wave 4-6 plánovat jako větší práci s otevřenou timeline, ne jako drobné dokončovací fixy. |
+| 2 | Před PR-B udělat usage map referencí a sjednotit reference component contract napříč homepage, kategoriemi, product detailem a `/reference/`. |
+| 3 | Pokračovat PR-B s výchozím UX: reference na jedné stránce, případně popup/lightbox, žádné domyšlené single detaily. |
+| 4 | Rozjet PR-C pouze pro assety, které reálně máme; zbytek se dokumentuje jako čekající na owner podklady. |
+| 5 | Wave 4-6 plánovat jako větší globální komponentovou práci s otevřenou timeline, ne jako drobné dokončovací fixy. |
 
 Každá vlna má po dokončení vygenerovat screenshoty a krátký `fix evidence` zápis, jinak se nebude dát zpětně poznat, co je skutečně hotové.
