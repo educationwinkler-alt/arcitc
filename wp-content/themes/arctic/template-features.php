@@ -12,7 +12,7 @@ $features      = array(
 		'url'         => home_url( '/vlastnosti/izolace-virivky/' ),
 	),
 	array(
-		'id'          => 'zaruka',
+		'id'          => 'skorepina',
 		'title'       => 'Záruka na skořepinu',
 		'description' => 'Doživotní záruka na vodotěsnost skořepiny, nejdůležitější součást vířivky.',
 		'url'         => home_url( '/zaruka/' ),

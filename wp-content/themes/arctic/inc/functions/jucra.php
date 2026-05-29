@@ -254,6 +254,19 @@ if ( !function_exists( 'arctic_jucra_filter_sale_menu_items' ) ) {
 			$title = isset( $item->title ) ? wp_strip_all_tags( (string)$item->title ) : '';
 			$url   = isset( $item->url ) ? (string)$item->url : '';
 
+			if ( preg_match( '#/swimspa/?#i', $url ) ) {
+				$url = preg_replace( '/#serie-(core|classic|custom)$/i', '#serie-swimspa', $url );
+			}
+
+			if ( preg_match( '#/podpora/?#i', $url ) ) {
+				$url = preg_replace( '/#servis$/i', '#servisni-formular', $url );
+			}
+
+			if ( $url !== ( isset( $item->url ) ? (string)$item->url : '' ) ) {
+				$item->url                 = $url;
+				$sorted_menu_items[$index] = $item;
+			}
+
 			$is_sale_item = strpos( strtolower( remove_accents( $title ) ), 'vyprodej' ) !== false || stripos( $url, '#vyprodej' ) !== false;
 			if ( !$is_sale_item ) {
 				continue;
@@ -261,6 +274,7 @@ if ( !function_exists( 'arctic_jucra_filter_sale_menu_items' ) ) {
 
 			if ( $is_root_homepage ) {
 				$item->title               = 'Akční nabídka';
+				$item->url                 = preg_replace( '/#vyprodej.*$/i', '', $url ) ?: home_url( '/virivky/' );
 				$sorted_menu_items[$index] = $item;
 			} else {
 				unset( $sorted_menu_items[$index] );

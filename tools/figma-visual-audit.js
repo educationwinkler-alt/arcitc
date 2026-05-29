@@ -319,6 +319,139 @@ async function assertNoHorizontalOverflow(page, label) {
   }
 }
 
+async function assertInteractiveToggleContract(page, selector, label) {
+  const locator = page.locator(selector).first();
+  const count = await locator.count();
+
+  if (!count) {
+    throw new Error(`${label}: missing interactive toggle ${selector}`);
+  }
+
+  const tagName = await locator.evaluate((element) => element.tagName.toLowerCase());
+  const role = await locator.getAttribute('role');
+  const tabIndex = await locator.getAttribute('tabindex');
+  const controls = await locator.getAttribute('aria-controls');
+  const initialExpanded = await locator.getAttribute('aria-expanded');
+
+  if (!['button', 'summary'].includes(tagName) && role !== 'button') {
+    throw new Error(`${label}: expected real button/summary or role="button", got <${tagName}> role="${role}"`);
+  }
+
+  if (!['button', 'summary'].includes(tagName) && tabIndex !== '0') {
+    throw new Error(`${label}: custom toggle must be keyboard focusable with tabindex="0"`);
+  }
+
+  if (!controls) {
+    throw new Error(`${label}: missing aria-controls`);
+  }
+
+  if (!['true', 'false'].includes(initialExpanded || '')) {
+    throw new Error(`${label}: missing boolean aria-expanded`);
+  }
+
+  const panel = page.locator(`[id="${controls}"]`).first();
+  if (!await panel.count()) {
+    throw new Error(`${label}: aria-controls target #${controls} is missing`);
+  }
+
+  await locator.click();
+  await page.waitForTimeout(80);
+
+  const expandedAfterClick = await locator.getAttribute('aria-expanded');
+  if (expandedAfterClick === initialExpanded) {
+    throw new Error(`${label}: click did not toggle aria-expanded`);
+  }
+
+  const panelHiddenAfterClick = await panel.evaluate((element) => element.hidden);
+  if (panelHiddenAfterClick !== (expandedAfterClick !== 'true')) {
+    throw new Error(`${label}: controlled panel hidden state does not match aria-expanded`);
+  }
+
+  await locator.press('Enter');
+  await page.waitForTimeout(80);
+
+  const expandedAfterKeyboard = await locator.getAttribute('aria-expanded');
+  if (expandedAfterKeyboard === expandedAfterClick) {
+    throw new Error(`${label}: Enter key did not toggle aria-expanded`);
+  }
+}
+
+async function assertInteractiveTabs(page, selector, label) {
+  const tabs = page.locator(selector);
+  const count = await tabs.count();
+
+  if (count < 2) {
+    throw new Error(`${label}: expected at least two filter tabs, got ${count}`);
+  }
+
+  for (let index = 0; index < count; index += 1) {
+    const tab = tabs.nth(index);
+    const tagName = await tab.evaluate((element) => element.tagName.toLowerCase());
+    const role = await tab.getAttribute('role');
+    const selected = await tab.getAttribute('aria-selected');
+
+    if (tagName !== 'button') {
+      throw new Error(`${label}.${index}: expected a real button, got <${tagName}>`);
+    }
+
+    if (role !== 'tab') {
+      throw new Error(`${label}.${index}: expected role="tab"`);
+    }
+
+    if (!['true', 'false'].includes(selected || '')) {
+      throw new Error(`${label}.${index}: expected boolean aria-selected`);
+    }
+  }
+
+  const target = tabs.nth(1);
+  await target.click();
+  await page.waitForTimeout(80);
+
+  const selectedAfterClick = await target.getAttribute('aria-selected');
+  if (selectedAfterClick !== 'true') {
+    throw new Error(`${label}: clicking a filter tab did not set aria-selected="true"`);
+  }
+}
+
+async function assertMajorSectionGapLimit(page, path, width, maxGap, label) {
+  await page.setViewportSize({ width, height: 1100 });
+  await page.goto(`${baseUrl}${path}`, { waitUntil: 'load' });
+  await assertNoHorizontalOverflow(page, `${label}.overflow`);
+
+  const gaps = await page.evaluate(() => {
+    const elements = Array.from(document.querySelectorAll('main > .f-section, main > .f-main, .f-main > .f-section'));
+    const visible = elements
+      .map((element) => {
+        const rect = element.getBoundingClientRect();
+        return {
+          label: [element.tagName.toLowerCase(), element.className].filter(Boolean).join('.'),
+          y: rect.y + window.scrollY,
+          bottom: rect.bottom + window.scrollY,
+          height: rect.height,
+        };
+      })
+      .filter((item) => item.height > 2)
+      .sort((a, b) => a.y - b.y);
+
+    const result = [];
+    for (let index = 1; index < visible.length; index += 1) {
+      result.push({
+        from: visible[index - 1].label,
+        to: visible[index].label,
+        gap: visible[index].y - visible[index - 1].bottom,
+      });
+    }
+
+    return result.filter((gap) => gap.gap > 1);
+  });
+
+  const oversized = gaps.filter((gap) => gap.gap > maxGap);
+  if (oversized.length) {
+    const details = oversized.map((gap) => `${round(gap.gap)}px between ${gap.from} and ${gap.to}`).join('; ');
+    throw new Error(`${label}: major vertical section gap exceeds ${maxGap}px (${details})`);
+  }
+}
+
 async function assertHiddenBox(page, selector, label) {
   const locator = page.locator(selector).first();
   const count = await locator.count();
@@ -1588,6 +1721,25 @@ async function auditInfoSupportCompact1097(page) {
   assertBetween(supportFormToContactGap, 120, 220, 'pr7c:1097:support.formToContactGap');
 }
 
+async function auditPr7EQualityGuards(page) {
+  await page.setViewportSize({ width: 1440, height: 1100 });
+  await page.goto(`${baseUrl}/podpora/`, { waitUntil: 'networkidle' });
+  await assertInteractiveToggleContract(page, '[data-support-faq-card]:nth-child(2)', 'pr7e.support.faqToggle');
+  await page.goto(`${baseUrl}/podpora/`, { waitUntil: 'networkidle' });
+  await assertInteractiveTabs(page, '[data-support-filter]', 'pr7e.support.filters');
+
+  await page.goto(`${baseUrl}/ke-stazeni/`, { waitUntil: 'networkidle' });
+  await assertInteractiveToggleContract(page, '[data-download-group]:nth-child(2) [data-download-group-toggle]', 'pr7e.downloads.groupToggle');
+  await page.goto(`${baseUrl}/ke-stazeni/`, { waitUntil: 'networkidle' });
+  await assertInteractiveTabs(page, '[data-download-filter]', 'pr7e.downloads.filters');
+
+  for (const width of [1920, 1097]) {
+    for (const path of ['/zaruka/', '/kolik-stoji-udrzba/', '/podpora/', '/ke-stazeni/', '/sluzby/', '/reference/']) {
+      await assertMajorSectionGapLimit(page, path, width, width >= 1400 ? 260 : 300, `pr7e.blankGap:${width}:${path}`);
+    }
+  }
+}
+
 async function auditReferenceDesktop(page) {
   await page.setViewportSize({ width: 1920, height: 1080 });
   await page.goto(`${baseUrl}/reference/`, { waitUntil: 'load' });
@@ -1724,6 +1876,7 @@ async function auditSharedFooterDesktop(page) {
     await auditFigmaInfoPagesDesktop(page);
     await auditSupportDesktop(page);
     await auditInfoSupportCompact1097(page);
+    await auditPr7EQualityGuards(page);
     await auditReferenceDesktop(page);
     await auditAboutDesktop(page);
     await auditServiceRequestDesktop(page);

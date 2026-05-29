@@ -47,9 +47,34 @@ function extractLinks(html) {
   return links;
 }
 
+function decodeHtmlAttribute(value) {
+  return value
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
+}
+
+function extractAnchorTargets(html) {
+  const targets = new Set();
+  const pattern = /\s(id|name)=["']([^"']+)["']/gi;
+  let match;
+
+  while ((match = pattern.exec(html)) !== null) {
+    const value = decodeHtmlAttribute(match[2]).trim();
+    if (value) {
+      targets.add(value);
+    }
+  }
+
+  return targets;
+}
+
 function shouldIgnore(rawUrl) {
   return (
-    rawUrl.startsWith('#') ||
+    rawUrl === '#' ||
     rawUrl.startsWith('mailto:') ||
     rawUrl.startsWith('tel:') ||
     rawUrl.startsWith('javascript:') ||
@@ -107,6 +132,27 @@ async function fetchPage(path) {
   return response.text();
 }
 
+async function fetchHtmlForUrl(url, sourcePath, pageHtmlCache) {
+  if (pageHtmlCache.has(url)) {
+    return pageHtmlCache.get(url);
+  }
+
+  let response;
+  try {
+    response = await fetchWithTimeout(url, { redirect: 'follow' });
+  } catch (error) {
+    throw new Error(`${sourcePath} links to unreachable internal URL ${url} (${error.name})`);
+  }
+
+  if (response.status >= 400) {
+    throw new Error(`${sourcePath} links to broken internal URL ${url} (${response.status})`);
+  }
+
+  const html = await response.text();
+  pageHtmlCache.set(url, html);
+  return html;
+}
+
 async function checkInternalUrl(url, sourcePath) {
   if (debug) {
     console.error(`Checking link ${url}`);
@@ -131,13 +177,33 @@ async function checkInternalUrl(url, sourcePath) {
   }
 }
 
+async function checkFragmentTarget(link, pageHtmlCache) {
+  const target = decodeURIComponent(link.hash.slice(1)).trim();
+
+  if (!target) {
+    return;
+  }
+
+  const html = await fetchHtmlForUrl(link.targetUrl, link.sourcePath, pageHtmlCache);
+  const anchors = extractAnchorTargets(html);
+
+  if (!anchors.has(target)) {
+    throw new Error(`${link.sourcePath} links to missing anchor ${link.rawUrl} on ${link.targetUrl}`);
+  }
+}
+
 (async () => {
   const base = new URL(baseUrl);
   const internalUrls = new Map();
+  const fragmentLinks = [];
+  const pageHtmlCache = new Map();
   const forbiddenExternal = new Map();
 
   for (const path of entryPaths) {
     const html = await fetchPage(path);
+    const entryUrl = new URL(path, baseUrl);
+    entryUrl.hash = '';
+    pageHtmlCache.set(entryUrl.href, html);
 
     for (const link of extractLinks(html)) {
       if (shouldIgnore(link.url)) {
@@ -158,8 +224,18 @@ async function checkInternalUrl(url, sourcePath) {
       }
 
       if (link.attribute === 'href' && host === base.hostname && url.port === base.port && isPageLikeUrl(url)) {
+        const hash = url.hash;
         url.hash = '';
         internalUrls.set(url.href, path);
+
+        if (hash) {
+          fragmentLinks.push({
+            rawUrl: link.url,
+            sourcePath: path,
+            targetUrl: url.href,
+            hash,
+          });
+        }
       }
     }
   }
@@ -174,7 +250,11 @@ async function checkInternalUrl(url, sourcePath) {
     await Promise.all(urls.slice(index, index + 8).map(([url, sourcePath]) => checkInternalUrl(url, sourcePath)));
   }
 
-  console.log(`Link smoke passed for ${entryPaths.length} entry pages and ${internalUrls.size} internal URLs.`);
+  for (let index = 0; index < fragmentLinks.length; index += 8) {
+    await Promise.all(fragmentLinks.slice(index, index + 8).map((link) => checkFragmentTarget(link, pageHtmlCache)));
+  }
+
+  console.log(`Link smoke passed for ${entryPaths.length} entry pages, ${internalUrls.size} internal URLs, and ${fragmentLinks.length} anchor targets.`);
 })().catch((error) => {
   console.error(error.message);
   process.exit(1);

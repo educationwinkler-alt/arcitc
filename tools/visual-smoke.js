@@ -146,6 +146,19 @@ const legacyPromoTexts = [
   'Výprodej bazénů',
 ];
 
+const legacyCzechFallbackTexts = [
+  'Servisni formular',
+  'Dokumenty ke stazeni',
+  'Dokument Arctic Spas, PDF ke stazeni.',
+  'Navstivit showroom',
+  'Nezavazna konzultace',
+  'Kontaktni formular',
+  'Casto kladene dotazy',
+  'Kategorie dotazu',
+  'Vystavni plocha',
+  'Nas tym',
+];
+
 function isAllowedLegalEntity(path, html) {
   return path === '/kontakt/' && html.includes('BASPA s.r.o.');
 }
@@ -185,6 +198,11 @@ function isAllowedLegalEntity(path, html) {
       const legacyPromoHits = legacyPromoTexts.filter((text) => html.includes(text));
       if (legacyPromoHits.length) {
         hits.push(...legacyPromoHits);
+      }
+      const visibleText = await page.locator('body').innerText();
+      const legacyCzechHits = legacyCzechFallbackTexts.filter((text) => visibleText.includes(text));
+      if (legacyCzechHits.length) {
+        hits.push(...legacyCzechHits.map((text) => `legacy Czech fallback "${text}"`));
       }
       if (hits.length) {
         throw new Error(`${path} contains forbidden strings: ${hits.join(', ')}`);

@@ -458,10 +458,10 @@ Task board checklist + DoD:
   - DoD: services cards are visually distinct and reference fallback behavior is explicit, deterministic, and sign-off safe.
   - Verification (2026-05-29): `template-services.php` now keeps per-card photo slots optional and resolves fallbacks in deterministic order: custom image -> local service photo fallback (`uploads/import/legacy-services/*.jpg`). This keeps service card geometry intact while avoiding unrelated imagery. `template-references.php` no longer clone-fills existing reference cards and instead injects explicit placeholder cards (`f-reference-card--placeholder`, `Ukázková karta`) until the fixed 9-card layout is filled. QA passed with `npm run figma:audit`, `npm run visual:smoke`, and full `npm run qa:local`; manual screenshot evidence captured at `docs/screenshots/phase-7d-services-desktop-1920-2026-05-29-content-fallback-photos.png` and `docs/screenshots/phase-7d-references-desktop-1920-2026-05-29.png`.
 
-- [ ] PR7E QA hardening + manual sign-off reopen for content/language/function
+- [x] PR7E QA hardening + manual sign-off reopen for content/language/function
   - Scope: extend automated QA for dead anchors, fake-interactive affordances, Czech default-copy quality, and large blank-gap guardrails; reopen and close manual sign-off for the affected pages.
   - DoD: newly reported issues are covered by automated checks and linked to updated manual sign-off evidence.
-  - Verification: `npm run figma:audit`, `npm run visual:smoke`, `npm run qa:local` all pass; updated sign-off doc references new screenshot pack.
+  - Verification (2026-05-29): `tools/link-smoke.js` now validates internal fragment anchors, `tools/visual-smoke.js` blocks visible legacy ASCII Czech fallback copy, and `tools/figma-visual-audit.js` verifies support/download interaction affordances plus major section gap limits at desktop and compact-laptop widths. Stale menu anchors are normalized for retired sale/swimspa/support targets. Screenshot/manual sign-off evidence is recorded in `docs/phase-5d-pr7e-manual-signoff-2026-05-29.md`; `npm run figma:audit`, `npm run visual:smoke`, and `npm run qa:local` passed.
 
 - [ ] PR7F support/download desktop composition + product-series-nav parity
   - Scope: replace hardcoded `a:nth-child(...)` widths in product series nav with an intrinsic/flex contract; fix `/podpora/` desktop two-column composition and `/ke-stazeni/` row action alignment so long real data does not break parity.
