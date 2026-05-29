@@ -533,6 +533,56 @@ async function assertDownloadRowsAttached(page, label) {
   }
 }
 
+async function assertDownloadGroupHeadersReadable(page, label) {
+  const metrics = await page.locator('.f-downloads--support-figma [data-download-group]').evaluateAll((groups) => groups.slice(0, 3).map((group) => {
+    const groupRect = group.getBoundingClientRect();
+    const header = group.querySelector('.f-download-group__header');
+    const title = group.querySelector('h3');
+    const tag = group.querySelector('.f-download-group__tag');
+    const headerRect = header?.getBoundingClientRect();
+    const titleRect = title?.getBoundingClientRect();
+    const tagRect = tag?.getBoundingClientRect();
+    const titleRange = document.createRange();
+
+    if (title) {
+      titleRange.selectNodeContents(title);
+    }
+
+    return {
+      group: { width: groupRect.width },
+      header: headerRect ? { width: headerRect.width, height: headerRect.height } : null,
+      title: titleRect ? { y: titleRect.y, width: titleRect.width, height: titleRect.height, lineRects: titleRange.getClientRects().length } : null,
+      tag: tagRect ? { x: tagRect.x, y: tagRect.y, width: tagRect.width, height: tagRect.height } : null,
+    };
+  }));
+
+  if (!metrics.length) {
+    throw new Error(`${label}: missing download groups`);
+  }
+
+  for (const [index, metric] of metrics.entries()) {
+    if (!metric.header || !metric.title || !metric.tag) {
+      throw new Error(`${label}.${index}: download group header is missing title or tag`);
+    }
+
+    if (metric.header.width < metric.group.width - 100) {
+      throw new Error(`${label}.${index}: header collapsed to ${round(metric.header.width)}px inside ${round(metric.group.width)}px group`);
+    }
+
+    if (metric.title.width < 120) {
+      throw new Error(`${label}.${index}: title column collapsed to ${round(metric.title.width)}px`);
+    }
+
+    if (metric.title.lineRects > 1 || metric.title.height > 40) {
+      throw new Error(`${label}.${index}: title wraps/flows vertically (${metric.title.lineRects} lines, ${round(metric.title.height)}px high)`);
+    }
+
+    if (metric.tag.y > metric.title.y + metric.title.height + 8) {
+      throw new Error(`${label}.${index}: tag dropped below title`);
+    }
+  }
+}
+
 async function assertHiddenBox(page, selector, label) {
   const locator = page.locator(selector).first();
   const count = await locator.count();
@@ -1728,6 +1778,8 @@ async function auditSupportDesktop(page) {
   await assertBox(page, '.f-downloads--support-figma', { x: 260, y: 2109, width: 1045, height: 735 }, 8, 'support.downloadsList');
   await assertBox(page, '.f-download-group:nth-child(1)', { x: 260, y: 2109, width: 1045, height: 503 }, 4, 'support.downloadGroupOpen');
   await assertBox(page, '.f-download-card:nth-child(1)', { x: 344, y: 2202, width: 934, height: 118 }, 4, 'support.downloadCardOne');
+  await assertComputedStyle(page, '.page-template-template-support .f-download-card:nth-child(1)', 'background-color', 'rgb(223, 231, 240)', 'support.downloadCardBackground');
+  await assertDownloadGroupHeadersReadable(page, 'support.downloadGroupHeaders');
 
   const supportFormSection = await box(page, '.f-section--support-form', 'support.formSection');
   assertClose(supportFormSection.x, 0, 4, 'support.formSection.x');
@@ -1837,7 +1889,7 @@ async function auditPr7EQualityGuards(page) {
 }
 
 async function auditPr7FComposition(page) {
-  for (const width of [1920, 1600, 1366, 1097]) {
+  for (const width of [1920, 1600, 1478, 1366, 1097]) {
     for (const path of ['/virivky/', '/swimspa/']) {
       await page.setViewportSize({ width, height: 1100 });
       await page.goto(`${baseUrl}${path}`, { waitUntil: 'load' });
@@ -1869,10 +1921,12 @@ async function auditPr7FComposition(page) {
     assertBetween(supportMain.width, width >= 1400 ? 1000 : 620, 1050, `pr7f.support:${width}.main.width`);
     assertBetween(supportHelp.width, 260, 300, `pr7f.support:${width}.help.width`);
 
+    await assertDownloadGroupHeadersReadable(page, `pr7f.supportDownloadHeaders:${width}`);
     await assertDownloadRowsAttached(page, `pr7f.supportDownloads:${width}`);
 
     await page.goto(`${baseUrl}/ke-stazeni/`, { waitUntil: 'load' });
     await assertNoHorizontalOverflow(page, `pr7f.downloads:${width}`);
+    await assertDownloadGroupHeadersReadable(page, `pr7f.downloadHeaders:${width}`);
     await assertDownloadRowsAttached(page, `pr7f.downloads:${width}`);
   }
 }
