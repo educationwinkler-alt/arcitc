@@ -4,72 +4,49 @@
  * Contact Directory
  */
 
-$phone = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
-$email = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
-$avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
+$phone_lukas   = '+420 777 099 687';
+$email_lukas   = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
+$phone_vlastik = '+420 602 545 067';
+$email_vlastik = 'vlastimil.zhor@arctic-spas.cz';
+$phone_servis  = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
+$email_servis  = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
 
 $contacts = array(
 	array(
-		'name'  => __( 'Lukáš Dušek', 'baspa' ),
-		'role'  => __( 'Bazénový specialista', 'baspa' ),
-		'scope' => __( 'Prodej vířivek, bazénů a konzultace realizací', 'baspa' ),
-		'email' => $email,
-		'phone' => $phone,
+		'name'     => __( 'Lukáš Dušek', 'baspa' ),
+		'role'     => __( 'Obchodní konzultant', 'baspa' ),
+		'scope'    => __( 'Prodej vířivek, bazénů a konzultace realizací', 'baspa' ),
+		'email'    => $email_lukas,
+		'phone'    => $phone_lukas,
+		'initials' => 'LD',
 	),
 	array(
-		'name'  => __( 'Showroom Moravany', 'baspa' ),
-		'role'  => __( 'Osobní výběr a ukázky', 'baspa' ),
-		'scope' => __( 'Bohunická cesta 15, 664 48 Moravany u Brna', 'baspa' ),
-		'email' => $email,
-		'phone' => $phone,
+		'name'     => __( 'Vlastimil Zhoř', 'baspa' ),
+		'role'     => __( 'Spolumajitel', 'baspa' ),
+		'scope'    => __( 'Maloobchodní prodej a showroom', 'baspa' ),
+		'email'    => $email_vlastik,
+		'phone'    => $phone_vlastik,
+		'initials' => 'VZ',
 	),
 	array(
-		'name'  => __( 'Servisní požadavky', 'baspa' ),
-		'role'  => __( 'Podpora zákazníků', 'baspa' ),
-		'scope' => __( 'Pomoc s provozem, údržbou a technickými dotazy', 'baspa' ),
-		'email' => $email,
-		'phone' => $phone,
+		'name'     => __( 'Servisní tým', 'baspa' ),
+		'role'     => __( 'Podpora zákazníků', 'baspa' ),
+		'scope'    => __( 'Pomoc s provozem, montáž a technické dotazy', 'baspa' ),
+		'email'    => $email_servis,
+		'phone'    => $phone_servis,
+		'initials' => 'ST',
 	),
 );
-
-$contacts = array_merge( $contacts, array(
-	array(
-		'name'  => __( 'Fakturace a logistika', 'baspa' ),
-		'role'  => __( 'Administrace zakázek', 'baspa' ),
-		'scope' => __( 'Dokumenty, fakturace a showroom Moravany', 'baspa' ),
-		'email' => $email,
-		'phone' => $phone,
-	),
-	array(
-		'name'  => __( 'Montáže', 'baspa' ),
-		'role'  => __( 'Realizace a technická příprava', 'baspa' ),
-		'scope' => __( 'Organizace montáží a příprava místa', 'baspa' ),
-		'email' => $email,
-		'phone' => $phone,
-	),
-	array(
-		'name'  => __( 'Příslušenství', 'baspa' ),
-		'role'  => __( 'Doplňky a péče o vodu', 'baspa' ),
-		'scope' => __( 'Termokryty, úprava vody a servisní doplňky', 'baspa' ),
-		'email' => $email,
-		'phone' => $phone,
-	),
-) );
 ?>
 
 <section class="f-section f-section--contact-directory">
 	<div class="f-section__container a-container">
-		<h2><?php echo esc_html__( 'Další důležité kontakty', 'baspa' ); ?></h2>
+		<h2><?php echo esc_html__( 'Kontaktní osoby', 'baspa' ); ?></h2>
 		<div class="f-contact-directory">
-			<?php foreach ( $contacts as $index => $contact ) { ?>
+			<?php foreach ( $contacts as $contact ) { ?>
 				<article class="f-contact-card">
 					<div class="f-contact-card__avatar" aria-hidden="true">
-						<?php if ( 0 === $index ) { ?>
-							<img src="<?php echo esc_url( $avatar ); ?>" alt="" loading="lazy" decoding="async">
-						<?php } else {
-							$initial = function_exists( 'mb_substr' ) ? mb_substr( $contact['name'], 0, 1 ) : substr( $contact['name'], 0, 1 );
-							echo esc_html( $initial );
-						} ?>
+						<?php echo esc_html( $contact['initials'] ); ?>
 					</div>
 					<h3><?php echo esc_html( $contact['name'] ); ?></h3>
 					<p class="f-contact-card__role"><?php echo esc_html( $contact['role'] ); ?></p>

@@ -92,10 +92,7 @@ get_template_part( 'templates/heading' );
 					<a class="a-button a-button--accent" href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>"><?php echo esc_html__( 'Mám zájem', 'baspa' ); ?></a>
 				</article>
 				<article class="f-about-job">
-					<h3><?php echo esc_html__( 'Obchodník na prodejně v Moravanech', 'baspa' ); ?></h3>
-				</article>
-				<article class="f-about-job">
-					<h3><?php echo esc_html__( 'Obchodník na prodejně v Moravanech', 'baspa' ); ?></h3>
+					<h3><?php echo esc_html__( 'Obchodní konzultant na prodejně', 'baspa' ); ?></h3>
 				</article>
 			</div>
 		</div>
