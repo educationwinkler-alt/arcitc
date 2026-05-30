@@ -163,6 +163,14 @@ function isAllowedLegalEntity(path, html) {
   return path === '/kontakt/' && html.includes('BASPA s.r.o.');
 }
 
+function stripAllowedContactEmails(path, html) {
+  if (path !== '/kontakt/') {
+    return html;
+  }
+
+  return html.replace(/[A-Z0-9._%+-]+@baspa\.cz/gi, '');
+}
+
 (async () => {
   const browser = await chromium.launch({ executablePath: chromePath });
 
@@ -186,7 +194,8 @@ function isAllowedLegalEntity(path, html) {
       } catch (error) {
         resolvedPathname = path;
       }
-      const hits = forbidden.filter((needle) => html.includes(needle));
+      const htmlForForbidden = stripAllowedContactEmails(path, html);
+      const hits = forbidden.filter((needle) => htmlForForbidden.includes(needle));
       const mojibakeHits = mojibakeNeedles.filter((needle) => html.includes(needle));
       const brandHits = forbiddenBrand.filter((needle) => htmlWithoutFooter.includes(needle));
       if (brandHits.length && !isAllowedLegalEntity(path, html)) {

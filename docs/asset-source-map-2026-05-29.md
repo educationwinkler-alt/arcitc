@@ -63,6 +63,7 @@ Current PR-C exception: owner swatches and web-sized showroom derivatives are co
 | Area | Status | Source | Implementation |
 | --- | --- | --- | --- |
 | Team/person portraits | `WAITING_ON_OWNER` | No verified team/person photos found in owner archive. | `/o-nas/` renders neutral initials placeholders with `data-asset-status="WAITING_ON_OWNER"`. |
+| Contact directory portraits | `WAITING_ON_OWNER` | No verified owner portraits found for the six contact cards. | `/kontakt/` renders the six Figma contact-frame people, but avatars stay neutral placeholders with `data-asset-status="WAITING_ON_OWNER"` until owner portraits arrive. |
 | Figma team portraits | `design-only` | `wp-content/uploads/import/figma/about-team-*.png` | Removed from `/o-nas/` production rendering. |
 | Contact/footer map images | `usable-fallback` | `wp-content/uploads/import/figma/contact-map-showroom.png`, `footer-map.png` | Allowed only as temporary map/layout fallback until real map/embed scope is handled. |
 

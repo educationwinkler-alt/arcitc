@@ -2139,23 +2139,26 @@ async function auditContactDesktop(page) {
   await assertBox(page, '.f-heading__contacts', { x: 970, y: 220, width: 360, height: 118 }, 3, 'contact.headingContacts');
   await assertBox(page, '.f-heading__buttons', { x: 1424, y: 211, width: 235, height: 126 }, 3, 'contact.headingButtons');
   await assertBox(page, '.f-section--map', { x: 0, y: 430, width: 1920, height: 782 }, 2, 'contact.mapSection');
-  await assertBox(page, '.f-local-map__image', { x: -595, y: 430, width: 3110, height: 782 }, 3, 'contact.mapImage');
+  await assertBox(page, '.f-local-map__image', { x: -867, y: 430, width: 3110, height: 782 }, 3, 'contact.mapImage');
   await assertBox(page, '.f-local-map__card', { x: 260, y: 561, width: 565, height: 491 }, 3, 'contact.mapCard');
   await assertOffsetBox(page, '.f-local-map__pin', { x: 1226, y: 786, width: 42, height: 42 }, 2, 'contact.mapPin');
   await assertBox(page, '.f-contact-card:nth-child(1)', { x: 260, y: 1399, width: 453, height: 280 }, 3, 'contact.cardOne');
   await assertBox(page, '.f-contact-card:nth-child(2)', { x: 733, y: 1399, width: 453, height: 280 }, 3, 'contact.cardTwo');
   await assertBox(page, '.f-contact-card:nth-child(3)', { x: 1206, y: 1399, width: 453, height: 280 }, 3, 'contact.cardThree');
+  await assertBox(page, '.f-contact-card:nth-child(4)', { x: 260, y: 1704, width: 453, height: 280 }, 3, 'contact.cardFour');
+  await assertBox(page, '.f-contact-card:nth-child(5)', { x: 733, y: 1704, width: 453, height: 280 }, 3, 'contact.cardFive');
+  await assertBox(page, '.f-contact-card:nth-child(6)', { x: 1206, y: 1704, width: 453, height: 280 }, 3, 'contact.cardSix');
   const contactCardCount = await page.locator('.f-contact-card').count();
-  if (contactCardCount !== 3) {
-    throw new Error(`contact.cards: expected 3 contact cards, got ${contactCardCount}`);
+  if (contactCardCount !== 6) {
+    throw new Error(`contact.cards: expected 6 contact cards, got ${contactCardCount}`);
   }
   await assertBox(page, '.f-billing-box', { x: 260, y: 2071, width: 507, height: 310 }, 3, 'contact.billing');
   await assertFooterLayout(page, 'contact', 2425);
 
   await assertSourceContains(page, '.f-local-map__image', 'uploads/import/figma/contact-map-showroom.png', 'contact.mapSource');
   const contactAvatarText = (await page.locator('.f-contact-card:nth-child(1) .f-contact-card__avatar').innerText()).trim();
-  if (contactAvatarText !== 'LD') {
-    throw new Error(`contact.cardAvatarInitials: expected LD, got ${contactAvatarText}`);
+  if (contactAvatarText !== 'VZ') {
+    throw new Error(`contact.cardAvatarInitials: expected VZ, got ${contactAvatarText}`);
   }
 }
 

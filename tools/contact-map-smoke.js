@@ -71,6 +71,15 @@ function normalizeRgb(value) {
           cardX: cardBox && mapBox ? cardBox.x - mapBox.x : null,
           cardY: cardBox && mapBox ? cardBox.y - mapBox.y : null,
         },
+        contactCards: Array.from(document.querySelectorAll('.f-contact-card')).map((card) => ({
+          name: card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '',
+          source: card.getAttribute('data-content-source') || '',
+          assetStatus: card.querySelector('.f-contact-card__avatar') ? card.querySelector('.f-contact-card__avatar').getAttribute('data-asset-status') || '' : '',
+          avatarClass: card.querySelector('.f-contact-card__avatar') ? card.querySelector('.f-contact-card__avatar').className : '',
+        })),
+        contactDirectoryHeading: document.querySelector('.f-section--contact-directory .f-section__container > h2')
+          ? document.querySelector('.f-section--contact-directory .f-section__container > h2').textContent.trim()
+          : '',
       };
     });
 
@@ -105,8 +114,27 @@ function normalizeRgb(value) {
     assert(state.text.includes('Moravany u Brna') && state.text.includes('Bohunická cesta 15'), 'contact map card address does not match Figma copy');
     assert(state.text.includes('Úterý - Pátek') && state.text.includes('9:00 - 11:30') && state.text.includes('12:30 - 16:00'), 'contact map card hours do not match Figma copy');
     assert(!state.text.includes('Po - Pá 8:00-17:00 h'), 'contact map still contains old compressed hours copy');
+    assert(state.contactDirectoryHeading === 'Další důležité kontakty', `contact directory heading is "${state.contactDirectoryHeading}"`);
+    assert(state.contactCards.length === 6, `contact directory should render 6 Figma contact cards, got ${state.contactCards.length}`);
 
-    console.log('Contact map smoke passed.');
+    for (const expectedName of [
+      'Vlastimil Zhoř',
+      'Ing. Lukáš Dušek',
+      'Helena Antonyová',
+      'Alena Janulíková',
+      'Bc. Tomáš Koutný',
+      'Pavel Nováček',
+    ]) {
+      assert(state.contactCards.some((card) => card.name === expectedName), `contact directory is missing ${expectedName}`);
+    }
+
+    for (const card of state.contactCards) {
+      assert(card.source === 'figma-contact-frame', `${card.name} source is ${card.source}, expected figma-contact-frame`);
+      assert(card.assetStatus === 'WAITING_ON_OWNER', `${card.name} avatar status is ${card.assetStatus}, expected WAITING_ON_OWNER`);
+      assert(card.avatarClass.includes('f-contact-card__avatar--waiting'), `${card.name} avatar is missing waiting placeholder class`);
+    }
+
+    console.log('Contact page smoke passed.');
   } finally {
     await browser.close();
   }

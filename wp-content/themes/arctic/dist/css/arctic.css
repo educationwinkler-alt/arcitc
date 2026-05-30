@@ -8368,6 +8368,7 @@ body:not(.template--homepage) .f-header__container > .a-flex {
   .page-template-template-contact .f-heading:not(.f-heading--background) {
     height: 430px;
     min-height: 430px;
+    margin-top: -27.1875px;
   }
   .page-template-template-support .f-heading__container,
   .page-template-template-contact .f-heading__container {
@@ -8464,9 +8465,26 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     line-height: 34px;
     font-weight: 700;
   }
+  .page-template-template-contact .f-heading__contacts .f-hours__status {
+    min-height: 17px;
+    padding: 0 0 0 14px;
+    color: var(--arctic-color-menu);
+    font-size: 12px;
+    line-height: 17px;
+    white-space: nowrap;
+    background: transparent;
+    border-radius: 999px;
+    --hours--status--size: 8px;
+    --hours--status--spacing: 0;
+  }
+  .page-template-template-contact .f-heading__contacts .f-hours__status:before,
+  .page-template-template-contact .f-heading__contacts .f-hours__status:after {
+    left: 0;
+  }
   .page-template-template-contact .f-heading__contacts small {
     font-size: 12px;
     line-height: 17px;
+    white-space: nowrap;
   }
   .page-template-template-contact .f-heading__buttons {
     position: absolute;
@@ -9024,7 +9042,15 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     padding: 0;
   }
   .page-template-template-contact .f-section--contact-directory .f-section__container > h2 {
-    display: none;
+    position: absolute;
+    top: 101px;
+    left: 0;
+    display: block;
+    width: 651px;
+    height: 51px;
+    margin: 0;
+    font-size: 36px;
+    line-height: 51px;
   }
   .page-template-template-contact .f-contact-directory {
     position: absolute;
@@ -9052,6 +9078,11 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     height: 81px;
     margin: 0;
     font-size: 28px;
+  }
+  .page-template-template-contact .f-contact-card__avatar--waiting {
+    color: var(--arctic-color-red);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(217, 222, 226, 0.78)), repeating-linear-gradient(-45deg, rgba(9, 23, 36, 0.08) 0 1px, transparent 1px 14px);
+    border: 1px dashed rgba(9, 23, 36, 0.2);
   }
   .page-template-template-contact .f-contact-card__avatar img {
     display: block;

@@ -73,6 +73,20 @@ async function main() {
     ],
   });
 
+  await assertAssetContract('/kontakt/', {
+    required: [
+      'data-content-source="figma-contact-frame"',
+      'data-asset-status="WAITING_ON_OWNER"',
+      'f-contact-card__avatar--waiting',
+    ],
+    forbidden: [
+      'uploads/import/figma/about-team-vladimir.png',
+      'uploads/import/figma/about-team-lukas.png',
+      'uploads/import/figma/about-team-helena.png',
+      'uploads/import/figma/about-team-service.png',
+    ],
+  });
+
   await assertAssetContract('/product/timberwolf/', {
     required: [
       'acrylic-dakota',

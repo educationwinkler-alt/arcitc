@@ -1,0 +1,121 @@
+{
+  "section": {
+    "x": 0,
+    "y": -67,
+    "width": 1920,
+    "height": 1213,
+    "top": -67,
+    "right": 1920,
+    "bottom": 1146,
+    "left": 0
+  },
+  "heading": {
+    "rect": {
+      "x": 260,
+      "y": 34,
+      "width": 651,
+      "height": 51,
+      "top": 34,
+      "right": 911,
+      "bottom": 85,
+      "left": 260
+    },
+    "text": "Další důležité kontakty"
+  },
+  "cards": [
+    {
+      "rect": {
+        "x": 260,
+        "y": 120,
+        "width": 453,
+        "height": 280,
+        "top": 120,
+        "right": 713,
+        "bottom": 400,
+        "left": 260
+      },
+      "name": "Vlastimil Zhoř",
+      "assetStatus": "WAITING_ON_OWNER"
+    },
+    {
+      "rect": {
+        "x": 733,
+        "y": 120,
+        "width": 453,
+        "height": 280,
+        "top": 120,
+        "right": 1186,
+        "bottom": 400,
+        "left": 733
+      },
+      "name": "Ing. Lukáš Dušek",
+      "assetStatus": "WAITING_ON_OWNER"
+    },
+    {
+      "rect": {
+        "x": 1206,
+        "y": 120,
+        "width": 453,
+        "height": 280,
+        "top": 120,
+        "right": 1659,
+        "bottom": 400,
+        "left": 1206
+      },
+      "name": "Helena Antonyová",
+      "assetStatus": "WAITING_ON_OWNER"
+    },
+    {
+      "rect": {
+        "x": 260,
+        "y": 425,
+        "width": 453,
+        "height": 280,
+        "top": 425,
+        "right": 713,
+        "bottom": 705,
+        "left": 260
+      },
+      "name": "Alena Janulíková",
+      "assetStatus": "WAITING_ON_OWNER"
+    },
+    {
+      "rect": {
+        "x": 733,
+        "y": 425,
+        "width": 453,
+        "height": 280,
+        "top": 425,
+        "right": 1186,
+        "bottom": 705,
+        "left": 733
+      },
+      "name": "Bc. Tomáš Koutný",
+      "assetStatus": "WAITING_ON_OWNER"
+    },
+    {
+      "rect": {
+        "x": 1206,
+        "y": 425,
+        "width": 453,
+        "height": 280,
+        "top": 425,
+        "right": 1659,
+        "bottom": 705,
+        "left": 1206
+      },
+      "name": "Pavel Nováček",
+      "assetStatus": "WAITING_ON_OWNER"
+    }
+  ],
+  "billing": {
+    "x": 260,
+    "y": 792,
+    "width": 507,
+    "height": 310,
+    "top": 792,
+    "right": 767,
+    "bottom": 1102,
+    "left": 260
+  }
+}
