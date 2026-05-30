@@ -106,6 +106,16 @@ async function main() {
     ],
   });
 
+  await assertAssetContract('/zaruka/', {
+    required: [
+      'data-asset-status="WAITING_ON_OWNER"',
+      'f-warranty-card__media--waiting',
+    ],
+    forbidden: [
+      'uploads/import/figma/category-zaruka.jpg',
+    ],
+  });
+
   console.log('Asset source smoke passed.');
 }
 

@@ -73,8 +73,15 @@ Current PR-C exception: owner swatches and web-sized showroom derivatives are co
 | --- | --- | --- | --- |
 | Service cards | `usable-fallback` | `wp-content/uploads/import/legacy-services/*.jpg` | `template-services.php` keeps real legacy photos and avoids invented icon/media fallbacks. |
 
+## Warranty
+
+| Area | Status | Source | Implementation |
+| --- | --- | --- | --- |
+| Warranty card product images | `WAITING_ON_OWNER` | No verified owner/legacy images were found for the Custom, Classic, and Core warranty cards. | `/zaruka/` renders the Figma card/media layer and marks each missing card media as `data-asset-status="WAITING_ON_OWNER"`; no Figma/category image is used as fake production media. |
+
 ## Guardrails Added
 
 - `tools/asset-source-smoke.js` checks production pages for forbidden Figma showroom/team/swatch media.
 - Product color rendering filters image options to valid image attachments only, preventing empty swatch cards when a configured image is missing.
 - Missing cabinet swatches are documented as `WAITING_ON_OWNER` instead of rendered with design-only placeholders.
+- Warranty card media is guarded as `WAITING_ON_OWNER` until owner-approved card images exist.

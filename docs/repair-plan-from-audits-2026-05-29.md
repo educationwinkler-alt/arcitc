@@ -414,6 +414,8 @@ Cíl: opravit stránky, které nejsou jen shared component bug.
 
 ### 6A - Záruka
 
+Status 2026-05-30: implemented. `/zaruka/` now uses the Figma warranty card matrix geometry, shared labels, right-side note/link, and `WAITING_ON_OWNER` media placeholders because no verified owner/legacy warranty card images exist. Evidence: `docs/screenshots/warranty-card-fix-2026-05-30/`. Guard: `npm run warranty:smoke`.
+
 | Problém | Oprava | Soubory |
 |---|---|---|
 | Local má plochou table, Figma má tři rounded warranty/product cards. | Přestavět warranty component na card layout s obrázky. | `template-warranty.php`, LESS |

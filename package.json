@@ -19,11 +19,12 @@
     "migration:map": "node tools/build-migration-map.js",
     "product-media:smoke": "node tools/product-media-smoke.js",
     "product:smoke": "node tools/product-content-smoke.js",
-    "qa:local": "npm run css:build && npm run local:safety && npm run figma:audit && npm run visual:smoke && npm run support-mobile:smoke && npm run content:parity && npm run product:smoke && npm run product-media:smoke && npm run asset:smoke && npm run component:smoke && npm run header:smoke && npm run contact-map:smoke && npm run link:smoke && npm run form:smoke && npm run search:smoke && npm run redirect:smoke",
+    "qa:local": "npm run css:build && npm run local:safety && npm run figma:audit && npm run visual:smoke && npm run support-mobile:smoke && npm run content:parity && npm run product:smoke && npm run product-media:smoke && npm run asset:smoke && npm run component:smoke && npm run header:smoke && npm run contact-map:smoke && npm run warranty:smoke && npm run link:smoke && npm run form:smoke && npm run search:smoke && npm run redirect:smoke",
     "redirect:smoke": "node tools/redirect-smoke.js",
     "search:smoke": "node tools/search-smoke.js",
     "support-mobile:smoke": "node tools/support-mobile-smoke.js",
-    "visual:smoke": "node tools/visual-smoke.js"
+    "visual:smoke": "node tools/visual-smoke.js",
+    "warranty:smoke": "node tools/warranty-smoke.js"
   },
   "devDependencies": {
     "less": "^4.2.0",

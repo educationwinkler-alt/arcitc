@@ -36,6 +36,8 @@ $warranty_tiers = array(
 	),
 );
 
+$warranty_labels = array_keys( $warranty_tiers[0]['items'] );
+
 get_header();
 get_template_part( 'templates/heading' );
 ?>
@@ -44,19 +46,33 @@ get_template_part( 'templates/heading' );
 	<section class="f-section f-section--warranty-cards">
 		<div class="f-section__container a-container">
 			<div class="f-warranty-cards">
+				<div class="f-warranty-labels" aria-hidden="true">
+					<?php foreach ( $warranty_labels as $label ) { ?>
+						<span><?php echo esc_html( $label ); ?></span>
+					<?php } ?>
+				</div>
 				<?php foreach ( $warranty_tiers as $tier ) { ?>
-					<div class="f-warranty-card">
+					<article class="f-warranty-card" data-asset-status="WAITING_ON_OWNER">
+						<div class="f-warranty-card__media f-warranty-card__media--waiting" aria-label="<?php echo esc_attr( sprintf( __( 'Produktová fotografie pro řadu %s čeká na owner podklady.', 'baspa' ), $tier['name'] ) ); ?>">
+							<span><?php echo esc_html__( 'Čeká na foto', 'baspa' ); ?></span>
+						</div>
 						<h2 class="f-warranty-card__name"><?php echo esc_html( $tier['name'] ); ?></h2>
 						<dl class="f-warranty-card__items">
 							<?php foreach ( $tier['items'] as $label => $value ) { ?>
-								<dt><?php echo esc_html( $label ); ?></dt>
-								<dd><?php echo esc_html( $value ); ?></dd>
+								<div class="f-warranty-card__item">
+									<dt><?php echo esc_html( $label ); ?></dt>
+									<dd><?php echo esc_html( $value ); ?></dd>
+								</div>
 							<?php } ?>
 						</dl>
-					</div>
+					</article>
 				<?php } ?>
+				<p class="f-warranty-note">
+					<?php echo esc_html__( 'Dopravné: první dva roky záruky hradí cestu servisního technika prodávající a od třetího roku tuto platí zákazník, ať jde o opravu dílů spadajících do prodloužené záruky, nebo o pozáruční servis.', 'baspa' ); ?>
+					<br><br>
+					<?php echo wp_kses_post( sprintf( __( 'Konkrétní záruční podmínky naleznete v uživatelském manuálu, viz sekce %s.', 'baspa' ), '<a href="' . esc_url( home_url( '/ke-stazeni/' ) ) . '">' . esc_html__( 'Ke stažení', 'baspa' ) . '</a>' ) ); ?>
+				</p>
 			</div>
-			<p class="f-warranty-note"><?php echo esc_html__( 'Dopravné: první dva roky záruky hradí cestu servisního technika prodávající a od třetího roku tuto platí zákazník, ať jde o opravu dílů spadajících do prodloužené záruky, nebo o pozáruční servis. Konkrétní záruční podmínky naleznete v uživatelském manuálu v sekci Ke stažení.', 'baspa' ); ?></p>
 		</div>
 	</section>
 </main>

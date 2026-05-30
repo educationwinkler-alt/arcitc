@@ -1794,34 +1794,34 @@ async function auditFigmaInfoPagesDesktop(page) {
   assertClose(warrantySection.x, 0, 4, 'warranty.section.x');
   assertClose(warrantySection.y, 435, 4, 'warranty.section.y');
   assertClose(warrantySection.width, 1920, 4, 'warranty.section.width');
-  assertBetween(warrantySection.height, 360, 560, 'warranty.section.height');
+  assertClose(warrantySection.height, 524, 4, 'warranty.section.height');
 
-  await assertBox(page, '.f-warranty-cards', { x: 260, y: 435, width: 1400, height: 282 }, 8, 'warranty.cardsGrid');
-  await assertBox(page, '.f-warranty-card:nth-child(1)', { x: 260, y: 435, width: 450, height: 282 }, 8, 'warranty.cardOne');
-  await assertBox(page, '.f-warranty-card:nth-child(2)', { x: 735, y: 435, width: 450, height: 282 }, 8, 'warranty.cardTwo');
-  await assertBox(page, '.f-warranty-card:nth-child(3)', { x: 1209, y: 435, width: 450, height: 282 }, 8, 'warranty.cardThree');
+  await assertBox(page, '.f-warranty-cards', { x: 260, y: 435, width: 1400, height: 524 }, 4, 'warranty.cardsGrid');
+  await assertBox(page, '.f-warranty-labels', { x: 261, y: 674, width: 271, height: 225 }, 4, 'warranty.labels');
+  await assertBox(page, '.f-warranty-card:nth-of-type(1)', { x: 450, y: 435, width: 217, height: 499 }, 4, 'warranty.cardOne');
+  await assertBox(page, '.f-warranty-card:nth-of-type(2)', { x: 691, y: 435, width: 217, height: 499 }, 4, 'warranty.cardTwo');
+  await assertBox(page, '.f-warranty-card:nth-of-type(3)', { x: 932, y: 435, width: 217, height: 499 }, 4, 'warranty.cardThree');
+  await assertBox(page, '.f-warranty-card:nth-of-type(1) .f-warranty-card__media', { x: 479, y: 445, width: 159, height: 127 }, 4, 'warranty.cardMedia');
+  await assertBox(page, '.f-warranty-card:nth-of-type(1) .f-warranty-card__items', { x: 423, y: 674, width: 271, height: 225 }, 8, 'warranty.cardValues');
 
   const warrantyNote = await box(page, '.f-warranty-note', 'warranty.note');
-  assertClose(warrantyNote.x, 260, 8, 'warranty.note.x');
-  assertBetween(warrantyNote.y, 735, 765, 'warranty.note.y');
-  assertClose(warrantyNote.width, 768, 12, 'warranty.note.width');
-  assertBetween(warrantyNote.height, 60, 90, 'warranty.note.height');
+  assertClose(warrantyNote.x, 1224, 4, 'warranty.note.x');
+  assertClose(warrantyNote.y, 679, 4, 'warranty.note.y');
+  assertClose(warrantyNote.width, 368, 4, 'warranty.note.width');
+  assertBetween(warrantyNote.height, 195, 220, 'warranty.note.height');
 
   const warrantyDescriptionToCardsGap = await verticalGap(page, '.f-heading__description', '.f-section--warranty-cards', 'warranty.descriptionToCardsGap');
   assertBetween(warrantyDescriptionToCardsGap, 60, 120, 'warranty.descriptionToCardsGap');
-
-  const warrantyCardsToNoteGap = await verticalGap(page, '.f-warranty-cards', '.f-warranty-note', 'warranty.cardsToNoteGap');
-  assertBetween(warrantyCardsToNoteGap, 24, 48, 'warranty.cardsToNoteGap');
 
   const warrantySectionToContactGap = await verticalGap(page, '.f-section--warranty-cards', '.page-template-template-warranty .f-contact-cta', 'warranty.sectionToContactGap');
   assertBetween(warrantySectionToContactGap, 80, 180, 'warranty.sectionToContactGap');
 
   const warrantyContactCta = await box(page, '.page-template-template-warranty .f-contact-cta', 'warranty.contactCta');
   assertClose(warrantyContactCta.x, 260, 4, 'warranty.contactCta.x');
-  assertBetween(warrantyContactCta.y, 920, 1120, 'warranty.contactCta.y');
+  assertBetween(warrantyContactCta.y, 1060, 1090, 'warranty.contactCta.y');
   assertClose(warrantyContactCta.width, 1400, 4, 'warranty.contactCta.width');
   assertClose(warrantyContactCta.height, 455, 4, 'warranty.contactCta.height');
-  await assertFooterLayout(page, 'warranty');
+  await assertFooterLayout(page, 'warranty', 1556);
 
   await page.goto(`${baseUrl}/kolik-stoji-udrzba/`, { waitUntil: 'load' });
   await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 581 }, 3, 'maintenance.heading');
@@ -1979,9 +1979,11 @@ async function auditInfoSupportCompact1097(page) {
   await page.goto(`${baseUrl}/zaruka/`, { waitUntil: 'load' });
   await assertNoHorizontalOverflow(page, 'pr7c:1097:warranty');
   const warrantyDescriptionToCardsGap = await verticalGap(page, '.f-heading__description', '.f-section--warranty-cards', 'pr7c:1097:warranty.descriptionToCardsGap');
-  const warrantyCardsToNoteGap = await verticalGap(page, '.f-warranty-cards', '.f-warranty-note', 'pr7c:1097:warranty.cardsToNoteGap');
+  const warrantyCardToNoteGap = await verticalGap(page, '.f-warranty-card:nth-of-type(1)', '.f-warranty-note', 'pr7c:1097:warranty.cardToNoteGap');
+  const warrantyNote = await box(page, '.f-warranty-note', 'pr7c:1097:warranty.note');
   assertBetween(warrantyDescriptionToCardsGap, 40, 90, 'pr7c:1097:warranty.descriptionToCardsGap');
-  assertBetween(warrantyCardsToNoteGap, 24, 48, 'pr7c:1097:warranty.cardsToNoteGap');
+  assertBetween(warrantyCardToNoteGap, 20, 36, 'pr7c:1097:warranty.cardToNoteGap');
+  assertBetween(warrantyNote.width, 720, 790, 'pr7c:1097:warranty.note.width');
 
   await page.goto(`${baseUrl}/kolik-stoji-udrzba/`, { waitUntil: 'load' });
   await assertNoHorizontalOverflow(page, 'pr7c:1097:maintenance');
