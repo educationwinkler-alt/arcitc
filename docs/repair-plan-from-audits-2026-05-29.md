@@ -446,6 +446,8 @@ Acceptance:
 
 ### 6C - Kontakt
 
+Status 2026-05-30: implemented/verified. `/kontakt/` uses the Figma dark map treatment with red pin, no floating map labels, six contact cards from the Figma contact frame with avatars marked `WAITING_ON_OWNER`, and footer mountain handoff restored. Evidence: `docs/screenshots/contact-6c-verification-2026-05-30/`. Guard: `npm run contact-map:smoke`.
+
 | Problém | Oprava | Soubory |
 |---|---|---|
 | Mapa je světlá/špatně stylovaná. | Figma dark/blue map treatment + red pin. | `template-contact.php`, map CSS |
@@ -460,6 +462,8 @@ Acceptance:
 | Karty odpovídají UX/vizuálu a obsah je Arctic/BASPA legal correct. | screenshot/content check |
 
 ### 6D - O nás
+
+Status 2026-05-30: implemented/verified. `/o-nas/` matches the Figma page geometry for intro, stats, team grid, career cards, contact CTA, and mountain footer. Team/person portraits remain `WAITING_ON_OWNER` because only design-only Figma portraits exist in the repo asset map; the page must not invent or reuse them as owner assets. Stats use the Figma red token. Evidence: `docs/screenshots/about-6d-verification-2026-05-30/`. Guard: `npm run about:smoke`.
 
 | Problém | Oprava | Soubory |
 |---|---|---|

@@ -1,0 +1,48 @@
+{
+  "header": {
+    "x": 260,
+    "y": 18,
+    "width": 1400,
+    "height": 105
+  },
+  "heading": {
+    "x": 0,
+    "y": 0,
+    "width": 1920,
+    "height": 430
+  },
+  "map": {
+    "x": 0,
+    "y": 430,
+    "width": 1920,
+    "height": 782
+  },
+  "mapImage": {
+    "x": -867,
+    "y": 430,
+    "width": 3110,
+    "height": 782
+  },
+  "mapCard": {
+    "x": 260,
+    "y": 561,
+    "width": 565,
+    "height": 491
+  },
+  "mapPin": {
+    "x": 1217.301513671875,
+    "y": 777.301513671875,
+    "width": 59.39697265625,
+    "height": 59.39697265625
+  },
+  "firstCard": {
+    "x": 260,
+    "y": 1399,
+    "width": 453,
+    "height": 280
+  },
+  "cards": 6,
+  "waitingAvatars": 6,
+  "labels": 0,
+  "scrollHeight": 3198
+}

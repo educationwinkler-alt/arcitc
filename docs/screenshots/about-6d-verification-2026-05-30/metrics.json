@@ -1,0 +1,60 @@
+{
+  "header": {
+    "x": 0,
+    "y": 0,
+    "width": 1920,
+    "height": 123
+  },
+  "main": {
+    "x": 0,
+    "y": 441,
+    "width": 1920,
+    "height": 2772
+  },
+  "intro": {
+    "x": 260,
+    "y": 591,
+    "width": 815,
+    "height": 260
+  },
+  "stats": {
+    "x": 260,
+    "y": 1122,
+    "width": 1040,
+    "height": 119
+  },
+  "team": {
+    "x": 260,
+    "y": 1658,
+    "width": 1407,
+    "height": 461.1875
+  },
+  "career": {
+    "x": 260,
+    "y": 2278,
+    "width": 815,
+    "height": 51
+  },
+  "jobs": {
+    "x": 260,
+    "y": 2457,
+    "width": 1401,
+    "height": 642
+  },
+  "contactCta": {
+    "x": 260,
+    "y": 3328,
+    "width": 1400,
+    "height": 455
+  },
+  "footer": {
+    "x": 0,
+    "y": 3811,
+    "width": 1920,
+    "height": 773
+  },
+  "people": 4,
+  "waitingMedia": 4,
+  "statColor": "rgb(163, 31, 55)",
+  "scrollHeight": 4584
+}
