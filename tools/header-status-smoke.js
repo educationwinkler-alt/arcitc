@@ -74,6 +74,26 @@ async function readHeaderState(page, path) {
   await page.unroute('**/wp-admin/admin-ajax.php');
 
   await withMockedHours(page, true);
+  const showroomOpen = await readHeaderState(page, '/showroom/');
+
+  assert(showroomOpen.statusClass.includes('open'), '/showroom/ mocked open status did not set .open');
+  assert(normalizeRgb(showroomOpen.contactColor) === 'rgb(255, 255, 255)', `/showroom/ top contact color is ${showroomOpen.contactColor}, expected white over hero`);
+
+  await page.goto(`${baseUrl}/showroom/#fotogalerie`, { waitUntil: 'networkidle', timeout: 60000 });
+  await page.waitForFunction(() => document.querySelector('.f-bar__contacts .js-hours__status.open'), { timeout: 10000 });
+  const showroomVisibleColor = await page.evaluate(() => {
+    const header = document.querySelector('.f-header');
+    const contacts = document.querySelector('.f-bar__contacts');
+    header.classList.remove('is-autohide--hidden');
+    header.classList.add('is-autohide--visible');
+    return getComputedStyle(contacts).color;
+  });
+
+  assert(normalizeRgb(showroomVisibleColor) === 'rgb(255, 255, 255)', `/showroom/ visible header color is ${showroomVisibleColor}, expected white over showroom photo`);
+
+  await page.unroute('**/wp-admin/admin-ajax.php');
+
+  await withMockedHours(page, true);
   await page.goto(`${baseUrl}/virivky/`, { waitUntil: 'networkidle', timeout: 60000 });
   await page.waitForFunction(() => document.querySelector('.f-bar__contacts .js-hours__status.open'), { timeout: 10000 });
   const visibleColor = await page.evaluate(() => {

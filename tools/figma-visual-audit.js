@@ -247,6 +247,26 @@ async function assertImageMaxUpscale(page, selector, maxScale, label, options = 
     throw new Error(`${label}: missing selector ${selector}`);
   }
 
+  await page.waitForFunction(({ selector: waitSelector, limit: waitLimit, skipDataSvg: waitSkipDataSvg }) => {
+    const elements = Array.from(document.querySelectorAll(waitSelector));
+    const inspected = elements.slice(0, waitLimit > 0 ? waitLimit : elements.length);
+
+    return inspected.some((element) => {
+      const rect = element.getBoundingClientRect();
+      const source = element.currentSrc || element.src || '';
+
+      if (rect.width <= 1 || rect.height <= 1) {
+        return false;
+      }
+
+      if (waitSkipDataSvg && source.startsWith('data:image/svg+xml')) {
+        return false;
+      }
+
+      return Number(element.naturalWidth || 0) > 0 && Number(element.naturalHeight || 0) > 0;
+    });
+  }, { selector, limit, skipDataSvg }, { timeout: 7000 }).catch(() => {});
+
   const metrics = await locator.evaluateAll((elements, config) => {
     const limit = config.limit > 0 ? config.limit : elements.length;
     return elements.slice(0, limit).map((element) => {

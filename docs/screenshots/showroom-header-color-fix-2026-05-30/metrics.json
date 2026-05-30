@@ -1,0 +1,49 @@
+{
+  "generatedAt": "2026-05-30T17:46:03.290Z",
+  "expected": {
+    "showroomContactColor": "rgb(255, 255, 255)",
+    "openDotColor": "rgb(0, 255, 128)"
+  },
+  "top": {
+    "url": "http://localhost:8090/showroom/",
+    "scrollY": 0,
+    "headerClass": "f-header js-autohide js-off__location",
+    "statusClass": "f-hours__status js-hours__status f-about-hours f-bar__hours open",
+    "contactColor": "rgb(255, 255, 255)",
+    "textShadow": "rgba(7, 24, 38, 0.4) 0px 1px 6px",
+    "dotColor": "rgb(0, 255, 128)",
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 40
+    },
+    "contacts": {
+      "x": 764.546875,
+      "y": 12.90625,
+      "width": 390.890625,
+      "height": 15.59375
+    }
+  },
+  "hashAutohideVisible": {
+    "url": "http://localhost:8090/showroom/#fotogalerie",
+    "scrollY": 0,
+    "headerClass": "f-header js-autohide js-off__location is-autohide--visible",
+    "statusClass": "f-hours__status js-hours__status f-about-hours f-bar__hours open",
+    "contactColor": "rgb(255, 255, 255)",
+    "textShadow": "rgba(7, 24, 38, 0.4) 0px 1px 6px",
+    "dotColor": "rgb(0, 255, 128)",
+    "bar": {
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 40
+    },
+    "contacts": {
+      "x": 764.546875,
+      "y": 12.90625,
+      "width": 390.890625,
+      "height": 15.59375
+    }
+  }
+}
