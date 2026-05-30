@@ -1,0 +1,72 @@
+{
+  "heading": {
+    "x": 0,
+    "y": 0,
+    "width": 1920,
+    "height": 519
+  },
+  "formCard": {
+    "x": 497,
+    "y": 519,
+    "width": 926,
+    "height": 674
+  },
+  "form": {
+    "x": 583,
+    "y": 578,
+    "width": 766,
+    "height": 615
+  },
+  "firstInput": {
+    "x": 583,
+    "y": 617.328125,
+    "width": 766,
+    "height": 50
+  },
+  "textarea": {
+    "x": 583,
+    "y": 926.984375,
+    "width": 766,
+    "height": 146
+  },
+  "consent": {
+    "x": 583,
+    "y": 1083,
+    "width": 437,
+    "height": 25
+  },
+  "submit": {
+    "x": 1167,
+    "y": 1071,
+    "width": 186,
+    "height": 50
+  },
+  "warranty": {
+    "x": 497,
+    "y": 1262,
+    "width": 402,
+    "height": 160
+  },
+  "paid": {
+    "x": 969,
+    "y": 1262,
+    "width": 676,
+    "height": 189
+  },
+  "contactCta": {
+    "x": 260,
+    "y": 1552,
+    "width": 1400,
+    "height": 455
+  },
+  "footer": {
+    "x": 0,
+    "y": 2035,
+    "width": 1920,
+    "height": 773
+  },
+  "formRadius": "40px",
+  "inputRadius": "8px",
+  "footerBackground": "linear-gradient(rgba(238, 243, 247, 0.98) 0%, rgba(238, 243, 247, 0.94) 48%, rgba(238, 243, 247, 0.68) 76%, rgba(238, 243, 247, 0.1) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")",
+  "scrollHeight": 2808
+}

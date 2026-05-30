@@ -497,6 +497,8 @@ Acceptance:
 
 ### 6F - Servis
 
+Status 2026-05-30: verified. `/servis/` form card already matches the Figma service-request geometry: rounded 40px card, 8px inputs, submit/consent alignment, warranty/pricing blocks, contact CTA, and restored mountain footer. Evidence: `docs/screenshots/service-6f-verification-2026-05-30/`. Guards: `npm run form:smoke` and `npm run figma:audit`.
+
 | Problém | Oprava | Soubory |
 |---|---|---|
 | Form card je square/flat. | Přestylovat podle Figma rounded card/inputů. | `template-service.php` nebo příslušný template, LESS |
