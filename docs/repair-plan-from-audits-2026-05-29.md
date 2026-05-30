@@ -139,6 +139,8 @@ Poznámka k architektuře: PR-B musí nejdřív sjednotit reference component co
 
 Scope poznámka: usage map pro reference component je netriviální krok. `.template--homepage`, `.tax-product-category`, `.single-product` a `/reference/` archive dohromady obsahují stovky řádků page-specific CSS pro stejný opakovaný prvek. PR-B proto plánovat jako větší refaktor component contractu, ne jako kosmetickou úpravu.
 
+Scope doplneni 2026-05-30: reference component nema jen vizualni drift, ale i query/filter drift. `modules/references/templates/section-recent.php` aktualne taha globalni seznam referenci (`post_type=reference`, thumbnail exists, `posts_per_page=7`) bez kontextoveho filtru pro `/virivky/`, `/swimspa/` nebo product detail. Homepage muze mit povolenou curated/global variantu pouze jako explicitni Figma/owner rozhodnuti; category/product context nesmi nahodne ukazovat reference mimo dany kontext (napr. swimspa reference na `/virivky/`). Pokud pro kontext nejsou dostupne reference, musi byt fallback zapsany jako owner/content decision, ne tichy globalni mix.
+
 ### Rozhodovací rámec
 
 | Varianta | Stav | Důsledek |
@@ -154,6 +156,7 @@ Aktuální local:
 - `template-references.php` dává reálným referencím `<a class="f-reference-card" href="get_permalink()">`.
 - `tools/seed-pilot-content.php` nastavuje `reference_single = 1`.
 - `single-reference.php` je tím aktivně dostupný frontend pattern.
+- `modules/references/templates/section-recent.php` pouziva globalni WP_Query bez kontextoveho taxonomy/meta filtru; na category/product strankach tak muze zobrazit reference z jine produktove rodiny.
 
 Figma/old Arctic záměr:
 
@@ -168,15 +171,18 @@ Figma/old Arctic záměr:
 |---:|---|---|
 | 1 | Změnit seed default na `reference_single = 0` pro výchozí Figma UX. | `wp-content/themes/arctic/tools/seed-pilot-content.php` |
 | 2 | Udělat usage map všech reference výskytů: homepage, `/virivky/`, `/swimspa/`, product detail, `/reference/`. | templates + LESS selectors + screenshots |
-| 3 | Sjednotit canonical reference component contract a pojmenované varianty (`recent-carousel`, `archive-grid`, `product-context`). | reference template/LESS contract |
-| 4 | Přesunout duplicitní page-specific reference CSS do component contractu; page-specific ponechat jen pro umístění celé sekce. | `_components.less`, `_component-contracts.less`, module LESS |
-| 5 | Upravit `template-references.php`, aby karta defaultně nevedla na permalink. | `wp-content/themes/arctic/template-references.php` |
-| 6 | U referencí s fotkou použít PhotoSwipe/lightbox trigger nebo Figma-like popup, pokud je pro kartu galerie. | `template-references.php`, reference listing templates |
-| 7 | Pokud karta nemá galerii, zůstane vizuální karta bez falešného linku. | `template-references.php` |
-| 8 | `single-reference.php` ponechat jako technický/admin fallback, ale neodkazovat na něj z veřejného gridu. | `single-reference.php`, templates |
-| 9 | Noindex/redirect pro `/project/...` řešit až po rozhodnutí vlastníka; bez potvrzení jen odstranit veřejné odkazy. | `modules/references/type.php`, redirect logic |
-| 10 | Opravit metadata/pilulky a overlay tak, aby real content seděl do Figma karty napříč všemi výskyty. | LESS/CSS reference card styles |
-| 11 | Přidat QA check, že `/reference/` neobsahuje `href="/project/` pro běžné karty a že recent reference component sedí ve všech použitích. | `tools/*audit*` |
+| 3 | Zmapovat query/filter contract pro kazdy vyskyt: homepage curated/global, category context, product context, archive all/grid. | `section-recent.php`, reference taxonomy/meta data, seed |
+| 4 | Doplnit kontextovy filtr: `/virivky/` nesmi ukazat swimspa reference, `/swimspa/` nesmi ukazat hot-tub-only reference, product detail ma preferovat product/category relevantni reference. | reference query helper/template |
+| 5 | Definovat fallback, kdyz pro kontext nejsou reference: curated owner fallback nebo `WAITING_ON_OWNER`, ne tichy globalni mix. | docs + template fallback |
+| 6 | Sjednotit canonical reference component contract a pojmenované varianty (`recent-carousel`, `archive-grid`, `product-context`). | reference template/LESS contract |
+| 7 | Přesunout duplicitní page-specific reference CSS do component contractu; page-specific ponechat jen pro umístění celé sekce. | `_components.less`, `_component-contracts.less`, module LESS |
+| 8 | Upravit `template-references.php`, aby karta defaultně nevedla na permalink. | `wp-content/themes/arctic/template-references.php` |
+| 9 | U referencí s fotkou použít PhotoSwipe/lightbox trigger nebo Figma-like popup, pokud je pro kartu galerie. | `template-references.php`, reference listing templates |
+| 10 | Pokud karta nemá galerii, zůstane vizuální karta bez falešného linku. | `template-references.php` |
+| 11 | `single-reference.php` ponechat jako technický/admin fallback, ale neodkazovat na něj z veřejného gridu. | `single-reference.php`, templates |
+| 12 | Noindex/redirect pro `/project/...` řešit až po rozhodnutí vlastníka; bez potvrzení jen odstranit veřejné odkazy. | `modules/references/type.php`, redirect logic |
+| 13 | Opravit metadata/pilulky a overlay tak, aby real content seděl do Figma karty napříč všemi výskyty. | LESS/CSS reference card styles |
+| 14 | Přidat QA check, že `/reference/` neobsahuje `href="/project/`, recent reference component sedí ve všech použitích a category/product výskyty neobsahují reference mimo svůj kontext. | `tools/*audit*` |
 
 ### Acceptance criteria
 
@@ -186,6 +192,7 @@ Figma/old Arctic záměr:
 | Klik na fotku otevírá lightbox/popup, pokud je galerie. | Playwright interaction smoke. |
 | Reference se skládají jako grid/listing podle Figmy. | Screenshot diff. |
 | Reference recent carousel je jeden sdílený component contract, ne tři page-specific kopie. | usage map + CSS diff. |
+| Category/product reference carousel nepoužívá tichý globální/all-reference výběr mimo svůj kontext. | HTML/content smoke: `/virivky/` bez swimspa-only referencí, `/swimspa/` bez hot-tub-only referencí, product detail preferuje relevantní reference. |
 | Obsah referencí vychází z old Arctic/owner, ne z Figma placeholderu. | Content parity check. |
 | Pokud klient chce `/project/...`, existuje samostatný mini-scope s wireframem, obsahem a QA. | Sign-off doc. |
 
@@ -269,11 +276,13 @@ Architektonická poznámka: Wave 4 se nesmí dělat jako sada lokálních patch�
 
 PR-D usage map: `docs/component-contract-usage-map-2026-05-30.md`.
 
+PR-D scope doplneni 2026-05-30: globalni header/top-contact patri do stejne vlny jako footer/contact CTA. Oteviraci status neni staticka zelena tecka. Baspa/Forqys pattern pouziva `forqy_hours` + AJAX `hours_is_open`, ktery podle aktualniho casu prida `.open` nebo `.closed`; vizual pak ukaze zelenou tecku pri otevreno a cervenou pri zavreno. Arctic ma tento mechanismus zachovat a napojit, ne hardcodovat barvu.
+
 ### 4-0 - Component contract cleanup
 
 | Akce | Soubory |
 |---|---|
-| Auditovat opakované bloky: reference, showroom, contact CTA/footer, configurator, progress, product cards. | templates + `_components.less` + `_component-contracts.less` |
+| Auditovat opakované bloky: reference, showroom, header/top-contact status, contact CTA/footer, configurator, progress, product cards. | templates + `_components.less` + `_component-contracts.less` |
 | Najít duplicitní page-specific CSS implementace pro stejný component. | `.template--homepage`, `.tax-product-category`, `.single-product`, page-template selektory |
 | Přesunout společný vzhled do component contractu a ponechat page-specific CSS jen pro layoutové umístění. | LESS/CSS component layer |
 | Přidat screenshot matrix podle componentu, ne jen podle stránky. | QA docs/tools |
@@ -345,6 +354,26 @@ Acceptance:
 |---|---|
 | Popup odpovídá Figma dark overlay + white rounded modal + close. | screenshot |
 | Žádná karta nevypadá klikací, když nic nedělá. | interaction audit |
+
+### 4E - Header top contact / opening-hours status
+
+| Akce | Soubory |
+|---|---|
+| Zachovat Baspa-like automatiku oteviraci doby: `templates/about/hours.php` -> `forqy_hours` -> vendor status template -> `hours_is_open` AJAX -> `.open`/`.closed`. | `templates/about/hours.php`, `vendor/forqys/hours/*`, `inc/functions/hours.php` |
+| Odstranit nebo sjednotit staticky header text `.f-bar__hours`, aby vedle nej nevznikal duplicitni/konfliktni status. | `templates/header/bar/contacts.php` |
+| Nastavit default/local opening-hours data pro Arctic, aby se status vubec renderoval. Pokud owner doda jine hodiny, menit data, ne komponentu. | Customizer seed/defaults, `inc/functions/hours.php` |
+| Stylovat status jako Figma skupinu u kontaktu: text + indikacni tecka, kde tecka je zelena jen pri `.open` a cervena pri `.closed`. | header/topbar LESS/CSS |
+| Dodelat dark/light variantu top kontaktu podle pozadi: svetle stranky maji tmavy/citelny text, tmavy hero muze mit svetly text. | header template/body context + LESS |
+| Pridat QA guard pro pritomnost `.js-hours__status`, prepnuti `.open/.closed`, computed barvu tecky a kontrast top kontaktu na svetlem pozadi. | `tools/*smoke*`, visual QA |
+
+Acceptance:
+
+| Kritérium | Ověření |
+|---|---|
+| Header status neni hardcoded green dot; pouziva `hours_is_open` a tridy `.open/.closed`. | DOM + network/AJAX smoke |
+| Pri otevreno je tecka zelena, pri zavreno cervena. | mocked/time-aware smoke nebo manual check mimo oteviraci dobu |
+| Na svetlych strankach je top contact tmavy/citelny a nezanika v pozadi. | screenshot + computed color |
+| Staticky text `Po - Pá 8:00-17:00 h` neni duplicitni vedle dynamickeho statusu, pokud status renderuje stejna data. | HTML smoke |
 
 ## Repair Wave 5 - Product/category visual and content media
 
@@ -542,8 +571,9 @@ Cíl: už nikdy neoznačit rozbitou stránku jako pass jen kvůli token/geometry
 | 4 | Přidat guard pro reference permalinky na `/project/` z archive gridu. | HTML smoke |
 | 5 | Přidat guard pro fake affordance: plus bez handleru / aria bez interakce. | interaction smoke |
 | 6 | Přidat guard pro footer/CTA cyan band nebo background discontinuity. | screenshot heuristic/manual checklist |
-| 7 | Přidat content-source checklist pro old Arctic/owner výjimky. | docs sign-off |
-| 8 | Ručně projít 1920, 1366/1280, 1024, 430/390/375. | sign-off table |
+| 7 | Přidat guard pro header/top-contact: dark/light kontrast, `.js-hours__status`, `.open/.closed` a barvu status tečky. | HTML + AJAX/computed-style smoke |
+| 8 | Přidat content-source checklist pro old Arctic/owner výjimky. | docs sign-off |
+| 9 | Ručně projít 1920, 1366/1280, 1024, 430/390/375. | sign-off table |
 
 ### Acceptance criteria
 
@@ -561,7 +591,7 @@ Cíl: už nikdy neoznačit rozbitou stránku jako pass jen kvůli token/geometry
 | PR-A | Source rules + audit errata | Master plan link, source-role checklist, audit errata. | všechny další |
 | PR-B | Reference component contract + archive/lightbox reset | Nejprve sjednotit reference component napříč homepage/kategoriemi/product detailem/archive, odstranit page-specific CSS drift; potom default archive/grid podle Figmy, žádný standalone detail bez klientského potvrzení, případný popup/lightbox, QA guard. | product/home references |
 | PR-C | Asset mapping and fallbacks | Asset source map, dostupné product images, dostupné swatche/team/contact/showroom assets, services fallback policy, `WAITING_ON_OWNER` položky. | visual komponenty |
-| PR-D | Shared component contracts parity | Globální component contract cleanup pro footer/contact CTA, showroom collage, configurator banner, progress, popup pattern a cards; page-specific CSS jen pro umístění; finální media pass jen s dostupnými assety. | page-specific polish |
+| PR-D | Shared component contracts parity | Globální component contract cleanup pro header/top-contact opening-hours status, footer/contact CTA, showroom collage, configurator banner, progress, popup pattern a cards; page-specific CSS jen pro umístění; finální media pass jen s dostupnými assety. | page-specific polish |
 | PR-E | Product/category parity | Product cards, detail hero, swatches, mega menu, swimspa text; asset-dependent části podle PR-C. | final visual QA |
 | PR-F | Special pages P0 | Warranty, maintenance, contact, about, showroom, service; owner-asset části mohou zůstat čekací. | final visual QA |
 | PR-G | Support/download/mobile polish | support/download compactness, mobile HP/menu. | final sign-off |

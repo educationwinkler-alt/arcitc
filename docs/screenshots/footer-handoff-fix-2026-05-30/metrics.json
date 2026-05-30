@@ -1,0 +1,36 @@
+{
+  "className": "f-footer f-footer--arctic",
+  "backgroundImage": "linear-gradient(rgba(238, 243, 247, 0.98) 0%, rgba(238, 243, 247, 0.94) 48%, rgba(238, 243, 247, 0.68) 76%, rgba(238, 243, 247, 0.1) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")",
+  "backgroundColor": "rgba(0, 0, 0, 0)",
+  "box": {
+    "x": 0,
+    "y": 307,
+    "width": 1920,
+    "height": 773,
+    "top": 307,
+    "right": 1920,
+    "bottom": 1080,
+    "left": 0
+  },
+  "hasHandoffClass": false,
+  "quickBox": {
+    "x": 1070,
+    "y": 367,
+    "width": 592,
+    "height": 347,
+    "top": 367,
+    "right": 1662,
+    "bottom": 714,
+    "left": 1070
+  },
+  "mapBox": {
+    "x": 1375,
+    "y": 391,
+    "width": 262,
+    "height": 299,
+    "top": 391,
+    "right": 1637,
+    "bottom": 690,
+    "left": 1375
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "realVirivky": {
+    "path": "/virivky/",
+    "text": "Máte dotaz? Volejte na +420 777 099 687 Po - Pá 8:00-17:00 h",
+    "statusClass": "f-hours__status js-hours__status f-about-hours f-bar__hours closed",
+    "contactColor": "rgb(35, 40, 47)",
+    "dotColor": "rgb(163, 31, 55)",
+    "barBox": {
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 40,
+      "top": 0,
+      "right": 1920,
+      "bottom": 40,
+      "left": 0
+    },
+    "contactsBox": {
+      "x": 764.546875,
+      "y": 12.90625,
+      "width": 390.890625,
+      "height": 15.59375,
+      "top": 12.90625,
+      "right": 1155.4375,
+      "bottom": 28.5,
+      "left": 764.546875
+    }
+  },
+  "realKontakt": {
+    "path": "/kontakt/",
+    "text": "Máte dotaz? Volejte na +420 777 099 687 Po - Pá 8:00-17:00 h",
+    "statusClass": "f-hours__status js-hours__status f-about-hours f-bar__hours closed",
+    "contactColor": "rgb(35, 40, 47)",
+    "dotColor": "rgb(163, 31, 55)",
+    "barBox": {
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 40,
+      "top": 0,
+      "right": 1920,
+      "bottom": 40,
+      "left": 0
+    },
+    "contactsBox": {
+      "x": 764.546875,
+      "y": 12.90625,
+      "width": 390.890625,
+      "height": 15.59375,
+      "top": 12.90625,
+      "right": 1155.4375,
+      "bottom": 28.5,
+      "left": 764.546875
+    }
+  },
+  "openVirivky": {
+    "path": "/virivky/",
+    "text": "Máte dotaz? Volejte na +420 777 099 687 Po - Pá 8:00-17:00 h",
+    "statusClass": "f-hours__status js-hours__status f-about-hours f-bar__hours open",
+    "contactColor": "rgb(35, 40, 47)",
+    "dotColor": "rgb(0, 255, 128)",
+    "barBox": {
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 40,
+      "top": 0,
+      "right": 1920,
+      "bottom": 40,
+      "left": 0
+    },
+    "contactsBox": {
+      "x": 764.546875,
+      "y": 12.90625,
+      "width": 390.890625,
+      "height": 15.59375,
+      "top": 12.90625,
+      "right": 1155.4375,
+      "bottom": 28.5,
+      "left": 764.546875
+    }
+  }
+}

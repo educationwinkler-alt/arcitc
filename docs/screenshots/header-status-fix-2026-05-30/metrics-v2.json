@@ -1,0 +1,18 @@
+{
+  "categoryOpen": {
+    "path": "/virivky/",
+    "headerClass": "f-header js-autohide js-off__location",
+    "text": "Máte dotaz? Volejte na +420 777 099 687 Po - Pá 8:00-17:00 h",
+    "contactColor": "rgb(255, 255, 255)",
+    "dotColor": "rgb(0, 255, 128)",
+    "statusClass": "f-hours__status js-hours__status f-about-hours f-bar__hours open"
+  },
+  "contactClosed": {
+    "path": "/kontakt/",
+    "headerClass": "f-header js-autohide js-off__location",
+    "text": "Máte dotaz? Volejte na +420 777 099 687 Po - Pá 8:00-17:00 h",
+    "contactColor": "rgb(35, 40, 47)",
+    "dotColor": "rgb(163, 31, 55)",
+    "statusClass": "f-hours__status js-hours__status f-about-hours f-bar__hours closed"
+  }
+}

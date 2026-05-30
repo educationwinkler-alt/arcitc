@@ -200,14 +200,15 @@ async function assertReferenceContent() {
 
 async function assertReferenceComponentContracts() {
   const expectations = [
-    ['/', 'f-reference-section--homepage-context'],
-    ['/virivky/', 'f-reference-section--category-context'],
-    ['/swimspa/', 'f-reference-section--category-context'],
-    ['/product/timberwolf/', 'f-reference-section--product-context'],
+    ['/', 'f-reference-section--homepage-context', 'global', []],
+    ['/virivky/', 'f-reference-section--category-context', 'virivky', ['Swimspa Wolverine', 'Výběr celoročního bazénu']],
+    ['/swimspa/', 'f-reference-section--category-context', 'swimspa', ['Arctic Fox po letech provozu', 'Vířivka bez poruchy']],
+    ['/product/timberwolf/', 'f-reference-section--product-context', 'virivky', ['Swimspa Wolverine', 'Výběr celoročního bazénu']],
   ];
 
-  for (const [path, contextClass] of expectations) {
+  for (const [path, contextClass, referenceContext, forbiddenReferenceTitles] of expectations) {
     const html = await fetchHtml(path);
+    const text = textFromHtml(html);
 
     if (!html.includes('f-reference-section--recent-carousel')) {
       throw new Error(`${path} is missing the recent-carousel reference component contract.`);
@@ -215,6 +216,16 @@ async function assertReferenceComponentContracts() {
 
     if (!html.includes(contextClass)) {
       throw new Error(`${path} is missing reference context class ${contextClass}.`);
+    }
+
+    if (!html.includes(`data-reference-context="${referenceContext}"`)) {
+      throw new Error(`${path} is missing reference data context ${referenceContext}.`);
+    }
+
+    for (const forbiddenTitle of forbiddenReferenceTitles) {
+      if (text.includes(forbiddenTitle)) {
+        throw new Error(`${path} contains out-of-context reference: ${forbiddenTitle}`);
+      }
     }
 
     const forbiddenLinks = referenceProjectLinks(html);

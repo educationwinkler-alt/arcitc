@@ -378,6 +378,8 @@ update_term_meta( $category_covers, 'category_heading_cta_text', 'Prohlédnout s
 update_term_meta( $category_covers, 'category_type', 'accessories' );
 
 $reference_customers = arctic_seed_term( 'reference-category', 'Reference zákazníků', 'reference-zakazniku' );
+$reference_hot_tubs  = arctic_seed_term( 'reference-category', 'Vířivky', 'virivky' );
+$reference_swimspa   = arctic_seed_term( 'reference-category', 'Celoroční bazény', 'swimspa' );
 
 foreach ( array( 'figma-reference-1', 'figma-reference-2', 'figma-reference-3' ) as $stale_reference_key ) {
 	$stale_references = get_posts( array(
@@ -402,6 +404,7 @@ $reference_items = array(
 		'description' => 'Téměř před patnácti lety jsme se rozhodli pořídit kanadskou venkovní vířivku Arctic Spas v provedení Fox. Od té doby ji s manželkou využíváme několikrát týdně, bez zásadních problémů a s perfektně vyřízenými dotazy v průběhu let.',
 		'location'    => 'Arctic Fox',
 		'year'        => '2021',
+		'contexts'    => array( $reference_hot_tubs ),
 	),
 	array(
 		'key'         => 'legacy-reference-arctic-fox-life-2',
@@ -410,6 +413,7 @@ $reference_items = array(
 		'description' => 'Po letech okukování nám na zahradě přistála čerstvá Foxka. Výborná domluva, instalace takřka na klíč, skvělá síla trysek a slaná voda se Spa Boy nám výrazně usnadnila péči o vodu.',
 		'location'    => 'Arctic Spas',
 		'year'        => '2016',
+		'contexts'    => array( $reference_hot_tubs ),
 	),
 	array(
 		'key'         => 'legacy-reference-swimspa-arctic-g1',
@@ -418,6 +422,7 @@ $reference_items = array(
 		'description' => 'Swimspa používáme denně a hodnotíme ji jako jednu z nejlepších součástí domu. V zimní zahradě je použitelná kdykoliv a plavání na plovacím prutu nás baví víc než samotný protiproud.',
 		'location'    => 'Wolverine',
 		'year'        => '2016',
+		'contexts'    => array( $reference_swimspa ),
 	),
 	array(
 		'key'         => 'customer-reference-low-energy',
@@ -426,6 +431,7 @@ $reference_items = array(
 		'description' => 'Po jednoročním provozu jsme zjistili, že vířivka má velmi nízkou spotřebu i při častém zimním používání. Zakoupili jsme výjimečnou věc, kterou bychom doporučili každému.',
 		'location'    => 'Arctic Spas',
 		'year'        => '2014',
+		'contexts'    => array( $reference_hot_tubs ),
 	),
 	array(
 		'key'         => 'customer-reference-fox-service',
@@ -434,6 +440,7 @@ $reference_items = array(
 		'description' => 'Jsme rádi, že jsme při výběru dodavatele vířivky narazili na vaši firmu. Dodaná vířivka Arctic Fox předčila naše očekávání a poskytnuté služby odpovídají dobrému jménu firmy.',
 		'location'    => 'Arctic Fox',
 		'year'        => '2014',
+		'contexts'    => array( $reference_hot_tubs ),
 	),
 	array(
 		'key'         => 'customer-reference-pool',
@@ -442,6 +449,7 @@ $reference_items = array(
 		'description' => 'Velmi oceňujeme vstřícný přístup při prohlídce místa plánované instalace. Bazén jsme nakonec objednali a rychlé provedení i výsledný stav nám dělají radost.',
 		'location'    => 'Bazén',
 		'year'        => '2015',
+		'contexts'    => array( $reference_swimspa ),
 	),
 	array(
 		'key'         => 'customer-reference-swimspa-showroom',
@@ -450,6 +458,7 @@ $reference_items = array(
 		'description' => 'Při výběru swimspa jsme navštívili hodně showroomů. Až u Arctic Spas jsme pochopili, co je důležité; dodávka proběhla v termínu, instalace rychle a zaškolení na vysoké úrovni.',
 		'location'    => 'Celoroční bazén',
 		'year'        => '2015',
+		'contexts'    => array( $reference_swimspa ),
 	),
 	array(
 		'key'         => 'customer-reference-arctic-spas',
@@ -458,6 +467,7 @@ $reference_items = array(
 		'description' => 'Vířivka je super a bez poruchy. Parametry a dlouhodobá zkušenost nám potvrdily, že výběr kvalitní vířivky se opravdu vyplatí.',
 		'location'    => 'Arctic Spas',
 		'year'        => '2016',
+		'contexts'    => array( $reference_hot_tubs ),
 	),
 	array(
 		'key'         => 'customer-reference-new-year',
@@ -466,6 +476,7 @@ $reference_items = array(
 		'description' => 'Originální novoroční přání zákazníka vystihuje, proč lidé Arctic Spas používají: odpočinek, teplo a chvíle klidu přímo doma.',
 		'location'    => 'Arctic Spas',
 		'year'        => '2012',
+		'contexts'    => array( $reference_hot_tubs ),
 	),
 );
 
@@ -484,7 +495,7 @@ foreach ( $reference_items as $index => $reference_item ) {
 	update_post_meta( $reference_id, 'reference_location', $reference_item['location'] );
 	update_post_meta( $reference_id, 'reference_year', $reference_item['year'] );
 	arctic_seed_set_multi_meta( $reference_id, 'reference_images', array( $reference_item['image'] ) );
-	wp_set_post_terms( $reference_id, array( $reference_customers ), 'reference-category' );
+	wp_set_post_terms( $reference_id, array_merge( array( $reference_customers ), $reference_item['contexts'] ?? array() ), 'reference-category' );
 }
 
 update_option( 'baspa_references_title', 'Ukázky realizací' );

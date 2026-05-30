@@ -58,7 +58,7 @@ $groups = array(
 );
 ?>
 
-<footer id="<?php echo sanitize_title( esc_attr_x( 'footer', 'anchor', 'baspa' ) ); ?>" class="f-footer f-footer--arctic f-footer--handoff">
+<footer id="<?php echo sanitize_title( esc_attr_x( 'footer', 'anchor', 'baspa' ) ); ?>" class="f-footer f-footer--arctic">
 	<div class="f-footer__container a-container">
 		<div class="f-footer__grid">
 			<?php foreach ( $groups as $group ) { ?>

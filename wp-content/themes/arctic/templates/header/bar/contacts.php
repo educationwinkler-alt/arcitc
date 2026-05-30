@@ -13,6 +13,9 @@ $email = get_theme_mod( 'baspa_email', esc_html__( 'info@arctic-spas.cz', 'baspa
 	<span class="f-bar__title"><?php echo esc_html_x( 'Máte dotaz? Volejte na', 'bar', 'baspa' ); ?></span>
 	<a href="tel:<?php echo esc_attr( str_replace( ' ', '', $phone ) ); ?>"
 	   class="f-bar__phone"><?php echo esc_html( $phone ); ?></a>
-	<span class="f-bar__hours"><?php echo esc_html_x( 'Po - Pá 8:00-17:00 h', 'bar', 'baspa' ); ?></span>
-	<?php get_template_part( 'templates/about/hours' ); ?>
+	<?php $hours = apply_filters( 'forqy_hours', array() ); ?>
+	<?php get_template_part( 'templates/about/hours', '', array(
+		'class' => array( 'f-bar__hours' ),
+		'label' => function_exists( 'baspa_hours_bar_label' ) ? baspa_hours_bar_label( $hours ) : '',
+	) ); ?>
 </div>

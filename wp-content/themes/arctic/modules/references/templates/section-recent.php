@@ -4,7 +4,8 @@
  * Section Template
  */
 
-$references_query_args = array(
+$reference_context_slug = function_exists( 'baspa_references_recent_context_slug' ) ? baspa_references_recent_context_slug() : '';
+$references_query       = function_exists( 'baspa_references_recent_query' ) ? baspa_references_recent_query( $reference_context_slug ) : new WP_Query( array(
 	'post_type'      => 'reference',
 	'meta_query'     => array(
 		array(
@@ -17,9 +18,7 @@ $references_query_args = array(
 		'date'       => 'DESC',
 	),
 	'posts_per_page' => 7,
-);
-
-$references_query = new WP_Query( $references_query_args );
+) );
 
 $reference_section_class = array(
 	'f-section',
@@ -44,6 +43,7 @@ if ( is_home() || is_front_page() ) {
 if ( $references_query->have_posts() ) { ?>
 
 	<section id="<?php echo sanitize_title( esc_attr_x( 'references', 'anchor', 'baspa' ) ); ?>"
+		data-reference-context="<?php echo esc_attr( $reference_context_slug ?: 'global' ); ?>"
 		<?php ( !function_exists( 'forqy_class' ) ) ?: forqy_class( $reference_section_class ); ?>>
 
 		<div class="f-section__container a-container">

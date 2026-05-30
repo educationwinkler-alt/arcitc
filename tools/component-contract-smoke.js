@@ -72,6 +72,9 @@ async function main() {
     'f-showroom-panel--collage',
     'f-progress-layout--shared',
     'f-contact-cta--shared',
+    'f-footer--arctic',
+  ]);
+  assertExcludes('/', pages['/'], [
     'f-footer--handoff',
   ]);
 
@@ -134,12 +137,14 @@ async function main() {
   const contractsCss = readFileSync('wp-content/themes/arctic/src/less/_component-contracts.less', 'utf8');
   assertIncludes('_component-contracts.less', contractsCss, [
     '.f-section--contact.f-section--component-contact',
-    '.f-footer--arctic.f-footer--handoff',
     '.f-showroom-panel.f-showroom-panel--collage',
     '.f-configurator-cta.f-configurator-cta--shared',
     '.f-progress-layout.f-progress-layout--shared',
     '.f-product-benefit--static',
     '.f-off--benefit-popup',
+  ]);
+  assertExcludes('_component-contracts.less', contractsCss, [
+    '.f-footer--arctic.f-footer--handoff',
   ]);
 
   console.log('Component contract smoke passed.');

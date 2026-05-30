@@ -1,0 +1,456 @@
+{
+  "generatedAt": "2026-05-30T09:14:31.641Z",
+  "baseUrl": "http://localhost:8090",
+  "records": [
+    {
+      "key": "hp",
+      "path": "/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-hp.png",
+      "label": "Homepage desktop",
+      "current": "current/hp.png",
+      "figmaPath": "figma-current/figma-hp.png",
+      "localSize": {
+        "width": 1920,
+        "height": 5201
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 1301
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 5204,
+      "heightDeltaRaw": 3900,
+      "heightDeltaScaled": -3,
+      "overflow": 0
+    },
+    {
+      "key": "kategorie-virivky",
+      "path": "/virivky/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-kategorie.png",
+      "label": "Kategorie vířivky",
+      "current": "current/kategorie-virivky.png",
+      "figmaPath": "figma-current/figma-kategorie.png",
+      "localSize": {
+        "width": 1920,
+        "height": 8583
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 2146
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 8584,
+      "heightDeltaRaw": 6437,
+      "heightDeltaScaled": -1,
+      "overflow": 0
+    },
+    {
+      "key": "kategorie-swimspa",
+      "path": "/swimspa/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-kategorie.png",
+      "label": "Kategorie swimspa",
+      "current": "current/kategorie-swimspa.png",
+      "figmaPath": "figma-current/figma-kategorie.png",
+      "localSize": {
+        "width": 1920,
+        "height": 6674
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 2146
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 8584,
+      "heightDeltaRaw": 4528,
+      "heightDeltaScaled": -1910,
+      "overflow": 0
+    },
+    {
+      "key": "detail-timberwolf",
+      "path": "/product/timberwolf/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-detail-produktu.png",
+      "label": "Detail Timberwolf",
+      "current": "current/detail-timberwolf.png",
+      "figmaPath": "figma-current/figma-detail-produktu.png",
+      "localSize": {
+        "width": 1920,
+        "height": 7460
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 1952
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 7808,
+      "heightDeltaRaw": 5508,
+      "heightDeltaScaled": -348,
+      "overflow": 0
+    },
+    {
+      "key": "showroom",
+      "path": "/showroom/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-showroom.png",
+      "label": "Showroom",
+      "current": "current/showroom.png",
+      "figmaPath": "figma-current/figma-showroom.png",
+      "localSize": {
+        "width": 1920,
+        "height": 4135
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 1034
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 4136,
+      "heightDeltaRaw": 3101,
+      "heightDeltaScaled": -1,
+      "overflow": 0
+    },
+    {
+      "key": "vlastnosti",
+      "path": "/vlastnosti/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-vlastnosti.png",
+      "label": "Vlastnosti listing",
+      "current": "current/vlastnosti.png",
+      "figmaPath": "figma-current/figma-vlastnosti.png",
+      "localSize": {
+        "width": 1920,
+        "height": 2670
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 667
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 2668,
+      "heightDeltaRaw": 2003,
+      "heightDeltaScaled": 2,
+      "overflow": 0
+    },
+    {
+      "key": "vlastnosti-detail",
+      "path": "/vlastnosti/izolace-virivky/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-vlastnosti-detail.png",
+      "label": "Vlastnosti detail",
+      "current": "current/vlastnosti-detail.png",
+      "figmaPath": "figma-current/figma-vlastnosti-detail.png",
+      "localSize": {
+        "width": 1920,
+        "height": 5006
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 1251
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 5004,
+      "heightDeltaRaw": 3755,
+      "heightDeltaScaled": 2,
+      "overflow": 0
+    },
+    {
+      "key": "sluzby",
+      "path": "/sluzby/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-sluzby.png",
+      "label": "Služby",
+      "current": "current/sluzby.png",
+      "figmaPath": "figma-current/figma-sluzby.png",
+      "localSize": {
+        "width": 1920,
+        "height": 2736
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 684
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 2736,
+      "heightDeltaRaw": 2052,
+      "heightDeltaScaled": 0,
+      "overflow": 0
+    },
+    {
+      "key": "certifikaty",
+      "path": "/certifikaty/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-certifikaty.png",
+      "label": "Certifikáty",
+      "current": "current/certifikaty.png",
+      "figmaPath": "figma-current/figma-certifikaty.png",
+      "localSize": {
+        "width": 1920,
+        "height": 2576
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 644
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 2576,
+      "heightDeltaRaw": 1932,
+      "heightDeltaScaled": 0,
+      "overflow": 0
+    },
+    {
+      "key": "zaruka",
+      "path": "/zaruka/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-zaruka.png",
+      "label": "Záruka",
+      "current": "current/zaruka.png",
+      "figmaPath": "figma-current/figma-zaruka.png",
+      "localSize": {
+        "width": 1920,
+        "height": 2189
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 583
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 2332,
+      "heightDeltaRaw": 1606,
+      "heightDeltaScaled": -143,
+      "overflow": 0
+    },
+    {
+      "key": "podpora",
+      "path": "/podpora/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-podpora.png",
+      "label": "Podpora",
+      "current": "current/podpora.png",
+      "figmaPath": "figma-current/figma-podpora.png",
+      "localSize": {
+        "width": 1920,
+        "height": 5509
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 1301
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 5204,
+      "heightDeltaRaw": 4208,
+      "heightDeltaScaled": 305,
+      "overflow": 0
+    },
+    {
+      "key": "o-nas",
+      "path": "/o-nas/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-o-nas.png",
+      "label": "O nás",
+      "current": "current/o-nas.png",
+      "figmaPath": "figma-current/figma-o-nas.png",
+      "localSize": {
+        "width": 1920,
+        "height": 4584
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 1146
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 4584,
+      "heightDeltaRaw": 3438,
+      "heightDeltaScaled": 0,
+      "overflow": 0
+    },
+    {
+      "key": "reference",
+      "path": "/reference/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-reference.png",
+      "label": "Reference",
+      "current": "current/reference.png",
+      "figmaPath": "figma-current/figma-reference.png",
+      "localSize": {
+        "width": 1920,
+        "height": 2667
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 667
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 2668,
+      "heightDeltaRaw": 2000,
+      "heightDeltaScaled": -1,
+      "overflow": 0
+    },
+    {
+      "key": "maintenance",
+      "path": "/kolik-stoji-udrzba/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-maintenance.png",
+      "label": "Kolik stojí údržba",
+      "current": "current/maintenance.png",
+      "figmaPath": "figma-current/figma-maintenance.png",
+      "localSize": {
+        "width": 1920,
+        "height": 3303
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 1081
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 4324,
+      "heightDeltaRaw": 2222,
+      "heightDeltaScaled": -1021,
+      "overflow": 0
+    },
+    {
+      "key": "servis",
+      "path": "/servis/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-servis.png",
+      "label": "Servis",
+      "current": "current/servis.png",
+      "figmaPath": "figma-current/figma-servis.png",
+      "localSize": {
+        "width": 1920,
+        "height": 2808
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 702
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 2808,
+      "heightDeltaRaw": 2106,
+      "heightDeltaScaled": 0,
+      "overflow": 0
+    },
+    {
+      "key": "kontakt",
+      "path": "/kontakt/",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "figma": "figma-kontakt.png",
+      "label": "Kontakt",
+      "current": "current/kontakt.png",
+      "figmaPath": "figma-current/figma-kontakt.png",
+      "localSize": {
+        "width": 1920,
+        "height": 3198
+      },
+      "figmaSize": {
+        "width": 480,
+        "height": 800
+      },
+      "figmaScaleToViewport": 4,
+      "figmaScaledHeight": 3200,
+      "heightDeltaRaw": 2398,
+      "heightDeltaScaled": -2,
+      "overflow": 0
+    },
+    {
+      "key": "mobile-hp-375",
+      "path": "/",
+      "viewport": {
+        "width": 375,
+        "height": 900
+      },
+      "figma": "figma-mobile-hp-full.png",
+      "label": "Mobile HP 375",
+      "current": "current/mobile-hp-375.png",
+      "figmaPath": "figma-current/figma-mobile-hp-full.png",
+      "localSize": {
+        "width": 375,
+        "height": 6114
+      },
+      "figmaSize": {
+        "width": 375,
+        "height": 6046
+      },
+      "figmaScaleToViewport": 1,
+      "figmaScaledHeight": 6046,
+      "heightDeltaRaw": 68,
+      "heightDeltaScaled": 68,
+      "overflow": 0
+    },
+    {
+      "key": "mobile-menu-375",
+      "path": "/",
+      "viewport": {
+        "width": 375,
+        "height": 900
+      },
+      "figma": "figma-mobile-menu.png",
+      "label": "Mobile menu 375",
+      "current": "current/mobile-menu-375.png",
+      "figmaPath": "figma-current/figma-mobile-menu.png",
+      "localSize": {
+        "width": 375,
+        "height": 900
+      },
+      "figmaSize": {
+        "width": 375,
+        "height": 774
+      },
+      "figmaScaleToViewport": 1,
+      "figmaScaledHeight": 774,
+      "heightDeltaRaw": 126,
+      "heightDeltaScaled": 126,
+      "overflow": null
+    }
+  ]
+}
