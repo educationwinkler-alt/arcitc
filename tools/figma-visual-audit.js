@@ -1832,43 +1832,37 @@ async function auditFigmaInfoPagesDesktop(page) {
   assertClose(maintenanceSection.x, 0, 4, 'maintenance.articleSection.x');
   assertClose(maintenanceSection.y, 581, 4, 'maintenance.articleSection.y');
   assertClose(maintenanceSection.width, 1920, 4, 'maintenance.articleSection.width');
-  assertBetween(maintenanceSection.height, 650, 1500, 'maintenance.articleSection.height');
+  assertBetween(maintenanceSection.height, 2370, 2395, 'maintenance.articleSection.height');
 
   const maintenanceArticle = await box(page, '.f-main--maintenance .f-figma-article', 'maintenance.article');
-  assertBetween(maintenanceArticle.x, 488, 506, 'maintenance.article.x');
-  assertBetween(maintenanceArticle.y, 640, 760, 'maintenance.article.y');
+  assertClose(maintenanceArticle.x, 497, 8, 'maintenance.article.x');
+  assertClose(maintenanceArticle.y, 581, 4, 'maintenance.article.y');
   assertClose(maintenanceArticle.width, 927, 8, 'maintenance.article.width');
-  assertBetween(maintenanceArticle.height, 600, 1400, 'maintenance.article.height');
+  assertBetween(maintenanceArticle.height, 2370, 2395, 'maintenance.article.height');
 
-  const sectionSelectors = [
-    '.f-main--maintenance .f-figma-article section:nth-of-type(1)',
-    '.f-main--maintenance .f-figma-article section:nth-of-type(2)',
-    '.f-main--maintenance .f-figma-article section:nth-of-type(3)',
-    '.f-main--maintenance .f-figma-article section:nth-of-type(4)',
-  ];
+  await assertBox(page, '.f-main--maintenance .f-figma-article section:nth-of-type(1)', { x: 497, y: 581, width: 927, height: 1645 }, 8, 'maintenance.blockOne');
+  await assertBox(page, '.f-main--maintenance .f-figma-article section:nth-of-type(1) h2', { x: 497, y: 581, width: 927, height: 51 }, 8, 'maintenance.blockOneTitle');
+  await assertBox(page, '.f-main--maintenance .f-figma-article section:nth-of-type(1) p:first-of-type', { x: 497, y: 652, width: 927, height: 76 }, 8, 'maintenance.blockOneTextStart');
+  await assertBox(page, '.f-main--maintenance .f-figma-article section:nth-of-type(2)', { x: 497, y: 2266, width: 927, height: 247 }, 8, 'maintenance.blockTwo');
+  await assertBox(page, '.f-main--maintenance .f-figma-article section:nth-of-type(3)', { x: 497, y: 2554, width: 927, height: 172 }, 8, 'maintenance.blockThree');
+  await assertBox(page, '.f-main--maintenance .f-figma-article section:nth-of-type(4)', { x: 497, y: 2766, width: 927, height: 197 }, 8, 'maintenance.blockFour');
 
-  for (const [index, selector] of sectionSelectors.entries()) {
-    const sectionRect = await box(page, selector, `maintenance.block${index + 1}`);
-    assertClose(sectionRect.width, 927, 8, `maintenance.block${index + 1}.width`);
-    assertBetween(sectionRect.height, 110, 420, `maintenance.block${index + 1}.height`);
-  }
-
-  const maintenanceGapOne = await verticalGap(page, sectionSelectors[0], sectionSelectors[1], 'maintenance.blockOneToTwoGap');
-  const maintenanceGapTwo = await verticalGap(page, sectionSelectors[1], sectionSelectors[2], 'maintenance.blockTwoToThreeGap');
-  const maintenanceGapThree = await verticalGap(page, sectionSelectors[2], sectionSelectors[3], 'maintenance.blockThreeToFourGap');
+  const maintenanceGapOne = await verticalGap(page, '.f-main--maintenance .f-figma-article section:nth-of-type(1)', '.f-main--maintenance .f-figma-article section:nth-of-type(2)', 'maintenance.blockOneToTwoGap');
+  const maintenanceGapTwo = await verticalGap(page, '.f-main--maintenance .f-figma-article section:nth-of-type(2)', '.f-main--maintenance .f-figma-article section:nth-of-type(3)', 'maintenance.blockTwoToThreeGap');
+  const maintenanceGapThree = await verticalGap(page, '.f-main--maintenance .f-figma-article section:nth-of-type(3)', '.f-main--maintenance .f-figma-article section:nth-of-type(4)', 'maintenance.blockThreeToFourGap');
   assertBetween(maintenanceGapOne, 24, 80, 'maintenance.blockOneToTwoGap');
   assertBetween(maintenanceGapTwo, 24, 80, 'maintenance.blockTwoToThreeGap');
   assertBetween(maintenanceGapThree, 24, 80, 'maintenance.blockThreeToFourGap');
 
   const maintenanceArticleToContactGap = await verticalGap(page, '.f-main--maintenance .f-figma-article', '.page-template-template-maintenance .f-contact-cta', 'maintenance.articleToContactGap');
-  assertBetween(maintenanceArticleToContactGap, 80, 180, 'maintenance.articleToContactGap');
+  assertBetween(maintenanceArticleToContactGap, 95, 115, 'maintenance.articleToContactGap');
 
   const maintenanceContactCta = await box(page, '.page-template-template-maintenance .f-contact-cta', 'maintenance.contactCta');
   assertClose(maintenanceContactCta.x, 260, 4, 'maintenance.contactCta.x');
-  assertBetween(maintenanceContactCta.y, 1380, 2400, 'maintenance.contactCta.y');
+  assertClose(maintenanceContactCta.y, 3068, 8, 'maintenance.contactCta.y');
   assertClose(maintenanceContactCta.width, 1400, 4, 'maintenance.contactCta.width');
   assertClose(maintenanceContactCta.height, 455, 4, 'maintenance.contactCta.height');
-  await assertFooterLayout(page, 'maintenance');
+  await assertFooterLayout(page, 'maintenance', 3551);
 
   await page.goto(`${baseUrl}/vlastnosti/izolace-virivky/`, { waitUntil: 'load' });
   await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 435 }, 3, 'featureDetail.heading');

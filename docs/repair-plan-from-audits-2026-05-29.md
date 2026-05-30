@@ -430,6 +430,8 @@ Acceptance:
 
 ### 6B - Kolik stojí údržba
 
+Status 2026-05-30: implemented. `/kolik-stoji-udrzba/` now follows the Figma maintenance article structure: one long ownership-cost block and three FreeHeat follow-up sections (`Další inovace`, `Nejnižší provozní náklady`, `Skutečná ochrana proti mrazu`). CTA/footer geometry matches the Figma frame height. Evidence: `docs/screenshots/maintenance-content-fix-2026-05-30/`. Guard: `npm run maintenance:smoke`.
+
 | Problém | Oprava | Soubory |
 |---|---|---|
 | Local má masivně kratší článek. | Doplnit obsah ze starého Arctic `kolik-stoji-provoz-udrzba-virivky.php` a owner poznámek. | template/content seed |

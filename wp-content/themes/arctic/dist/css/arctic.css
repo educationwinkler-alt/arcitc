@@ -10759,6 +10759,36 @@ h6,
 .f-main--maintenance .f-figma-article section {
   min-height: 0;
 }
+.f-main--maintenance .f-figma-article ul {
+  margin: 0;
+  padding-left: 1.35em;
+}
+.f-main--maintenance .f-figma-article li + li {
+  margin-top: 0.25rem;
+}
+@media (min-width: 1024px) {
+  .page-template-template-maintenance .f-section--figma-article {
+    padding-top: 0;
+  }
+  .f-main--maintenance .f-figma-article h2 {
+    margin: 0 0 20px;
+    font-size: 36px;
+    line-height: 51px;
+  }
+  .f-main--maintenance .f-figma-article p,
+  .f-main--maintenance .f-figma-article li {
+    font-size: 18px;
+    line-height: 25.2px;
+  }
+  .f-main--maintenance .f-figma-article p + p,
+  .f-main--maintenance .f-figma-article p + ul,
+  .f-main--maintenance .f-figma-article ul + p {
+    margin-top: 15px;
+  }
+  .f-main--maintenance .f-figma-article section + section {
+    margin-top: 40px;
+  }
+}
 /* ===== PR-F: about stats color ===== */
 .f-about-figma__stats strong {
   color: var(--arctic-color-red);
