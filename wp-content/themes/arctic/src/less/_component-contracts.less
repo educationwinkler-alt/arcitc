@@ -495,21 +495,22 @@ h6,
 .f-local-map__pin {
   width: 42px;
   height: 42px;
-  background: rgba(255, 255, 255, 0.78);
+  background: var(--arctic-color-red);
   border: 0;
-  border-radius: var(--arctic-contract-radius-pill);
-  box-shadow: 0 14px 24px rgba(35, 40, 47, 0.16);
+  border-radius: 50% 50% 50% 0;
+  box-shadow: 0 8px 20px rgba(181, 29, 58, 0.24);
+  transform: rotate(-45deg);
 }
 
 .f-local-map__pin:after {
   content: "";
   position: absolute;
-  top: 9px;
-  left: 9px;
-  width: 24px;
-  height: 24px;
+  top: 12px;
+  left: 12px;
+  width: 18px;
+  height: 18px;
   background: var(--arctic-color-snow);
-  clip-path: path("M12 2C7.6 2 4 5.55 4 9.94c0 5.95 8 12.06 8 12.06s8-6.11 8-12.06C20 5.55 16.4 2 12 2Zm0 10.5a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z");
+  border-radius: var(--arctic-contract-radius-pill);
 }
 
 .f-button--consultation {

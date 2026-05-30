@@ -1,0 +1,58 @@
+{
+  "map": {
+    "x": 0,
+    "y": 298,
+    "width": 1920,
+    "height": 782,
+    "top": 298,
+    "right": 1920,
+    "bottom": 1080,
+    "left": 0
+  },
+  "image": {
+    "x": -867,
+    "y": 298,
+    "width": 3110,
+    "height": 782,
+    "top": 298,
+    "right": 2243,
+    "bottom": 1080,
+    "left": -867
+  },
+  "pin": {
+    "x": 1217.301513671875,
+    "y": 645.301513671875,
+    "width": 59.39697265625,
+    "height": 59.39697265625,
+    "top": 645.301513671875,
+    "right": 1276.698486328125,
+    "bottom": 704.698486328125,
+    "left": 1217.301513671875
+  },
+  "card": {
+    "x": 260,
+    "y": 429,
+    "width": 565,
+    "height": 491,
+    "top": 429,
+    "right": 825,
+    "bottom": 920,
+    "left": 260
+  },
+  "labelsCount": 0,
+  "wrapperFilter": "none",
+  "imageFilter": "grayscale(1)",
+  "h3IconBackground": "rgb(181, 29, 58)",
+  "pinBackground": "rgb(181, 29, 58)",
+  "pinTransform": "matrix(0.707107, -0.707107, 0.707107, 0.707107, 0, 0)",
+  "pinAfterBackground": "rgba(255, 255, 255, 0.86)",
+  "overlayBackground": "linear-gradient(90deg, rgba(48, 60, 75, 0.94) 0%, rgba(48, 60, 75, 0.92) 46%, rgba(48, 60, 75, 0.91) 100%)",
+  "text": "Kde nás najdete? Kde nás najdete Moravany u BrnaBohunická cesta 15 Otevírací doba Úterý - Pátek9:00 - 11:3012:30 - 16:00 Chcete si osobně prohlédnout řešení a pobavit se o možnostech realizace? Rádi se vám budeme věnovat v showroomu. Více o showroomu",
+  "relative": {
+    "imageX": -867,
+    "pinX": 1217.301513671875,
+    "pinY": 347.301513671875,
+    "cardX": 260,
+    "cardY": 131
+  }
+}
