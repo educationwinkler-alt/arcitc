@@ -3832,6 +3832,20 @@ body {
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.72);
 }
+.f-contact-cta__hours,
+.f-footer__quick-hours {
+  --hours--status--color--open: #00ff80;
+  --hours--status--color--closed: var(--arctic-color-red);
+  --hours--status--color: var(--hours--status--color--closed);
+}
+.f-contact-cta__hours.open,
+.f-footer__quick-hours.open {
+  --hours--status--color: var(--hours--status--color--open);
+}
+.f-contact-cta__hours.closed,
+.f-footer__quick-hours.closed {
+  --hours--status--color: var(--hours--status--color--closed);
+}
 .f-contact-cta a {
   color: inherit;
 }
@@ -5960,8 +5974,11 @@ body.off-active--benefit-shell .f-off__overlay {
     left: 8px;
     width: 5px;
     height: 5px;
-    background: #15dc68;
+    background: var(--hours--status--color, var(--hours--status--color--closed));
     border-radius: 50%;
+  }
+  .f-footer--arctic.f-footer--arctic .f-footer__quick-hours:after {
+    display: none;
   }
   .f-footer--arctic.f-footer--arctic .f-footer__quick-contact-body .a-button {
     position: absolute;
@@ -10407,11 +10424,17 @@ h6,
   }
   .f-section--contact .f-contact-cta__hours:before {
     content: "";
+    position: static;
+    flex: 0 0 auto;
     width: 9px;
     height: 9px;
+    margin-top: 0;
     margin-right: 8px;
-    background: #27ce69;
+    background: var(--hours--status--color, var(--hours--status--color--closed));
     border-radius: var(--arctic-contract-radius-pill);
+  }
+  .f-section--contact .f-contact-cta__hours:after {
+    display: none;
   }
   .f-section--contact .f-contact-cta__bar .a-button {
     border-color: rgba(255, 255, 255, 0.86);

@@ -47,6 +47,17 @@ async function readHeaderState(page, path) {
   });
 }
 
+async function readStatusState(page, selector) {
+  const locator = page.locator(selector).first();
+  await locator.waitFor({ state: 'attached', timeout: 10000 });
+
+  return locator.evaluate((element) => ({
+    className: element.className,
+    text: element.textContent.trim().replace(/\s+/g, ' '),
+    dotColor: getComputedStyle(element, '::before').backgroundColor,
+  }));
+}
+
 (async () => {
   const browser = await chromium.launch({ executablePath: chromePath, headless: true });
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
@@ -71,6 +82,18 @@ async function readHeaderState(page, path) {
   assert(normalizeRgb(contactClosed.contactColor) === 'rgb(35, 40, 47)', `/kontakt/ top contact color is ${contactClosed.contactColor}, expected dark text on light background`);
   assert(contactClosed.staticHoursCount === 0, '/kontakt/ has duplicate static hours markup');
 
+  await page.goto(`${baseUrl}/showroom/`, { waitUntil: 'networkidle', timeout: 60000 });
+  await page.waitForFunction(() => document.querySelector('.f-contact-cta__hours.closed') && document.querySelector('.f-footer__quick-hours.closed'), { timeout: 10000 });
+  const ctaClosed = await readStatusState(page, '.f-contact-cta__hours');
+  const footerClosed = await readStatusState(page, '.f-footer__quick-hours');
+
+  assert(ctaClosed.className.includes('js-hours__status'), 'contact CTA hours are not wired to dynamic hours status');
+  assert(footerClosed.className.includes('js-hours__status'), 'footer quick hours are not wired to dynamic hours status');
+  assert(ctaClosed.className.includes('closed'), 'contact CTA mocked closed status did not set .closed');
+  assert(footerClosed.className.includes('closed'), 'footer quick mocked closed status did not set .closed');
+  assert(normalizeRgb(ctaClosed.dotColor) === 'rgb(163, 31, 55)', `contact CTA closed dot is ${ctaClosed.dotColor}, expected Arctic red`);
+  assert(normalizeRgb(footerClosed.dotColor) === 'rgb(163, 31, 55)', `footer quick closed dot is ${footerClosed.dotColor}, expected Arctic red`);
+
   await page.unroute('**/wp-admin/admin-ajax.php');
 
   await withMockedHours(page, true);
@@ -78,6 +101,14 @@ async function readHeaderState(page, path) {
 
   assert(showroomOpen.statusClass.includes('open'), '/showroom/ mocked open status did not set .open');
   assert(normalizeRgb(showroomOpen.contactColor) === 'rgb(255, 255, 255)', `/showroom/ top contact color is ${showroomOpen.contactColor}, expected white over hero`);
+
+  const ctaOpen = await readStatusState(page, '.f-contact-cta__hours');
+  const footerOpen = await readStatusState(page, '.f-footer__quick-hours');
+
+  assert(ctaOpen.className.includes('open'), 'contact CTA mocked open status did not set .open');
+  assert(footerOpen.className.includes('open'), 'footer quick mocked open status did not set .open');
+  assert(normalizeRgb(ctaOpen.dotColor) === 'rgb(0, 255, 128)', `contact CTA open dot is ${ctaOpen.dotColor}, expected Figma green`);
+  assert(normalizeRgb(footerOpen.dotColor) === 'rgb(0, 255, 128)', `footer quick open dot is ${footerOpen.dotColor}, expected Figma green`);
 
   await page.goto(`${baseUrl}/showroom/#fotogalerie`, { waitUntil: 'networkidle', timeout: 60000 });
   await page.waitForFunction(() => document.querySelector('.f-bar__contacts .js-hours__status.open'), { timeout: 10000 });

@@ -357,6 +357,8 @@ Acceptance:
 
 ### 4E - Header top contact / opening-hours status
 
+Status 2026-05-30 follow-up: contact CTA and footer quick-contact hours are no longer static green dots. Both now render through the same `templates/about/hours.php` + `forqy_hours` + `hours_is_open` AJAX status path as the header, so `.open` shows the green dot and `.closed` shows Arctic red. Evidence: `docs/screenshots/dynamic-hours-cta-footer-2026-05-30/`. Guard: `npm run header:smoke`.
+
 | Akce | Soubory |
 |---|---|
 | Zachovat Baspa-like automatiku oteviraci doby: `templates/about/hours.php` -> `forqy_hours` -> vendor status template -> `hours_is_open` AJAX -> `.open`/`.closed`. | `templates/about/hours.php`, `vendor/forqys/hours/*`, `inc/functions/hours.php` |

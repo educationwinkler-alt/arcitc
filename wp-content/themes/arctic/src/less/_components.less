@@ -4389,6 +4389,23 @@ body {
   color: rgba(255, 255, 255, 0.72);
 }
 
+.f-contact-cta__hours,
+.f-footer__quick-hours {
+  --hours--status--color--open: #00ff80;
+  --hours--status--color--closed: var(--arctic-color-red);
+  --hours--status--color: var(--hours--status--color--closed);
+}
+
+.f-contact-cta__hours.open,
+.f-footer__quick-hours.open {
+  --hours--status--color: var(--hours--status--color--open);
+}
+
+.f-contact-cta__hours.closed,
+.f-footer__quick-hours.closed {
+  --hours--status--color: var(--hours--status--color--closed);
+}
+
 .f-contact-cta a {
   color: inherit;
 }
@@ -6874,8 +6891,12 @@ body.off-active--benefit-shell .f-off__overlay {
     left: 8px;
     width: 5px;
     height: 5px;
-    background: #15dc68;
+    background: var(--hours--status--color, var(--hours--status--color--closed));
     border-radius: 50%;
+  }
+
+  .f-footer--arctic.f-footer--arctic .f-footer__quick-hours:after {
+    display: none;
   }
 
   .f-footer--arctic.f-footer--arctic .f-footer__quick-contact-body .a-button {

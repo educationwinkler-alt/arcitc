@@ -1,0 +1,25 @@
+{
+  "expectedClosedDot": "rgb(163, 31, 55)",
+  "cta": {
+    "className": "f-hours__status js-hours__status f-about-hours f-contact-cta__hours closed",
+    "text": "Po - Pá 8:00-17:00 h",
+    "dotColor": "rgb(163, 31, 55)",
+    "rect": {
+      "x": 859.875,
+      "y": 484.359375,
+      "width": 169.96875,
+      "height": 28
+    }
+  },
+  "footer": {
+    "className": "f-hours__status js-hours__status f-about-hours f-footer__quick-hours closed",
+    "text": "Po - Pá 8:00-17:00 h",
+    "dotColor": "rgb(163, 31, 55)",
+    "rect": {
+      "x": 1101,
+      "y": 959,
+      "width": 155.96875,
+      "height": 21
+    }
+  }
+}

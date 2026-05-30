@@ -725,11 +725,18 @@ h6,
 
   .f-section--contact .f-contact-cta__hours:before {
     content: "";
+    position: static;
+    flex: 0 0 auto;
     width: 9px;
     height: 9px;
+    margin-top: 0;
     margin-right: 8px;
-    background: #27ce69;
+    background: var(--hours--status--color, var(--hours--status--color--closed));
     border-radius: var(--arctic-contract-radius-pill);
+  }
+
+  .f-section--contact .f-contact-cta__hours:after {
+    display: none;
   }
 
   .f-section--contact .f-contact-cta__bar .a-button {

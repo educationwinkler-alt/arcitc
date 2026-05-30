@@ -8,6 +8,8 @@
 
 $phone = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
 $email = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
+$hours = apply_filters( 'forqy_hours', array() );
+$hours_label = function_exists( 'baspa_hours_bar_label' ) ? baspa_hours_bar_label( $hours ) : __( 'Po - Pá 8:00-17:00 h', 'baspa' );
 
 $groups = array(
 	array(
@@ -96,7 +98,10 @@ $groups = array(
 					</div>
 					<a href="mailto:<?php echo antispambot( esc_attr( $email ) ); ?>"><?php echo antispambot( esc_html( $email ) ); ?></a>
 					<a href="tel:<?php echo esc_attr( str_replace( ' ', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a>
-					<span class="f-footer__quick-hours"><?php echo esc_html__( 'Po - Pá 8:00-17:00 h', 'baspa' ); ?></span>
+					<?php get_template_part( 'templates/about/hours', '', array(
+						'class' => array( 'f-footer__quick-hours' ),
+						'label' => $hours_label,
+					) ); ?>
 					<?php get_template_part( 'templates/button/contact', '', array(
 						'text' => __( 'Nezávazná konzultace', 'baspa' ),
 					) ); ?>
