@@ -1,0 +1,79 @@
+{
+  "page": {
+    "x": 0,
+    "y": 0,
+    "width": 1920,
+    "height": 2879
+  },
+  "hero": {
+    "x": 0,
+    "y": 0,
+    "width": 1920,
+    "height": 801
+  },
+  "heroContent": {
+    "x": 262,
+    "y": 329,
+    "width": 488,
+    "height": 236
+  },
+  "miniCta": {
+    "x": 1167,
+    "y": 725,
+    "width": 498,
+    "height": 299
+  },
+  "info": {
+    "x": 0,
+    "y": 801,
+    "width": 1920,
+    "height": 335
+  },
+  "reasons": {
+    "x": 0,
+    "y": 1136,
+    "width": 1920,
+    "height": 526
+  },
+  "reasonsGrid": {
+    "x": 313,
+    "y": 1300,
+    "width": 1293,
+    "height": 172
+  },
+  "splitFirstImage": {
+    "x": 986,
+    "y": 1662,
+    "width": 674,
+    "height": 424
+  },
+  "splitSecondImage": {
+    "x": 260,
+    "y": 2224,
+    "width": 674,
+    "height": 424
+  },
+  "splitSecondCopy": {
+    "x": 1024,
+    "y": 2338,
+    "width": 575,
+    "height": 135
+  },
+  "contactCta": {
+    "x": 260,
+    "y": 2899,
+    "width": 1400,
+    "height": 382.359375
+  },
+  "footer": {
+    "x": 0,
+    "y": 3362,
+    "width": 1920,
+    "height": 773
+  },
+  "heroSource": "url(\"http://localhost:8090/wp-content/uploads/import/owner-showroom/showroom-covana-interior-web.jpg\")",
+  "splitFirstSource": "http://localhost:8090/wp-content/uploads/import/owner-showroom/showroom-detail-web.jpg http://localhost:8090/wp-content/uploads/import/owner-showroom/showroom-detail-web.jpg none",
+  "splitSecondSource": "http://localhost:8090/wp-content/uploads/import/owner-showroom/showroom-main-web.jpg http://localhost:8090/wp-content/uploads/import/owner-showroom/showroom-main-web.jpg none",
+  "splitSecondObjectPosition": "50% 74%",
+  "scrollHeight": 4135
+}

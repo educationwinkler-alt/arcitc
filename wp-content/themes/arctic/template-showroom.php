@@ -9,9 +9,9 @@ $asset = static function ( string $filename ): string {
 };
 
 $showroom_assets = array(
-	'hero'           => $asset( 'owner-showroom/showroom-main-web.jpg' ),
-	'pool_detail'    => $asset( 'owner-showroom/showroom-detail-web.jpg' ),
-	'hot_tub_detail' => $asset( 'owner-showroom/showroom-covana-interior-web.jpg' ),
+	'hero'            => $asset( 'owner-showroom/showroom-covana-interior-web.jpg' ),
+	'interior_detail' => $asset( 'owner-showroom/showroom-detail-web.jpg' ),
+	'exterior_detail' => $asset( 'owner-showroom/showroom-main-web.jpg' ),
 );
 
 $contact_email = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
@@ -130,7 +130,7 @@ get_header();
 					<h2><?php echo esc_html__( 'Naše bazény a vířivky si prohlédnete, případně vyzkoušíte', 'baspa' ); ?></h2>
 					<p><?php echo esc_html__( 'Naše hlavní vzorková prodejna se nachází v Moravanech u Brna a je velmi dobře dostupná z dálnice D1. Vystavené vířivky, swimspa a vybrané příslušenství si u nás můžete nejen prohlédnout. Minimálně dvě vířivky míváme zprovozněné pro mokrý test, k dispozici je samozřejmě kompletní zázemí.', 'baspa' ); ?></p>
 				</div>
-				<img src="<?php echo esc_url( $showroom_assets['pool_detail'] ); ?>"
+				<img src="<?php echo esc_url( $showroom_assets['interior_detail'] ); ?>"
 				     alt="<?php echo esc_attr__( 'Showroom Arctic Spas v Moravanech', 'baspa' ); ?>"
 				     loading="lazy" decoding="async">
 			</div>
@@ -138,11 +138,12 @@ get_header();
 
 		<section class="f-showroom-split f-showroom-split--second">
 			<div class="f-showroom-split__container a-container">
-				<img src="<?php echo esc_url( $showroom_assets['hot_tub_detail'] ); ?>"
-				     alt="<?php echo esc_attr__( 'Vířivky Arctic Spas v showroomu', 'baspa' ); ?>"
+				<img class="f-showroom-split__image--exterior"
+				     src="<?php echo esc_url( $showroom_assets['exterior_detail'] ); ?>"
+				     alt="<?php echo esc_attr__( 'Vstup do showroomu Arctic Spas v Moravanech', 'baspa' ); ?>"
 				     loading="lazy" decoding="async">
 				<div class="f-showroom-split__copy">
-					<p><?php echo esc_html__( 'U vířivek Arctic Spas nabízíme pro posouzení komfortu a kvality hydromasáže možnost vyzkoušení. Zpravidla dvě vířivky pro vás máme neustále napuštěné, takže si v případě zájmu vezměte plavky. Na místě rádi zodpovíme veškeré vaše dotazy a poradíme s přípravou vašeho projektu.', 'baspa' ); ?></p>
+					<p><?php echo esc_html__( 'Showroom najdete v Moravanech u Brna, kousek od dálnice D1. Při návštěvě s vámi projdeme výběr modelu, přípravu místa, možnosti usazení i další kroky realizace. Přijet můžete po domluvě v otevírací době a rovnou probrat další postup.', 'baspa' ); ?></p>
 				</div>
 			</div>
 		</section>

@@ -480,6 +480,8 @@ Acceptance:
 
 ### 6E - Showroom
 
+Status 2026-05-30: implemented/verified. `/showroom/` now uses only owner showroom assets: the hero is the interior hot tub/logo photo instead of the exterior facade, content blocks use the available interior/detail and exterior showroom photos, and the exterior crop is explicitly positioned so it renders as a real image block. Design-only Figma showroom exports remain forbidden. Evidence: `docs/screenshots/showroom-6e-verification-2026-05-30/`. Guard: `npm run showroom:smoke`.
+
 | Problém | Oprava | Soubory |
 |---|---|---|
 | Hero image je špatný. | Napojit showroom/interior photo z owner/old source. | `template-showroom.php` |

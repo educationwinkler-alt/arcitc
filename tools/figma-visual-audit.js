@@ -1736,9 +1736,9 @@ async function auditShowroomDesktop(page) {
   await assertBox(page, '.page-template-template-showroom .f-contact-cta', { x: 260, y: 2899, width: 1400, height: 382.4 }, 4, 'showroom.contactCta');
   await assertFooterLayout(page, 'showroom', 3362);
 
-  await assertSourceContains(page, '.f-showroom-hero', 'uploads/import/owner-showroom/showroom-main-web.jpg', 'showroom.heroSource');
+  await assertSourceContains(page, '.f-showroom-hero', 'uploads/import/owner-showroom/showroom-covana-interior-web.jpg', 'showroom.heroSource');
   await assertSourceContains(page, '.f-showroom-split--first img', 'uploads/import/owner-showroom/showroom-detail-web.jpg', 'showroom.splitFirstSource');
-  await assertSourceContains(page, '.f-showroom-split--second img', 'uploads/import/owner-showroom/showroom-covana-interior-web.jpg', 'showroom.splitSecondSource');
+  await assertSourceContains(page, '.f-showroom-split--second img', 'uploads/import/owner-showroom/showroom-main-web.jpg', 'showroom.splitSecondSource');
 }
 
 async function auditFigmaInfoPagesDesktop(page) {
