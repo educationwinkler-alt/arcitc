@@ -1,0 +1,126 @@
+{
+  "support": {
+    "heading": {
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 394
+    },
+    "tabs": {
+      "x": 260,
+      "y": 394,
+      "width": 1400,
+      "height": 93
+    },
+    "faqSection": {
+      "x": 0,
+      "y": 487,
+      "width": 1920,
+      "height": 1466
+    },
+    "faqAccordion": {
+      "x": 260,
+      "y": 724,
+      "width": 1045,
+      "height": 1145
+    },
+    "helpCard": {
+      "x": 1362,
+      "y": 556,
+      "width": 298,
+      "height": 341
+    },
+    "downloadsSection": {
+      "x": 0,
+      "y": 1953,
+      "width": 1920,
+      "height": 987
+    },
+    "downloadsList": {
+      "x": 260,
+      "y": 2109,
+      "width": 1045,
+      "height": 735
+    },
+    "supportFormCard": {
+      "x": 260,
+      "y": 3129,
+      "width": 1045,
+      "height": 871
+    },
+    "contactCta": {
+      "x": 260,
+      "y": 4253,
+      "width": 1400,
+      "height": 455
+    },
+    "footer": {
+      "x": 0,
+      "y": 4736,
+      "width": 1920,
+      "height": 773
+    },
+    "faqCards": 9,
+    "downloadGroups": 3,
+    "contractMarkers": {
+      "support": true,
+      "faq": true,
+      "downloads": true,
+      "form": true
+    },
+    "scrollHeight": 5509
+  },
+  "downloads": {
+    "heading": {
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 370.53125
+    },
+    "chipList": {
+      "x": 260,
+      "y": 444.53125,
+      "width": 1400,
+      "height": 37
+    },
+    "downloads": {
+      "x": 260,
+      "y": 526.53125,
+      "width": 1045,
+      "height": 735
+    },
+    "firstGroup": {
+      "x": 260,
+      "y": 526.53125,
+      "width": 1045,
+      "height": 503
+    },
+    "firstCard": {
+      "x": 344,
+      "y": 619.53125,
+      "width": 934,
+      "height": 118
+    },
+    "contactCta": {
+      "x": 260,
+      "y": 1497.53125,
+      "width": 1400,
+      "height": 382.359375
+    },
+    "footer": {
+      "x": 0,
+      "y": 1979.890625,
+      "width": 1920,
+      "height": 773
+    },
+    "groups": 3,
+    "cards": 26,
+    "contractMarkers": {
+      "supportShell": true,
+      "downloads": true,
+      "groups": true,
+      "cards": true
+    },
+    "scrollHeight": 2753
+  }
+}

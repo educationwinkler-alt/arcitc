@@ -513,6 +513,8 @@ Acceptance:
 
 ## Repair Wave 7 - Support/download polish
 
+Status 2026-05-30: implemented/verified. `/podpora/` and `/ke-stazeni/` use the shared PR-G support/download contract: real FAQ/download interactions, tab/chip states, bounded download rows, service form card, and mobile homepage/menu overflow checks. Evidence: `docs/screenshots/wave7-support-download-verification-2026-05-30/`. Guard: `npm run support-mobile:smoke`.
+
 Priorita: P1  
 Typ: CSS + interaction QA  
 Cíl: funkce už existuje, ale musí sedět kompaktnost a vizuální rytmus.
