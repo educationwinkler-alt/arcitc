@@ -116,7 +116,9 @@ get_header();
 				<div class="f-showroom-reasons__grid">
 					<?php foreach ( $reasons as $reason ) { ?>
 						<div class="f-showroom-reason">
-							<span class="f-showroom-reason__icon f-showroom-reason__icon--<?php echo esc_attr( $reason['icon'] ); ?>" aria-hidden="true"></span>
+							<img class="f-showroom-reason__icon"
+							     src="<?php echo esc_url( $asset( 'figma/showroom-reason-' . $reason['icon'] . '.svg' ) ); ?>"
+							     width="63" height="63" alt="" decoding="async" aria-hidden="true">
 							<p><?php echo esc_html( $reason['text'] ); ?></p>
 						</div>
 					<?php } ?>

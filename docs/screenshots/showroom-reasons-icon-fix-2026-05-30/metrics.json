@@ -1,0 +1,68 @@
+{
+  "card": {
+    "x": 260,
+    "y": 338,
+    "width": 1400,
+    "height": 404
+  },
+  "grid": {
+    "x": 313,
+    "y": 502,
+    "width": 1293,
+    "height": 172
+  },
+  "borderRadius": "40px",
+  "boxShadow": "rgba(0, 0, 0, 0.1) 0px 4px 4px 0px, rgba(0, 0, 0, 0.05) 0px 14px 24px 0px",
+  "icons": [
+    {
+      "src": "http://localhost:8090/wp-content/uploads/import/figma/showroom-reason-pool.svg",
+      "width": 63,
+      "height": 63
+    },
+    {
+      "src": "http://localhost:8090/wp-content/uploads/import/figma/showroom-reason-road.svg",
+      "width": 63,
+      "height": 63
+    },
+    {
+      "src": "http://localhost:8090/wp-content/uploads/import/figma/showroom-reason-parking.svg",
+      "width": 63,
+      "height": 63
+    },
+    {
+      "src": "http://localhost:8090/wp-content/uploads/import/figma/showroom-reason-coffee.svg",
+      "width": 63,
+      "height": 63
+    }
+  ],
+  "textBoxes": [
+    {
+      "width": 250,
+      "height": 93,
+      "fontWeight": "700",
+      "fontSize": "22px",
+      "lineHeight": "31px"
+    },
+    {
+      "width": 220,
+      "height": 93,
+      "fontWeight": "700",
+      "fontSize": "22px",
+      "lineHeight": "31px"
+    },
+    {
+      "width": 226,
+      "height": 93,
+      "fontWeight": "700",
+      "fontSize": "22px",
+      "lineHeight": "31px"
+    },
+    {
+      "width": 282,
+      "height": 93,
+      "fontWeight": "700",
+      "fontSize": "22px",
+      "lineHeight": "31px"
+    }
+  ]
+}

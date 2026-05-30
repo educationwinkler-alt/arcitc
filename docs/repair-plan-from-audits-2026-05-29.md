@@ -484,6 +484,8 @@ Status 2026-05-30: implemented/verified. `/showroom/` now uses only owner showro
 
 Follow-up 2026-05-30: showroom header/top-contact state must stay white over the showroom photo, including the `/showroom/#fotogalerie` autohide-visible state. This is different from product/category pages where the visible header can use dark contact text over a light navigation surface. Evidence: `docs/screenshots/showroom-header-color-fix-2026-05-30/`. Guard: `npm run header:smoke`.
 
+Follow-up 2026-05-30: `"Proč navštívit náš showroom?"` card now uses the actual Figma 63x63 SVG icons (`swimming-pool`, `roads`, `parking`, `coffee-cup`) instead of hand-drawn CSS pseudo-icons. Card radius/shadow and reason text widths/weight match the Figma layer data. Evidence: `docs/screenshots/showroom-reasons-icon-fix-2026-05-30/`. Guard: `npm run showroom:smoke`.
+
 | Problém | Oprava | Soubory |
 |---|---|---|
 | Hero image je špatný. | Napojit showroom/interior photo z owner/old source. | `template-showroom.php` |

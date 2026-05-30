@@ -56,6 +56,11 @@ async function assertSource(page, selector, expected, label) {
   assert(actual.includes(expected), `${label}: expected source to include ${expected}, got ${actual}`);
 }
 
+async function assertComputedStyle(page, selector, property, expected, label) {
+  const actual = await page.locator(selector).first().evaluate((element, prop) => getComputedStyle(element).getPropertyValue(prop), property);
+  assert(actual.trim() === expected, `${label}: expected ${property} ${expected}, got ${actual}`);
+}
+
 async function main() {
   const browser = await chromium.launch({ executablePath: chromePath, headless: true });
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
@@ -66,6 +71,10 @@ async function main() {
     await assertSource(page, '.f-showroom-hero', 'uploads/import/owner-showroom/showroom-covana-interior-web.jpg', 'desktop.heroSource');
     await assertSource(page, '.f-showroom-split--first img', 'uploads/import/owner-showroom/showroom-detail-web.jpg', 'desktop.splitFirstSource');
     await assertSource(page, '.f-showroom-split--second img', 'uploads/import/owner-showroom/showroom-main-web.jpg', 'desktop.splitSecondSource');
+    await assertSource(page, '.f-showroom-reason:nth-child(1) .f-showroom-reason__icon', 'uploads/import/figma/showroom-reason-pool.svg', 'desktop.reasonPoolIcon');
+    await assertSource(page, '.f-showroom-reason:nth-child(2) .f-showroom-reason__icon', 'uploads/import/figma/showroom-reason-road.svg', 'desktop.reasonRoadIcon');
+    await assertSource(page, '.f-showroom-reason:nth-child(3) .f-showroom-reason__icon', 'uploads/import/figma/showroom-reason-parking.svg', 'desktop.reasonParkingIcon');
+    await assertSource(page, '.f-showroom-reason:nth-child(4) .f-showroom-reason__icon', 'uploads/import/figma/showroom-reason-coffee.svg', 'desktop.reasonCoffeeIcon');
 
     const html = await page.content();
     for (const forbidden of [
@@ -78,7 +87,12 @@ async function main() {
 
     await assertBox(page, '.f-showroom-hero', { x: 0, y: 0, width: 1920, height: 801 }, 4, 'desktop.hero');
     await assertBox(page, '.f-showroom-mini-cta', { x: 1167, y: 725, width: 498, height: 299 }, 4, 'desktop.miniCta');
+    await assertComputedStyle(page, '.f-showroom-reasons__container', 'border-radius', '40px', 'desktop.reasonsCardRadius');
+    await assertComputedStyle(page, '.f-showroom-reasons__container', 'box-shadow', 'rgba(0, 0, 0, 0.1) 0px 4px 4px 0px, rgba(0, 0, 0, 0.05) 0px 14px 24px 0px', 'desktop.reasonsCardShadow');
+    await assertComputedStyle(page, '.f-showroom-reason p', 'font-weight', '700', 'desktop.reasonTextWeight');
     await assertBox(page, '.f-showroom-reasons__grid', { x: 313, y: 1300, width: 1293, height: 172 }, 4, 'desktop.reasonsGrid');
+    await assertBox(page, '.f-showroom-reason:nth-child(1) .f-showroom-reason__icon', { x: 422.5, y: 1300, width: 63, height: 63 }, 4, 'desktop.reasonPoolIconBox');
+    await assertBox(page, '.f-showroom-reason:nth-child(1) p', { x: 329, y: 1379, width: 250, height: 93 }, 4, 'desktop.reasonPoolTextBox');
     await assertBox(page, '.f-showroom-split--first img', { x: 986, y: 1662, width: 674, height: 424 }, 4, 'desktop.splitFirstImage');
     await assertBox(page, '.f-showroom-split--second img', { x: 260, y: 2224, width: 674, height: 424 }, 4, 'desktop.splitSecondImage');
 
