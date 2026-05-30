@@ -1,0 +1,230 @@
+{
+  "created": "2026-05-30",
+  "baseUrl": "http://localhost:8090",
+  "metrics": [
+    {
+      "mode": "desktop",
+      "name": "home",
+      "route": "/",
+      "file": "desktop-home.png",
+      "overflow": 0,
+      "scrollHeight": 5002,
+      "footer": {
+        "x": 0,
+        "y": 4229.25,
+        "width": 1440,
+        "height": 773,
+        "bottom": 5002.25
+      },
+      "footerBackground": "linear-gradient(rgba(238, 243, 247, 0.98) 0%, rgba(238, 243, 247, 0.94) 48%, rgba(238, 243, 247, 0.68) 76%, rgba(238, 243, 247, 0.1) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")"
+    },
+    {
+      "mode": "desktop",
+      "name": "virivky",
+      "route": "/virivky/",
+      "file": "desktop-virivky.png",
+      "overflow": 0,
+      "scrollHeight": 8384,
+      "footer": {
+        "x": 0,
+        "y": 7611.25,
+        "width": 1440,
+        "height": 773,
+        "bottom": 8384.25
+      },
+      "footerBackground": "linear-gradient(rgba(238, 243, 247, 0.98) 0%, rgba(238, 243, 247, 0.94) 48%, rgba(238, 243, 247, 0.68) 76%, rgba(238, 243, 247, 0.1) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")"
+    },
+    {
+      "mode": "desktop",
+      "name": "swimspa",
+      "route": "/swimspa/",
+      "file": "desktop-swimspa.png",
+      "overflow": 0,
+      "scrollHeight": 6475,
+      "footer": {
+        "x": 0,
+        "y": 5702.4375,
+        "width": 1440,
+        "height": 773,
+        "bottom": 6475.4375
+      },
+      "footerBackground": "linear-gradient(rgba(238, 243, 247, 0.98) 0%, rgba(238, 243, 247, 0.94) 48%, rgba(238, 243, 247, 0.68) 76%, rgba(238, 243, 247, 0.1) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")"
+    },
+    {
+      "mode": "desktop",
+      "name": "reference",
+      "route": "/reference/",
+      "file": "desktop-reference.png",
+      "overflow": 0,
+      "scrollHeight": 2667,
+      "footer": {
+        "x": 0,
+        "y": 1894,
+        "width": 1440,
+        "height": 773,
+        "bottom": 2667
+      },
+      "footerBackground": "linear-gradient(rgba(238, 243, 247, 0.98) 0%, rgba(238, 243, 247, 0.94) 48%, rgba(238, 243, 247, 0.68) 76%, rgba(238, 243, 247, 0.1) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")"
+    },
+    {
+      "mode": "desktop",
+      "name": "kontakt",
+      "route": "/kontakt/",
+      "file": "desktop-kontakt.png",
+      "overflow": 0,
+      "scrollHeight": 3198,
+      "footer": {
+        "x": 0,
+        "y": 2425,
+        "width": 1440,
+        "height": 773,
+        "bottom": 3198
+      },
+      "footerBackground": "linear-gradient(rgba(238, 243, 247, 0.98) 0%, rgba(238, 243, 247, 0.94) 48%, rgba(238, 243, 247, 0.68) 76%, rgba(238, 243, 247, 0.1) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")"
+    },
+    {
+      "mode": "desktop",
+      "name": "o-nas",
+      "route": "/o-nas/",
+      "file": "desktop-o-nas.png",
+      "overflow": 0,
+      "scrollHeight": 4584,
+      "footer": {
+        "x": 0,
+        "y": 3811,
+        "width": 1440,
+        "height": 773,
+        "bottom": 4584
+      },
+      "footerBackground": "linear-gradient(rgba(238, 243, 247, 0.98) 0%, rgba(238, 243, 247, 0.94) 48%, rgba(238, 243, 247, 0.68) 76%, rgba(238, 243, 247, 0.1) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")"
+    },
+    {
+      "mode": "desktop",
+      "name": "showroom",
+      "route": "/showroom/",
+      "file": "desktop-showroom.png",
+      "overflow": 0,
+      "scrollHeight": 4135,
+      "footer": {
+        "x": 0,
+        "y": 3362,
+        "width": 1440,
+        "height": 773,
+        "bottom": 4135
+      },
+      "footerBackground": "linear-gradient(rgba(238, 243, 247, 0.98) 0%, rgba(238, 243, 247, 0.94) 48%, rgba(238, 243, 247, 0.68) 76%, rgba(238, 243, 247, 0.1) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")"
+    },
+    {
+      "mode": "desktop",
+      "name": "podpora",
+      "route": "/podpora/",
+      "file": "desktop-podpora.png",
+      "overflow": 0,
+      "scrollHeight": 5509,
+      "footer": {
+        "x": 0,
+        "y": 4736,
+        "width": 1440,
+        "height": 773,
+        "bottom": 5509
+      },
+      "footerBackground": "linear-gradient(rgba(238, 243, 247, 0.98) 0%, rgba(238, 243, 247, 0.94) 48%, rgba(238, 243, 247, 0.68) 76%, rgba(238, 243, 247, 0.1) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")"
+    },
+    {
+      "mode": "desktop",
+      "name": "ke-stazeni",
+      "route": "/ke-stazeni/",
+      "file": "desktop-ke-stazeni.png",
+      "overflow": 0,
+      "scrollHeight": 2727,
+      "footer": {
+        "x": 0,
+        "y": 1953.703125,
+        "width": 1440,
+        "height": 773,
+        "bottom": 2726.703125
+      },
+      "footerBackground": "linear-gradient(rgba(238, 243, 247, 0.98) 0%, rgba(238, 243, 247, 0.94) 48%, rgba(238, 243, 247, 0.68) 76%, rgba(238, 243, 247, 0.1) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")"
+    },
+    {
+      "mode": "mobile",
+      "name": "home",
+      "route": "/",
+      "file": "mobile-home.png",
+      "overflow": 0,
+      "scrollHeight": 6400,
+      "footer": {
+        "x": 0,
+        "y": 4891.953125,
+        "width": 390,
+        "height": 1508.28125,
+        "bottom": 6400.234375
+      },
+      "footerBackground": "linear-gradient(rgba(238, 243, 247, 0.96) 0%, rgba(238, 243, 247, 0.72) 58%, rgba(238, 243, 247, 0.2) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")"
+    },
+    {
+      "mode": "mobile",
+      "name": "reference",
+      "route": "/reference/",
+      "file": "mobile-reference.png",
+      "overflow": 0,
+      "scrollHeight": 5028,
+      "footer": {
+        "x": 0,
+        "y": 3519.390625,
+        "width": 390,
+        "height": 1508.28125,
+        "bottom": 5027.671875
+      },
+      "footerBackground": "linear-gradient(rgba(238, 243, 247, 0.96) 0%, rgba(238, 243, 247, 0.72) 58%, rgba(238, 243, 247, 0.2) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")"
+    },
+    {
+      "mode": "mobile",
+      "name": "kontakt",
+      "route": "/kontakt/",
+      "file": "mobile-kontakt.png",
+      "overflow": 0,
+      "scrollHeight": 4467,
+      "footer": {
+        "x": 0,
+        "y": 2958.21875,
+        "width": 390,
+        "height": 1508.28125,
+        "bottom": 4466.5
+      },
+      "footerBackground": "linear-gradient(rgba(238, 243, 247, 0.96) 0%, rgba(238, 243, 247, 0.72) 58%, rgba(238, 243, 247, 0.2) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")"
+    },
+    {
+      "mode": "mobile",
+      "name": "podpora",
+      "route": "/podpora/",
+      "file": "mobile-podpora.png",
+      "overflow": 0,
+      "scrollHeight": 6856,
+      "footer": {
+        "x": 0,
+        "y": 5347.875,
+        "width": 390,
+        "height": 1508.28125,
+        "bottom": 6856.15625
+      },
+      "footerBackground": "linear-gradient(rgba(238, 243, 247, 0.96) 0%, rgba(238, 243, 247, 0.72) 58%, rgba(238, 243, 247, 0.2) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")"
+    },
+    {
+      "mode": "mobile",
+      "name": "ke-stazeni",
+      "route": "/ke-stazeni/",
+      "file": "mobile-ke-stazeni.png",
+      "overflow": 0,
+      "scrollHeight": 3731,
+      "footer": {
+        "x": 0,
+        "y": 2222.234375,
+        "width": 390,
+        "height": 1508.28125,
+        "bottom": 3730.515625
+      },
+      "footerBackground": "linear-gradient(rgba(238, 243, 247, 0.96) 0%, rgba(238, 243, 247, 0.72) 58%, rgba(238, 243, 247, 0.2) 100%), url(\"http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg\")"
+    }
+  ]
+}

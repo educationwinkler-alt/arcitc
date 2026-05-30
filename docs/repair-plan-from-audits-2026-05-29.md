@@ -607,6 +607,13 @@ Cíl: už nikdy neoznačit rozbitou stránku jako pass jen kvůli token/geometry
 | Screenshot sign-off má pro každou stránku pass/fail a odkaz na screenshot. | docs |
 | Žádný P0 z auditů nezůstává otevřený. | repair checklist |
 
+Wave 9 status 2026-05-30: implemented/verified.
+
+- Added final QA gate: `npm run final:qa`.
+- Guard covers global footer mountain background/no `f-footer--handoff`, `/reference/` archive without `/project/` links, visible image load failures, horizontal overflow, static vs interactive product benefit affordances, and `WAITING_ON_OWNER` marker counts for contact/about/warranty media.
+- Final screenshot evidence: `docs/screenshots/final-qa-2026-05-30/` with desktop/mobile manifest and index.
+- Supporting guards re-run in Wave 8/9 pass: `npm run figma:audit`, `npm run visual:smoke`, `npm run support-mobile:smoke`, `npm run component:smoke`, `npm run header:smoke`, `npm run local:safety`, `npm run asset:smoke`, `npm run link:smoke`, `npm run final:qa`.
+
 ## Doporučené PR pořadí
 
 | PR | Název | Obsah | Blokuje |
@@ -626,7 +633,7 @@ Tahle tabulka je validační checklist, ne implementační strategie. Pokud se s
 
 | Stránka | P0 opravy | P1 opravy | Zdroj obsahu |
 |---|---|---|---|
-| `/` | Showroom collage, hero/mobile promo, footer handoff. | Reference crop/pills, promo position. | old Arctic + owner |
+| `/` | Showroom collage, hero/mobile promo, footer mountain. | Reference crop/pills, promo position. | old Arctic + owner |
 | `/virivky/` | product images, configurator, showroom, category image, mega menu. | references treatment. | old product data |
 | `/swimspa/` | product images, swimspa wording, configurator, showroom. | category structure variance documented. | old swimspa data |
 | `/product/timberwolf/` | hero/media, swatches, benefit popup affordance. | benefits/options card style. | old product data |

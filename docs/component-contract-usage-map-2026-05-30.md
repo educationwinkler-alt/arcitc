@@ -8,8 +8,8 @@ Repeated visual blocks are implemented through a named component contract. Page-
 
 | Component | Canonical marker | Current usage | Variant markers | Notes |
 | --- | --- | --- | --- | --- |
-| Contact CTA | `.f-section--component-contact`, `.f-contact-cta--shared` | Global footer-injected CTA on all non-contact pages | Context comes from existing WordPress body/page classes only for section placement | The shared contract owns CTA surface, footer handoff, typography, bar, hours pill, and button treatment. |
-| Footer handoff | `.f-footer--handoff` | Global footer | none | The dark footer background is extended upward to cover the historical frost/cyan gap without shifting layout. |
+| Contact CTA | `.f-section--component-contact`, `.f-contact-cta--shared` | Global footer-injected CTA on all non-contact pages | Context comes from existing WordPress body/page classes only for section placement | The shared contract owns CTA surface, typography, bar, hours pill, and button treatment without repainting the footer. |
+| Footer mountain | `.f-footer--arctic` | Global footer | none | The footer must keep the Figma mountain background (`footer-background.jpg`). The old `.f-footer--handoff` navy override is forbidden. |
 | Showroom collage | `.f-showroom-panel--collage` | Homepage, product categories, default page/single shared section | none | Uses PR-C owner showroom assets and shared crop/object-position rules. |
 | Configurator CTA | `.f-configurator-cta--shared` | Product categories, product detail configurator | `.f-configurator-cta--hot-tub`, `.f-configurator-cta--swimspa`, `.f-configurator-cta--product` | Shared gradient/visual veil lives in `_component-contracts.less`; swimspa gets separate text defaults and color treatment. |
 | Progress steps | `.f-progress-layout--shared` | Homepage, product categories | none | Shared typography/number treatment lives in contract; page CSS can still position the whole section. |

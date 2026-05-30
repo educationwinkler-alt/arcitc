@@ -12,6 +12,7 @@
     "figma:export-assets": "node tools/figma-export-assets.js",
     "figma:export-local-assets": "node tools/figma-export-local-assets.js",
     "figma:audit": "node tools/figma-visual-audit.js",
+    "final:qa": "node tools/final-qa-smoke.js",
     "form:smoke": "node tools/form-smoke.js",
     "header:smoke": "node tools/header-status-smoke.js",
     "legacy:products": "node tools/extract-legacy-products.js",
