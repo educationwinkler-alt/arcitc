@@ -18,6 +18,12 @@ Repeated visual blocks are implemented through a named component contract. Page-
 | Product benefit media | `.f-product-benefit__media--...` | Product detail benefits and options | named variants such as `shell`, `heatlock`, `onzen`, `wifi`, `covana` | Shared CSS icon/token treatment replaces the old gray generic media disk without inventing product photos. |
 | Benefit popup | `.f-off--benefit-popup`, `.f-benefit-popup` | Product detail shell benefit | none | Contract owns dark overlay, white rounded modal, close button radius and modal shadow. |
 | Mega menu product media | `.f-mega-menu__thumb`, `.f-mega-menu__thumb--missing`, `data-product-media` | Desktop hot tub/swimspa mega menu | missing thumbnail is explicit neutral fallback | PR-E guard fails if current seeded public products expose missing thumbnails. |
+| Support/download shell | `.f-main--support-contract` | `/podpora/`, `/ke-stazeni/` | support page includes tabs/FAQ/form; downloads page includes downloads only | PR-G owns shared support surface guardrails without duplicating page-specific internals. |
+| Support chips/tabs | `.f-support-tabs--contract`, `.f-chip-list--contract` | Support tabs, FAQ filters, download filters | interactive chips expose `role="tab"` and active state | PR-G guard checks tab state and mobile containment. |
+| FAQ accordion | `.f-support-faq-card--contract`, `data-support-faq-card` | `/podpora/` FAQ rows | open/closed state controlled by `support-download-interactions.js` | Plus/minus rows must update ARIA and panel visibility. |
+| Downloads accordion/cards | `.f-downloads--contract`, `.f-download-group--contract`, `.f-download-card--contract` | `/podpora/` downloads section, `/ke-stazeni/` page | group rows open/close; cards keep thumbnail/body/CTA attached | PR-G guard checks toggle state, filter state, and CTA attachment. |
+| Support service form | `.f-support-form--contract`, `.f-support-form__card--contract` | `/podpora/` service form card | contact-page fallback action | Contract bounds inputs/buttons and prevents mobile compression. |
+| Mobile shell guard | `.f-off--navigation` plus homepage section boundaries | homepage mobile, mobile menu | compact menu hides desktop submenus | PR-G guard opens the mobile menu and checks no horizontal overflow. |
 
 ## PR-D Guard
 
@@ -34,6 +40,13 @@ Repeated visual blocks are implemented through a named component contract. Page-
 - Timberwolf detail uses seeded Timberwolf media and owner swatches.
 - Benefit/options cards expose named media variants instead of the old gray placeholder disk.
 - Mega menu exposes all seeded product thumbnails with no missing media state.
+
+`npm run support-mobile:smoke` validates the PR-G support/download/mobile contract:
+
+- Support/download pages expose shared contract markers and the support/download interaction script.
+- FAQ plus/minus rows and download groups update ARIA plus panel state.
+- Download filters expose active tab state and CTAs stay attached to card content.
+- Mobile homepage/menu/support/download pages do not create horizontal overflow.
 
 ## Deferred To Later PRs
 

@@ -102,7 +102,7 @@ if ( $downloads_query->have_posts() ) { ?>
 
 		$render_download_card = static function ( array $download, string $thumb, string $card_description, string $button_text ): void {
 			?>
-			<article class="f-download-card"
+			<article class="f-download-card f-download-card--contract"
 			         data-download-card
 			         data-download-filter-type="<?php echo esc_attr( $download['filter_type'] ); ?>">
 				<img class="f-download-card__thumb" src="<?php echo esc_url( $thumb ); ?>" alt="" loading="lazy" decoding="async">
@@ -120,8 +120,8 @@ if ( $downloads_query->have_posts() ) { ?>
 		};
 		?>
 
-		<div class="f-downloads f-downloads--support-figma" data-downloads-root>
-			<section class="f-download-group f-download-group--open is-open" data-download-group>
+		<div class="f-downloads f-downloads--support-figma f-downloads--contract" data-downloads-root>
+			<section class="f-download-group f-download-group--contract f-download-group--open is-open" data-download-group>
 				<header class="f-download-group__header"
 				        data-download-group-toggle
 				        role="button"
@@ -141,7 +141,7 @@ if ( $downloads_query->have_posts() ) { ?>
 				</div>
 			</section>
 
-			<section class="f-download-group f-download-group--closed" data-download-group>
+			<section class="f-download-group f-download-group--contract f-download-group--closed" data-download-group>
 				<div class="f-download-group__header"
 				     data-download-group-toggle
 				     role="button"
@@ -160,7 +160,7 @@ if ( $downloads_query->have_posts() ) { ?>
 				</div>
 			</section>
 
-			<section class="f-download-group f-download-group--closed" data-download-group>
+			<section class="f-download-group f-download-group--contract f-download-group--closed" data-download-group>
 				<div class="f-download-group__header"
 				     data-download-group-toggle
 				     role="button"

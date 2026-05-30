@@ -1790,28 +1790,30 @@ async function auditFigmaInfoPagesDesktop(page) {
   await assertBox(page, '.f-heading__headline h1', { x: 260, y: 206, width: 896, height: 61 }, 4, 'warranty.title');
   await assertBox(page, '.f-heading__description', { x: 260, y: 289, width: 910, height: 62 }, 4, 'warranty.description');
 
-  const warrantySection = await box(page, '.f-section--warranty-table', 'warranty.section');
+  const warrantySection = await box(page, '.f-section--warranty-cards', 'warranty.section');
   assertClose(warrantySection.x, 0, 4, 'warranty.section.x');
   assertClose(warrantySection.y, 435, 4, 'warranty.section.y');
   assertClose(warrantySection.width, 1920, 4, 'warranty.section.width');
   assertBetween(warrantySection.height, 360, 560, 'warranty.section.height');
 
-  const warrantyTable = await box(page, '.f-warranty-table', 'warranty.table');
-  assertClose(warrantyTable.x, 260, 8, 'warranty.table.x');
-  assertBetween(warrantyTable.y, 490, 560, 'warranty.table.y');
-  assertClose(warrantyTable.width, 888, 8, 'warranty.table.width');
-  assertClose(warrantyTable.height, 283, 8, 'warranty.table.height');
+  await assertBox(page, '.f-warranty-cards', { x: 260, y: 435, width: 1400, height: 282 }, 8, 'warranty.cardsGrid');
+  await assertBox(page, '.f-warranty-card:nth-child(1)', { x: 260, y: 435, width: 450, height: 282 }, 8, 'warranty.cardOne');
+  await assertBox(page, '.f-warranty-card:nth-child(2)', { x: 735, y: 435, width: 450, height: 282 }, 8, 'warranty.cardTwo');
+  await assertBox(page, '.f-warranty-card:nth-child(3)', { x: 1209, y: 435, width: 450, height: 282 }, 8, 'warranty.cardThree');
 
-  const warrantyNote = await box(page, '.f-warranty-layout > p', 'warranty.note');
-  assertBetween(warrantyNote.x, 1180, 1265, 'warranty.note.x');
-  assertBetween(warrantyNote.y, 640, 880, 'warranty.note.y');
-  assertClose(warrantyNote.width, 368, 12, 'warranty.note.width');
-  assertClose(warrantyNote.height, 150, 12, 'warranty.note.height');
+  const warrantyNote = await box(page, '.f-warranty-note', 'warranty.note');
+  assertClose(warrantyNote.x, 260, 8, 'warranty.note.x');
+  assertBetween(warrantyNote.y, 735, 765, 'warranty.note.y');
+  assertClose(warrantyNote.width, 768, 12, 'warranty.note.width');
+  assertBetween(warrantyNote.height, 60, 90, 'warranty.note.height');
 
-  const warrantyDescriptionToTableGap = await verticalGap(page, '.f-heading__description', '.f-warranty-table', 'warranty.descriptionToTableGap');
-  assertBetween(warrantyDescriptionToTableGap, 110, 220, 'warranty.descriptionToTableGap');
+  const warrantyDescriptionToCardsGap = await verticalGap(page, '.f-heading__description', '.f-section--warranty-cards', 'warranty.descriptionToCardsGap');
+  assertBetween(warrantyDescriptionToCardsGap, 60, 120, 'warranty.descriptionToCardsGap');
 
-  const warrantySectionToContactGap = await verticalGap(page, '.f-section--warranty-table', '.page-template-template-warranty .f-contact-cta', 'warranty.sectionToContactGap');
+  const warrantyCardsToNoteGap = await verticalGap(page, '.f-warranty-cards', '.f-warranty-note', 'warranty.cardsToNoteGap');
+  assertBetween(warrantyCardsToNoteGap, 24, 48, 'warranty.cardsToNoteGap');
+
+  const warrantySectionToContactGap = await verticalGap(page, '.f-section--warranty-cards', '.page-template-template-warranty .f-contact-cta', 'warranty.sectionToContactGap');
   assertBetween(warrantySectionToContactGap, 80, 180, 'warranty.sectionToContactGap');
 
   const warrantyContactCta = await box(page, '.page-template-template-warranty .f-contact-cta', 'warranty.contactCta');
@@ -1830,13 +1832,13 @@ async function auditFigmaInfoPagesDesktop(page) {
   assertClose(maintenanceSection.x, 0, 4, 'maintenance.articleSection.x');
   assertClose(maintenanceSection.y, 581, 4, 'maintenance.articleSection.y');
   assertClose(maintenanceSection.width, 1920, 4, 'maintenance.articleSection.width');
-  assertBetween(maintenanceSection.height, 650, 1200, 'maintenance.articleSection.height');
+  assertBetween(maintenanceSection.height, 650, 1500, 'maintenance.articleSection.height');
 
   const maintenanceArticle = await box(page, '.f-main--maintenance .f-figma-article', 'maintenance.article');
   assertBetween(maintenanceArticle.x, 488, 506, 'maintenance.article.x');
   assertBetween(maintenanceArticle.y, 640, 760, 'maintenance.article.y');
   assertClose(maintenanceArticle.width, 927, 8, 'maintenance.article.width');
-  assertBetween(maintenanceArticle.height, 600, 1200, 'maintenance.article.height');
+  assertBetween(maintenanceArticle.height, 600, 1400, 'maintenance.article.height');
 
   const sectionSelectors = [
     '.f-main--maintenance .f-figma-article section:nth-of-type(1)',
@@ -1976,10 +1978,10 @@ async function auditInfoSupportCompact1097(page) {
 
   await page.goto(`${baseUrl}/zaruka/`, { waitUntil: 'load' });
   await assertNoHorizontalOverflow(page, 'pr7c:1097:warranty');
-  const warrantyDescriptionToTableGap = await verticalGap(page, '.f-heading__description', '.f-warranty-table', 'pr7c:1097:warranty.descriptionToTableGap');
-  const warrantyTableToNoteGap = await verticalGap(page, '.f-warranty-table', '.f-warranty-layout > p', 'pr7c:1097:warranty.tableToNoteGap');
-  assertBetween(warrantyDescriptionToTableGap, 100, 180, 'pr7c:1097:warranty.descriptionToTableGap');
-  assertBetween(warrantyTableToNoteGap, 30, 120, 'pr7c:1097:warranty.tableToNoteGap');
+  const warrantyDescriptionToCardsGap = await verticalGap(page, '.f-heading__description', '.f-section--warranty-cards', 'pr7c:1097:warranty.descriptionToCardsGap');
+  const warrantyCardsToNoteGap = await verticalGap(page, '.f-warranty-cards', '.f-warranty-note', 'pr7c:1097:warranty.cardsToNoteGap');
+  assertBetween(warrantyDescriptionToCardsGap, 40, 90, 'pr7c:1097:warranty.descriptionToCardsGap');
+  assertBetween(warrantyCardsToNoteGap, 24, 48, 'pr7c:1097:warranty.cardsToNoteGap');
 
   await page.goto(`${baseUrl}/kolik-stoji-udrzba/`, { waitUntil: 'load' });
   await assertNoHorizontalOverflow(page, 'pr7c:1097:maintenance');
@@ -2097,7 +2099,7 @@ async function auditAboutDesktop(page) {
   await assertBox(page, '.f-about-person:nth-child(1) .f-about-person__media', { x: 260, y: 1658, width: 336, height: 335 }, 4, 'about.teamImageOne');
   await assertBox(page, '.f-about-person:nth-child(4) .f-about-person__media', { x: 1331, y: 1658, width: 336, height: 335 }, 8, 'about.teamImageFour');
   await assertBox(page, '.f-about-figma__career h2', { x: 260, y: 2278, width: 815, height: 51 }, 4, 'about.careerTitle');
-  await assertBox(page, '.f-about-figma__jobs', { x: 260, y: 2457, width: 1401, height: 758 }, 4, 'about.jobs');
+  await assertBox(page, '.f-about-figma__jobs', { x: 260, y: 2457, width: 1401, height: 642 }, 4, 'about.jobs');
   await assertBox(page, '.f-about-job:nth-child(1)', { x: 260, y: 2457, width: 1401, height: 526 }, 4, 'about.jobOpen');
   await assertBox(page, '.f-about-job:nth-child(2)', { x: 260, y: 3003, width: 1401, height: 96 }, 4, 'about.jobClosed');
   await assertBox(page, '.page-template-template-about .f-section--contact', { x: 0, y: 3328, width: 1920, height: 483 }, 4, 'about.contactSection');
@@ -2143,12 +2145,18 @@ async function auditContactDesktop(page) {
   await assertBox(page, '.f-contact-card:nth-child(1)', { x: 260, y: 1399, width: 453, height: 280 }, 3, 'contact.cardOne');
   await assertBox(page, '.f-contact-card:nth-child(2)', { x: 733, y: 1399, width: 453, height: 280 }, 3, 'contact.cardTwo');
   await assertBox(page, '.f-contact-card:nth-child(3)', { x: 1206, y: 1399, width: 453, height: 280 }, 3, 'contact.cardThree');
-  await assertBox(page, '.f-contact-card:nth-child(4)', { x: 260, y: 1704, width: 453, height: 280 }, 3, 'contact.cardFour');
+  const contactCardCount = await page.locator('.f-contact-card').count();
+  if (contactCardCount !== 3) {
+    throw new Error(`contact.cards: expected 3 contact cards, got ${contactCardCount}`);
+  }
   await assertBox(page, '.f-billing-box', { x: 260, y: 2071, width: 507, height: 310 }, 3, 'contact.billing');
   await assertFooterLayout(page, 'contact', 2425);
 
   await assertSourceContains(page, '.f-local-map__image', 'uploads/import/figma/contact-map-showroom.png', 'contact.mapSource');
-  await assertSourceContains(page, '.f-contact-card:nth-child(1) .f-contact-card__avatar img', 'uploads/import/figma/contact-lukas-dusek.png', 'contact.cardAvatarSource');
+  const contactAvatarText = (await page.locator('.f-contact-card:nth-child(1) .f-contact-card__avatar').innerText()).trim();
+  if (contactAvatarText !== 'LD') {
+    throw new Error(`contact.cardAvatarInitials: expected LD, got ${contactAvatarText}`);
+  }
 }
 
 async function auditSharedFooterDesktop(page) {

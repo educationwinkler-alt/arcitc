@@ -416,6 +416,7 @@ Execution sequence:
 14. PR7D `content placeholder cleanup (services/reference)`
 15. PR7E `QA hardening + manual sign-off reopen for content/language/function`
 16. PR7F `support/download desktop composition + product-series-nav parity`
+17. PR-G `support/download/mobile contract guard`
 
 Task board checklist + DoD:
 - [x] PR0 IA decision + docs sync
@@ -488,6 +489,11 @@ Task board checklist + DoD:
   - Scope: replace hardcoded `a:nth-child(...)` widths in product series nav with an intrinsic/flex contract; fix `/podpora/` desktop two-column composition and `/ke-stazeni/` row action alignment so long real data does not break parity.
   - DoD: product-series labels never overlap, support left column keeps Figma-aligned gutters/spacing with stable right-card placement, and downloads CTA alignment remains visually attached to row content on long lists.
   - Verification (2026-05-29): `.f-series-nav` no longer uses hardcoded `a:nth-child(...)` widths and now uses intrinsic flex sizing; compact product nav resets inherited negative link margins; `/podpora/` uses a fluid `1024-1399px` two-column support composition; support/download cards keep CTA rows in a three-column grid without text overlap. `tools/figma-visual-audit.js` now checks series nav overlap, support card containment, and download row CTA attachment at `1920`, `1600`, `1366`, and `1097` CSS px. Screenshot/manual sign-off evidence is recorded in `docs/phase-5d-pr7f-manual-signoff-2026-05-29.md`; `npm run figma:audit` and full `npm run qa:local` passed.
+
+- [x] PR-G support/download/mobile contract guard
+  - Scope: add explicit shared contract markers for support tabs/chips, FAQ accordion rows, downloads groups/cards, support form card, and mobile shell containment; keep existing desktop Figma geometry intact while making Wave 7/8 behavior testable.
+  - DoD: support/download interactions remain real, `/podpora/` and `/ke-stazeni/` use the same contract markers, mobile homepage/menu/support/download pages do not create horizontal overflow, and PR-G is included in local QA.
+  - Verification (2026-05-30): `docs/support-download-mobile-contract-2026-05-30.md` documents the contract, `_component-contracts.less` adds additive containment rules, and `tools/support-mobile-smoke.js` validates support/download script presence, FAQ/download ARIA toggles, download filter state, CTA attachment, and mobile menu/homepage/support/download containment. `npm run support-mobile:smoke` is included in `npm run qa:local`.
 
 ## Phase 5A - Compact laptop / Windows 175% scaling (P0, 0.5-1 day)
 Goal: make `1920x1080` Windows display scaling at `175%` with Chrome at `100%` behave as a first-class release viewport, not an accidental mix of desktop and mobile rules.

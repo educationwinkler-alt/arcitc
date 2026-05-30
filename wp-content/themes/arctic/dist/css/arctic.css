@@ -10555,3 +10555,78 @@ h6,
 .f-service-request__form :is(input, textarea) {
   border-radius: 8px;
 }
+/* ===== PR-G: support/download/mobile contract guard ===== */
+.f-main--support-contract *,
+.f-downloads--contract *,
+.f-off--navigation * {
+  box-sizing: border-box;
+}
+.f-chip-list--contract {
+  align-items: center;
+}
+.f-chip-list--contract button {
+  appearance: none;
+  white-space: nowrap;
+}
+.f-support-tabs--contract a,
+.f-support-faq-card--contract,
+.f-support-help-card--contract,
+.f-download-group--contract,
+.f-download-card--contract,
+.f-support-form--contract,
+.f-support-form__card--contract {
+  min-width: 0;
+}
+.f-support-faq-card--contract h3,
+.f-support-faq-card--contract p,
+.f-download-card--contract h4,
+.f-download-card--contract p {
+  overflow-wrap: anywhere;
+}
+.f-download-card--contract .f-download-card__body {
+  min-width: 0;
+}
+.f-download-card--contract .f-download-card__button {
+  text-align: center;
+  white-space: nowrap;
+}
+.f-support-form__card--contract :is(input, textarea) {
+  max-width: 100%;
+}
+@media (max-width: 767px) {
+  .template--homepage .f-section--slides,
+  .template--homepage .f-section--product-categories,
+  .template--homepage .f-section--showroom,
+  .template--homepage .f-section--contact,
+  .f-footer--arctic,
+  .f-off--navigation {
+    max-width: 100vw;
+  }
+  .f-off--navigation {
+    overflow-x: hidden;
+  }
+  .f-off--navigation .f-buttons,
+  .f-off--navigation .f-button--consultation {
+    max-width: calc(100vw - 52px);
+  }
+  .f-main--support-contract .f-chip-list--contract {
+    row-gap: 8px;
+  }
+  .f-main--support-contract .f-support-faq-card--contract {
+    grid-template-columns: 33px minmax(0, 1fr);
+  }
+  .f-main--support-contract .f-support-faq-card--contract .f-support-faq-card__tag {
+    grid-column: 2;
+    justify-self: start;
+  }
+  .f-downloads--contract .f-download-card--contract {
+    grid-template-columns: 56px minmax(0, 1fr);
+  }
+  .f-downloads--contract .f-download-card--contract .f-download-card__button {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+  }
+  .f-support-form__card--contract button {
+    max-width: 100%;
+  }
+}

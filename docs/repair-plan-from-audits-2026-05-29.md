@@ -494,6 +494,10 @@ Cíl: funkce už existuje, ale musí sedět kompaktnost a vizuální rytmus.
 | Vzhled odpovídá Figma compact accordion rows. | screenshot |
 | PDF data a FAQ obsah jsou ze starého Arctic/importu. | content parity |
 
+PR-G support/download/mobile contract: `docs/support-download-mobile-contract-2026-05-30.md`.
+
+PR-G guard: `npm run support-mobile:smoke`.
+
 ## Repair Wave 8 - Mobile homepage and mobile menu
 
 Priorita: P0/P1  
@@ -519,6 +523,8 @@ Cíl: mobil nesmí být jen zmenšený desktop a musí respektovat Figma mobile 
 | Mobile homepage odpovídá `GM - HP` strukturou, ne jen obsahem. | screenshot 375px |
 | Mobile menu má potvrzený Figma state a sedí podle něj. | screenshot + interaction |
 | Žádný mobile CTA/card není uříznutý nebo komprimovaný mimo záměr. | visual smoke |
+
+PR-G mobile guard: `npm run support-mobile:smoke`.
 
 ## Repair Wave 9 - Final visual QA hardening
 

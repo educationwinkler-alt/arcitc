@@ -152,11 +152,11 @@ foreach ( $questions as $index => $question ) {
 ?>
 
 <main id="<?php echo sanitize_title( esc_attr_x( 'content', 'anchor', 'baspa' ) ); ?>"
-      class="f-main f-main--support f-main--top-0">
+      class="f-main f-main--support f-main--support-contract f-main--top-0">
 
-	<section class="f-section f-section--support-tabs">
+	<section class="f-section f-section--support-tabs f-section--support-tabs-contract">
 		<div class="f-section__container a-container">
-			<nav class="f-support-tabs" aria-label="<?php echo esc_attr__( 'Podpora', 'baspa' ); ?>">
+			<nav class="f-support-tabs f-support-tabs--contract" aria-label="<?php echo esc_attr__( 'Podpora', 'baspa' ); ?>">
 				<a href="#caste-dotazy"><?php echo esc_html( $support_faq_title ); ?></a>
 				<a href="#ke-stazeni"><?php echo esc_html( $support_downloads_title ); ?></a>
 				<a href="#servisni-formular"><?php echo esc_html( $support_form_title ); ?></a>
@@ -164,12 +164,12 @@ foreach ( $questions as $index => $question ) {
 		</div>
 	</section>
 
-	<section id="caste-dotazy" class="f-section f-section--support-faq">
+	<section id="caste-dotazy" class="f-section f-section--support-faq f-section--support-faq-contract">
 		<div class="f-section__container a-container">
 			<div class="f-support-layout">
 				<div class="f-support-layout__main">
 					<h2><?php echo esc_html( $support_faq_title ); ?></h2>
-					<div class="f-chip-list f-chip-list--interactive" role="tablist" aria-label="<?php echo esc_attr__( 'Kategorie dotazů', 'baspa' ); ?>">
+					<div class="f-chip-list f-chip-list--interactive f-chip-list--contract" role="tablist" aria-label="<?php echo esc_attr__( 'Kategorie dotazů', 'baspa' ); ?>">
 						<?php foreach ( $faq_filters as $filter_index => $filter ) { ?>
 							<button type="button"
 							        class="<?php echo $filter_index === 0 ? 'is-active' : ''; ?>"
@@ -181,12 +181,12 @@ foreach ( $questions as $index => $question ) {
 						<?php } ?>
 					</div>
 
-					<div class="f-support-accordion">
+					<div class="f-support-accordion f-support-accordion--contract">
 						<?php foreach ( $questions as $index => $question ) {
 							$panel_id = 'support-faq-panel-' . $index;
 							$is_open  = 0 === $index;
 							?>
-							<article class="f-support-faq-card <?php echo $is_open ? 'is-open' : ''; ?>"
+							<article class="f-support-faq-card f-support-faq-card--contract <?php echo $is_open ? 'is-open' : ''; ?>"
 							         data-support-faq-card
 							         data-support-category="<?php echo esc_attr( $question['tag_slug'] ?? 'podpora' ); ?>"
 							         role="button"
@@ -206,7 +206,7 @@ foreach ( $questions as $index => $question ) {
 					</div>
 				</div>
 
-				<aside class="f-support-help-card">
+				<aside class="f-support-help-card f-support-help-card--contract">
 					<h3><?php echo esc_html( $support_help_title ); ?></h3>
 					<a href="mailto:<?php echo antispambot( esc_attr( get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' ) ) ); ?>">
 						<?php echo antispambot( esc_html( get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' ) ) ); ?>
@@ -230,10 +230,10 @@ foreach ( $questions as $index => $question ) {
 		</div>
 	</section>
 
-	<section id="ke-stazeni" class="f-section f-section--support-downloads">
+	<section id="ke-stazeni" class="f-section f-section--support-downloads f-section--support-downloads-contract">
 		<div class="f-section__container a-container">
 			<h2><?php echo esc_html( $support_downloads_title ); ?></h2>
-			<div class="f-chip-list f-chip-list--interactive" role="tablist" aria-label="<?php echo esc_attr__( 'Kategorie ke stažení', 'baspa' ); ?>">
+			<div class="f-chip-list f-chip-list--interactive f-chip-list--contract" role="tablist" aria-label="<?php echo esc_attr__( 'Kategorie ke stažení', 'baspa' ); ?>">
 				<?php foreach ( $download_filter_labels as $index => $label ) { ?>
 					<button type="button"
 					        class=""
@@ -247,14 +247,14 @@ foreach ( $questions as $index => $question ) {
 		</div>
 	</section>
 
-	<section id="servisni-formular" class="f-section f-section--support-form">
+	<section id="servisni-formular" class="f-section f-section--support-form f-section--support-form-contract">
 		<div class="f-section__container a-container">
-			<div class="f-support-form">
+			<div class="f-support-form f-support-form--contract">
 				<header>
 					<h2><?php echo esc_html( $support_form_title ); ?></h2>
 					<p><?php echo wp_kses_post( $support_form_content ); ?></p>
 				</header>
-				<form class="f-support-form__card" action="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>" method="get">
+				<form class="f-support-form__card f-support-form__card--contract" action="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>" method="get">
 					<label>
 						<span><?php echo esc_html__( 'Jméno', 'baspa' ); ?></span>
 						<input type="text" name="name">
