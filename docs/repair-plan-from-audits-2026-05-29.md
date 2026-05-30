@@ -569,6 +569,15 @@ Cíl: mobil nesmí být jen zmenšený desktop a musí respektovat Figma mobile 
 
 PR-G mobile guard: `npm run support-mobile:smoke`.
 
+Wave 8 status 2026-05-30: implemented/verified.
+
+- Mobile HP promo je znovu viditelne podle Figmy: 390px audit `x=27.5/y=562/w=335/h=288`, 375px manual compare `x=20/y=562/w=335/h=288`.
+- Product category cards jsou po promo bloku: 390px audit `y=842/1084`, 375px manual compare `y=842/1084`.
+- Promo copy je sjednocena na Figma text `Vyprodej skladovych virivek` / CZ output `Výprodej skladových vířivek`; legacy `Akcni nabidka skladovych virivek` se normalizuje pres theme_mod helper.
+- `GM - HP menu` Figma node `1:2208` ma pouze white header + dark panel + search shell. Local drzi funkcni nav linky jako UX extension, ale Figma search shell sedi: `x=26/y=527/w=323/h=44`, search icon `x=311/y=537/w=24/h=24`.
+- Evidence: `docs/screenshots/wave8-mobile-verification-2026-05-30/`.
+- Guardy: `npm run figma:audit`, `npm run visual:smoke`, `npm run support-mobile:smoke`, `npm run component:smoke`, `npm run header:smoke`.
+
 ## Repair Wave 9 - Final visual QA hardening
 
 Priorita: P1  

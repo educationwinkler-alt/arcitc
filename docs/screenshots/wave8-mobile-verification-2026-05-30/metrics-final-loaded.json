@@ -1,0 +1,73 @@
+{
+  "promo": {
+    "x": 27.5,
+    "y": 562,
+    "width": 335,
+    "height": 288,
+    "bottom": 850
+  },
+  "cat1": {
+    "x": 27.5,
+    "y": 842,
+    "width": 335,
+    "height": 221,
+    "bottom": 1063
+  },
+  "cat2": {
+    "x": 27.5,
+    "y": 1084,
+    "width": 335,
+    "height": 221,
+    "bottom": 1305
+  },
+  "showroom": {
+    "x": 27.5,
+    "y": 2212.765625,
+    "width": 335,
+    "height": 695,
+    "bottom": 2907.765625
+  },
+  "references": {
+    "x": 0,
+    "y": 3763.828125,
+    "width": 390,
+    "height": 475.953125,
+    "bottom": 4239.78125
+  },
+  "contact": {
+    "x": 17.5,
+    "y": 4327.28125,
+    "width": 355,
+    "height": 477.171875,
+    "bottom": 4804.453125
+  },
+  "footer": {
+    "x": 0,
+    "y": 4891.953125,
+    "width": 390,
+    "height": 1508.28125,
+    "bottom": 6400.234375
+  },
+  "imageState": [
+    {
+      "src": "http://localhost:8090/wp-content/uploads/import/owner-showroom/showroom-main-web.jpg",
+      "complete": true,
+      "naturalWidth": 1920,
+      "naturalHeight": 1440
+    },
+    {
+      "src": "http://localhost:8090/wp-content/uploads/import/owner-showroom/showroom-covana-interior-web.jpg",
+      "complete": true,
+      "naturalWidth": 1400,
+      "naturalHeight": 1050
+    },
+    {
+      "src": "http://localhost:8090/wp-content/uploads/import/owner-showroom/showroom-detail-web.jpg",
+      "complete": true,
+      "naturalWidth": 1400,
+      "naturalHeight": 1050
+    }
+  ],
+  "overflow": 0,
+  "scrollHeight": 6400
+}

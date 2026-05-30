@@ -151,6 +151,7 @@ async function assertMobileHomepageAndMenu(page) {
 
   for (const [selector, label] of [
     ['.template--homepage .f-section--slides', 'mobile homepage hero'],
+    ['.template--homepage .f-hero-promo', 'mobile homepage promo'],
     ['.template--homepage .f-category:nth-child(1)', 'mobile hot tub category card'],
     ['.template--homepage .f-category:nth-child(2)', 'mobile swimspa category card'],
     ['.template--homepage .f-showroom-panel', 'mobile showroom panel'],

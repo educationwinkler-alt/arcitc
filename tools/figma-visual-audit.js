@@ -813,6 +813,11 @@ async function auditCompactNavigation(page) {
       throw new Error(`compactNavigation:${width}: desktop submenu content is visible in compact navigation`);
     }
 
+    if (width === 390) {
+      await assertBox(page, '.f-off--navigation > .f-search', { x: 26, y: 527, width: 323, height: 44 }, 2, 'compactNavigation:390.search');
+      await assertBox(page, '.f-off--navigation .f-search__icon', { x: 311, y: 537, width: 24, height: 24 }, 2, 'compactNavigation:390.searchIcon');
+    }
+
     await page.keyboard.press('Escape');
   }
 }
@@ -1403,12 +1408,15 @@ async function auditMobile(page) {
   await assertBox(page, '.f-logo__img', { x: 20, y: 7, width: 85.6, height: 48 }, 2, 'mobile.logo');
   await assertBox(page, '.f-navigation__trigger', { x: 325, y: 8.5, width: 45, height: 45 }, 2, 'mobile.menuButton');
   await assertBox(page, '.f-section--slides', { x: 0, y: 0, width: 390, height: 556 }, 2, 'mobile.heroSection');
-  await assertHiddenBox(page, '.f-hero-promo', 'mobile.heroPromo');
-  await assertBox(page, '.f-category:nth-child(1)', { x: 27.5, y: 556, width: 335, height: 221 }, 3, 'mobile.categoryHotTubs');
-  await assertBox(page, '.f-category:nth-child(2)', { x: 27.5, y: 798, width: 335, height: 221 }, 4, 'mobile.categorySwimspa');
+  await assertBox(page, '.f-hero-promo', { x: 27.5, y: 562, width: 335, height: 288 }, 3, 'mobile.heroPromo');
+  await assertBox(page, '.f-hero-promo__image', { x: 107.5, y: 562, width: 174, height: 131 }, 3, 'mobile.heroPromoImage');
+  await assertBox(page, '.f-hero-promo__button', { x: 110.5, y: 743, width: 168, height: 50 }, 4, 'mobile.heroPromoButton');
+  await assertBox(page, '.f-category:nth-child(1)', { x: 27.5, y: 842, width: 335, height: 221 }, 3, 'mobile.categoryHotTubs');
+  await assertBox(page, '.f-category:nth-child(2)', { x: 27.5, y: 1084, width: 335, height: 221 }, 4, 'mobile.categorySwimspa');
   await assertHomepageCategoryCardsClickable(page, 'mobile.categoryCards');
 
   await assertSourceContains(page, '.f-logo__img', 'images/logo.svg', 'mobile.logoSource');
+  await assertSourceContains(page, '.f-hero-promo__image', 'uploads/import/figma/hp-fixed-banner-product.png', 'mobile.heroPromoImageSource');
   await assertSourceContains(page, '.template--homepage .f-category:nth-child(1) .f-category__image img', 'uploads/import/figma/mobile-category-virivky.jpg', 'mobile.categoryHotTubsImageSource');
   await assertSourceContains(page, '.template--homepage .f-category:nth-child(2) .f-category__image img', 'uploads/import/figma/mobile-category-celorocni-bazeny.png', 'mobile.categorySwimspaImageSource');
 }

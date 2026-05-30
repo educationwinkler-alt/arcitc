@@ -1,0 +1,120 @@
+{
+  "closedMetrics": {
+    "hero": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 556,
+      "bottom": 556
+    },
+    "promo": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "bottom": 0
+    },
+    "promoStyle": {
+      "display": "none",
+      "visibility": "visible",
+      "opacity": "1",
+      "position": "absolute",
+      "overflow": "visible",
+      "transform": "none"
+    },
+    "firstCategory": {
+      "x": 27.5,
+      "y": 556,
+      "width": 335,
+      "height": 221,
+      "bottom": 777
+    },
+    "secondCategory": {
+      "x": 27.5,
+      "y": 798,
+      "width": 335,
+      "height": 221,
+      "bottom": 1019
+    },
+    "categoriesSection": {
+      "x": 0,
+      "y": 556,
+      "width": 390,
+      "height": 498,
+      "bottom": 1054
+    },
+    "showroom": {
+      "x": 27.5,
+      "y": 1926.765625,
+      "width": 335,
+      "height": 695,
+      "bottom": 2621.765625
+    },
+    "contactCta": {
+      "x": 17.5,
+      "y": 4041.28125,
+      "width": 355,
+      "height": 477.171875,
+      "bottom": 4518.453125
+    },
+    "footer": {
+      "x": 0,
+      "y": 4605.953125,
+      "width": 390,
+      "height": 1508.28125,
+      "bottom": 6114.234375
+    },
+    "overflow": 0,
+    "scrollHeight": 6114
+  },
+  "menuMetrics": {
+    "panel": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 900,
+      "bottom": 900
+    },
+    "search": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "bottom": 0
+    },
+    "links": [
+      "Vířivky",
+      "Vybrat podle parametrů",
+      "Série Core",
+      "Série Classic",
+      "Série Custom",
+      "Celoroční bazény",
+      "Vybrat podle parametrů",
+      "Série Core",
+      "Série Classic",
+      "Vlastnosti",
+      "Tepelná izolace",
+      "Skořepina",
+      "Termokryt",
+      "Podlaha",
+      "Servisní přístup",
+      "Variabilita",
+      "Další informace",
+      "Služby",
+      "Certifikáty",
+      "Záruka",
+      "Kolik stojí provoz a údržba",
+      "Podpora",
+      "Reference",
+      "O nás",
+      "Showroom",
+      "Servis",
+      "Kontakt",
+      "Lunar",
+      "Orion",
+      "Ke stažení",
+      "+420 777 099 687"
+    ],
+    "overflow": 0
+  }
+}

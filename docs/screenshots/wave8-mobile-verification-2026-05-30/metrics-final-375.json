@@ -1,0 +1,51 @@
+{
+  "hp": {
+    "promo": {
+      "x": 20,
+      "y": 549,
+      "width": 335,
+      "height": 288,
+      "bottom": 837
+    },
+    "cat1": {
+      "x": 20,
+      "y": 829,
+      "width": 335,
+      "height": 221,
+      "bottom": 1050
+    },
+    "cat2": {
+      "x": 20,
+      "y": 1071,
+      "width": 335,
+      "height": 221,
+      "bottom": 1292
+    },
+    "overflow": 0,
+    "scrollHeight": 6400
+  },
+  "menu": {
+    "search": {
+      "x": 26,
+      "y": 527,
+      "width": 323,
+      "height": 44,
+      "bottom": 571
+    },
+    "searchIcon": {
+      "x": 311,
+      "y": 537,
+      "width": 24,
+      "height": 24,
+      "bottom": 561
+    },
+    "trigger": {
+      "x": 308.75,
+      "y": 8.5,
+      "width": 45,
+      "height": 45,
+      "bottom": 53.5
+    },
+    "overflow": 0
+  }
+}

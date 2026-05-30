@@ -77,7 +77,7 @@ if ( !function_exists( 'arctic_sections_theme_mod_defaults' ) ) {
 	function arctic_sections_theme_mod_defaults(): array {
 
 		return array(
-			'arctic_home_promo_title'       => 'Akční nabídka skladových vířivek',
+			'arctic_home_promo_title'       => 'Výprodej skladových vířivek',
 			'arctic_home_promo_button_text' => 'Zobrazit nabídku',
 			'arctic_configurator_title'     => 'Nakonfigurujte si vlastní vířivku',
 			'arctic_configurator_text'      => 'Vyberte si model, výbavu a barvy. Připravíme vám konkrétní doporučení i cenovou nabídku.',
@@ -105,7 +105,7 @@ if ( !function_exists( 'arctic_sections_normalize_theme_mod_value' ) ) {
 	function arctic_sections_normalize_theme_mod_value( string $key, string $value ): string {
 
 		$legacy_map = array(
-			'arctic_home_promo_title'       => array( 'AkÄŤnĂ­ nabĂ­dka skladovĂ˝ch vĂ­Ĺ™ivek', 'Akcni nabidka skladovych virivek' ),
+			'arctic_home_promo_title'       => array( 'Akční nabídka skladových vířivek', 'AkÄŤnĂ­ nabĂ­dka skladovĂ˝ch vĂ­Ĺ™ivek', 'Akcni nabidka skladovych virivek' ),
 			'arctic_home_promo_button_text' => array( 'Zobrazit nabĂ­dku', 'Zobrazit nabidku' ),
 			'arctic_configurator_title'     => array( 'Nakonfigurujte si vlastni virivku' ),
 			'arctic_configurator_text'      => array( 'Vyberte si model, vybavu a barvy. Pripravime vam konkretni doporuceni i cenovou nabidku.' ),
@@ -217,7 +217,7 @@ if ( !function_exists( 'arctic_customize_settings_add_sections' ) ) {
 
 		$settings = array(
 			'arctic_home_promo_enabled'         => array( 1, 'absint' ),
-			'arctic_home_promo_title'           => array( 'Akční nabídka skladových vířivek', 'sanitize_text_field' ),
+			'arctic_home_promo_title'           => array( 'Výprodej skladových vířivek', 'sanitize_text_field' ),
 			'arctic_home_promo_button_text'     => array( 'Zobrazit nabídku', 'sanitize_text_field' ),
 			'arctic_home_promo_url'             => array( '/virivky/', 'arctic_sections_sanitize_url_path' ),
 			'arctic_configurator_title'         => array( 'Nakonfigurujte si vlastní vířivku', 'sanitize_text_field' ),

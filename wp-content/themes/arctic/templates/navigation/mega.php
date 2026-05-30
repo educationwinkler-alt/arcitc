@@ -55,7 +55,7 @@ if ( empty( $menus ) ) {
 
 				<a class="f-mega-menu__promo" href="<?php echo esc_url( $menu['url'] ); ?>">
 					<img src="<?php echo esc_url( content_url( 'uploads/import/figma/hp-fixed-banner-product.png' ) ); ?>" alt="" loading="lazy" decoding="async">
-					<strong><?php echo esc_html__( 'Akční nabídka skladových vířivek', 'baspa' ); ?></strong>
+					<strong><?php echo esc_html__( 'Výprodej skladových vířivek', 'baspa' ); ?></strong>
 					<span><?php echo esc_html__( 'Zobrazit nabídku', 'baspa' ); ?></span>
 				</a>
 			</div>

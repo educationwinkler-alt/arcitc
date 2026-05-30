@@ -138,10 +138,11 @@ const forbiddenBrand = [
   'Baspa',
 ];
 
-const homepagePromoText = 'Akční nabídka skladových vířivek';
+const homepagePromoText = 'Výprodej skladových vířivek';
 const legacyPromoTexts = [
+  'Akční nabídka skladových vířivek',
+  'Akcni nabidka skladovych virivek',
   'Vyprodej skladovych virivek',
-  'Výprodej skladových vířivek',
   'Výprodej vířivek',
   'Výprodej bazénů',
 ];

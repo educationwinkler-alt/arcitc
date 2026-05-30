@@ -1,0 +1,40 @@
+{
+  "menuPanel": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 900,
+    "bottom": 900,
+    "display": "block",
+    "text": "Vířivky Vybrat podle parametrů Série Core Série Classic Série Custom Celoroční bazény Vybrat podle parametrů Série Core "
+  },
+  "menuSearch": {
+    "x": 26,
+    "y": 527,
+    "width": 323,
+    "height": 44,
+    "bottom": 571,
+    "display": "block",
+    "text": "Vyhledat Vyhledat"
+  },
+  "menuSearchIcon": {
+    "x": 311,
+    "y": 537,
+    "width": 24,
+    "height": 24,
+    "bottom": 561,
+    "display": "flex",
+    "text": ""
+  },
+  "menuNav": {
+    "x": 26,
+    "y": 101,
+    "width": 323,
+    "height": 395,
+    "bottom": 496,
+    "display": "block",
+    "text": "Vířivky Vybrat podle parametrů Série Core Série Classic Série Custom Celoroční bazény Vybrat podle parametrů Série Core "
+  },
+  "overflow": 0,
+  "scrollHeight": 6400
+}

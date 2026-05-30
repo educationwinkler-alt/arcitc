@@ -10,7 +10,9 @@ if ( !$promo_enabled || !function_exists( 'arctic_is_root_homepage_request' ) ||
 	return;
 }
 
-$promo_title       = get_theme_mod( 'arctic_home_promo_title', 'Akční nabídka skladových vířivek' );
+$promo_title       = function_exists( 'arctic_sections_get_theme_mod' )
+	? arctic_sections_get_theme_mod( 'arctic_home_promo_title', 'Výprodej skladových vířivek' )
+	: get_theme_mod( 'arctic_home_promo_title', 'Výprodej skladových vířivek' );
 $promo_button_text = get_theme_mod( 'arctic_home_promo_button_text', 'Zobrazit nabídku' );
 $promo_button_url  = function_exists( 'arctic_sections_url' ) ? arctic_sections_url( (string) get_theme_mod( 'arctic_home_promo_url', '/virivky/' ), '/virivky/' ) : home_url( '/virivky/' );
 
