@@ -30,6 +30,26 @@ $benefits = array(
 );
 
 $popup_id = sanitize_title( esc_attr_x( 'shell-benefit-popup', 'anchor', 'baspa' ) );
+$benefit_icons = array(
+	'shell',
+	'heatlock',
+	'cabinet',
+	'floor',
+	'cover',
+	'service',
+	'seats',
+	'water',
+	'control',
+	'filter',
+	'jets',
+	'led',
+	'aroma',
+	'audio',
+	'wifi',
+	'warranty',
+	'steel',
+	'winter',
+);
 ?>
 
 <section id="vyhody" class="f-section f-section--product-benefits js-links__section">
@@ -40,11 +60,12 @@ $popup_id = sanitize_title( esc_attr_x( 'shell-benefit-popup', 'anchor', 'baspa'
 		</header>
 
 		<div class="f-product-benefits">
-			<?php foreach ( $benefits as $benefit ) {
+			<?php foreach ( $benefits as $index => $benefit ) {
 				$has_popup = !empty( $benefit['popup'] );
+				$icon      = $benefit['icon'] ?? ( $benefit_icons[ $index ] ?? 'feature' );
 				?>
-				<article class="f-product-benefit <?php echo $has_popup ? 'f-product-benefit--has-popup f-product-benefit--interactive' : 'f-product-benefit--static'; ?>">
-					<span class="f-product-benefit__media" aria-hidden="true"></span>
+				<article class="f-product-benefit f-product-benefit--media-<?php echo esc_attr( $icon ); ?> <?php echo $has_popup ? 'f-product-benefit--has-popup f-product-benefit--interactive' : 'f-product-benefit--static'; ?>">
+					<span class="f-product-benefit__media f-product-benefit__media--<?php echo esc_attr( $icon ); ?>" aria-hidden="true"></span>
 					<h3><?php echo esc_html( $benefit['title'] ); ?></h3>
 					<p><?php echo esc_html( $benefit['summary'] ?? __( 'Návrh vychází z požadavků na provoz v chladném klimatu, jednoduchou údržbu a stabilní výkon po mnoho sezon.', 'baspa' ) ); ?></p>
 					<?php if ( $has_popup ) { ?>

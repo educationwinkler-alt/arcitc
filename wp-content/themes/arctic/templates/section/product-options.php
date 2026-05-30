@@ -14,6 +14,17 @@ $options = array(
 	'Schůdky a madla',
 	'Covana kryt',
 );
+
+$option_icons = array(
+	'onzen',
+	'spa-boy',
+	'wifi',
+	'led',
+	'audio',
+	'cover',
+	'steps',
+	'covana',
+);
 ?>
 
 <section id="volitelna-vybava" class="f-section f-section--product-options js-links__section">
@@ -24,9 +35,11 @@ $options = array(
 		</header>
 
 		<div class="f-product-benefits f-product-benefits--options">
-			<?php foreach ( $options as $option ) { ?>
-				<article class="f-product-benefit f-product-benefit--static">
-					<span class="f-product-benefit__media" aria-hidden="true"></span>
+			<?php foreach ( $options as $index => $option ) {
+				$icon = $option_icons[ $index ] ?? 'option';
+				?>
+				<article class="f-product-benefit f-product-benefit--static f-product-benefit--media-<?php echo esc_attr( $icon ); ?>">
+					<span class="f-product-benefit__media f-product-benefit__media--<?php echo esc_attr( $icon ); ?>" aria-hidden="true"></span>
 					<h3><?php echo esc_html( $option ); ?></h3>
 					<p><?php echo esc_html__( 'Konkrétní dostupnost a doporučenou kombinaci potvrdíme v nabídce pro vybraný model.', 'baspa' ); ?></p>
 				</article>

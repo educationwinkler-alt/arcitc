@@ -13,8 +13,11 @@ Repeated visual blocks are implemented through a named component contract. Page-
 | Showroom collage | `.f-showroom-panel--collage` | Homepage, product categories, default page/single shared section | none | Uses PR-C owner showroom assets and shared crop/object-position rules. |
 | Configurator CTA | `.f-configurator-cta--shared` | Product categories, product detail configurator | `.f-configurator-cta--hot-tub`, `.f-configurator-cta--swimspa`, `.f-configurator-cta--product` | Shared gradient/visual veil lives in `_component-contracts.less`; swimspa gets separate text defaults and color treatment. |
 | Progress steps | `.f-progress-layout--shared` | Homepage, product categories | none | Shared typography/number treatment lives in contract; page CSS can still position the whole section. |
+| Product listing media | `data-product-media`, `.f-listing__image--product-media`, `.f-listing__image--featured-media`, `.f-listing__image--product-missing` | Product category cards and product loops | missing state is a neutral placeholder safety net | PR-E owns the image-source cascade: product image meta -> featured image -> explicit missing state. |
 | Product benefit card | `.f-product-benefit--interactive`, `.f-product-benefit--static` | Product detail benefits and options | interactive opens `.f-off--benefit-popup`; static has no plus/trigger | Static cards must not render a plus or invisible trigger. |
+| Product benefit media | `.f-product-benefit__media--...` | Product detail benefits and options | named variants such as `shell`, `heatlock`, `onzen`, `wifi`, `covana` | Shared CSS icon/token treatment replaces the old gray generic media disk without inventing product photos. |
 | Benefit popup | `.f-off--benefit-popup`, `.f-benefit-popup` | Product detail shell benefit | none | Contract owns dark overlay, white rounded modal, close button radius and modal shadow. |
+| Mega menu product media | `.f-mega-menu__thumb`, `.f-mega-menu__thumb--missing`, `data-product-media` | Desktop hot tub/swimspa mega menu | missing thumbnail is explicit neutral fallback | PR-E guard fails if current seeded public products expose missing thumbnails. |
 
 ## PR-D Guard
 
@@ -24,6 +27,13 @@ Repeated visual blocks are implemented through a named component contract. Page-
 - Swimspa configurator does not reuse hot-tub wording.
 - Static product benefit/options cards do not render fake plus affordances or invisible triggers.
 - `_component-contracts.less` contains the canonical selectors for PR-D components.
+
+`npm run product-media:smoke` validates the PR-E product/category media contract:
+
+- Product category cards use real seeded product media and no Figma product-card placeholders.
+- Timberwolf detail uses seeded Timberwolf media and owner swatches.
+- Benefit/options cards expose named media variants instead of the old gray placeholder disk.
+- Mega menu exposes all seeded product thumbnails with no missing media state.
 
 ## Deferred To Later PRs
 

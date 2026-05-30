@@ -7,6 +7,19 @@
 - `design-only`: Figma export is layout/reference material only. It must not be treated as final product, showroom, swatch, or team photography.
 - `WAITING_ON_OWNER`: asset is required for final content, but no verified owner/legacy source was found.
 
+## Repository And Delivery Policy
+
+Observed on 2026-05-30: production `baspa.cz` serves WebP variants such as `.jpg.webp` and exposes an `ewww` marker in public HTML, so production image optimization should be handled by the WordPress media pipeline and an optimizer/WebP plugin rather than by committing large binaries into the source repository.
+
+| Asset type | Repo policy | Production policy |
+| --- | --- | --- |
+| Small seed/fallback assets required for local/staging | Allowed in git when optimized and intentionally used. | Can still be uploaded into WP media during seed/import. |
+| Owner originals, bulk galleries, large product photo sets | Do not commit to git. | Store in WP uploads/media library or external asset storage. |
+| Production responsive images/WebP | Do not pre-build as source truth in git. | Generate via WordPress image sizes plus optimizer plugin, e.g. EWWW/WebP-style pipeline. |
+| Larger versioned asset library | Use only after Git LFS/external storage decision. | Treat as infrastructure scope, not incidental PR work. |
+
+Current PR-C exception: owner swatches and web-sized showroom derivatives are committed because they are a small, verified, local/staging seed set. Future expansion must follow this policy.
+
 ## Product Photography
 
 | Area | Status | Source | Implementation |
@@ -16,6 +29,13 @@
 | Orion | `available` | `wp-content/uploads/import/orion-main.jpg`, `orion-lifestyle.jpg` | Seeded as product image/gallery. |
 | Timberwolf | `available` | `wp-content/uploads/import/timberwolf-signature.jpg`, `timberwolf-prestige.jpg`, `timberwolf-side.jpg` | Seeded as product image/gallery. |
 | Missing final galleries for the rest of the catalog | `WAITING_ON_OWNER` | Owner must provide final product/detail galleries. | Do not invent replacement product photos. Keep legacy fallback only where already mapped. |
+
+## Product UI Media
+
+| Area | Status | Source | Implementation |
+| --- | --- | --- | --- |
+| Product benefit/options card media | `available` | CSS contract tokens in `_component-contracts.less` | PR-E uses named media variants such as `shell`, `heatlock`, `onzen`, `wifi`, and `covana` instead of gray generic placeholders or invented photos. |
+| Product mega menu thumbnails | `usable-fallback` | seeded product featured images from real product attachments | PR-E marks thumbnail state with `data-product-media`; missing state is explicit and guarded, but current seeded hot tub/swimspa products must not hit it. |
 
 ## Acrylic And Cabinet Swatches
 

@@ -5,7 +5,9 @@
  */
 
 $description  = get_post_meta( get_the_ID(), 'product_description', true );
-$images       = get_post_meta( get_the_ID(), 'product_images' );
+$images       = array_values( array_filter( array_map( 'absint', get_post_meta( get_the_ID(), 'product_images' ) ), static function ( int $image_id ): bool {
+	return $image_id > 0 && wp_attachment_is_image( $image_id );
+} ) );
 $title_short  = get_post_meta( get_the_ID(), 'product_title_short', true );
 $title        = !empty( $title_short ) ? $title_short : get_the_title();
 $series       = wp_get_post_terms( get_the_ID(), 'product-series', array( 'fields' => 'names' ) );
@@ -22,7 +24,7 @@ if ( has_term( 'swimspa', 'product-category', get_the_ID() ) || has_term( 'swims
 }
 
 $heading_class   = array( 'f-heading', 'f-heading--product-detail' );
-$heading_class[] = has_post_thumbnail() || has_header_image() ? 'f-heading--background' : '';
+$heading_class[] = !empty( $images ) || has_post_thumbnail() || has_header_image() ? 'f-heading--background' : '';
 if ( !empty( $images ) ) {
 	$heading_class[] = 'f-heading--gallery';
 }
@@ -71,6 +73,7 @@ if ( get_post_field( 'post_name', get_the_ID() ) === 'timberwolf' ) {
 		get_template_part( 'templates/image/gallery', 'slideshow', array(
 			'meta_key'   => 'product_images',
 			'image_size' => 'huge',
+			'image_ids'  => $images,
 		) );
 	} else {
 		get_template_part( 'templates/image/background' );

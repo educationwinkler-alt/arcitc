@@ -22,16 +22,25 @@ if ( empty( $menus ) ) {
 						<div class="f-mega-menu__products">
 							<?php if ( !empty( $column['products'] ) ) { ?>
 								<?php foreach ( $column['products'] as $product ) { ?>
+									<?php
+									$product_id    = $product instanceof WP_Post ? $product->ID : 0;
+									$product_title = arctic_mega_menu_format_title( get_the_title( $product ) );
+									$thumbnail_id  = $product_id > 0 ? absint( get_post_thumbnail_id( $product_id ) ) : 0;
+									$has_thumbnail = $thumbnail_id > 0 && wp_attachment_is_image( $thumbnail_id );
+									$fallback_mark = function_exists( 'mb_substr' ) ? mb_substr( $product_title, 0, 1 ) : substr( $product_title, 0, 1 );
+									?>
 									<a class="f-mega-menu__product" href="<?php echo esc_url( get_permalink( $product ) ); ?>">
-										<span class="f-mega-menu__thumb">
-											<?php
-											echo get_the_post_thumbnail( $product->ID, 'thumbnail', array(
-												'loading'  => 'lazy',
-												'decoding' => 'async',
-											) );
-											?>
+										<span class="f-mega-menu__thumb<?php echo $has_thumbnail ? '' : ' f-mega-menu__thumb--missing'; ?>" data-product-media="<?php echo $has_thumbnail ? 'featured-image' : 'missing'; ?>">
+											<?php if ( $has_thumbnail ) {
+												echo wp_get_attachment_image( $thumbnail_id, 'thumbnail', false, array(
+													'loading'  => 'lazy',
+													'decoding' => 'async',
+												) );
+											} else { ?>
+												<span aria-hidden="true"><?php echo esc_html( $fallback_mark ); ?></span>
+											<?php } ?>
 										</span>
-										<span><?php echo esc_html( arctic_mega_menu_format_title( get_the_title( $product ) ) ); ?></span>
+										<span><?php echo esc_html( $product_title ); ?></span>
 									</a>
 								<?php } ?>
 							<?php } else { ?>

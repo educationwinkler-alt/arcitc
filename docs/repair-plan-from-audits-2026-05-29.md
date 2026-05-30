@@ -207,6 +207,19 @@ Tahle vlna má dvě části:
 
 PR-C asset source map: `docs/asset-source-map-2026-05-29.md`.
 
+### Asset delivery / repo policy
+
+Poznámka z 2026-05-30: produkční `baspa.cz` podle veřejného HTML používá WebP varianty typu `.jpg.webp` a marker `ewww`, tedy pravděpodobně image optimizer ve stylu EWWW Image Optimizer plus standardní WordPress `srcset` velikosti. Arctic plán proto nesmí řešit produkční optimalizaci tím, že budeme commitovat stále víc velkých binárek do repa.
+
+| Typ assetu | Pravidlo | Důvod |
+|---|---|---|
+| Malé seed/fallback assety nutné pro lokál a staging | Mohou být v gitu, pokud jsou optimalizované a cíleně použité. | Lokální prostředí musí být reprodukovatelné bez ručního uploadu. |
+| Originály owner fotek, celé galerie, velké produktové série | Necommitovat do gitu. | Repo by rychle bobtnalo a git není produkční media library. |
+| Produkční obrázky | Upload přes WordPress media library / deploy uploads a optimalizovat pluginem typu EWWW/WebP + responsive sizes. | Produkce má generovat velikosti, WebP a cache mimo source repo. |
+| Větší verzovaná asset knihovna | Pouze po rozhodnutí použít Git LFS nebo externí storage. | Musí to být vědomé infrastrukturní rozhodnutí, ne náhodný vedlejší efekt PR. |
+
+PR-C výjimka: aktuálně commitnuté owner swatche a webové showroom deriváty jsou malé, ověřené, produkčně použité seed assety. Další asset expanze musí projít tímto pravidlem.
+
 ### Problémové oblasti
 
 | Oblast | Problém |
@@ -359,6 +372,10 @@ Cíl: hot tub a swimspa stránky nesmí mít prázdné karty, špatné hero imag
 | `/swimspa/` používá správný text a obrázky pro swimspa kontext. | screenshot/content smoke |
 | `/product/timberwolf/` má správný hero/media treatment a swatche. | screenshot |
 | Mega menu ukáže všechny produkty bez scrollu nebo ořezu. | desktop interaction smoke |
+
+PR-E product/category media contract: `docs/product-category-media-contract-2026-05-30.md`.
+
+PR-E guard: `npm run product-media:smoke`.
 
 ## Repair Wave 6 - Page-specific P0 opravy
 
