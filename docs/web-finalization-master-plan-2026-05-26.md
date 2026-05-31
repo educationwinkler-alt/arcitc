@@ -149,9 +149,10 @@ Goal: make section "Nakonfigurujte si vlastni virivku" functional with 3D builde
 
 Current status (2026-05-26):
 - Code integration is done and pushed in commit `06d08ae`.
-- Runtime activation is blocked until the `Visao 3D Viewer` plugin is installed and activated in WordPress.
-- Final functional viewer verification cannot be closed without that plugin.
-- Continue with Phase 2 and Phase 3 first; return to final Jucra activation as soon as the plugin is available.
+- Update 2026-05-31: local runtime activation is no longer blocked. `visao-3d-viewer-1.26.zip` was installed into `wp-content/plugins/visao-3d-viewer` and activated in local WordPress.
+- The supplied plugin registers `[visao_builder]` even though the JUCRA KB describes `[visao_viewer]`; the theme now supports both shortcode names and uses the installed shortcode automatically.
+- Local verification confirms `/konfigurator/` renders real Visao shortcode output with `#visao-viewer-id`, no `WAITING_ON_JUCRA_PLUGIN`, and no broken local swatch images.
+- Production still needs the same plugin install/activation plus final Visao settings, pricing/form URL, and model mapping verification.
 
 Implementation:
 1. Add theme option (or constants) for:

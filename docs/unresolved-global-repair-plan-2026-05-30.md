@@ -23,8 +23,36 @@ Tento dokument nahrazuje volne interpretace starsich auditu pro dalsi praci. Cil
 | Kategorie `virivky` | Wireframe `WF - KATEGORIE` potvrzuje konfigurator a plny category flow pro virivky. |
 | Kategorie `swimspa` | Samostatny Figma/wireframe scope neni potvrzeny. Pouziti stejneho category frame je implementacni rozhodnuti, ne dukaz. |
 | Swimspa konfigurator | Neni potvrzeny jako povinny modul. Bez scope rozhodnuti ma byt vypnuty nebo oznaceny jako pending decision. |
+| Jucra/Visao konfigurator | JUCRA KB 4832 potvrzuje plugin `Visao 3d Viewer` v1.26 a shortcode `[visao_viewer model_name="MODELNAME"]`. ArcticSpas.com realne pouziva `/build/` model selector, `/build/{model}/` model builder, Visao iframe a HTML volby, ktere se propisuji do pricing URL. Lokal ma cesky builder flow na `/konfigurator/` a `/konfigurator/{model}/`. Update 2026-05-31: lokalni plugin ZIP je nainstalovany a aktivovany; dodany plugin realne registruje `[visao_builder]`, proto theme podporuje `[visao_viewer]` i `[visao_builder]`. |
 | Opakovane moduly | Jsou porad rizikove. Cast uz ma contract, ale cast ma stale page-specific CSS nebo nejasne varianty. |
 | Dusek avatar | Aktualne opraveno ve worktree pres spravny Figma crop. Neni predmet tohoto backlogu, jen musi projit final QA. |
+
+## Implementacni stav bloku 1-6 po PR0-PR4 passu
+
+Datum: 2026-05-30
+
+| Blok | Stav | Dulezity vysledek | Dukaz |
+|---:|---|---|---|
+| 1 | Hotovo v tomto passu | Usage map a guardy rozsirene na category/listing, Jucra builder, reference contexts a zakazane swimspa konfigurator defaulty. | `docs/component-contract-usage-map-2026-05-30.md`, `tools/component-contract-smoke.js` |
+| 2 | Hotovo v tomto passu | `/virivky/` a `/swimspa/` pouzivaji sdileny product card contract. Figma grafika `KATEGORIE 1:262` ma prvni kartu `x=615`, `335 x 333`; local `/virivky/` ma `x=620`, `335 x 333`. | `docs/screenshots/pr0-pr4-visual-verify-2026-05-30/metrics.json` |
+| 3 | Hotovo v tomto passu | Konfigurator CTA je povoleny na `/virivky/`, vypnuty na `/swimspa/`, bez defaultni teal swimspa varianty. CTA vede na `/konfigurator/`. | `virivky-configurator-local.png`, `swimspa-products-local.png`, `tools/component-contract-smoke.js` |
+| 4 | Hotovo v tomto passu, lokalne aktivovano 2026-05-31 | `/konfigurator/` a `/konfigurator/timberwolf/` existuji jako virtualni builder flow, maji model selector, ceske volby a pricing/request URL parametry. Pokud plugin chybi, je videt `WAITING_ON_JUCRA_PLUGIN`; pokud je aktivni, renderuje se realny Visao shortcode output. | `jucra-builder-local.png`, `jucra-builder-timberwolf-local.png`, `inc/functions/jucra.php`, `templates/section/jucra-builder.php` |
+| 5 | Hotovo pro sdileny category/showroom handoff v tomto passu | Category a swimspa pouzivaji stejny showroom shared component, overeny screenshotem i showroom smoke guardem. | `swimspa-showroom-local.png`, `npm run showroom:smoke` |
+| 6 | Hotovo v tomto passu | `/reference/` zustava 3x3 Figma archive grid, category recent bloky maji kontext `virivky`/`swimspa` a product detail ma product/category relevantni reference. | `reference-archive-local.png`, `product-timberwolf-references-local.png`, `tools/component-contract-smoke.js` |
+
+### Visual evidence pro tento pass
+
+| Soubor | Co overuje |
+|---|---|
+| `docs/screenshots/pr0-pr4-visual-verify-2026-05-30/virivky-products-local.png` | Category product cards proti Figma `KATEGORIE 1:262`. |
+| `docs/screenshots/pr0-pr4-visual-verify-2026-05-30/virivky-configurator-local.png` | Hot-tub konfigurator CTA proti Figma komponentu `1:402` a image vrstve `1:409`. |
+| `docs/screenshots/pr0-pr4-visual-verify-2026-05-30/swimspa-products-local.png` | Swimspa product grid bez nepotvrzeneho konfiguratoru. |
+| `docs/screenshots/pr0-pr4-visual-verify-2026-05-30/swimspa-showroom-local.png` | Shared showroom komponenta v category kontextu. |
+| `docs/screenshots/pr0-pr4-visual-verify-2026-05-30/reference-archive-local.png` | Reference archive grid proti Figma `REFERENCE 1:1127`. |
+| `docs/screenshots/pr0-pr4-visual-verify-2026-05-30/jucra-builder-local.png` | Cesky Jucra builder fallback a volby. |
+| `docs/screenshots/pr0-pr4-visual-verify-2026-05-30/jucra-builder-timberwolf-local.png` | Model-specific builder URL pro Timberwolf. |
+| `docs/screenshots/pr0-pr4-visual-verify-2026-05-30/product-timberwolf-configurator-local.png` | Product detail CTA vede na model-specific builder. |
+| `docs/screenshots/pr0-pr4-visual-verify-2026-05-30/product-timberwolf-references-local.png` | Product detail reference context. |
 
 ## PR-0 - Component audit gate
 
@@ -106,6 +134,64 @@ Cil: Prestat vkladat konfigurator tam, kde neni potvrzeny, a opravit jeho Figma 
 | `/swimspa/` nema nepotvrzeny konfigurator. | HTML smoke + screenshot. |
 | Neexistuje defaultni teal banner vydavany za Figma. | CSS/HTML grep. |
 | Banner ma realnou visual image vrstvu. | Visual smoke. |
+
+## PR-2A - Jucra/Visao 3D builder funkcni integrace
+
+Priorita: P0
+
+Cil: Prestat brat konfigurator jako pouhy banner. Ma vzniknout cesky, realne funkcni 3D builder flow podle JUCRA/ArcticSpas.com patternu, s bezpecnym fallbackem pokud plugin neni nainstalovany.
+
+### Potvrzene zdroje
+
+| Zdroj | Co potvrzuje |
+|---|---|
+| JUCRA KB 4832 | Plugin `Visao 3d Viewer`, posledni zminena verze 1.26, shortcode `[visao_viewer model_name="MODELNAME"]`, nastaveni `Settings > Visao 3D builder Settings`, pricing URL ma byt relativni cesta typu `/page-where-the-form-is`. |
+| JUCRA plugin settings screenshot | Nastaveni obsahuje `Hide Version Section`, `Hide "Get Pricing Now" Button`, `Gravity Forms ID`, `Gravity Forms Field ID`, `Form Page URL` a zalozku `CSS Editor`. Priklad z KB pouziva `Form Page URL` jako `/3d-pricing-form/`. |
+| `https://www.arcticspas.com/build/` | Verejny model selector pro 3D konfigurator. Odkazuje na modely jako Summit XL, Summit, Tundra, Kodiak, Cub, Arctic Fox, Timberwolf, Lunar a Orion. |
+| `https://www.arcticspas.com/build/cub/` | Modelova builder stranka s Visao iframe, volbami `Jets`, `Shell Colour`, `Cabinet Colour` a tlacitkem `Request Pricing`. |
+| ArcticSpas.com model JS | Klik na volbu meni `selected-image` ve skupine a aktualizuje pricing URL parametry `option_acrylic`, `option_cabinet`, `option_jets`. |
+
+### Aktualni lokalni stav
+
+| Cast | Stav |
+|---|---|
+| Helpery | `inc/functions/jucra.php` umi zapnout integraci, overit shortcode `visao_viewer` nebo realne dodany `visao_builder`, sestavit shortcode s `model_name="..."` a postavit pricing URL. |
+| Data produktu | Product metabox ma `jucra_model_name`. |
+| Category CTA | `templates/section/configurator.php` renderuje fallback obrazek nebo shortcode, ale neni to kompletni builder flow. |
+| Product detail | `figma-detail-body.php` umi zkusit model-specific shortcode, ale chybi UI volby a cesky request flow. |
+| Blokace | Bez nainstalovaneho a aktivovaneho pluginu se nesmi predstirat, ze konfigurator funguje. Ma byt jasny fallback nebo `WAITING_ON_JUCRA_PLUGIN`. Lokalni instance uz plugin ma; produkce musi zopakovat instalaci, aktivaci a nastaveni. |
+
+### Krokovy scope
+
+| Krok | Akce | Vystup |
+|---:|---|---|
+| 1 | Pridat konfigurator jako samostatny funkcni modul mimo CTA banner. | Canonical template napr. `templates/section/jucra-builder.php`. |
+| 2 | Rozhodnout URL architekturu. | Preferovane `/konfigurator/` pro vyber modelu a `/konfigurator/{model}/` nebo product detail embed pro konkretni model. |
+| 3 | Napojit model mapu. | `model slug -> label -> jucra_model_name -> product/category -> dostupne volby`. |
+| 4 | Pouzit JUCRA shortcode jako primarni render, pokud plugin existuje. | `[visao_viewer model_name="Summit"]`, `[visao_viewer model_name="Summit XL"]`, `[visao_viewer model_name="Tundra"]` atd. |
+| 5 | Pokud plugin neni dostupny, zobrazit jasny fallback. | `WAITING_ON_JUCRA_PLUGIN`, zadny fake 3D builder. |
+| 6 | Dodelat ceske volby vedle/pod viewerem podle ArcticSpas.com. | `Trysky`, `Barva skorepiny`, `Barva kabinetu`; dalsi volby jen pokud je potvrdi JUCRA/plugin. |
+| 7 | Klik na volbu musi menit vybranou variantu globalne v builder komponentu. | Jedna JS komponenta, ne page-specific skript. |
+| 8 | Pricing/request CTA musi propisovat model a vybrane volby. | Relativni URL, napr. `/kontakt/?model_name=Summit&option_acrylic=...&option_cabinet=...&option_jets=...`. |
+| 9 | Napojit JUCRA plugin settings na lokalni nastaveni a dokumentaci. | `Hide Version Section`, `Hide Get Pricing Now`, `Gravity Forms ID`, `Gravity Forms Field ID`, `Form Page URL`, CSS Editor. |
+| 10 | Admin nastaveni musi byt jasne oddelene. | Enable flag, default model, pricing/request path, plugin stav, per-product `jucra_model_name`. |
+| 11 | Category CTA `Nakonfigurujte si vlastni virivku` ma vest na realny builder, ne jen na kategorii. | `/virivky/` banner se stane vstupem do builderu. |
+| 12 | Product detail ma embedovat spravny model nebo vest na predvyplneny builder. | Timberwolf detail nesmi otevrit generic model. |
+| 13 | Swimspa konfigurator zustava scope decision. | Nespoustet, dokud neni potvrzeno, ze JUCRA ma swimspa modely a cesky scope. |
+
+### QA a guardy
+
+| Kontrola | Pass |
+|---|---|
+| Bez pluginu je videt jasny fallback/waiting stav, ne falesny funkcni builder. | HTML smoke + screenshot. |
+| S pluginem existuje realny viewer/shortcode output. | HTML smoke na `visao-viewer` nebo shortcode output. |
+| Model selector obsahuje pouze modely, ktere maji lokalni produkt nebo explicitni mapovani. | Data smoke. |
+| Volby v builderu jsou cesky a sdilene jednou komponentou. | DOM smoke + grep proti duplicitnim JS/CSS implementacim. |
+| Klik na volbu prepise request/pricing URL parametry. | Playwright interaction test. |
+| Pricing/request URL je relativni cesta, ne hardcoded externi domena. | Link smoke. |
+| Pokud se pouzije Gravity Forms, model a vybrane volby se propisi do urceneho hidden/html pole podle `Gravity Forms ID` a `Gravity Forms Field ID`. | Form smoke. |
+| Externi domeny jsou zdokumentovane. | `viewer.visao.app`, `api.arcticspascore.com` a JUCRA plugin zdroj. |
+| Visual se kontroluje proti Figme pro CTA banner a proti ArcticSpas.com pro funkcni builder flow. | Screenshot matrix. |
 
 ## PR-3 - Showroom shared component
 
@@ -285,9 +371,9 @@ Cil: Po oprave globalnich kontraktu doladit mobile a konkretni stranky.
 | 1 | PR-0 Component audit gate | Bez toho se bude porad opravovat jeden modul vicekrat. |
 | 2 | PR-1 Kategorie a product listing contract | Resi tvoji aktualni chybu: mezery, product cards, virivky/swimspa drift. |
 | 3 | PR-2 Configurator CTA scope a visual | Potvrdi, ze konfigurator je pro virivky, ne automaticky pro swimspa. |
-| 4 | PR-3 Showroom shared component | Opakuje se na vice strankach a nesmi se resit page-by-page. |
-| 5 | PR-4 Reference query/filter | Zabrani globalnimu mixu referenci mimo kontext. |
-| 6 | PR-5 Mapy a Google Maps contract | Sjednoti Google Maps odkazy a kontaktni mapu podle Baspa patternu. |
-| 7 | PR-6 Header/contact/footer status | Doresi globalni viditelnost, status tecky a footer handoff. |
-| 8 | PR-7 az PR-9 | Page/detail/mobile polish az po globalnich kontraktech. |
-
+| 4 | PR-2A Jucra/Visao 3D builder funkcni integrace | Udela z konfiguratoru realnou funkci podle JUCRA/ArcticSpas.com, ne jen vizualni banner. |
+| 5 | PR-3 Showroom shared component | Opakuje se na vice strankach a nesmi se resit page-by-page. |
+| 6 | PR-4 Reference query/filter | Zabrani globalnimu mixu referenci mimo kontext. |
+| 7 | PR-5 Mapy a Google Maps contract | Sjednoti Google Maps odkazy a kontaktni mapu podle Baspa patternu. |
+| 8 | PR-6 Header/contact/footer status | Doresi globalni viditelnost, status tecky a footer handoff. |
+| 9 | PR-7 az PR-9 | Page/detail/mobile polish az po globalnich kontraktech. |

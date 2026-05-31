@@ -8,8 +8,9 @@
 $section_id    = esc_attr_x( 'products', 'anchor', 'baspa' );
 $section_title = __( 'Products', 'baspa' );
 
-$section_class        = array( 'f-section', 'f-section--products', 'js-links__section' );
+$section_class        = array( 'f-section', 'f-section--products', 'f-section--product-listing-contract', 'js-links__section' );
 $section_header_class = array( 'f-section__header' );
+$category_context     = '';
 
 // Query Arguments
 $products_query_args = array(
@@ -23,6 +24,21 @@ $products_query_args = array(
 );
 
 if ( is_tax( 'product-category' ) ) {
+	$current_term = get_queried_object();
+	$current_slug = ( $current_term instanceof WP_Term ) ? $current_term->slug : '';
+
+	if ( $current_slug === 'virivky' ) {
+		$category_context = 'hot-tub';
+	} elseif ( $current_slug === 'swimspa' ) {
+		$category_context = 'swimspa';
+	} elseif ( $current_slug !== '' ) {
+		$category_context = sanitize_html_class( $current_slug );
+	}
+
+	if ( $category_context !== '' ) {
+		$section_class[] = 'f-section--product-listing-' . $category_context;
+	}
+
 	$products_query_args[ 'tax_query' ] = array(
 		array(
 			'taxonomy'         => 'product-category',
@@ -51,7 +67,9 @@ if ( is_tax( 'product-category' ) && 'accessories' !== get_term_meta( get_querie
 		} );
 		?>
 
-		<section id="<?php echo sanitize_title( $section_id ); ?>" class="f-section f-section--products f-section--products-grouped js-links__section">
+		<section id="<?php echo sanitize_title( $section_id ); ?>"
+			class="f-section f-section--products f-section--products-grouped f-section--product-listing-contract<?php echo $category_context !== '' ? ' f-section--product-listing-' . esc_attr( $category_context ) : ''; ?> js-links__section"
+			data-product-listing-context="<?php echo esc_attr( $category_context ?: 'default' ); ?>">
 			<div class="f-section__container a-container">
 				<?php foreach ( $series_terms as $series_term ) {
 					$series_query_args = $products_query_args;
@@ -67,12 +85,6 @@ if ( is_tax( 'product-category' ) && 'accessories' !== get_term_meta( get_querie
 						continue;
 					}
 
-					$series_descriptions = array(
-						'custom'  => __( 'Nejkompromisnější vířivky s bohatou výbavou a možností volby konfigurace.', 'baspa' ),
-						'classic' => __( 'Kvalitní vířivky Arctic Spas s rozumnou výbavou a skvělým poměrem ceny a výkonu.', 'baspa' ),
-						'core'    => __( 'Jednoduchá a úsporná řada pro celoroční relaxaci s nízkými provozními náklady.', 'baspa' ),
-						'swimspa' => __( 'Celoroční bazény pro plavání, rehabilitaci i rodinnou relaxaci.', 'baspa' ),
-					);
 					$series_copy = array(
 						'custom'  => array(
 							'subtitle'    => __( 'Nekompromisně výjimečná', 'baspa' ),
@@ -136,11 +148,9 @@ if ( is_singular( 'product' ) ) {
 // Query
 $products_query = new WP_Query( $products_query_args );
 
-//do_action( 'qm/debug', $products_query );
-
 if ( $products_query->have_posts() ) { ?>
 
-	<section id="<?php echo sanitize_title( $section_id ); ?>" <?php ( !function_exists( 'forqy_class' ) ) ?: forqy_class( $section_class ); ?>>
+	<section id="<?php echo sanitize_title( $section_id ); ?>" <?php ( !function_exists( 'forqy_class' ) ) ?: forqy_class( $section_class ); ?> data-product-listing-context="<?php echo esc_attr( $category_context ?: 'default' ); ?>">
 
 		<div class="f-section__container a-container">
 

@@ -7,7 +7,6 @@
 if ( is_tax( 'product-category', 'swimspa' ) ) {
 	$links = array(
 		array( '#serie-swimspa', __( 'Modely bazénů', 'baspa' ), true ),
-		array( '#konfigurator', __( 'Vlastní konfigurace', 'baspa' ), false ),
 		array( '#showroom', __( 'Showroom', 'baspa' ), false ),
 		array( '#references', __( 'Reference', 'baspa' ), false ),
 	);

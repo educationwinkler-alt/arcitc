@@ -5,7 +5,11 @@
  */
 
 // Class
-$post_class = array( 'f-listing--product', 'f-listing', 'f-listing--cover' );
+$post_class = array( 'f-listing--product', 'f-product-card', 'f-listing', 'f-listing--cover' );
+
+if ( is_tax( 'product-category' ) ) {
+	$post_class[] = 'f-product-card--category';
+}
 ?>
 
 <article id="product-<?php the_ID(); ?>" <?php post_class( $post_class ); ?>>

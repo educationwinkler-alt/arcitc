@@ -67,6 +67,13 @@ function arctic_seo_description(): string {
 }
 
 function arctic_seo_canonical_url(): string {
+	if ( function_exists( 'arctic_jucra_is_builder_request' ) && arctic_jucra_is_builder_request() ) {
+		$path = isset( $_SERVER['REQUEST_URI'] ) ? parse_url( wp_unslash( (string) $_SERVER['REQUEST_URI'] ), PHP_URL_PATH ) : '/konfigurator/';
+		$path = is_string( $path ) && $path !== '' ? $path : '/konfigurator/';
+
+		return home_url( trailingslashit( trim( $path, '/' ) ) );
+	}
+
 	if ( is_singular() ) {
 		return get_permalink();
 	}

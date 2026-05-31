@@ -7,9 +7,7 @@
 $product_id             = get_the_ID();
 $configurator_image_url = content_url( 'uploads/import/figma/category-configurator.png' );
 $model_name             = function_exists( 'arctic_jucra_get_product_model_name' ) ? arctic_jucra_get_product_model_name( $product_id ) : '';
-$show_viewer            = function_exists( 'arctic_jucra_can_render_viewer' ) && arctic_jucra_can_render_viewer( $model_name );
-$shortcode              = $show_viewer && function_exists( 'arctic_jucra_build_shortcode' ) ? arctic_jucra_build_shortcode( $model_name ) : '';
-$pricing_url            = function_exists( 'arctic_jucra_get_pricing_url' ) ? arctic_jucra_get_pricing_url( '/kontakt/' ) : home_url( '/kontakt/' );
+$builder_url            = function_exists( 'arctic_jucra_get_builder_url' ) ? arctic_jucra_get_builder_url( $model_name ) : home_url( '/konfigurator/' );
 ?>
 
 <section class="f-section f-section--single f-section--description f-section--product-detail-config">
@@ -27,21 +25,15 @@ $pricing_url            = function_exists( 'arctic_jucra_get_pricing_url' ) ? ar
 		<section class="f-product-detail-configurator" aria-labelledby="product-configurator-title">
 			<div class="f-configurator-cta f-configurator-cta--shared f-configurator-cta--product">
 				<div class="f-configurator-cta__content">
-					<h2 id="product-configurator-title"><?php echo esc_html__( 'Nakonfigurujte si vlastnÃ­ vÃ­Å™ivku', 'baspa' ); ?></h2>
-					<p><?php echo esc_html__( 'Vyberte si konfiguraci, barvu skoÅ™epiny, kabinet a dalÅ¡Ã­ vÃ½bavu podle vlastnÃ­ch pÅ™edstav.', 'baspa' ); ?></p>
-					<a class="f-button a-button a-button--accent" href="<?php echo esc_url( $pricing_url ); ?>">
+					<h2 id="product-configurator-title"><?php echo esc_html__( 'Nakonfigurujte si vlastní víøivku', 'baspa' ); ?></h2>
+					<p><?php echo esc_html__( 'Vyberte si konfiguraci, barvu skoøepiny, kabinet a další výbavu podle vlastních pøedstav.', 'baspa' ); ?></p>
+					<a class="f-button a-button a-button--accent" href="<?php echo esc_url( $builder_url ); ?>">
 						<?php echo esc_html__( 'Konfigurovat', 'baspa' ); ?>
 					</a>
 				</div>
 
-				<div class="f-configurator-cta__visual"<?php echo $show_viewer ? '' : ' aria-hidden="true"'; ?>>
-					<?php if ( $show_viewer && $shortcode !== '' ) { ?>
-						<div class="f-configurator-cta__viewer" data-jucra-model="<?php echo esc_attr( $model_name ); ?>">
-							<?php echo do_shortcode( $shortcode ); ?>
-						</div>
-					<?php } else { ?>
-						<img class="f-configurator-cta__image" src="<?php echo esc_url( $configurator_image_url ); ?>" alt="">
-					<?php } ?>
+				<div class="f-configurator-cta__visual" style="--configurator-image: url('<?php echo esc_url( $configurator_image_url ); ?>');" aria-hidden="true">
+					<img class="f-configurator-cta__image" src="<?php echo esc_url( $configurator_image_url ); ?>" alt="">
 				</div>
 			</div>
 		</section>

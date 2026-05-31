@@ -1,0 +1,413 @@
+{
+  "generatedAt": "2026-05-31T19:44:11.086Z",
+  "baseUrl": "http://localhost:8090",
+  "figma": {
+    "category": {
+      "source": "Figma grafika frame KATEGORIE 1:262",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 8583
+      },
+      "productFirstCard": {
+        "x": 615,
+        "y": 2177,
+        "width": 335,
+        "height": 333
+      },
+      "productSecondCard": {
+        "x": 970,
+        "y": 2177,
+        "width": 335,
+        "height": 333
+      },
+      "productThirdCard": {
+        "x": 1325,
+        "y": 2177,
+        "width": 335,
+        "height": 333
+      },
+      "configurator": {
+        "x": 260,
+        "y": 4994,
+        "width": 1400,
+        "height": 312
+      },
+      "showroom": {
+        "x": 208,
+        "y": 5421,
+        "width": 1452,
+        "height": 649
+      },
+      "references": {
+        "x": 258,
+        "y": 6800,
+        "width": 1423,
+        "height": 422
+      }
+    },
+    "static": {
+      "configuratorImage": {
+        "source": "Figma grafika node 1:409",
+        "width": 667,
+        "height": 312,
+        "borderRadius": "0px 40px 40px 0px"
+      },
+      "referenceArchive": {
+        "source": "Figma grafika frame REFERENCE 1:1127",
+        "frame": {
+          "width": 1920,
+          "height": 2665
+        },
+        "firstCard": {
+          "x": 260,
+          "y": 310,
+          "width": 438,
+          "height": 320
+        },
+        "secondCard": {
+          "x": 743,
+          "y": 310,
+          "width": 438,
+          "height": 320
+        },
+        "thirdCard": {
+          "x": 1226,
+          "y": 310,
+          "width": 438,
+          "height": 320
+        },
+        "cards": 9
+      },
+      "jucra": {
+        "source": "JUCRA KB 4832 and ArcticSpas.com builder pattern",
+        "shortcode": "[visao_viewer model_name=\"MODELNAME\"]",
+        "localFallback": "WAITING_ON_JUCRA_PLUGIN"
+      }
+    }
+  },
+  "records": [
+    {
+      "key": "virivky",
+      "metrics": {
+        "url": "/virivky/",
+        "bodyHeight": 8230,
+        "productCards": 16,
+        "referenceCards": 6,
+        "configurators": 1,
+        "jucraBuilders": 0,
+        "hasJucraShortcode": false,
+        "hasCustomBuilderPanel": false,
+        "hasSwimspaConfiguratorCopy": false,
+        "hasWaitingOnJucra": false,
+        "boxes": {
+          "productsSection": {
+            "x": 0,
+            "y": 2083,
+            "width": 1920,
+            "height": 2382,
+            "bottom": 4465
+          },
+          "firstProductCard": {
+            "x": 620,
+            "y": 2177,
+            "width": 335,
+            "height": 333,
+            "bottom": 2510
+          },
+          "configuratorSection": {
+            "x": 0,
+            "y": 4641,
+            "width": 1920,
+            "height": 312,
+            "bottom": 4953
+          },
+          "configuratorCta": {
+            "x": 260,
+            "y": 4641,
+            "width": 1400,
+            "height": 312,
+            "bottom": 4953
+          },
+          "configuratorContent": {
+            "x": 330,
+            "y": 4703,
+            "width": 718,
+            "height": 189,
+            "bottom": 4892
+          },
+          "configuratorButton": {
+            "x": 330,
+            "y": 4842,
+            "width": 141,
+            "height": 50,
+            "bottom": 4892
+          },
+          "configuratorVisual": {
+            "x": 993,
+            "y": 4641,
+            "width": 667,
+            "height": 312,
+            "bottom": 4953
+          },
+          "contactAvatar": {
+            "x": 583.6,
+            "y": 7235,
+            "width": 48,
+            "height": 48,
+            "bottom": 7283
+          },
+          "contactAvatarImage": {
+            "x": 558,
+            "y": 7222.8,
+            "width": 92.5,
+            "height": 92.5,
+            "bottom": 7315.3
+          },
+          "showroom": {
+            "x": 260,
+            "y": 5131,
+            "width": 1400,
+            "height": 525,
+            "bottom": 5656
+          },
+          "references": {
+            "x": 0,
+            "y": 6447,
+            "width": 1920,
+            "height": 422,
+            "bottom": 6869
+          },
+          "lastProductCard": {
+            "x": 620,
+            "y": 4132,
+            "width": 335,
+            "height": 333,
+            "bottom": 4465
+          }
+        },
+        "styles": {
+          "configuratorRadius": "40px",
+          "configuratorButtonColor": "rgb(255, 255, 255)",
+          "configuratorButtonBorder": "rgb(255, 255, 255)"
+        },
+        "links": [
+          "http://localhost:8090/virivky/#konfigurator",
+          "http://localhost:8090/konfigurator/timberwolf/"
+        ],
+        "referenceOverlay": {
+          "display": "none",
+          "backgroundImage": "none",
+          "content": "\"\""
+        }
+      }
+    },
+    {
+      "key": "swimspa",
+      "metrics": {
+        "url": "/swimspa/",
+        "bodyHeight": 6362,
+        "productCards": 6,
+        "referenceCards": 3,
+        "configurators": 0,
+        "jucraBuilders": 0,
+        "hasJucraShortcode": false,
+        "hasCustomBuilderPanel": false,
+        "hasSwimspaConfiguratorCopy": false,
+        "hasWaitingOnJucra": false,
+        "boxes": {
+          "productsSection": {
+            "x": 0,
+            "y": 2083,
+            "width": 1920,
+            "height": 780,
+            "bottom": 2863
+          },
+          "firstProductCard": {
+            "x": 620,
+            "y": 2177,
+            "width": 335,
+            "height": 333,
+            "bottom": 2510
+          },
+          "showroom": {
+            "x": 260,
+            "y": 3263.2,
+            "width": 1400,
+            "height": 525,
+            "bottom": 3788.2
+          },
+          "references": {
+            "x": 0,
+            "y": 4579.2,
+            "width": 1920,
+            "height": 422,
+            "bottom": 5001.2
+          },
+          "lastProductCard": {
+            "x": 620,
+            "y": 2530,
+            "width": 335,
+            "height": 333,
+            "bottom": 2863
+          }
+        },
+        "styles": {},
+        "links": [],
+        "referenceOverlay": {
+          "display": "none",
+          "backgroundImage": "none",
+          "content": "\"\""
+        }
+      }
+    },
+    {
+      "key": "reference",
+      "metrics": {
+        "url": "/reference/",
+        "bodyHeight": 2667,
+        "productCards": 0,
+        "referenceCards": 9,
+        "configurators": 0,
+        "jucraBuilders": 0,
+        "hasJucraShortcode": false,
+        "hasCustomBuilderPanel": false,
+        "hasSwimspaConfiguratorCopy": false,
+        "hasWaitingOnJucra": false,
+        "boxes": {
+          "referenceGrid": {
+            "x": 260,
+            "y": 312,
+            "width": 1400,
+            "height": 1016,
+            "bottom": 1328
+          },
+          "firstReferenceCard": {
+            "x": 260,
+            "y": 312,
+            "width": 438,
+            "height": 320,
+            "bottom": 632
+          }
+        },
+        "styles": {},
+        "links": []
+      }
+    },
+    {
+      "key": "jucra-index",
+      "metrics": {
+        "url": "/konfigurator/",
+        "bodyHeight": 2273,
+        "productCards": 0,
+        "referenceCards": 0,
+        "configurators": 0,
+        "jucraBuilders": 1,
+        "hasJucraShortcode": true,
+        "hasCustomBuilderPanel": false,
+        "hasSwimspaConfiguratorCopy": false,
+        "hasWaitingOnJucra": false,
+        "boxes": {
+          "jucra": {
+            "x": 0,
+            "y": 24,
+            "width": 1920,
+            "height": 952.5,
+            "bottom": 976.5
+          },
+          "jucraViewer": {
+            "x": 260,
+            "y": 394.2,
+            "width": 1400,
+            "height": 550.3,
+            "bottom": 944.5
+          }
+        },
+        "styles": {},
+        "links": [
+          "http://localhost:8090/konfigurator/summit-xl/",
+          "http://localhost:8090/konfigurator/summit/",
+          "http://localhost:8090/konfigurator/tundra/",
+          "http://localhost:8090/konfigurator/kodiak/",
+          "http://localhost:8090/konfigurator/cub/",
+          "http://localhost:8090/konfigurator/arctic-fox/",
+          "http://localhost:8090/konfigurator/mustang/",
+          "http://localhost:8090/konfigurator/mckinley/",
+          "http://localhost:8090/konfigurator/totem/",
+          "http://localhost:8090/konfigurator/eagle/",
+          "http://localhost:8090/konfigurator/timberwolf/",
+          "http://localhost:8090/konfigurator/lunar/",
+          "http://localhost:8090/konfigurator/orion/",
+          "http://localhost:8090/konfigurator/husky/"
+        ]
+      }
+    },
+    {
+      "key": "jucra-timberwolf",
+      "metrics": {
+        "url": "/konfigurator/timberwolf/",
+        "bodyHeight": 2273,
+        "productCards": 0,
+        "referenceCards": 0,
+        "configurators": 0,
+        "jucraBuilders": 1,
+        "hasJucraShortcode": true,
+        "hasCustomBuilderPanel": false,
+        "hasSwimspaConfiguratorCopy": false,
+        "hasWaitingOnJucra": false,
+        "boxes": {
+          "jucra": {
+            "x": 0,
+            "y": 24,
+            "width": 1920,
+            "height": 952.5,
+            "bottom": 976.5
+          },
+          "jucraViewer": {
+            "x": 260,
+            "y": 394.2,
+            "width": 1400,
+            "height": 550.3,
+            "bottom": 944.5
+          }
+        },
+        "styles": {},
+        "links": [
+          "http://localhost:8090/konfigurator/summit-xl/",
+          "http://localhost:8090/konfigurator/summit/",
+          "http://localhost:8090/konfigurator/tundra/",
+          "http://localhost:8090/konfigurator/kodiak/",
+          "http://localhost:8090/konfigurator/cub/",
+          "http://localhost:8090/konfigurator/arctic-fox/",
+          "http://localhost:8090/konfigurator/mustang/",
+          "http://localhost:8090/konfigurator/mckinley/",
+          "http://localhost:8090/konfigurator/totem/",
+          "http://localhost:8090/konfigurator/eagle/",
+          "http://localhost:8090/konfigurator/timberwolf/",
+          "http://localhost:8090/konfigurator/lunar/",
+          "http://localhost:8090/konfigurator/orion/",
+          "http://localhost:8090/konfigurator/husky/"
+        ]
+      },
+      "interaction": {
+        "href": "http://localhost:8090/poptavka-konfigurace/?model_name=Timberwolf&option_acrylic=dd-Acrylic+Kalahari&option_cabinet=dd-Cabinet+Graphite+Grey&option_jets=dd-30+Jets+2+Pumps",
+        "path": "/poptavka-konfigurace/",
+        "query": "?model_name=Timberwolf&option_acrylic=dd-Acrylic+Kalahari&option_cabinet=dd-Cabinet+Graphite+Grey&option_jets=dd-30+Jets+2+Pumps",
+        "acrylicSelected": "dd-Acrylic Kalahari",
+        "cabinetSelected": "dd-Cabinet Graphite Grey"
+      }
+    }
+  ],
+  "screenshots": [
+    "jucra-builder-local.png",
+    "jucra-builder-timberwolf-local.png",
+    "product-timberwolf-configurator-local.png",
+    "product-timberwolf-references-local.png",
+    "reference-archive-local.png",
+    "swimspa-products-local.png",
+    "swimspa-showroom-local.png",
+    "virivky-configurator-local.png",
+    "virivky-products-local.png"
+  ]
+}

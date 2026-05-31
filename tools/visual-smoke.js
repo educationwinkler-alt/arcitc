@@ -9,6 +9,8 @@ const paths = [
   '/',
   '/virivky/',
   '/swimspa/',
+  '/konfigurator/',
+  '/konfigurator/timberwolf/',
   '/catalog/dalsi-sortiment/',
   '/product/timberwolf/',
   '/product/husky/',
@@ -34,6 +36,8 @@ const screenshotPaths = [
   ['/', 'home-desktop-playwright.png'],
   ['/virivky/', 'category-virivky-desktop-playwright.png'],
   ['/swimspa/', 'category-swimspa-desktop-playwright.png'],
+  ['/konfigurator/', 'jucra-builder-desktop-playwright.png'],
+  ['/konfigurator/timberwolf/', 'jucra-builder-timberwolf-desktop-playwright.png'],
   ['/catalog/dalsi-sortiment/', 'category-dalsi-sortiment-desktop-playwright.png'],
   ['/product/timberwolf/', 'product-timberwolf-desktop-playwright.png'],
   ['/product/husky/', 'product-husky-desktop-playwright.png'],
@@ -59,6 +63,8 @@ const mobileScreenshotPaths = [
   ['/', 'home-mobile-playwright.png'],
   ['/virivky/', 'category-virivky-mobile-playwright.png'],
   ['/swimspa/', 'category-swimspa-mobile-playwright.png'],
+  ['/konfigurator/', 'jucra-builder-mobile-playwright.png'],
+  ['/konfigurator/timberwolf/', 'jucra-builder-timberwolf-mobile-playwright.png'],
   ['/catalog/dalsi-sortiment/', 'category-dalsi-sortiment-mobile-playwright.png'],
   ['/product/timberwolf/', 'product-timberwolf-mobile-playwright.png'],
   ['/product/husky/', 'product-husky-mobile-playwright.png'],
@@ -82,6 +88,43 @@ const mobileScreenshotPaths = [
 
 const externalRequests = new Set();
 const allowedHosts = new Set(['localhost', '127.0.0.1', '::1']);
+const allowedJucraHosts = new Set([
+  'api.arcticspascore.com',
+  'api.visao.ca',
+  'assets.visao.app',
+  'cdn.jsdelivr.net',
+  'code.jquery.com',
+  'demo.visao.ca',
+  'ga.jspm.io',
+  'models.visao.app',
+  'www.gstatic.com',
+]);
+const blockedRuntimeHosts = new Set([
+  'fonts.googleapis.com',
+  'fonts.gstatic.com',
+  'front.reflag.com',
+  'www.google.com',
+  'www.googletagmanager.com',
+]);
+
+async function applyRuntimeRequestPolicy(page) {
+  await page.route('**/*', (route) => {
+    let url;
+    try {
+      url = new URL(route.request().url());
+    } catch (error) {
+      route.continue();
+      return;
+    }
+
+    if (blockedRuntimeHosts.has(url.hostname) || allowedJucraHosts.has(url.hostname)) {
+      route.abort();
+      return;
+    }
+
+    route.continue();
+  });
+}
 
 function trackExternalRequests(page) {
   page.on('request', (request) => {
@@ -92,10 +135,35 @@ function trackExternalRequests(page) {
       return;
     }
 
-    if ((url.protocol === 'http:' || url.protocol === 'https:') && !allowedHosts.has(url.hostname)) {
+    if (blockedRuntimeHosts.has(url.hostname)) {
+      return;
+    }
+
+    if (
+      (url.protocol === 'http:' || url.protocol === 'https:') &&
+      !allowedHosts.has(url.hostname) &&
+      !allowedJucraHosts.has(url.hostname)
+    ) {
       externalRequests.add(request.url());
     }
   });
+}
+
+function isJucraPath(path) {
+  return path === '/konfigurator/' || path.startsWith('/konfigurator/');
+}
+
+async function gotoSmokePath(page, path) {
+  const response = await page.goto(`${baseUrl}${path}`, {
+    waitUntil: 'domcontentloaded',
+    timeout: 60000,
+  });
+
+  if (isJucraPath(path)) {
+    await page.waitForSelector('#visao-viewer-id, [data-jucra-status="WAITING_ON_JUCRA_PLUGIN"]', { timeout: 30000 });
+  }
+
+  return response;
 }
 
 const forbidden = [
@@ -173,14 +241,24 @@ function stripAllowedContactEmails(path, html) {
 }
 
 (async () => {
+  if (process.env.VISUAL_SMOKE_DEBUG === '1') {
+    console.log('Visual smoke launch browser');
+  }
   const browser = await chromium.launch({ executablePath: chromePath });
 
   try {
+    if (process.env.VISUAL_SMOKE_DEBUG === '1') {
+      console.log('Visual smoke browser ready');
+    }
     const page = await browser.newPage({ viewport: { width: 1440, height: 1100 } });
+    await applyRuntimeRequestPolicy(page);
     trackExternalRequests(page);
 
     for (const path of paths) {
-      const response = await page.goto(`${baseUrl}${path}`, { waitUntil: 'networkidle' });
+      if (process.env.VISUAL_SMOKE_DEBUG === '1') {
+        console.log(`Visual smoke desktop: ${path}`);
+      }
+      const response = await gotoSmokePath(page, path);
       if (!response || response.status() >= 400) {
         throw new Error(`${path} returned ${response ? response.status() : 'no response'}`);
       }
@@ -237,6 +315,9 @@ function stripAllowedContactEmails(path, html) {
 
       if (html.includes('[visao_viewer')) {
         throw new Error(`${path} contains unresolved visao_viewer shortcode text.`);
+      }
+      if (html.includes('[visao_builder')) {
+        throw new Error(`${path} contains unresolved visao_builder shortcode text.`);
       }
 
       if (path === '/product/timberwolf/' && !hasJucraWrapper && !html.includes('category-configurator.png')) {
@@ -318,12 +399,13 @@ function stripAllowedContactEmails(path, html) {
 
     if (writeScreenshots) {
       for (const [path, fileName] of screenshotPaths) {
-        await page.goto(`${baseUrl}${path}`, { waitUntil: 'networkidle' });
+        await gotoSmokePath(page, path);
         await page.screenshot({ path: `${screenshotDir}/${fileName}`, fullPage: false });
       }
     }
 
     const mobile = await browser.newPage({ viewport: { width: 390, height: 900 }, deviceScaleFactor: 1 });
+    await applyRuntimeRequestPolicy(mobile);
     trackExternalRequests(mobile);
     await mobile.goto(baseUrl, { waitUntil: 'networkidle' });
     const navBox = await mobile.locator('.f-navigation__trigger').boundingBox();
@@ -332,7 +414,10 @@ function stripAllowedContactEmails(path, html) {
     }
 
     for (const [path, fileName] of mobileScreenshotPaths) {
-      await mobile.goto(`${baseUrl}${path}`, { waitUntil: 'networkidle' });
+      if (process.env.VISUAL_SMOKE_DEBUG === '1') {
+        console.log(`Visual smoke mobile: ${path}`);
+      }
+      await gotoSmokePath(mobile, path);
       const overflow = await mobile.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       if (overflow > 2) {
         throw new Error(`${path} has horizontal overflow of ${overflow}px on mobile.`);

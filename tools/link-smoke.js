@@ -4,6 +4,8 @@ const entryPaths = [
   '/',
   '/virivky/',
   '/swimspa/',
+  '/konfigurator/',
+  '/konfigurator/timberwolf/',
   '/catalog/dalsi-sortiment/',
   '/product/timberwolf/',
   '/product/husky/',
@@ -53,6 +55,8 @@ function decodeHtmlAttribute(value) {
     .replace(/&quot;/g, '"')
     .replace(/&#039;/g, "'")
     .replace(/&apos;/g, "'")
+    .replace(/&#038;/g, '&')
+    .replace(/&#38;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>');
 }
@@ -206,20 +210,22 @@ async function checkFragmentTarget(link, pageHtmlCache) {
     pageHtmlCache.set(entryUrl.href, html);
 
     for (const link of extractLinks(html)) {
-      if (shouldIgnore(link.url)) {
+      const rawUrl = decodeHtmlAttribute(link.url);
+
+      if (shouldIgnore(rawUrl)) {
         continue;
       }
 
       let url;
       try {
-        url = new URL(link.url, `${baseUrl}${path}`);
+        url = new URL(rawUrl, `${baseUrl}${path}`);
       } catch (error) {
         throw new Error(`${path} contains invalid URL: ${link.url}`);
       }
 
       const host = url.hostname.toLowerCase();
       if (forbiddenExternalHosts.includes(host)) {
-        forbiddenExternal.set(link.url, path);
+        forbiddenExternal.set(rawUrl, path);
         continue;
       }
 
@@ -230,7 +236,7 @@ async function checkFragmentTarget(link, pageHtmlCache) {
 
         if (hash) {
           fragmentLinks.push({
-            rawUrl: link.url,
+            rawUrl,
             sourcePath: path,
             targetUrl: url.href,
             hash,
