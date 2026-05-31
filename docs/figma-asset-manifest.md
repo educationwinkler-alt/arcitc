@@ -81,6 +81,10 @@ Poznámka k auditu 2026-05-24: HP hero má ve Figma grafice jeden skutečný obr
 | Detail Timberwolf hero | `1:1462` | 1920 x 795 | `graphics/detail-timberwolf-hero.jpg` | DEPRECATED jako obsahovy zdroj; detail pouziva legacy Timberwolf fotku v tomto layoutu |
 | Timberwolf Prestige | `1:1472` | 333 x 279 | `graphics/detail-timberwolf-prestige.png` | DEPRECATED jako obsahovy zdroj; konfigurace pouziva legacy produktovou fotku |
 | Timberwolf Signature | `1:1474` | 333 x 279 | `graphics/detail-timberwolf-signature.png` | DEPRECATED jako obsahovy zdroj; konfigurace pouziva legacy produktovou fotku |
+| Detail konfigurace fallback Prestige | `1:1472` | 292 x 292 render | `graphics/detail-config-prestige.png` | Figma fallback pro konfiguracni kartu, pokud konkretni produkt nema owner/product attachment |
+| Detail konfigurace fallback Signature | `1:1474` | 292 x 292 render | `graphics/detail-config-signature.png` | Figma fallback pro konfiguracni kartu, pokud konkretni produkt nema owner/product attachment |
+| Detail benefit shell popup thumbnail | `100:662` | Figma detail benefit media layer | `graphics/popup-shell-thumb.png` | legacy/reference thumbnail; ziva karta pouziva `benefit-media-01.png`, popup detail pouziva `popup-shell-detail.png` |
+| Detail benefit/options media | `1:1500` az `1:1670` | 174 x 174 renders | `graphics/benefit-media-01.png` az `graphics/benefit-media-18.png` | zive Figma media exporty pro benefit/option karty; CSS pseudoikony jsou zakazane |
 | Barva Dakota | `1:1476` | 106 x 106 | `graphics/color-dakota.png` | vzorek akrylu |
 | Barva Kalahari | `1:1479` | 106 x 106 | `graphics/color-kalahari.png` | vzorek akrylu |
 | Barva Odyssey | `1:1482` | 106 x 106 | `graphics/color-odyssey.png` | vzorek akrylu |

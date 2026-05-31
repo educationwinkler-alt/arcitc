@@ -25,7 +25,7 @@ if ( is_tax( 'product-category', 'swimspa' ) || ( is_singular( 'product' ) && ha
 			<p><?php echo esc_html__( 'Dejte nám vědět a naši specialisté na bazény se vám budou věnovat.', 'baspa' ); ?></p>
 			<div class="f-contact-cta__bar">
 				<div class="f-contact-cta__person">
-					<span class="f-contact-cta__avatar" aria-hidden="true">
+					<span class="f-contact-cta__avatar" data-asset-status="figma-crop" aria-hidden="true">
 						<img src="<?php echo esc_url( $avatar ); ?>" alt="" loading="eager" decoding="async">
 					</span>
 					<div>

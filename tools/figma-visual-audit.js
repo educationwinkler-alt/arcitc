@@ -82,6 +82,14 @@ async function assertBox(page, selector, expected, tolerance, label) {
   assertClose(rect.height, expected.height, tolerance, `${label}.height`);
 }
 
+async function assertMissing(page, selector, label) {
+  const count = await page.locator(selector).count();
+
+  if (count) {
+    throw new Error(`${label}: expected selector ${selector} to be absent, got ${count}`);
+  }
+}
+
 async function offsetBox(page, selector, label) {
   const locator = page.locator(selector).first();
   const count = await locator.count();
@@ -1656,12 +1664,12 @@ async function auditCatalogSwimspaDesktop(page) {
   await assertBox(page, '.f-products-series--swimspa .f-listing--product:nth-child(1)', { x: 615, y: 2177, width: 335, height: 333 }, 3, 'swimspaCatalog.productCardOne');
   await assertBox(page, '.f-products-series--swimspa .f-listing--product:nth-child(2)', { x: 970, y: 2177, width: 335, height: 333 }, 3, 'swimspaCatalog.productCardTwo');
   await assertBox(page, '.f-products-series--swimspa .f-listing--product:nth-child(3)', { x: 1325, y: 2177, width: 335, height: 333 }, 3, 'swimspaCatalog.productCardThree');
-  await assertBox(page, '.f-configurator-cta', { x: 260, y: 2978, width: 1400, height: 312 }, 3, 'swimspaCatalog.configurator');
-  await assertBox(page, '.f-showroom-panel', { x: 260, y: 3575, width: 1400, height: 525 }, 4, 'swimspaCatalog.showroomPanel');
-  await assertBox(page, '.f-progress-layout', { x: 264, y: 4336, width: 1392, height: 444 }, 4, 'swimspaCatalog.progress');
-  await assertBox(page, '.f-section--references', { x: 0, y: 4891, width: 1920, height: 422 }, 4, 'swimspaCatalog.references');
-  await assertBox(page, '.f-contact-cta', { x: 260, y: 5418, width: 1400, height: 455 }, 4, 'swimspaCatalog.contactCta');
-  await assertFooterLayout(page, 'swimspaCatalog', 5901);
+  await assertMissing(page, '.f-configurator-cta', 'swimspaCatalog.configurator');
+  await assertBox(page, '.f-showroom-panel', { x: 260, y: 3263, width: 1400, height: 525 }, 4, 'swimspaCatalog.showroomPanel');
+  await assertBox(page, '.f-progress-layout', { x: 264, y: 4024, width: 1392, height: 444 }, 4, 'swimspaCatalog.progress');
+  await assertBox(page, '.f-section--references', { x: 0, y: 4579, width: 1920, height: 422 }, 4, 'swimspaCatalog.references');
+  await assertBox(page, '.f-contact-cta', { x: 260, y: 5106, width: 1400, height: 455 }, 4, 'swimspaCatalog.contactCta');
+  await assertFooterLayout(page, 'swimspaCatalog', 5589);
 
   await assertSourceContains(page, '.f-category-intro--split .f-category-intro__image img', 'uploads/import/figma-category-celorocni-bazeny.jpg', 'swimspaCatalog.benefitsSource');
   await assertSourceContains(page, '.f-category-intro--reverse .f-category-intro__image img', 'uploads/import/legacy-categories/swimspa.jpg', 'swimspaCatalog.operationSource');
@@ -1676,21 +1684,21 @@ async function auditTimberwolfDesktop(page) {
 
   await assertBox(page, '.f-heading--product-detail', { x: 0, y: 0, width: 1920, height: 795 }, 2, 'timberwolf.heading');
   await assertBox(page, '.f-heading__container', { x: 260, y: 0, width: 1400, height: 795 }, 2, 'timberwolf.headingContainer');
-  await assertBox(page, '.f-product-detail-config__layout', { x: 260, y: 940, width: 1400, height: 546 }, 3, 'timberwolf.configLayout');
-  await assertBox(page, '.f-product-configurations', { x: 260, y: 940, width: 1132, height: 546 }, 3, 'timberwolf.configurations');
-  await assertBox(page, '.f-product-configuration:nth-child(1)', { x: 260, y: 1041, width: 1132, height: 203 }, 3, 'timberwolf.configurationPrestige');
-  await assertBox(page, '.f-product-configuration:nth-child(2)', { x: 260, y: 1283, width: 1132, height: 203 }, 3, 'timberwolf.configurationSignature');
-  await assertBox(page, '.f-product-contact-card', { x: 1362, y: 934, width: 298, height: 341 }, 3, 'timberwolf.contactCard');
-  await assertBox(page, '.f-product-contact-card__details', { x: 1392, y: 1018, width: 233, height: 70.6 }, 3, 'timberwolf.contactDetails');
-  await assertBox(page, '.f-product-contact-card__avatar', { x: 1392, y: 1115, width: 58, height: 58 }, 2, 'timberwolf.contactAvatar');
-  await assertBox(page, '.f-product-contact-card__button', { x: 1392, y: 1195, width: 149, height: 50 }, 2, 'timberwolf.contactButton');
-  await assertBox(page, '.f-product-detail-configurator', { x: 260, y: 1608, width: 1400, height: 312 }, 3, 'timberwolf.configurator');
-  await assertBox(page, '.f-product-colors', { x: 260, y: 2022, width: 1400, height: 391 }, 4, 'timberwolf.colors');
-  await assertBox(page, '.f-section--product-benefits', { x: 0, y: 2518, width: 1920, height: 2017 }, 4, 'timberwolf.benefits');
-  await assertBox(page, '.f-section--product-options', { x: 0, y: 4535, width: 1920, height: 1144 }, 4, 'timberwolf.options');
-  await assertBox(page, '.f-section--references', { x: 0, y: 5679, width: 1920, height: 525 }, 4, 'timberwolf.references');
-  await assertBox(page, '.f-contact-cta', { x: 260, y: 6204, width: 1400, height: 455 }, 4, 'timberwolf.contactCta');
-  await assertFooterLayout(page, 'timberwolf', 6687);
+  await assertBox(page, '.f-product-detail-config__layout', { x: 260, y: 1010, width: 1400, height: 546 }, 3, 'timberwolf.configLayout');
+  await assertBox(page, '.f-product-configurations', { x: 260, y: 1010, width: 1132, height: 546 }, 3, 'timberwolf.configurations');
+  await assertBox(page, '.f-product-configuration:nth-child(1)', { x: 260, y: 1111, width: 1132, height: 203 }, 3, 'timberwolf.configurationPrestige');
+  await assertBox(page, '.f-product-configuration:nth-child(2)', { x: 260, y: 1353, width: 1132, height: 203 }, 3, 'timberwolf.configurationSignature');
+  await assertBox(page, '.f-product-contact-card', { x: 1362, y: 1004, width: 298, height: 341 }, 3, 'timberwolf.contactCard');
+  await assertBox(page, '.f-product-contact-card__details', { x: 1392, y: 1088, width: 233, height: 80.6 }, 4, 'timberwolf.contactDetails');
+  await assertBox(page, '.f-product-contact-card__avatar', { x: 1392, y: 1185, width: 58, height: 58 }, 2, 'timberwolf.contactAvatar');
+  await assertBox(page, '.f-product-contact-card__button', { x: 1392, y: 1265, width: 149, height: 50 }, 2, 'timberwolf.contactButton');
+  await assertBox(page, '.f-product-detail-configurator', { x: 260, y: 1628, width: 1400, height: 312 }, 3, 'timberwolf.configurator');
+  await assertBox(page, '.f-product-colors', { x: 260, y: 2042, width: 1400, height: 391 }, 4, 'timberwolf.colors');
+  await assertBox(page, '.f-section--product-benefits', { x: 0, y: 2538, width: 1920, height: 2017 }, 4, 'timberwolf.benefits');
+  await assertBox(page, '.f-section--product-options', { x: 0, y: 4555, width: 1920, height: 1144 }, 4, 'timberwolf.options');
+  await assertBox(page, '.f-section--references', { x: 0, y: 5699, width: 1920, height: 525 }, 4, 'timberwolf.references');
+  await assertBox(page, '.f-contact-cta', { x: 260, y: 6224, width: 1400, height: 455 }, 4, 'timberwolf.contactCta');
+  await assertFooterLayout(page, 'timberwolf', 6707);
 
   await assertSourceContains(page, '.f-heading--product-detail .f-gallery__slide:nth-child(1) img', 'timberwolf-signature.jpg', 'timberwolf.heroSource');
   await assertSourceContains(page, '.f-product-configuration:nth-child(1) .f-product-configuration__thumb img', 'timberwolf-prestige.jpg', 'timberwolf.prestigeSource');

@@ -8,6 +8,10 @@ const desktopPaths = [
   '/virivky/',
   '/swimspa/',
   '/product/timberwolf/',
+  '/product/lunar/',
+  '/product/orion/',
+  '/product/husky/',
+  '/product/athabascan/',
   '/reference/',
   '/kontakt/',
   '/o-nas/',
@@ -52,6 +56,19 @@ function assertReferenceArchive(html) {
 
 function assertHtmlContracts(path, html) {
   assert(!html.includes('f-footer--handoff'), `${path} still contains forbidden f-footer--handoff class`);
+
+  if (path.startsWith('/product/')) {
+    assert(html.includes('data-product-detail-contract="figma"'), `${path} is missing shared product detail contract`);
+    assert(!html.includes('f-heading--timberwolf'), `${path} still contains Timberwolf-only heading class`);
+
+    if (path === '/product/athabascan/') {
+      assert(html.includes('data-product-detail-scope="swimspa"'), `${path} is missing swimspa detail scope`);
+      assert(!html.includes('f-configurator-cta--product'), `${path} must not render hot tub configurator CTA`);
+    } else {
+      assert(html.includes('data-product-detail-scope="hot-tub"'), `${path} is missing hot tub detail scope`);
+      assert(html.includes('f-configurator-cta--product'), `${path} is missing product configurator CTA`);
+    }
+  }
 
   if (path === '/reference/') {
     assertReferenceArchive(html);
@@ -123,10 +140,19 @@ async function assertProductAffordances(page) {
       hasMore: !!card.querySelector('.f-product-benefit__more'),
       text: card.textContent.trim().replace(/\s+/g, ' ').slice(0, 80),
     }));
+    const mediaWithoutStatus = [...document.querySelectorAll('.f-product-benefit__media')]
+      .filter((media) => !media.getAttribute('data-asset-status')).length;
+    const mediaWithoutImages = [...document.querySelectorAll('.f-product-benefit__media')]
+      .filter((media) => !media.querySelector('img')).length;
+    const generatedPseudoMedia = [...document.querySelectorAll('.f-product-benefit__media')]
+      .filter((media) => getComputedStyle(media, '::before').content !== 'none' || getComputedStyle(media, '::after').content !== 'none').length;
 
-    return { staticCards, interactiveCards };
+    return { staticCards, interactiveCards, mediaWithoutStatus, mediaWithoutImages, generatedPseudoMedia };
   });
 
+  assert(state.mediaWithoutStatus === 0, `/product/timberwolf/ has ${state.mediaWithoutStatus} benefit/options media without data-asset-status`);
+  assert(state.mediaWithoutImages === 0, `/product/timberwolf/ has ${state.mediaWithoutImages} benefit/options media slots without exported Figma images`);
+  assert(state.generatedPseudoMedia === 0, `/product/timberwolf/ still has ${state.generatedPseudoMedia} generated pseudoicon media slots`);
   assert(state.staticCards.length > 0, '/product/timberwolf/ has no static benefit cards to verify');
   for (const card of state.staticCards) {
     assert(!card.hasTrigger && !card.hasMore, `/product/timberwolf/ static card looks interactive: ${card.text}`);

@@ -28,9 +28,6 @@ $heading_class[] = !empty( $images ) || has_post_thumbnail() || has_header_image
 if ( !empty( $images ) ) {
 	$heading_class[] = 'f-heading--gallery';
 }
-if ( get_post_field( 'post_name', get_the_ID() ) === 'timberwolf' ) {
-	$heading_class[] = 'f-heading--timberwolf';
-}
 ?>
 
 <header <?php ( !function_exists( 'forqy_class' ) ) ?: forqy_class( $heading_class ); ?>>

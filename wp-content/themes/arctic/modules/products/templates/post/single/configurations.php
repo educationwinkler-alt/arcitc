@@ -12,25 +12,37 @@ if ( !empty( $configurations ) ) { ?>
 		<h2><?php echo esc_html_x( 'Konfigurace', 'product configurations', 'baspa' ); ?></h2>
 
 		<div class="f-product-configurations__grid">
-			<?php foreach ( $configurations as $configuration ) {
+			<?php foreach ( $configurations as $index => $configuration ) {
 				$name        = $configuration['name'] ?? '';
 				$image       = isset( $configuration['image_id'] ) ? absint( $configuration['image_id'] ) : 0;
+				$has_image   = $image > 0 && wp_attachment_is_image( $image );
+				$fallback    = $index % 2 === 0 ? 'detail-config-prestige.png' : 'detail-config-signature.png';
+				$fallback_path = WP_CONTENT_DIR . '/uploads/import/figma/' . $fallback;
+				$fallback_url = file_exists( $fallback_path ) ? content_url( 'uploads/import/figma/' . $fallback ) : '';
 				$price       = !empty( $configuration['price_text'] ) ? $configuration['price_text'] : ( $configuration['price'] ?? '' );
 				$seats       = $configuration['seats'] ?? '';
 				$jets        = $configuration['jets'] ?? '';
 				$pumps       = $configuration['pumps'] ?? '';
 				$dimensions  = $configuration['dimensions'] ?? '';
 				$description = $configuration['notes'] ?? '';
+				$item_class  = array( 'f-product-configuration' );
+				$asset_status = $has_image ? 'product-image' : ( !empty( $fallback_url ) ? 'figma-fallback' : 'WAITING_ON_OWNER' );
+
+				if ( !$has_image && empty( $fallback_url ) ) {
+					$item_class[] = 'f-product-configuration--no-media';
+				}
 				?>
 
-				<article class="f-product-configuration">
-					<div class="f-product-configuration__thumb" aria-hidden="<?php echo empty( $image ) ? 'true' : 'false'; ?>">
-						<?php
-						if ( !empty( $image ) ) {
-							echo wp_get_attachment_image( $image, 'medium' );
-						}
-						?>
-					</div>
+				<article class="<?php echo esc_attr( implode( ' ', array_filter( $item_class ) ) ); ?>" data-asset-status="<?php echo esc_attr( $asset_status ); ?>">
+					<?php if ( $has_image || !empty( $fallback_url ) ) { ?>
+						<div class="f-product-configuration__thumb" data-asset-status="<?php echo esc_attr( $asset_status ); ?>">
+							<?php if ( $has_image ) { ?>
+								<?php echo wp_get_attachment_image( $image, 'medium' ); ?>
+							<?php } else { ?>
+								<img src="<?php echo esc_url( $fallback_url ); ?>" alt="" loading="lazy" decoding="async">
+							<?php } ?>
+						</div>
+					<?php } ?>
 					<div class="f-product-configuration__content">
 						<?php if ( !empty( $name ) ) { ?>
 							<h3><?php echo esc_html( $name ); ?></h3>

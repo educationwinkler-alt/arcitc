@@ -10,6 +10,7 @@ $phone = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
 $email = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
 $hours = apply_filters( 'forqy_hours', array() );
 $hours_label = function_exists( 'baspa_hours_bar_label' ) ? baspa_hours_bar_label( $hours ) : __( 'Po - Pá 8:00-17:00 h', 'baspa' );
+$map_url = function_exists( 'arctic_get_map_url' ) ? arctic_get_map_url() : get_theme_mod( 'baspa_map', 'https://maps.app.goo.gl/ZsYfoZ2aQGF1JnZG6' );
 
 $groups = array(
 	array(
@@ -88,7 +89,7 @@ $groups = array(
 				<div class="f-footer__quick-contact-body">
 					<h2><?php echo esc_html__( 'Rychlý kontakt', 'baspa' ); ?></h2>
 					<div class="f-footer__quick-person">
-						<span class="f-footer__quick-avatar" aria-hidden="true">
+						<span class="f-footer__quick-avatar" data-asset-status="figma-crop" aria-hidden="true">
 							<img src="<?php echo esc_url( content_url( 'uploads/import/figma/contact-lukas-dusek.png' ) ); ?>" width="58" height="58" alt="" loading="lazy" decoding="async">
 						</span>
 						<div>
@@ -111,7 +112,7 @@ $groups = array(
 						<span><?php echo esc_html__( 'Bohunická cesta 15', 'baspa' ); ?></span>
 						<strong><?php echo esc_html__( 'Moravany u Brna', 'baspa' ); ?></strong>
 					</div>
-					<a href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>"><?php echo esc_html__( 'Zobrazit na mapě', 'baspa' ); ?></a>
+					<a href="<?php echo esc_url( $map_url ); ?>" target="_blank" rel="noopener"><?php echo esc_html__( 'Zobrazit na mapě', 'baspa' ); ?></a>
 				</div>
 			</aside>
 		</div>

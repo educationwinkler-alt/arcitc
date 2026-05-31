@@ -5,11 +5,13 @@
  */
 
 // Post
-$post_class = array( 'f-product--single', 'f-post', 'f-post--single' );
+$product_id         = get_the_ID();
+$has_configurations = function_exists( 'baspa_products_product_has_configurations' ) && baspa_products_product_has_configurations( $product_id );
+$post_class         = array( 'f-product--single', 'f-post', 'f-post--single' );
 ?>
 
 <article id="product-<?php the_ID(); ?>" <?php post_class( $post_class ); ?>>
-	<?php if ( get_post_field( 'post_name', get_the_ID() ) === 'timberwolf' ) {
+	<?php if ( $has_configurations ) {
 		get_template_part( 'modules/products/templates/post/single/figma-detail-body' );
 	} else if ( baspa_products_query_product_has_parameters( get_the_ID() ) ) {
 		/**

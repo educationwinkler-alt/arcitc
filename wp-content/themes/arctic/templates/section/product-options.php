@@ -36,10 +36,18 @@ $option_icons = array(
 
 		<div class="f-product-benefits f-product-benefits--options">
 			<?php foreach ( $options as $index => $option ) {
-				$icon = $option_icons[ $index ] ?? 'option';
+				$icon         = $option_icons[ $index ] ?? 'option';
+				$media_index  = str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT );
+				$media_status = 'available';
+				$media_url    = content_url( 'uploads/import/figma/benefit-media-' . $media_index . '.png' );
 				?>
 				<article class="f-product-benefit f-product-benefit--static f-product-benefit--media-<?php echo esc_attr( $icon ); ?>">
-					<span class="f-product-benefit__media f-product-benefit__media--<?php echo esc_attr( $icon ); ?>" aria-hidden="true"></span>
+					<span class="f-product-benefit__media f-product-benefit__media--<?php echo esc_attr( $icon ); ?>"
+						data-asset-status="<?php echo esc_attr( $media_status ); ?>"
+						data-figma-node="<?php echo esc_attr( '1:' . ( 1500 + ( $index * 10 ) ) ); ?>"
+						aria-hidden="true">
+						<img src="<?php echo esc_url( $media_url ); ?>" alt="" loading="lazy" decoding="async">
+					</span>
 					<h3><?php echo esc_html( $option ); ?></h3>
 					<p><?php echo esc_html__( 'Konkrétní dostupnost a doporučenou kombinaci potvrdíme v nabídce pro vybraný model.', 'baspa' ); ?></p>
 				</article>

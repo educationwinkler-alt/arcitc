@@ -9,6 +9,9 @@ $benefits = array(
 		'title'   => __( 'Samonosná kompozitní skořepina', 'baspa' ),
 		'summary' => __( 'Prémiový akrylát Aristech, ručně nanášený sklolaminát a pevný kompozitní základ bez podpůrné pěny.', 'baspa' ),
 		'popup'   => true,
+		'media_status' => 'available',
+		'media_url'    => content_url( 'uploads/import/figma/popup-shell-thumb.png' ),
+		'figma_node'   => '100:662',
 	),
 	array( 'title' => __( 'Izolace Heatlock', 'baspa' ) ),
 	array( 'title' => __( 'Cedrový kabinet', 'baspa' ) ),
@@ -50,6 +53,14 @@ $benefit_icons = array(
 	'steel',
 	'winter',
 );
+
+foreach ( $benefits as $index => $benefit ) {
+	$media_index = str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT );
+
+	$benefits[ $index ]['media_status'] = 'available';
+	$benefits[ $index ]['media_url']    = content_url( 'uploads/import/figma/benefit-media-' . $media_index . '.png' );
+	$benefits[ $index ]['figma_node']   = '1:' . ( 1500 + ( $index * 10 ) );
+}
 ?>
 
 <section id="vyhody" class="f-section f-section--product-benefits js-links__section">
@@ -61,11 +72,21 @@ $benefit_icons = array(
 
 		<div class="f-product-benefits">
 			<?php foreach ( $benefits as $index => $benefit ) {
-				$has_popup = !empty( $benefit['popup'] );
-				$icon      = $benefit['icon'] ?? ( $benefit_icons[ $index ] ?? 'feature' );
+				$has_popup    = !empty( $benefit['popup'] );
+				$icon         = $benefit['icon'] ?? ( $benefit_icons[ $index ] ?? 'feature' );
+				$media_status = $benefit['media_status'] ?? 'WAITING_ON_FIGMA_EXPORT';
+				$media_url    = $benefit['media_url'] ?? '';
+				$figma_node   = $benefit['figma_node'] ?? '100:662';
 				?>
 				<article class="f-product-benefit f-product-benefit--media-<?php echo esc_attr( $icon ); ?> <?php echo $has_popup ? 'f-product-benefit--has-popup f-product-benefit--interactive' : 'f-product-benefit--static'; ?>">
-					<span class="f-product-benefit__media f-product-benefit__media--<?php echo esc_attr( $icon ); ?>" aria-hidden="true"></span>
+					<span class="f-product-benefit__media f-product-benefit__media--<?php echo esc_attr( $icon ); ?>"
+						data-asset-status="<?php echo esc_attr( $media_status ); ?>"
+						data-figma-node="<?php echo esc_attr( $figma_node ); ?>"
+						aria-hidden="true">
+						<?php if ( !empty( $media_url ) ) { ?>
+							<img src="<?php echo esc_url( $media_url ); ?>" alt="" loading="lazy" decoding="async">
+						<?php } ?>
+					</span>
 					<h3><?php echo esc_html( $benefit['title'] ); ?></h3>
 					<p><?php echo esc_html( $benefit['summary'] ?? __( 'Návrh vychází z požadavků na provoz v chladném klimatu, jednoduchou údržbu a stabilní výkon po mnoho sezon.', 'baspa' ) ); ?></p>
 					<?php if ( $has_popup ) { ?>

@@ -3511,16 +3511,17 @@ body {
     white-space: nowrap;
   }
 
-  .single-product .f-heading--timberwolf .f-gallery__slide {
+  .single-product .f-heading--product-detail .f-gallery__slide {
     background: transparent;
   }
 
-  .single-product .f-heading--timberwolf .f-gallery__controls {
+  .single-product .f-heading--product-detail .f-gallery__controls {
     display: none;
   }
 
   .single-product .f-links--product {
-    margin-top: -46px;
+    margin-top: 0;
+    padding-top: 24px;
   }
 
   .single-product .f-links--product .f-links__container {
@@ -3546,7 +3547,7 @@ body {
 
   .single-product .f-product-detail-config__layout {
     position: relative;
-    min-height: 546px;
+    min-height: 341px;
   }
 
   .single-product .f-product-detail-config__main {
@@ -3588,6 +3589,20 @@ body {
     background: transparent;
     border-radius: 0;
     box-shadow: none;
+  }
+
+  .single-product .f-product-configuration--no-media {
+    grid-template-columns: minmax(0, 1fr);
+    width: min(620px, 100%);
+    min-height: 0;
+    padding: 34px 40px;
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px dashed rgba(35, 40, 47, 0.18);
+    border-radius: 24px;
+  }
+
+  .single-product .f-product-configuration--no-media .f-product-configuration__content {
+    padding-top: 0;
   }
 
   .single-product .f-product-configuration__thumb {
@@ -3741,7 +3756,7 @@ body {
     left: 8px;
     width: 5px;
     height: 5px;
-    background: #53c567;
+    background: var(--hours--status--color, #53c567);
     border-radius: 999px;
   }
 
@@ -3856,7 +3871,7 @@ body {
     width: 100%;
     max-width: 100%;
     padding: 0;
-    margin-top: 122px;
+    margin-top: 72px;
   }
 
   .single-product .f-product-detail-configurator .f-configurator-cta {
@@ -4390,6 +4405,7 @@ body {
 }
 
 .f-contact-cta__hours,
+.f-product-contact-card__hours,
 .f-footer__quick-hours {
   --hours--status--color--open: #00ff80;
   --hours--status--color--closed: var(--arctic-color-red);
@@ -4397,11 +4413,13 @@ body {
 }
 
 .f-contact-cta__hours.open,
+.f-product-contact-card__hours.open,
 .f-footer__quick-hours.open {
   --hours--status--color: var(--hours--status--color--open);
 }
 
 .f-contact-cta__hours.closed,
+.f-product-contact-card__hours.closed,
 .f-footer__quick-hours.closed {
   --hours--status--color: var(--hours--status--color--closed);
 }
@@ -4499,6 +4517,12 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.f-product-configuration--no-media {
+  grid-template-columns: 1fr;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px dashed rgba(7, 24, 38, 0.18);
 }
 
 .f-product-configuration h3 {
@@ -4892,8 +4916,39 @@ body {
     position: absolute;
     top: 34px;
     left: 318px;
+    display: block;
     width: 313px;
     height: 51px;
+  }
+
+  .single-product .f-contact-cta__details a {
+    position: absolute;
+    left: 0;
+    color: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+
+  .single-product .f-contact-cta__details a:first-child {
+    top: 0;
+  }
+
+  .single-product .f-contact-cta__details a:nth-child(2) {
+    top: 27px;
+  }
+
+  .single-product .f-contact-cta__hours {
+    position: absolute;
+    top: 28px;
+    left: 166px;
+    height: 21px;
+    min-height: 21px;
+    padding: 2px 8px;
+    font-size: 14px;
+    line-height: 17px;
+    white-space: nowrap;
   }
 
   .single-product .f-contact-cta__bar .a-button {
@@ -4928,6 +4983,20 @@ body {
   margin-bottom: 1rem;
   background: radial-gradient(circle at 45% 45%, #5f656b 0 34%, #d7dbdf 35% 61%, #7f858b 62%);
   border-radius: 999px;
+}
+
+.f-product-benefit__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.f-product-benefit__media[data-asset-status="WAITING_ON_FIGMA_EXPORT"],
+.f-product-benefit__media[data-asset-status="WAITING_ON_OWNER"] {
+  outline: 1px dashed rgba(35, 40, 47, 0.24);
+  outline-offset: 3px;
 }
 
 .f-product-benefit h3 {
@@ -8921,6 +8990,7 @@ body:not(.template--homepage) .f-header__container > .a-flex {
     align-items: flex-start;
     gap: clamp(24px, 2.2vw, 42px);
     width: auto;
+    min-width: 560px;
     max-width: calc(100% - 106px);
     height: 51px;
     white-space: nowrap;

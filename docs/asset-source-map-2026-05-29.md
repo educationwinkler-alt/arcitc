@@ -6,6 +6,7 @@
 - `usable-fallback`: asset is not the final owner-supplied target, but it is a real legacy/import asset and may be used until final owner media arrives.
 - `design-only`: Figma export is layout/reference material only. It must not be treated as final product, showroom, swatch, or team photography.
 - `WAITING_ON_OWNER`: asset is required for final content, but no verified owner/legacy source was found.
+- `WAITING_ON_FIGMA_EXPORT`: Figma shows a required media layer, but the exact export is not wired yet. Do not present CSS-only treatment as final media.
 
 ## Repository And Delivery Policy
 
@@ -34,7 +35,9 @@ Current PR-C exception: owner swatches and web-sized showroom derivatives are co
 
 | Area | Status | Source | Implementation |
 | --- | --- | --- | --- |
-| Product benefit/options card media | `available` | CSS contract tokens in `_component-contracts.less` | PR-E uses named media variants such as `shell`, `heatlock`, `onzen`, `wifi`, and `covana` instead of gray generic placeholders or invented photos. |
+| Product configuration fallback media | `available` | `wp-content/uploads/import/figma/detail-config-prestige.png`, `detail-config-signature.png` from Figma nodes `1:1472`, `1:1474` | Used only when a configuration has no owner/product attachment, so product detail keeps the Figma media-card layout instead of a text-only blank card. |
+| Product benefit/options card media | `available` | `wp-content/uploads/import/figma/benefit-media-01.png` through `benefit-media-18.png` from Figma detail media nodes `1:1500` through `1:1670` | Every benefit/option media slot renders an exported Figma image with `data-asset-status="available"`; CSS pseudoicons are forbidden. |
+| Product benefit shell popup media | `available` | `wp-content/uploads/import/figma/popup-shell-detail.png` | Popup detail keeps the real exported shell detail image. |
 | Product mega menu thumbnails | `usable-fallback` | seeded product featured images from real product attachments | PR-E marks thumbnail state with `data-product-media`; missing state is explicit and guarded, but current seeded hot tub/swimspa products must not hit it. |
 
 ## Acrylic And Cabinet Swatches

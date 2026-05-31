@@ -2,6 +2,20 @@
 
 Tento dokument je nový kanonický plán pro dokončení webu po posledním auditu detailu vířivek a po přímém ověření ve Figmě přes MCP. Cíl není přidat další volný audit, ale uklidit všechny starší plány do jednoho pořadí oprav, aby se už neimplementovalo odhadem.
 
+## Stav Implementace 2026-06-01
+
+P0 bloky z re-auditu screenshotů jsou implementované a kryté guardy:
+
+| Blok | Stav | Evidence |
+| --- | --- | --- |
+| P0-10 Header/product sticky nav | Hotovo | `.f-links--product .f-links__container` začíná pod hero, ne přes něj; `npm run product-detail:physical` hlídá header control overlap i sticky-nav/hero overlap. |
+| P0-11 Product detail physical parity | Hotovo | McKinley a Timberwolf renderují konfigurace s media kartou; chybějící konfigurace používá Figma fallback `detail-config-*.png`, ne text-only kartu. |
+| P0-12 Lukáš Dušek media crop | Hotovo | `contact-lukas-dusek.png` je render Figma node `1:50`; globální CSS zoom hack je odstraněný a avatar je guardovaný ve footer/contact/product reuse. |
+| P0-13 Benefit/option pseudoikony | Hotovo | `benefit-media-01.png` až `benefit-media-18.png` jsou exporty z Figma media nodů; CSS `:before/:after` pseudoikony jsou zakázané a hlídané. |
+| P0-14 Contact CTA/sidebar hours | Hotovo | Product sidebar používá sdílený `js-hours__status`; product CTA hours pill je uvnitř červeného baru. |
+
+End-to-end ověření: `npm run qa:local` prošlo celé dne 2026-06-01.
+
 ## Rozhodnutí
 
 | Oblast | Rozhodnutí |
@@ -41,14 +55,14 @@ Footer zde záměrně není uvedený jako hotový. Deep physical audit v2 ho dr�
 | Oblast | Stav | Poznámka |
 | --- | --- | --- |
 | Sdílené card/button radius tokens | Hotovo v předchozích repair vlnách | Reopen pouze při konkrétním regression screenshotu nebo failing guardu. |
-| Header status / opening hours | Hotovo | Zachovat dynamický status, nevracet statické Figma copy. |
+| Header status / opening hours | Hotovo po re-auditu | Dynamický status zachován, product sticky-nav overlap opraven a guardovaný přes `npm run product-detail:physical`. |
 | Reference archive a recent carousel | Hotovo jako contract | Stále hlídat kontext category/product referencí. |
 | Shared showroom panel | Hotovo jako contract | Platí pro HP, category, swimspa a showroom kontext. |
 | Contact header a contact directory layout | Vizuálně hotovo | Portréty zůstávají `WAITING_ON_OWNER`, pokud nejsou dodané owner assety. |
 | Záruka, servis, údržba, o nás, podpora, ke stažení | Opraveno v page-specific vlnách | Zůstává owner/media debt, ne layout debt. |
 | Category product media | Částečně hotovo | `/virivky/` a `/swimspa/` používají sdílený listing contract, ale swimspa scope a detail flow zůstávají otevřené. |
 
-## Otevřené P0 Bloky
+## P0 Bloky Z Plánu
 
 ### P0-1 Source Map A Contract Úklid
 
@@ -164,6 +178,61 @@ Footer zde záměrně není uvedený jako hotový. Deep physical audit v2 ho dr�
 | Implementace | Zajistit, že `.f-footer--arctic` na desktopu i mobile zobrazuje Figma landscape background a že žádný handoff override nepřepíná footer na `var(--arctic-color-menu)`/navy. CTA-to-footer seam musí navazovat do světlého landscape footeru, ne do tmavého boxu. |
 | Akceptace | Computed style/screenshot na HP, category, kontakt a jedné detail stránce potvrzuje viditelný `footer-background.jpg`, desktop výšku cca `773px`, světlý footer treatment a žádný navy `f-footer--handoff` regression. Guard failne, pokud se handoff třída nebo contract proměnná znovu použije k potlačení landscape backgroundu. |
 
+### P0-10 Header Geometrie A Product Sticky Nav Collision
+
+| Položka | Detail |
+| --- | --- |
+| Problém | Header byl v plánu omylem uzavřený jen podle dynamického opening-hours statusu. Screenshot `/product/mckinley/` ukazuje fyzický problém: header, hero a product sticky nav se vizuálně perou a jeden prvek leze přes druhý. |
+| Figma evidence | Header component set `1:1831`, default variant `1:1832`: komponenta má `1400 x 105`, vnitřní bílý panel `1400 x 85` na `y=20`, nav/CTA/search jsou uvnitř jednoho panelu. Product detail frame `1:1461` má product nav row kolem `x=260 y=749 w=1400`, ale nesmí zakrýt hero fakta ani být schovaný pod reálným browser chrome viewportem. |
+| Local evidence | Re-audit 2026-06-01: `/product/mckinley/` má `.f-heading--product-detail` `0,0,1920,795` a `.f-links--product` `0,749,1920,93`, takže sticky bar překrývá posledních cca `46px` hero oblasti. |
+| Soubory | `templates/header.php`, `templates/header/*`, product links partial, `_components.less`, `_component-contracts.less`, `tools/header-status-smoke.js`, nový/rozšířený product header physical smoke. |
+| Implementace | Oddělit header panel, hero a product sticky nav jako fyzicky hlídané vrstvy. Zachovat Figma header komponentu, ale přestat spoléhat na absolutní/z-index hacky, které fungují jen na jednom screenshotu. Product sticky nav musí mít jasné místo v toku nebo bezpečný overlap pouze pokud Figma i guard potvrzují, že nezakrývá obsah. |
+| Akceptace | Na 1920x1080 a compact/laptop viewportu žádný header/nav/hero text/fakta nepřekrývá jiný interaktivní prvek. Guard měří bottom/top kolize header panelu, hero facts a `.f-links--product`. |
+
+### P0-11 Product Detail Physical Parity Pro Non-Timberwolf
+
+| Položka | Detail |
+| --- | --- |
+| Problém | P0-3 řešil renderer, ale neuzavíral fyzickou shodu vnitřku detailu. `/product/mckinley/` ukazuje, že sdílený renderer sám nestačí: konfigurace je textová karta bez Figma image vrstvy, vzniká velké prázdné místo a sidebar působí jako odtržený blok. |
+| Figma evidence | Detail frame `1:1461` obsahuje konfigurační image cards `1:1471` a `1:1473`, swatches `1:1475` a `1:1491`, benefit media group `1:1498`, configurator CTA `1:402`/image `1:409`, reference a contact CTA. |
+| Local evidence | Re-audit 2026-06-01: `/product/mckinley/` `.f-product-detail-config__layout` je `1400 x 546`, ale `.f-product-configurations` má jen `278px` výšku a jednu textovou kartu bez `.f-product-configuration__thumb`; sidebar je na `x=1362 y=934 w=298 h=341`, zatímco levá část zůstává vizuálně nedotažená. |
+| Soubory | `single.php`, `figma-detail-body.php`, `configurations.php`, `sidebar.php`, product seed/meta, image mapping, LESS, product detail physical smoke. |
+| Implementace | Neoznačovat non-Timberwolf detail za hotový, dokud nemá buď Figma-like configuration media cards, nebo explicitní `WAITING_ON_OWNER` layout, který nevypadá jako rozbitá hotová karta. McKinley, Lunar, Orion, Husky a jeden swimspa detail musí projít fyzickým smoke testem, ne jen HTML markerem. |
+| Akceptace | Každý testovaný detail má konfigurace, sidebar, CTA, benefits/options a references ve Figma měřítku bez prázdných děr. Smoke failne na text-only configuration block vydávaný za Figma detail. |
+
+### P0-12 Lukáš Dušek Media Source A Crop Contract
+
+| Položka | Detail |
+| --- | --- |
+| Problém | Duškova fotka je použitá napříč webem, ale plán nehlídal, že její zdroj, crop a velikost odpovídají Figmě v každém kontextu. Současný CSS globálně transformuje jakýkoliv `contact-lukas-dusek.png` avatar, což je křehké a snadno rozbije footer/contact CTA/product sidebar jinak. |
+| Figma evidence | Avatar node `1:50` je `58 x 58`, imageRef `9257bc6178b9895b9a6eed6e599b071c4e469db5`, crop transform `0.5190338492 / 0.2768465877 / 0.1313925534`. Stejný imageRef se objevuje i v product contact card a footer quick contact vrstvách. |
+| Local evidence | Re-audit 2026-06-01: lokál používá `wp-content/uploads/import/figma/contact-lukas-dusek.png` ve footeru, product sidebaru a contact CTA; viditelný crop je řízen CSS pravidlem `img[src*="contact-lukas-dusek.png"] { width: 192.7%; transform: translate(...) }`, ne explicitním per-context assetem/guardem. |
+| Soubory | `templates/section/contact.php`, `templates/footer.php`, `modules/products/templates/post/single/sidebar.php`, `_component-contracts.less`, asset manifest, nový contact media smoke. |
+| Implementace | Re-exportovat nebo ověřit přesný Figma avatar asset z node `1:50` a zavést pojmenovaný avatar helper/partial s context variants. Globální selector podle filename nahradit scoped třídou nebo přímo správně oříznutým assetem. |
+| Akceptace | Footer quick contact, global contact CTA a product sidebar vykreslují Duškovu fotku ve správném Figma cropu/rozměru. Guard porovná source/crop/box a failne, pokud se avatar škáluje neřízeným globálním CSS hackem. |
+
+### P0-13 Benefit/Option Pseudoikony Pryč
+
+| Položka | Detail |
+| --- | --- |
+| Problém | Plán sice říká, že CSS media token není finální asset, ale není dost tvrdý: současné pseudoikony jsou viditelný regresní stav a působí jako vymyšlený design. |
+| Figma evidence | Benefit group `1:1498` má karty `452px` wide, image rectangles `1:1500`, `1:1510`, `1:1520` atd. o velikosti `87 x 87`, red plus frame `33 x 33`, žádné kreslené CSS pseudoikony. |
+| Local evidence | Re-audit 2026-06-01 a screenshoty: `.f-product-benefit__media` používá generované `:before/:after` kruhy/čtverce a opakované pseudoikony pro Heatlock, kabinet, vodu atd. |
+| Soubory | `templates/section/product-benefits.php`, `templates/section/product-options.php`, `_component-contracts.less`, `_components.less`, asset manifest, benefit media smoke. |
+| Implementace | Okamžitě zakázat viditelné pseudoikony jako final treatment. Každý benefit/option media slot musí být buď Figma image export/owner asset, nebo neutrální explicitní waiting placeholder, který nevypadá jako finální ikonografie. |
+| Akceptace | Žádný product benefit/option card nevykresluje dekorativní CSS pseudoikonu jako náhradu Figma image. Smoke failne na `:before/:after` media treatment u `WAITING_ON_FIGMA_EXPORT`, pokud není explicitně neutrální placeholder. |
+
+### P0-14 Contact CTA A Product Sidebar Hours Layout
+
+| Položka | Detail |
+| --- | --- |
+| Problém | Červený contact CTA banner funguje na homepage lépe, ale v product kontextu hours pill leze z vnitřního panelu ven. Product sidebar navíc používá statickou otevírací dobu, takže není sjednocený s dynamickým header/contact CTA/footer statusem. |
+| Figma evidence | Product detail frame `1:1461` obsahuje product sidebar contact card layout `x=1362 y=934 w=298 h=341` a contact CTA block `x=260 y=6552 w=1400 h=455`; hours pill je součástí kontaktního detailu, ne volně plující badge mimo panel. |
+| Local evidence | Re-audit 2026-06-01: `/product/mckinley/` `.f-contact-cta__bar` bottom `6052`, `.f-contact-cta__hours` bottom `6062.4`, tedy overflow cca `10px`. `sidebar.php` renderuje literal `Po - Pá 8:00-17:00 h` bez `templates/about/hours.php`. |
+| Soubory | `templates/section/contact.php`, `templates/about/hours.php`, `modules/products/templates/post/single/sidebar.php`, `_components.less`, `_component-contracts.less`, `tools/header-status-smoke.js`, nový contact CTA hours smoke. |
+| Implementace | Převést product sidebar na sdílený hours partial. Pro contact CTA odstranit absolutní hodnoty, které dovolí hours pillu opustit bar, nebo je nahradit fyzicky hlídaným Figma layoutem pro homepage/category/product/swimspa context. |
+| Akceptace | V homepage, `/virivky/`, `/swimspa/` a product detailu je hours pill uvnitř kontaktního panelu. Product sidebar má dynamický `.js-hours__status` se stejným open/closed contractem jako header/footer. |
+
 ## Otevřené P1 Bloky
 
 | Blok | Co zbývá |
@@ -179,31 +248,38 @@ Footer zde záměrně není uvedený jako hotový. Deep physical audit v2 ho dr�
 | Pořadí | Blok | Proč teď |
 | --- | --- | --- |
 | 1 | Source map + manifest cleanup | Nejdřív zastavit další hádání, co je asset, fallback nebo design-only. |
-| 2 | Google Maps link + contact map offset | Link a vizuální podklad/pin jsou dva různé bugy, ale musí se uzavřít společně. |
-| 3 | Footer background + CTA handoff | Globální P0 z deep auditu; bez footeru není final visual pass. |
-| 4 | Product detail contract renderer | Největší aktuální dluh. Musí předcházet drobnému ladění detailu. |
-| 5 | Product detail Figma asset/export pass | Naváže na renderer a odstraní CSS/fake media. |
-| 6 | Konfigurace, Kalahari swatch, benefits/options data model | Bez datového a vizuálního contractu se chyby budou vracet u dalších produktů. |
-| 7 | Figma detail encoding guard | Malý krok, ale produkčně viditelný, proto před release QA. |
-| 8 | Swimspa category/detail decision | Swimspa musí být pravdivý scope, ne přetřená vířivka. |
-| 9 | QA/release gate | Až po contract opravách, aby guardy hlídaly skutečný cílový stav. |
-| 10 | Produkční Jucra a owner assets | Nasazovací a obsahové doplnění po stabilizaci UI. |
+| 2 | Header geometry + product sticky nav collision | Pokud header/nav překrývá obsah, všechny další vizuální screenshoty jsou nespolehlivé. |
+| 3 | Product detail physical parity pro non-Timberwolf | McKinley ukazuje, že samotný sdílený renderer nestačí. Detail je hlavní viditelný dluh. |
+| 4 | Benefit/option pseudoikony pryč + Figma media status | Pseudoikony jsou okamžitě viditelné a nesmí být vydávány za Figma implementaci. |
+| 5 | Contact CTA/sidebar hours + Dušek media crop | Globální kontaktní komponenty se opakují všude, musí být správně v každém kontextu. |
+| 6 | Google Maps link + contact map offset | Link a vizuální podklad/pin jsou dva různé bugy, ale musí se uzavřít společně. |
+| 7 | Footer background + CTA handoff | Globální P0 z deep auditu; bez footeru není final visual pass. |
+| 8 | Product detail Figma asset/export pass | Naváže na renderer a odstraní CSS/fake media. |
+| 9 | Konfigurace, Kalahari swatch, benefits/options data model | Bez datového a vizuálního contractu se chyby budou vracet u dalších produktů. |
+| 10 | Figma detail encoding guard | Malý krok, ale produkčně viditelný, proto před release QA. |
+| 11 | Swimspa category/detail decision | Swimspa musí být pravdivý scope, ne přetřená vířivka. |
+| 12 | QA/release gate | Až po contract opravách, aby guardy hlídaly skutečný cílový stav. |
+| 13 | Produkční Jucra a owner assets | Nasazovací a obsahové doplnění po stabilizaci UI. |
 
 ## Detailní Akceptační Checklist
 
 | Oblast | Pass kritérium |
 | --- | --- |
 | Figma | Pro product detail jsou v manifestu uvedené použité node ID, export path a source status. |
+| Header | Header component `1:1832`, product hero a `.f-links--product` se fyzicky nepřekrývají na 1920px ani compact/laptop viewportu. |
 | Mapy | Každé `Zobrazit na mapě` vede na stejný Google Maps link nebo má explicitní fallback status. |
 | Contact map visual | Na 1920px sedí map image offset a pin proti Figma nodům `1:1069` a `1:1086`; pin neleží nad posunutou geografií. |
 | Footer | Footer používá Figma landscape background, ne navy handoff override. |
-| Detail vířivky | Timberwolf, Lunar, Orion a Husky používají stejný detail contract bez layout hacku. |
+| Detail vířivky | Timberwolf, McKinley, Lunar, Orion a Husky používají stejný detail contract bez layout hacku a bez prázdných layout děr. |
 | Detail swimspa | Aspoň jeden swimspa detail má explicitní contract nebo čekající scope stav. |
 | Konfigurace | Žádná karta nezobrazuje prázdný thumbnail wrapper jako hotový image card. |
 | Kalahari swatch | Světlé swatche v Jucra/Visao UI mají viditelný obrys bez editace pluginu. |
 | Encoding | `figma-detail-body.php` a detailové partials jsou UTF-8 bez BOM a bez mojibake sekvencí. |
-| Benefits/options | CSS media token není označený jako finální Figma asset, pokud Figma vyžaduje image/media vrstvu. |
+| Benefits/options | Žádné viditelné CSS pseudoikony jako finální media; Figma image vrstva je reálný export nebo explicitní waiting placeholder. |
 | Popupy | Plus/trigger existuje jen u card, která má reálný popup content. |
+| Dušek avatar | Node `1:50` crop/rozměr sedí ve footeru, contact CTA a product sidebaru; žádný globální filename hack nesmí změnit crop bez guardu. |
+| Contact CTA hours | Hours pill zůstává uvnitř contact CTA bar na homepage, category, swimspa i product detailu. |
+| Product sidebar hours | Product contact card používá sdílený dynamický hours partial, ne statický string. |
 | Reference | Product detail a category reference zůstávají kontextové. |
 | Jucra | Pokud plugin není aktivní, UI ukazuje pravdivý fallback; pokud aktivní je, shortcode output se reálně renderuje. |
 | QA | `qa:local` nebo `release:qa` zahrnuje finální Figma smoke, Jucra smoke, map CTA guard a product detail media guard. |
@@ -215,6 +291,10 @@ Footer zde záměrně není uvedený jako hotový. Deep physical audit v2 ho dr�
 | `npm run css:build` | Ověří LESS build po contract změnách. |
 | `npm run product-media:smoke` | Ověří product/category media a detail media guardy. |
 | `npm run component:smoke` | Ověří sdílené komponentové contracty. |
+| `npm run product-header:smoke` | Doplnit: ověří header/product sticky nav kolize proti Figma a real viewportům. |
+| `npm run product-detail:physical` | Doplnit: ověří fyzickou shodu detailu pro Timberwolf, McKinley, Lunar, Orion, Husky a swimspa fixture. |
+| `npm run contact-media:smoke` | Doplnit: ověří Dušek avatar node `1:50` source/crop ve všech reuse kontextech. |
+| `npm run contact-cta:hours` | Doplnit: ověří, že hours pill nevyteče z contact CTA a product sidebar používá shared hours partial. |
 | `npm run contact-map:smoke` | Ověří contact map a musí se rozšířit o footer/showroom map CTA i map image/pin offset. |
 | `npm run jucra:smoke` | Ověří builder, fallback, model selector a request flow. |
 | `npm run final:qa` | Ověří finální stránkový smoke. |
@@ -256,14 +336,19 @@ Projekt je připravený k finálnímu předání až když platí všechny body 
 
 | Bod | Done |
 | --- | --- |
-| 1 | Product detail contract je sdílený pro hot tubs a má explicitní swimspa scope. |
-| 2 | Product detail manifest a asset source map neobsahují falešné `available` stavy. |
-| 3 | Google Maps contract je jednotný napříč contact map, footerem a showroom/location CTA. |
-| 4 | Contact map má správný image offset/pin geometrii proti Figmě. |
-| 5 | Footer používá Figma landscape background a CTA-to-footer handoff není navy override. |
-| 6 | Jucra/Visao má pravdivý plugin/fallback stav, viditelné světlé swatche a produkční checklist. |
-| 7 | `figma-detail-body.php` a detailové PHP partials jsou UTF-8 bez BOM a bez mojibake. |
-| 8 | `qa:local` nebo `release:qa` spouští všechny relevantní guardy včetně finálního QA a Jucra. |
-| 9 | Vizuální screenshot pass obsahuje `/virivky/`, `/swimspa/`, Timberwolf, Lunar/Orion/Husky, jeden swimspa detail, `/kontakt/`, footer map a builder. |
-| 10 | Chybějící owner assety jsou viditelně označené jako čekající, ne maskované náhradou. |
-| 11 | Žádné nové heslo, token ani privátní Figma údaj nejsou v commitu. |
+| 1 | Header `1:1832`, product hero a sticky product nav jsou fyzicky bez kolizí na desktopu i compact viewportu. |
+| 2 | Product detail contract je sdílený pro hot tubs a má explicitní swimspa scope. |
+| 3 | Product detail fyzicky sedí pro Timberwolf i non-Timberwolf fixture včetně McKinley, bez text-only konfigurace vydávané za Figma image card. |
+| 4 | Product detail manifest a asset source map neobsahují falešné `available` stavy. |
+| 5 | Benefit/options cards nepoužívají pseudoikony jako finální media. |
+| 6 | Dušek avatar odpovídá Figma node `1:50` ve všech reuse kontextech. |
+| 7 | Contact CTA hours a product sidebar hours jsou layoutově i datově sjednocené, bez overflow. |
+| 8 | Google Maps contract je jednotný napříč contact map, footerem a showroom/location CTA. |
+| 9 | Contact map má správný image offset/pin geometrii proti Figmě. |
+| 10 | Footer používá Figma landscape background a CTA-to-footer handoff není navy override. |
+| 11 | Jucra/Visao má pravdivý plugin/fallback stav, viditelné světlé swatche a produkční checklist. |
+| 12 | `figma-detail-body.php` a detailové PHP partials jsou UTF-8 bez BOM a bez mojibake. |
+| 13 | `qa:local` nebo `release:qa` spouští všechny relevantní guardy včetně finálního QA a Jucra. |
+| 14 | Vizuální screenshot pass obsahuje `/virivky/`, `/swimspa/`, Timberwolf, McKinley, Lunar/Orion/Husky, jeden swimspa detail, `/kontakt/`, footer map a builder. |
+| 15 | Chybějící owner assety jsou viditelně označené jako čekající, ne maskované náhradou. |
+| 16 | Žádné nové heslo, token ani privátní Figma údaj nejsou v commitu. |

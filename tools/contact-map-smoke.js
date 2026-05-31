@@ -19,6 +19,32 @@ function normalizeRgb(value) {
   return String(value).replace(/\s+/g, ' ').trim();
 }
 
+function assertExternalMapsLink(label, link) {
+  assert(link, `${label} map link is missing.`);
+  assert(!link.href.startsWith(`${baseUrl}/kontakt`) && !link.href.startsWith(`${baseUrl}/showroom`), `${label} map link is internal: ${link.href}`);
+  assert(
+    /^https:\/\/(maps\.app\.goo\.gl|www\.google\.com\/maps|google\.com\/maps|maps\.google\.)/.test(link.href),
+    `${label} map link is not a Google Maps URL: ${link.href}`
+  );
+  assert(link.target === '_blank', `${label} map link target is ${link.target}, expected _blank`);
+  assert(link.rel.split(/\s+/).includes('noopener'), `${label} map link rel is ${link.rel}, expected noopener`);
+}
+
+async function readLink(page, path, selector, label) {
+  const response = await page.goto(`${baseUrl}${path}`, { waitUntil: 'networkidle', timeout: 60000 });
+  assert(response && response.status() < 400, `${path} returned ${response ? response.status() : 'no response'}`);
+
+  const link = await page.locator(selector).first().evaluate((anchor) => ({
+    href: anchor.href,
+    target: anchor.getAttribute('target') || '',
+    rel: anchor.getAttribute('rel') || '',
+    text: anchor.textContent.trim().replace(/\s+/g, ' '),
+  }));
+
+  assertExternalMapsLink(label, link);
+  return link;
+}
+
 (async () => {
   const browser = await chromium.launch({ executablePath: chromePath, headless: true });
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
@@ -133,6 +159,10 @@ function normalizeRgb(value) {
       assert(card.assetStatus === 'WAITING_ON_OWNER', `${card.name} avatar status is ${card.assetStatus}, expected WAITING_ON_OWNER`);
       assert(card.avatarClass.includes('f-contact-card__avatar--waiting'), `${card.name} avatar is missing waiting placeholder class`);
     }
+
+    await readLink(page, '/', '.f-footer__quick-map a', 'footer quick map');
+    await readLink(page, '/kontakt/', '.f-local-map__card .a-button', 'contact local map CTA');
+    await readLink(page, '/showroom/', '.f-showroom-info__item a[href^="http"]', 'showroom map CTA');
 
     console.log('Contact page smoke passed.');
   } finally {

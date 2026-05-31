@@ -90,6 +90,53 @@ function assertBenefitMedia(html) {
     'f-product-benefit__media--wifi',
     'f-product-benefit__media--covana',
   ]);
+
+  const mediaTags = [
+    ...(benefitSection.match(/<span\b[^>]*\bf-product-benefit__media\b[^>]*>/g) || []),
+    ...(optionsSection.match(/<span\b[^>]*\bf-product-benefit__media\b[^>]*>/g) || []),
+  ];
+
+  if (mediaTags.length < 20) {
+    throw new Error(`/product/timberwolf/ exposes only ${mediaTags.length} benefit/options media slots.`);
+  }
+
+  for (const [index, tag] of mediaTags.entries()) {
+    if (!tag.includes('data-asset-status=')) {
+      throw new Error(`/product/timberwolf/ benefit/options media slot ${index + 1} is missing data-asset-status.`);
+    }
+    if (!tag.includes('data-asset-status="available"')) {
+      throw new Error(`/product/timberwolf/ benefit/options media slot ${index + 1} is not backed by a Figma media export.`);
+    }
+  }
+
+  const mediaImages = countMatches(`${benefitSection}\n${optionsSection}`, /uploads\/import\/figma\/benefit-media-[0-9]{2}\.png/g);
+  if (mediaImages < mediaTags.length) {
+    throw new Error(`/product/timberwolf/ renders only ${mediaImages} Figma benefit media images for ${mediaTags.length} slots.`);
+  }
+
+  assertExcludes('/product/timberwolf/ benefits/options', `${benefitSection}\n${optionsSection}`, [
+    'data-asset-status="WAITING_ON_FIGMA_EXPORT"',
+    'data-asset-status="WAITING_ON_OWNER"',
+  ]);
+}
+
+function assertConfigurationMedia(path, html) {
+  const cards = html.match(/<article\b[^>]*\bf-product-configuration\b[\s\S]*?<\/article>/g) || [];
+
+  if (cards.length === 0) {
+    throw new Error(`${path} has no product configuration cards to validate.`);
+  }
+
+  for (const [index, card] of cards.entries()) {
+    if (card.includes('f-product-configuration--no-media')) {
+      throw new Error(`${path} configuration card ${index + 1} still renders without media.`);
+    } else {
+      assertIncludes(`${path} configuration card ${index + 1}`, card, [
+        'f-product-configuration__thumb',
+        'data-asset-status=',
+      ]);
+    }
+  }
 }
 
 function assertMegaMenu(html) {
@@ -125,6 +172,7 @@ async function main() {
     '/virivky/': await fetchHtml('/virivky/'),
     '/swimspa/': await fetchHtml('/swimspa/'),
     '/product/timberwolf/': await fetchHtml('/product/timberwolf/'),
+    '/product/athabascan/': await fetchHtml('/product/athabascan/'),
   };
 
   assertCatalogMedia('/virivky/', pages['/virivky/'], [
@@ -164,15 +212,20 @@ async function main() {
     'uploads/import/figma/cabinet-',
   ]);
   assertBenefitMedia(pages['/product/timberwolf/']);
+  assertConfigurationMedia('/product/timberwolf/', pages['/product/timberwolf/']);
+  assertConfigurationMedia('/product/athabascan/', pages['/product/athabascan/']);
 
   assertMegaMenu(pages['/']);
 
   const contractsCss = readFileSync('wp-content/themes/arctic/src/less/_component-contracts.less', 'utf8');
   assertIncludes('_component-contracts.less', contractsCss, [
     '.f-listing__image--product-missing',
-    '.f-product-benefit__media--shell',
-    '.f-product-benefit__media--onzen',
+    '.f-product-benefit__media img',
     '.f-mega-menu__thumb--missing',
+  ]);
+  assertExcludes('_component-contracts.less', contractsCss, [
+    '.f-product-benefit__media:before',
+    '.f-product-benefit__media:after',
   ]);
 
   console.log('Product/category media smoke passed.');

@@ -16,6 +16,7 @@ $showroom_assets = array(
 
 $contact_email = get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
 $contact_phone = get_theme_mod( 'baspa_phone', '+420 777 099 687' );
+$map_url       = function_exists( 'arctic_get_map_url' ) ? arctic_get_map_url() : get_theme_mod( 'baspa_map', 'https://maps.app.goo.gl/ZsYfoZ2aQGF1JnZG6' );
 $contact_name  = function_exists( 'arctic_sections_get_theme_mod' ) ? arctic_sections_get_theme_mod( 'arctic_showroom_contact_name', 'Lukáš Dušek' ) : get_theme_mod( 'arctic_showroom_contact_name', 'Lukáš Dušek' );
 $street        = get_theme_mod( 'baspa_street', 'Bohunická cesta 15' );
 $city          = get_theme_mod( 'baspa_city', 'Moravany u Brna' );
@@ -97,7 +98,7 @@ get_header();
 					<h2><?php echo esc_html__( 'Kde nás najdete', 'baspa' ); ?></h2>
 					<strong><?php echo esc_html( $city ); ?></strong>
 					<span><?php echo esc_html( $street ); ?></span>
-					<a href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>"><?php echo esc_html__( 'Zobrazit na mapě.', 'baspa' ); ?></a>
+					<a href="<?php echo esc_url( $map_url ); ?>" target="_blank" rel="noopener"><?php echo esc_html__( 'Zobrazit na mapě.', 'baspa' ); ?></a>
 				</div>
 
 				<div class="f-showroom-info__item">

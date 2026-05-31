@@ -18,7 +18,7 @@ Repeated visual blocks are implemented through a named component contract. Page-
 | Progress steps | `.f-progress-layout--shared` | Homepage, product categories | none | Shared typography/number treatment lives in contract; page CSS can still position the whole section. |
 | Product listing media | `data-product-media`, `.f-listing__image--product-media`, `.f-listing__image--featured-media`, `.f-listing__image--product-missing` | Product category cards and product loops | missing state is a neutral placeholder safety net | PR-E owns the image-source cascade: product image meta -> featured image -> explicit missing state. |
 | Product benefit card | `.f-product-benefit--interactive`, `.f-product-benefit--static` | Product detail benefits and options | interactive opens `.f-off--benefit-popup`; static has no plus/trigger | Static cards must not render a plus or invisible trigger. |
-| Product benefit media | `.f-product-benefit__media--...` | Product detail benefits and options | named variants such as `shell`, `heatlock`, `onzen`, `wifi`, `covana` | Shared CSS icon/token treatment replaces the old gray generic media disk without inventing product photos. |
+| Product benefit media | `.f-product-benefit__media--...`, `data-asset-status` | Product detail benefits and options | `available`, named variants such as `shell`, `heatlock`, `onzen`, `wifi`, `covana` | Every slot uses an exported Figma media image. CSS-generated pseudoicons are forbidden as final media. |
 | Benefit popup | `.f-off--benefit-popup`, `.f-benefit-popup` | Product detail shell benefit | none | Contract owns dark overlay, white rounded modal, close button radius and modal shadow. |
 | Mega menu product media | `.f-mega-menu__thumb`, `.f-mega-menu__thumb--missing`, `data-product-media` | Desktop hot tub/swimspa mega menu | missing thumbnail is explicit neutral fallback | PR-E guard fails if current seeded public products expose missing thumbnails. |
 | Support/download shell | `.f-main--support-contract` | `/podpora/`, `/ke-stazeni/` | support page includes tabs/FAQ/form; downloads page includes downloads only | PR-G owns shared support surface guardrails without duplicating page-specific internals. |
@@ -51,7 +51,7 @@ Repeated visual blocks are implemented through a named component contract. Page-
 
 - Product category cards use real seeded product media and no Figma product-card placeholders.
 - Timberwolf detail uses seeded Timberwolf media and owner swatches.
-- Benefit/options cards expose named media variants instead of the old gray placeholder disk.
+- Benefit/options cards expose a source status for every media slot; every current slot must have an exported Figma image and no generated pseudoicon treatment.
 - Mega menu exposes all seeded product thumbnails with no missing media state.
 
 `npm run support-mobile:smoke` validates the PR-G support/download/mobile contract:

@@ -66,7 +66,37 @@ function assertStaticBenefitCardsDoNotLookInteractive(html) {
   });
 }
 
+function assertProductDetailContract(path, html, scope) {
+  assertIncludes(path, html, [
+    'data-product-detail-contract="figma"',
+    `data-product-detail-scope="${scope}"`,
+    'f-heading--product-detail',
+  ]);
+  assertExcludes(path, html, [
+    'f-heading--timberwolf',
+  ]);
+
+  if (scope === 'hot-tub') {
+    assertIncludes(path, html, [
+      'f-configurator-cta--shared f-configurator-cta--product',
+      '/konfigurator/',
+    ]);
+  } else {
+    assertExcludes(path, html, [
+      'f-configurator-cta--product',
+      'category-configurator.png',
+    ]);
+  }
+}
+
 async function main() {
+  const productDetailPaths = {
+    '/product/timberwolf/': 'hot-tub',
+    '/product/lunar/': 'hot-tub',
+    '/product/orion/': 'hot-tub',
+    '/product/husky/': 'hot-tub',
+    '/product/athabascan/': 'swimspa',
+  };
   const pages = {
     '/': await fetchHtml('/'),
     '/virivky/': await fetchHtml('/virivky/'),
@@ -75,8 +105,10 @@ async function main() {
     '/konfigurator/': await fetchHtml('/konfigurator/'),
     '/konfigurator/timberwolf/': await fetchHtml('/konfigurator/timberwolf/'),
     '/poptavka-konfigurace/': await fetchHtml('/poptavka-konfigurace/?model_name=Timberwolf&option_jets=dd-30+Jets+2+Pumps&option_acrylic=dd-Acrylic+Platinum&option_cabinet=dd-Cabinet+Cedar'),
-    '/product/timberwolf/': await fetchHtml('/product/timberwolf/'),
   };
+  for (const path of Object.keys(productDetailPaths)) {
+    pages[path] = await fetchHtml(path);
+  }
 
   assertIncludes('/', pages['/'], [
     'f-showroom-panel--collage',
@@ -196,6 +228,9 @@ async function main() {
     'f-product-benefit--static',
     'f-contact-cta--shared',
   ]);
+  for (const [path, scope] of Object.entries(productDetailPaths)) {
+    assertProductDetailContract(path, pages[path], scope);
+  }
 
   const productBenefits = blockBetween(
     pages['/product/timberwolf/'],
@@ -231,6 +266,8 @@ async function main() {
     '.f-section--product-listing-contract',
     '.f-product-card.f-product-card--category',
     '.f-progress-layout.f-progress-layout--shared',
+    '.f-jucra-builder__shortcode .clickable-image',
+    'border: 2px solid rgba(35, 40, 47, 0.18)',
     '.f-product-benefit--static',
     '.f-off--benefit-popup',
     '.f-reference-section--recent-carousel',

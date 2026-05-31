@@ -1323,7 +1323,7 @@ set_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' );
 set_theme_mod( 'baspa_street', 'Bohunicka cesta 15' );
 set_theme_mod( 'baspa_zip', '664 48' );
 set_theme_mod( 'baspa_city', 'Moravany u Brna' );
-set_theme_mod( 'baspa_map', '' );
+set_theme_mod( 'baspa_map', 'https://maps.app.goo.gl/ZsYfoZ2aQGF1JnZG6' );
 set_theme_mod( 'arctic_map_embed', '' );
 update_option( 'site_icon', $site_icon_attachment );
 

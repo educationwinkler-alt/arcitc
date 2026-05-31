@@ -12,7 +12,7 @@ Product/category media must be wired once as a reusable contract, not patched pa
 | Category intro images | fixed source mapping in `templates/section/category-intro.php` | hot tubs use approved Figma category images; swimspa uses Figma category image plus legacy swimspa lifestyle image | `product-media:smoke` checks required image URLs |
 | Product detail hero | validated `product_images` gallery; invalid attachment IDs are ignored | Timberwolf uses seeded real Timberwolf media, not Figma detail placeholder | `product-media:smoke` checks Timberwolf gallery markers and forbids `detail-timberwolf-hero.jpg` |
 | Swatches | valid image attachments only | owner acrylic swatches only; missing cabinet swatches stay hidden/WAITING_ON_OWNER | `asset:smoke` and `product-media:smoke` forbid Figma color/cabinet assets |
-| Product benefit/options media | named CSS media variants on `.f-product-benefit__media--...` | CSS tokens/icons only; no invented photos and no gray generic placeholder disk | `component:smoke` checks behavior, `product-media:smoke` checks media variants |
+| Product benefit/options media | `.f-product-benefit__media--...` plus `data-asset-status` | all current benefit/option media use exported Figma image nodes; missing future media must be explicit waiting state, never CSS pseudoicons | `product-media:smoke` and `product-detail:physical` fail on CSS-only media, missing images, or pseudoicon treatment |
 | Mega menu thumbnails | `data-product-media="featured-image"` or explicit missing state | product thumbnail first, neutral fallback only if a future product lacks a thumbnail | `product-media:smoke` fails if public mega menu renders missing thumbnails |
 
 ## Non-goals
@@ -26,5 +26,6 @@ Product/category media must be wired once as a reusable contract, not patched pa
 
 - `modules/products/templates/post/listing/image.php` now normalizes product image meta to valid image attachments and renders one canonical media slot per card.
 - `templates/image/gallery-slideshow.php` and product detail heading ignore broken gallery IDs before deciding that a hero gallery exists.
-- `templates/section/product-benefits.php` and `templates/section/product-options.php` assign stable media variant classes so the shared CSS contract can style all cards consistently.
+- `templates/section/product-benefits.php` and `templates/section/product-options.php` assign stable media variant classes, `data-asset-status="available"`, and exported Figma media images, so CSS treatment is never mistaken for a final Figma asset.
+- `modules/products/templates/post/single/configurations.php` uses real product attachments first and Figma configuration fallback media second, preventing non-Timberwolf details from collapsing into text-only cards.
 - `templates/navigation/mega.php` marks thumbnails with a media status and exposes a neutral missing state only as a safety net.

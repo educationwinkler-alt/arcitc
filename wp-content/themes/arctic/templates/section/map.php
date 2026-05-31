@@ -5,7 +5,7 @@
  */
 
 $map_embed = get_theme_mod( 'arctic_map_embed' );
-$map_link  = get_theme_mod( 'baspa_map' );
+$map_link  = function_exists( 'arctic_get_map_url' ) ? arctic_get_map_url() : get_theme_mod( 'baspa_map', 'https://maps.app.goo.gl/ZsYfoZ2aQGF1JnZG6' );
 $can_embed = !empty( $map_embed ) && ( !function_exists( 'wp_get_environment_type' ) || 'local' !== wp_get_environment_type() );
 
 $figma_map = content_url( 'uploads/import/figma/contact-map-showroom.png' );
@@ -42,15 +42,9 @@ $hours_line_2 = function_exists( 'arctic_sections_get_theme_mod' ) ? arctic_sect
 						</div>
 					</div>
 					<p><?php echo esc_html__( 'Chcete si osobně prohlédnout řešení a pobavit se o možnostech realizace? Rádi se vám budeme věnovat v showroomu.', 'baspa' ); ?></p>
-					<?php if ( !empty( $map_link ) ) { ?>
-						<a class="f-button a-button a-button--outline" href="<?php echo esc_url( $map_link ); ?>" target="_blank" rel="noopener">
-							<?php echo esc_html__( 'Zobrazit na mapě', 'baspa' ); ?>
-						</a>
-					<?php } else { ?>
-						<a class="f-button a-button a-button--outline" href="<?php echo esc_url( home_url( '/showroom/' ) ); ?>">
-							<?php echo esc_html__( 'Více o showroomu', 'baspa' ); ?>
-						</a>
-					<?php } ?>
+					<a class="f-button a-button a-button--outline" href="<?php echo esc_url( $map_link ); ?>" target="_blank" rel="noopener">
+						<?php echo esc_html__( 'Zobrazit na mapě', 'baspa' ); ?>
+					</a>
 				</div>
 			</div>
 		<?php } ?>
