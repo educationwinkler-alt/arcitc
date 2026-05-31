@@ -1,0 +1,156 @@
+<script>
+const phrases = [##VISAO_ARRAY_OF_PHRASES##];
+</script>
+
+<div id="app">
+
+<div class="col-md-12" id="variants-title-container">
+    <div id="variants-title">
+        <h2>Build Your Spa <small id="variants-title-version" style="font-size:12px;background-color:yellow;">Version ##VISAO_VERSION##</small></h2>
+        <p>Explore a diverse range of shell colors, jets, and cabinet finishes.</p>
+    </div>
+</div>
+
+<div class="container-fluid" id="visao-top-container">
+    <div class="row parent-container">
+
+        <div class="col-md-5" id="visao-iframe-container">
+
+            <div id="viewer-iframe">
+
+                <iframe
+                  id="visao-viewer-id"
+                  src="##VISAO_IFRAME_URL##"
+                  title="Arctic Spas 3d Hot Tubs Viewer"
+                  allow="autoplay; fullscreen; vr"
+                  allowfullscreen="true"
+                  allowtransparency="true"
+                >
+                </iframe>
+
+            </div>
+
+        </div>
+        
+        <div class="col-md-7" id="visao-options-container">
+
+            <div id="variants">
+
+                <div id="loading-overlay">
+                    <div class="spinner"></div>
+                    <div id="loading-overlay-container">
+                        <p>
+                            Loading the Arctic Spas 3D Builder Experience....<br>
+                            <small id="loading-sub-text" class="loading-sub-text"></small>
+                        </p>
+                     </div>
+                </div>
+
+                <div id="variantListJets">
+                    ##VISAO_JETS_HTML##
+                </div>
+
+                <div id="variantListAcrylics">
+                   ##VISAO_ACRYLICS_HTML##
+                </div>
+
+                <div id="variantListCabinets">
+                    ##VISAO_CABINETS_HTML## 
+                </div>
+
+            </div>
+            
+        </div>
+
+    </div>
+
+</div>
+	
+##VISAO_PRICING_NOW_BUTTON_HTML##
+
+<div class="container-fluid" id="visao-disclaimer-container">
+    <div class="row">
+    <p id="visao-disclaimer-text">
+    For the best Build Your Spa experience, please use the latest version of your browser
+    </p>
+    </div>   
+</div>
+
+##VISAO_VERSION_HTML##    
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Get references to the elements
+    const pricingLink = document.getElementById("pricing-link");
+
+    // Get all variant containers
+    const variantListJets = document.getElementById("variantListJets");
+    const variantListAcrylics = document.getElementById("variantListAcrylics");
+    const variantListCabinets = document.getElementById("variantListCabinets");
+
+    // Helper function to get the selected option
+    function getSelectedOption(container) {
+        const selectedImage = container.querySelector(".selected-image");
+        return selectedImage ? selectedImage.id : null;
+    }
+
+    // Function to update the link URL
+    function updatePricingLink() {
+    // Parse the current href to preserve the existing query parameters
+    const currentUrl = new URL(pricingLink.href); // Use URL API for easier manipulation
+
+    // Retrieve the selected values
+    const jetsValue = getSelectedOption(variantListJets) || "default_jets";
+    const acrylicsValue = getSelectedOption(variantListAcrylics) || "default_acrylics";
+    const cabinetsValue = getSelectedOption(variantListCabinets) || "default_cabinets";
+
+    // Append or update query parameters
+    currentUrl.searchParams.set("option_acrylic", acrylicsValue);
+    currentUrl.searchParams.set("option_cabinet", cabinetsValue);
+    currentUrl.searchParams.set("option_jets", jetsValue);
+
+    // Update the href attribute with the modified URL
+    pricingLink.href = currentUrl.toString();
+}
+
+    // Function to initialize the default selections
+    function initializeSelections() {
+        const sections = [variantListJets, variantListAcrylics, variantListCabinets];
+
+        sections.forEach((section) => {
+            const firstImage = section.querySelector(".clickable-image");
+            if (firstImage) {
+                firstImage.classList.add("selected-image");
+            }
+        });
+
+        // Update the link initially
+        updatePricingLink();
+    }
+
+    // Attach click event listeners to all clickable images
+    const allImages = document.querySelectorAll(".clickable-image");
+    allImages.forEach((image) => {
+        image.addEventListener("click", function () {
+            // Remove the selected class from all siblings
+            const siblings = image.parentElement.parentElement.querySelectorAll(".clickable-image");
+            siblings.forEach((sibling) => sibling.classList.remove("selected-image"));
+
+            // Add the selected class to the clicked image
+            image.classList.add("selected-image");
+
+            // Update the pricing link
+            updatePricingLink();
+        });
+    });
+
+    // Initialize selections on page load
+    initializeSelections();
+});
+	</script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="##VISAO_URL_TO_ASSETS##/index.js?cache=##VISAO_GUID##"></script>

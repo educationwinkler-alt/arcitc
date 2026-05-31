@@ -1,0 +1,547 @@
+/*
+    NON MOBILE VERSION
+*/
+#visao-disclaimer-container p {
+	font-size: 11px;
+	margin: auto;
+}
+#app {
+	font-family: "Roboto", sans-serif;
+	text-align: center;
+	width: 90%;
+	margin-left: 5%;
+}
+#visao-viewer-id {
+	border: none;
+	width: 100%;
+	height: 400px;
+}
+#viewer-buttons-div {
+	width: 100%;
+}
+.control-container {
+	width: 100%;
+	text-align: left;
+}
+.buttons-div {
+	font-family: "Roboto", sans-serif;
+	text-align: left;
+	/* background-color: red; */
+	width: 50%;
+}
+#status-label {
+	margin-bottom: 50px;
+}
+.labels {
+	font-family: "Roboto", sans-serif;
+	font-size: 20px;
+	text-align: left;
+	/* background-color: green; */
+	width: 50%;
+}
+.current-labels {
+	font-family: "Roboto", sans-serif;
+	font-size: 16px;
+	text-align: left;
+	/* background-color: green; */
+	width: 50%;
+}
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 120px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+/* Links inside the dropdown */
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+	background-color: #ddd;
+}
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+.wrap {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.blackbtn {
+	margin: 5px;
+	width: 100px;
+	height: 35px;
+	font-family: "Roboto", sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 2.5px;
+	font-weight: 500;
+	color: white;
+	background-color: #00356c;
+	border: none;
+	border-radius: 0px;
+	cursor: pointer;
+	outline: none;
+}
+.redbtn {
+	margin: 5px;
+	width: 100px;
+	height: 35px;
+	font-family: "Roboto", sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	font-weight: 500;
+	color: white;
+	background-color: #f44336;
+	border: none;
+	border-radius: 0px;
+	cursor: pointer;
+	outline: none;
+}
+.greybtn {
+	margin: 5px;
+	width: 100px;
+	height: 35px;
+	font-family: "Roboto", sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	font-weight: 500;
+	color: black;
+	background-color: #e7e7e7;
+	border: none;
+	border-radius: 0px;
+	cursor: pointer;
+	outline: none;
+}
+.darkgreybtn {
+	margin: 5px;
+	width: 100px;
+	height: 35px;
+	font-family: "Roboto", sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	font-weight: 500;
+	color: white;
+	background-color: #555555;
+	border: none;
+	border-radius: 0px;
+	cursor: pointer;
+	outline: none;
+}
+.greenbtn {
+	margin: 5px;
+	width: 100px;
+	height: 35px;
+	font-family: "Roboto", sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	font-weight: 500;
+	color: white;
+	background-color: #4caf50;
+	border: none;
+	border-radius: 0px;
+	cursor: pointer;
+	outline: none;
+}
+.cta-button {
+	width: 100%;
+	height: 35px;
+	font-family: "Roboto", sans-serif;
+	font-size: 15px;
+	letter-spacing: 1.5px;
+	color: white !important;
+	background-color: #9C1D34 !important;
+	border: none;
+	border-radius: 0px;
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+	outline: none;
+	border-radius: 25px;
+}
+button:disabled, button[disabled] {
+	pointer-events: none;
+	border: 1px solid #999999;
+	background-color: #cccccc;
+	color: #666666;
+}
+#app {
+	position: relative;
+	font-family: 'Poppins';
+	font-size: 16px;
+	margin-top: 40px !important;
+	margin-bottom: 30px;
+	/*border:1px solid #ccc;*/
+	padding: 20px;
+}
+#app h1 {
+	font-size: 60px;
+	color: #a3001b;
+}
+#app h2 {
+	font-size: 35px;
+	color: #a3001b;
+}
+#variants {
+	width: 100%;
+	padding: 0;
+	margin-top: 25px;
+}
+#variants ul {
+	width: 100%;
+}
+#variants li {
+	list-style-type: none;
+	float: left;
+	font-weight: bold !important;
+}
+/* Resize the images to 100px wide */
+#variants li img {
+	width: 60px;
+	height: auto; /* This ensures the aspect ratio is maintained */
+	margin: 5px; /* Add some spacing between images if needed */
+	border-radius: 50%;
+}
+#variants img {
+	cursor: pointer;
+	transition: filter 0.3s ease;
+	border: 1px solid grey;
+}
+#variants img:hover {
+	border: 2px solid #000000;
+	filter: grayscale(50%);
+}
+#variants .selected-image {
+	border: 4px solid #9C1D34;
+}
+#variants-title {
+	text-align: center;
+	margin-top: 25px;
+}
+#variants-title p {
+	text-align: center;
+	/*border-bottom: 1px #ccc solid;*/
+	padding-bottom: 25px;
+	margin-bottom: 25px;
+}
+#variants-title-version {
+	display: none;
+}
+#variantListAcrylics, #variantListJets, #variantListCabinets {
+	display: inline-block;
+	width: 100%
+}
+#viewer-iframe {
+	/*border:1px solid #9C1D34;*/
+	padding: 10px;
+}
+#augmented-reality-title {
+	text-align: left;
+	margin-top: 0px;
+}
+#extraFeatures {
+	margin-left: 20px;
+}
+#extraFeatures li {
+	margin-right: 15px;
+}
+#title-right {
+	text-align: right;
+}
+#title-left {
+	text-align: left;
+}
+#variants-title {
+	text-align: left;
+	margin-left: 45px;
+}
+#variants-title h2 {
+	text-align: center;
+	color: #a3001b;
+	font-weight: 300;
+}
+#augmented-reality-title h2 {
+	color: #a3001b;
+	font-weight: 300;
+}
+form-cta .cta-text {
+	font-size: 25px;
+}
+#form-container {
+	padding: 10px;
+	border: 1px solid #a3001b;
+	margin-left: 15px;
+	margin-top: 10px;
+	margin-right: 15px;
+}
+#lock-camera-button {
+	background: #a3001b;
+	color: white;
+	border-radius: 25px;
+}
+#unlock-camera-button {
+	background: #e7e7e7;
+	color: black;
+	border-radius: 25px;
+}
+#reset-camera-button {
+	background: #797d82;
+	color: white;
+	border-radius: 25px;
+}
+#show-help-button {
+	background: black;
+	color: white;
+	border-radius: 25px;
+}
+#start-ar-button {
+	background: #a3001b;
+	color: white;
+	border-radius: 25px;
+}
+#show-qr-button-li {
+	float: right !important;
+}
+#show-qr-button {
+	background: #8E0D27;
+	color: white;
+	border-radius: 25px;
+	width: 220px;
+}
+#show-qr-button-container {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+#show-qr-button-text {
+	flex: 0 0 80%;
+}
+#show-qr-button-button {
+	flex: 0 0 20%;
+	display: flex;
+	justify-content: flex-end;
+}
+#loading-overlay {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.8);
+	z-index: 99;
+}
+#loading-overlay p {
+	font-size: 22px;
+	font-weight: bold;
+	color: #333;
+}
+.spinner {
+	border: 4px solid rgba(0, 0, 0, 0.1);
+	border-top: 10px solid #9C1D34;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	animation: spin 0.5s linear infinite;
+	margin-bottom: 10px; /* Add some space between spinner and text */
+}
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+.loading-sub-text {
+	font-size: 13px;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+}
+#augmented-reality-instructions p {
+	text-align: left;
+}
+#augmented-reality-instructions u {
+	color: #9C1D34;
+}
+#pricing-cta-container {
+	display: flex;
+	justify-content: center;
+}
+#pricing-cta {
+	flex: 1;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 25px;
+	padding-top: 15px;
+	padding-right: 180px;
+	padding-bottom: 15px;
+	padding-left: 180px;
+}
+#request-pricing-button {
+	font-family: 'Poppins', Helvetica, Arial, Lucida, sans-serif;
+	display: inline-block;
+	background-color: #8E0D27;
+	/*padding-top: 15px;*/
+	/*padding-right: 180px;*/
+	/*padding-bottom: 15px;*/
+	/*padding-left: 180px;*/
+	font-size: 14px;
+	max-width: 270px;
+}
+.titles-options {
+	display: flex;
+	width: 90px;
+	justify-content: center; /* Center horizontally */
+	align-items: center; /* Center vertically */
+	height: 100px; /* Set a specific height for the <li> */
+	border: none; /* Just for visualization purposes */
+	font-weight: bold !important;
+}
+#version-container {
+	width: 100%;
+}
+#version-container p {
+	font-size: 10px;
+	text-align: center !important;
+}
+.clickable-image {
+	/*border-radius: 50%; /* Makes the image round */
+	/*width: 100px; /* Example width, adjust as needed */
+	/*height: 100px; /* Example height, adjust as needed */
+	/*object-fit: cover; /* Ensures the image is not distorted */
+}
+.option-name-text {
+	font-size: 10px;
+}
+.modal {
+	margin-top: 125px;
+	display: none; /* hide the modal initially */
+}
+.modal-content {
+	font-family: "Poppins", sans-serif !important;
+}
+.modal-backdrop {
+	/* bug fix - no overlay */
+	/*
+    ref url: https://weblog.west-wind.com/posts/2016/Sep/14/Bootstrap-Modal-Dialog-showing-under-Modal-Background
+    */
+	display: none;
+}
+.modal-asterisk {
+	color: red;
+}
+.modal-required-text {
+	color: black;
+	font-size: 13px;
+}
+.modal-header {
+	background-color: #a3001c;
+	color: white;
+}
+.modal-header button.close {
+	color: white !important;
+	font-size: 40px !important;
+}
+.modal-title {
+	font-size: 30px;
+	padding-bottom: 0px;
+}
+.model-title-subtext {
+	margin-top: -5px;
+}
+.modal-footer {
+	background-color: #f4f4f4;
+}
+.locationTextField {
+	width: 100%;
+}
+.modal-footer .visao-modal-button {
+	width: 100%;
+	background: #a3001c;
+	border: none;
+	color: #FFFFFF;
+	font-size: 26px;
+	border: 0px;
+	cursor: pointer;
+}
+.modal-footer .visao-modal-button:hover {
+	width: 100%;
+	background: #a3001c;
+	border: none;
+	color: #FFFFFF;
+	font-size: 26px;
+	border: 0px;
+	cursor: pointer;
+}
+.form-group.two-columns {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+.column {
+	flex: 1;
+	margin-right: 10px;
+}
+.column:last-child {
+	margin-right: 0;
+}
+#visao-submit-button[disabled] {
+	background-color: #000; /* Change to the desired background color */
+	color: #fff; /* Change to the desired font color */
+}
+#visao-version-container {
+	display: none;
+}
+#visao-customAlertOverlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+	z-index: 1050;
+}
+#visao-customAlert {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #8E0D27;
+	color: #fff;
+	padding: 20px 30px;
+	border-radius: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	font-family: Arial, sans-serif;
+	z-index: 1051; /* Ensure alert stays above the overlay */
+	transition: opacity 0.3s ease-in-out;
+	text-align: center;
+}
+#visao-customAlert button {
+	cursor: pointer;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+}
+   

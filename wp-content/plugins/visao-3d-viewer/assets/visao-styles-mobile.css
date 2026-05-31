@@ -1,0 +1,120 @@
+/* 
+
+    MOBILE VERSION
+
+*/
+
+/* OTHERS */
+@media (max-width: 834px) {
+
+    #app {
+        margin-top: -80px;
+        margin-left:0px;
+        width: 100%;
+        padding:0px;
+    }
+    #visao-viewer-id {
+        border: none; 
+        width: 100%; 
+        height: 250px;
+    }
+    #app h2 {
+        font-size: 22px;
+        color: #a3001b;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+    #variants-title-container {
+        padding:0px;
+    }
+    #variants {
+        margin-top:0px;
+    }
+    #variants-title {
+        margin-left:25px;
+    }
+    #variants li img {
+        width: 50px;
+    }
+    #variants .option-name-text {
+        font-size:8px;
+    }
+    #variants-title p {
+        width:95%;
+    }
+    #visao-options-container {
+        padding-left:0px;
+    }
+    .titles-options {
+        /*display: none;*/
+        font-size: 10px;
+        width: 50px;
+        height: 50px;
+        line-height: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+   
+    #extraFeatures  {
+       margin-left:0px; 
+    }
+    #extraFeatures p {
+        font-size:13px;
+        line-height: 16px;
+    }
+    #pricing-cta {
+        padding-left:0px;
+        padding-right:0px;
+    }
+    #request-pricing-button {
+        width:100%;
+        max-width:100%;
+    }
+    #reset-camera-button {
+        width:135px;
+    }
+    #show-help-button {
+        width:135px;
+    }
+    .parent-container {
+        /*
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column-reverse; /* This will reverse the order */
+    }
+    #start-ar-button {
+        width: 100%;
+    }
+    #reset-camera-button, #show-help-button {
+        width:49%;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top:5px;
+    }
+    #variantListAcrylics, #variantListJets, #variantListCabinets {
+        margin-bottom: -14px;
+    }
+    #variants li img {
+        margin:3px;
+    }
+    .modal {
+        margin-top:10px;
+    }
+    .redbtn {
+        margin:0px;
+    }
+    
+}
+
+/* Pixel 2 */
+@media (max-width: 360px) {
+    
+    #variants li img {
+        width: 45px;
+    }
+    
+}
+
+
+

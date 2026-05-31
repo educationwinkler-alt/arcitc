@@ -1,0 +1,286 @@
+== Changelog ==
+
+For any support of this plugin, contact hello@jucra.com
+
+==================
+ROADMAP (WISHLIST)
+==================
+- add buttons so that users can swicth the layout. EG: put tub at top, controls at side, controls on top etc
+- add feature so that a user can send a link of their hot tub
+- take the assets/visao-styles.css and create an admin page so css can be edited within wordpress
+- add admin page so admins can edit settings within wordpress (this will be useful for self hosted dealer sites)
+- add better checking for bootstrap javascript
+- ability to cache the selected options to a session or cookie
+
+==================
+NEXT VERSION ESSENTIALS
+==================
+- need to integrate wordpress emails for the api handler.
+- need to figure out how to get user journey GLID etc from Campaign Tracker plugin to send it to zoho. Craig has sent support request to helpforwp.com already.
+
+==1.26==
+*22nd May 2025
+
+* Fixed error: Notice: Undefined variable: template_html in /home/corecore/public_html/wp-content/plugins/visao-3d-viewer/visao-3d-viewer.php on line 172. Not sure of the error but adding a fix anyway.
+
+* Fixed error: Notice: Undefined variable: required_field_html in /home/corecore/public_html/wp-content/plugins/visao-3d-viewer/visao-3d-viewer.php on line 231. We no loner use a pop up form in the plugin anymore, so reuired field could be removed.
+
+==1.25==
+*7th May 2025
+
+* Removed the api link from functions.php. We were using https://cdn.jsdelivr.net/npm/@visao/viewer-api@latest but Visao upgraded their latest api so it broke the plugin so hard coded the previous version which is: https://cdn.jsdelivr.net/npm/@visao/viewer-api@0.0.1-beta.21. Now the plugin works again.
+
+==1.24==
+*5th December 2024
+
+* Removed the modal form as it was causing too many conflicts. When user clicks get pricing form, we redirect to a new page.
+
+* Added admin section which support two tabs. 1. General Options. 2. CSS Editor.
+
+* On General Options tab added five fields for updating settings
+	 1. Added a checkbox called: Hide Version Section? (which hides the developers/version info builder)
+     2. Added a checkbox called: Hide pricing now button (which hides the button on the builder)
+	 3. Added a text field called: Form URL (which allows users to define a url where the gravity form is embdded, so allows custom contact pages like Jody)
+	 4. Added a text field called: Gravity Forms ID	(this will taget the GF form during loading of the form and load the users 3d options)
+	 5. Added a text field called: Gravity Forms Field ID	(this will populate the html in the form so user can see thier selection)
+
+
+* Edited template.html so that we can show/hide the pricing now button.
+
+* Updated the logic of the options so that when the viewer loads, we select the first option in variant and then update the url of the form so that when the user clicks get pricing now, they have already selected some options and no need for alerts, errros or prompts.
+
+* Removed the manual settings page. This was not needed any more and was a security risk if other people get the plugin.
+
+* Added rel=nofollow to developers cache links to prevent duplicated pages
+
+* Added special html fied gravity forms function so that when the GF loads and the user has passed some variables from the get pricing button, those will be display in the top of the forms.
+
+* Various code optimsations.
+
+==1.23==
+*2nd December 2024
+
+* Bug [FIXED]: When the pricing now button clicked, the values of the forms are not being passed to the modal so when user submits form, the values are empty and dont appear in form submission.
+
+
+==1.22==
+*29th of November 2024
+
+* Updated the modal form location field to say "Postcode and City" because if you put "Marbella, Spain" in the search field, the places api shows it in the drop down, but when the user selects it, the JS which checks the location field says its not a valid location, however if you tye "2960, Marbella", the validation passes. So its a problem with some people who wont enter a post code, they will just keep getting an error.
+
+==1.21==
+*28th of November 2024
+
+*Fixed an issue where the plugin version was not being obtained correctly and the plugin updater in wordpress was being tricked into thinking it has an old version.
+
+==1.20==
+*28th of November 2024
+
+* Fix get_plugin_data error in visao-3d-viewer.php which was throwing an error
+
+* Add privacy link to the form
+
+* Applied back ground colour to the modal form as its showing undernath some of the layers. Current setting is z-index:1050 but does not seem to be high enough.
+
+* Added JS to make sure the user has selected a valid address in the modal form
+
+* Added JS to make sure the user has not put any gibbersih in the comments as we were getting alot of spam with these types of comments: shagsjhagsjh, svsvsvsvsvdffd etc
+
+* Added JS so that if the user has not selected any Jet, Acrylic or Cabinet configuration, the user is promted to select one. Then once they select all three, the modal will appear.
+
+* Developer console was giving an error: Google Maps JavaScript API has been loaded directly without loading=async. This can result in suboptimal performance. For best-practice loading patterns please see https://goo.gle/js-api-loading so we have added async
+
+==1.19==
+*5th of June 2024
+
+* Corrected an issue with $comments not being sent through forms.
+
+* Added plugin version number to form submission $description field  inside of visao_action
+
+* Added add_action('init', 'visao_3d_builder_form') in functions.php so that form is handled correctly within the plugin. Previoulsy we were doing a direct form submit and could not get some of the plugin variables such as version.
+
+* Changed $this->cache_allowed to false as having issues with plugin being recognised for updates on some of the sites.
+
+==1.18==
+*4th of June 2024
+
+* Added update-checker.php to provide plugin updates from the central repo to aloow for easier rollout of updates to various sites.
+
+* Added additional javascript logic to form.html to force the user to select an address fro the google autocomplete address field.
+
+* Removed the warning nag when error detected on form submission of pop up form. Edited the functions.php if($response_code != 13003). This was cuasing some issues with anltytics and conversions.
+
+==1.17==
+*29th of February 2024
+
+* Added some additional javascript logic to form.html to force the user to select an address fro the google autocomplete address field.
+
+==1.16==
+*16th of February 2024
+
+* Added a new div on template called: visao-disclaimer-container for disclaimer underneath the builder to tell the public "For the best Build Your Spa experience, please use the latest version of your browser."
+
+==1.15==
+* 12th of February 2024
+
+* Added ability to edit core css file. This is accessed through Settings > Edit Visao CSS.
+
+==1.14==
+* 17th of January 2024
+
+* Resolved cross browser issues with safari. The 3d builder iframe system does not play well with Vimeo video embeds that comes BEFORE the builder, so removing any video backgrounds or embedded videos that load above the builder, allows the builder variants to work correctly. This was test on multiple version of IOS.
+
+* Cleaned up index.js to remove some of the unused api calls.
+
+* Resolved an issue with calling the cached iframe viewer from visao. In earlier versions we had added a parameter on the end of their url. EG: ?cache=abc123 which is a random guid. However, we noticed an error with the whole url so are now setting the ?cache=abc123 random guid on the remote api that generates the viewer url.
+
+* Issue with backticks in index.js. We spotted an issue with a function on this line: const imagesInVariantList = document.querySelectorAll(`#${variantListId} .clickable-image`); where by if we use " or ' the function does not fire and gives us an error in console so have changed it to backticks ` which works.
+
+* Added console logging of request pricing button so that when its clicked we log the action to the console log.
+
+* Fixed a bug getting plugin version from plugin. removed get_visao_plugin_version() from functions and added to core plugin file at the top.
+
+* Added caching guid to the end of the index.js request located at end of template.html  so that we are loading the very latest index.js everytime.
+
+* Removed VISAO_FORM_ENDPOINT and moved the api handler code for zoho into functions.php
+
+==1.13==
+* 12th of January 2024
+
+* Removed buttons-div which held the three buttons for launching qr code, resettings viewer.
+
+==1.12==
+* 10th of January 2024
+
+* Reversed variants-title, removed variants-title-dektop and variants-title-mobile and placed variants-title above the builder now so its easier to manage for mobile and desktop. Some of the issue were that repositining the block of text between different scrensizes was priving difficult.
+
+* Added a 1px border on the Build Your Spa <p> tag within variants-title to provide some visual seperation between the text and the builder. Without the line there is too much whitespace.
+
+* Misc mobile css adjustment for the icons on different browser sizes.
+
+==1.11==
+* 4th of January 2024
+
+* Added visao-styles-mobile.css to assets in order to manage the mobile css.
+
+* Added wp_enqueue_style for visao-styles-mobile.css into functions.
+
+* Worked on mobile issues. Builder is looking good now on mobiles in portrait mode. 
+
+* Added cache control to wp_head in order to try and prevent caching of pages that have the builder. The no cache meta tags will only load on page where the shortcode is loaded. I think though that this might be overridden with Litespeed cache.
+
+==1.10==
+* 11th of December 2023
+
+* Added caching parameter to $visao_iframe_url so we get fresh viewer on each page load.
+
+* Rem,oved lock and unlock button
+
+* Chnaged "Reset" button text to "Reset View"
+
+* Changed wording of "color" to "colour" 
+
+* Added broder radius of 50% to variants li img in style sheet so images appear round
+
+==1.9==
+* 1st of December 2023
+
+* Moved the show QR button to align right so its not above the request pricing button and changed colour to black. Css is #show-qr-button-li
+
+==1.8==
+* 15th of November 2023
+
+* Added css in visao-styles.css for #request-pricing-button so pricing button is 300px wide, center aligned.
+
+* Addressed issue of default jets on Aurora. 1 defult has to be added within Visao in order for it to be displayed in the plugin.
+
+* Added new flag on api for tub_exists so that if the webmaster puts a wrong or non existing model name, we will display a not found template.
+
+* Added template-404.html to display image when a tub is not found on the api, EG: tub_exists = false.
+
+* Added new text line underneath the options so we will add the option name in html. Previoulsy the name of the option was written on the image, but now we will make it image only and text will appear under the option. This is done so that we have more granular control over what appears under each option. IN case someone changes their mind.
+
+==1.7==
+* 22nd of September 2023
+
+* During addition of the Aurora which is a core series tub, it does not have any options for jets loaded inside of visao, so when the plugin loads the options it causes an error as the plugin is looking for jets. I have no coded the plugin to account for this error.
+
+==1.6==
+* 21st of September 2023
+
+* Justin Parks reported that on the modal form the Contact Phone * Required was pushing the *reuired part to a second line so have shortended the title to Tel * required.
+
+==1.5==
+* 14th of September 2023
+
+* 90% completed the special CRM which provides the api with the tub data but when I went to preview the Arctic Fox it was not showing any details and hanging when I went to view the viewer in the public page. It loads the viewer but not the options/variants. Upon checking I found that the icon_url was missing i the api feed so I have resolved that now. Now if there is no image it will show a default pending image icon, but the controls will still work.
+
+==1.4==
+* 23rd of August 2023
+
+* Hardcoded the url for the thank you page into settings. The global variable VISAO_THANK_YOU_SLUG will be used. So in the setitngs we will enter the slug EG: /thank-you-3d/ and user is redirected to that page. We are using slug becasue the user might be on different domains due to core system. 
+
+* Added a new variable in the settings called VISAO_FAKE_API_SUBMIT which is marked as true or false. This function allows us to turn off the api submission to the api to prevent false entroes. However it will send the form data to craig. So, if VISAO_FAKE_API_SUBMIT = true, then we dont submit the data to the api. I have also added a red warning message in the developers line so in the case we forget its on we dont lose any leads.
+
+* Added a new JS function handleFormSubmit() so that when the form is submitted, the button changes the text to "Connecting to Server..." and disables the submit button whilst the form processes. This will prevent any duplicate submission and also makes the form submission a little more friendlier for the end user whilst they wait for the api handler to complete its process.
+
+==1.3==
+* 22nd August 2023
+
+* Having the form inside a modal is causing technical issues so I have decided to make the form submit locally to the plugin and let the functions file handle the submission of form data to go to the arctic api. The pros of this are that the code will be simpler, the cons will be the form expereince in case of errors might not be very nice. Perhaps with future versions we can find something more elegant.
+
+* More issues with api handling so I have created api-handler.php to post form data to which will send the data over to the  arctic api. This means, when form model button is submitted, the user will be pasued on the modal page whislt data is submitted behind the scenes and when successfully sent to zoho, user is redirected.
+
+* Had to create settings.php and moved settings for the app to that file in order that api-handler.php can access the settings.
+
+* Adjusted the google places script to extract the country name, town anem and post code from the autocomplete so that we can pass the country name to the api handler. This will give us US if the user chooses United states. The api handler will translate the country code to a full country name. NOTE: if the user does not physically enter their post code, we cannot force it. The Google Places Autocomplete API doesn't provide a built-in way to force users to enter their postcode as part of the autocomplete process. The API primarily focuses on providing location suggestions as users type, but it doesn't enforce specific fields or data entry. 
+
+* Added javascript so that developer can prepopulate the modal form with data to save time filling in during testing. Its restricted to IP located inside of settings file (VISAO_DEVELOPERS_IP).
+
+* Added logo to api handler page so when an error occurs they will see the logo in the top of the page.
+
+==1.2==
+* 21st August 2023
+
+* I have added the function visao_enqueue_scripts to the function files to ensure better loading order of the styles and scripts so that they load into the header.
+
+* I have also configured visao_enqueue_scripts to only activate when the builder is being shown on a page using the shortcode, in order to respect load speeds. Most other plugins just load the files across the whole site.
+
+* Attemtped to convert the modal form from flat html to gravity forms but gravity forms has difficulties supporting modals. We also have the aded complication of passing the builder options variables to the hidden form fields which is proving very complicated. Therefore, we will leave the modal form inteagrted into the modal with flat html and javascript and connect it to the Arctic Spas api.
+
+* Restyled the form.html (modal form) with bold text and added client side validation.
+
+* Reorganised the ordersing and calling of the functions.php and moved the visao_plugin_action_links() and get_visao_plugin_version to functions.php to redcuie the amount of code on the main plugin page.
+
+* Commented out visao-scripts-jquery from wp_enqueue_script as it was cuasing a conflict with preloaded jquery and causing the hero banners to not appear.
+
+* Added the javascript code for the #visao-submit-button so that the form contents go directy to an api script within the plugin.
+
+* dded the api action to functions.php so that the modal form will be sent over to the zoho_insert_lead api.
+
+* Added new function called get_current_page_url to get current page url to send to api
+
+==1.1==
+* 18th August 2023
+
+* I have fixed the bug of the modal appearing behind the background by applying .modal-backdrop { none; } in the css styles so there is no backdrop. There is a bug in bootstrap which interferes with opeartion of modals on complicated pages.
+
+* I have added google places address search to the modal in order to get the address/zip of the user to send to zoho.
+
+* Added styling to the modal form.
+
+* Added changelog url to builder version line so we have easier access to the changelog url on the front end.
+
+* Added the behind the scenes function where we pass the users selection of options to hidden fields within the modal form which then gets passed to zoho.
+
+* Added the model name in the modal header so that when the user launches the modal they can see some text saying "You are asking about: Summit XL".
+
+==1.0==
+* 17th August 2023
+
+* Integrated the visao viewer into the divi system using short code. EG: [visao_viewer model_name="Summit"]. This is so that the builder can be inserted on any page within the divi site or wordpress.
+
+* Created template.html which acts as the layout of the builder, then we are using php reaplce function to replace the placeholders in the template.
+
+* Moved the modal form to below <body> tag as its fighting with the thtme to be shown on top.
+

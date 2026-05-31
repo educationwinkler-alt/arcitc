@@ -56,6 +56,48 @@ if ( !function_exists( 'baspa_contacts_metabox_register' ) ) {
 			'fields'     => $information_basic_fields,
 		);
 
+		$jucra_model = get_post_meta( $post_id, 'contact_jucra_model', true );
+		if ( !empty( $jucra_model ) ) {
+			$jucra_options = json_decode( (string)get_post_meta( $post_id, 'contact_jucra_options', true ), true );
+			$jucra_fields  = array(
+				array(
+					'type' => 'custom_html',
+					'std'  => '<div class="f-metabox__content"><strong class="f-metabox__label">' . esc_html__( 'Model', 'baspa' ) . '</strong><span class="f-metabox__value">' . esc_html( $jucra_model ) . '</span></div>',
+				),
+			);
+
+			if ( is_array( $jucra_options ) ) {
+				foreach ( $jucra_options as $option ) {
+					$title = isset( $option['title'] ) ? (string)$option['title'] : '';
+					$label = isset( $option['label'] ) ? (string)$option['label'] : '';
+
+					if ( $title === '' && $label === '' ) {
+						continue;
+					}
+
+					$jucra_fields[] = array(
+						'type' => 'custom_html',
+						'std'  => '<div class="f-metabox__content"><strong class="f-metabox__label">' . esc_html( $title ) . '</strong><span class="f-metabox__value">' . esc_html( $label ?: '&mdash;' ) . '</span></div>',
+					);
+				}
+			}
+
+			$builder_url = get_post_meta( $post_id, 'contact_jucra_builder_url', true );
+			if ( !empty( $builder_url ) ) {
+				$jucra_fields[] = array(
+					'type' => 'custom_html',
+					'std'  => '<div class="f-metabox__content"><strong class="f-metabox__label">' . esc_html__( 'Builder URL', 'baspa' ) . '</strong><span class="f-metabox__value"><a href="' . esc_url( $builder_url ) . '" target="_blank" rel="noopener">' . esc_html( $builder_url ) . '</a></span></div>',
+				);
+			}
+
+			$meta_boxes[] = array(
+				'id'         => 'baspa-metabox--jucra-configuration',
+				'title'      => esc_html__( '3D konfigurace', 'baspa' ),
+				'post_types' => array( 'contact' ),
+				'fields'     => $jucra_fields,
+			);
+		}
+
 		/**
 		 * Additional Information
 		 */

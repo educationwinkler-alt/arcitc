@@ -36,6 +36,24 @@
 						<td><?php echo esc_html( baspa_contacts_get_interest_title( $interest ) ); ?></td>
 					</tr>
 				<?php } ?>
+				<?php if ( !empty( $jucra_config['model_name'] ) ) { ?>
+					<tr>
+						<th><?php echo esc_html__( '3D konfigurace', 'baspa' ); ?>:</th>
+						<td>
+							<strong><?php echo esc_html( $jucra_config['model_name'] ); ?></strong>
+							<?php foreach ( $jucra_config['options'] as $option ) {
+								if ( empty( $option['label'] ) ) {
+									continue;
+								}
+								?>
+								<br><?php echo esc_html( $option['title'] ?? '' ); ?>: <?php echo esc_html( $option['label'] ); ?>
+							<?php } ?>
+							<?php if ( !empty( $jucra_config['builder_url'] ) ) { ?>
+								<br><a href="<?php echo esc_url( $jucra_config['builder_url'] ); ?>"><?php echo esc_html__( 'Otevřít model v konfigurátoru', 'baspa' ); ?></a>
+							<?php } ?>
+						</td>
+					</tr>
+				<?php } ?>
 				<?php if ( !empty( $message ) ) { ?>
 					<tr>
 						<th><?php echo esc_html__( 'Message', 'baspa' ); ?>:</th>

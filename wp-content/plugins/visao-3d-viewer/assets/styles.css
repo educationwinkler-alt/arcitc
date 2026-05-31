@@ -1,0 +1,399 @@
+html,
+body {
+  height: 100%;
+}
+
+#app {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  width: 90%;
+  margin-left: 5%;
+}
+
+#visao-viewer-id {
+  border: none;
+  width: 100%;
+  height: 400px;
+}
+
+#viewer-buttons-div {
+  width: 100%;
+}
+
+.control-container {
+  width: 100%;
+  text-align: left;
+}
+
+.buttons-div {
+  font-family: "Roboto", sans-serif;
+  text-align: left;
+  /* background-color: red; */
+  width: 50%;
+}
+
+#status-label {
+  margin-bottom: 50px;
+}
+
+.labels {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  text-align: left;
+  /* background-color: green; */
+  width: 50%;
+}
+
+.current-labels {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  text-align: left;
+  /* background-color: green; */
+  width: 50%;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blackbtn {
+margin: 5px;
+  width: 100px;
+  height: 35px;
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: white;
+  background-color: #00356c;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  outline: none;
+}
+
+.redbtn {
+  margin: 5px;
+  width: 100px;
+  height: 35px;
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  color: white;
+  background-color: #f44336;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  outline: none;
+}
+
+.greybtn {
+  margin: 5px;
+  width: 100px;
+  height: 35px;
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  color: black;
+  background-color: #e7e7e7;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  outline: none;
+}
+
+.darkgreybtn {
+  margin: 5px;
+  width: 100px;
+  height: 35px;
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  color: white;
+  background-color: #555555;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  outline: none;
+}
+
+.greenbtn {
+  margin: 5px;
+  width: 100px;
+  height: 35px;
+  font-family: "Roboto", sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  color: white;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  outline: none;
+}
+
+.cta-button {
+	width: 180px;
+	height: 35px;
+	font-family: "Roboto", sans-serif;
+	font-size: 13px;
+	text-transform: uppercase;
+  letter-spacing: 1.5px;
+	font-weight: 500;
+	color: white!important;
+	background-color: #9C1D34!important;
+	border: none;
+	border-radius: 0px;
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+	outline: none;
+}
+
+button:disabled,
+button[disabled] {
+  pointer-events: none;
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+#app {
+	position: relative;
+	font-family: 'Poppins';
+	font-size: 16px;
+	margin-top: 50px;
+	/*border:1px solid #ccc;*/
+	padding: 20px;
+}
+#app h1 {
+	font-size: 60px;
+	color: #a3001b;
+}
+#app h2 {
+	font-size: 35px;
+	color: #a3001b;
+}
+#variants {
+	width: 100%;
+	padding: 0;
+}
+#variants ul {
+	width: 100%;
+}
+#variants li {
+	list-style-type: none;
+	float: left;
+    font-weight:bold!important;
+}
+/* Resize the images to 100px wide */
+#variants li img {
+	width: 90px;
+	height: auto; /* This ensures the aspect ratio is maintained */
+	margin: 5px; /* Add some spacing between images if needed */
+}
+#variants img {
+	cursor: pointer;
+	transition: filter 0.3s ease;
+}
+#variants img:hover {
+	border: 2px solid #000000;
+	filter: grayscale(50%);
+}
+.selected-image {
+	border: 2px solid #9C1D34;
+}
+#variantListAcrylics, #variantListJets, #variantListCabinets {
+	display: inline-block;
+	width: 100%
+}
+#viewer-iframe {
+	/*border:1px solid #9C1D34;*/
+	padding: 10px;
+}
+#augmented-reality-title {
+	text-align: left;
+	margin-top: 0px;
+}
+#extraFeatures {
+	margin-left: 20px;
+}
+#extraFeatures li {
+	margin-right: 15px;
+}
+#title-right {
+	text-align: right;
+}
+#title-left {
+	text-align: left;
+}
+#variants-title {
+	text-align: left;
+	margin-left: 60px;
+}
+#variants-title h2 {
+	color: #9C1D34;
+	font-weisght: bold;
+}
+#augmented-reality-title h2 {
+/*color: #9C1D34;*/
+        /*font-weight:bold;*/
+}
+form-cta .cta-text {
+	font-size: 25px;
+}
+#form-container {
+	padding: 10px;
+	border: 1px solid #9C1D34;
+	margin-left: 15px;
+	margin-top: 10px;
+	margin-right: 15px;
+}
+#arrow-container {
+	position: relative;
+	display: inline-block;
+}
+#arrow-container img {
+	position: absolute;
+	top: 38px;
+	left: 97%;
+	transform: translateX(-50%);
+	width: 52px;
+	z-index: 1;
+}
+#lock-camera-button {
+	background: #a3001b;
+	color: white;
+}
+/*    #unlock-camera-button {
+        background: #e7e7e7;
+        color: black;   
+    } */
+#reset-camera-button {
+	background: #797d82;
+	color: white;
+}
+#show-help-button {
+	background: black;
+	color: white;
+}
+#start-ar-button {
+	background: #a3001b;
+	color: white;
+}
+#show-qr-button {
+	background: #a3001b;
+	color: white;
+}
+#loading-overlay {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.8);
+	z-index: 1;
+}
+#loading-overlay p {
+	font-size: 22px;
+	font-weight: bold;
+	color: #333;
+}
+.spinner {
+	border: 4px solid rgba(0, 0, 0, 0.1);
+	border-top: 10px solid #9C1D34;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	animation: spin 0.5s linear infinite;
+	margin-bottom: 10px; /* Add some space between spinner and text */
+}
+@keyframes spin {
+    0% {
+    transform: rotate(0deg);
+    }
+    100% {
+    transform: rotate(360deg);
+    }
+}
+.loading-sub-text {
+    font-size:13px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+#augmented-reality-instructions p {
+    text-align: left;
+}
+#augmented-reality-instructions u {
+    color: #9C1D34;
+}
+#pricing-cta {
+    padding: 20px;
+    background: #e7e7e7;
+    width: 100%;
+    margin-top: 10px;
+
+}
+.titles-options {
+    display: flex;
+    width:90px;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100px; /* Set a specific height for the <li> */
+    border: none; /* Just for visualization purposes */
+    font-weight:bold!important;
+}
+#version-container {
+ font-size: 10px;
+}
+/* CSS Document */
+

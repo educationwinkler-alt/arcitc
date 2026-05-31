@@ -1,4 +1,4 @@
-const { readFileSync } = require('fs');
+﻿const { readFileSync } = require('fs');
 
 const baseUrl = process.env.ARCTIC_BASE_URL || 'http://localhost:8090';
 
@@ -25,6 +25,12 @@ function assertExcludes(label, text, needles) {
     if (text.includes(needle)) {
       throw new Error(`${label} contains forbidden component marker/content: ${needle}`);
     }
+  }
+}
+
+function assertIncludesOneOf(label, text, needles) {
+  if (!needles.some((needle) => text.includes(needle))) {
+    throw new Error(`${label} is missing one of expected component markers: ${needles.join(' OR ')}`);
   }
 }
 
@@ -65,6 +71,10 @@ async function main() {
     '/': await fetchHtml('/'),
     '/virivky/': await fetchHtml('/virivky/'),
     '/swimspa/': await fetchHtml('/swimspa/'),
+    '/reference/': await fetchHtml('/reference/'),
+    '/konfigurator/': await fetchHtml('/konfigurator/'),
+    '/konfigurator/timberwolf/': await fetchHtml('/konfigurator/timberwolf/'),
+    '/poptavka-konfigurace/': await fetchHtml('/poptavka-konfigurace/?model_name=Timberwolf&option_jets=dd-30+Jets+2+Pumps&option_acrylic=dd-Acrylic+Platinum&option_cabinet=dd-Cabinet+Cedar'),
     '/product/timberwolf/': await fetchHtml('/product/timberwolf/'),
   };
 
@@ -79,32 +89,109 @@ async function main() {
   ]);
 
   assertIncludes('/virivky/', pages['/virivky/'], [
+    'data-category-flow="hot-tub"',
+    'f-section--product-listing-contract',
+    'f-product-card--category',
     'f-configurator-cta--shared f-configurator-cta--hot-tub',
+    `href="${baseUrl}/konfigurator/`,
+    'category-configurator.png',
     'f-showroom-panel--collage',
     'f-progress-layout--shared',
     'f-contact-cta--shared',
+    'data-reference-context="virivky"',
+  ]);
+  assertExcludes('/virivky/', pages['/virivky/'], [
+    'id="visao-viewer-id"',
   ]);
 
   assertIncludes('/swimspa/', pages['/swimspa/'], [
-    'f-configurator-cta--shared f-configurator-cta--swimspa',
+    'data-category-flow="swimspa"',
+    'f-section--product-listing-contract',
+    'f-product-card--category',
     'f-showroom-panel--collage',
     'f-progress-layout--shared',
     'f-contact-cta--shared',
+    'data-reference-context="swimspa"',
+  ]);
+  assertExcludes('/swimspa/', pages['/swimspa/'], [
+    'f-section--configurator',
+    'f-configurator-cta--swimspa',
+    'Nakonfigurujte si vlastní swimspa',
+    'Nakonfigurujte si vlastni swimspa',
   ]);
 
-  const swimspaConfigurator = blockBetween(
-    pages['/swimspa/'],
-    'f-configurator-cta--swimspa',
-    '</section>',
-    '/swimspa/ configurator'
-  );
-  assertExcludes('/swimspa/ configurator', swimspaConfigurator, [
-    'vlastní vířivku',
-    'vlastni virivku',
+  assertIncludes('/reference/', pages['/reference/'], [
+    'f-reference-grid',
+    'f-reference-card',
+    'js-images',
+  ]);
+
+  assertIncludes('/konfigurator/', pages['/konfigurator/'], [
+    'f-section--jucra-builder',
+    'data-jucra-builder',
+    '3D konfigurátor Arctic Spas',
+    'f-jucra-builder__model-strip',
+  ]);
+  assertIncludesOneOf('/konfigurator/', pages['/konfigurator/'], [
+    'data-jucra-status="WAITING_ON_JUCRA_PLUGIN"',
+    'data-jucra-shortcode=',
+  ]);
+  assertExcludes('/konfigurator/', pages['/konfigurator/'], [
+    'f-jucra-builder__panel',
+    'data-builder-param=',
+    'data-builder-request-url=',
+    'Vybraný model',
+  ]);
+  if (pages['/konfigurator/'].includes('data-jucra-shortcode=')) {
+    assertIncludes('/konfigurator/ plugin output', pages['/konfigurator/'], [
+      'id="visao-viewer-id"',
+      'data-jucra-pricing-handoff="local-inquiry"',
+      '/poptavka-konfigurace/?model_name=',
+      'Sestavte si svou vířivku',
+      'Vyžádat cenovou nabídku',
+    ]);
+    assertExcludes('/konfigurator/ plugin output', pages['/konfigurator/'], [
+      'Request Pricing',
+      'Build Your Spa',
+      'Developers Tools',
+    ]);
+  }
+
+  assertIncludes('/konfigurator/timberwolf/', pages['/konfigurator/timberwolf/'], [
+    'data-jucra-model="Timberwolf"',
+    'Timberwolf',
+  ]);
+  assertExcludes('/konfigurator/timberwolf/', pages['/konfigurator/timberwolf/'], [
+    '[visao_viewer',
+    '[visao_builder',
+    'f-jucra-builder__panel',
+    'data-builder-param=',
+  ]);
+
+  assertIncludes('/poptavka-konfigurace/', pages['/poptavka-konfigurace/'], [
+    'f-section--jucra-inquiry',
+    'data-jucra-inquiry',
+    'Timberwolf',
+    '2 čerpadla',
+    'Platinum Swirl',
+    'Cedar',
+    'f-form--jucra-inquiry',
+    'name="f-form" value="jucra"',
+    'name="f-jucra-model" value="Timberwolf"',
+    'name="f-jucra-option-jets" value="dd-30 Jets 2 Pumps"',
+    'name="f-jucra-option-acrylic" value="dd-Acrylic Platinum"',
+    'name="f-jucra-option-cabinet" value="dd-Cabinet Cedar"',
+  ]);
+  assertExcludes('/poptavka-konfigurace/', pages['/poptavka-konfigurace/'], [
+    'Chybí vybraná konfigurace',
+    '/kontakt/?model_name=',
   ]);
 
   assertIncludes('/product/timberwolf/', pages['/product/timberwolf/'], [
     'f-configurator-cta--shared f-configurator-cta--product',
+    `href="${baseUrl}/konfigurator/timberwolf/`,
+    'category-configurator.png',
+    'data-reference-context="virivky"',
     'f-product-benefit--interactive',
     'f-product-benefit--static',
     'f-contact-cta--shared',
@@ -139,12 +226,18 @@ async function main() {
     '.f-section--contact.f-section--component-contact',
     '.f-showroom-panel.f-showroom-panel--collage',
     '.f-configurator-cta.f-configurator-cta--shared',
+    '.f-section--jucra-builder',
+    '.f-section--jucra-inquiry',
+    '.f-section--product-listing-contract',
+    '.f-product-card.f-product-card--category',
     '.f-progress-layout.f-progress-layout--shared',
     '.f-product-benefit--static',
     '.f-off--benefit-popup',
+    '.f-reference-section--recent-carousel',
   ]);
   assertExcludes('_component-contracts.less', contractsCss, [
     '.f-footer--arctic.f-footer--handoff',
+    '.f-configurator-cta--swimspa',
   ]);
 
   console.log('Component contract smoke passed.');

@@ -114,6 +114,31 @@ $phone    = sanitize_text_field( $post_value( 'f-phone' ) );
 $interest = sanitize_key( $post_value( 'f-interest' ) );
 $message  = wp_kses_post( $post_value( 'f-message' ) );
 $terms    = sanitize_text_field( $post_value( 'f-terms' ) );
+$jucra_config = array(
+	'model_name'  => sanitize_text_field( $post_value( 'f-jucra-model' ) ),
+	'builder_url' => esc_url_raw( $post_value( 'f-jucra-builder-url' ) ),
+	'options'     => array(
+		'jets'    => array(
+			'title'    => sanitize_text_field( $post_value( 'f-jucra-option-jets-title', 'Trysky' ) ),
+			'id'       => sanitize_text_field( $post_value( 'f-jucra-option-jets' ) ),
+			'label'    => sanitize_text_field( $post_value( 'f-jucra-option-jets-label' ) ),
+			'icon_url' => esc_url_raw( $post_value( 'f-jucra-option-jets-icon' ) ),
+		),
+		'acrylic' => array(
+			'title'    => sanitize_text_field( $post_value( 'f-jucra-option-acrylic-title', 'Barva skořepiny' ) ),
+			'id'       => sanitize_text_field( $post_value( 'f-jucra-option-acrylic' ) ),
+			'label'    => sanitize_text_field( $post_value( 'f-jucra-option-acrylic-label' ) ),
+			'icon_url' => esc_url_raw( $post_value( 'f-jucra-option-acrylic-icon' ) ),
+		),
+		'cabinet' => array(
+			'title'    => sanitize_text_field( $post_value( 'f-jucra-option-cabinet-title', 'Barva kabinetu' ) ),
+			'id'       => sanitize_text_field( $post_value( 'f-jucra-option-cabinet' ) ),
+			'label'    => sanitize_text_field( $post_value( 'f-jucra-option-cabinet-label' ) ),
+			'icon_url' => esc_url_raw( $post_value( 'f-jucra-option-cabinet-icon' ) ),
+		),
+	),
+);
+$has_jucra_config = $posted_form === 'jucra' || $jucra_config['model_name'] !== '';
 
 /**
  * Insert Post
@@ -170,6 +195,16 @@ if ( !empty( $interest ) ) {
 if ( !empty( $message ) ) {
 	update_post_meta( $contact, 'contact_message', wp_kses_post( $message ) );
 }
+if ( $has_jucra_config ) {
+	update_post_meta( $contact, 'contact_jucra_model', esc_html( $jucra_config['model_name'] ) );
+	update_post_meta( $contact, 'contact_jucra_builder_url', esc_url_raw( $jucra_config['builder_url'] ) );
+	update_post_meta( $contact, 'contact_jucra_options', wp_json_encode( $jucra_config['options'] ) );
+
+	foreach ( $jucra_config['options'] as $option_key => $option ) {
+		update_post_meta( $contact, 'contact_jucra_' . sanitize_key( $option_key ), sanitize_text_field( $option['label'] ?? '' ) );
+		update_post_meta( $contact, 'contact_jucra_' . sanitize_key( $option_key ) . '_id', sanitize_text_field( $option['id'] ?? '' ) );
+	}
+}
 
 /**
  * Send Email
@@ -198,6 +233,11 @@ if ( $form === 'catalog' ) {
 	$subject = get_bloginfo( 'name' ) . ' — ' . sprintf( __( 'Catalog #%s', 'baspa' ), $number );
 } else if ( $form === 'service' ) {
 	$subject = get_bloginfo( 'name' ) . ' — ' . sprintf( __( 'Service #%s', 'baspa' ), $number );
+} else if ( $form === 'jucra' ) {
+	$subject = get_bloginfo( 'name' ) . ' - ' . sprintf( __( '3D configurator request #%s', 'baspa' ), $number );
+	if ( !empty( $jucra_config['model_name'] ) ) {
+		$subject .= ' - ' . $jucra_config['model_name'];
+	}
 } else {
 	$subject = get_bloginfo( 'name' ) . ' — ' . sprintf( __( 'Contact #%s — %s', 'baspa' ), $number, esc_html( baspa_contacts_get_interest_title( $interest ) ) );
 }

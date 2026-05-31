@@ -36,7 +36,7 @@ if ( !function_exists( 'baspa_contacts_get_interest_title' ) ) {
 
 		$interests = baspa_contacts_form_interest_options();
 
-		return $interests[ $key ] ?: '';
+		return $interests[ $key ] ?? '';
 
 	}
 
