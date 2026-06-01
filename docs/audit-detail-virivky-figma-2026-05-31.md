@@ -103,7 +103,39 @@ rg -n "U+00C3|U+00C4|U+00C5|replacement-char" wp-content/themes/arctic/**/*.php
 php -l path/to/file.php
 ```
 
-## 7. Prehled rozdilu
+## 7. Swatch Kalahari v 3D konfigurátoru
+
+V konfigurátoru na `/konfigurator/orion/` se swatch Kalahari zobrazuje jako prázdný bílý kroužek.
+
+### Příčina
+
+Image existuje (`https://api.arcticspascore.com//apps//visao//images//icons//68d3a664c6a2d.png`) a načítá se správně. Problém není v datech ani v kódu — **Kalahari je světle šedý/bílý granit** a na bílém pozadí karty splyne.
+
+Lokální referenční soubor (`wp-content/uploads/import/owner-swatches/acrylic-kalahari.jpg`) barvu potvrzuje: světle šedá s jemnými tmavými skvrnami, prakticky bílá v malém formátu.
+
+Visao plugin renderuje swatch takto ([functions.php:433](../wp-content/plugins/visao-3d-viewer/functions.php)):
+```php
+$html .= "<li><img id='$id' class='clickable-image' src='$icon_url'>";
+```
+
+`.clickable-image` v `visao-styles.css` má všechny vizuální vlastnosti zakomentované — žádný border, žádný shadow. Světlé swatche proto nemají viditelný obrys.
+
+### Oprava
+
+Vendor plugin neupravovat (přepisuje se při updatech). Přidat do `arctic.css`:
+
+```css
+.f-jucra-builder__layout .clickable-image {
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(7, 24, 38, 0.15);
+}
+```
+
+Dá všem světlým swatchům (Kalahari, Platinum Swirl) jemný kruhový border bez zásahu do pluginu.
+
+---
+
+## 8. Prehled rozdilu
 
 | Oblast | Figma / cil | Aktualni problem |
 | --- | --- | --- |
@@ -113,8 +145,9 @@ php -l path/to/file.php
 | Konfigurace | karta ma obrazek nebo jasny stav | prazdny thumb pri chybejicim image ID |
 | Detail layout | sdileny product detail contract | historicky Timberwolf-only pattern |
 | Asset manifest | presne nody/exporty | produktovy detail chybi |
+| Kalahari swatch | viditelny kruhovy swatch | svetla barva splyne s bilym pozadim |
 
-## 8. Prioritni opravy
+## 9. Prioritni opravy
 
 ### P0
 
@@ -135,6 +168,6 @@ php -l path/to/file.php
 - Umoznit editaci pres WordPress data tam, kde se obsah lisi per model nebo per serie.
 - Pridat smoke/visual guard, ktery detekuje prazdne thumb boxy a genericke placeholder ikony.
 
-## 9. Stav po tomto auditu
+## 10. Stav po tomto auditu
 
 Tento soubor pouze dokumentuje dluh. Neopravuje produktovy detail. Slouzi jako backlog pro dalsi repair blok, aby se uz nevytvarely dalsi vlastni CSS nahrady misto Figma assetu.
