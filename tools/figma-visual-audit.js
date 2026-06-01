@@ -1625,6 +1625,11 @@ async function auditCatalogHotTubsDesktop(page) {
   await assertBox(page, '.f-products-series--custom .f-listing--product:nth-child(2)', { x: 970, y: 2177, width: 335, height: 333 }, 3, 'catalog.productCardTwo');
   await assertBox(page, '.f-products-series--custom .f-listing--product:nth-child(3)', { x: 1325, y: 2177, width: 335, height: 333 }, 3, 'catalog.productCardThree');
   await assertBox(page, '.f-configurator-cta', { x: 260, y: 4994, width: 1400, height: 312 }, 3, 'catalog.configurator');
+  await assertBox(page, '.f-configurator-cta__content .a-button', { x: 330, y: 5195, width: 141, height: 50 }, 2, 'catalog.configuratorButton');
+  await assertComputedStyle(page, '.f-configurator-cta__content .a-button', 'background-color', 'rgba(0, 0, 0, 0)', 'catalog.configuratorButtonBackground');
+  await assertComputedStyle(page, '.f-configurator-cta__content .a-button', 'border-color', 'rgb(255, 255, 255)', 'catalog.configuratorButtonBorder');
+  await assertComputedStyle(page, '.f-configurator-cta__content .a-button', 'border-width', '1px', 'catalog.configuratorButtonBorderWidth');
+  await assertComputedStyle(page, '.f-configurator-cta__content .a-button', 'border-radius', '50px', 'catalog.configuratorButtonRadius');
   await assertBox(page, '.f-showroom-panel', { x: 260, y: 5484, width: 1400, height: 525 }, 4, 'catalog.showroomPanel');
   await assertBox(page, '.f-progress-layout', { x: 264, y: 6245, width: 1392, height: 444 }, 4, 'catalog.progress');
   await assertBox(page, '.f-section--references', { x: 0, y: 6800, width: 1920, height: 422 }, 4, 'catalog.references');
@@ -1693,6 +1698,11 @@ async function auditTimberwolfDesktop(page) {
   await assertBox(page, '.f-product-contact-card__avatar', { x: 1392, y: 1115, width: 58, height: 58 }, 2, 'timberwolf.contactAvatar');
   await assertBox(page, '.f-product-contact-card__button', { x: 1392, y: 1195, width: 149, height: 50 }, 2, 'timberwolf.contactButton');
   await assertBox(page, '.f-product-detail-configurator', { x: 260, y: 1608, width: 1400, height: 312 }, 3, 'timberwolf.configurator');
+  await assertBox(page, '.f-product-detail-configurator .f-configurator-cta__content .a-button', { x: 330, y: 1784, width: 141, height: 50 }, 2, 'timberwolf.configuratorButton');
+  await assertComputedStyle(page, '.f-product-detail-configurator .f-configurator-cta__content .a-button', 'background-color', 'rgba(0, 0, 0, 0)', 'timberwolf.configuratorButtonBackground');
+  await assertComputedStyle(page, '.f-product-detail-configurator .f-configurator-cta__content .a-button', 'border-color', 'rgb(255, 255, 255)', 'timberwolf.configuratorButtonBorder');
+  await assertComputedStyle(page, '.f-product-detail-configurator .f-configurator-cta__content .a-button', 'border-width', '1px', 'timberwolf.configuratorButtonBorderWidth');
+  await assertComputedStyle(page, '.f-product-detail-configurator .f-configurator-cta__content .a-button', 'border-radius', '50px', 'timberwolf.configuratorButtonRadius');
   await assertBox(page, '.f-product-colors', { x: 260, y: 2022, width: 1400, height: 739 }, 4, 'timberwolf.colors');
   await assertBox(page, '.f-section--product-benefits', { x: 0, y: 2866, width: 1920, height: 2017 }, 4, 'timberwolf.benefits');
   await assertBox(page, '.f-section--product-options', { x: 0, y: 4883, width: 1920, height: 1144 }, 4, 'timberwolf.options');

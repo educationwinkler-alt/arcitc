@@ -267,7 +267,9 @@ function compareVirivky(metrics, figma) {
   assert(metrics.boxes.configuratorButton.height >= 40, '/virivky/ configurator button must be visible');
   assert(metrics.boxes.configuratorButton.bottom <= metrics.boxes.configuratorCta.bottom - 40, '/virivky/ configurator button must not be pushed under the image layer');
   assert(metrics.styles.configuratorButtonColor === 'rgb(255, 255, 255)', `/virivky/ configurator button text must be white on red CTA, got ${metrics.styles.configuratorButtonColor}`);
+  assert(metrics.styles.configuratorButtonBackground === 'rgba(0, 0, 0, 0)', `/virivky/ configurator button must be transparent like Figma, got ${metrics.styles.configuratorButtonBackground}`);
   assert(metrics.styles.configuratorButtonBorder === 'rgb(255, 255, 255)', `/virivky/ configurator button border must be white on red CTA, got ${metrics.styles.configuratorButtonBorder}`);
+  assert(metrics.styles.configuratorButtonBorderWidth === '1px', `/virivky/ configurator button border must be the Figma 1px stroke, got ${metrics.styles.configuratorButtonBorderWidth}`);
   assert(metrics.referenceOverlay?.display === 'none', `/virivky/ reference carousel image overlay must be disabled globally, got display ${metrics.referenceOverlay?.display}`);
   assert(metrics.referenceOverlay?.backgroundImage === 'none', `/virivky/ reference carousel image overlay must not tint photos, got ${metrics.referenceOverlay?.backgroundImage}`);
   assert(metrics.boxes.contactAvatarImage.width >= metrics.boxes.contactAvatar.width * 1.8, '/virivky/ shared contact avatar must use the Figma crop zoom');
@@ -360,7 +362,9 @@ async function main() {
       styles: {
         configuratorRadius: { selector: '.f-section--configurator .f-configurator-cta', property: 'border-radius' },
         configuratorButtonColor: { selector: '.f-section--configurator .f-configurator-cta__content .a-button', property: 'color' },
+        configuratorButtonBackground: { selector: '.f-section--configurator .f-configurator-cta__content .a-button', property: 'background-color' },
         configuratorButtonBorder: { selector: '.f-section--configurator .f-configurator-cta__content .a-button', property: 'border-color' },
+        configuratorButtonBorderWidth: { selector: '.f-section--configurator .f-configurator-cta__content .a-button', property: 'border-width' },
       },
     });
     compareVirivky(virivky, figma.category);

@@ -10180,13 +10180,26 @@ h6,
   z-index: 1;
 }
 .f-configurator-cta--shared .a-button--outline,
-.f-configurator-cta--shared .a-button--outline:visited {
+.f-configurator-cta--shared .a-button--outline:visited,
+.f-product-detail-configurator .f-configurator-cta--shared .a-button--outline,
+.f-product-detail-configurator .f-configurator-cta--shared .a-button--outline:visited,
+.tax-product-category .f-configurator-cta--shared .a-button--outline,
+.tax-product-category .f-configurator-cta--shared .a-button--outline:visited {
+  min-width: 141px;
+  min-height: 50px;
+  padding: 0 20px;
   color: var(--arctic-color-snow);
   background: transparent;
-  border-color: var(--arctic-color-snow);
+  border: 1px solid var(--arctic-color-snow);
+  border-radius: var(--arctic-contract-radius-button);
+  box-shadow: none;
 }
 .f-configurator-cta--shared .a-button--outline:hover,
-.f-configurator-cta--shared .a-button--outline:focus-visible {
+.f-configurator-cta--shared .a-button--outline:focus-visible,
+.f-product-detail-configurator .f-configurator-cta--shared .a-button--outline:hover,
+.f-product-detail-configurator .f-configurator-cta--shared .a-button--outline:focus-visible,
+.tax-product-category .f-configurator-cta--shared .a-button--outline:hover,
+.tax-product-category .f-configurator-cta--shared .a-button--outline:focus-visible {
   color: var(--arctic-color-red);
   background: var(--arctic-color-snow);
   border-color: var(--arctic-color-snow);

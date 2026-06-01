@@ -92,6 +92,7 @@ async function assertProductDetail(path, options = {}) {
 
       const avatarStyle = style('.f-product-contact-card__avatar img');
       const ctaHoursStyle = style('.f-contact-cta__hours');
+      const configuratorButtonStyle = style('.f-product-detail-configurator .f-configurator-cta__content .a-button');
 
       return {
         hero: box('.f-heading--product-detail'),
@@ -114,6 +115,14 @@ async function assertProductDetail(path, options = {}) {
         firstConfig: box('.f-product-configuration'),
         firstConfigThumb: box('.f-product-configuration__thumb'),
         sidebar: box('.f-product-contact-card'),
+        configuratorButton: box('.f-product-detail-configurator .f-configurator-cta__content .a-button'),
+        configuratorButtonClass: document.querySelector('.f-product-detail-configurator .f-configurator-cta__content .a-button')?.className || '',
+        configuratorButtonStyle: configuratorButtonStyle ? {
+          backgroundColor: configuratorButtonStyle.backgroundColor,
+          borderColor: configuratorButtonStyle.borderColor,
+          borderRadius: configuratorButtonStyle.borderRadius,
+          borderWidth: configuratorButtonStyle.borderWidth,
+        } : null,
         ctaBar: box('.f-contact-cta__bar'),
         ctaHours: box('.f-contact-cta__hours'),
         ctaHoursStyle: ctaHoursStyle ? {
@@ -195,6 +204,16 @@ async function assertProductDetail(path, options = {}) {
 
     if (options.maxConfigLayoutHeight) {
       assert(state.configLayout.height <= options.maxConfigLayoutHeight, `${path} configuration layout is too tall: ${state.configLayout.height}px`);
+    }
+
+    if (state.configuratorButton) {
+      assert(state.configuratorButtonClass.includes('a-button--outline'), `${path} configurator CTA button is not the Figma outline variant: ${state.configuratorButtonClass}`);
+      assert(state.configuratorButton.width >= 139 && state.configuratorButton.width <= 143, `${path} configurator CTA button width is not Figma-sized: ${state.configuratorButton.width}px`);
+      assert(state.configuratorButton.height === 50, `${path} configurator CTA button height is not Figma-sized: ${state.configuratorButton.height}px`);
+      assert(state.configuratorButtonStyle.backgroundColor === 'rgba(0, 0, 0, 0)', `${path} configurator CTA button is filled instead of transparent: ${state.configuratorButtonStyle.backgroundColor}`);
+      assert(state.configuratorButtonStyle.borderColor === 'rgb(255, 255, 255)', `${path} configurator CTA button border is not white: ${state.configuratorButtonStyle.borderColor}`);
+      assert(state.configuratorButtonStyle.borderWidth === '1px', `${path} configurator CTA button border width is not from Figma: ${state.configuratorButtonStyle.borderWidth}`);
+      assert(state.configuratorButtonStyle.borderRadius === '50px', `${path} configurator CTA button radius is not from Figma: ${state.configuratorButtonStyle.borderRadius}`);
     }
 
     if (options.minColorImageCards) {

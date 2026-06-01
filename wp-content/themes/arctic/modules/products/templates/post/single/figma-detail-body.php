@@ -32,7 +32,7 @@ $is_swimspa             = has_term( 'swimspa', 'product-category', $product_id )
 				<div class="f-configurator-cta__content">
 					<h2 id="product-configurator-title"><?php echo esc_html__( 'Nakonfigurujte si vlastní vířivku', 'baspa' ); ?></h2>
 					<p><?php echo esc_html__( 'Vyberte si konfiguraci, barvu skořepiny, kabinet a další výbavu podle vlastních představ.', 'baspa' ); ?></p>
-					<a class="f-button a-button a-button--accent" href="<?php echo esc_url( $builder_url ); ?>">
+					<a class="f-button a-button a-button--outline" href="<?php echo esc_url( $builder_url ); ?>">
 						<?php echo esc_html__( 'Konfigurovat', 'baspa' ); ?>
 					</a>
 				</div>
