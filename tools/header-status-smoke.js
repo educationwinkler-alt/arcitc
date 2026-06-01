@@ -58,6 +58,37 @@ async function readStatusState(page, selector) {
   }));
 }
 
+async function assertDropdownPanelHasNoSquareParent(page, path) {
+  await page.goto(`${baseUrl}${path}`, { waitUntil: 'networkidle', timeout: 60000 });
+  await page.locator('.f-header .arctic-menu-info > a').hover();
+  await page.waitForFunction(() => {
+    const submenu = document.querySelector('.f-header .arctic-menu-info > .f-navigation-sub');
+    return submenu && getComputedStyle(submenu).opacity === '1';
+  }, { timeout: 10000 });
+
+  const state = await page.evaluate(() => {
+    const submenu = document.querySelector('.f-header .arctic-menu-info > .f-navigation-sub');
+    const panel = document.querySelector('.f-header .arctic-menu-info > .f-navigation-sub > .f-navigation-sub__panel');
+    const submenuStyle = submenu ? getComputedStyle(submenu) : null;
+    const panelStyle = panel ? getComputedStyle(panel) : null;
+
+    return {
+      hasSubmenu: !!submenu,
+      hasPanel: !!panel,
+      submenuBackground: submenuStyle ? submenuStyle.backgroundColor : '',
+      submenuBackgroundImage: submenuStyle ? submenuStyle.backgroundImage : '',
+      panelBorderRadius: panelStyle ? panelStyle.borderRadius : '',
+      panelOverflow: panelStyle ? panelStyle.overflow : '',
+    };
+  });
+
+  assert(state.hasSubmenu && state.hasPanel, `${path} info dropdown markup is missing`);
+  assert(normalizeRgb(state.submenuBackground) === 'rgba(0, 0, 0, 0)', `${path} dropdown parent has a visible square background: ${state.submenuBackground}`);
+  assert(state.submenuBackgroundImage === 'none', `${path} dropdown parent still has a background image: ${state.submenuBackgroundImage}`);
+  assert(state.panelBorderRadius !== '0px', `${path} dropdown panel is not rounded`);
+  assert(state.panelOverflow === 'hidden', `${path} dropdown panel does not clip its rounded corners`);
+}
+
 (async () => {
   const browser = await chromium.launch({ executablePath: chromePath, headless: true });
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
@@ -71,6 +102,7 @@ async function readStatusState(page, selector) {
   assert(normalizeRgb(categoryOpen.contactColor) === 'rgb(255, 255, 255)', `/virivky/ top contact color is ${categoryOpen.contactColor}, expected white over hero`);
   assert(categoryOpen.text.includes('Po - Pá 8:00-17:00 h'), '/virivky/ header hours label does not match Czech Figma copy');
   assert(categoryOpen.staticHoursCount === 0, '/virivky/ has duplicate static hours markup');
+  await assertDropdownPanelHasNoSquareParent(page, '/product/athabascan/');
 
   await page.unroute('**/wp-admin/admin-ajax.php');
 
