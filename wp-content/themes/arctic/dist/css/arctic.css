@@ -10188,7 +10188,7 @@ h6,
 .f-jucra-builder__header {
   max-width: min(100%, 1400px);
   margin: 0 auto clamp(0.9rem, 1.8vw, 1.35rem);
-  padding-top: clamp(3.8rem, 4.8vw, 4.75rem);
+  padding-top: clamp(6.25rem, 7.8vw, 7.5rem);
   text-align: left;
 }
 .f-jucra-builder__breadcrumb {
@@ -10469,7 +10469,7 @@ h6,
 .f-jucra-inquiry__header {
   max-width: min(100%, 1400px);
   margin: 0 auto clamp(1.15rem, 2.2vw, 1.75rem);
-  padding-top: clamp(3.8rem, 4.8vw, 4.75rem);
+  padding-top: clamp(6.25rem, 7.8vw, 7.5rem);
 }
 .f-jucra-inquiry__header .f-jucra-builder__breadcrumb {
   margin-top: clamp(0.9rem, 1.4vw, 1.35rem);

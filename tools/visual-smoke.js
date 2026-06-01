@@ -11,6 +11,7 @@ const paths = [
   '/swimspa/',
   '/konfigurator/',
   '/konfigurator/timberwolf/',
+  '/poptavka-konfigurace/?model_name=Timberwolf&option_jets=dd-30+Jets+2+Pumps&option_acrylic=dd-Acrylic+Platinum&option_cabinet=dd-Cabinet+Cedar',
   '/catalog/dalsi-sortiment/',
   '/product/timberwolf/',
   '/product/husky/',
@@ -38,6 +39,7 @@ const screenshotPaths = [
   ['/swimspa/', 'category-swimspa-desktop-playwright.png'],
   ['/konfigurator/', 'jucra-builder-desktop-playwright.png'],
   ['/konfigurator/timberwolf/', 'jucra-builder-timberwolf-desktop-playwright.png'],
+  ['/poptavka-konfigurace/?model_name=Timberwolf&option_jets=dd-30+Jets+2+Pumps&option_acrylic=dd-Acrylic+Platinum&option_cabinet=dd-Cabinet+Cedar', 'jucra-inquiry-desktop-playwright.png'],
   ['/catalog/dalsi-sortiment/', 'category-dalsi-sortiment-desktop-playwright.png'],
   ['/product/timberwolf/', 'product-timberwolf-desktop-playwright.png'],
   ['/product/husky/', 'product-husky-desktop-playwright.png'],
@@ -65,6 +67,7 @@ const mobileScreenshotPaths = [
   ['/swimspa/', 'category-swimspa-mobile-playwright.png'],
   ['/konfigurator/', 'jucra-builder-mobile-playwright.png'],
   ['/konfigurator/timberwolf/', 'jucra-builder-timberwolf-mobile-playwright.png'],
+  ['/poptavka-konfigurace/?model_name=Timberwolf&option_jets=dd-30+Jets+2+Pumps&option_acrylic=dd-Acrylic+Platinum&option_cabinet=dd-Cabinet+Cedar', 'jucra-inquiry-mobile-playwright.png'],
   ['/catalog/dalsi-sortiment/', 'category-dalsi-sortiment-mobile-playwright.png'],
   ['/product/timberwolf/', 'product-timberwolf-mobile-playwright.png'],
   ['/product/husky/', 'product-husky-mobile-playwright.png'],
@@ -153,6 +156,10 @@ function isJucraPath(path) {
   return path === '/konfigurator/' || path.startsWith('/konfigurator/');
 }
 
+function isJucraInquiryPath(path) {
+  return path === '/poptavka-konfigurace/' || path.startsWith('/poptavka-konfigurace?') || path.startsWith('/poptavka-konfigurace/');
+}
+
 async function gotoSmokePath(page, path) {
   const response = await page.goto(`${baseUrl}${path}`, {
     waitUntil: 'domcontentloaded',
@@ -163,7 +170,59 @@ async function gotoSmokePath(page, path) {
     await page.waitForSelector('#visao-viewer-id, [data-jucra-status="WAITING_ON_JUCRA_PLUGIN"]', { timeout: 30000 });
   }
 
+  if (isJucraInquiryPath(path)) {
+    await page.waitForSelector('.f-section--jucra-inquiry', { timeout: 30000 });
+  }
+
   return response;
+}
+
+async function assertJucraHeaderSpacing(page, path) {
+  if (!isJucraPath(path) && !isJucraInquiryPath(path)) {
+    return;
+  }
+
+  const metrics = await page.evaluate(() => {
+    const box = (selector) => {
+      const element = document.querySelector(selector);
+      if (!element) {
+        return null;
+      }
+
+      const rect = element.getBoundingClientRect();
+      return {
+        y: rect.y,
+        bottom: rect.bottom,
+      };
+    };
+
+    return {
+      header: box('.f-header'),
+      breadcrumb: box('.f-jucra-builder__breadcrumb'),
+      h1: box('.f-section--jucra-builder h1, .f-section--jucra-inquiry h1'),
+      content: box('.f-jucra-builder__model-strip, .f-jucra-inquiry__grid, .f-jucra-inquiry__missing'),
+    };
+  });
+
+  if (!metrics.header || !metrics.breadcrumb || !metrics.h1 || !metrics.content) {
+    throw new Error(`${path} is missing Jucra header spacing targets.`);
+  }
+
+  const breadcrumbGap = Math.round(metrics.breadcrumb.y - metrics.header.bottom);
+  const h1Gap = Math.round(metrics.h1.y - metrics.header.bottom);
+  const contentGap = Math.round(metrics.content.y - metrics.header.bottom);
+
+  if (breadcrumbGap < 28) {
+    throw new Error(`${path} Jucra breadcrumb is too close to the header: ${breadcrumbGap}px`);
+  }
+
+  if (h1Gap < 64) {
+    throw new Error(`${path} Jucra heading is too close to the header: ${h1Gap}px`);
+  }
+
+  if (contentGap < 190) {
+    throw new Error(`${path} Jucra content starts too close to the header: ${contentGap}px`);
+  }
 }
 
 const forbidden = [
@@ -323,6 +382,8 @@ function stripAllowedContactEmails(path, html) {
       if (path === '/product/timberwolf/' && !hasJucraWrapper && !html.includes('category-configurator.png')) {
         throw new Error('/product/timberwolf/ configurator section is missing both Jucra viewer wrapper and fallback image.');
       }
+
+      await assertJucraHeaderSpacing(page, path);
 
       const canonical = await page.locator('link[rel="canonical"]').first().getAttribute('href');
       if (!canonical || !canonical.startsWith(baseUrl)) {

@@ -67,9 +67,13 @@ function arctic_seo_description(): string {
 }
 
 function arctic_seo_canonical_url(): string {
-	if ( function_exists( 'arctic_jucra_is_builder_request' ) && arctic_jucra_is_builder_request() ) {
-		$path = isset( $_SERVER['REQUEST_URI'] ) ? parse_url( wp_unslash( (string) $_SERVER['REQUEST_URI'] ), PHP_URL_PATH ) : '/konfigurator/';
-		$path = is_string( $path ) && $path !== '' ? $path : '/konfigurator/';
+	$is_jucra_builder = function_exists( 'arctic_jucra_is_builder_request' ) && arctic_jucra_is_builder_request();
+	$is_jucra_inquiry = function_exists( 'arctic_jucra_is_inquiry_request' ) && arctic_jucra_is_inquiry_request();
+
+	if ( $is_jucra_builder || $is_jucra_inquiry ) {
+		$fallback = $is_jucra_inquiry ? '/poptavka-konfigurace/' : '/konfigurator/';
+		$path     = isset( $_SERVER['REQUEST_URI'] ) ? parse_url( wp_unslash( (string) $_SERVER['REQUEST_URI'] ), PHP_URL_PATH ) : $fallback;
+		$path     = is_string( $path ) && $path !== '' ? $path : $fallback;
 
 		return home_url( trailingslashit( trim( $path, '/' ) ) );
 	}
