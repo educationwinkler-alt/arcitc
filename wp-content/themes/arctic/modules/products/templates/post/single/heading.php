@@ -51,15 +51,39 @@ if ( !empty( $images ) ) {
 
 			<div class="f-product-hero__facts">
 				<?php if ( !empty( $seats ) ) { ?>
-					<span><strong><?php echo esc_html( preg_replace( '/[^0-9+]/', '', $seats[0] ) ?: $seats[0] ); ?></strong><?php echo esc_html__( 'míst', 'baspa' ); ?></span>
+					<span class="f-product-hero__fact f-product-hero__fact--seats">
+						<span class="f-product-hero__fact-icon" aria-hidden="true"><?php get_template_part( 'images/icon/param/seats' ); ?></span>
+						<span class="f-product-hero__fact-copy">
+							<span class="f-product-hero__fact-label"><?php echo esc_html__( 'Počet osob', 'baspa' ); ?></span>
+							<strong><?php echo esc_html( preg_replace( '/[^0-9+]/', '', $seats[0] ) ?: $seats[0] ); ?></strong>
+						</span>
+					</span>
 				<?php } ?>
 				<?php if ( !empty( $dimensions ) ) { ?>
-					<span><strong><?php echo esc_html( $dimensions[0] ); ?></strong><?php echo esc_html__( 'rozměr', 'baspa' ); ?></span>
+					<span class="f-product-hero__fact f-product-hero__fact--dimensions">
+						<span class="f-product-hero__fact-icon" aria-hidden="true"><?php get_template_part( 'images/icon/param/dimensions-external' ); ?></span>
+						<span class="f-product-hero__fact-copy">
+							<span class="f-product-hero__fact-label"><?php echo esc_html__( 'Rozměry', 'baspa' ); ?></span>
+							<strong><?php echo esc_html( $dimensions[0] ); ?></strong>
+						</span>
+					</span>
 				<?php } ?>
 				<?php if ( !empty( $water_volume ) ) { ?>
-					<span><strong><?php echo esc_html( preg_replace( '/[^0-9]/', '', $water_volume[0] ) ?: $water_volume[0] ); ?></strong><?php echo esc_html__( 'litrů', 'baspa' ); ?></span>
+					<span class="f-product-hero__fact f-product-hero__fact--water">
+						<span class="f-product-hero__fact-icon" aria-hidden="true"><?php get_template_part( 'images/icon/param/water-volume' ); ?></span>
+						<span class="f-product-hero__fact-copy">
+							<span class="f-product-hero__fact-label"><?php echo esc_html__( 'Objem vody', 'baspa' ); ?></span>
+							<strong><?php echo esc_html( preg_replace( '/[^0-9]/', '', $water_volume[0] ) ?: $water_volume[0] ); ?></strong>
+						</span>
+					</span>
 				<?php } elseif ( !empty( $jets ) ) { ?>
-					<span><strong><?php echo esc_html( preg_replace( '~[^0-9/]~', '', $jets[0] ) ?: $jets[0] ); ?></strong><?php echo esc_html__( 'trysek / čerpadel', 'baspa' ); ?></span>
+					<span class="f-product-hero__fact f-product-hero__fact--jets">
+						<span class="f-product-hero__fact-icon" aria-hidden="true"><?php get_template_part( 'images/icon/param/nozzles' ); ?></span>
+						<span class="f-product-hero__fact-copy">
+							<span class="f-product-hero__fact-label"><?php echo esc_html__( 'Trysky', 'baspa' ); ?></span>
+							<strong><?php echo esc_html( preg_replace( '~[^0-9/]~', '', $jets[0] ) ?: $jets[0] ); ?></strong>
+						</span>
+					</span>
 				<?php } ?>
 			</div>
 		</div>

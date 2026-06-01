@@ -90,6 +90,7 @@ async function assertProductDetail(path, options = {}) {
 
       return {
         hero: box('.f-heading--product-detail'),
+        heroFacts: box('.f-product-hero__facts'),
         productNav: box('.f-links--product .f-links__container'),
         configLayout: box('.f-product-detail-config__layout'),
         firstConfig: box('.f-product-configuration'),
@@ -120,12 +121,33 @@ async function assertProductDetail(path, options = {}) {
           before: getComputedStyle(media, '::before').content,
           after: getComputedStyle(media, '::after').content,
         })),
+        colorItems: [...document.querySelectorAll('.f-product-colors__list:first-of-type .f-product-colors__item')].map((item) => {
+          const image = item.querySelector('img');
+          return {
+            text: item.textContent.trim().replace(/\s+/g, ' '),
+            status: item.getAttribute('data-asset-status') || '',
+            source: item.getAttribute('data-asset-source') || '',
+            hasImage: !!image,
+            imageMarker: image ? [
+              image.currentSrc || '',
+              image.src || '',
+              image.getAttribute('src') || '',
+              image.getAttribute('srcset') || '',
+              image.getAttribute('data-src') || '',
+              image.getAttribute('data-srcset') || '',
+              image.getAttribute('data-lazy-src') || '',
+              image.getAttribute('data-lazy-srcset') || '',
+            ].join(' ') : '',
+          };
+        }),
       };
     });
 
     assert(state.hero, `${path} is missing product hero`);
     assert(state.productNav, `${path} is missing product sticky nav`);
-    assert(state.productNav.y >= state.hero.bottom + 16, `${path} product nav overlaps hero by ${Math.round(state.hero.bottom - state.productNav.y)}px`);
+    const navHeroOverlap = Math.round(state.hero.bottom - state.productNav.y);
+    assert(navHeroOverlap >= 35 && navHeroOverlap <= 70, `${path} product nav is not on the Figma hero overlap: ${navHeroOverlap}px`);
+    assert(!state.heroFacts || state.productNav.y >= state.heroFacts.bottom + 120, `${path} product nav collides with hero facts`);
 
     assert(state.configLayout && state.firstConfig, `${path} is missing product configuration layout`);
     assert(state.noMediaCards === 0, `${path} has ${state.noMediaCards} configuration cards without media`);
@@ -134,6 +156,15 @@ async function assertProductDetail(path, options = {}) {
 
     if (options.maxConfigLayoutHeight) {
       assert(state.configLayout.height <= options.maxConfigLayoutHeight, `${path} configuration layout is too tall: ${state.configLayout.height}px`);
+    }
+
+    if (options.minColorImageCards) {
+      assert(state.colorItems.length >= options.minColorImageCards, `${path} exposes only ${state.colorItems.length} shell color cards`);
+      for (const [index, item] of state.colorItems.entries()) {
+        assert(item.hasImage, `${path} shell color card ${index + 1} (${item.text}) has no swatch image`);
+        assert(!item.status.includes('WAITING'), `${path} shell color card ${index + 1} (${item.text}) is unresolved: ${item.status}`);
+        assert(/(acrylic-|color-|wp-content\/uploads)/.test(`${item.source} ${item.imageMarker}`), `${path} shell color card ${index + 1} (${item.text}) does not point to a swatch asset`);
+      }
     }
 
     assert(state.sidebarHoursClass.includes('js-hours__status'), `${path} product sidebar hours are not using shared dynamic hours status`);
@@ -169,8 +200,9 @@ async function assertProductDetail(path, options = {}) {
     await headerBrowser.close();
   }
 
-  await assertProductDetail('/product/mckinley/', { maxConfigLayoutHeight: 380 });
-  await assertProductDetail('/product/timberwolf/');
+  await assertProductDetail('/product/mckinley/', { maxConfigLayoutHeight: 380, minColorImageCards: 5 });
+  await assertProductDetail('/product/lunar/', { minColorImageCards: 4 });
+  await assertProductDetail('/product/timberwolf/', { minColorImageCards: 5 });
 
   console.log('Product detail physical smoke passed.');
 })().catch((error) => {

@@ -31,8 +31,11 @@ get_template_part( 'modules/products/templates/post/single/heading' );
 		get_template_part( 'modules/products/templates/post/single/navigation' );
 		get_template_part( 'modules/products/templates/post/single' );
 
-		if ( $is_hot_tub ) {
+		if ( !$is_wider_range ) {
 			get_template_part( 'modules/products/templates/post/single/acrylic-colors' );
+		}
+
+		if ( $is_hot_tub ) {
 			get_template_part( 'templates/section/product-benefits' );
 			get_template_part( 'templates/section/product-options' );
 		}

@@ -9,13 +9,14 @@ $price          = get_post_meta( $product_id, 'product_price_text', true );
 $price_suffix   = get_post_meta( $product_id, 'product_price_suffix', true );
 $is_hot_tub     = has_term( 'virivky', 'product-category', $product_id );
 $is_wider_range = has_term( 'dalsi-sortiment', 'product-category', $product_id );
-$nav_items      = array();
+$has_color_contract = !$is_wider_range && 'product' === get_post_type( $product_id );
+$nav_items          = array();
 
 if ( function_exists( 'baspa_products_product_has_configurations' ) && baspa_products_product_has_configurations( $product_id ) ) {
 	$nav_items['#konfigurace'] = __( 'Konfigurace', 'baspa' );
 }
 
-if ( !empty( get_post_meta( $product_id, 'product_acrylic_colors' ) ) || !empty( get_post_meta( $product_id, 'product_acrylic_color_options' ) ) ) {
+if ( $has_color_contract || !empty( get_post_meta( $product_id, 'product_acrylic_colors' ) ) || !empty( get_post_meta( $product_id, 'product_acrylic_color_options' ) ) ) {
 	$nav_items['#barvy'] = __( 'Barvy', 'baspa' );
 }
 

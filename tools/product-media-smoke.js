@@ -139,6 +139,27 @@ function assertConfigurationMedia(path, html) {
   }
 }
 
+function assertShellColorSwatches(path, html, expectedSources, minCount) {
+  const colorSection = blockBetween(
+    html,
+    'id="barvy"',
+    'id="vyhody"',
+    `${path} shell colors`
+  );
+
+  const itemCount = countMatches(colorSection, /f-product-colors__item/g);
+  if (itemCount < minCount) {
+    throw new Error(`${path} exposes only ${itemCount} shell color swatches.`);
+  }
+
+  assertIncludes(`${path} shell colors`, colorSection, expectedSources);
+  assertExcludes(`${path} shell colors`, colorSection, [
+    'f-product-colors__item--missing',
+    'data-asset-status="WAITING_ON_OWNER"',
+    'data-asset-status="WAITING_ON_FIGMA_EXPORT"',
+  ]);
+}
+
 function assertMegaMenu(html) {
   assertExcludes('desktop mega menu', html, [
     'f-mega-menu__thumb--missing',
@@ -172,6 +193,8 @@ async function main() {
     '/virivky/': await fetchHtml('/virivky/'),
     '/swimspa/': await fetchHtml('/swimspa/'),
     '/product/timberwolf/': await fetchHtml('/product/timberwolf/'),
+    '/product/mckinley/': await fetchHtml('/product/mckinley/'),
+    '/product/lunar/': await fetchHtml('/product/lunar/'),
     '/product/athabascan/': await fetchHtml('/product/athabascan/'),
   };
 
@@ -204,13 +227,34 @@ async function main() {
     'acrylic-dakota',
     'acrylic-kalahari',
     'acrylic-odyssey',
+    'color-platinum-swirl',
     'acrylic-espresso',
+    'cabinet-cedar',
+    'cabinet-maintenance-free',
   ]);
   assertExcludes('/product/timberwolf/', pages['/product/timberwolf/'], [
     'uploads/import/figma/detail-timberwolf-hero.jpg',
-    'uploads/import/figma/color-',
-    'uploads/import/figma/cabinet-',
   ]);
+  assertShellColorSwatches('/product/timberwolf/', pages['/product/timberwolf/'], [
+    'acrylic-dakota',
+    'acrylic-kalahari',
+    'acrylic-odyssey',
+    'color-platinum-swirl',
+    'acrylic-espresso',
+  ], 5);
+  assertShellColorSwatches('/product/mckinley/', pages['/product/mckinley/'], [
+    'acrylic-dakota',
+    'acrylic-kalahari',
+    'acrylic-odyssey',
+    'color-platinum-swirl',
+    'acrylic-espresso',
+  ], 5);
+  assertShellColorSwatches('/product/lunar/', pages['/product/lunar/'], [
+    'color-platinum-swirl',
+    'acrylic-espresso',
+    'acrylic-kalahari',
+    'acrylic-dakota',
+  ], 4);
   assertBenefitMedia(pages['/product/timberwolf/']);
   assertConfigurationMedia('/product/timberwolf/', pages['/product/timberwolf/']);
   assertConfigurationMedia('/product/athabascan/', pages['/product/athabascan/']);

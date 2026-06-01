@@ -93,10 +93,12 @@ async function main() {
       'acrylic-kalahari',
       'acrylic-odyssey',
       'acrylic-espresso',
+      'uploads/import/figma/color-platinum-swirl.png',
+      'uploads/import/figma/cabinet-cedar.png',
+      'uploads/import/figma/cabinet-maintenance-free.png',
     ],
     forbidden: [
-      'uploads/import/figma/color-',
-      'uploads/import/figma/cabinet-',
+      'uploads/import/figma/detail-timberwolf-hero.jpg',
     ],
   });
 

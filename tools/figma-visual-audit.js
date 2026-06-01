@@ -1684,21 +1684,21 @@ async function auditTimberwolfDesktop(page) {
 
   await assertBox(page, '.f-heading--product-detail', { x: 0, y: 0, width: 1920, height: 795 }, 2, 'timberwolf.heading');
   await assertBox(page, '.f-heading__container', { x: 260, y: 0, width: 1400, height: 795 }, 2, 'timberwolf.headingContainer');
-  await assertBox(page, '.f-product-detail-config__layout', { x: 260, y: 1010, width: 1400, height: 546 }, 3, 'timberwolf.configLayout');
-  await assertBox(page, '.f-product-configurations', { x: 260, y: 1010, width: 1132, height: 546 }, 3, 'timberwolf.configurations');
-  await assertBox(page, '.f-product-configuration:nth-child(1)', { x: 260, y: 1111, width: 1132, height: 203 }, 3, 'timberwolf.configurationPrestige');
-  await assertBox(page, '.f-product-configuration:nth-child(2)', { x: 260, y: 1353, width: 1132, height: 203 }, 3, 'timberwolf.configurationSignature');
-  await assertBox(page, '.f-product-contact-card', { x: 1362, y: 1004, width: 298, height: 341 }, 3, 'timberwolf.contactCard');
-  await assertBox(page, '.f-product-contact-card__details', { x: 1392, y: 1088, width: 233, height: 80.6 }, 4, 'timberwolf.contactDetails');
-  await assertBox(page, '.f-product-contact-card__avatar', { x: 1392, y: 1185, width: 58, height: 58 }, 2, 'timberwolf.contactAvatar');
-  await assertBox(page, '.f-product-contact-card__button', { x: 1392, y: 1265, width: 149, height: 50 }, 2, 'timberwolf.contactButton');
-  await assertBox(page, '.f-product-detail-configurator', { x: 260, y: 1628, width: 1400, height: 312 }, 3, 'timberwolf.configurator');
-  await assertBox(page, '.f-product-colors', { x: 260, y: 2042, width: 1400, height: 391 }, 4, 'timberwolf.colors');
-  await assertBox(page, '.f-section--product-benefits', { x: 0, y: 2538, width: 1920, height: 2017 }, 4, 'timberwolf.benefits');
-  await assertBox(page, '.f-section--product-options', { x: 0, y: 4555, width: 1920, height: 1144 }, 4, 'timberwolf.options');
-  await assertBox(page, '.f-section--references', { x: 0, y: 5699, width: 1920, height: 525 }, 4, 'timberwolf.references');
-  await assertBox(page, '.f-contact-cta', { x: 260, y: 6224, width: 1400, height: 455 }, 4, 'timberwolf.contactCta');
-  await assertFooterLayout(page, 'timberwolf', 6707);
+  await assertBox(page, '.f-product-detail-config__layout', { x: 260, y: 940, width: 1400, height: 546 }, 3, 'timberwolf.configLayout');
+  await assertBox(page, '.f-product-configurations', { x: 260, y: 940, width: 1132, height: 546 }, 3, 'timberwolf.configurations');
+  await assertBox(page, '.f-product-configuration:nth-child(1)', { x: 260, y: 1041, width: 1132, height: 203 }, 3, 'timberwolf.configurationPrestige');
+  await assertBox(page, '.f-product-configuration:nth-child(2)', { x: 260, y: 1283, width: 1132, height: 203 }, 3, 'timberwolf.configurationSignature');
+  await assertBox(page, '.f-product-contact-card', { x: 1362, y: 934, width: 298, height: 341 }, 3, 'timberwolf.contactCard');
+  await assertBox(page, '.f-product-contact-card__details', { x: 1392, y: 1018, width: 233, height: 80.6 }, 4, 'timberwolf.contactDetails');
+  await assertBox(page, '.f-product-contact-card__avatar', { x: 1392, y: 1115, width: 58, height: 58 }, 2, 'timberwolf.contactAvatar');
+  await assertBox(page, '.f-product-contact-card__button', { x: 1392, y: 1195, width: 149, height: 50 }, 2, 'timberwolf.contactButton');
+  await assertBox(page, '.f-product-detail-configurator', { x: 260, y: 1608, width: 1400, height: 312 }, 3, 'timberwolf.configurator');
+  await assertBox(page, '.f-product-colors', { x: 260, y: 2022, width: 1400, height: 739 }, 4, 'timberwolf.colors');
+  await assertBox(page, '.f-section--product-benefits', { x: 0, y: 2866, width: 1920, height: 2017 }, 4, 'timberwolf.benefits');
+  await assertBox(page, '.f-section--product-options', { x: 0, y: 4883, width: 1920, height: 1144 }, 4, 'timberwolf.options');
+  await assertBox(page, '.f-section--references', { x: 0, y: 6027, width: 1920, height: 525 }, 4, 'timberwolf.references');
+  await assertBox(page, '.f-contact-cta', { x: 260, y: 6552, width: 1400, height: 455 }, 4, 'timberwolf.contactCta');
+  await assertFooterLayout(page, 'timberwolf', 7035);
 
   await assertSourceContains(page, '.f-heading--product-detail .f-gallery__slide:nth-child(1) img', 'timberwolf-signature.jpg', 'timberwolf.heroSource');
   await assertSourceContains(page, '.f-product-configuration:nth-child(1) .f-product-configuration__thumb img', 'timberwolf-prestige.jpg', 'timberwolf.prestigeSource');
