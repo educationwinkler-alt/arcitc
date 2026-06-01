@@ -82,7 +82,14 @@ body {
 html,
 body {
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+@supports not (overflow: clip) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
 }
 @media (min-width: 1024px) {
   :is(
@@ -6467,13 +6474,27 @@ body.off-active--benefit-shell .f-off__overlay {
  */
 .template--homepage .f-header,
 body:not(.template--homepage) .f-header {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: var(--a--layer--6);
   height: 123px;
   background: transparent;
+  transition: transform 0.25s var(--a--transition--timing-function, ease-in-out);
+  will-change: transform;
+}
+.template--homepage .f-header.is-autohide--hidden,
+body:not(.template--homepage) .f-header.is-autohide--hidden {
+  transform: translateY(0);
+}
+.template--homepage .f-header.is-autohide--hidden.is-autohide--zone-hidden,
+body:not(.template--homepage) .f-header.is-autohide--hidden.is-autohide--zone-hidden {
+  transform: translateY(-100%);
+}
+body.off-active--navigation .f-header,
+.f-header:focus-within {
+  transform: translateY(0);
 }
 .template--homepage .f-bar,
 body:not(.template--homepage) .f-bar {

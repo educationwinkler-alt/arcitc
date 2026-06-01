@@ -89,6 +89,65 @@ async function assertDropdownPanelHasNoSquareParent(page, path) {
   assert(state.panelOverflow === 'hidden', `${path} dropdown panel does not clip its rounded corners`);
 }
 
+async function assertHeaderScrollContract(page) {
+  await page.goto(`${baseUrl}/virivky/`, { waitUntil: 'networkidle', timeout: 60000 });
+  await page.addStyleTag({ content: 'html, body { scroll-behavior: auto !important; }' });
+  await page.evaluate(() => window.scrollTo(0, 900));
+  await page.waitForTimeout(250);
+
+  const category = await page.evaluate(() => {
+    const header = document.querySelector('.f-header');
+    const rect = header ? header.getBoundingClientRect() : null;
+    const style = header ? getComputedStyle(header) : null;
+
+    return {
+      className: header ? header.className : '',
+      y: rect ? rect.y : null,
+      position: style ? style.position : '',
+      transform: style ? style.transform : '',
+    };
+  });
+
+  assert(category.position === 'fixed', `/virivky/ header should stay fixed while scrolling like Baspa, got ${category.position}`);
+  assert(Math.abs(category.y) <= 1, `/virivky/ fixed header moved away during scroll: y=${category.y}, class=${category.className}, transform=${category.transform}`);
+  assert(!category.className.includes('is-autohide--zone-hidden'), `/virivky/ should not hide the main header without a product/detail sticky zone: ${category.className}`);
+
+  await page.goto(`${baseUrl}/product/mckinley/`, { waitUntil: 'networkidle', timeout: 60000 });
+  await page.addStyleTag({ content: 'html, body { scroll-behavior: auto !important; }' });
+  await page.evaluate(() => {
+    const navigation = document.querySelector('.f-links--product');
+    const target = navigation ? navigation.getBoundingClientRect().top + window.scrollY + 180 : 900;
+    window.scrollTo(0, target);
+  });
+  await page.waitForFunction(() => document.querySelector('.f-header')?.classList.contains('is-autohide--zone-hidden'), { timeout: 10000 });
+  await page.waitForTimeout(250);
+
+  const product = await page.evaluate(() => {
+    const header = document.querySelector('.f-header');
+    const navigation = document.querySelector('.f-links--product');
+    const headerRect = header ? header.getBoundingClientRect() : null;
+    const navRect = navigation ? navigation.getBoundingClientRect() : null;
+    const headerStyle = header ? getComputedStyle(header) : null;
+    const navStyle = navigation ? getComputedStyle(navigation) : null;
+
+    return {
+      headerClass: header ? header.className : '',
+      headerBottom: headerRect ? headerRect.bottom : null,
+      headerPosition: headerStyle ? headerStyle.position : '',
+      headerTransform: headerStyle ? headerStyle.transform : '',
+      navY: navRect ? navRect.y : null,
+      navBottom: navRect ? navRect.bottom : null,
+      navPosition: navStyle ? navStyle.position : '',
+    };
+  });
+
+  assert(product.headerPosition === 'fixed', `/product/mckinley/ header should be fixed before it hands off, got ${product.headerPosition}`);
+  assert(product.headerClass.includes('is-autohide--zone-hidden'), `/product/mckinley/ header did not enter Baspa-style zone-hidden handoff: ${product.headerClass}`);
+  assert(product.headerBottom <= 2, `/product/mckinley/ header still overlaps the product sticky nav after handoff: bottom=${product.headerBottom}, transform=${product.headerTransform}`);
+  assert(product.navPosition === 'sticky', `/product/mckinley/ product detail navigation should remain sticky, got ${product.navPosition}`);
+  assert(Math.abs(product.navY) <= 2, `/product/mckinley/ product detail navigation did not take over the top edge: y=${product.navY}, bottom=${product.navBottom}`);
+}
+
 (async () => {
   const browser = await chromium.launch({ executablePath: chromePath, headless: true });
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
@@ -103,6 +162,7 @@ async function assertDropdownPanelHasNoSquareParent(page, path) {
   assert(categoryOpen.text.includes('Po - Pá 8:00-17:00 h'), '/virivky/ header hours label does not match Czech Figma copy');
   assert(categoryOpen.staticHoursCount === 0, '/virivky/ has duplicate static hours markup');
   await assertDropdownPanelHasNoSquareParent(page, '/product/athabascan/');
+  await assertHeaderScrollContract(page);
 
   await page.unroute('**/wp-admin/admin-ajax.php');
 
