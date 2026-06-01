@@ -15,6 +15,21 @@ $seats        = get_post_meta( get_the_ID(), 'product_seats', false );
 $jets         = get_post_meta( get_the_ID(), 'product_nozzles', false );
 $dimensions   = get_post_meta( get_the_ID(), 'product_dimensions_external', false );
 $water_volume = get_post_meta( get_the_ID(), 'product_water_volume', false );
+$format_hero_dimensions = static function ( string $value ): string {
+	$value      = trim( wp_strip_all_tags( $value ) );
+	$times      = html_entity_decode( '&times;', ENT_QUOTES, 'UTF-8' );
+	$normalized = str_replace( array( $times, 'X' ), 'x', remove_accents( $value ) );
+
+	if ( preg_match( '~^\s*([0-9]+(?:[.,][0-9]+)?)\s*x\s*([0-9]+(?:[.,][0-9]+)?)\s*cm\s*,?\s*vyska\s*:?\s*([0-9]+(?:[.,][0-9]+)?)\s*cm\s*$~i', $normalized, $matches ) ) {
+		return sprintf( '%s x %s x %s cm', $matches[1], $matches[2], $matches[3] );
+	}
+
+	if ( preg_match( '~^\s*([0-9]+(?:[.,][0-9]+)?)\s*x\s*([0-9]+(?:[.,][0-9]+)?)\s*x\s*([0-9]+(?:[.,][0-9]+)?)\s*cm\s*$~i', $normalized, $matches ) ) {
+		return sprintf( '%s x %s x %s cm', $matches[1], $matches[2], $matches[3] );
+	}
+
+	return $value;
+};
 $title_prefix  = __( 'Venkovní vířivka ', 'baspa' );
 
 if ( has_term( 'swimspa', 'product-category', get_the_ID() ) || has_term( 'swimspa', 'product-kind', get_the_ID() ) ) {
@@ -64,7 +79,7 @@ if ( !empty( $images ) ) {
 						<span class="f-product-hero__fact-icon" aria-hidden="true"><?php get_template_part( 'images/icon/param/dimensions-external' ); ?></span>
 						<span class="f-product-hero__fact-copy">
 							<span class="f-product-hero__fact-label"><?php echo esc_html__( 'Rozměry', 'baspa' ); ?></span>
-							<strong><?php echo esc_html( $dimensions[0] ); ?></strong>
+							<strong><?php echo esc_html( $format_hero_dimensions( (string) $dimensions[0] ) ); ?></strong>
 						</span>
 					</span>
 				<?php } ?>

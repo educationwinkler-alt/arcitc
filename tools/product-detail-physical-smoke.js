@@ -57,27 +57,32 @@ async function assertHeaderHasNoVisibleOverlap(page, path) {
 
 async function assertProductDetail(path, options = {}) {
   const browser = await chromium.launch({ executablePath: chromePath, headless: true });
-  const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
+  const viewport = options.viewport || { width: 1920, height: 1080 };
+  const page = await browser.newPage({ viewport, deviceScaleFactor: 1 });
 
   try {
     await goto(page, path);
 
     const state = await page.evaluate(() => {
+      const rect = (element) => {
+        const box = element.getBoundingClientRect();
+        return {
+          x: box.x,
+          y: box.y,
+          width: box.width,
+          height: box.height,
+          right: box.right,
+          bottom: box.bottom,
+          text: element.textContent.trim().replace(/\s+/g, ' '),
+        };
+      };
+
       const box = (selector) => {
         const element = document.querySelector(selector);
         if (!element) {
           return null;
         }
-        const rect = element.getBoundingClientRect();
-        return {
-          x: rect.x,
-          y: rect.y,
-          width: rect.width,
-          height: rect.height,
-          right: rect.right,
-          bottom: rect.bottom,
-          text: element.textContent.trim().replace(/\s+/g, ' '),
-        };
+        return rect(element);
       };
 
       const style = (selector, pseudo = null) => {
@@ -91,6 +96,19 @@ async function assertProductDetail(path, options = {}) {
       return {
         hero: box('.f-heading--product-detail'),
         heroFacts: box('.f-product-hero__facts'),
+        heroFactItems: [...document.querySelectorAll('.f-product-hero__fact')].map((fact) => {
+          const factBox = rect(fact);
+          const icon = fact.querySelector('.f-product-hero__fact-icon');
+          const label = fact.querySelector('.f-product-hero__fact-label');
+          const value = fact.querySelector('strong');
+
+          return {
+            fact: factBox,
+            icon: icon ? rect(icon) : null,
+            label: label ? rect(label) : null,
+            value: value ? rect(value) : null,
+          };
+        }),
         productNav: box('.f-links--product .f-links__container'),
         configLayout: box('.f-product-detail-config__layout'),
         firstConfig: box('.f-product-configuration'),
@@ -149,6 +167,22 @@ async function assertProductDetail(path, options = {}) {
     assert(navHeroOverlap >= 35 && navHeroOverlap <= 70, `${path} product nav is not on the Figma hero overlap: ${navHeroOverlap}px`);
     assert(!state.heroFacts || state.productNav.y >= state.heroFacts.bottom + 120, `${path} product nav collides with hero facts`);
 
+    if (options.assertHeroFactFigmaLayout) {
+      assert(state.heroFactItems.length >= 3, `${path} exposes only ${state.heroFactItems.length} hero facts`);
+
+      for (const [index, item] of state.heroFactItems.entries()) {
+        assert(item.icon && item.icon.width >= 55 && item.icon.width <= 60, `${path} hero fact ${index + 1} icon is not Figma-sized: ${item.icon ? item.icon.width : 'missing'}`);
+        assert(item.icon.height >= 55 && item.icon.height <= 60, `${path} hero fact ${index + 1} icon height is not Figma-sized: ${item.icon.height}`);
+      }
+
+      for (let index = 0; index < state.heroFactItems.length - 1; index += 1) {
+        const current = state.heroFactItems[index];
+        const next = state.heroFactItems[index + 1];
+        assert(current.value && next.icon, `${path} hero fact ${index + 1} is missing value or next icon`);
+        assert(current.value.right <= next.icon.x - 4, `${path} hero fact ${index + 1} value collides with the next fact`);
+      }
+    }
+
     assert(state.configLayout && state.firstConfig, `${path} is missing product configuration layout`);
     assert(state.noMediaCards === 0, `${path} has ${state.noMediaCards} configuration cards without media`);
     assert(state.configurationThumbs.length > 0, `${path} has no configuration thumbnails`);
@@ -200,7 +234,8 @@ async function assertProductDetail(path, options = {}) {
     await headerBrowser.close();
   }
 
-  await assertProductDetail('/product/mckinley/', { maxConfigLayoutHeight: 380, minColorImageCards: 5 });
+  await assertProductDetail('/product/mckinley/', { maxConfigLayoutHeight: 380, minColorImageCards: 5, assertHeroFactFigmaLayout: true });
+  await assertProductDetail('/product/mckinley/', { viewport: { width: 1440, height: 900 }, maxConfigLayoutHeight: 380, minColorImageCards: 5, assertHeroFactFigmaLayout: true });
   await assertProductDetail('/product/lunar/', { minColorImageCards: 4 });
   await assertProductDetail('/product/timberwolf/', { minColorImageCards: 5 });
 
