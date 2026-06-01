@@ -96,6 +96,7 @@ async function assertProductDetail(path, options = {}) {
 
       return {
         hero: box('.f-heading--product-detail'),
+        heroDescription: box('.f-heading--product-detail .f-heading__description'),
         heroFacts: box('.f-product-hero__facts'),
         heroFactItems: [...document.querySelectorAll('.f-product-hero__fact')].map((fact) => {
           const factBox = rect(fact);
@@ -190,6 +191,11 @@ async function assertProductDetail(path, options = {}) {
         const next = state.heroFactItems[index + 1];
         assert(current.value && next.icon, `${path} hero fact ${index + 1} is missing value or next icon`);
         assert(current.value.right <= next.icon.x - 4, `${path} hero fact ${index + 1} value collides with the next fact`);
+      }
+
+      if (state.heroDescription && state.heroFacts) {
+        const visibleGap = Math.round(state.heroFacts.y - state.heroDescription.bottom);
+        assert(visibleGap >= 32 && visibleGap <= 52, `${path} hero facts are not Figma-spaced below the visible description: ${visibleGap}px`);
       }
     }
 
