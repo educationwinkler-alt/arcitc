@@ -168,7 +168,8 @@ async function assertProductDetail(path, options = {}) {
     assert(!state.heroFacts || state.productNav.y >= state.heroFacts.bottom + 120, `${path} product nav collides with hero facts`);
 
     if (options.assertHeroFactFigmaLayout) {
-      assert(state.heroFactItems.length >= 3, `${path} exposes only ${state.heroFactItems.length} hero facts`);
+      const minHeroFacts = options.minHeroFacts || 3;
+      assert(state.heroFactItems.length >= minHeroFacts, `${path} exposes only ${state.heroFactItems.length} hero facts`);
 
       for (const [index, item] of state.heroFactItems.entries()) {
         assert(item.icon && item.icon.width >= 55 && item.icon.width <= 60, `${path} hero fact ${index + 1} icon is not Figma-sized: ${item.icon ? item.icon.width : 'missing'}`);
@@ -181,6 +182,10 @@ async function assertProductDetail(path, options = {}) {
         assert(current.value && next.icon, `${path} hero fact ${index + 1} is missing value or next icon`);
         assert(current.value.right <= next.icon.x - 4, `${path} hero fact ${index + 1} value collides with the next fact`);
       }
+    }
+
+    if (options.heroFactsOnly) {
+      return;
     }
 
     assert(state.configLayout && state.firstConfig, `${path} is missing product configuration layout`);
@@ -236,6 +241,7 @@ async function assertProductDetail(path, options = {}) {
 
   await assertProductDetail('/product/mckinley/', { maxConfigLayoutHeight: 380, minColorImageCards: 5, assertHeroFactFigmaLayout: true });
   await assertProductDetail('/product/mckinley/', { viewport: { width: 1440, height: 900 }, maxConfigLayoutHeight: 380, minColorImageCards: 5, assertHeroFactFigmaLayout: true });
+  await assertProductDetail('/product/athabascan/', { viewport: { width: 1440, height: 900 }, assertHeroFactFigmaLayout: true, minHeroFacts: 2, heroFactsOnly: true });
   await assertProductDetail('/product/lunar/', { minColorImageCards: 4 });
   await assertProductDetail('/product/timberwolf/', { minColorImageCards: 5 });
 
