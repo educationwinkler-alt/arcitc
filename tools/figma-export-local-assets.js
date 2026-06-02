@@ -62,7 +62,7 @@ const ASSETS = [
   { id: '1:987', name: 'about-team-vladimir' },
   { id: '1:1003', name: 'about-team-lukas' },
   { id: '1:1004', name: 'about-team-helena' },
-  { id: '1:985', name: 'about-team-service' },
+  { id: '1:985', name: 'about-team-alena' },
 ];
 
 function walk(node, callback) {

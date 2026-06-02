@@ -239,7 +239,7 @@ Footer zde záměrně není uvedený jako hotový. Deep physical audit v2 ho dr�
 | --- | --- |
 | Jucra / Visao produkce | Lokální flow existuje, ale produkce/staging musí mít plugin nainstalovaný, aktivovaný, nastavené domény/API a otestovaný shortcode output. |
 | Jucra lead handoff | Potvrdit cílový formulář a parametry. Do té doby musí request URL a fallback jasně ukazovat, co se odešle. |
-| Owner media | Team/contact portréty, warranty card media, chybějící galerie produktů a cabinet swatches zůstávají `WAITING_ON_OWNER`. |
+| Owner media | `/o-nas/` team portréty používají schválené Figma exporty `about-team-*.png`; contact portréty, warranty card media, chybějící galerie produktů a cabinet swatches zůstávají `WAITING_ON_OWNER`. |
 | Windows 175% / compact laptop | Po P0 opravách zopakovat signoff, protože detail/category výška a sticky prvky se změní. |
 | Copy/content parity | Po opravě product detailu a swimspa projít texty proti old Arctic/content source, ne jen proti Figma placeholderům. |
 
@@ -318,7 +318,7 @@ Footer zde záměrně není uvedený jako hotový. Deep physical audit v2 ho dr�
 | --- | --- |
 | Má swimspa dostat vlastní Figma/design scope, nebo schválené zrcadlení hot-tub category contractu? | Určí `/swimspa/`, swimspa detail a konfigurátor. |
 | Které product/detail galerie jsou finální owner-approved assety? | Určí hero, konfigurace, benefit media a listing kvalitu. |
-| Dodají se team/contact portréty a warranty card media? | Jinak zůstane `WAITING_ON_OWNER`. |
+| Dodají se contact portréty a warranty card media? | Jinak zůstane `WAITING_ON_OWNER`; team portréty na `/o-nas/` jsou napojené na Figma exporty. |
 | Má Jucra lead končit v Gravity Forms, email handoffu, nebo plugin vlastním formuláři? | Určí finální request URL a datové parametry. |
 | Jaký přesný Google Maps URL/embed je produkční canonical? | Určí `baspa_map`, `arctic_map_embed` a map CTA guardy. |
 

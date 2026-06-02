@@ -46,6 +46,22 @@ async function fetchHtml(path) {
   return response.text();
 }
 
+async function fetchAdminMembers() {
+  try {
+    const response = await fetch(`${baseUrl}/wp-json/wp/v2/member?per_page=100`);
+
+    if (!response.ok) {
+      return [];
+    }
+
+    const members = await response.json();
+
+    return Array.isArray(members) ? members : [];
+  } catch (_error) {
+    return [];
+  }
+}
+
 function assertReferenceArchive(html) {
   const projectLinks = html.match(/href=(["'])[^"']*\/project\//g) || [];
   assert(projectLinks.length === 0, `/reference/ archive contains /project/ links: ${projectLinks.join(', ')}`);
@@ -167,7 +183,6 @@ async function assertProductAffordances(page) {
 async function assertWaitingOnOwnerMarkers(page) {
   const expectations = [
     ['/kontakt/', '.f-contact-card__avatar[data-asset-status="WAITING_ON_OWNER"]', 6],
-    ['/o-nas/', '.f-about-person__media[data-asset-status="WAITING_ON_OWNER"]', 4],
     ['/zaruka/', '.f-warranty-card[data-asset-status="WAITING_ON_OWNER"]', 3],
   ];
 
@@ -175,6 +190,28 @@ async function assertWaitingOnOwnerMarkers(page) {
     await page.goto(`${baseUrl}${path}`, { waitUntil: 'networkidle', timeout: 90000 });
     const count = await page.locator(selector).count();
     assert(count === expected, `${path} expected ${expected} ${selector}, got ${count}`);
+  }
+
+  const adminMembers = await fetchAdminMembers();
+  const usesFigmaFallbackTeam = adminMembers.length === 0;
+  const expectedPeople = adminMembers.length || 4;
+
+  await page.goto(`${baseUrl}/o-nas/`, { waitUntil: 'networkidle', timeout: 90000 });
+
+  const teamCards = await page.locator('.f-about-person').count();
+  assert(teamCards === expectedPeople, `/o-nas/ expected ${expectedPeople} team cards, got ${teamCards}`);
+
+  if (usesFigmaFallbackTeam) {
+    const figmaPortraits = await page.locator('.f-about-person__media[data-asset-status="figma-export"] img').count();
+    const waitingMedia = await page.locator('.f-about-person__media[data-asset-status="WAITING_ON_OWNER"]').count();
+
+    assert(figmaPortraits === 4, `/o-nas/ fallback expected 4 Figma portraits, got ${figmaPortraits}`);
+    assert(waitingMedia === 0, `/o-nas/ fallback must not show waiting placeholders, got ${waitingMedia}`);
+  } else {
+    const adminMedia = await page.locator('.f-about-person__media[data-asset-status="admin-member"]').count();
+    const waitingMedia = await page.locator('.f-about-person__media[data-asset-status="WAITING_ON_OWNER"]').count();
+
+    assert(adminMedia + waitingMedia === teamCards, `/o-nas/ admin team media mismatch: ${adminMedia} admin images + ${waitingMedia} waiting media for ${teamCards} cards`);
   }
 }
 

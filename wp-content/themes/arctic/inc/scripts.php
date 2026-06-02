@@ -19,6 +19,34 @@ if ( !function_exists( 'baspa_scripts' ) ) {
 		wp_enqueue_script( get_template(), get_theme_file_uri( 'dist/js/theme.js' ), array(), '1.0.0', true );
 
 		/**
+		 * Local section navigation handoff
+		 */
+		$section_nav_handoff_path = get_theme_file_path( 'dist/js/section-nav-handoff.js' );
+		if ( file_exists( $section_nav_handoff_path ) ) {
+			wp_enqueue_script(
+				get_template() . '-section-nav-handoff',
+				get_theme_file_uri( 'dist/js/section-nav-handoff.js' ),
+				array( get_template() ),
+				filemtime( $section_nav_handoff_path ),
+				true
+			);
+		}
+
+		/**
+		 * About team Figma carousel
+		 */
+		$about_team_carousel_path = get_theme_file_path( 'dist/js/about-team-carousel.js' );
+		if ( file_exists( $about_team_carousel_path ) ) {
+			wp_enqueue_script(
+				get_template() . '-about-team-carousel',
+				get_theme_file_uri( 'dist/js/about-team-carousel.js' ),
+				array( get_template() ),
+				filemtime( $about_team_carousel_path ),
+				true
+			);
+		}
+
+		/**
 		 * Arctic desktop mega menu hover stability
 		 */
 		$mega_hover_script_path = get_theme_file_path( 'dist/js/mega-hover-stability.js' );

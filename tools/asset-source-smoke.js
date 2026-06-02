@@ -33,7 +33,26 @@ async function assertAssetContract(path, { required = [], forbidden = [] }) {
   assertExcludes(path, html, forbidden);
 }
 
+async function fetchAdminMembers() {
+  try {
+    const response = await fetch(`${baseUrl}/wp-json/wp/v2/member?per_page=100`);
+
+    if (!response.ok) {
+      return [];
+    }
+
+    const members = await response.json();
+
+    return Array.isArray(members) ? members : [];
+  } catch (_error) {
+    return [];
+  }
+}
+
 async function main() {
+  const adminMembers = await fetchAdminMembers();
+  const usesFigmaFallbackTeam = adminMembers.length === 0;
+
   await assertAssetContract('/showroom/', {
     required: [
       'uploads/import/owner-showroom/showroom-main-web.jpg',
@@ -61,15 +80,19 @@ async function main() {
   });
 
   await assertAssetContract('/o-nas/', {
-    required: [
-      'data-asset-status="WAITING_ON_OWNER"',
-      'f-about-person__media--waiting',
-    ],
-    forbidden: [
+    required: usesFigmaFallbackTeam ? [
       'uploads/import/figma/about-team-vladimir.png',
       'uploads/import/figma/about-team-lukas.png',
       'uploads/import/figma/about-team-helena.png',
-      'uploads/import/figma/about-team-service.png',
+      'uploads/import/figma/about-team-alena.png',
+      'Vlastimil Zhoř',
+      'Ing. Lukáš Dušek',
+      'Alena Janulíková',
+    ] : [],
+    forbidden: [
+      ...(usesFigmaFallbackTeam ? ['f-about-person__media--waiting'] : []),
+      'Vladimír Zajíč',
+      'Servisní tým',
     ],
   });
 
@@ -83,6 +106,7 @@ async function main() {
       'uploads/import/figma/about-team-vladimir.png',
       'uploads/import/figma/about-team-lukas.png',
       'uploads/import/figma/about-team-helena.png',
+      'uploads/import/figma/about-team-alena.png',
       'uploads/import/figma/about-team-service.png',
     ],
   });

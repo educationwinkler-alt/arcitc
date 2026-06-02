@@ -42,7 +42,7 @@ Date: 2026-05-26
 | Editorial articles | WordPress Posts and page/post metaboxes | Same WordPress Posts and page/post metaboxes | ported | Client can add/edit articles and pages through standard WP admin | Client / admin |
 | Header/menu/footer | WordPress menus plus Customizer contact/social/footer data | Same menu and Customizer-driven data | adapted | Figma layout controls presentation; admin workflow remains WP-native | Client / admin |
 | Jobs | Jobs CPT and Settings page in Baspa | Jobs CPT and Settings page retained | not applicable | Retained for parity, but not a primary Arctic release section unless client asks for careers content | Client decision |
-| Members | Members CPT and Settings page in Baspa | Members CPT and Settings page retained | not applicable | Retained for parity, but not a primary Arctic release section unless client asks for team content | Client decision |
+| Members | Members CPT and Settings page in Baspa | Members CPT and Settings page retained and `/o-nas/` team carousel consumes published `member` posts | not applicable | Primary Arctic release section after 2026-06-01 review; fallback uses Figma `O NAS` team export when no members exist | `template-about.php`, `npm run about:smoke` |
 | Partners | Partners CPT and Settings page in Baspa | Partners CPT and Settings page retained | not applicable | Retained for parity, but not a primary Arctic release section unless client asks for partner content | Client decision |
 | Local-safe integrations | Baspa form/ecomail integrations | Arctic hardened form/ecomail integrations | adapted | Local environment avoids external Ecomail calls; production behavior remains configurable | Technical owner |
 

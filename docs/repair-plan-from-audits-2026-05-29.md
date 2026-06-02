@@ -465,7 +465,7 @@ Acceptance:
 
 ### 6D - O nás
 
-Status 2026-05-30: implemented/verified. `/o-nas/` matches the Figma page geometry for intro, stats, team grid, career cards, contact CTA, and mountain footer. Team/person portraits remain `WAITING_ON_OWNER` because only design-only Figma portraits exist in the repo asset map; the page must not invent or reuse them as owner assets. Stats use the Figma red token. Evidence: `docs/screenshots/about-6d-verification-2026-05-30/`. Guard: `npm run about:smoke`.
+Status 2026-06-01: implemented/verified. `/o-nas/` matches the Figma page geometry for intro, stats, team carousel, career cards, contact CTA, and mountain footer. Team/person portraits now use freshly downloaded Figma node renders (`about-team-*.png`) and the fallback card copy follows the Figma frame: Vlastimil Zhoř, Ing. Lukáš Dušek, Helena Antonyová, Alena Janulíková. The live section is admin-driven: published `member` posts can replace the fallback, use featured images, `member_position`, `member_scope`, and `menu_order`, so the team can grow beyond the first four people. Stats use the Figma red token. Evidence: `docs/screenshots/about-6d-verification-2026-05-30/`. Guard: `npm run about:smoke`.
 
 | Problém | Oprava | Soubory |
 |---|---|---|

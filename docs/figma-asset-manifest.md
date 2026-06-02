@@ -103,10 +103,10 @@ Poznámka k auditu 2026-05-24: HP hero má ve Figma grafice jeden skutečný obr
 | Showroom hero | `1:446` | 1920 x 801 | `graphics/showroom-hero-bazeny.jpg` | Figma showroom/O nás obsahový obraz |
 | Showroom detail bazény | `1:443` | 674 x 424 | `graphics/showroom-detail-bazeny.png` | stránka Showroom |
 | Showroom detail vířivky | `1:444` | 674 x 424 | `graphics/showroom-detail-virivky.png` | stránka Showroom |
-| Tým Vladimír | `1:987` | 336 x 335 | `graphics/about-team-vladimir.png` | stránka O nás |
+| Tým Vlastimil Zhoř | `1:987` | 336 x 335 | `graphics/about-team-vladimir.png` | stránka O nás |
 | Tým Lukáš | `1:1003` | 336 x 335 | `graphics/about-team-lukas.png` | stránka O nás |
 | Tým Helena | `1:1004` | 336 x 335 | `graphics/about-team-helena.png` | stránka O nás |
-| Tým servis | `1:985` | 335 x 335 | `graphics/about-team-service.png` | stránka O nás |
+| Tým Alena Janulíková | `1:985` | 335 x 335 | `graphics/about-team-alena.png` | stránka O nás |
 | Mobile logo | `1:1977` | 86 x 48 | `graphics/mobile-logo-arctic-spas.svg` | kontrola mobilního headeru |
 | Mobile hero | `1:1974` | 1343 x 556 | `graphics/mobile-hp-hero.jpg` | mobilní hero reference |
 | Mobile karta vířivky | `1:2000` | 335 x 221 | `graphics/mobile-category-virivky.jpg` | mobilní karta směru |

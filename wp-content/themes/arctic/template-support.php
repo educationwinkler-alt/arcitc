@@ -152,19 +152,19 @@ foreach ( $questions as $index => $question ) {
 ?>
 
 <main id="<?php echo sanitize_title( esc_attr_x( 'content', 'anchor', 'baspa' ) ); ?>"
-      class="f-main f-main--support f-main--support-contract f-main--top-0">
+      class="f-main f-main--support f-main--support-contract f-main--top-0 js-autohide--hide">
 
-	<section class="f-section f-section--support-tabs f-section--support-tabs-contract">
+	<section class="f-section f-section--support-tabs f-section--support-tabs-contract f-links--sticky f-links--support js-section-nav-handoff">
 		<div class="f-section__container a-container">
-			<nav class="f-support-tabs f-support-tabs--contract" aria-label="<?php echo esc_attr__( 'Podpora', 'baspa' ); ?>">
-				<a href="#caste-dotazy"><?php echo esc_html( $support_faq_title ); ?></a>
+			<nav class="f-support-tabs f-support-tabs--contract js-links__navigation" aria-label="<?php echo esc_attr__( 'Podpora', 'baspa' ); ?>">
+				<a class="active" href="#caste-dotazy"><?php echo esc_html( $support_faq_title ); ?></a>
 				<a href="#ke-stazeni"><?php echo esc_html( $support_downloads_title ); ?></a>
 				<a href="#servisni-formular"><?php echo esc_html( $support_form_title ); ?></a>
 			</nav>
 		</div>
 	</section>
 
-	<section id="caste-dotazy" class="f-section f-section--support-faq f-section--support-faq-contract">
+	<section id="caste-dotazy" class="f-section f-section--support-faq f-section--support-faq-contract js-links__section">
 		<div class="f-section__container a-container">
 			<div class="f-support-layout">
 				<div class="f-support-layout__main">
@@ -230,7 +230,7 @@ foreach ( $questions as $index => $question ) {
 		</div>
 	</section>
 
-	<section id="ke-stazeni" class="f-section f-section--support-downloads f-section--support-downloads-contract">
+	<section id="ke-stazeni" class="f-section f-section--support-downloads f-section--support-downloads-contract js-links__section">
 		<div class="f-section__container a-container">
 			<h2><?php echo esc_html( $support_downloads_title ); ?></h2>
 			<div class="f-chip-list f-chip-list--interactive f-chip-list--contract" role="tablist" aria-label="<?php echo esc_attr__( 'Kategorie ke stažení', 'baspa' ); ?>">
@@ -247,7 +247,7 @@ foreach ( $questions as $index => $question ) {
 		</div>
 	</section>
 
-	<section id="servisni-formular" class="f-section f-section--support-form f-section--support-form-contract">
+	<section id="servisni-formular" class="f-section f-section--support-form f-section--support-form-contract js-links__section">
 		<div class="f-section__container a-container">
 			<div class="f-support-form f-support-form--contract">
 				<header>

@@ -30,7 +30,7 @@ if ( !$is_wider_range ) {
 }
 ?>
 
-<div class="f-links f-links--sticky f-links--product">
+<div class="f-links f-links--sticky f-links--product js-section-nav-handoff">
 	<div class="f-links__container a-container">
 		<?php if ( !empty( $nav_items ) ) { ?>
 			<nav class="f-links__navigation js-links__navigation" aria-label="<?php echo esc_attr_x( 'Product Navigation', 'navigation', 'baspa' ); ?>">

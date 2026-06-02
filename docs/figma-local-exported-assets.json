@@ -588,15 +588,15 @@
     },
     {
       "id": "1:985",
-      "name": "about-team-service",
+      "name": "about-team-alena",
       "ok": true,
       "format": "png",
       "imageRef": "60db8c06241163544095c6d3357aa65a5b8c7331",
       "imageNodeId": "1:985",
       "imageNodeName": "image",
       "imageMode": "direct",
-      "archivePath": "assets-source/figma/export/graphics/about-team-service.png",
-      "wpImportPath": "wp-content/uploads/import/figma/about-team-service.png"
+      "archivePath": "assets-source/figma/export/graphics/about-team-alena.png",
+      "wpImportPath": "wp-content/uploads/import/figma/about-team-alena.png"
     }
   ]
 }

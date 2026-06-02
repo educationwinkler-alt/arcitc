@@ -4,7 +4,7 @@
  * Type
  */
 
-if ( !function_exists( 'baspa_type_job_register' ) ) {
+if ( ! function_exists( 'baspa_type_job_register' ) ) {
 
 	/**
 	 * Register Type
@@ -13,24 +13,24 @@ if ( !function_exists( 'baspa_type_job_register' ) ) {
 
 		register_post_type( 'job', array(
 			'labels'              => array(
-				'name'               => esc_html_x( 'Jobs', 'type', 'baspa' ),
-				'menu_name'          => esc_html_x( 'Jobs', 'type', 'baspa' ),
-				'singular_name'      => esc_html_x( 'Job', 'type', 'baspa' ),
-				'name_admin_bar'     => esc_html_x( 'Add Job', 'type', 'baspa' ),
-				'all_items'          => esc_html_x( 'All Jobs', 'type', 'baspa' ),
-				'add_new'            => esc_html_x( 'Add Job', 'type', 'baspa' ),
-				'add_new_item'       => esc_html_x( 'Add Job', 'type', 'baspa' ),
-				'edit_item'          => esc_html_x( 'Edit Job', 'type', 'baspa' ),
-				'new_item'           => esc_html_x( 'New Job', 'type', 'baspa' ),
-				'view_item'          => esc_html_x( 'View Job', 'type', 'baspa' ),
-				'view_items'         => esc_html_x( 'View Jobs', 'type', 'baspa' ),
-				'search_items'       => esc_html_x( 'Search Jobs', 'type', 'baspa' ),
-				'not_found'          => esc_html_x( 'No Jobs', 'type', 'baspa' ),
-				'not_found_in_trash' => esc_html_x( 'No Jobs Found in Trash', 'type', 'baspa' ),
-				'archives'           => esc_html_x( 'Job Archives', 'type', 'baspa' ),
-				'attributes'         => esc_html_x( 'Job Attributes', 'type', 'baspa' ),
-				'item_published'     => esc_html_x( 'Job published.', 'type', 'baspa' ),
-				'item_updated'       => esc_html_x( 'Job updated.', 'type', 'baspa' ),
+				'name'               => esc_html_x( 'Pracovní pozice', 'type', 'baspa' ),
+				'menu_name'          => esc_html_x( 'Pracovní pozice', 'type', 'baspa' ),
+				'singular_name'      => esc_html_x( 'Pracovní pozice', 'type', 'baspa' ),
+				'name_admin_bar'     => esc_html_x( 'Přidat pracovní pozici', 'type', 'baspa' ),
+				'all_items'          => esc_html_x( 'Všechny pracovní pozice', 'type', 'baspa' ),
+				'add_new'            => esc_html_x( 'Přidat pozici', 'type', 'baspa' ),
+				'add_new_item'       => esc_html_x( 'Přidat pracovní pozici', 'type', 'baspa' ),
+				'edit_item'          => esc_html_x( 'Upravit pracovní pozici', 'type', 'baspa' ),
+				'new_item'           => esc_html_x( 'Nová pracovní pozice', 'type', 'baspa' ),
+				'view_item'          => esc_html_x( 'Zobrazit pracovní pozici', 'type', 'baspa' ),
+				'view_items'         => esc_html_x( 'Zobrazit pracovní pozice', 'type', 'baspa' ),
+				'search_items'       => esc_html_x( 'Hledat pracovní pozice', 'type', 'baspa' ),
+				'not_found'          => esc_html_x( 'Žádné pracovní pozice', 'type', 'baspa' ),
+				'not_found_in_trash' => esc_html_x( 'V koši nejsou žádné pracovní pozice', 'type', 'baspa' ),
+				'archives'           => esc_html_x( 'Archiv pracovních pozic', 'type', 'baspa' ),
+				'attributes'         => esc_html_x( 'Atributy pracovní pozice', 'type', 'baspa' ),
+				'item_published'     => esc_html_x( 'Pracovní pozice byla publikována.', 'type', 'baspa' ),
+				'item_updated'       => esc_html_x( 'Pracovní pozice byla aktualizována.', 'type', 'baspa' ),
 			),
 			'public'              => true,
 			'show_ui'             => true,
@@ -62,7 +62,7 @@ if ( !function_exists( 'baspa_type_job_register' ) ) {
 
 }
 
-if ( !function_exists( 'baspa_jobs_type_content_default' ) ) {
+if ( ! function_exists( 'baspa_jobs_type_content_default' ) ) {
 
 	/**
 	 * Default Content
@@ -74,9 +74,9 @@ if ( !function_exists( 'baspa_jobs_type_content_default' ) ) {
 	 */
 	function baspa_jobs_type_content_default( $content, $post ): mixed {
 
-		if ( $post->post_type == 'job' ) {
+		if ( $post->post_type === 'job' ) {
 			$content = '<!-- wp:paragraph -->
-<p>Hledáme člověka, který chce pracovat s prémiovým wellness sortimentem Arctic Spas a umí být spolehlivým partnerem pro zákazníky od první konzultace až po předání hotové realizace.</p>
+<p>Hledáme člověka, který chce pracovat s prémiovým wellness sortimentem Arctic Spas a umí být spolehlivým partnerem pro zákazníky od první konzultace až po hotovou realizaci.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:columns -->
@@ -138,8 +138,8 @@ if ( !function_exists( 'baspa_jobs_type_content_default' ) ) {
 <!-- /wp:columns -->
 
 <!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-outline"} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="mailto:lukas.dusek@arctic-spas.cz">Ozvěte se nám</a></div>
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="mailto:lukas.dusek@arctic-spas.cz">Ozvěte se nám</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons -->';
 		}
@@ -151,7 +151,7 @@ if ( !function_exists( 'baspa_jobs_type_content_default' ) ) {
 
 }
 
-if ( !function_exists( 'baspa_type_job_blocks' ) ) {
+if ( ! function_exists( 'baspa_type_job_blocks' ) ) {
 
 	/**
 	 * Allowed Blocks
@@ -185,7 +185,7 @@ if ( !function_exists( 'baspa_type_job_blocks' ) ) {
 
 }
 
-if ( !function_exists( 'baspa_type_job_columns' ) ) {
+if ( ! function_exists( 'baspa_type_job_columns' ) ) {
 
 	/**
 	 * Admin Columns
@@ -195,9 +195,9 @@ if ( !function_exists( 'baspa_type_job_columns' ) ) {
 	function baspa_type_job_columns(): array {
 
 		return array(
-			'cb'    => "<input type=\"checkbox\">",
-			'title' => esc_html_x( 'Job', 'type', 'baspa' ),
-			'order' => esc_html_x( 'Order', 'type', 'baspa' ),
+			'cb'    => '<input type="checkbox">',
+			'title' => esc_html_x( 'Pracovní pozice', 'type', 'baspa' ),
+			'order' => esc_html_x( 'Pořadí', 'type', 'baspa' ),
 		);
 
 	}
@@ -206,7 +206,7 @@ if ( !function_exists( 'baspa_type_job_columns' ) ) {
 
 }
 
-if ( !function_exists( 'baspa_type_job_columns_content' ) ) {
+if ( ! function_exists( 'baspa_type_job_columns_content' ) ) {
 
 	/**
 	 * Admin Columns Content
@@ -220,7 +220,7 @@ if ( !function_exists( 'baspa_type_job_columns_content' ) ) {
 
 			case 'order':
 
-				if ( !empty( $post->menu_order ) ) {
+				if ( ! empty( $post->menu_order ) ) {
 					echo esc_html( $post->menu_order );
 				}
 
@@ -234,7 +234,7 @@ if ( !function_exists( 'baspa_type_job_columns_content' ) ) {
 
 }
 
-if ( !function_exists( 'baspa_type_job_admin_list' ) ) {
+if ( ! function_exists( 'baspa_type_job_admin_list' ) ) {
 
 	/**
 	 * Admin List
@@ -243,9 +243,9 @@ if ( !function_exists( 'baspa_type_job_admin_list' ) ) {
 	 */
 	function baspa_type_job_admin_list( $wp_query ): void {
 
-		if ( is_admin() ) {
+		if ( is_admin() && isset( $wp_query->query['post_type'] ) ) {
 
-			if ( $wp_query->query[ 'post_type' ] == 'job' && !isset( $_GET[ 'order' ] ) ) {
+			if ( $wp_query->query['post_type'] === 'job' && ! isset( $_GET['order'] ) ) {
 				$wp_query->set( 'orderby', array(
 					'menu_order' => 'ASC',
 					'date'       => 'ASC',
