@@ -4,10 +4,34 @@
  *
  * Run after a database backup:
  * wp eval-file wp-content/themes/arctic/tools/apply-footer-offers-copyright-2026-06-08.php
+ *
+ * Temporary production web run is guarded by a token:
+ * token = hash_hmac('sha256', 'apply-footer-offers-copyright-2026-06-08', DB_PASSWORD)
  */
+
+$wp_load = dirname( __DIR__, 4 ) . '/wp-load.php';
+
+if ( !defined( 'ABSPATH' ) && file_exists( $wp_load ) ) {
+	require_once $wp_load;
+}
 
 if ( !defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+$is_cli = 'cli' === PHP_SAPI;
+
+if ( !$is_cli ) {
+	$secret   = defined( 'DB_PASSWORD' ) ? (string) DB_PASSWORD : wp_salt( 'auth' );
+	$expected = hash_hmac( 'sha256', 'apply-footer-offers-copyright-2026-06-08', $secret );
+	$provided = isset( $_GET['token'] ) ? (string) wp_unslash( $_GET['token'] ) : '';
+
+	if ( !hash_equals( $expected, $provided ) ) {
+		status_header( 403 );
+		exit( 'Forbidden' );
+	}
+
+	header( 'Content-Type: application/json; charset=utf-8' );
 }
 
 $summary = array(
