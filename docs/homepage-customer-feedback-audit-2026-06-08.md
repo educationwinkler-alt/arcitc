@@ -1458,12 +1458,66 @@ Repair plan:
 - `npm run admin-fallback:smoke` passed after the fix.
 - `npm run asset:smoke` passed after the fix.
 
+## Release workflow and production discipline - 2026-06-08
+
+All repairs must move through git and a repeatable deploy gate. No uncommitted local fix should be copied to production, and no production edit should be treated as complete until the same source/data change is recorded in git or in a documented WP data migration/export.
+
+### Per-repair workflow
+
+1. Pick one repair block from the recommended order and keep the scope narrow.
+2. Back up affected production data before any write:
+   - database before WP meta/CPT/menu/theme-mod changes,
+   - uploads/media before bulk image replacement,
+   - current theme/plugin files before deployment.
+3. Implement locally against `http://localhost:8090`.
+4. Run the focused smoke/audit for the touched area:
+   - homepage: homepage audit, link smoke, asset smoke, admin/fallback smoke,
+   - category/series: category audit, product-media smoke, link smoke,
+   - products: product content/media/detail smoke plus mobile `#barvy` screenshot,
+   - support/reference/about/showroom/contact: site audit, about/showroom/contact-map/link smoke,
+   - pricing/catalog/offers/Ecomail: pricing/catalog audit, form smoke, link smoke.
+5. Commit the passing change with a clear message.
+6. Push the commit to `origin`.
+7. Deploy only the pushed commit SHA, not an untracked working copy.
+8. Apply required WP data changes through a repeatable script, WP-CLI command, migration export/import, or clearly documented admin steps.
+9. Run production smoke against the preview/final domain.
+10. Save production screenshots/audit JSON for the changed area under `docs/screenshots/...`.
+11. If production smoke fails, fix forward through a new commit or roll back to the last known good deployed SHA. Do not patch production by hand and leave git behind.
+
+### Definition of done for every block
+
+- Relevant source files are committed.
+- Commit is pushed to `origin`.
+- Production is deployed from the pushed SHA.
+- Required WP data changes are documented and repeatable.
+- Local smoke passes.
+- Production smoke passes.
+- No public page depends on seed/Figma fallback content.
+- Admin-editable blocks expose a real WP/admin source or an approved empty state.
+- A simple admin text edit does not delete unrelated repeaters, media, contacts, prices, offers, or global settings.
+- Mobile and desktop screenshots exist for the affected public UI.
+- Any remaining content gap is explicitly marked as `client-verify`, not silently hidden.
+
+### Production deployment order
+
+1. Backups and rollback point.
+2. Code deploy from pushed SHA.
+3. Database/data migrations.
+4. Media optimization/regeneration.
+5. Cache/image optimizer purge.
+6. Focused production smoke.
+7. Visual screenshot evidence.
+8. Client-visible preview check.
+
+Do not combine large unrelated repairs in one deploy unless the second change is required for the first one to work. The current risk is not only code quality; it is traceability. Every visible production change must be explainable by a commit, a data migration, and a passing production check.
+
 ## Recommended repair order
 
 1. June 15 acceptance gate:
    - freeze the provisional review scope,
    - list every production page that will be checked,
    - define "accepted empty state" vs "missing content",
+   - require commit, push, deploy-from-SHA, and post-deploy smoke for every repair block,
    - run fallback/admin/performance smokes before publishing changes,
    - verify production does not rely on local-only seed content.
 2. Production backup and data repair:
