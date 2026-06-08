@@ -27,6 +27,59 @@ The customer comments are valid. The homepage is failing in three different laye
 
 This is how an admin edit can make major sections disappear: the templates are intentionally production-strict and only render homepage benefits/progress from page meta. If those repeatable meta rows are missing or saved empty, production does not fall back to Figma/seed data. Local still looks fine because local seed fallbacks and local seeded meta hide the issue.
 
+## Customer feedback coverage check - 2026-06-08
+
+Result after re-reading the full customer list: every top-level customer complaint is covered in the audit/repair plan. The "O nas" item was present, but it was buried inside the broader support/reference/showroom/contact addendum; this checklist makes that explicit.
+
+Homepage:
+
+- Slow first load: covered by `P0 - First load is too heavy`, `Baspa environment parity`, and performance repair order.
+- Missing slide click-through: covered by `P0 - Slide links are not usable` and CTA/proklik repair.
+- Mobile only shows the first dark slide: covered by `P0 - Mobile slider is disabled by CSS`, Figma notes, and mobile slider CSS repair.
+- Misaligned mobile `Virivky` / `Celorocni bazeny` images: covered by `P1 - Mobile category card images are same-size but visually misaligned`.
+- Admin edit removed `Nase sluzby` pictograms/progress bullets: covered by `P0 - Admin edit caused homepage sections to disappear`, `Admin save hardening`, and June 15 acceptance gates.
+- Footer menu should remove `Skladove virivky`: covered by `P1 - Footer menu and copyright are data plus test changes` and offers rename plan.
+- Copyright should be `BASPA s.r.o.`: covered by the same footer/copyright section.
+
+Category pages:
+
+- Hot tub and swimspa hero CTAs are clipped/missing: covered by `P0 - Desktop category hero CTA is clipped below the hero`.
+- Product thumbnails are badly cropped: covered by `P0 - Product thumbnails are visually bad because product renders are forced into a scaled wide frame`.
+- Missing Baspa-style model-series summary pages: covered by `P0 - Series summary pages are only generic archives, not Baspa-style model-series pages`.
+
+Product pages:
+
+- Too few/inaccurate configurations: covered by `P0 - Configuration data is incomplete and the current schema is too shallow`.
+- Every model needs all available configurations: covered by the configuration catalog and product smoke plan.
+- Customer may edit labels later, but we must deliver correct structure/data: covered by configuration schema extension and admin save hardening.
+- Hero description is cut mid-sentence: covered by `P0 - Product hero descriptions are deliberately cut mid-sentence`.
+- Cabinet finishes/colors are missing: covered by `P0 - Cabinet colors are missing almost everywhere`.
+- `Vyhody` links are dead: covered by `P0 - "Vyhody" and "Volitelna vybava" links are dead on production hot tub pages`.
+- `Volitelna vybava` is missing: covered by the same link section plus `P0 - Standard and optional equipment need a real catalog, not static fallback cards`.
+- Standard and optional equipment need detail content/links: covered by the feature/equipment catalog repair plan.
+- Swimspa benefit/equipment links/sections are missing: covered by `P0 - Swimspa pages are missing benefits and optional equipment by template design`.
+- Product copy/photos are weak or fallback-like: covered by `P1 - Product photos and content quality need a source pass` and the June 15 no-fallback acceptance gate.
+- Mobile shell-color thumbnails must also be fixed in production: covered by `P0 - Mobile shell-color thumbnails must be fixed on production, not only locally`.
+
+Support and information pages:
+
+- `Kolik stoji provoz a udrzba` should move into support FAQ: covered by `P0 - "Kolik stoji provoz a udrzba" is still a standalone page and menu item`.
+- References should behave like Baspa references, not image-only: covered by `P0 - References archive is image-only instead of a content archive`.
+- `O nas` is stale: covered by `P1 - "O nas" content is stale` and the support/reference/showroom/contact repair order.
+- Showroom map is missing: covered by `P0 - Showroom page has no embedded map and the gallery CTA is not a real gallery`.
+- Showroom gallery CTA leads nowhere useful: covered by the same showroom section.
+- Contact map is unclear/wrongly centered: covered by `P0 - Contact map is too dark and uses a shifted map viewport`.
+- `Dalsi informace` needs `Poptavkovy formular` above `Servis`: covered by `P1 - "Dalsi informace" menu is missing inquiry form link`.
+
+Commercial/admin requirements:
+
+- Missing prices / price-list discovery: covered by `P0 - Price discovery is not complete enough for launch`.
+- Reusable catalog/price-list email CTA visible before final Ecomail activation: covered by `P0 - Catalog/price-list CTA must be reusable and present at buying points`.
+- Ecomail handoff on final domain: covered by `P0 - Ecomail handoff needs a production contract, not just code`.
+- `Vyprodej skladovych virivek` must become `Akcni nabidky`: covered by `P0 - Offers must be renamed and made publication-safe`.
+- Four editable offer types with only published offers visible: covered by the same offers section.
+- Client must be able to edit texts, contacts, phones, and global facts in wp-admin without breaking sections: covered by admin save hardening, no-fallback gates, and the June 15 acceptance gate.
+
 ## Findings
 
 ### P0 - Admin edit caused homepage sections to disappear
@@ -1327,6 +1380,7 @@ Repair plan:
    - protect product configurations during saves,
    - protect product benefit/option repeaters during saves,
    - protect product price fields and offer fields during saves,
+   - protect contact/member/theme-mod phone, email, and global text fields during saves,
    - protect catalog form/Ecomail settings from accidental empty saves,
    - add production-content smoke gates so a simple text edit cannot silently remove whole sections.
 4. Product content model repair:
