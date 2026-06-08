@@ -82,8 +82,9 @@ function safePath(fileName) {
 
   for (const pageDef of pages) {
     const url = `${baseUrl}${pageDef.path}`;
-    const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 90000 });
-    await page.waitForTimeout(800);
+    const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 });
+    await page.waitForLoadState('networkidle', { timeout: 12000 }).catch(() => {});
+    await page.waitForTimeout(700);
 
     const state = await page.evaluate((selectors) => {
       const assets = Array.from(document.querySelectorAll('link[href*="content-overflow-guard.css"]')).map((asset) => asset.href);
