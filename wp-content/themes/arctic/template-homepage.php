@@ -13,7 +13,6 @@ get_template_part( 'modules/slides/templates/section' );
 	      class="f-main f-main--homepage">
 
 		<?php
-		get_template_part( 'modules/offers/templates/section', 'small' );
 		get_template_part( 'modules/products/templates/section', 'categories' );
 
 		get_template_part( 'templates/content', '', array(

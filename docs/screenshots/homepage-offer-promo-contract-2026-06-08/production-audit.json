@@ -1,0 +1,23 @@
+{
+  "baseUrl": "https://illuminatus.cz",
+  "status": 200,
+  "url": "https://illuminatus.cz/",
+  "heroPromoCount": 1,
+  "legacySectionCount": 0,
+  "legacyCardCount": 0,
+  "promoSource": "offer-cpt",
+  "promoOfferId": "2561",
+  "promoHref": "https://illuminatus.cz/akcni-nabidky/",
+  "promoImageStatus": "admin-offer-promo",
+  "promoRect": {
+    "x": 1632,
+    "y": 593,
+    "width": 268,
+    "height": 288,
+    "top": 593,
+    "right": 1900,
+    "bottom": 881,
+    "left": 1632
+  },
+  "legacyTexts": []
+}
