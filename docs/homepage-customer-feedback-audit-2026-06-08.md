@@ -1225,23 +1225,111 @@ Because Figma does not currently define the exact email-gated price-list block, 
    - product content smoke for prices/configurations,
    - manual test email on final domain.
 
+## Escalation, admin data, fallbacks, and performance addendum - 2026-06-08
+
+The cover email does not add a new product URL, Figma frame, database field, or media asset. It does add a hard acceptance constraint: the client will re-check the provisional site on Monday, June 15, 2026 and decide whether to accept or reject the work.
+
+This changes the delivery standard. A page that only looks acceptable locally is not enough. The site must be content-complete enough for client review, editable through wp-admin, and free of production-visible seed/Figma fallback content that hides missing data.
+
+### Useful data extracted from the email
+
+- Final client review date: Monday, June 15, 2026.
+- Client risk is no longer only visual quality; it is trust in delivery and admin stability.
+- Missing content and fallback content are both release blockers.
+- A simple admin text edit already caused important homepage blocks to disappear, so admin save handlers are a P0 delivery risk.
+- Photo replacement and text review are still expected, but they must happen on top of a stable admin data model.
+- The site is based on the existing Baspa environment. Preserve working Baspa patterns and avoid replacing proven form/contact/download/member/menu behavior unless the current implementation is demonstrably broken.
+
+### Acceptance gates before the June 15 review
+
+1. No production-visible seed/Figma fallback content:
+   - homepage slides,
+   - homepage services/benefits/progress,
+   - category intros/heroes,
+   - product configurations,
+   - shell/cabinet colors,
+   - benefits/optional equipment,
+   - references,
+   - showroom/contact/member media,
+   - offer promos.
+2. Every public block must have a real admin source or an explicit approved empty state:
+   - slide CPT,
+   - homepage page meta,
+   - term meta,
+   - product meta/repeaters,
+   - product-series term/archive data,
+   - offer CPT,
+   - FAQ/download/reference/member CPTs,
+   - theme mods/options for global contacts/forms/maps.
+3. Admin save hardening:
+   - saving one text field must not delete unrelated repeater rows,
+   - missing POST keys from collapsed/hidden metaboxes must preserve existing values,
+   - media IDs must not be replaced by empty strings unless the admin explicitly removes them,
+   - repeaters need stable row keys or a safe merge strategy,
+   - production smoke must simulate at least one simple text edit and assert that homepage/product blocks still render.
+4. Product data cannot be "fallback-first":
+   - all models need the correct count of configurations,
+   - all available configurations need editable names/specs/images,
+   - shell and cabinet colors must be assigned through admin data,
+   - standard and optional equipment need reusable editable catalog items,
+   - feature/equipment links must point to real detail pages or approved anchors.
+5. Content migration must be real enough for review:
+   - use current Baspa content as a functional baseline where appropriate,
+   - use Arctic corporate content only as a reference for structure/quality, not as unreviewed machine-like copy,
+   - mark every remaining placeholder visibly in the internal audit, not on the public site.
+
+### Baspa environment parity
+
+Baspa local has two relevant production-support plugins that Arctic local does not currently use:
+
+- `ewww-image-optimizer` - EWWW Image Optimizer 8.2.1.
+- `powered-cache` - Powered Cache 3.6.3.
+
+Arctic theme currently registers responsive image sizes in `wp-content/themes/arctic/inc/images.php` and uses the Forqy image helpers for lazy/srcset/preload behavior. That is useful, but it is not the same as compression, WebP/AVIF generation, cache headers, or page cache.
+
+Repair plan:
+
+1. Decide whether Arctic production should use the same Baspa plugin stack or an equivalent host-level optimization stack.
+2. If yes, install/configure the image optimizer and cache plugin on staging/production before the final performance pass.
+3. Regenerate thumbnails after product/category/hero media is corrected.
+4. Compress first-slide and below-fold slide media; do not solve slow first load only by hiding slides on mobile.
+5. Add a transfer-size/performance audit for:
+   - homepage first load,
+   - mobile slider,
+   - category heroes,
+   - product hero/configuration media.
+
+### Verified/fixed during this addendum
+
+- `npm run admin-fallback:smoke` initially caught that homepage fallback slides were not gated strongly enough.
+- `wp-content/themes/arctic/modules/slides/templates/section.php` now only builds static homepage fallback slides when `arctic_allow_seed_fallbacks()` allows local/development seed content.
+- The local admin fallback smoke checks this homepage fallback gate; the broader smoke file still depends on other uncommitted admin/fallback hardening work and should be committed with that work, not alone.
+- `npm run admin-fallback:smoke` passed after the fix.
+- `npm run asset:smoke` passed after the fix.
+
 ## Recommended repair order
 
-1. Production backup and data repair:
+1. June 15 acceptance gate:
+   - freeze the provisional review scope,
+   - list every production page that will be checked,
+   - define "accepted empty state" vs "missing content",
+   - run fallback/admin/performance smokes before publishing changes,
+   - verify production does not rely on local-only seed content.
+2. Production backup and data repair:
    - homepage benefits/progress meta,
    - first slide link/CTA,
    - footer menu item,
    - copyright,
    - current product configuration/color/benefit/option/price data export,
    - current offer/menu/Ecomail theme-mod export without exposing secrets.
-2. Admin hardening before content import:
+3. Admin hardening before content import:
    - protect homepage repeaters during saves,
    - protect product configurations during saves,
    - protect product benefit/option repeaters during saves,
    - protect product price fields and offer fields during saves,
    - protect catalog form/Ecomail settings from accidental empty saves,
    - add production-content smoke gates so a simple text edit cannot silently remove whole sections.
-3. Product content model repair:
+4. Product content model repair:
    - complete configuration catalog for all models,
    - complete product and series indicative prices,
    - shell and cabinet color assignments,
@@ -1250,39 +1338,41 @@ Because Figma does not currently define the exact email-gated price-list block, 
    - optional equipment catalog,
    - feature/equipment detail links,
    - swimspa feature/equipment sections.
-4. Pricing/catalog/Ecomail/offers repair:
+5. Pricing/catalog/Ecomail/offers repair:
    - add reusable catalog/price-list CTA,
    - place it on home/category/product/support/download decision points,
    - configure production Ecomail handoff,
    - rename `Vyprodej skladovych virivek`/`Skladove virivky` to `Akcni nabidky`,
    - seed four offer types and render only published offers.
-5. Support/reference/showroom/contact IA repair:
+6. Baspa parity and performance repair:
+   - preserve working Baspa admin/module patterns,
+   - decide/install equivalent image optimizer and cache stack,
+   - regenerate thumbnails,
+   - optimize hero/category/product media,
+   - add transfer budget gates for first load.
+7. Support/reference/showroom/contact IA repair:
    - move maintenance/provoz content into support FAQ,
    - rebuild references as content cards/details,
    - update stale about copy/stats/team data,
    - add showroom map and real gallery,
    - correct/lighten the contact map,
    - add `Poptavkovy formular` above `Servis` in `Dalsi informace`.
-6. Mobile slider CSS repair:
+8. Mobile slider CSS repair:
    - remove first-slide-only lock,
    - restore Swiper transform,
    - restore pagination,
    - remove/soften overlay,
    - stop hiding real slide images.
-7. CTA/proklik repair:
+9. CTA/proklik repair:
    - unhide homepage caption footer,
    - add link defaults or production slide meta,
    - verify tap/keyboard behavior.
-8. Category and series repair:
+10. Category and series repair:
    - fix clipped category hero CTAs,
    - normalize product-card media,
    - build real `product-series` summary pages,
    - add Baspa-compatible redirects.
-9. Asset/performance pass:
-   - optimized hero/category/footer media,
-   - lazy loading for below-fold/footer/non-first slides,
-   - transfer budget gate.
-10. Final visual QA:
+11. Final visual QA:
    - local and production,
    - mobile `390/393`,
    - mobile product `#barvy` screenshot on local and production,
@@ -1291,4 +1381,4 @@ Because Figma does not currently define the exact email-gated price-list block, 
 
 ## Immediate risk
 
-Do not deploy only CSS fixes and call this done. The production homepage content data is already damaged or incomplete, product pages currently depend on missing or fallback-only product data, price discovery is incomplete, catalog/price-list capture is not present at buying points, mobile shell-color thumbnails still need production verification, and key information pages expose wrong or incomplete content flows. Visual fixes alone will not bring back missing services, progress bullets, configurations, prices, cabinet colors, benefits, optional equipment, reference descriptions, showroom map/gallery, a correct contact map, or a working Ecomail-backed catalog flow.
+Do not deploy only CSS fixes and call this done. The production homepage content data is already damaged or incomplete, product pages currently depend on missing or fallback-only product data, price discovery is incomplete, catalog/price-list capture is not present at buying points, mobile shell-color thumbnails still need production verification, and key information pages expose wrong or incomplete content flows. The escalation email makes the June 15 review a hard business deadline, so fallback masking and fragile admin saves are now acceptance blockers. Visual fixes alone will not bring back missing services, progress bullets, configurations, prices, cabinet colors, benefits, optional equipment, reference descriptions, showroom map/gallery, a correct contact map, or a working Ecomail-backed catalog flow.
