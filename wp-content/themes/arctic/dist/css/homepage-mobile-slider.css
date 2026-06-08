@@ -19,6 +19,18 @@
   border-color: var(--arctic-color-snow, #ffffff);
 }
 
+.template--homepage .f-page__content {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.template--homepage .f-page__content p {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
 @media (max-width: 767px) {
   .template--homepage .f-section--slides .f-slides__wrapper {
     transform: var(--arctic-home-slider-transform, translate3d(0, 0, 0)) !important;
