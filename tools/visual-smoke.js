@@ -19,7 +19,14 @@ const paths = [
   '/product/covana/',
   '/vlastnosti/',
   '/vlastnosti/izolace-virivky/',
+  '/vlastnosti/zaruka-na-skorepinu/',
+  '/vlastnosti/termokryt/',
+  '/vlastnosti/podlaha-virivky/',
+  '/vlastnosti/servisni-pristup/',
+  '/vlastnosti/variabilita/',
+  '/vlastnosti/automaticka-dezinfekce/',
   '/dalsi-informace/',
+  '/akcni-nabidky/',
   '/sluzby/',
   '/certifikaty/',
   '/zaruka/',
@@ -48,6 +55,7 @@ const screenshotPaths = [
   ['/vlastnosti/', 'features-desktop-playwright.png'],
   ['/vlastnosti/izolace-virivky/', 'feature-insulation-desktop-playwright.png'],
   ['/dalsi-informace/', 'more-info-desktop-playwright.png'],
+  ['/akcni-nabidky/', 'offers-desktop-playwright.png'],
   ['/sluzby/', 'services-desktop-playwright.png'],
   ['/certifikaty/', 'certificates-desktop-playwright.png'],
   ['/zaruka/', 'warranty-desktop-playwright.png'],
@@ -76,6 +84,7 @@ const mobileScreenshotPaths = [
   ['/vlastnosti/', 'features-mobile-playwright.png'],
   ['/vlastnosti/izolace-virivky/', 'feature-insulation-mobile-playwright.png'],
   ['/dalsi-informace/', 'more-info-mobile-playwright.png'],
+  ['/akcni-nabidky/', 'offers-mobile-playwright.png'],
   ['/sluzby/', 'services-mobile-playwright.png'],
   ['/certifikaty/', 'certificates-mobile-playwright.png'],
   ['/zaruka/', 'warranty-mobile-playwright.png'],
@@ -265,8 +274,9 @@ const forbiddenBrand = [
   'Baspa',
 ];
 
-const homepagePromoText = 'Výprodej skladových vířivek';
+const homepagePromoText = 'Akční nabídky';
 const legacyPromoTexts = [
+  'Výprodej skladových vířivek',
   'Akční nabídka skladových vířivek',
   'Akcni nabidka skladovych virivek',
   'Vyprodej skladovych virivek',
@@ -287,15 +297,14 @@ const legacyCzechFallbackTexts = [
   'Nas tym',
 ];
 
-function isAllowedLegalEntity(path, html) {
-  return path === '/kontakt/' && html.includes('BASPA s.r.o.');
+function isAllowedBrandUse(path, html) {
+  return (
+    (path === '/kontakt/' && html.includes('BASPA s.r.o.'))
+    || (path === '/o-nas/' && html.includes('tým BASPA je tu pro vás'))
+  );
 }
 
 function stripAllowedContactEmails(path, html) {
-  if (path !== '/kontakt/') {
-    return html;
-  }
-
   return html.replace(/[A-Z0-9._%+-]+@baspa\.cz/gi, '');
 }
 
@@ -336,7 +345,7 @@ function stripAllowedContactEmails(path, html) {
       const hits = forbidden.filter((needle) => htmlForForbidden.includes(needle));
       const mojibakeHits = mojibakeNeedles.filter((needle) => html.includes(needle));
       const brandHits = forbiddenBrand.filter((needle) => htmlWithoutFooter.includes(needle));
-      if (brandHits.length && !isAllowedLegalEntity(path, html)) {
+      if (brandHits.length && !isAllowedBrandUse(path, html)) {
         hits.push(...brandHits);
       }
       if (mojibakeHits.length) {
@@ -355,8 +364,12 @@ function stripAllowedContactEmails(path, html) {
         throw new Error(`${path} contains forbidden strings: ${hits.join(', ')}`);
       }
 
-      if (html.includes('f-footer--arctic') && !html.includes('BASPA s.r.o.')) {
+      const footerCopyright = await page.locator('.f-footer__copyright').first().innerText().catch(() => '');
+      if (html.includes('f-footer--arctic') && !footerCopyright.includes('BASPA s.r.o.')) {
         throw new Error(`${path} footer is missing BASPA s.r.o. copyright.`);
+      }
+      if (footerCopyright.includes('Arctic Spas CZ')) {
+        throw new Error(`${path} footer still contains Arctic Spas CZ copyright: ${footerCopyright}`);
       }
 
       if (resolvedPathname === '/') {

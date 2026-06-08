@@ -82,6 +82,56 @@ async function assertBox(page, selector, expected, tolerance, label) {
   assertClose(rect.height, expected.height, tolerance, `${label}.height`);
 }
 
+async function assertReferenceCarouselArrow(page) {
+  const carouselSelector = '.template--homepage .f-section--references .f-carousel';
+  const nextSelector = '.template--homepage .f-section--references .f-carousel__control--next';
+  const prevSelector = '.template--homepage .f-section--references .f-carousel__control--prev';
+
+  await page.waitForSelector(`${carouselSelector}.swiper-initialized`);
+  await page.waitForFunction((selector) => {
+    const element = document.querySelector(selector);
+
+    if (!element) {
+      return false;
+    }
+
+    const style = getComputedStyle(element);
+
+    return element.classList.contains('swiper-button-disabled')
+      && element.getAttribute('aria-disabled') === 'true'
+      && style.visibility === 'hidden'
+      && parseFloat(style.opacity) < 0.01
+      && style.pointerEvents === 'none';
+  }, prevSelector);
+
+  const carousel = await box(page, carouselSelector, 'figmaComponents.referencesCarousel');
+  const next = await box(page, nextSelector, 'figmaComponents.referencesArrowPosition');
+  const prevState = await page.locator(prevSelector).first().evaluate((element) => {
+    const style = getComputedStyle(element);
+
+    return {
+      ariaDisabled: element.getAttribute('aria-disabled'),
+      isDisabled: element.classList.contains('swiper-button-disabled'),
+      opacity: style.opacity,
+      visibility: style.visibility,
+      pointerEvents: style.pointerEvents,
+    };
+  });
+
+  assertClose(next.width, 42, 4, 'figmaComponents.referencesArrowPosition.width');
+  assertClose(next.height, 42, 4, 'figmaComponents.referencesArrowPosition.height');
+  assertClose(next.x, carousel.x + carousel.width - next.width - 9, 4, 'figmaComponents.referencesArrowPosition.x');
+  assertClose(next.y, 3638, 4, 'figmaComponents.referencesArrowPosition.y');
+
+  if (!prevState.isDisabled || prevState.ariaDisabled !== 'true') {
+    throw new Error('figmaComponents.referencesPrevArrowInitialState: expected previous arrow disabled at carousel start');
+  }
+
+  if (prevState.visibility !== 'hidden' || prevState.opacity !== '0' || prevState.pointerEvents !== 'none') {
+    throw new Error(`figmaComponents.referencesPrevArrowHidden: expected hidden disabled previous arrow, got visibility=${prevState.visibility}, opacity=${prevState.opacity}, pointer-events=${prevState.pointerEvents}`);
+  }
+}
+
 async function assertMissing(page, selector, label) {
   const count = await page.locator(selector).count();
 
@@ -724,7 +774,7 @@ async function auditFigmaTokenAndComponentStyles(page) {
   await assertComputedStyle(page, '.template--homepage .f-section--references .f-section__actions .a-button', 'border-color', 'rgb(163, 31, 55)', 'figmaComponents.referencesButtonBorder');
   await assertComputedStyle(page, '.template--homepage .f-section--references .f-carousel__control--next', 'background-color', 'rgb(255, 255, 255)', 'figmaComponents.referencesArrowBackground');
   await assertComputedStyle(page, '.template--homepage .f-section--references .f-carousel__control--next', 'color', 'rgb(0, 0, 0)', 'figmaComponents.referencesArrowColor');
-  await assertBox(page, '.template--homepage .f-section--references .f-carousel__control--next', { x: 1639, y: 3638, width: 42, height: 42 }, 4, 'figmaComponents.referencesArrowPosition');
+  await assertReferenceCarouselArrow(page);
   await assertComputedStyle(page, '.template--homepage .f-section--references .f-listing__metas .f-meta:first-child', 'background-color', 'rgb(35, 40, 47)', 'figmaComponents.referencesMetaDarkPill');
   await assertComputedStyle(page, '.template--homepage .f-section--references .f-listing__metas .f-meta:nth-child(2)', 'background-color', 'rgb(255, 255, 255)', 'figmaComponents.referencesMetaLightPill');
 
@@ -832,18 +882,48 @@ async function auditCompactNavigation(page) {
       throw new Error(`compactNavigation:${width}: off-canvas navigation did not open`);
     }
 
-    const visibleSubmenus = await page.locator('.f-off--navigation .f-navigation-sub, .f-off--navigation .sub-menu').evaluateAll((elements) => elements.filter((element) => {
-      const style = getComputedStyle(element);
-      const rect = element.getBoundingClientRect();
-      return style.display !== 'none' && rect.width > 1 && rect.height > 1;
-    }).length);
-    if (visibleSubmenus > 0) {
-      throw new Error(`compactNavigation:${width}: desktop submenu content is visible in compact navigation`);
+    const menuState = await page.locator('.f-off--navigation.active').evaluate((element) => {
+      const visibleSubmenus = [...element.querySelectorAll('.f-navigation-sub, .sub-menu')].filter((submenu) => {
+        const style = getComputedStyle(submenu);
+        const rect = submenu.getBoundingClientRect();
+        return style.display !== 'none' && rect.width > 1 && rect.height > 1;
+      }).length;
+
+      const visibleLinks = [...element.querySelectorAll('a')]
+        .filter((link) => link.offsetWidth > 1 || link.offsetHeight > 1 || link.getClientRects().length > 0)
+        .map((link) => link.textContent.replace(/\s+/g, ' ').trim())
+        .filter(Boolean);
+
+      return {
+        overflowY: getComputedStyle(element).overflowY,
+        scrollHeight: element.scrollHeight,
+        clientHeight: element.clientHeight,
+        visibleSubmenus,
+        visibleLinks,
+      };
+    });
+
+    if (menuState.visibleSubmenus < 4) {
+      throw new Error(`compactNavigation:${width}: expected visible submenu groups, got ${menuState.visibleSubmenus}`);
+    }
+
+    if (menuState.overflowY === 'hidden') {
+      throw new Error(`compactNavigation:${width}: mobile navigation clips submenu content`);
+    }
+
+    if (width <= 430 && menuState.scrollHeight <= menuState.clientHeight) {
+      throw new Error(`compactNavigation:${width}: expected scrollable mobile navigation content`);
+    }
+
+    for (const label of ['Série Core', 'Série Classic', 'Série Custom', 'Bazény ARCTIC Classic', 'Bazény ARCTIC Custom', 'Termokryt']) {
+      if (!menuState.visibleLinks.includes(label)) {
+        throw new Error(`compactNavigation:${width}: missing visible submenu link "${label}"`);
+      }
     }
 
     if (width === 390) {
-      await assertBox(page, '.f-off--navigation > .f-search', { x: 26, y: 527, width: 323, height: 44 }, 2, 'compactNavigation:390.search');
-      await assertBox(page, '.f-off--navigation .f-search__icon', { x: 311, y: 537, width: 24, height: 24 }, 2, 'compactNavigation:390.searchIcon');
+      await assertInsideViewport(page, '.f-off--navigation > .f-search', width, 'compactNavigation:390.search', 2);
+      await assertInsideViewport(page, '.f-off--navigation .f-search__icon', width, 'compactNavigation:390.searchIcon', 2);
     }
 
     await page.keyboard.press('Escape');
@@ -1274,9 +1354,9 @@ async function assertFooterLayout(page, label, expectedY = null) {
 
   const checks = [
     ['.f-footer--arctic .f-footer__container', { x: 260, y: 0, width: 1400, height: 773 }, 'container'],
-    ['.f-footer__group:nth-child(1)', { x: 260, y: 86, width: 163, height: 324 }, 'columnsHotTubs'],
+    ['.f-footer__group:nth-child(1)', { x: 260, y: 86, width: 163, height: 354 }, 'columnsHotTubs'],
     ['.f-footer__group:nth-child(2)', { x: 541, y: 86, width: 176, height: 250 }, 'columnsFeatures'],
-    ['.f-footer__group:nth-child(3)', { x: 822, y: 86, width: 188, height: 340 }, 'columnsInfo'],
+    ['.f-footer__group:nth-child(3)', { x: 822, y: 86, width: 188, height: 370 }, 'columnsInfo'],
     ['.f-footer__quick-contact', { x: 1070, y: 60, width: 592, height: 347 }, 'quickContact'],
     ['.f-footer__quick-contact h2', { x: 1104, y: 86, width: 142, height: 26 }, 'quickTitle'],
     ['.f-footer__quick-avatar', { x: 1101, y: 144, width: 58, height: 58 }, 'quickAvatar'],
@@ -1312,8 +1392,8 @@ async function assertFooterLayout(page, label, expectedY = null) {
     'Vlastnosti vířivek',
     'Další informace',
     'Rychlý kontakt',
-    'lukas.dusek@arctic-spas.cz',
-    '+420 777 099 687',
+    'tomas.koutny@baspa.cz',
+    '+420 602 149 106',
     'Po - Pá 8:00-17:00 h',
     'Ochrana osobních údajů',
   ]) {
@@ -1322,8 +1402,12 @@ async function assertFooterLayout(page, label, expectedY = null) {
     }
   }
 
-  if (!footerText.includes('BASPA s.r.o.')) {
+  const footerCopyright = await page.locator('.f-footer__copyright').first().innerText().catch(() => '');
+  if (!footerCopyright.includes('BASPA s.r.o.')) {
     throw new Error(`${label}.footerText: footer copyright must name BASPA s.r.o.`);
+  }
+  if (footerCopyright.includes('Arctic Spas CZ')) {
+    throw new Error(`${label}.footerText: footer copyright still contains Arctic Spas CZ.`);
   }
 
   const flattenedFooterImages = await page.locator('.f-footer--arctic img[src*="footer-desktop"], .f-footer--arctic img[src*="footer-mobile"]').count();
@@ -1333,9 +1417,12 @@ async function assertFooterLayout(page, label, expectedY = null) {
 
   const avatarImages = await page.locator('.f-footer__quick-avatar img').count();
   if (avatarImages !== 1) {
-    throw new Error(`${label}.footerAvatar: expected Lukáš Dušek photo in footer avatar, got ${avatarImages}`);
+    throw new Error(`${label}.footerAvatar: expected one footer quick contact avatar image, got ${avatarImages}`);
   }
-  await assertSourceContains(page, '.f-footer__quick-avatar img', 'uploads/import/figma/contact-lukas-dusek.png', `${label}.footerAvatarSource`);
+  const footerAvatarStatus = await page.locator('.f-footer__quick-avatar').getAttribute('data-asset-status');
+  if (!['admin-member', 'WAITING_ON_OWNER'].includes(footerAvatarStatus || '')) {
+    throw new Error(`${label}.footerAvatarSource: expected admin-managed avatar status, got ${footerAvatarStatus}`);
+  }
 
   const eboostSignature = await page.locator('.f-footer--arctic .f-signature--eboost').count();
   if (eboostSignature > 0) {
@@ -1381,7 +1468,7 @@ async function auditDesktop(page) {
   await assertSourceContains(page, '.f-logo__img', 'images/logo.svg', 'desktop.logoSource');
   await assertSourceContains(page, '.template--homepage .f-slide--1 .f-slide__background', 'uploads/import/figma/hp-hero-arctic-spas-07.jpg', 'desktop.heroBackgroundSource');
   await assertSourceContains(page, '.f-slide__background img', 'uploads/import/figma/hp-hero-arctic-spas-07.jpg', 'desktop.heroImageSource');
-  await assertSourceContains(page, '.f-hero-promo__image', 'uploads/import/figma/hp-fixed-banner-product.png', 'desktop.heroPromoImageSource');
+  await assertSourceContains(page, '.f-hero-promo__image', 'hp-fixed-banner-product', 'desktop.heroPromoImageSource');
   await assertSourceContains(page, '.template--homepage .f-category:nth-child(1) .f-category__image img', 'uploads/import/figma/hp-category-virivky.jpg', 'desktop.categoryHotTubsImageSource');
   await assertSourceContains(page, '.template--homepage .f-category:nth-child(2) .f-category__image img', 'uploads/import/figma/hp-category-celorocni-bazeny.png', 'desktop.categorySwimspaImageSource');
   await assertComputedStyle(page, '.template--homepage .f-slide--1 .f-slide__background', 'background-size', 'cover', 'desktop.heroBackgroundFit');
@@ -1444,7 +1531,7 @@ async function auditMobile(page) {
   await assertHomepageCategoryCardsClickable(page, 'mobile.categoryCards');
 
   await assertSourceContains(page, '.f-logo__img', 'images/logo.svg', 'mobile.logoSource');
-  await assertSourceContains(page, '.f-hero-promo__image', 'uploads/import/figma/hp-fixed-banner-product.png', 'mobile.heroPromoImageSource');
+  await assertSourceContains(page, '.f-hero-promo__image', 'hp-fixed-banner-product', 'mobile.heroPromoImageSource');
   await assertSourceContains(page, '.template--homepage .f-category:nth-child(1) .f-category__image img', 'uploads/import/figma/mobile-category-virivky.jpg', 'mobile.categoryHotTubsImageSource');
   await assertSourceContains(page, '.template--homepage .f-category:nth-child(2) .f-category__image img', 'uploads/import/figma/mobile-category-celorocni-bazeny.png', 'mobile.categorySwimspaImageSource');
 }
@@ -1556,19 +1643,22 @@ async function auditNarrowHomepageLayout(page) {
 
 async function auditFigmaSources(page) {
   await assertHtmlContains(page, '/virivky/', [
-    'uploads/import/figma/category-vlastnosti.jpg',
-    'uploads/import/figma/category-zaruka.jpg',
+    'data-content-source="term-meta"',
+    'data-asset-status="admin-category-intro"',
+    'category-vlastnosti',
+    'category-zaruka',
     'uploads/import/figma/category-configurator.png',
   ], [
-    'category-vlastnosti-1024',
-    'category-zaruka-1024',
     'category-configurator-1024',
   ]);
 
   await assertHtmlContains(page, '/kontakt/', [
-    'uploads/import/figma/contact-map-showroom.png',
+    'data-content-source="customizer-map-embed"',
+    'f-local-map__iframe',
+    'google.com/maps',
   ], [
     'contact-map-showroom-2048',
+    '<img class="f-local-map__image"',
   ]);
 }
 
@@ -1636,9 +1726,9 @@ async function auditCatalogHotTubsDesktop(page) {
   await assertBox(page, '.f-contact-cta', { x: 260, y: 7327, width: 1400, height: 455 }, 4, 'catalog.contactCta');
   await assertFooterLayout(page, 'catalog', 7810);
 
-  await assertSourceContains(page, '.f-heading--term .f-background__image img', 'virivky.jpg', 'catalog.heroSource');
-  await assertSourceContains(page, '.f-category-intro--split .f-category-intro__image img', 'uploads/import/figma/category-vlastnosti.jpg', 'catalog.featuresSource');
-  await assertSourceContains(page, '.f-category-intro--reverse .f-category-intro__image img', 'uploads/import/figma/category-zaruka.jpg', 'catalog.warrantySource');
+  await assertSourceContains(page, '.f-heading--term .f-background__image img', 'category-hero-virivky', 'catalog.heroSource');
+  await assertSourceContains(page, '.f-category-intro--split .f-category-intro__image img', 'category-vlastnosti', 'catalog.featuresSource');
+  await assertSourceContains(page, '.f-category-intro--reverse .f-category-intro__image img', 'category-zaruka', 'catalog.warrantySource');
   await assertSourceContains(page, '.f-products-series--custom .f-listing--product:nth-child(1) .f-listing__image img', 'virivka-summit-xl.jpg', 'catalog.productCardOneSource');
   await assertSourceContains(page, '.f-products-series--custom .f-listing--product:nth-child(2) .f-listing__image img', 'virivka-summit.jpg', 'catalog.productCardTwoSource');
   await assertSourceContains(page, '.f-products-series--custom .f-listing--product:nth-child(3) .f-listing__image img', 'virivka-tundra.jpg', 'catalog.productCardThreeSource');
@@ -1676,8 +1766,8 @@ async function auditCatalogSwimspaDesktop(page) {
   await assertBox(page, '.f-contact-cta', { x: 260, y: 5106, width: 1400, height: 455 }, 4, 'swimspaCatalog.contactCta');
   await assertFooterLayout(page, 'swimspaCatalog', 5589);
 
-  await assertSourceContains(page, '.f-category-intro--split .f-category-intro__image img', 'uploads/import/figma-category-celorocni-bazeny.jpg', 'swimspaCatalog.benefitsSource');
-  await assertSourceContains(page, '.f-category-intro--reverse .f-category-intro__image img', 'uploads/import/legacy-categories/swimspa.jpg', 'swimspaCatalog.operationSource');
+  await assertSourceContains(page, '.f-category-intro--split .f-category-intro__image img', 'figma-category-celorocni-bazeny', 'swimspaCatalog.benefitsSource');
+  await assertSourceContains(page, '.f-category-intro--reverse .f-category-intro__image img', 'swimspa', 'swimspaCatalog.operationSource');
   await assertSourceContains(page, '.f-products-series--swimspa .f-listing--product:nth-child(1) .f-listing__image img', 'bazen-athabascan.jpg', 'swimspaCatalog.productCardOneSource');
   await assertSourceContains(page, '.f-products-series--swimspa .f-listing--product:nth-child(2) .f-listing__image img', 'bazen-hudson.jpg', 'swimspaCatalog.productCardTwoSource');
   await assertSourceContains(page, '.f-products-series--swimspa .f-listing--product:nth-child(3) .f-listing__image img', 'bazen-kingfisher.jpg', 'swimspaCatalog.productCardThreeSource');
@@ -1694,9 +1784,9 @@ async function auditTimberwolfDesktop(page) {
   await assertBox(page, '.f-product-configuration:nth-child(1)', { x: 260, y: 1041, width: 1132, height: 203 }, 3, 'timberwolf.configurationPrestige');
   await assertBox(page, '.f-product-configuration:nth-child(2)', { x: 260, y: 1283, width: 1132, height: 203 }, 3, 'timberwolf.configurationSignature');
   await assertBox(page, '.f-product-contact-card', { x: 1362, y: 934, width: 298, height: 341 }, 3, 'timberwolf.contactCard');
-  await assertBox(page, '.f-product-contact-card__details', { x: 1392, y: 1018, width: 233, height: 80.6 }, 4, 'timberwolf.contactDetails');
+  await assertBox(page, '.f-product-contact-card .f-quick-contact-card__details', { x: 1392, y: 1018, width: 238, height: 80.6 }, 4, 'timberwolf.contactDetails');
   await assertBox(page, '.f-product-contact-card__avatar', { x: 1392, y: 1115, width: 58, height: 58 }, 2, 'timberwolf.contactAvatar');
-  await assertBox(page, '.f-product-contact-card__button', { x: 1392, y: 1195, width: 149, height: 50 }, 2, 'timberwolf.contactButton');
+  await assertBox(page, '.f-product-contact-card .f-quick-contact-card__button', { x: 1392, y: 1195, width: 149, height: 50 }, 2, 'timberwolf.contactButton');
   await assertBox(page, '.f-product-detail-configurator', { x: 260, y: 1608, width: 1400, height: 312 }, 3, 'timberwolf.configurator');
   await assertBox(page, '.f-product-detail-configurator .f-configurator-cta__content .a-button', { x: 330, y: 1784, width: 141, height: 50 }, 2, 'timberwolf.configuratorButton');
   await assertComputedStyle(page, '.f-product-detail-configurator .f-configurator-cta__content .a-button', 'background-color', 'rgba(0, 0, 0, 0)', 'timberwolf.configuratorButtonBackground');
@@ -1714,7 +1804,10 @@ async function auditTimberwolfDesktop(page) {
   await assertSourceContains(page, '.f-product-configuration:nth-child(1) .f-product-configuration__thumb img', 'timberwolf-prestige.jpg', 'timberwolf.prestigeSource');
   await assertSourceContains(page, '.f-product-configuration:nth-child(2) .f-product-configuration__thumb img', 'timberwolf-signature.jpg', 'timberwolf.signatureSource');
   await assertSourceContains(page, '.f-product-detail-configurator .f-configurator-cta__image', 'uploads/import/figma/category-configurator.png', 'timberwolf.configuratorSource');
-  await assertSourceContains(page, '.f-product-contact-card__avatar img', 'uploads/import/figma/contact-lukas-dusek.png', 'timberwolf.contactAvatarSource');
+  const productContactAvatarStatus = await page.locator('.f-product-contact-card__avatar').getAttribute('data-asset-status');
+  if (!['admin-member', 'WAITING_ON_OWNER'].includes(productContactAvatarStatus || '')) {
+    throw new Error(`timberwolf.contactAvatarSource: expected admin-managed avatar status, got ${productContactAvatarStatus}`);
+  }
   await assertComputedStyle(page, '.f-heading--product-detail .f-gallery__slide:nth-child(1) img', 'object-fit', 'cover', 'timberwolf.heroImageFit');
 }
 
@@ -1782,9 +1875,9 @@ async function auditShowroomDesktop(page) {
   await assertBox(page, '.page-template-template-showroom .f-contact-cta', { x: 260, y: 2899, width: 1400, height: 382.4 }, 4, 'showroom.contactCta');
   await assertFooterLayout(page, 'showroom', 3362);
 
-  await assertSourceContains(page, '.f-showroom-hero', 'uploads/import/owner-showroom/showroom-covana-interior-web.jpg', 'showroom.heroSource');
-  await assertSourceContains(page, '.f-showroom-split--first img', 'uploads/import/owner-showroom/showroom-detail-web.jpg', 'showroom.splitFirstSource');
-  await assertSourceContains(page, '.f-showroom-split--second img', 'uploads/import/owner-showroom/showroom-main-web.jpg', 'showroom.splitSecondSource');
+  await assertSourceContains(page, '.f-showroom-hero', 'showroom-covana-interior-web', 'showroom.heroSource');
+  await assertSourceContains(page, '.f-showroom-split--first img', 'showroom-detail-web', 'showroom.splitFirstSource');
+  await assertSourceContains(page, '.f-showroom-split--second img', 'showroom-main-web', 'showroom.splitSecondSource');
 }
 
 async function auditFigmaInfoPagesDesktop(page) {
@@ -2137,16 +2230,39 @@ async function auditAboutDesktop(page) {
   await assertBox(page, '.f-about-figma__stats > div:nth-child(2) strong', { x: 614, y: 1122, width: 337, height: 51 }, 4, 'about.statTwoValue');
   await assertBox(page, '.f-about-figma__stats > div:nth-child(3) strong', { x: 1207, y: 1122, width: 79, height: 51 }, 4, 'about.statThreeValue');
   await assertBox(page, '.f-about-figma__team-copy h2', { x: 260, y: 1375, width: 815, height: 51 }, 4, 'about.teamTitle');
-  await assertBox(page, '.f-about-figma__team', { x: 260, y: 1658, width: 1407, height: 461.2 }, 8, 'about.teamGrid');
+  await assertBox(page, '.f-about-figma__team', { x: 260, y: 1658, width: 1400, height: 490 }, 8, 'about.teamGrid');
   await assertBox(page, '.f-about-person:nth-child(1) .f-about-person__media', { x: 260, y: 1658, width: 336, height: 335 }, 4, 'about.teamImageOne');
   await assertBox(page, '.f-about-person:nth-child(4) .f-about-person__media', { x: 1331, y: 1658, width: 336, height: 335 }, 8, 'about.teamImageFour');
   await assertBox(page, '.f-about-figma__career h2', { x: 260, y: 2278, width: 815, height: 51 }, 4, 'about.careerTitle');
-  await assertBox(page, '.f-about-figma__jobs', { x: 260, y: 2457, width: 1401, height: 642 }, 4, 'about.jobs');
-  await assertBox(page, '.f-about-job:nth-child(1)', { x: 260, y: 2457, width: 1401, height: 526 }, 4, 'about.jobOpen');
-  await assertBox(page, '.f-about-job:nth-child(2)', { x: 260, y: 3003, width: 1401, height: 96 }, 4, 'about.jobClosed');
+  await assertBox(page, '.f-about-figma__jobs', { x: 260, y: 2457, width: 1401, height: 328 }, 4, 'about.jobs');
+  await assertBox(page, '.f-about-job:nth-child(1)', { x: 260, y: 2457, width: 1401, height: 96 }, 4, 'about.jobClosedOne');
+  await assertBox(page, '.f-about-job:nth-child(2)', { x: 260, y: 2573, width: 1401, height: 96 }, 4, 'about.jobClosedTwo');
+  await assertBox(page, '.f-about-job:nth-child(3)', { x: 260, y: 2689, width: 1401, height: 96 }, 4, 'about.jobClosedThree');
   await assertBox(page, '.page-template-template-about .f-section--contact', { x: 0, y: 3328, width: 1920, height: 483 }, 4, 'about.contactSection');
   await assertBox(page, '.page-template-template-about .f-contact-cta', { x: 260, y: 3328, width: 1400, height: 455 }, 4, 'about.contactCta');
   await assertFooterLayout(page, 'about', 3811);
+
+  const initialOpenJobs = await page.locator('.f-about-job[open]').count();
+  if (initialOpenJobs !== 0) {
+    throw new Error(`about.jobsInitialState: expected closed career accordion, got ${initialOpenJobs} open rows`);
+  }
+
+  await page.evaluate(() => document.querySelector('.f-about-job:first-child .f-about-job__summary')?.click());
+  await page.waitForTimeout(120);
+
+  const openAfterPlus = await page.locator('.f-about-job[open]').count();
+  const firstJobOpen = await page.locator('.f-about-job').first().evaluate((element) => element.hasAttribute('open'));
+  if (openAfterPlus !== 1 || !firstJobOpen) {
+    throw new Error(`about.jobsPlusToggle: expected first career row open, got ${openAfterPlus} open rows`);
+  }
+
+  await page.evaluate(() => document.querySelector('.f-about-job:first-child .f-about-job__summary')?.click());
+  await page.waitForTimeout(120);
+
+  const openAfterMinus = await page.locator('.f-about-job[open]').count();
+  if (openAfterMinus !== 0) {
+    throw new Error(`about.jobsMinusToggle: expected closed career accordion after minus click, got ${openAfterMinus} open rows`);
+  }
 }
 
 async function auditServiceRequestDesktop(page) {
@@ -2181,9 +2297,8 @@ async function auditContactDesktop(page) {
   await assertBox(page, '.f-heading__contacts', { x: 970, y: 220, width: 360, height: 118 }, 3, 'contact.headingContacts');
   await assertBox(page, '.f-heading__buttons', { x: 1424, y: 211, width: 235, height: 126 }, 3, 'contact.headingButtons');
   await assertBox(page, '.f-section--map', { x: 0, y: 430, width: 1920, height: 782 }, 2, 'contact.mapSection');
-  await assertBox(page, '.f-local-map__image', { x: -867, y: 430, width: 3110, height: 782 }, 3, 'contact.mapImage');
+  await assertBox(page, '.f-local-map__iframe', { x: 0, y: 430, width: 1920, height: 782 }, 3, 'contact.mapIframe');
   await assertBox(page, '.f-local-map__card', { x: 260, y: 561, width: 565, height: 491 }, 3, 'contact.mapCard');
-  await assertOffsetBox(page, '.f-local-map__pin', { x: 1226, y: 786, width: 42, height: 42 }, 2, 'contact.mapPin');
   await assertBox(page, '.f-contact-card:nth-child(1)', { x: 260, y: 1399, width: 453, height: 280 }, 3, 'contact.cardOne');
   await assertBox(page, '.f-contact-card:nth-child(2)', { x: 733, y: 1399, width: 453, height: 280 }, 3, 'contact.cardTwo');
   await assertBox(page, '.f-contact-card:nth-child(3)', { x: 1206, y: 1399, width: 453, height: 280 }, 3, 'contact.cardThree');
@@ -2197,10 +2312,18 @@ async function auditContactDesktop(page) {
   await assertBox(page, '.f-billing-box', { x: 260, y: 2071, width: 507, height: 310 }, 3, 'contact.billing');
   await assertFooterLayout(page, 'contact', 2425);
 
-  await assertSourceContains(page, '.f-local-map__image', 'uploads/import/figma/contact-map-showroom.png', 'contact.mapSource');
-  const contactAvatarText = (await page.locator('.f-contact-card:nth-child(1) .f-contact-card__avatar').innerText()).trim();
-  if (contactAvatarText !== 'VZ') {
-    throw new Error(`contact.cardAvatarInitials: expected VZ, got ${contactAvatarText}`);
+  const mapContentSource = await page.locator('.f-local-map').first().getAttribute('data-content-source');
+  if (mapContentSource !== 'customizer-map-embed') {
+    throw new Error(`contact.mapContentSource: expected customizer-map-embed, got ${mapContentSource}`);
+  }
+  await assertSourceContains(page, '.f-local-map__iframe', 'google.com/maps', 'contact.mapSource');
+  const firstContactSource = await page.locator('.f-contact-card:nth-child(1)').getAttribute('data-content-source');
+  if (firstContactSource !== 'admin-member') {
+    throw new Error(`contact.cardSource: expected admin-member source, got ${firstContactSource}`);
+  }
+  const firstContactAvatarStatus = await page.locator('.f-contact-card:nth-child(1) .f-contact-card__avatar').getAttribute('data-asset-status');
+  if (!['admin-member', 'WAITING_ON_OWNER'].includes(firstContactAvatarStatus || '')) {
+    throw new Error(`contact.cardAvatarStatus: expected admin-managed avatar status, got ${firstContactAvatarStatus}`);
   }
 }
 
@@ -2264,5 +2387,3 @@ async function auditSharedFooterDesktop(page) {
     await browser.close();
   }
 })();
-
-
