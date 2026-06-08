@@ -1,0 +1,30 @@
+{
+  "baseUrl": "https://illuminatus.cz",
+  "footerCopyright": "Copyright © 2026 BASPA s.r.o. Všechna práva vyhrazena.",
+  "homePromoText": "Akční nabídky Zobrazit nabídku",
+  "homePromoHref": "https://illuminatus.cz/akcni-nabidky/",
+  "footerHotTubLinks": [
+    "Série Core",
+    "Série Classic",
+    "Série Custom",
+    "Bazény ARCTIC Classic",
+    "Bazény ARCTIC Custom"
+  ],
+  "footerInfoLinks": [
+    "Průběh realizace",
+    "Podpora",
+    "Služby",
+    "Kolik stojí provoz a údržba",
+    "Časté otázky",
+    "Reference",
+    "O nás",
+    "Akční nabídky",
+    "Showroom",
+    "Servis",
+    "Kontakt"
+  ],
+  "screenshots": [
+    "production-home-footer-offers.png",
+    "production-offers-archive.png"
+  ]
+}

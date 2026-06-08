@@ -3,6 +3,7 @@ const path = require('path');
 const { chromium } = require('playwright-core');
 
 const baseUrl = process.env.ARCTIC_BASE_URL || 'http://localhost:8090';
+const label = baseUrl.includes('localhost') ? 'local' : 'production';
 const chromePath = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const outputDir = path.join(process.cwd(), 'docs', 'screenshots', 'footer-offers-copyright-2026-06-08');
 
@@ -45,10 +46,12 @@ async function readPage(page, pathname) {
 
   try {
     const home = await readPage(page, '/');
-    await page.screenshot({ path: path.join(outputDir, 'local-home-footer-offers.png'), fullPage: true });
+    const homeScreenshot = `${label}-home-footer-offers.png`;
+    await page.screenshot({ path: path.join(outputDir, homeScreenshot), fullPage: true });
 
     const offers = await readPage(page, '/akcni-nabidky/');
-    await page.screenshot({ path: path.join(outputDir, 'local-offers-archive.png'), fullPage: true });
+    const offersScreenshot = `${label}-offers-archive.png`;
+    await page.screenshot({ path: path.join(outputDir, offersScreenshot), fullPage: true });
 
     const footerCopyright = normalizeText(home.footerCopyright);
     const homeBody = normalizeText(home.bodyText);
@@ -76,12 +79,17 @@ async function readPage(page, pathname) {
       footerHotTubLinks: footerHotTubGroup.links.map((link) => normalizeText(link.text)),
       footerInfoLinks: footerInfoGroup.links.map((link) => normalizeText(link.text)),
       screenshots: [
-        'local-home-footer-offers.png',
-        'local-offers-archive.png',
+        homeScreenshot,
+        offersScreenshot,
       ],
     };
 
-    fs.writeFileSync(path.join(outputDir, 'audit.json'), `${JSON.stringify(audit, null, 2)}\n`);
+    const auditJson = `${JSON.stringify(audit, null, 2)}\n`;
+    fs.writeFileSync(path.join(outputDir, `${label}-audit.json`), auditJson);
+
+    if (label === 'local') {
+      fs.writeFileSync(path.join(outputDir, 'audit.json'), auditJson);
+    }
     console.log('Footer/offers/copyright smoke passed.');
   } finally {
     await browser.close();
