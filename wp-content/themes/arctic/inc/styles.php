@@ -49,6 +49,18 @@ if ( !function_exists( 'baspa_styles' ) ) {
 			);
 		}
 
+		$catalog_request_css_path = get_theme_file_path( 'dist/css/catalog-request.css' );
+		if ( file_exists( $catalog_request_css_path ) ) {
+			$catalog_request_css_ver = filemtime( $catalog_request_css_path );
+			$catalog_request_css_ver = $is_local ? $catalog_request_css_ver . '-' . time() : $catalog_request_css_ver;
+			wp_enqueue_style(
+				get_template() . '-catalog-request',
+				get_theme_file_uri( 'dist/css/catalog-request.css' ),
+				array( get_template() . '-skin' ),
+				$catalog_request_css_ver
+			);
+		}
+
 		$product_colors_css_path = get_theme_file_path( 'dist/css/product-colors-mobile.css' );
 		if ( is_singular( 'product' ) && file_exists( $product_colors_css_path ) ) {
 			$product_colors_css_ver = filemtime( $product_colors_css_path );

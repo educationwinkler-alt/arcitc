@@ -37,6 +37,10 @@ get_template_part( 'templates/heading/term' );
 		get_template_part( 'modules/products/templates/section', 'navigation' );
 		get_template_part( 'modules/products/templates/section', 'products' );
 
+		if ( is_tax( 'product-category', array( 'virivky', 'swimspa' ) ) ) {
+			get_template_part( 'modules/contacts/templates/section', 'catalog' );
+		}
+
 		if ( is_tax( 'product-category', 'virivky' ) ) {
 			get_template_part( 'templates/section/configurator' );
 		}

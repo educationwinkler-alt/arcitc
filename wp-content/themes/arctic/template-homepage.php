@@ -19,6 +19,7 @@ get_template_part( 'modules/slides/templates/section' );
 		get_template_part( 'templates/content', '', array(
 			'container' => true,
 		) );
+		get_template_part( 'modules/contacts/templates/section', 'catalog' );
 		get_template_part( 'templates/section/benefits' );
 		get_template_part( 'templates/section/showroom' );
 		get_template_part( 'templates/section/progress' );

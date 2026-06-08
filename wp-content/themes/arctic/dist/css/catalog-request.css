@@ -1,0 +1,116 @@
+.f-section--catalog-request {
+  position: relative;
+  padding: clamp(44px, 5vw, 78px) 0;
+  overflow: hidden;
+  background: #e8f7fa;
+}
+
+.f-catalog-request {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 42%);
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+}
+
+.f-catalog-request__content {
+  min-width: 0;
+}
+
+.f-section--catalog-request .f-section__header {
+  max-width: 760px;
+  margin: 0 0 26px;
+  text-align: left;
+}
+
+.f-section--catalog-request .f-section__header h2 {
+  margin: 0 0 14px;
+  color: var(--arctic-color-ink, #071826);
+  font-size: clamp(32px, 4vw, 56px);
+  line-height: 1.08;
+}
+
+.f-section--catalog-request .f-section__header p {
+  max-width: 690px;
+  margin: 0;
+  color: rgba(7, 24, 38, 0.78);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.f-section--catalog-request .f-section__form {
+  max-width: 760px;
+}
+
+.f-section--catalog-request .f-form--catalog > .a-flex {
+  align-items: center;
+  gap: 14px;
+}
+
+.f-section--catalog-request .f-form--catalog .f-input {
+  min-height: 52px;
+  color: var(--arctic-color-ink, #071826);
+  background: var(--arctic-color-snow, #ffffff);
+  border: 1px solid rgba(7, 24, 38, 0.1);
+  box-shadow: 0 12px 28px rgba(7, 24, 38, 0.08);
+}
+
+.f-section--catalog-request .f-form--catalog .f-form--submit {
+  min-height: 52px;
+  padding: 0 28px;
+  white-space: nowrap;
+}
+
+.f-section--catalog-request .f-form--catalog .f-form__note {
+  color: rgba(7, 24, 38, 0.68);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.f-catalog-request__media {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.f-catalog-request__media figure {
+  width: min(100%, 520px);
+  margin: 0;
+}
+
+.f-catalog-request__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 28px 62px rgba(7, 24, 38, 0.18);
+  transform: rotate(2deg);
+}
+
+@media (max-width: 1023px) {
+  .f-catalog-request {
+    grid-template-columns: 1fr;
+  }
+
+  .f-catalog-request__media {
+    justify-content: center;
+  }
+
+  .f-catalog-request__media figure {
+    width: min(100%, 420px);
+  }
+}
+
+@media (max-width: 767px) {
+  .f-section--catalog-request {
+    padding: 38px 0 46px;
+  }
+
+  .f-section--catalog-request .f-form--catalog > .a-flex {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .f-section--catalog-request .f-form--catalog .f-form--submit {
+    width: 100%;
+  }
+}

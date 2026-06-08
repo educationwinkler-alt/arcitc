@@ -41,6 +41,10 @@ get_template_part( 'modules/products/templates/post/single/heading' );
 		}
 
 		if ( !$is_wider_range ) {
+			get_template_part( 'modules/contacts/templates/section', 'catalog' );
+		}
+
+		if ( !$is_wider_range ) {
 			get_template_part( 'modules/references/templates/section', 'recent' );
 		}
 		?>
