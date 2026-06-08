@@ -8116,7 +8116,7 @@ body:not(.template--homepage) .f-header__container > .a-flex {
   }
   .tax-product-category .f-heading--background .f-breadcrumbs {
     position: absolute;
-    top: 144px;
+    top: calc(144px * var(--arctic-fluid-desktop-scale));
     left: 2px;
     box-sizing: border-box;
     width: 232px;
@@ -8187,38 +8187,38 @@ body:not(.template--homepage) .f-header__container > .a-flex {
   }
   .tax-product-category .f-heading--background .f-heading__headline h1 {
     position: absolute;
-    top: 280px;
+    top: calc(280px * var(--arctic-fluid-desktop-scale));
     left: 2px;
     width: 454px;
     max-width: 454px;
     margin: 0;
-    font-size: 56px;
-    line-height: 61px;
+    font-size: calc(56px * var(--arctic-fluid-desktop-scale));
+    line-height: calc(61px * var(--arctic-fluid-desktop-scale));
   }
   .tax-product-category .f-heading--background .f-heading__description {
     position: absolute;
-    top: 435px;
+    top: calc(435px * var(--arctic-fluid-desktop-scale));
     left: 2px;
     width: 488px;
     max-width: 488px;
     margin: 0;
-    font-size: 22px;
+    font-size: calc(22px * var(--arctic-fluid-desktop-scale));
     font-weight: 500;
-    line-height: 30.8px;
+    line-height: calc(30.8px * var(--arctic-fluid-desktop-scale));
     color: var(--arctic-color-snow);
   }
   .tax-product-category .f-heading--background .f-heading__headline .a-button {
     position: absolute;
-    top: 623px;
+    top: calc(623px * var(--arctic-fluid-desktop-scale));
     left: 0;
     width: max-content;
-    min-width: 147px;
+    min-width: clamp(140px, calc(147px * var(--arctic-fluid-desktop-scale)), 147px);
     max-width: 280px;
     box-sizing: border-box;
-    min-height: 50px;
-    padding: 0 20px;
-    font-size: 16px;
-    line-height: 21.17px;
+    min-height: clamp(44px, calc(50px * var(--arctic-fluid-desktop-scale)), 50px);
+    padding: 0 clamp(16px, calc(20px * var(--arctic-fluid-desktop-scale)), 20px);
+    font-size: clamp(14px, calc(16px * var(--arctic-fluid-desktop-scale)), 16px);
+    line-height: clamp(19px, calc(21.17px * var(--arctic-fluid-desktop-scale)), 21.17px);
     white-space: nowrap;
   }
   .tax-product-category .f-section--category-intro {
