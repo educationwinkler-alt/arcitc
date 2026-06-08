@@ -1,0 +1,18 @@
+{
+  "baseUrl": "http://localhost:8090",
+  "formSource": "contact-settings",
+  "selectId": "f-interest-form-contact-contact-1",
+  "optionValues": [
+    "pool",
+    "jacuzzi",
+    "service",
+    "offer"
+  ],
+  "optionLabels": [
+    "Vyberte, o co máte zájem ...",
+    "Swimspa",
+    "Vířivka",
+    "Servis",
+    "Akční nabídka"
+  ]
+}
