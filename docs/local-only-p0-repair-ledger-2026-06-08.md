@@ -23,9 +23,11 @@ From this point, P0 repair work is local-only until explicit owner approval.
 | --- | --- | --- | --- | --- |
 | 2026-06-08 | P0 local-only workflow gate | this commit | Ledger created before continuing P0 repairs | Not deployed to production |
 | 2026-06-08 | P0 category hero CTA visibility for `/virivky/` and `/swimspa/` | this commit | `node tools/category-hero-cta-smoke.js`, `node tools/editable-text-overflow-smoke.js`, `node tools/product-media-smoke.js` passed locally. `npm run figma:audit` currently fails on separate homepage hero caption height baseline: `desktop.heroCaption.height expected 309 got 392`. | Not deployed to production |
+| 2026-06-08 | P0 homepage admin save integrity for intro text, service icons, and progress steps | this commit | `docker compose run --rm wpcli wp eval-file wp-content/themes/arctic/tools/page-section-meta-helpers-smoke.php --allow-root`, `docker compose run --rm wpcli wp eval-file wp-content/themes/arctic/tools/homepage-admin-metabox-smoke.php --allow-root`, `node tools/admin-production-fallback-smoke.js`, and focused homepage/frontend smokes passed locally. Full `node tools/admin-editability-smoke.js` timed out locally and remains a broad-suite follow-up. | Not deployed to production |
 
 ## Open local blockers
 
 | Date | Blocker | Evidence | Production status |
 | --- | --- | --- | --- |
 | 2026-06-08 | Homepage hero caption height drift | `npm run figma:audit` fails locally: `desktop.heroCaption.height expected 309 got 392` | Not deployed to production |
+| 2026-06-08 | Broad admin editability smoke runtime | `node tools/admin-editability-smoke.js` timed out locally after the focused homepage admin integrity smoke passed | Not deployed to production |
