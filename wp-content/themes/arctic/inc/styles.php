@@ -37,6 +37,18 @@ if ( !function_exists( 'baspa_styles' ) ) {
 			);
 		}
 
+		$product_colors_css_path = get_theme_file_path( 'dist/css/product-colors-mobile.css' );
+		if ( is_singular( 'product' ) && file_exists( $product_colors_css_path ) ) {
+			$product_colors_css_ver = filemtime( $product_colors_css_path );
+			$product_colors_css_ver = $is_local ? $product_colors_css_ver . '-' . time() : $product_colors_css_ver;
+			wp_enqueue_style(
+				get_template() . '-product-colors-mobile',
+				get_theme_file_uri( 'dist/css/product-colors-mobile.css' ),
+				array( get_template() . '-skin' ),
+				$product_colors_css_ver
+			);
+		}
+
 		/**
 		 * Admin Bar
 		 */

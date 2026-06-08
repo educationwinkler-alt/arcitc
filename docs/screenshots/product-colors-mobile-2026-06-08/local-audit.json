@@ -1,0 +1,137 @@
+{
+  "url": "http://localhost:8090/product/cub/#barvy",
+  "viewportWidth": 393,
+  "scrollWidth": 393,
+  "items": [
+    {
+      "slug": "dakota",
+      "text": "Dakota",
+      "card": {
+        "x": 20,
+        "y": 222.453125,
+        "width": 169.5,
+        "height": 154
+      },
+      "media": {
+        "x": 69.375,
+        "y": 241.453125,
+        "width": 70.734375,
+        "height": 70.734375
+      },
+      "label": {
+        "x": 30,
+        "y": 326.453125,
+        "width": 149.5,
+        "height": 36
+      },
+      "display": "grid",
+      "gridTemplateColumns": "149.5px",
+      "gridTemplateRows": "86px 42px",
+      "overflow": "hidden"
+    },
+    {
+      "slug": "kalahari",
+      "text": "Kalahari",
+      "card": {
+        "x": 203.5,
+        "y": 222.453125,
+        "width": 169.5,
+        "height": 154
+      },
+      "media": {
+        "x": 252.875,
+        "y": 241.453125,
+        "width": 70.734375,
+        "height": 70.734375
+      },
+      "label": {
+        "x": 213.5,
+        "y": 326.453125,
+        "width": 149.5,
+        "height": 36
+      },
+      "display": "grid",
+      "gridTemplateColumns": "149.5px",
+      "gridTemplateRows": "86px 42px",
+      "overflow": "hidden"
+    },
+    {
+      "slug": "odyssey",
+      "text": "Odyssey",
+      "card": {
+        "x": 20,
+        "y": 390.453125,
+        "width": 169.5,
+        "height": 154
+      },
+      "media": {
+        "x": 69.375,
+        "y": 409.453125,
+        "width": 70.734375,
+        "height": 70.734375
+      },
+      "label": {
+        "x": 30,
+        "y": 494.453125,
+        "width": 149.5,
+        "height": 36
+      },
+      "display": "grid",
+      "gridTemplateColumns": "149.5px",
+      "gridTemplateRows": "86px 42px",
+      "overflow": "hidden"
+    },
+    {
+      "slug": "platinum-swirl",
+      "text": "Platinum Swirl",
+      "card": {
+        "x": 203.5,
+        "y": 390.453125,
+        "width": 169.5,
+        "height": 154
+      },
+      "media": {
+        "x": 252.875,
+        "y": 409.453125,
+        "width": 70.734375,
+        "height": 70.734375
+      },
+      "label": {
+        "x": 213.5,
+        "y": 494.453125,
+        "width": 149.5,
+        "height": 36
+      },
+      "display": "grid",
+      "gridTemplateColumns": "149.5px",
+      "gridTemplateRows": "86px 42px",
+      "overflow": "hidden"
+    },
+    {
+      "slug": "espresso",
+      "text": "Espresso",
+      "card": {
+        "x": 20,
+        "y": 558.453125,
+        "width": 169.5,
+        "height": 154
+      },
+      "media": {
+        "x": 69.375,
+        "y": 577.453125,
+        "width": 70.734375,
+        "height": 70.734375
+      },
+      "label": {
+        "x": 30,
+        "y": 662.453125,
+        "width": 149.5,
+        "height": 36
+      },
+      "display": "grid",
+      "gridTemplateColumns": "149.5px",
+      "gridTemplateRows": "86px 42px",
+      "overflow": "hidden"
+    }
+  ]
+}

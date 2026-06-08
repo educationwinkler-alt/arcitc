@@ -1,0 +1,121 @@
+/* Customer P0: stable mobile shell/cabinet swatches. */
+@media (max-width: 767px) {
+  .single-product .f-section--product-colors .f-section__container {
+    box-sizing: border-box;
+    width: calc(100vw - 40px);
+    max-width: calc(100vw - 40px);
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .single-product .f-product-colors__list,
+  .f-product-colors__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .single-product .f-product-colors__item,
+  .single-product .f-product-colors__list li,
+  .single-product .f-product-colors__list:nth-of-type(2) li,
+  .f-product-colors__item,
+  .f-product-colors__list li {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 86px minmax(2.4em, auto);
+    align-content: start;
+    justify-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    min-height: 152px;
+    padding: 12px 10px 14px;
+    overflow: hidden;
+    text-align: center;
+    background: var(--arctic-color-snow, #ffffff);
+    border: 0;
+    border-radius: 18px;
+    box-shadow: 0 14px 32px rgba(7, 24, 38, 0.11);
+  }
+
+  .single-product .f-product-colors__item::before,
+  .single-product .f-product-colors__list li::before,
+  .f-product-colors__item::before,
+  .f-product-colors__list li::before {
+    content: "";
+    z-index: 0;
+    display: block;
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: center;
+    align-self: start;
+    width: clamp(74px, 21vw, 86px);
+    height: clamp(74px, 21vw, 86px);
+    background: #d7d7d7;
+    border-radius: 999px;
+  }
+
+  .single-product .f-product-colors__item > img,
+  .single-product .f-product-colors__list li > img,
+  .single-product .f-product-colors__item > .f-product-colors__placeholder,
+  .single-product .f-product-colors__list li > .f-product-colors__placeholder,
+  .f-product-colors__item > img,
+  .f-product-colors__list li > img,
+  .f-product-colors__item > .f-product-colors__placeholder,
+  .f-product-colors__list li > .f-product-colors__placeholder {
+    position: relative;
+    z-index: 1;
+    display: block;
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: center;
+    align-self: start;
+    width: clamp(64px, 18vw, 74px);
+    height: clamp(64px, 18vw, 74px);
+    margin-top: clamp(7px, 1.6vw, 10px);
+    object-fit: cover;
+    object-position: center;
+    background: var(--arctic-color-snow, #ffffff);
+    border-radius: 999px;
+  }
+
+  .single-product .f-product-colors__item > .f-product-colors__placeholder,
+  .single-product .f-product-colors__list li > .f-product-colors__placeholder,
+  .f-product-colors__item > .f-product-colors__placeholder,
+  .f-product-colors__list li > .f-product-colors__placeholder {
+    display: grid;
+    place-items: center;
+  }
+
+  .single-product .f-product-colors__item > span:not(.f-product-colors__placeholder),
+  .single-product .f-product-colors__list li > span:not(.f-product-colors__placeholder),
+  .f-product-colors__item > span:not(.f-product-colors__placeholder),
+  .f-product-colors__list li > span:not(.f-product-colors__placeholder) {
+    display: flex;
+    grid-row: 2;
+    align-items: center;
+    justify-content: center;
+    align-self: start;
+    width: 100%;
+    min-width: 0;
+    min-height: 2.4em;
+    margin-top: 6px;
+    color: var(--arctic-color-menu, #23282f);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 360px) {
+  .single-product .f-product-colors__list,
+  .f-product-colors__list {
+    gap: 12px;
+  }
+}
