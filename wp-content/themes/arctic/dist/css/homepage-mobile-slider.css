@@ -119,4 +119,87 @@
     border-color: var(--arctic-color-red, #a31f37);
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.74);
   }
+
+  .template--homepage .f-section--product-categories {
+    padding-top: 32px;
+    padding-bottom: 42px;
+    background: var(--arctic-color-frost, #eef1f5);
+  }
+
+  .template--homepage .f-section--product-categories .f-section__container {
+    box-sizing: border-box;
+    width: calc(100% - 58px);
+    max-width: calc(100% - 58px);
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .template--homepage .f-categories--product {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 21px;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .template--homepage .f-category {
+    position: relative;
+    width: 100%;
+    height: 221px;
+    min-height: 221px;
+    overflow: hidden;
+    border-radius: 30px;
+  }
+
+  .template--homepage .f-category__image,
+  .template--homepage .f-category__image picture,
+  .template--homepage .f-category__image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .template--homepage .f-category__image img {
+    object-fit: cover;
+  }
+
+  .template--homepage .f-category.virivky .f-category__image img {
+    object-position: center bottom;
+  }
+
+  .template--homepage .f-category.swimspa .f-category__image img {
+    object-position: right bottom;
+  }
+
+  .template--homepage .f-category__container {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 0 30px 31px;
+    color: var(--arctic-color-snow, #ffffff);
+    text-decoration: none;
+  }
+
+  .template--homepage .f-category__container .a-stack {
+    width: min(220px, 100%);
+  }
+
+  .template--homepage .f-category h3 {
+    width: min(220px, 100%);
+    margin: 0;
+    color: inherit;
+    font-size: 36px;
+    line-height: 51px;
+  }
+
+  .template--homepage .f-category p {
+    display: none;
+  }
 }

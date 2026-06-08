@@ -1,0 +1,108 @@
+{
+  "url": "http://localhost:8090/",
+  "viewportWidth": 393,
+  "scrollWidth": 393,
+  "cards": [
+    {
+      "className": "f-category f-category--product virivky f-category--parent",
+      "slug": "virivky",
+      "card": {
+        "x": 29,
+        "y": 347,
+        "width": 335,
+        "height": 221,
+        "top": 347,
+        "right": 364,
+        "bottom": 568,
+        "left": 29
+      },
+      "media": {
+        "x": 29,
+        "y": 347,
+        "width": 335,
+        "height": 221,
+        "top": 347,
+        "right": 364,
+        "bottom": 568,
+        "left": 29
+      },
+      "img": {
+        "x": 29,
+        "y": 347,
+        "width": 335,
+        "height": 221,
+        "top": 347,
+        "right": 364,
+        "bottom": 568,
+        "left": 29
+      },
+      "title": {
+        "text": "Vířivky",
+        "rect": {
+          "x": 114,
+          "y": 485,
+          "width": 220,
+          "height": 51,
+          "top": 485,
+          "right": 334,
+          "bottom": 536,
+          "left": 114
+        }
+      },
+      "objectFit": "cover",
+      "objectPosition": "50% 100%"
+    },
+    {
+      "className": "f-category f-category--product swimspa f-category--parent",
+      "slug": "swimspa",
+      "card": {
+        "x": 29,
+        "y": 589,
+        "width": 335,
+        "height": 221,
+        "top": 589,
+        "right": 364,
+        "bottom": 810,
+        "left": 29
+      },
+      "media": {
+        "x": 29,
+        "y": 589,
+        "width": 335,
+        "height": 221,
+        "top": 589,
+        "right": 364,
+        "bottom": 810,
+        "left": 29
+      },
+      "img": {
+        "x": 29,
+        "y": 589,
+        "width": 335,
+        "height": 221,
+        "top": 589,
+        "right": 364,
+        "bottom": 810,
+        "left": 29
+      },
+      "title": {
+        "text": "Celoroční bazény",
+        "rect": {
+          "x": 114,
+          "y": 676,
+          "width": 220,
+          "height": 102,
+          "top": 676,
+          "right": 334,
+          "bottom": 778,
+          "left": 114
+        }
+      },
+      "objectFit": "cover",
+      "objectPosition": "100% 100%"
+    }
+  ],
+  "assets": [
+    "<link rel=\"stylesheet\" id=\"arctic-homepage-mobile-slider-css\" href=\"http://localhost:8090/wp-content/themes/arctic/dist/css/homepage-mobile-slider.css?ver=1780919974-1780920021\" media=\"all\">"
+  ]
+}

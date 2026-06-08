@@ -94,7 +94,7 @@
     "overlayBefore": "linear-gradient(rgba(7, 24, 38, 0.24) 0%, rgba(7, 24, 38, 0.08) 28%, rgba(7, 24, 38, 0) 54%), linear-gradient(90deg, rgba(7, 24, 38, 0.38) 0%, rgba(7, 24, 38, 0.16) 42%, rgba(7, 24, 38, 0.02) 78%)",
     "overlayAfter": "linear-gradient(rgba(7, 24, 38, 0) 0%, rgba(7, 24, 38, 0.16) 56%, rgba(7, 24, 38, 0.42) 100%)",
     "assets": [
-      "<link rel=\"stylesheet\" id=\"arctic-homepage-mobile-slider-css\" href=\"http://localhost:8090/wp-content/themes/arctic/dist/css/homepage-mobile-slider.css?ver=1780919648-1780919774\" media=\"all\">",
+      "<link rel=\"stylesheet\" id=\"arctic-homepage-mobile-slider-css\" href=\"http://localhost:8090/wp-content/themes/arctic/dist/css/homepage-mobile-slider.css?ver=1780919974-1780920021\" media=\"all\">",
       "<script src=\"http://localhost:8090/wp-content/themes/arctic/dist/js/homepage-mobile-slider.js?ver=1780919666\" id=\"arctic-homepage-mobile-slider-js\"></script>"
     ]
   },
