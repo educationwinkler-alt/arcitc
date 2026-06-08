@@ -50,7 +50,7 @@ if ( !function_exists( 'baspa_styles' ) ) {
 		}
 
 		$catalog_request_css_path = get_theme_file_path( 'dist/css/catalog-request.css' );
-		if ( file_exists( $catalog_request_css_path ) ) {
+		if ( $is_local && file_exists( $catalog_request_css_path ) ) {
 			$catalog_request_css_ver = filemtime( $catalog_request_css_path );
 			$catalog_request_css_ver = $is_local ? $catalog_request_css_ver . '-' . time() : $catalog_request_css_ver;
 			wp_enqueue_style(

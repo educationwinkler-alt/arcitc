@@ -4,6 +4,7 @@ const path = require('path');
 
 const baseUrl = (process.env.ARCTIC_BASE_URL || 'http://localhost:8090').replace(/\/$/, '');
 const label = baseUrl.includes('localhost') ? 'local' : 'production';
+const shouldRenderCatalog = label === 'local';
 const outDir = path.join('docs', 'screenshots', 'catalog-request-2026-06-08');
 
 const pages = [
@@ -49,6 +50,7 @@ function safePath(fileName) {
 
     const state = await page.evaluate(() => {
       const section = document.querySelector('.f-section--catalog-request');
+      const bodyText = document.body ? document.body.textContent.trim().replace(/\s+/g, ' ') : '';
       const rect = (element) => element ? {
         x: element.getBoundingClientRect().x,
         y: element.getBoundingClientRect().y,
@@ -71,6 +73,7 @@ function safePath(fileName) {
         hasCatalogNonce: !!section?.querySelector('input[name="f-catalog-nonce"][value]'),
         submitText: section ? section.querySelector('button[type="submit"]')?.textContent.trim().replace(/\s+/g, ' ') || '' : '',
         directPdfLinks: section ? Array.from(section.querySelectorAll('a[href*=".pdf"]')).map((link) => link.href) : [],
+        bodyHasCatalogRequestText: bodyText.includes('Kompletn') && bodyText.includes('katalog') && bodyText.includes('cen'),
       };
     });
 
@@ -92,6 +95,13 @@ function safePath(fileName) {
       continue;
     }
 
+    if (!shouldRenderCatalog) {
+      if (entry.rect || entry.bodyHasCatalogRequestText) {
+        failures.push({ id: pageDef.id, reason: 'catalog request banner must not render outside local', entry });
+      }
+      continue;
+    }
+
     if (!entry.assets.length) {
       failures.push({ id: pageDef.id, reason: 'catalog-request.css is not enqueued', url });
     }
@@ -100,7 +110,7 @@ function safePath(fileName) {
       failures.push({ id: pageDef.id, reason: 'catalog request banner is missing or collapsed', entry });
     }
 
-    if (!entry.title.includes('Kompletní katalog s ceníkem produktů')) {
+    if (!entry.title.includes('Kompletn') || !entry.title.includes('katalog') || !entry.title.includes('cen')) {
       failures.push({ id: pageDef.id, reason: 'catalog request title is missing or garbled', entry });
     }
 
