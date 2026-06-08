@@ -1588,3 +1588,16 @@ Do not combine large unrelated repairs in one deploy unless the second change is
 ## Immediate risk
 
 Do not deploy only CSS fixes and call this done. The production homepage content data is already damaged or incomplete, product pages currently depend on missing or fallback-only product data, price discovery is incomplete, catalog/price-list capture is not present at buying points, mobile shell-color thumbnails still need production verification, and key information pages expose wrong or incomplete content flows. The escalation email makes the June 15 review a hard business deadline, so fallback masking and fragile admin saves are now acceptance blockers. Visual fixes alone will not bring back missing services, progress bullets, configurations, prices, cabinet colors, benefits, optional equipment, reference descriptions, showroom map/gallery, a correct contact map, or a working Ecomail-backed catalog flow.
+
+## Systemic hotfix meta-audit - 2026-06-08
+
+Follow-up audit: `docs/systemic-hotfix-meta-audit-2026-06-08.md`.
+
+Reason: the homepage text clipping defect proved that a customer-visible issue first seen on one page can be a shared component or data-contract failure. Future repair work must classify each issue before fixing it:
+
+1. one corrupted data row vs. repeatable admin/data model problem,
+2. one CSS selector vs. shared component/layout contract problem,
+3. one missing asset vs. media source/crop pipeline problem,
+4. one omitted production upload vs. deploy/data-migration process problem.
+
+The new rule is: a page-only hotfix does not close a systemic defect unless the audit proves the pattern cannot repeat elsewhere.
