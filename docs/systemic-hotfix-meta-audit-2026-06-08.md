@@ -69,6 +69,11 @@ Required plan correction:
    - Useful for guarded one-time repair.
    - Must be tracked in a migration/deploy ledger so production cannot miss DB changes again.
 
+6. Baspa/Arctic duplicate logic
+   - Follow-up audit: `docs/duplicate-baspa-arctic-logic-audit-2026-06-08.md`.
+   - Arctic-specific code must be classified as either a visual skin over an existing Baspa owner or a full replacement that retires the old path.
+   - The offers homepage incident is the concrete proof: the Arctic hero promo and Baspa small offers section both rendered until the legacy homepage call was removed.
+
 ## New release gates
 
 Add these gates to the repair workflow:
