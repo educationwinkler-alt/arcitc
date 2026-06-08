@@ -447,13 +447,28 @@ if ( !function_exists( 'arctic_jucra_normalize_option_id' ) ) {
 	 */
 	function arctic_jucra_normalize_option_id( string $option_id ): string {
 
-		return strtr( $option_id, array(
+		$legacy_pumps = function_exists( 'arctic_legacy_mojibake_values' )
+			? arctic_legacy_mojibake_values( 'čerpadla' )
+			: array();
+		$legacy_pump = function_exists( 'arctic_legacy_mojibake_values' )
+			? arctic_legacy_mojibake_values( 'čerpadlo' )
+			: array();
+
+		$replacements = array(
 			'Trysky'    => 'Jets',
 			'čerpadla' => 'Pumps',
 			'čerpadlo' => 'Pump',
-			'ÄŤerpadla' => 'Pumps',
-			'ÄŤerpadlo' => 'Pump',
-		) );
+		);
+
+		foreach ( $legacy_pumps as $legacy_value ) {
+			$replacements[ $legacy_value ] = 'Pumps';
+		}
+
+		foreach ( $legacy_pump as $legacy_value ) {
+			$replacements[ $legacy_value ] = 'Pump';
+		}
+
+		return strtr( $option_id, $replacements );
 
 	}
 
@@ -696,28 +711,148 @@ if ( !function_exists( 'arctic_jucra_get_inquiry_selection' ) ) {
 if ( !function_exists( 'arctic_jucra_model_definitions' ) ) {
 
 	/**
+	 * Default local model map for the Czech builder selector.
+	 *
+	 * @return array<string,array<string,string>>
+	 */
+	function arctic_jucra_default_model_definitions(): array {
+
+		return array(
+			'summit-xl'  => array( 'label' => 'Summit XL', 'model_name' => 'Summit XL', 'product_slug' => 'summit-xl' ),
+			'summit'     => array( 'label' => 'Summit', 'model_name' => 'Summit', 'product_slug' => 'summit' ),
+			'tundra'     => array( 'label' => 'Tundra', 'model_name' => 'Tundra', 'product_slug' => 'tundra' ),
+			'kodiak'     => array( 'label' => 'Kodiak', 'model_name' => 'Kodiak', 'product_slug' => 'kodiak' ),
+			'cub'        => array( 'label' => 'Cub', 'model_name' => 'Cub', 'product_slug' => 'cub' ),
+			'arctic-fox' => array( 'label' => 'Arctic Fox', 'model_name' => 'Arctic Fox', 'product_slug' => 'arctic-fox' ),
+			'mustang'    => array( 'label' => 'Mustang', 'model_name' => 'Mustang', 'product_slug' => 'mustang' ),
+			'mckinley'   => array( 'label' => 'McKinley', 'model_name' => 'McKinley', 'product_slug' => 'mckinley' ),
+			'totem'      => array( 'label' => 'Totem', 'model_name' => 'Totem', 'product_slug' => 'totem' ),
+			'eagle'      => array( 'label' => 'Eagle', 'model_name' => 'Eagle', 'product_slug' => 'eagle' ),
+			'timberwolf' => array( 'label' => 'Timberwolf', 'model_name' => 'Timberwolf', 'product_slug' => 'timberwolf' ),
+			'lunar'      => array( 'label' => 'Lunar', 'model_name' => 'Lunar', 'product_slug' => 'lunar' ),
+			'orion'      => array( 'label' => 'Orion', 'model_name' => 'Orion', 'product_slug' => 'orion' ),
+			'husky'      => array( 'label' => 'Husky', 'model_name' => 'Husky', 'product_slug' => 'husky' ),
+		);
+
+	}
+
+	/**
+	 * Parse admin textarea model map.
+	 *
+	 * Each line uses: slug|Label|Jucra model name|product-slug
+	 *
+	 * @param string $value
+	 *
+	 * @return array<string,array<string,string>>
+	 */
+	function arctic_jucra_parse_model_definitions_text( string $value ): array {
+
+		$models = array();
+		$lines  = preg_split( '/\r\n|\r|\n/', $value );
+
+		foreach ( $lines ?: array() as $line ) {
+			$line = trim( (string) $line );
+
+			if ( '' === $line ) {
+				continue;
+			}
+
+			$parts        = array_map( 'trim', explode( '|', $line ) );
+			$slug         = sanitize_title( $parts[0] ?? '' );
+			$label        = sanitize_text_field( $parts[1] ?? '' );
+			$model_name   = sanitize_text_field( $parts[2] ?? '' );
+			$product_slug = sanitize_title( $parts[3] ?? '' );
+
+			if ( '' === $model_name && '' !== $label ) {
+				$model_name = $label;
+			}
+
+			if ( '' === $label && '' !== $model_name ) {
+				$label = $model_name;
+			}
+
+			if ( '' === $slug ) {
+				$slug = sanitize_title( '' !== $model_name ? $model_name : $label );
+			}
+
+			if ( '' === $product_slug ) {
+				$product_slug = $slug;
+			}
+
+			if ( '' === $slug || '' === $label || '' === $model_name ) {
+				continue;
+			}
+
+			$models[ $slug ] = array(
+				'label'        => $label,
+				'model_name'   => str_replace( array( '[', ']', '"', '\'' ), '', $model_name ),
+				'product_slug' => $product_slug,
+			);
+		}
+
+		return $models;
+
+	}
+
+	/**
+	 * Format model map for textarea editing.
+	 *
+	 * @param array<string,array<string,string>>|null $models
+	 *
+	 * @return string
+	 */
+	function arctic_jucra_model_definitions_to_text( ?array $models = null ): string {
+
+		$models = $models ?: arctic_jucra_default_model_definitions();
+		$lines  = array();
+
+		foreach ( $models as $slug => $model ) {
+			$lines[] = implode( '|', array(
+				sanitize_title( $slug ),
+				sanitize_text_field( (string) ( $model['label'] ?? '' ) ),
+				sanitize_text_field( (string) ( $model['model_name'] ?? '' ) ),
+				sanitize_title( (string) ( $model['product_slug'] ?? $slug ) ),
+			) );
+		}
+
+		return implode( "\n", $lines );
+
+	}
+
+	/**
+	 * Sanitize textarea model map for Customizer storage.
+	 *
+	 * @param string $value
+	 *
+	 * @return string
+	 */
+	function arctic_jucra_sanitize_model_definitions_text( string $value ): string {
+
+		$models = arctic_jucra_parse_model_definitions_text( $value );
+
+		if ( empty( $models ) ) {
+			$models = arctic_jucra_default_model_definitions();
+		}
+
+		return arctic_jucra_model_definitions_to_text( $models );
+
+	}
+
+	/**
 	 * Local model map for the Czech builder selector.
 	 *
 	 * @return array<string,array<string,string>>
 	 */
 	function arctic_jucra_model_definitions(): array {
 
-		$models = array(
-			'summit-xl'   => array( 'label' => 'Summit XL', 'model_name' => 'Summit XL', 'product_slug' => 'summit-xl' ),
-			'summit'      => array( 'label' => 'Summit', 'model_name' => 'Summit', 'product_slug' => 'summit' ),
-			'tundra'      => array( 'label' => 'Tundra', 'model_name' => 'Tundra', 'product_slug' => 'tundra' ),
-			'kodiak'      => array( 'label' => 'Kodiak', 'model_name' => 'Kodiak', 'product_slug' => 'kodiak' ),
-			'cub'         => array( 'label' => 'Cub', 'model_name' => 'Cub', 'product_slug' => 'cub' ),
-			'arctic-fox'  => array( 'label' => 'Arctic Fox', 'model_name' => 'Arctic Fox', 'product_slug' => 'arctic-fox' ),
-			'mustang'     => array( 'label' => 'Mustang', 'model_name' => 'Mustang', 'product_slug' => 'mustang' ),
-			'mckinley'    => array( 'label' => 'McKinley', 'model_name' => 'McKinley', 'product_slug' => 'mckinley' ),
-			'totem'       => array( 'label' => 'Totem', 'model_name' => 'Totem', 'product_slug' => 'totem' ),
-			'eagle'       => array( 'label' => 'Eagle', 'model_name' => 'Eagle', 'product_slug' => 'eagle' ),
-			'timberwolf'  => array( 'label' => 'Timberwolf', 'model_name' => 'Timberwolf', 'product_slug' => 'timberwolf' ),
-			'lunar'       => array( 'label' => 'Lunar', 'model_name' => 'Lunar', 'product_slug' => 'lunar' ),
-			'orion'       => array( 'label' => 'Orion', 'model_name' => 'Orion', 'product_slug' => 'orion' ),
-			'husky'       => array( 'label' => 'Husky', 'model_name' => 'Husky', 'product_slug' => 'husky' ),
-		);
+		$stored = (string) get_theme_mod( 'arctic_jucra_model_definitions', '' );
+		$models = '' !== trim( $stored )
+			? arctic_jucra_parse_model_definitions_text( $stored )
+			: arctic_jucra_default_model_definitions();
+
+		if ( empty( $models ) ) {
+			$models = arctic_jucra_default_model_definitions();
+		}
 
 		return apply_filters( 'arctic_jucra_model_definitions', $models );
 
@@ -859,6 +994,81 @@ if ( !function_exists( 'arctic_jucra_is_inquiry_request' ) ) {
 
 }
 
+if ( !function_exists( 'arctic_jucra_get_virtual_page' ) ) {
+
+	/**
+	 * Resolve the real WP admin page used as context for virtual Jucra URLs.
+	 *
+	 * @param bool $is_inquiry
+	 *
+	 * @return WP_Post|null
+	 */
+	function arctic_jucra_get_virtual_page( bool $is_inquiry ): ?WP_Post {
+
+		$page = get_page_by_path( $is_inquiry ? 'poptavka-konfigurace' : 'konfigurator', OBJECT, 'page' );
+
+		return $page instanceof WP_Post ? $page : null;
+
+	}
+
+}
+
+if ( !function_exists( 'arctic_jucra_prepare_virtual_query' ) ) {
+
+	/**
+	 * Give WordPress a valid queried object for virtual Jucra routes.
+	 *
+	 * Without this, body_class() sees is_singular() but no queried post and
+	 * core emits a visible "Attempt to read property ID on null" warning.
+	 *
+	 * @param bool $is_inquiry
+	 *
+	 * @return void
+	 */
+	function arctic_jucra_prepare_virtual_query( bool $is_inquiry ): void {
+
+		global $wp_query, $post;
+
+		if ( !( $wp_query instanceof WP_Query ) ) {
+			return;
+		}
+
+		$wp_query->is_404 = false;
+
+		$virtual_post = arctic_jucra_get_virtual_page( $is_inquiry );
+		if ( $virtual_post instanceof WP_Post ) {
+			$wp_query->queried_object    = $virtual_post;
+			$wp_query->queried_object_id = (int)$virtual_post->ID;
+			$wp_query->post              = $virtual_post;
+			$wp_query->posts             = array( $virtual_post );
+			$wp_query->post_count        = 1;
+			$wp_query->found_posts       = 1;
+			$wp_query->is_page           = true;
+			$wp_query->is_single         = false;
+			$wp_query->is_singular       = true;
+			$wp_query->is_home           = false;
+			$wp_query->is_archive        = false;
+
+			$post = $virtual_post;
+			setup_postdata( $post );
+
+			return;
+		}
+
+		$wp_query->queried_object    = null;
+		$wp_query->queried_object_id = 0;
+		$wp_query->post              = null;
+		$wp_query->posts             = array();
+		$wp_query->post_count        = 0;
+		$wp_query->found_posts       = 0;
+		$wp_query->is_page           = false;
+		$wp_query->is_single         = false;
+		$wp_query->is_singular       = false;
+
+	}
+
+}
+
 if ( !function_exists( 'arctic_jucra_template_redirect' ) ) {
 
 	/**
@@ -875,13 +1085,7 @@ if ( !function_exists( 'arctic_jucra_template_redirect' ) ) {
 			return;
 		}
 
-		global $wp_query;
-
-		if ( $wp_query instanceof WP_Query ) {
-			$wp_query->is_404      = false;
-			$wp_query->is_page     = true;
-			$wp_query->is_singular = true;
-		}
+		arctic_jucra_prepare_virtual_query( $is_inquiry );
 
 		status_header( 200 );
 		nocache_headers();
@@ -944,7 +1148,8 @@ if ( !function_exists( 'arctic_jucra_filter_sale_menu_items' ) ) {
 			$url   = isset( $item->url ) ? (string)$item->url : '';
 
 			if ( preg_match( '#/swimspa/?#i', $url ) ) {
-				$url = preg_replace( '/#serie-(core|classic|custom)$/i', '#serie-swimspa', $url );
+				$url = preg_replace( '/#serie-(core|classic)$/i', '#serie-swimspa-classic', $url );
+				$url = preg_replace( '/#serie-custom$/i', '#serie-swimspa-custom', $url );
 			}
 
 			if ( preg_match( '#/podpora/?#i', $url ) ) {

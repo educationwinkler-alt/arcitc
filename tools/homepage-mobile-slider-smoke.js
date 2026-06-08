@@ -72,6 +72,7 @@ function rectToPlain(rect) {
       viewportWidth: window.innerWidth,
       scrollWidth: document.documentElement.scrollWidth,
       activeSlideId: active ? active.getAttribute('data-slide-id') : '',
+      activeSlideIndex: active ? Array.from(document.querySelectorAll('.f-slide')).indexOf(active) : -1,
       wrapperTransform: wrapper ? getComputedStyle(wrapper).transform : '',
       slides: Array.from(document.querySelectorAll('.f-slide')).map((slide) => ({
         id: slide.getAttribute('data-slide-id') || '',
@@ -135,7 +136,8 @@ function rectToPlain(rect) {
   }
 
   const bullets = await page.$$('.f-slides__pagination .swiper-pagination-bullet');
-  await bullets[1].click();
+  const targetBulletIndex = (before.activeSlideIndex >= 0 ? before.activeSlideIndex + 1 : 1) % before.bulletCount;
+  await bullets[targetBulletIndex].click();
   await page.waitForTimeout(900);
 
   const after = await page.evaluate(() => {
@@ -153,11 +155,11 @@ function rectToPlain(rect) {
   });
 
   if (!after.activeSlideId || after.activeSlideId === before.activeSlideId) {
-    fail('Homepage mobile slider did not move to the second slide after pagination click.', { before, after });
+    fail('Homepage mobile slider did not move to the next slide after pagination click.', { before, after, targetBulletIndex });
   }
 
   if (!after.wrapperTransform || after.wrapperTransform === 'none' || after.wrapperTransform === before.wrapperTransform) {
-    fail('Homepage mobile slider wrapper transform did not update.', { before, after });
+    fail('Homepage mobile slider wrapper transform did not update.', { before, after, targetBulletIndex });
   }
 
   const audit = { before, after };

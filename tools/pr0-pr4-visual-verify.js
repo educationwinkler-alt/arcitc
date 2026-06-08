@@ -272,10 +272,8 @@ function compareVirivky(metrics, figma) {
   assert(metrics.styles.configuratorButtonBorderWidth === '1px', `/virivky/ configurator button border must be the Figma 1px stroke, got ${metrics.styles.configuratorButtonBorderWidth}`);
   assert(metrics.referenceOverlay?.display === 'none', `/virivky/ reference carousel image overlay must be disabled globally, got display ${metrics.referenceOverlay?.display}`);
   assert(metrics.referenceOverlay?.backgroundImage === 'none', `/virivky/ reference carousel image overlay must not tint photos, got ${metrics.referenceOverlay?.backgroundImage}`);
-  assert(metrics.boxes.contactAvatarImage.width >= metrics.boxes.contactAvatar.width * 1.8, '/virivky/ shared contact avatar must use the Figma crop zoom');
-  assert(metrics.boxes.contactAvatarImage.height >= metrics.boxes.contactAvatar.height * 1.8, '/virivky/ shared contact avatar must use the Figma crop zoom');
-  assert(metrics.boxes.contactAvatarImage.x < metrics.boxes.contactAvatar.x, '/virivky/ shared contact avatar crop must shift image left like Figma');
-  assert(metrics.boxes.contactAvatarImage.y < metrics.boxes.contactAvatar.y, '/virivky/ shared contact avatar crop must shift image upward like Figma');
+  assert(metrics.boxes.contactAvatarImage.width >= metrics.boxes.contactAvatar.width * 0.95, '/virivky/ shared contact avatar image must fill the admin avatar slot');
+  assert(metrics.boxes.contactAvatarImage.height >= metrics.boxes.contactAvatar.height * 0.95, '/virivky/ shared contact avatar image must fill the admin avatar slot');
   assert(metrics.links.some((link) => link.includes('/konfigurator/')), '/virivky/ configurator CTA must link to /konfigurator/');
 }
 
@@ -355,7 +353,7 @@ async function main() {
         configuratorButton: '.f-section--configurator .f-configurator-cta__content .a-button',
         configuratorVisual: '.f-section--configurator .f-configurator-cta__visual',
         contactAvatar: '.f-contact-cta__avatar',
-        contactAvatarImage: '.f-contact-cta__avatar img[src*="contact-lukas-dusek.png"]',
+        contactAvatarImage: '.f-contact-cta__avatar img',
         showroom: '.f-section--showroom .f-showroom-panel',
         references: '.f-reference-section--recent-carousel',
       },

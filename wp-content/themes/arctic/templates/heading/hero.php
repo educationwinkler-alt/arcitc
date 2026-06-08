@@ -7,9 +7,12 @@
 $title    = get_post_meta( get_the_ID(), 'page_title_text', true );
 $button_text = get_post_meta( get_the_ID(), 'page_button_text', true );
 $button_url  = get_post_meta( get_the_ID(), 'page_button_url', true );
+$has_media   = function_exists( 'arctic_post_has_hero_media' )
+	? arctic_post_has_hero_media( get_the_ID(), 'page_hero', (int) get_post_thumbnail_id() )
+	: has_post_thumbnail();
 
 $heading_class   = array( 'f-heading', 'f-heading--hero' );
-$heading_class[] = has_post_thumbnail() || has_header_image() ? 'f-heading--background' : '';
+$heading_class[] = $has_media || has_header_image() ? 'f-heading--background' : '';
 $heading_class[] = ( get_post_meta( get_the_ID(), 'page_title', true ) == 0 ) ? 'f-heading--empty' : '';
 $title_class[]   = ( get_post_meta( get_the_ID(), 'page_title', true ) == 0 ) ? 'screen-reader-text' : '';
 ?>

@@ -105,6 +105,45 @@ function cleanupContact(contactTitle) {
 
 async function main() {
   try {
+    const modelDefinitions = wpCli(['eval', "echo get_theme_mod('arctic_jucra_model_definitions');"]);
+
+    assertIncludes('Jucra Customizer model definitions', modelDefinitions, [
+      'timberwolf|Timberwolf|Timberwolf|timberwolf',
+      'summit-xl|Summit XL|Summit XL|summit-xl',
+    ]);
+
+    const modelDefinitionLines = modelDefinitions
+      .split(/\r?\n/)
+      .filter((line) => line.includes('|'));
+
+    if (modelDefinitionLines.length < 14) {
+      throw new Error(`Jucra Customizer stores ${modelDefinitionLines.length} model definitions, expected at least 14.`);
+    }
+
+    const builderResponse = await fetch(`${baseUrl}/konfigurator/timberwolf/`);
+
+    if (!builderResponse.ok) {
+      throw new Error(`Jucra builder page returned ${builderResponse.status}.`);
+    }
+
+    const builderHtml = await builderResponse.text();
+
+    assertIncludes('Jucra builder page', builderHtml, [
+      'f-section--jucra-builder',
+      'data-content-source="jucra-settings"',
+      'data-jucra-model="Timberwolf"',
+      '/konfigurator/timberwolf/',
+      '/konfigurator/summit-xl/',
+      'Timberwolf',
+      'Summit XL',
+    ]);
+
+    const modelLinks = builderHtml.match(/class=["'][^"']*f-jucra-builder__model/g) || [];
+
+    if (modelLinks.length < 14) {
+      throw new Error(`Jucra builder rendered ${modelLinks.length} model links, expected at least 14.`);
+    }
+
     const response = await fetch(`${baseUrl}${query}`);
 
     if (!response.ok) {

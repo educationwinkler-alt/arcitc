@@ -4,16 +4,15 @@
  * Post Single Sidebar
  */
 
-$contact = get_post_meta(get_the_ID(), 'offer_contact', true);
+$contact = get_post_meta( get_the_ID(), 'offer_contact', true );
+$contact_member_id = absint( get_post_meta( get_the_ID(), 'offer_contact_member_id', true ) );
 ?>
 
 <aside class="f-sidebar f-sidebar--sticky a-stack a-gap--m">
-	<?php
-	if ( baspa_products_is_term_or_product( 'bazeny' ) ) {
-		block_template_part( 'contact-small-pools' );
-	} else if ( baspa_products_is_term_or_product( 'virivky' ) ) {
-		block_template_part( 'contact-small-jacuzzis' );
-	} else {
-		block_template_part( 'contact-small' );
-	} ?>
+	<?php get_template_part( 'templates/component/quick-contact-card', '', array(
+		'context'     => 'offer_sidebar',
+		'member_id'   => $contact_member_id,
+		'class'       => array( 'f-quick-contact-card--offer' ),
+		'button_text' => __( 'Napsat zprávu', 'baspa' ),
+	) ); ?>
 </aside>

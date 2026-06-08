@@ -16,7 +16,7 @@ if ( !function_exists( 'baspa_theme' ) ) {
 		$settings[ 'prefix' ] = 'f';
 
 		// Fonts
-		$settings[ 'font_api' ]              = 'google';
+		$settings[ 'font_api' ]              = 'local';
 		$settings[ 'font_primary' ]          = 'Red Hat Display';
 		$settings[ 'font_primary_styles' ]   = '400,500,700';
 		$settings[ 'font_secondary' ]        = 'Red Hat Display';
@@ -47,10 +47,6 @@ if ( !function_exists( 'baspa_theme' ) ) {
 
 		$settings[ 'js_check' ] = false; // add 'class="no-js"' to <html>
 
-		if ( function_exists( 'wp_get_environment_type' ) && wp_get_environment_type() === 'local' ) {
-			$settings[ 'font_api' ] = 'local';
-		}
-
 		return $settings;
 
 	}
@@ -59,12 +55,10 @@ if ( !function_exists( 'baspa_theme' ) ) {
 
 }
 
-if ( function_exists( 'wp_get_environment_type' ) && wp_get_environment_type() === 'local' ) {
-	add_filter( 'forqy_fonts_url', '__return_false', 20 );
-	add_filter( 'forqy_fonts_google_enqueue', '__return_false', 20 );
-	add_filter( 'forqy_fonts_google_preconnect', '__return_false', 20 );
-	add_filter( 'forqy_fonts_google_preload', '__return_false', 20 );
-	add_filter( 'forqy_fonts_fontshare_enqueue', '__return_false', 20 );
-	add_filter( 'forqy_fonts_fontshare_preconnect', '__return_false', 20 );
-	add_filter( 'forqy_fonts_fontshare_preload', '__return_false', 20 );
-}
+add_filter( 'forqy_fonts_url', '__return_false', 20 );
+add_filter( 'forqy_fonts_google_enqueue', '__return_false', 20 );
+add_filter( 'forqy_fonts_google_preconnect', '__return_false', 20 );
+add_filter( 'forqy_fonts_google_preload', '__return_false', 20 );
+add_filter( 'forqy_fonts_fontshare_enqueue', '__return_false', 20 );
+add_filter( 'forqy_fonts_fontshare_preconnect', '__return_false', 20 );
+add_filter( 'forqy_fonts_fontshare_preload', '__return_false', 20 );

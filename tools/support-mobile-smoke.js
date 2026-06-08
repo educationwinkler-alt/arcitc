@@ -34,6 +34,14 @@ function assertCountAtLeast(label, text, regex, expected) {
   }
 }
 
+function assertNotIncludes(label, text, needles) {
+  for (const needle of needles) {
+    if (text.includes(needle)) {
+      throw new Error(`${label} contains stale marker: ${needle}`);
+    }
+  }
+}
+
 async function assertNoHorizontalOverflow(page, label) {
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
 
@@ -56,27 +64,28 @@ async function assertInsideViewport(page, selector, label, gutter = 0) {
 }
 
 async function assertFaqInteraction(page) {
-  await page.goto(`${baseUrl}/podpora/`, { waitUntil: 'networkidle' });
+  await page.goto(`${baseUrl}/podpora/`, { waitUntil: 'load' });
 
   const faq = page.locator('[data-support-faq-card]').nth(1);
-  const panelId = await faq.getAttribute('aria-controls');
+  const toggle = faq.locator('[data-support-faq-card-toggle]');
+  const panelId = await toggle.getAttribute('aria-controls');
 
   if (!panelId) {
-    throw new Error('support FAQ card is missing aria-controls');
+    throw new Error('support FAQ toggle is missing aria-controls');
   }
 
-  await faq.click();
+  await toggle.click();
 
-  const expanded = await faq.getAttribute('aria-expanded');
+  const expanded = await toggle.getAttribute('aria-expanded');
   const panelHidden = await page.locator(`#${panelId}`).getAttribute('hidden');
 
   if (expanded !== 'true' || panelHidden !== null) {
-    throw new Error('support FAQ card did not open with synchronized ARIA/panel state');
+    throw new Error('support FAQ toggle did not open with synchronized ARIA/panel state');
   }
 }
 
 async function assertDownloadInteraction(page) {
-  await page.goto(`${baseUrl}/ke-stazeni/`, { waitUntil: 'networkidle' });
+  await page.goto(`${baseUrl}/ke-stazeni/`, { waitUntil: 'load' });
 
   const group = page.locator('[data-download-group]').nth(1);
   const toggle = group.locator('[data-download-group-toggle]');
@@ -99,17 +108,17 @@ async function assertDownloadInteraction(page) {
   const manualFilter = page.locator('[data-download-filter="manual"]').first();
   await manualFilter.click();
 
-  const selected = await manualFilter.getAttribute('aria-selected');
+  const pressed = await manualFilter.getAttribute('aria-pressed');
   const active = await manualFilter.evaluate((element) => element.classList.contains('is-active'));
 
-  if (selected !== 'true' || !active) {
-    throw new Error('download filter chip did not expose active tab state');
+  if (pressed !== 'true' || !active) {
+    throw new Error('download filter chip did not expose active button state');
   }
 }
 
 async function assertDownloadRowsAttached(page) {
   await page.setViewportSize({ width: 1440, height: 1100 });
-  await page.goto(`${baseUrl}/ke-stazeni/`, { waitUntil: 'networkidle' });
+  await page.goto(`${baseUrl}/ke-stazeni/`, { waitUntil: 'load' });
 
   const rows = await page.locator('.f-download-card--contract').evaluateAll((cards) => cards.map((card) => {
     const row = card.getBoundingClientRect();
@@ -171,14 +180,39 @@ async function assertMobileHomepageAndMenu(page) {
     throw new Error('mobile menu did not open');
   }
 
-  const visibleSubmenus = await page.locator('.f-off--navigation .f-navigation-sub, .f-off--navigation .sub-menu').evaluateAll((elements) => elements.filter((element) => {
-    const style = getComputedStyle(element);
-    const rect = element.getBoundingClientRect();
-    return style.display !== 'none' && rect.width > 1 && rect.height > 1;
-  }).length);
+  const menuState = await page.locator('.f-off--navigation.active').evaluate((element) => {
+    const visibleSubmenus = [...element.querySelectorAll('.f-navigation-sub, .sub-menu')].filter((submenu) => {
+      const style = getComputedStyle(submenu);
+      const rect = submenu.getBoundingClientRect();
+      return style.display !== 'none' && rect.width > 1 && rect.height > 1;
+    }).length;
 
-  if (visibleSubmenus > 0) {
-    throw new Error('mobile menu exposes desktop submenu content');
+    const visibleLinks = [...element.querySelectorAll('a')]
+      .filter((link) => link.offsetWidth > 1 || link.offsetHeight > 1 || link.getClientRects().length > 0)
+      .map((link) => link.textContent.replace(/\s+/g, ' ').trim())
+      .filter(Boolean);
+
+    return {
+      overflowY: getComputedStyle(element).overflowY,
+      scrollHeight: element.scrollHeight,
+      clientHeight: element.clientHeight,
+      visibleSubmenus,
+      visibleLinks,
+    };
+  });
+
+  if (menuState.visibleSubmenus < 4) {
+    throw new Error(`mobile menu expected visible submenu groups, got ${menuState.visibleSubmenus}`);
+  }
+
+  if (menuState.scrollHeight <= menuState.clientHeight || menuState.overflowY === 'hidden') {
+    throw new Error('mobile menu is not scrollable after exposing submenu content');
+  }
+
+  for (const label of ['Série Core', 'Série Classic', 'Série Custom', 'Bazény ARCTIC Classic', 'Bazény ARCTIC Custom', 'Termokryt']) {
+    if (!menuState.visibleLinks.includes(label)) {
+      throw new Error(`mobile menu is missing visible submenu link: ${label}`);
+    }
   }
 }
 
@@ -216,6 +250,17 @@ async function assertHtmlContracts() {
     'f-download-group--contract',
     'f-download-card--contract',
     'data-download-filter-type',
+  ]);
+
+  const supportTemplate = readFileSync('wp-content/themes/arctic/template-support.php', 'utf8');
+  const downloadsTemplate = readFileSync('wp-content/themes/arctic/template-downloads.php', 'utf8');
+
+  assertNotIncludes('template-support.php', supportTemplate, [
+    'contact-tomas-koutny.jpg',
+    '$download_filter_keys',
+  ]);
+  assertNotIncludes('template-downloads.php', downloadsTemplate, [
+    '$download_filter_keys',
   ]);
 
   assertCountAtLeast('/podpora/ FAQ cards', support, /f-support-faq-card--contract/g, 3);

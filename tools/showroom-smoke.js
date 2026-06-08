@@ -1,4 +1,4 @@
-﻿const { chromium } = require('playwright-core');
+const { chromium } = require('playwright-core');
 
 const baseUrl = process.env.ARCTIC_BASE_URL || 'http://localhost:8090';
 const chromePath = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
@@ -68,9 +68,9 @@ async function main() {
   try {
     await page.goto(`${baseUrl}/showroom/`, { waitUntil: 'networkidle' });
 
-    await assertSource(page, '.f-showroom-hero', 'uploads/import/owner-showroom/showroom-covana-interior-web.jpg', 'desktop.heroSource');
-    await assertSource(page, '.f-showroom-split--first img', 'uploads/import/owner-showroom/showroom-detail-web.jpg', 'desktop.splitFirstSource');
-    await assertSource(page, '.f-showroom-split--second img', 'uploads/import/owner-showroom/showroom-main-web.jpg', 'desktop.splitSecondSource');
+    await assertSource(page, '.f-showroom-hero', 'showroom-covana-interior-web', 'desktop.heroSource');
+    await assertSource(page, '.f-showroom-split--first img', 'showroom-detail-web', 'desktop.splitFirstSource');
+    await assertSource(page, '.f-showroom-split--second img', 'showroom-main-web', 'desktop.splitSecondSource');
     await assertSource(page, '.f-showroom-reason:nth-child(1) .f-showroom-reason__icon', 'uploads/import/figma/showroom-reason-pool.svg', 'desktop.reasonPoolIcon');
     await assertSource(page, '.f-showroom-reason:nth-child(2) .f-showroom-reason__icon', 'uploads/import/figma/showroom-reason-road.svg', 'desktop.reasonRoadIcon');
     await assertSource(page, '.f-showroom-reason:nth-child(3) .f-showroom-reason__icon', 'uploads/import/figma/showroom-reason-parking.svg', 'desktop.reasonParkingIcon');
@@ -96,13 +96,31 @@ async function main() {
     await assertBox(page, '.f-showroom-split--first img', { x: 986, y: 1662, width: 674, height: 424 }, 4, 'desktop.splitFirstImage');
     await assertBox(page, '.f-showroom-split--second img', { x: 260, y: 2224, width: 674, height: 424 }, 4, 'desktop.splitSecondImage');
 
+    const adminSources = await page.evaluate(() => ({
+      miniCta: document.querySelector('.f-showroom-mini-cta')?.getAttribute('data-content-source') || '',
+      reasons: document.querySelector('.f-showroom-reasons__grid')?.getAttribute('data-content-source') || '',
+      primary: document.querySelector('.f-showroom-split--first .f-showroom-split__copy')?.getAttribute('data-content-source') || '',
+      secondary: document.querySelector('.f-showroom-split--second .f-showroom-split__copy')?.getAttribute('data-content-source') || '',
+      contactName: document.querySelector('.f-showroom-info__item--contact strong')?.textContent.trim() || '',
+      contactText: document.querySelector('.f-showroom-info__item--contact')?.textContent.trim().replace(/\s+/g, ' ') || '',
+      reasonsCount: document.querySelectorAll('.f-showroom-reason').length,
+    }));
+
+    assert(adminSources.miniCta === 'showroom-meta', `desktop.miniCta source is ${adminSources.miniCta}`);
+    assert(adminSources.reasons === 'showroom-meta', `desktop.reasons source is ${adminSources.reasons}`);
+    assert(adminSources.primary === 'wp-editor', `desktop.primary section source is ${adminSources.primary}`);
+    assert(adminSources.secondary === 'showroom-meta', `desktop.secondary section source is ${adminSources.secondary}`);
+    assert(adminSources.reasonsCount === 4, `desktop: expected 4 showroom reasons, got ${adminSources.reasonsCount}`);
+    assert(adminSources.contactName.includes('Tomáš Koutný'), `desktop showroom contact is ${adminSources.contactName}`);
+    assert(adminSources.contactText.includes('tomas.koutny@baspa.cz'), 'desktop showroom contact is missing member email');
+
     await page.setViewportSize({ width: 375, height: 900 });
     await page.goto(`${baseUrl}/showroom/`, { waitUntil: 'networkidle' });
 
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     assert(overflow <= 0, `mobile: horizontal overflow ${overflow}`);
 
-    await assertSource(page, '.f-showroom-hero', 'uploads/import/owner-showroom/showroom-covana-interior-web.jpg', 'mobile.heroSource');
+    await assertSource(page, '.f-showroom-hero', 'showroom-covana-interior-web', 'mobile.heroSource');
 
     console.log('Showroom smoke passed.');
   } finally {

@@ -29,6 +29,34 @@ const forms = [
   },
 ];
 
+function isAllowedExternalRequest(url) {
+  if (url.hostname === 'www.google.com' && url.pathname.startsWith('/maps')) {
+    return true;
+  }
+
+  if (url.hostname === 'maps.googleapis.com' && (
+    url.pathname.startsWith('/maps') ||
+    url.pathname.startsWith('/maps-api-v3') ||
+    url.pathname.startsWith('/$rpc/google.internal.maps')
+  )) {
+    return true;
+  }
+
+  if (url.hostname === 'maps.gstatic.com') {
+    return true;
+  }
+
+  if (url.hostname === 'places.googleapis.com' && url.pathname.startsWith('/$rpc/google.maps.places')) {
+    return true;
+  }
+
+  if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') {
+    return true;
+  }
+
+  return false;
+}
+
 function trackExternalRequests(page) {
   page.on('request', (request) => {
     let url;
@@ -38,7 +66,7 @@ function trackExternalRequests(page) {
       return;
     }
 
-    if ((url.protocol === 'http:' || url.protocol === 'https:') && !allowedHosts.has(url.hostname)) {
+    if ((url.protocol === 'http:' || url.protocol === 'https:') && !allowedHosts.has(url.hostname) && !isAllowedExternalRequest(url)) {
       externalRequests.add(request.url());
     }
   });

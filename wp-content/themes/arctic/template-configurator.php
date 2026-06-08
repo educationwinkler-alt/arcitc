@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Template Name: Arctic 3D konfigurátor
  */

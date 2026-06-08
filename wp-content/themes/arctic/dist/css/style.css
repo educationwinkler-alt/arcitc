@@ -9341,7 +9341,6 @@ body:is(.off-active--navigation):not(.off-active--navigation.off-closing--naviga
 }
 .f-section--instagram .sbi_photo {
   content-visibility: auto;
-  contain-intrinsic-size: 220px 220px;
 }
 .f-listings .f-listings__header {
   margin: 0;

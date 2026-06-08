@@ -7,6 +7,7 @@
   var SECTION_SELECTOR = '.js-links__section[id]';
   var HANDOFF_CLASS = 'is-section-nav-handoff';
   var ACTIVE_OFFSET = 340;
+  var HANDOFF_TOLERANCE = 2;
 
   function ready(callback) {
     if (document.readyState === 'loading') {
@@ -29,6 +30,13 @@
     } catch (error) {
       return document.getElementById(href.slice(1));
     }
+  }
+
+  function getStickyTop(element) {
+    var top = window.getComputedStyle(element).top;
+    var parsed = parseFloat(top);
+
+    return Number.isFinite(parsed) ? parsed : 0;
   }
 
   ready(function () {
@@ -71,7 +79,10 @@
         }
 
         links.forEach(function (link) {
-          link.classList.toggle('active', link === activeLink);
+          var isActive = link === activeLink;
+
+          link.classList.toggle('active', isActive);
+          link.classList.toggle('is-active', isActive);
         });
       });
     }
@@ -81,11 +92,20 @@
         return;
       }
 
-      var headerHeight = header.getBoundingClientRect().height || 0;
       var shouldHide = handoffs.some(function (navigation) {
         var rect = navigation.getBoundingClientRect();
+        var computedStyle = window.getComputedStyle(navigation);
+        var stickyTop = getStickyTop(navigation);
+        var documentTop = rect.top + window.scrollY;
+        var reachedStickyPoint = window.scrollY >= documentTop - stickyTop - HANDOFF_TOLERANCE;
+        var isAtStickyEdge = rect.top <= stickyTop + HANDOFF_TOLERANCE;
+        var isStillVisible = rect.bottom > stickyTop + HANDOFF_TOLERANCE;
 
-        return window.scrollY > 0 && rect.top <= headerHeight && rect.bottom > 0;
+        if (computedStyle.position !== 'sticky') {
+          return window.scrollY > 0 && reachedStickyPoint;
+        }
+
+        return window.scrollY > 0 && reachedStickyPoint && isAtStickyEdge && isStillVisible;
       });
 
       header.classList.toggle(HANDOFF_CLASS, shouldHide);

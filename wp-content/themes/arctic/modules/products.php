@@ -7,12 +7,15 @@
 // Type
 require_once get_theme_file_path( 'modules/products/type.php' );
 require_once get_theme_file_path( 'modules/products/type/taxonomy.php' );
+require_once get_theme_file_path( 'modules/products/type/color.php' );
+require_once get_theme_file_path( 'modules/products/inc/colors.php' );
 require_once get_theme_file_path( 'modules/products/type/metabox.php' );
 
 // Includes
 //require_once get_theme_file_path( 'modules/products/inc/rewrite.php' );
 require_once get_theme_file_path( 'modules/products/inc/categories.php' );
 require_once get_theme_file_path( 'modules/products/inc/configurations.php' );
+require_once get_theme_file_path( 'modules/products/inc/benefit-sections.php' );
 require_once get_theme_file_path( 'modules/products/inc/query.php' );
 require_once get_theme_file_path( 'modules/products/inc/product.php' );
 // Admin

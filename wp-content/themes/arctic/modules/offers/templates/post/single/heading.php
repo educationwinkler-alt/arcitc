@@ -6,6 +6,8 @@
 
 $title       = get_post_meta( get_the_ID(), 'offer_title_short', true );
 $description = get_post_meta( get_the_ID(), 'offer_description', true );
+$button_text = trim( (string) get_post_meta( get_the_ID(), 'offer_button_text', true ) );
+$button_url  = trim( (string) get_post_meta( get_the_ID(), 'offer_button_url', true ) );
 
 $heading_class   = array( 'f-heading' );
 $heading_class[] = has_post_thumbnail() || has_header_image() ? 'f-heading--background' : '';
@@ -38,18 +40,25 @@ $heading_class[] = has_post_thumbnail() || has_header_image() ? 'f-heading--back
 			<?php } ?>
 
 			<?php
-			get_template_part( 'templates/button/contact', '', array(
-				'text'          => esc_html__( 'I am interested', 'baspa' ),
-				'class_replace' => array(
-					'f-button',
-					'f-button--outline',
-					'f-button--reversed',
-					'a-button',
-					'a-button--outline',
-					'f-off__trigger',
-					'js-off__trigger',
-				),
-			) );
+			if ( '' !== $button_text && '' !== $button_url ) { ?>
+				<a class="f-heading__button f-heading__button--accent f-button a-button a-button--accent"
+				   href="<?php echo esc_url( $button_url ); ?>">
+					<?php echo esc_html( $button_text ); ?>
+				</a>
+			<?php } else {
+				get_template_part( 'templates/button/contact', '', array(
+					'text'          => '' !== $button_text ? $button_text : esc_html__( 'Mám zájem', 'baspa' ),
+					'class_replace' => array(
+						'f-button',
+						'f-button--outline',
+						'f-button--reversed',
+						'a-button',
+						'a-button--outline',
+						'f-off__trigger',
+						'js-off__trigger',
+					),
+				) );
+			}
 			?>
 		</div>
 

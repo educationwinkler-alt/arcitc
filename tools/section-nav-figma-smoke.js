@@ -17,6 +17,10 @@ function isVisibleLineTransform(transform) {
   return transform === 'none' || !transform.startsWith('matrix(0,');
 }
 
+function isHiddenPseudoLine(style) {
+  return style.content === 'none' || style.display === 'none';
+}
+
 async function readState(page, containerSelector, linkSelector, index = 0) {
   return page.evaluate(({ containerSelector, linkSelector, index }) => {
     const rect = (element) => {
@@ -33,6 +37,7 @@ async function readState(page, containerSelector, linkSelector, index = 0) {
     const link = document.querySelectorAll(linkSelector)[index];
     const containerStyle = getComputedStyle(container);
     const linkStyle = getComputedStyle(link);
+    const beforeLineStyle = getComputedStyle(link, '::before');
     const lineStyle = getComputedStyle(link, '::after');
 
     return {
@@ -44,6 +49,10 @@ async function readState(page, containerSelector, linkSelector, index = 0) {
       linkLineHeight: linkStyle.lineHeight,
       linkMargin: linkStyle.margin,
       linkPadding: linkStyle.padding,
+      linkBorderBottomWidth: linkStyle.borderBottomWidth,
+      linkTextDecorationLine: linkStyle.textDecorationLine,
+      beforeLineContent: beforeLineStyle.content,
+      beforeLineDisplay: beforeLineStyle.display,
       lineBottom: lineStyle.bottom,
       lineHeight: lineStyle.height,
       lineTransform: lineStyle.transform,
@@ -64,11 +73,19 @@ async function assertSecondaryNav(page, config) {
   assert(state.containerRadius === '40px', `${config.label}.container.radius expected 40px, got ${state.containerRadius}`);
   assertClose(state.link.x, 313, 2, `${config.label}.firstLink.x`);
   assertClose(state.link.y, config.firstLinkY, 2, `${config.label}.firstLink.y`);
+  if (config.firstLinkWidth) {
+    assertClose(state.link.width, config.firstLinkWidth, 1, `${config.label}.firstLink.width`);
+  }
   assertClose(state.link.height, 51, 1, `${config.label}.firstLink.height`);
   assert(state.linkFontSize === '18px', `${config.label}.firstLink.fontSize expected 18px, got ${state.linkFontSize}`);
   assert(state.linkLineHeight === '51px', `${config.label}.firstLink.lineHeight expected 51px, got ${state.linkLineHeight}`);
   assert(state.linkMargin === '0px', `${config.label}.firstLink.margin expected 0px, got ${state.linkMargin}`);
   assert(state.linkPadding === '0px', `${config.label}.firstLink.padding expected 0px, got ${state.linkPadding}`);
+  assert(state.linkBorderBottomWidth === '0px', `${config.label}.firstLink.borderBottomWidth expected 0px, got ${state.linkBorderBottomWidth}`);
+  assert(state.linkTextDecorationLine === 'none', `${config.label}.firstLink.textDecoration expected none, got ${state.linkTextDecorationLine}`);
+  if (config.expectNoBeforeLine) {
+    assert(isHiddenPseudoLine({ content: state.beforeLineContent, display: state.beforeLineDisplay }), `${config.label}.firstLink.beforeLine expected hidden, got content ${state.beforeLineContent}, display ${state.beforeLineDisplay}`);
+  }
   assert(state.lineBottom === '-20px', `${config.label}.activeLine.bottom expected -20px, got ${state.lineBottom}`);
   assert(state.lineHeight === '1px', `${config.label}.activeLine.height expected 1px, got ${state.lineHeight}`);
   assertClose(state.lineWidth, state.link.width, 0.5, `${config.label}.activeLine.width`);
@@ -96,6 +113,7 @@ async function main() {
       linkSelector: '.f-links--product .f-links__navigation a',
       container: { x: 260, y: 749 },
       firstLinkY: 771,
+      expectNoBeforeLine: true,
     });
 
     await assertSecondaryNav(page, {
@@ -105,6 +123,8 @@ async function main() {
       linkSelector: '.f-links--about .f-links__navigation a',
       container: { x: 260, y: 441 },
       firstLinkY: 463,
+      firstLinkWidth: 141,
+      expectNoBeforeLine: true,
     });
 
     await assertSecondaryNav(page, {

@@ -21,7 +21,7 @@ $button_text = get_theme_mod( 'arctic_configurator_button_text', __( 'Konfigurov
 $configurator_image = content_url( 'uploads/import/figma/category-configurator.png' );
 ?>
 
-<section id="konfigurator" class="f-section f-section--configurator" data-configurator-scope="hot-tub">
+<section id="konfigurator" class="f-section f-section--configurator js-links__section" data-configurator-scope="hot-tub">
 	<div class="f-section__container a-container">
 		<div class="f-configurator-cta f-configurator-cta--shared f-configurator-cta--hot-tub">
 			<div class="f-configurator-cta__content">

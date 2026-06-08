@@ -12,6 +12,7 @@ $references_query = new WP_Query( array(
 	),
 ) );
 
+$allow_seed_fallbacks     = function_exists( 'arctic_allow_seed_fallbacks' ) && arctic_allow_seed_fallbacks();
 $reference_target_count   = 9;
 $reference_fallback_images = array(
 	content_url( 'uploads/import/figma/realizace-1.jpg' ),
@@ -45,6 +46,11 @@ if ( $references_query->have_posts() ) {
 		$image_meta   = $thumbnail_id ? wp_get_attachment_metadata( $thumbnail_id ) : array();
 		$image        = $thumbnail_id ? wp_get_attachment_image_url( $thumbnail_id, 'full' ) : '';
 
+		if ( !$image && !$allow_seed_fallbacks ) {
+			$reference_index++;
+			continue;
+		}
+
 		$references[] = array(
 			'title'          => get_the_title(),
 			'image'          => $image ?: $reference_fallback_images[ $reference_index % count( $reference_fallback_images ) ],
@@ -60,7 +66,7 @@ if ( $references_query->have_posts() ) {
 }
 
 $reference_placeholder_count = 0;
-while ( count( $references ) < $reference_target_count ) {
+while ( $allow_seed_fallbacks && count( $references ) < $reference_target_count ) {
 	$placeholder = $reference_placeholder_cards[ $reference_placeholder_count % count( $reference_placeholder_cards ) ];
 	$references[] = array(
 		'title'          => $placeholder['title'],
@@ -81,8 +87,9 @@ get_template_part( 'templates/heading' );
 <main id="<?php echo sanitize_title( esc_attr_x( 'content', 'anchor', 'baspa' ) ); ?>" class="f-main f-main--figma-page f-main--references-figma">
 	<section class="f-section f-section--references-figma f-reference-section f-reference-section--archive-grid js-images">
 		<div class="f-section__container a-container">
+			<h2 class="screen-reader-text"><?php echo esc_html( get_the_title() ); ?></h2>
 			<div class="f-reference-grid">
-				<?php foreach ( array_slice( $references, 0, 9 ) as $reference ) { ?>
+				<?php foreach ( $references as $reference ) { ?>
 					<?php $is_placeholder = !empty( $reference['is_placeholder'] ); ?>
 					<?php if ( $is_placeholder ) { ?>
 						<article class="f-reference-card f-reference-card--placeholder" aria-label="<?php echo esc_attr__( 'Ukázková reference', 'baspa' ); ?>">

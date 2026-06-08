@@ -59,6 +59,8 @@ require_once get_theme_file_path( 'inc/mega-menu.php' );
 require_once get_theme_file_path( 'inc/scripts.php' );
 // SEO
 require_once get_theme_file_path( 'inc/seo.php' );
+// Validation
+require_once get_theme_file_path( 'inc/validation.php' );
 // Functions
 require_once get_theme_file_path( 'inc/functions.php' );
 // Customize
@@ -93,6 +95,10 @@ require_once get_theme_file_path( 'modules/accessories.php' ); // 37
 require_once get_theme_file_path( 'modules/references.php' ); // 37
 // Members
 require_once get_theme_file_path( 'modules/members.php' ); // 37
+// Features
+require_once get_theme_file_path( 'modules/features.php' ); // 37
+// Services
+require_once get_theme_file_path( 'modules/services.php' ); // 37
 // Partners
 require_once get_theme_file_path( 'modules/partners.php' ); // 37
 // Supports

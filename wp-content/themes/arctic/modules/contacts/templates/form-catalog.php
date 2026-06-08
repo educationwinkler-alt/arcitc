@@ -4,6 +4,11 @@
  * Catalog Form
  */
 
+static $form_render_count = 0;
+$form_render_count++;
+$form_id  = 'form-catalog-' . $form_render_count;
+$email_id = 'f-email-' . $form_id;
+
 if ( isset( $_POST[ 'f-form--submitted' ] ) ) {
 	/**
 	 * Form Processing
@@ -11,9 +16,9 @@ if ( isset( $_POST[ 'f-form--submitted' ] ) ) {
 	get_template_part( 'modules/contacts/templates/form/processing' );
 } else { ?>
 
-	<form id="<?php echo sanitize_title( esc_attr_x( 'form-catalog', 'anchor', 'baspa' ) ); ?>"
+	<form id="<?php echo esc_attr( $form_id ); ?>"
 	      class="f-form--catalog f-form js-form" method="post"
-	      action="<?php echo esc_url( get_the_permalink() . '#' . _x( 'form-catalog', 'anchor', 'baspa' ) ); ?>"
+	      action="<?php echo esc_url( get_the_permalink() . '#' . $form_id ); ?>"
 	      data-ajax="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>">
 
 		<div class="f-form__loading js-form__loading" aria-hidden="true">
@@ -26,14 +31,14 @@ if ( isset( $_POST[ 'f-form--submitted' ] ) ) {
 			<div class="a-flex__item">
 
 				<div class="f-field a-field">
-					<label for="f-email" class="f-label screen-reader-text">
+					<label for="<?php echo esc_attr( $email_id ); ?>" class="f-label screen-reader-text">
 						<?php echo esc_html__( 'Email', 'baspa' ); ?>
 						<abbr title="<?php echo esc_attr__( 'Povinné', 'baspa' ); ?>"
 						      class="f-required"><?php echo esc_html__( '&#10043;', 'baspa' ); ?></abbr>
 					</label>
-					<input type="email" id="f-email" name="f-email" class="f-input" autocomplete="email"
+					<input type="email" id="<?php echo esc_attr( $email_id ); ?>" name="f-email" class="f-input" autocomplete="email"
 					       placeholder="<?php echo esc_attr__( 'Vyplňte e-mail', 'baspa' ); ?> ..."
-					       value="<?php echo isset( $_POST[ 'f-email' ] ) ? esc_attr( wp_unslash( $_POST[ 'f-email' ] ) ) : ''; ?>" aria-required="true" required>
+					       value="<?php echo isset( $_POST[ 'f-email' ] ) ? esc_attr( wp_unslash( $_POST[ 'f-email' ] ) ) : ''; ?>" required>
 				</div>
 
 			</div>
@@ -73,7 +78,7 @@ if ( isset( $_POST[ 'f-form--submitted' ] ) ) {
 		<input type="hidden" name="f-title" value="<?php echo function_exists( 'forqy_get_current_object_title' ) ? forqy_get_current_object_title() : ''; ?>">
 		<input type="hidden" name="f-url" value="<?php echo function_exists( 'forqy_get_current_object_url' ) ? forqy_get_current_object_url() : ''; ?>">
 
-		<?php wp_nonce_field( 'f-catalog', 'f-catalog-nonce' ); ?>
+		<input type="hidden" name="f-catalog-nonce" value="<?php echo esc_attr( wp_create_nonce( 'f-catalog' ) ); ?>">
 	</form>
 
 <?php }

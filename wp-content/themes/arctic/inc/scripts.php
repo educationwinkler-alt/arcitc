@@ -33,6 +33,34 @@ if ( !function_exists( 'baspa_scripts' ) ) {
 		}
 
 		/**
+		 * Mobile header reveal after scroll idle
+		 */
+		$mobile_header_idle_path = get_theme_file_path( 'dist/js/mobile-header-idle.js' );
+		if ( file_exists( $mobile_header_idle_path ) ) {
+			wp_enqueue_script(
+				get_template() . '-mobile-header-idle',
+				get_theme_file_uri( 'dist/js/mobile-header-idle.js' ),
+				array( get_template() ),
+				filemtime( $mobile_header_idle_path ),
+				true
+			);
+		}
+
+		/**
+		 * Smartsupp homepage promo collision guard
+		 */
+		$smartsupp_promo_offset_path = get_theme_file_path( 'dist/js/smartsupp-promo-offset.js' );
+		if ( file_exists( $smartsupp_promo_offset_path ) ) {
+			wp_enqueue_script(
+				get_template() . '-smartsupp-promo-offset',
+				get_theme_file_uri( 'dist/js/smartsupp-promo-offset.js' ),
+				array( get_template() ),
+				filemtime( $smartsupp_promo_offset_path ),
+				true
+			);
+		}
+
+		/**
 		 * About team Figma carousel
 		 */
 		$about_team_carousel_path = get_theme_file_path( 'dist/js/about-team-carousel.js' );

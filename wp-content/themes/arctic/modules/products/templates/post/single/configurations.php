@@ -6,6 +6,19 @@
 
 $product_id      = get_the_ID();
 $configurations  = function_exists( 'baspa_products_get_configurations' ) ? baspa_products_get_configurations( $product_id ) : array();
+$allow_seed_fallbacks = function_exists( 'arctic_allow_seed_fallbacks' ) && arctic_allow_seed_fallbacks();
+$product_image_ids = array_values( array_filter( array_map( 'absint', get_post_meta( $product_id, 'product_image' ) ), static function ( int $image_id ): bool {
+	return $image_id > 0 && wp_attachment_is_image( $image_id );
+} ) );
+$product_fallback_image = $product_image_ids[0] ?? 0;
+
+if ( $product_fallback_image <= 0 ) {
+	$thumbnail_id = absint( get_post_thumbnail_id( $product_id ) );
+
+	if ( $thumbnail_id > 0 && wp_attachment_is_image( $thumbnail_id ) ) {
+		$product_fallback_image = $thumbnail_id;
+	}
+}
 
 if ( !empty( $configurations ) ) { ?>
 	<div id="konfigurace" class="f-product-configurations a-stack a-gap--s">
@@ -16,9 +29,11 @@ if ( !empty( $configurations ) ) { ?>
 				$name        = $configuration['name'] ?? '';
 				$image       = isset( $configuration['image_id'] ) ? absint( $configuration['image_id'] ) : 0;
 				$has_image   = $image > 0 && wp_attachment_is_image( $image );
+				$media_image = $has_image ? $image : $product_fallback_image;
+				$has_media_image = $media_image > 0 && wp_attachment_is_image( $media_image );
 				$fallback    = $index % 2 === 0 ? 'detail-config-prestige.png' : 'detail-config-signature.png';
 				$fallback_path = WP_CONTENT_DIR . '/uploads/import/figma/' . $fallback;
-				$fallback_url = file_exists( $fallback_path ) ? content_url( 'uploads/import/figma/' . $fallback ) : '';
+				$fallback_url = !$has_media_image && $allow_seed_fallbacks && file_exists( $fallback_path ) ? content_url( 'uploads/import/figma/' . $fallback ) : '';
 				$price       = !empty( $configuration['price_text'] ) ? $configuration['price_text'] : ( $configuration['price'] ?? '' );
 				$seats       = $configuration['seats'] ?? '';
 				$jets        = $configuration['jets'] ?? '';
@@ -26,18 +41,21 @@ if ( !empty( $configurations ) ) { ?>
 				$dimensions  = $configuration['dimensions'] ?? '';
 				$description = $configuration['notes'] ?? '';
 				$item_class  = array( 'f-product-configuration' );
-				$asset_status = $has_image ? 'product-image' : ( !empty( $fallback_url ) ? 'figma-fallback' : 'WAITING_ON_OWNER' );
+				$asset_status = $has_image ? 'configuration-image' : ( $has_media_image ? 'product-image-fallback' : ( !empty( $fallback_url ) ? 'seed-fallback' : 'admin-empty' ) );
 
-				if ( !$has_image && empty( $fallback_url ) ) {
+				if ( !$has_media_image && empty( $fallback_url ) ) {
 					$item_class[] = 'f-product-configuration--no-media';
 				}
 				?>
 
 				<article class="<?php echo esc_attr( implode( ' ', array_filter( $item_class ) ) ); ?>" data-asset-status="<?php echo esc_attr( $asset_status ); ?>">
-					<?php if ( $has_image || !empty( $fallback_url ) ) { ?>
+					<?php if ( $has_media_image || !empty( $fallback_url ) ) { ?>
 						<div class="f-product-configuration__thumb" data-asset-status="<?php echo esc_attr( $asset_status ); ?>">
-							<?php if ( $has_image ) { ?>
-								<?php echo wp_get_attachment_image( $image, 'medium' ); ?>
+							<?php if ( $has_media_image ) { ?>
+								<?php echo wp_get_attachment_image( $media_image, 'medium_large', false, array(
+									'loading'  => 'lazy',
+									'decoding' => 'async',
+								) ); ?>
 							<?php } else { ?>
 								<img src="<?php echo esc_url( $fallback_url ); ?>" alt="" loading="lazy" decoding="async">
 							<?php } ?>

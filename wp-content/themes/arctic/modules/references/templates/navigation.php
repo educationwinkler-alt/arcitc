@@ -13,7 +13,7 @@ $categories = get_terms( array(
 
 if ( !empty( $categories ) && !is_wp_error( $categories ) ) { ?>
 
-	<div class="f-links f-links--stack f-links--references">
+	<div class="f-links f-links--stack f-links--sticky f-links--references js-section-nav-handoff">
 		<div class="f-links__container a-container">
 			<nav class="f-links__navigation"
 				 aria-label="<?php echo esc_attr_x( 'References Navigation', 'navigation', 'baspa' ); ?>">
@@ -40,4 +40,3 @@ if ( !empty( $categories ) && !is_wp_error( $categories ) ) { ?>
 	</div>
 
 <?php }
-

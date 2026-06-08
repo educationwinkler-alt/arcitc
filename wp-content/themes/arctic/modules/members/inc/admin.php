@@ -47,6 +47,16 @@ if ( !function_exists( 'baspa_members_admin_page_content' ) ) {
 
 		$members_title    = get_option( 'baspa_members_title' ) !== null ? get_option( 'baspa_members_title' ) : __( 'Members', 'baspa' );
 		$members_subtitle = get_option( 'baspa_members_subtitle' );
+		$contact_settings = function_exists( 'baspa_members_contact_settings' ) ? baspa_members_contact_settings() : array();
+		$member_posts     = get_posts( array(
+			'post_type'      => 'member',
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+			'orderby'        => array(
+				'menu_order' => 'ASC',
+				'title'      => 'ASC',
+			),
+		) );
 
 		if ( isset( $_POST[ 'submit' ] ) ) {
 			check_admin_referer( 'baspa_members_settings' );
@@ -58,6 +68,13 @@ if ( !function_exists( 'baspa_members_admin_page_content' ) ) {
 			if ( isset( $_POST[ 'members_subtitle' ] ) ) {
 				$members_subtitle = wp_kses_post( $post_value( 'members_subtitle' ) );
 				update_option( 'baspa_members_subtitle', $members_subtitle );
+			}
+			foreach ( $contact_settings as $setting ) {
+				$option = $setting['option'] ?? '';
+
+				if ( $option && isset( $_POST[ $option ] ) ) {
+					update_option( $option, absint( $_POST[ $option ] ) );
+				}
 			}
 		} ?>
 
@@ -99,6 +116,36 @@ if ( !function_exists( 'baspa_members_admin_page_content' ) ) {
 				          class="large-text"><?php echo esc_textarea( $members_subtitle ); ?></textarea>
 						</td>
 					</tr>
+					<?php foreach ( $contact_settings as $setting ) {
+						$option      = $setting['option'] ?? '';
+						$label       = $setting['label'] ?? $option;
+						$description = $setting['description'] ?? '';
+						$value       = $option ? (int) get_option( $option, 0 ) : 0;
+
+						if ( !$option ) {
+							continue;
+						} ?>
+						<tr>
+							<th scope="row">
+								<label for="<?php echo esc_attr( $option ); ?>">
+									<?php echo esc_html( $label ); ?>
+								</label>
+							</th>
+							<td>
+								<select id="<?php echo esc_attr( $option ); ?>" name="<?php echo esc_attr( $option ); ?>">
+									<option value="0"><?php echo esc_html__( 'Use first contact member', 'baspa' ); ?></option>
+									<?php foreach ( $member_posts as $member_post ) { ?>
+										<option value="<?php echo esc_attr( (int) $member_post->ID ); ?>" <?php selected( $value, (int) $member_post->ID ); ?>>
+											<?php echo esc_html( get_the_title( $member_post ) ); ?>
+										</option>
+									<?php } ?>
+								</select>
+								<?php if ( !empty( $description ) ) { ?>
+									<p class="description"><?php echo esc_html( $description ); ?></p>
+								<?php } ?>
+							</td>
+						</tr>
+					<?php } ?>
 					</tbody>
 				</table>
 

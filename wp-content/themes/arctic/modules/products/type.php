@@ -44,7 +44,7 @@ if ( !function_exists( 'baspa_products_type_register' ) ) {
 			'publicly_queryable'  => true,
 			'query_var'           => true,
 			'rewrite'             => array(
-				'slug'         => _x( 'product', 'type', 'baspa' ),
+				'slug'         => 'product',
 				'hierarchical' => true,
 				'with_front'   => false,
 			),
@@ -63,6 +63,82 @@ if ( !function_exists( 'baspa_products_type_register' ) ) {
 
 	add_action( 'init', 'baspa_products_type_register' );
 
+}
+
+if ( !function_exists( 'arctic_product_permalink' ) ) {
+	function arctic_product_permalink( WP_Post $post ): string {
+		return home_url( user_trailingslashit( 'product/' . $post->post_name ) );
+	}
+}
+
+if ( !function_exists( 'arctic_product_type_link' ) ) {
+	function arctic_product_type_link( string $post_link, WP_Post $post ): string {
+		if ( $post->post_type !== 'product' || $post->post_name === '' ) {
+			return $post_link;
+		}
+
+		return arctic_product_permalink( $post );
+	}
+
+	add_filter( 'post_type_link', 'arctic_product_type_link', 20, 2 );
+}
+
+if ( !function_exists( 'arctic_product_normalize_legacy_url' ) ) {
+	function arctic_product_normalize_legacy_url( string $url ): string {
+		$path = (string) wp_parse_url( $url, PHP_URL_PATH );
+		if ( !preg_match( '#/produkt/([^/]+)/?$#i', $path, $matches ) ) {
+			return $url;
+		}
+
+		$product = get_page_by_path( sanitize_title( $matches[1] ), OBJECT, 'product' );
+		if ( !( $product instanceof WP_Post ) || $product->post_status !== 'publish' ) {
+			return $url;
+		}
+
+		return arctic_product_permalink( $product );
+	}
+}
+
+if ( !function_exists( 'arctic_product_normalize_menu_item_urls' ) ) {
+	/**
+	 * Keep saved WP menu items working even if old seeds stored /produkt/... custom links.
+	 *
+	 * @param array<int, WP_Post> $items
+	 *
+	 * @return array<int, WP_Post>
+	 */
+	function arctic_product_normalize_menu_item_urls( array $items ): array {
+		foreach ( $items as $item ) {
+			if ( isset( $item->url ) && is_string( $item->url ) ) {
+				$item->url = arctic_product_normalize_legacy_url( $item->url );
+			}
+		}
+
+		return $items;
+	}
+
+	add_filter( 'wp_nav_menu_objects', 'arctic_product_normalize_menu_item_urls', 30, 1 );
+}
+
+if ( !function_exists( 'arctic_product_legacy_czech_redirect' ) ) {
+	function arctic_product_legacy_czech_redirect(): void {
+		$request_uri = (string) ( $_SERVER['REQUEST_URI'] ?? '' );
+		$path        = trim( (string) wp_parse_url( $request_uri, PHP_URL_PATH ), '/' );
+
+		if ( !preg_match( '#^produkt/([^/]+)/?$#i', $path, $matches ) ) {
+			return;
+		}
+
+		$product = get_page_by_path( sanitize_title( $matches[1] ), OBJECT, 'product' );
+		if ( !( $product instanceof WP_Post ) || $product->post_status !== 'publish' ) {
+			return;
+		}
+
+		wp_safe_redirect( arctic_product_permalink( $product ), 301 );
+		exit;
+	}
+
+	add_action( 'template_redirect', 'arctic_product_legacy_czech_redirect', 0 );
 }
 
 if ( !function_exists( 'baspa_products_type_content_default' ) ) {

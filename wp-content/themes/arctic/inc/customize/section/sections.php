@@ -104,9 +104,15 @@ if ( !function_exists( 'arctic_sections_normalize_theme_mod_value' ) ) {
 	 */
 	function arctic_sections_normalize_theme_mod_value( string $key, string $value ): string {
 
+		$mojibake_values = function_exists( 'arctic_legacy_mojibake_values' )
+			? 'arctic_legacy_mojibake_values'
+			: static function (): array {
+				return array();
+			};
+
 		$legacy_map = array(
-			'arctic_home_promo_title'       => array( 'Akční nabídka skladových vířivek', 'AkÄŤnĂ­ nabĂ­dka skladovĂ˝ch vĂ­Ĺ™ivek', 'Akcni nabidka skladovych virivek' ),
-			'arctic_home_promo_button_text' => array( 'Zobrazit nabĂ­dku', 'Zobrazit nabidku' ),
+			'arctic_home_promo_title'       => array_merge( array( 'Akční nabídka skladových vířivek', 'Akcni nabidka skladovych virivek' ), $mojibake_values( 'Akční nabídka skladových vířivek' ) ),
+			'arctic_home_promo_button_text' => array_merge( array( 'Zobrazit nabídku', 'Zobrazit nabidku' ), $mojibake_values( 'Zobrazit nabídku' ) ),
 			'arctic_configurator_title'     => array( 'Nakonfigurujte si vlastni virivku' ),
 			'arctic_configurator_text'      => array( 'Vyberte si model, vybavu a barvy. Pripravime vam konkretni doporuceni i cenovou nabidku.' ),
 			'arctic_showroom_contact_name'  => array( 'Lukas Dusek' ),
@@ -219,7 +225,7 @@ if ( !function_exists( 'arctic_customize_settings_add_sections' ) ) {
 			'arctic_home_promo_enabled'         => array( 1, 'absint' ),
 			'arctic_home_promo_title'           => array( 'Výprodej skladových vířivek', 'sanitize_text_field' ),
 			'arctic_home_promo_button_text'     => array( 'Zobrazit nabídku', 'sanitize_text_field' ),
-			'arctic_home_promo_url'             => array( '/virivky/', 'arctic_sections_sanitize_url_path' ),
+			'arctic_home_promo_url'             => array( '/akcni-nabidky/', 'arctic_sections_sanitize_url_path' ),
 			'arctic_configurator_title'         => array( 'Nakonfigurujte si vlastní vířivku', 'sanitize_text_field' ),
 			'arctic_configurator_text'          => array( 'Vyberte si model, výbavu a barvy. Připravíme vám konkrétní doporučení i cenovou nabídku.', 'wp_kses_post' ),
 			'arctic_configurator_button_text'   => array( 'Konfigurovat', 'sanitize_text_field' ),

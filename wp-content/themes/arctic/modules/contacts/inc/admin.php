@@ -90,6 +90,18 @@ if ( !function_exists( 'baspa_contacts_admin_page_content' ) ) {
 		// Service - Form
 		$service_form_title   = get_option( 'baspa_service_form_title' );
 		$service_form_content = get_option( 'baspa_service_form_content' );
+		// Form fields
+		$interest_options_text = function_exists( 'baspa_contacts_interest_options_to_text' )
+			? (string) get_option( 'baspa_contacts_interest_options', baspa_contacts_interest_options_to_text() )
+			: '';
+		$form_text_defaults    = function_exists( 'baspa_contacts_form_text_defaults' ) ? baspa_contacts_form_text_defaults() : array();
+		$form_text_values      = array();
+
+		foreach ( $form_text_defaults as $form_text_key => $form_text_default ) {
+			$form_text_values[ $form_text_key ] = function_exists( 'baspa_contacts_form_text' )
+				? baspa_contacts_form_text( $form_text_key, $form_text_default )
+				: $form_text_default;
+		}
 
 		if ( isset( $_POST[ 'submit' ] ) ) {
 			check_admin_referer( 'baspa_contacts_settings' );
@@ -127,6 +139,20 @@ if ( !function_exists( 'baspa_contacts_admin_page_content' ) ) {
 			if ( isset( $_POST[ 'service_form_content' ] ) ) {
 				$service_form_content = wp_kses_post( $post_value( 'service_form_content' ) );
 				update_option( 'baspa_service_form_content', $service_form_content );
+			}
+			// Form fields
+			if ( isset( $_POST[ 'contacts_interest_options' ] ) && function_exists( 'baspa_contacts_sanitize_interest_options_text' ) ) {
+				$interest_options_text = baspa_contacts_sanitize_interest_options_text( $post_value( 'contacts_interest_options' ) );
+				update_option( 'baspa_contacts_interest_options', $interest_options_text );
+			}
+
+			foreach ( $form_text_defaults as $form_text_key => $form_text_default ) {
+				$field_name = 'contacts_form_text_' . sanitize_key( $form_text_key );
+
+				if ( isset( $_POST[ $field_name ] ) ) {
+					$form_text_values[ $form_text_key ] = sanitize_text_field( $post_value( $field_name ) );
+					update_option( 'baspa_contacts_form_text_' . sanitize_key( $form_text_key ), $form_text_values[ $form_text_key ] );
+				}
 			}
 		} ?>
 
@@ -211,6 +237,49 @@ if ( !function_exists( 'baspa_contacts_admin_page_content' ) ) {
 				          class="large-text"><?php echo esc_textarea( $contacts_form_content ); ?></textarea>
 						</td>
 					</tr>
+					</tbody>
+				</table>
+
+				<hr>
+
+				<h3 style="color: #2271B1"><?php echo esc_html_x( 'Form fields', 'admin', 'baspa' ); ?></h3>
+
+				<table class="form-table" role="presentation">
+
+					<tbody>
+					<tr>
+						<th scope="row">
+							<label for="contacts_interest_options">
+								<?php echo esc_html_x( 'Inquiry types', 'admin', 'baspa' ); ?>
+							</label>
+						</th>
+						<td>
+							<textarea id="contacts_interest_options"
+							          name="contacts_interest_options"
+							          rows="6"
+							          class="large-text code"><?php echo esc_textarea( $interest_options_text ); ?></textarea>
+							<p class="description">
+								<?php echo esc_html__( 'One item per line in the format slug|Label. Keep slugs stable because submitted contacts store the slug.', 'baspa' ); ?>
+							</p>
+						</td>
+					</tr>
+					<?php foreach ( $form_text_defaults as $form_text_key => $form_text_default ) {
+						$field_name = 'contacts_form_text_' . sanitize_key( $form_text_key ); ?>
+						<tr>
+							<th scope="row">
+								<label for="<?php echo esc_attr( $field_name ); ?>">
+									<?php echo esc_html( ucwords( str_replace( '_', ' ', sanitize_key( $form_text_key ) ) ) ); ?>
+								</label>
+							</th>
+							<td>
+								<input type="text"
+								       id="<?php echo esc_attr( $field_name ); ?>"
+								       name="<?php echo esc_attr( $field_name ); ?>"
+								       value="<?php echo esc_attr( $form_text_values[ $form_text_key ] ?? $form_text_default ); ?>"
+								       class="regular-text">
+							</td>
+						</tr>
+					<?php } ?>
 					</tbody>
 				</table>
 

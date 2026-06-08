@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Arctic Jucra/Visao 3D builder.
  */
@@ -16,7 +16,7 @@ $shortcode_tag = $show_viewer && function_exists( 'arctic_jucra_get_shortcode_ta
 $builder_image = content_url( 'uploads/import/figma/category-configurator.png' );
 ?>
 
-<section class="f-section f-section--jucra-builder" data-jucra-builder data-jucra-model="<?php echo esc_attr( $model_name ); ?>">
+<section class="f-section f-section--jucra-builder" data-jucra-builder data-content-source="jucra-settings" data-jucra-model="<?php echo esc_attr( $model_name ); ?>" data-model-count="<?php echo esc_attr( count( $models ) ); ?>">
 	<div class="f-section__container a-container">
 		<header class="f-jucra-builder__header">
 			<div class="f-jucra-builder__breadcrumb" aria-label="<?php echo esc_attr__( 'Drobečková navigace', 'baspa' ); ?>">

@@ -46,14 +46,21 @@ get_template_part( 'templates/heading/term' );
 		}
 
 		if ( !is_tax( 'product-category', 'virivky' ) && !empty( $page_id ) ) {
-			$page = get_post( $page_id );
+			$page              = get_post( $page_id );
+			$page_content      = ( $page instanceof WP_Post ) ? trim( (string) $page->post_content ) : '';
+			$page_content_text = trim( wp_strip_all_tags( do_blocks( $page_content ) ) );
+			$is_seed_note      = false !== stripos( $page_content_text, 'budou převzaty' )
+				|| false !== stripos( $page_content_text, 'napojeny na stejný produktový model' );
+
+			if ( $page_content !== '' && !$is_seed_note ) {
 			?>
 			<div class="f-section f-section--content">
 				<div class="f-section__container a-container">
 					<div class="f-page__content f-content a-content"><?php echo apply_filters( 'the_content', $page->post_content ); ?></div>
 				</div>
 			</div>
-		<?php }
+			<?php }
+		}
 
 		get_template_part( 'templates/section/showroom' );
 		get_template_part( 'templates/section/progress' );

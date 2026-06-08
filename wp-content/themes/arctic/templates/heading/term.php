@@ -4,17 +4,22 @@
  * Term Heading
  */
 
+$term          = get_queried_object();
 $term_id       = get_queried_object_id();
-$term_image_id = get_term_meta( $term_id, 'category_heading_image', true );
-$term_image_id = !empty( $term_image_id ) ? $term_image_id : get_term_meta( $term_id, 'category_image', true );
-$heading_title = get_term_meta( $term_id, 'category_heading_title', true );
+$taxonomy      = $term instanceof WP_Term ? $term->taxonomy : '';
+$hero_prefix   = function_exists( 'arctic_hero_term_prefix' ) ? arctic_hero_term_prefix( $taxonomy ) : 'category_heading';
+$heading_title = get_term_meta( $term_id, $hero_prefix . '_title', true );
 $heading_title = !empty( $heading_title ) ? $heading_title : single_term_title( '', false );
-$heading_text  = get_term_meta( $term_id, 'category_heading_text', true );
-$heading_cta   = get_term_meta( $term_id, 'category_heading_cta_text', true );
+$heading_text  = get_term_meta( $term_id, $hero_prefix . '_text', true );
+$heading_cta   = get_term_meta( $term_id, $hero_prefix . '_cta_text', true );
 $heading_cta   = !empty( $heading_cta ) ? $heading_cta : __( 'Vybrat vířivku', 'baspa' );
 
+$has_media     = function_exists( 'arctic_term_has_hero_media' )
+	? arctic_term_has_hero_media( $term_id, $taxonomy )
+	: (bool) get_term_meta( $term_id, $hero_prefix . '_image', true );
+
 $heading_class   = array( 'f-heading', 'f-heading--term' );
-$heading_class[] = !empty( $term_image_id ) ? 'f-heading--background' : '';
+$heading_class[] = $has_media ? 'f-heading--background' : '';
 ?>
 
 <header <?php ( !function_exists( 'forqy_class' ) ) ?: forqy_class( $heading_class ); ?>>

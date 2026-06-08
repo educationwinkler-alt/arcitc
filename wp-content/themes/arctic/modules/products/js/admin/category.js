@@ -9,32 +9,38 @@ jQuery(function ($) {
     /**
      * Upload
      */
-    body.on("click", ".js-term__image--upload", function (event) {
+    body.on("click", ".js-term__media--upload, .js-term__image--upload", function (event) {
         event.preventDefault();
 
-        const button = $(this)
-        const imageIDField = $(".js-term__image--id");
-        const imageID = imageIDField.val();
-        const imagePreview = $(".js-term__image--preview");
-        const imageRemove = $(".js-term__image--remove");
+        const button = $(this);
+        const field = button.closest("[data-term-media-field], [data-term-image-field]");
+        const mediaType = field.data("termMediaType") === "video" ? "video" : "image";
+        const mediaIDField = field.find(".js-term__image--id");
+        const mediaID = mediaIDField.val();
+        const mediaPreview = field.find(".js-term__image--preview");
+        const mediaRemove = field.find(".js-term__media--remove, .js-term__image--remove");
 
         const customUploader = wp.media({
-            title: parameter.modal_window_title,
+            title: mediaType === "video" ? parameter.video_modal_title : parameter.modal_window_title,
             button: {
-                text: parameter.modal_window_button
+                text: mediaType === "video" ? parameter.video_modal_button : parameter.modal_window_button
             },
             library: {
-                type: "image"
+                type: mediaType
             },
             multiple: false
         }).on("select", function () {
             const attachment = customUploader.state().get("selection").first().toJSON();
 
-            button.html(parameter.image_change);
+            button.html(mediaType === "video" ? parameter.video_change : parameter.image_change);
 
-            imageIDField.val(attachment.id);
-            imagePreview.html('<img src="' + attachment.url + '" alt="">');
-            imageRemove.css("display", "inline-block");
+            mediaIDField.val(attachment.id);
+            if (mediaType === "video") {
+                mediaPreview.html('<video src="' + attachment.url + '" controls muted preload="metadata"></video>');
+            } else {
+                mediaPreview.html('<img src="' + attachment.url + '" alt="">');
+            }
+            mediaRemove.css("display", "inline-block");
         });
 
         // already selected images
@@ -42,33 +48,36 @@ jQuery(function ($) {
 
             let attachment;
 
-            if (imageID) {
-                const selection = customUploader.state().get("selection")
-                attachment = wp.media.attachment(imageID);
+            if (mediaID) {
+                const selection = customUploader.state().get("selection");
+                attachment = wp.media.attachment(mediaID);
                 attachment.fetch();
                 selection.add(attachment ? [attachment] : []);
             }
 
         });
 
-        customUploader.open()
+        customUploader.open();
 
     });
 
     /**
      * Remove
      */
-    body.on("click", ".js-term__image--remove", function (event) {
+    body.on("click", ".js-term__media--remove, .js-term__image--remove", function (event) {
         event.preventDefault();
 
-        const imageIDField = $(".js-term__image--id");
-        const imageUpload = $(".js-term__image--upload");
-        const imagePreview = $(".js-term__image--preview");
-        const imageRemove = $(".js-term__image--remove");
+        const button = $(this);
+        const field = button.closest("[data-term-media-field], [data-term-image-field]");
+        const mediaType = field.data("termMediaType") === "video" ? "video" : "image";
+        const mediaIDField = field.find(".js-term__image--id");
+        const mediaUpload = field.find(".js-term__media--upload, .js-term__image--upload");
+        const mediaPreview = field.find(".js-term__image--preview");
+        const mediaRemove = field.find(".js-term__media--remove, .js-term__image--remove");
 
-        imageIDField.val("");
-        imageUpload.html(parameter.image_add);
-        imagePreview.html("");
-        imageRemove.css("display", "none");
+        mediaIDField.val("");
+        mediaUpload.html(mediaType === "video" ? parameter.video_add : parameter.image_add);
+        mediaPreview.html("");
+        mediaRemove.css("display", "none");
     });
 });

@@ -16,7 +16,7 @@ if ( function_exists( 'baspa_products_product_has_configurations' ) && baspa_pro
 	$nav_items['#konfigurace'] = __( 'Konfigurace', 'baspa' );
 }
 
-if ( $has_color_contract || !empty( get_post_meta( $product_id, 'product_acrylic_colors' ) ) || !empty( get_post_meta( $product_id, 'product_acrylic_color_options' ) ) ) {
+if ( $has_color_contract || ( function_exists( 'arctic_product_has_color_options' ) && arctic_product_has_color_options( $product_id ) ) || !empty( get_post_meta( $product_id, 'product_acrylic_colors' ) ) || !empty( get_post_meta( $product_id, 'product_acrylic_color_options' ) ) ) {
 	$nav_items['#barvy'] = __( 'Barvy', 'baspa' );
 }
 
@@ -26,7 +26,7 @@ if ( $is_hot_tub ) {
 }
 
 if ( !$is_wider_range ) {
-	$nav_items['#' . sanitize_title( esc_attr_x( 'references', 'anchor', 'baspa' ) )] = __( 'Příklady realizací', 'baspa' );
+	$nav_items['#references'] = __( 'Příklady realizací', 'baspa' );
 }
 ?>
 
@@ -35,8 +35,10 @@ if ( !$is_wider_range ) {
 		<?php if ( !empty( $nav_items ) ) { ?>
 			<nav class="f-links__navigation js-links__navigation" aria-label="<?php echo esc_attr_x( 'Product Navigation', 'navigation', 'baspa' ); ?>">
 				<ul>
+					<?php $nav_index = 0; ?>
 					<?php foreach ( $nav_items as $href => $label ) { ?>
-						<li><a href="<?php echo esc_url( $href ); ?>"><?php echo esc_html( $label ); ?></a></li>
+						<li><a<?php echo 0 === $nav_index ? ' class="active"' : ''; ?> href="<?php echo esc_url( $href ); ?>"><?php echo esc_html( $label ); ?></a></li>
+						<?php $nav_index++; ?>
 					<?php } ?>
 				</ul>
 			</nav>

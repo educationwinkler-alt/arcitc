@@ -133,15 +133,15 @@
   }
 
   .template--homepage .f-section--product-categories {
-    padding-top: 32px;
+    padding-top: 286px;
     padding-bottom: 42px;
     background: var(--arctic-color-frost, #eef1f5);
   }
 
   .template--homepage .f-section--product-categories .f-section__container {
     box-sizing: border-box;
-    width: calc(100% - 58px);
-    max-width: calc(100% - 58px);
+    width: 335px;
+    max-width: 335px;
     padding-right: 0;
     padding-left: 0;
   }
@@ -150,15 +150,15 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 21px;
-    width: 100%;
-    max-width: 100%;
+    width: 335px;
+    max-width: 335px;
     padding: 0;
     margin: 0;
   }
 
   .template--homepage .f-category {
     position: relative;
-    width: 100%;
+    width: 335px;
     height: 221px;
     min-height: 221px;
     overflow: hidden;

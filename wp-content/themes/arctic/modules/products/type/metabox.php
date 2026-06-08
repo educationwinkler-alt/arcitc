@@ -198,10 +198,59 @@ if ( !function_exists( 'baspa_products_metabox_register' ) ) {
 				),
 				array(
 					'name'       => esc_html_x( 'Acrylic Colors', 'admin', 'baspa' ),
+					'desc'       => esc_html_x( 'Legacy fallback. Prefer the global color catalog fields below.', 'admin', 'baspa' ),
 					'id'         => 'product_acrylic_colors',
 					'type'       => 'text',
 					'clone'      => true,
 					'add_button' => esc_html_x( '+ Add Color', 'admin', 'baspa' ),
+				),
+				array(
+					'name'        => esc_html_x( 'Available Shell Colors', 'admin', 'baspa' ),
+					'desc'        => esc_html_x( 'Select colors from the global Product Colors catalog.', 'admin', 'baspa' ),
+					'placeholder' => esc_html_x( 'Select shell colors', 'admin', 'baspa' ),
+					'id'          => 'product_shell_color_ids',
+					'type'        => 'post',
+					'post_type'   => 'spa_color',
+					'field_type'  => 'checkbox_list',
+					'multiple'    => true,
+					'query_args'  => array(
+						'post_status'    => 'publish',
+						'posts_per_page' => -1,
+						'orderby'        => array(
+							'menu_order' => 'ASC',
+							'title'      => 'ASC',
+						),
+						'meta_query'     => array(
+							array(
+								'key'   => 'spa_color_type',
+								'value' => 'shell',
+							),
+						),
+					),
+				),
+				array(
+					'name'        => esc_html_x( 'Available Cabinet Colors', 'admin', 'baspa' ),
+					'desc'        => esc_html_x( 'Select colors from the global Product Colors catalog.', 'admin', 'baspa' ),
+					'placeholder' => esc_html_x( 'Select cabinet colors', 'admin', 'baspa' ),
+					'id'          => 'product_cabinet_color_ids',
+					'type'        => 'post',
+					'post_type'   => 'spa_color',
+					'field_type'  => 'checkbox_list',
+					'multiple'    => true,
+					'query_args'  => array(
+						'post_status'    => 'publish',
+						'posts_per_page' => -1,
+						'orderby'        => array(
+							'menu_order' => 'ASC',
+							'title'      => 'ASC',
+						),
+						'meta_query'     => array(
+							array(
+								'key'   => 'spa_color_type',
+								'value' => 'cabinet',
+							),
+						),
+					),
 				),
 			),
 		);
@@ -212,6 +261,37 @@ if ( !function_exists( 'baspa_products_metabox_register' ) ) {
 			'post_types' => array( 'product' ),
 			'priority'   => 'high',
 			'fields'     => array(
+				array(
+					'type' => 'heading',
+					'name' => esc_html_x( 'Hero media', 'admin', 'baspa' ),
+				),
+				array(
+					'name'    => esc_html_x( 'Media type', 'admin', 'baspa' ),
+					'desc'    => esc_html_x( 'Image keeps the current product gallery/featured image flow. Video uses a self-hosted MP4/WebM from the Media Library and takes priority over the gallery.', 'admin', 'baspa' ),
+					'id'      => 'product_hero_media_type',
+					'type'    => 'select',
+					'std'     => 'image',
+					'options' => function_exists( 'arctic_hero_media_type_options' ) ? arctic_hero_media_type_options() : array(
+						'image' => esc_html_x( 'Image', 'admin', 'baspa' ),
+						'video' => esc_html_x( 'Video', 'admin', 'baspa' ),
+					),
+				),
+				array(
+					'name'             => esc_html_x( 'Hero video', 'admin', 'baspa' ),
+					'desc'             => esc_html_x( 'Use a short muted MP4/WebM. The frontend renders it autoplay, muted, looped and playsinline.', 'admin', 'baspa' ),
+					'id'               => 'product_hero_video',
+					'type'             => 'file_advanced',
+					'mime_type'        => 'video/mp4,video/webm,video/quicktime',
+					'max_file_uploads' => 1,
+				),
+				array(
+					'name'             => esc_html_x( 'Video poster / fallback image', 'admin', 'baspa' ),
+					'desc'             => esc_html_x( 'Used before the video loads, on reduced-motion devices and as visual fallback. If empty, the featured image is used.', 'admin', 'baspa' ),
+					'id'               => 'product_hero_poster_image',
+					'type'             => 'image_advanced',
+					'image_size'       => 'thumbnail',
+					'max_file_uploads' => 1,
+				),
 				array(
 					'name'             => esc_html_x( 'Product Image', 'admin', 'baspa' ),
 					'desc'             => esc_html_x( 'Zobrazí se na kartě varianty produktu.', 'admin', 'baspa' ),
@@ -225,6 +305,99 @@ if ( !function_exists( 'baspa_products_metabox_register' ) ) {
 					'id'         => 'product_images',
 					'type'       => 'image_advanced',
 					'image_size' => 'thumbnail',
+				),
+			),
+		);
+
+		$meta_boxes[] = array(
+			'id'         => 'arctic-metabox--product-benefits',
+			'title'      => esc_html_x( 'Product Benefits', 'admin', 'baspa' ),
+			'post_types' => array( 'product' ),
+			'priority'   => 'default',
+			'fields'     => array(
+				array(
+					'name' => esc_html_x( 'Benefits Heading', 'admin', 'baspa' ),
+					'id'   => 'product_benefits_heading',
+					'type' => 'text',
+				),
+				array(
+					'name' => esc_html_x( 'Benefits Description', 'admin', 'baspa' ),
+					'id'   => 'product_benefits_description',
+					'type' => 'textarea',
+					'rows' => 3,
+				),
+				array(
+					'name'       => esc_html_x( 'Benefit Card', 'admin', 'baspa' ),
+					'id'         => 'product_benefit_items',
+					'type'       => 'fieldset_text',
+					'clone'      => true,
+					'sort_clone' => true,
+					'add_button' => esc_html_x( '+ Add Benefit', 'admin', 'baspa' ),
+					'options'    => array(
+						'title'         => esc_html_x( 'Title', 'admin', 'baspa' ),
+						'summary'       => esc_html_x( 'Short text', 'admin', 'baspa' ),
+						'icon'          => esc_html_x( 'Icon slug', 'admin', 'baspa' ),
+						'interactive'   => esc_html_x( 'Interactive? 1/0', 'admin', 'baspa' ),
+						'popup_title'   => esc_html_x( 'Popup title', 'admin', 'baspa' ),
+						'popup_content' => esc_html_x( 'Popup HTML/text', 'admin', 'baspa' ),
+					),
+				),
+				array(
+					'name'             => esc_html_x( 'Benefit Images', 'admin', 'baspa' ),
+					'desc'             => esc_html_x( 'Images are matched to benefit cards by order. Empty rows render without fake production media; local seed assets are used only in local/development fallback mode.', 'admin', 'baspa' ),
+					'id'               => 'product_benefit_images',
+					'type'             => 'image_advanced',
+					'image_size'       => 'thumbnail',
+					'max_file_uploads' => 24,
+				),
+				array(
+					'name'             => esc_html_x( 'Benefit Popup Images', 'admin', 'baspa' ),
+					'desc'             => esc_html_x( 'Images are matched to interactive benefit popups by order.', 'admin', 'baspa' ),
+					'id'               => 'product_benefit_popup_images',
+					'type'             => 'image_advanced',
+					'image_size'       => 'thumbnail',
+					'max_file_uploads' => 24,
+				),
+			),
+		);
+
+		$meta_boxes[] = array(
+			'id'         => 'arctic-metabox--product-options',
+			'title'      => esc_html_x( 'Product Optional Equipment', 'admin', 'baspa' ),
+			'post_types' => array( 'product' ),
+			'priority'   => 'default',
+			'fields'     => array(
+				array(
+					'name' => esc_html_x( 'Options Heading', 'admin', 'baspa' ),
+					'id'   => 'product_options_heading',
+					'type' => 'text',
+				),
+				array(
+					'name' => esc_html_x( 'Options Description', 'admin', 'baspa' ),
+					'id'   => 'product_options_description',
+					'type' => 'textarea',
+					'rows' => 3,
+				),
+				array(
+					'name'       => esc_html_x( 'Option Card', 'admin', 'baspa' ),
+					'id'         => 'product_option_items',
+					'type'       => 'fieldset_text',
+					'clone'      => true,
+					'sort_clone' => true,
+					'add_button' => esc_html_x( '+ Add Option', 'admin', 'baspa' ),
+					'options'    => array(
+						'title'   => esc_html_x( 'Title', 'admin', 'baspa' ),
+						'summary' => esc_html_x( 'Short text', 'admin', 'baspa' ),
+						'icon'    => esc_html_x( 'Icon slug', 'admin', 'baspa' ),
+					),
+				),
+				array(
+					'name'             => esc_html_x( 'Option Images', 'admin', 'baspa' ),
+					'desc'             => esc_html_x( 'Images are matched to option cards by order. Empty rows render without fake production media; local seed assets are used only in local/development fallback mode.', 'admin', 'baspa' ),
+					'id'               => 'product_option_images',
+					'type'             => 'image_advanced',
+					'image_size'       => 'thumbnail',
+					'max_file_uploads' => 24,
 				),
 			),
 		);

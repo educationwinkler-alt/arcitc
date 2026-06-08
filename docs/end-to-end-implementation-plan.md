@@ -8,6 +8,32 @@ Technicky vzor: `../baspa.cz/`
 Obsahovy zdroj: `../Arctic-spas/`, crawl `docs/crawl-live/`, live web jen pro overeni obsahu  
 Designovy zdroj: Figma wireframe + Figma grafika
 
+## Aktualizace 2026-06-08: zakaznicke P0 pripominky, lokalni opravy a deploy pravidlo
+
+Zakaznicke pripominky od Lukase Duska jsou P0. Do produkce se od tohoto bodu neposila nic automaticky: opravy se delaji a commituji lokalne, do produkce pujdou az po schvaleni lokalniho stavu. Stav local-only oprav je v `docs/local-only-p0-repair-ledger-2026-06-08.md`.
+
+Aktualni Figma grafika pro kontrolu je file key `zWLRkhgU5uOipN7I6cGHHe`; starsi grafika key `xeOew3dFjDVfjXZrJ09emM` je jen legacy reference. Figma neni inspirace podle oka, ale zdroj souradnic, rozmeru, fill vrstev, gradientu/stinu, mobile frame a footer/header kompozic. Baspa je technicky WordPress zaklad a zdroj existujicich funkcnosti, ne vizualni fallback.
+
+Repair plan je rozdeleny do techto bloků:
+
+1. Home Page: rychlost prvniho nacteni, slidy vcetne prokliku, mobilni slider bez temneho filtru, zarovnani karet `Virivky`/`Celorocni bazeny`, admin save integrity pro text `Jsme vyhradni prodejce`, navrat service ikon a progress odrazek, footer menu bez `Skladove virivky`, copyright `BASPA s.r.o.`.
+2. Kategorie `Venkovni virivky Arctic Spas` a `Celorocni bazeny`: hero CTA musi byt viditelne ve vsech breakpointach, produktove nahledy nesmi byt spatne cropnute, a chybejici souhrnne stranky modelovych rad se musi doplnit podle realneho Arctic/Baspa obsahoveho modelu.
+3. Produktove stranky obecne: doplnit vsechny dostupne konfigurace, spravne nazvy/pocty trysek/cerpadel, popisy bez useknuti, provedeni, barvy kabinetu, standardni vybavu, volitelnou vybavu, funkci odkazu `Vyhody` a `Volitelna vybava`; u swimspa nesmi zmizet produktove sekce jen proto, ze nejsou virivka.
+4. Vlastnosti a vybava: popis parametru musi byt obsahove relevantni, ne placeholder/fallback. Struktura se inspiruje korporatnim Arctic features obsahem, ale implementace zustava adminovatelná pres WP.
+5. `Kolik stoji provoz a udrzba`: presunout do `Podpora / Caste dotazy` tak, aby zbyl redirect nebo jasny odkaz, ne osirela informacni stranka.
+6. `Reference`: musi zobrazovat texty i fotky po kliknuti; ne jen samotnou fotku. Datovy model musi pouzit editovatelne reference, ne staticke karty.
+7. `O nas`: aktualizovat obsah, protoze klient hlasi vice nez rok stare informace. Zdroj dat: aktualni klientsky podklad, existujici Arctic/Baspa kontaktni data a WP admin, ne fallback text.
+8. `Showroom`: doplnit mapu, opravit odkaz do fotogalerie a zachovat Figma rozvrzeni vcetne mobilu.
+9. `Kontakt`: mapa nesmi byt nezretelna a pin nesmi ukazovat do Cernych Poli; lokalita se musi overit proti realne adrese Bohunicka cesta 15, Moravany u Brna a vlozit jako adminovatelná hodnota.
+10. `Dalsi informace`: musi existovat jako samostatna stranka/rozcestnik i jako menu dropdown. Menu ma obsahovat poptavkovy formular nad servisem.
+11. Cenik/katalog na vyzadani: lokalne ma byt dostupny banner/formular po vzoru Baspa `Kompletni katalog s cenikem produktu`, ale jako Arctic komponenta a local-only do schvaleni. Ecomail se pripoji az na finalni domene; do te doby musi byt videt UX a data flow.
+12. `Akcni nabidky`: nahrazuje label `Vyprodej skladovych virivek`, ale nesmi vzniknout paralelni vlastni logika vedle existujici nabidkove logiky z Baspa/Arctic forku. Archiv ma byt jednoduse editovatelny a musi podporovat vice nabidek s publikovanim jen vybranych.
+13. Nahledy skorepin a barev: oprava musi byt local i pozdeji produkcne, ne jen mobilni hotfix. Karty nesmi byt rozhazene, text nesmi pretekat a crop musi sedet na vsech produktovych detail layout variantach.
+14. Globalni admin stabilita: zadna sablona nesmi po uprave jedne vety v editoru ztratit souvisejici bloky, ikony nebo odrazky. Fallbacky mohou existovat jen jako local/dev pojistka; verejny obsah musi byt realny WP obsah, media nebo meta data.
+15. Globalni text flow: useknute vety se nesmi opravovat po jedne strance. CSS a audit maji hlidat `line-clamp`, fixed height, overflow clipping a fixed card heights u editovatelnych textu globalne.
+16. Duplicitni logika: kazdy novy blok se pred implementaci porovna s existujicimi Baspa/Arctic moduly. Katalog, nabidky, reference, downloady, FAQ, kontakty a mapy se nemaji implementovat paralelne, pokud uz existuje editovatelny modul.
+17. Deploy: kazda oprava se commituje a pushuje s poznamkou, jestli je nebo neni v produkci. Produkce = FTP upload souboru + pripadny produkcni DB/script krok + hash/URL verifikace. Bez schvaleni zustava status `Not deployed to production`.
+
 ## Aktualni navazujici plan od 2026-05-25
 
 Tento dokument zustava jako puvodni implementacni runbook a technicky baseline. Neni ale pravda, ze produkcni web je hotovy jen proto, ze cast automatickych smoke testu prosla.
@@ -87,7 +113,7 @@ Hotove veci:
 - Prvni redirect-only seznam je hotovy.
 - Figma soubory jsou importovane a citelne pres API.
 - Figma missing pages jsou doplneny do lokalnich raw dumpu: grafika `docs/grafika-missing-pages.raw.json` a wireframe `docs/wireframe-missing-pages.raw.json`. Tim uz nejsou blokovane stranky `VLASTNOSTI`, `DALSI INFORMACE`, `SLUZBY`, `CERTIFIKATY`, `ZARUKA`, `KOLIK STOJI UDRZBA` ani `VLASTNOSTI DETAIL`.
-- Stranky `/vlastnosti/`, `/sluzby/`, `/certifikaty/`, `/zaruka/`, `/kolik-stoji-udrzba/` a `/vlastnosti/izolace-virivky/` maji vlastni Figma sablony. `Dalsi informace` je podle wireframu polozka hlavni navigace s dropdownem, ne samostatny dlazdicovy rozcestnik; `/dalsi-informace/` zustava jen jako 301 redirect na `/#order-progress`.
+- Stranky `/vlastnosti/`, `/sluzby/`, `/certifikaty/`, `/zaruka/`, `/kolik-stoji-udrzba/` a `/vlastnosti/izolace-virivky/` maji vlastni Figma sablony. Aktualizace 2026-06-08: `/dalsi-informace/` uz nesmi byt redirect na homepage; je to samostatny Figma rozcestnik s kartami `Sluzby`, `Certifikaty`, `Zaruka`, `Kolik stoji provoz a udrzba`, `Caste dotazy`, `Reference`, `O nas`, `Showroom`, `Servis` a `Kontakt`.
 - Figma assety `feature-freeheat-diagram.png` a `certificate-tuv-1/2/3.png` jsou exportovane pres lokalni Figma imageRef flow do `assets-source/figma/export/graphics/` a `wp-content/uploads/import/figma/`.
 - Grafika pro zbyvajici frame `SHOWROOM`, `O NAS`, `REFERENCE` a `SERVIS` je ulozena v `docs/grafika-remaining-pages.raw.json`. `/showroom/`, `/o-nas/`, `/reference/` a `/servis/` maji vlastni Figma sablony a jsou zahrnute do visual smoke testu.
 - Klientsky ZIP je rozbaleny do `assets-source/owner-info/`.
@@ -108,7 +134,7 @@ Hotove veci:
 - Desktop homepage ma podle Figma HP frame srovnanou i dolni cast: produktove karty `x=258/986 y=866 w=674 h=424`, obsahovy blok `x=584 y=1405`, benefity `x=260/752/1244 y=1703`, showroom panel `x=260 y=2102`, prubeh `y=2863`, reference `y=3418`, kontaktni CTA `y=3945` a footer `y=4428`.
 - Historicke overeni 2026-05-25: homepage footer byl zmeren proti Figma footer komponentu: footer x=0/w=1920/h=773, container x=260/w=1400/h=773, sloupce x=260/541/822 s relativnim y=86, rychly kontakt x=1070/y=60/w=592/h=347, logo dole x=909/y=514/w=102/h=57; aktualni pass/fail stav je nutne overit znovu po cistem buildu.
 - Produktove karty na HP pouzivaji Figma image crop smerem k `imageTransform` z node `1:33` a `1:34`, ne defaultni WordPress center crop.
-- Hero promo banner je odblokovany mimo clipping slideru, takze se zobrazuje i spodnĂ­ Figma button v presne pozici. Showroom kolaz ma poradi obrazku podle Figma node souradnic `1:123`, `1:125`, `1:124`.
+- Hero promo banner je odblokovany mimo clipping slideru, takze se zobrazuje i spodní Figma button v presne pozici. Showroom kolaz ma poradi obrazku podle Figma node souradnic `1:123`, `1:125`, `1:124`.
 - Hero promo banner bere produktovy obrazek z Figma node `1:254` / mobile `1:1992`. CSS kreslena bila nahradni ikona se nesmi zobrazit; fallback je nahrazen figmovym produktem a oranzovym `%` badge.
 - Benefit ikony a showroom pin jsou vyrezane z ulozeneho Figma HP screenshotu `docs/screenshots/figma-hp.png`; kontaktni portret `1:50` je exportovany z Figma imageRef. Vse je zapsane v `docs/figma-asset-manifest.md` a neni prevzate ze stareho Arctic webu.
 - Mobile homepage top podle `GM - HP` ma Figma hero crop, hero vysku 556 px, vyprodejovy banner na y=562 a dve hlavni kategorie od y=842.
@@ -121,14 +147,14 @@ Hotove veci:
 - Token audit 2026-05-24: `docs/figma-api-summary.json` je pouze top-level souhrn. Detailni Figma node dumpy existuji v `docs/figma-grafika-nodes.summary.json` a `docs/figma-wireframe-nodes.summary.json`, ale CSS tokeny v `src/less/_tokens.less` zatim nejsou plne generovane ani stoprocentne trasovatelne na jednotlive Figma nody. Pred produkcnim schvalenim se musi projit token pass: barvy, fonty, radiusy, stiny a spacing porovnat proti Figma grafice a rozdily zapsat do `docs/figma-tokens.md`.
 - Asset audit 2026-05-24: Figma assety fyzicky existuji ve `wp-content/uploads/import/figma/` a cast je seedovana i jako media attachment. Produkcni deploy musi tuto import slozku zahrnout, nebo se musi vsechny sablonami pouzivane assety seednout do media library a pridat asset smoke, ktery overi HTTP 200 pro kazdy `uploads/import/figma/*` odkaz.
 - Katalog virivek ma desktop Figma pass podle frame `KATEGORIE` az po footer: header, top kontakt, breadcrumb, hero, promo banner, Vlastnosti/Zaruka, series switcher, serie Custom/Classic/Core, produktove karty z legacy Arctic produktovych fotek vlozene do Figma rozmeru, konfigurator, showroom, prubeh, reference, kontaktni CTA a footer sedi na Figma souradnice.
-- Katalogy `CeloroÄŤnĂ­ bazĂ©ny` a `DalĹˇĂ­ sortiment` pouzivaji stejnou Figma kategorii, ale hero CTA text je uz rizeny pres term meta: `Vybrat bazĂ©n` a `ProhlĂ©dnout sortiment`, aby se nepropsal nesmyslny text `Vybrat vĂ­Ĺ™ivku` mimo kategorii virivek.
-- `CeloroÄŤnĂ­ bazĂ©ny` maji obsahovy hero/kartovy obraz ze stareho Arctic webu v rozmerech Figma kategorie, ne obecny HP/virivkovy hero. Stare Arctic fotky jsou primarni zdroj pro swimspa produkty, produktove karty a detaily.
-- `DalĹˇĂ­ sortiment` je v seedu oznacen jako accessory kategorie, proto frontend zobrazuje vsech 6 polozek sirsiho sortimentu (`Covana`, sauny, koupaci sudy, prislusenstvi, IKONO nabytek, ochlazovaci bazenek) misto pouhe serie Covana.
+- Katalogy `Celoroční bazény` a `Další sortiment` pouzivaji stejnou Figma kategorii, ale hero CTA text je uz rizeny pres term meta: `Vybrat bazén` a `Prohlédnout sortiment`, aby se nepropsal nesmyslny text `Vybrat vířivku` mimo kategorii virivek.
+- `Celoroční bazény` maji obsahovy hero/kartovy obraz ze stareho Arctic webu v rozmerech Figma kategorie, ne obecny HP/virivkovy hero. Stare Arctic fotky jsou primarni zdroj pro swimspa produkty, produktove karty a detaily.
+- `Další sortiment` je v seedu oznacen jako accessory kategorie, proto frontend zobrazuje vsech 6 polozek sirsiho sortimentu (`Covana`, sauny, koupaci sudy, prislusenstvi, IKONO nabytek, ochlazovaci bazenek) misto pouhe serie Covana.
 - Produktove karty v kategorii nepouzivaji Figma placeholder exporty `category-product-card-1/2/3.png`. Karta drzi Figma rozmer a layout, ale obraz je z `legacy-products/*.jpg` podle skutecneho produktu.
 - Detail Timberwolf je hlavni Figma detail podle frame `DETAIL KONKRETNIHO PRODUKTU`; hero a produktova navigace sedi na souradnice frame, konfigurace sedi na `x=260/y=940`, karty na `y=1041/1283`, Figma konfigurator banner na `x=260/y=1608/w=1400/h=312`, barvy na `x=260/y=2022`, vyhody na `y=2866`, volitelna vybava na `y=4883`, realizace na `y=6027`, kontaktni CTA na `y=6552` a footer na `y=7035`.
-- Produktovy detail uz nerozlisuje vsechny produkty jako virivky. Swimspa dostava nadpis `CeloroÄŤnĂ­ bazĂ©n ...`, sirsi sortiment zustava bez virivkoveho prefixu a detailova navigace zobrazuje jen realne dostupne sekce. `Covana` proto nema falesne odkazy na barvy, vyhody virivek ani volitelnou vybavu.
-- Aktivni swimspa produkty maji v seedu obsah z puvodni Arctic slozky: popis, rozmery `436 x 236 x 129 cm`, objem `5100 litrĹŻ`, trysky/protiproud a konfigurace vcetne vice variant pro `Arctic Ocean` a `Okanagan`.
-- Globalni kontaktni CTA zachovava Figma komponentu, ale text se meni podle kontextu: virivky, celoroÄŤni bazeny a sirsi sortiment nepouzivaji navzajem spatny produktovy pojem.
+- Produktovy detail uz nerozlisuje vsechny produkty jako virivky. Swimspa dostava nadpis `Celoroční bazén ...`, sirsi sortiment zustava bez virivkoveho prefixu a detailova navigace zobrazuje jen realne dostupne sekce. `Covana` proto nema falesne odkazy na barvy, vyhody virivek ani volitelnou vybavu.
+- Aktivni swimspa produkty maji v seedu obsah z puvodni Arctic slozky: popis, rozmery `436 x 236 x 129 cm`, objem `5100 litrů`, trysky/protiproud a konfigurace vcetne vice variant pro `Arctic Ocean` a `Okanagan`.
+- Globalni kontaktni CTA zachovava Figma komponentu, ale text se meni podle kontextu: virivky, celoročni bazeny a sirsi sortiment nepouzivaji navzajem spatny produktovy pojem.
 - Produktovy mini kontakt na Timberwolf detailu je nahrazen custom Figma komponentou: karta `x=1362/y=934/w=298/h=341`, kontaktni data `y=1018`, portret `1:50` na `x=1392/y=1115` a button `x=1392/y=1195`.
 - `Podpora` ma desktop Figma pass hornich sekci: heading `x=260/y=206`, tabs `x=260/y=394/w=1400/h=93`, FAQ `x=260/y=568`, 9 FAQ karet podle Figma rytmu a mini kontakt `x=1362/y=556/w=298/h=341` s portretem z node `1:50`. Sekce `Ke stazeni` ma Figma accordion: nadpis `y=1953`, chips `y=2027`, otevrena skupina `x=260/y=2109/w=1045/h=503`, zavrene skupiny `y=2632/2748`. Servisni formular sedi na Figma pozice: nadpis `y=2940`, karta `x=260/y=3114/w=1045/h=674`, inputy `x=346/w=893`, textarea `h=146`, souhlas `y=3680` a submit `x=1053/y=3668/w=186/h=50`.
 - FAQ v `Podpora` uz nejsou jen pole natvrdo v sablone. Seed zaklada 9 polozek v CPT `faq`, prirazuje kategorie `Obchodni`, `Stavebni priprava`, `Montaz`, `Provoz a udrzba` a `Servis`, a `template-support.php` je cte z WordPressu. Hardcoded pole zustava pouze jako fallback, kdyby databaze FAQ byla prazdna.
@@ -158,7 +184,7 @@ Hotove veci:
 - `npm run search:smoke` overuje AJAX vyhledavani na lokalni `admin-ajax.php`, nalezeni Timberwolfu a odmitnuti neplatneho nonce.
 - `npm run qa:local` spousti cely lokalni QA pruchod: CSS build, local safety, Figma audit, visual smoke, produktovy obsahovy smoke, link smoke, formulare, vyhledavani a redirecty.
 - AJAX vyhledavani uz nebere libovolne post typy/taxonomie z POSTu; hodnoty se sanitizuji a validuji proti registrovanym WordPress typum/taxonomiim. Endpoint ma nonce, lehky IP transient rate limit a limit 10 vysledku pro prispevky i termy.
-- Vlastni admin settings stranky modulu maji nonce, capability gate, `check_admin_referer()`, unslash/sanitizaci a escapovany vystup hodnot. Post metabox a term meta save handlery jsou stejne zpevnenĂ© proti slashovanym POST hodnotam.
+- Vlastni admin settings stranky modulu maji nonce, capability gate, `check_admin_referer()`, unslash/sanitizaci a escapovany vystup hodnot. Post metabox a term meta save handlery jsou stejne zpevnené proti slashovanym POST hodnotam.
 - SVG upload uz neni globalne povoleny jako v Baspa. Default je vypnuty; zapnout jde jen vedome konstantou/filtrem pro admina.
 - reCAPTCHA badge uz neni natvrdo schovany CSS jako v Baspa; skryti je mozne jen vedomym filtrem po vyreseni pravniho textu.
 - Smartsupp uz nema ve forku hardcoded Baspa klic. Chat/preconnect se vypise jen v `production` prostredi a jen pokud je nastaveny `arctic_smartsupp_key`.
@@ -168,7 +194,7 @@ Hotove veci:
 - Smoke test soucasne hlida mojibake sekvence napric hlavnimi strankami, aby se rozbita cestina z PowerShell/encoding problemu nepropsala do verejneho HTML.
 - Smoke test hlida, ze kazda hlavni URL ma lokalni canonical, pouzitelnou meta description a zakladni Open Graph metadata.
 - Smoke test overuje i `robots.txt` a core WordPress sitemap index `/wp-sitemap.xml` na lokalni domene.
-- `npm run visual:smoke` prochazi hlavni URL vcetne `Dalsi sortiment`, kontroluje zakazane stringy, zakazane externi browser requesty, horizontalni overflow na desktopu/mobilu, cesky 404 fallback a uklada desktop/mobile screenshoty Figma stranek, katalogu `Swimspa`/`DalĹˇĂ­ sortiment` i detailu `Husky`, `Athabascan` a `Covana`.
+- `npm run visual:smoke` prochazi hlavni URL vcetne `Dalsi sortiment`, kontroluje zakazane stringy, zakazane externi browser requesty, horizontalni overflow na desktopu/mobilu, cesky 404 fallback a uklada desktop/mobile screenshoty Figma stranek, katalogu `Swimspa`/`Další sortiment` i detailu `Husky`, `Athabascan` a `Covana`.
 - Defaultni WP obsah `Hello world!` a `Sample Page` seed odstranuje, aby se nepropsal do novinek ani navigace.
 - Historicke overeni: PHP lint upravenych sablon prosel, seed se propsal do lokalniho WordPressu, swimspa hero pouziva Figma kategoriovy asset, Dalsi sortiment zobrazuje 6 polozek, swimspa/Covana detaily a globalni CTA nemaji falesny virivkovy wording a Smartsupp nema hardcoded Baspa klic. Cast tvrzeni o kompletne zelenem `npm run qa:local` uz neplati po cistem rebuildu a musi se vzdy brat z aktualniho gate behu.
 - Aktualni kontrolni screenshoty jsou v `docs/screenshots/`, vcetne `home-desktop-playwright.png`, `category-swimspa-desktop-playwright.png`, `category-dalsi-sortiment-desktop-playwright.png`, `product-timberwolf-desktop-playwright.png`, `product-husky-desktop-playwright.png`, `product-husky-mobile-playwright.png` a dalsich hlavnich stran.
@@ -204,13 +230,13 @@ Showroom a kontakt se postavi z noveho obrazoveho archivu. Pouziji se fotky prod
 
 Reference se prevedou do existujici Baspa logiky referenci. Pokud stary web obsahuje jen volne citace a galerie, normalizuji se do `reference` polozek s titulkem, textem, fotkami a pripadne produktem. FAQ se prevede do editovatelne struktury, ne jako dlouha staticka HTML stranka.
 
-Migracni tabulka se vyrobi z `docs/crawl-live/arctic-spas-live-crawl.csv`. Kazdy radek dostane starou URL, novou URL, typ obsahu, migracni akci, redirect, zdroj obsahu a poznamku. Z 75 `review_migrate_page` URL se odstrani duplicity a temata se slouci do realnych strĂˇnek, aby se nemigrovaly tri varianty stejne landing page. Cilem je zachovat SEO hodnotu, ne kopirovat historickou strukturu 1:1.
+Migracni tabulka se vyrobi z `docs/crawl-live/arctic-spas-live-crawl.csv`. Kazdy radek dostane starou URL, novou URL, typ obsahu, migracni akci, redirect, zdroj obsahu a poznamku. Z 75 `review_migrate_page` URL se odstrani duplicity a temata se slouci do realnych stránek, aby se nemigrovaly tri varianty stejne landing page. Cilem je zachovat SEO hodnotu, ne kopirovat historickou strukturu 1:1.
 
 Importery budou v `tools/`. Prakticky vzniknou skripty pro produkty, stranky, downloady, media a redirect mapu. Importer bude umet vytvorit nebo aktualizovat WP obsah podle puvodni URL, aby sel pustit opakovane. U produktu nastavi taxonomie, meta pole, galerii, featured image a puvodni URL. U stranek vycisti stare HTML, ponecha obsah a vlozi ho do nove sablonove struktury. U medii vynecha balast a importuje jen whitelist.
 
 Media workflow je rozdeleny: layout/design je Figma-first, obsahove fotografie jsou old-web/owner-first. Designove assety z Figmy se exportuji z Figma node ID do `assets-source/figma/export/` a `wp-content/uploads/import/figma/`. Produktove fotky, virivky, swimspa, reference a realizace se importuji ze stareho Arctic webu nebo `assets-source/owner-info/`. Kazdy pouzity zdroj se zapisuje do manifestu.
 
-Formulare a vlastni admin nastaveni jsou po Baspa auditu zpevnenĂ©. Frontendovy pipeline uz ma hotovy zakladni cleanup: raw `$_POST` nejde do vystupu bez escapovani, processing template z POSTu je nahrazeny server-side whitelistem, e-maily se validuji, hardcoded Bcc je odstraneny, Ecomail jede pres `wp_remote_post()` a local blokovani mailu zustava aktivni. Admin settings stranky maji nonce/capability pattern, term meta save handlery a post metabox ukladaji az po `wp_unslash()` a sanitizaci. Staging nesmi posilat ostre poptavky bez zamerneho nastaveni.
+Formulare a vlastni admin nastaveni jsou po Baspa auditu zpevnené. Frontendovy pipeline uz ma hotovy zakladni cleanup: raw `$_POST` nejde do vystupu bez escapovani, processing template z POSTu je nahrazeny server-side whitelistem, e-maily se validuji, hardcoded Bcc je odstraneny, Ecomail jede pres `wp_remote_post()` a local blokovani mailu zustava aktivni. Admin settings stranky maji nonce/capability pattern, term meta save handlery a post metabox ukladaji az po `wp_unslash()` a sanitizaci. Staging nesmi posilat ostre poptavky bez zamerneho nastaveni.
 
 SEO se resi soubezne s migraci. Kazda stara `.php` URL dostane novou URL nebo 301 redirect. Title a meta description se prenesou tam, kde jsou uzitecne; duplicity se prepisou. Vznikne sitemap, robots, Open Graph obrazky a schema pro produkty/FAQ tam, kde to dava smysl. Vyradene produkty jdou redirectem na relevantni kategorii, ne do aktivniho katalogu.
 
@@ -218,7 +244,7 @@ QA probehne pres realne uzivatelske cesty: homepage -> virivky -> Timberwolf -> 
 
 Staging se nasadi az po cistem lokalu. Na stagingu se local-only blokace vypnou podle prostredi, ale e-maily a integrace zustanou opatrne nakonfigurovane. Provede se plny import obsahu, vizualni kontrola proti Figme, obsahova kontrola proti live webu a briefu, redirect test a rychlostni kontrola.
 
-Launch probehne az po content freeze. Pred preklopenim se udela posledni crawl stareho webu, finalni import rozdilu, export redirect mapy, zaloha a kontrola hlavnĂ­ch URL. Po preklopeni se kontroluje homepage, kategorie, produktovy detail, formular, sitemap, Search Console, 404 logy a rychlost. Prvni dny po launchi se aktivne opravujĂ­ nalezene redirecty a obsahove drobnosti.
+Launch probehne az po content freeze. Pred preklopenim se udela posledni crawl stareho webu, finalni import rozdilu, export redirect mapy, zaloha a kontrola hlavních URL. Po preklopeni se kontroluje homepage, kategorie, produktovy detail, formular, sitemap, Search Console, 404 logy a rychlost. Prvni dny po launchi se aktivne opravují nalezene redirecty a obsahove drobnosti.
 
 ## Soubory, ktere vzniknou nebo se budou upravovat
 
@@ -349,7 +375,7 @@ Pred predanim musi projit:
 - FAQ,
 - reference,
 - privacy policy stranka,
-- internĂ­ odkazy,
+- interní odkazy,
 - zakazane externi odkazy na stare/live sluzby,
 - 301 redirecty,
 - 404 crawl,

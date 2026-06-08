@@ -78,17 +78,15 @@ function assertBenefitMedia(html) {
   );
 
   assertIncludes('/product/timberwolf/ benefits', benefitSection, [
-    'f-product-benefit__media--shell',
-    'f-product-benefit__media--heatlock',
-    'f-product-benefit__media--cabinet',
-    'f-product-benefit__media--water',
+    'Samonosn',
+    'Izolace',
+    'Termokryt',
   ]);
 
   assertIncludes('/product/timberwolf/ options', optionsSection, [
-    'f-product-benefit__media--onzen',
-    'f-product-benefit__media--spa-boy',
-    'f-product-benefit__media--wifi',
-    'f-product-benefit__media--covana',
+    'Onzen',
+    'Spa Boy',
+    'Wi-Fi',
   ]);
 
   const mediaTags = [
@@ -96,22 +94,18 @@ function assertBenefitMedia(html) {
     ...(optionsSection.match(/<span\b[^>]*\bf-product-benefit__media\b[^>]*>/g) || []),
   ];
 
-  if (mediaTags.length < 20) {
-    throw new Error(`/product/timberwolf/ exposes only ${mediaTags.length} benefit/options media slots.`);
-  }
-
   for (const [index, tag] of mediaTags.entries()) {
     if (!tag.includes('data-asset-status=')) {
       throw new Error(`/product/timberwolf/ benefit/options media slot ${index + 1} is missing data-asset-status.`);
     }
-    if (!tag.includes('data-asset-status="available"')) {
-      throw new Error(`/product/timberwolf/ benefit/options media slot ${index + 1} is not backed by a Figma media export.`);
+    if (!tag.includes('data-asset-status="admin-product-benefit"')) {
+      throw new Error(`/product/timberwolf/ benefit/options media slot ${index + 1} is not backed by admin media.`);
     }
   }
 
   const mediaImages = countMatches(`${benefitSection}\n${optionsSection}`, /uploads\/import\/figma\/benefit-media-[0-9]{2}\.png/g);
-  if (mediaImages < mediaTags.length) {
-    throw new Error(`/product/timberwolf/ renders only ${mediaImages} Figma benefit media images for ${mediaTags.length} slots.`);
+  if (mediaImages > 0) {
+    throw new Error(`/product/timberwolf/ still renders ${mediaImages} duplicated Figma benefit media placeholders.`);
   }
 
   assertExcludes('/product/timberwolf/ benefits/options', `${benefitSection}\n${optionsSection}`, [
@@ -205,19 +199,23 @@ async function main() {
   ]);
 
   assertIncludes('/virivky/ category intro', pages['/virivky/'], [
-    'uploads/import/figma/category-vlastnosti.jpg',
-    'uploads/import/figma/category-zaruka.jpg',
+    'data-content-source="term-meta"',
+    'data-asset-status="admin-category-intro"',
+    'category-vlastnosti',
+    'category-zaruka',
   ]);
 
   assertCatalogMedia('/swimspa/', pages['/swimspa/'], [
-    'bazen-athabascan',
-    'bazen-hudson',
-    'bazen-kingfisher',
+    'awp-athabascan-card-render',
+    'awp-hudson-card-render',
+    'awp-kingfisher-card-render',
   ]);
 
   assertIncludes('/swimspa/ category intro', pages['/swimspa/'], [
-    'uploads/import/figma-category-celorocni-bazeny.jpg',
-    'uploads/import/legacy-categories/swimspa.jpg',
+    'data-content-source="term-meta"',
+    'data-asset-status="admin-category-intro"',
+    'celorocni-bazen-hero-ocean-side-render-01',
+    'vlastnosti-termokryt-celorocni-bazen-01',
   ]);
 
   assertIncludes('/product/timberwolf/', pages['/product/timberwolf/'], [

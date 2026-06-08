@@ -48,11 +48,18 @@ async function measure(page) {
     };
 
     const hero = document.querySelector('.tax-product-category .f-heading--term');
+    const header = document.querySelector('.f-header');
+    const breadcrumbs = document.querySelector('.tax-product-category .f-heading--term .f-breadcrumbs');
     const cta = document.querySelector('.tax-product-category .f-heading--term .f-heading__headline .a-button');
+    const breadcrumbsStyle = breadcrumbs ? getComputedStyle(breadcrumbs) : null;
     const ctaStyle = cta ? getComputedStyle(cta) : null;
 
     return {
+      header: rect(header),
       hero: rect(hero),
+      breadcrumbs: rect(breadcrumbs),
+      breadcrumbsDisplay: breadcrumbsStyle ? breadcrumbsStyle.display : '',
+      breadcrumbsVisibility: breadcrumbsStyle ? breadcrumbsStyle.visibility : '',
       cta: rect(cta),
       ctaText: cta ? cta.textContent.trim().replace(/\s+/g, ' ') : '',
       ctaDisplay: ctaStyle ? ctaStyle.display : '',
@@ -74,12 +81,18 @@ async function measure(page) {
 
       for (const pageDef of pages) {
         const url = `${baseUrl}${pageDef.path}`;
-        await page.goto(url, { waitUntil: 'networkidle' });
+        await page.goto(url, { waitUntil: 'load' });
 
         const state = await measure(page);
         const detail = { url, viewport, state };
 
         assert(state.hero, `${pageDef.id}: category hero is missing`, detail);
+        assert(state.header, `${pageDef.id}: header is missing`, detail);
+        assert(state.breadcrumbs, `${pageDef.id}: category hero breadcrumbs are missing`, detail);
+        assert(state.breadcrumbsDisplay !== 'none', `${pageDef.id}: category hero breadcrumbs are display:none`, detail);
+        assert(state.breadcrumbsVisibility !== 'hidden', `${pageDef.id}: category hero breadcrumbs are hidden`, detail);
+        assert(state.breadcrumbs.top >= state.header.bottom + 12, `${pageDef.id}: category hero breadcrumbs overlap the fixed header`, detail);
+        assert(state.breadcrumbs.bottom < state.hero.bottom, `${pageDef.id}: category hero breadcrumbs are clipped by hero`, detail);
         assert(state.cta, `${pageDef.id}: category hero CTA is missing`, detail);
         assert(state.ctaDisplay !== 'none', `${pageDef.id}: category hero CTA is display:none`, detail);
         assert(state.ctaVisibility !== 'hidden', `${pageDef.id}: category hero CTA is hidden`, detail);

@@ -1,4 +1,4 @@
-﻿(() => {
+(() => {
   'use strict';
 
   const onReady = (callback) => {
@@ -13,12 +13,18 @@
   const isActivateKey = (event) => event.key === 'Enter' || event.key === ' ' || event.key === 'Spacebar';
 
   const setFaqExpanded = (card, expanded) => {
-    const panelId = card.getAttribute('aria-controls') || '';
+    const toggle = card.querySelector('[data-support-faq-card-toggle]');
+    const panelId = toggle ? toggle.getAttribute('aria-controls') || '' : card.getAttribute('aria-controls') || '';
     const panel = panelId ? document.getElementById(panelId) : card.querySelector('p');
-    const icon = card.querySelector('.f-support-faq-card__icon');
+    const icon = card.querySelector('.f-support-faq-card__icon [aria-hidden="true"], .f-support-faq-card__icon');
 
     card.classList.toggle('is-open', expanded);
-    card.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    } else {
+      card.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    }
 
     if (panel) {
       panel.hidden = !expanded;
@@ -62,6 +68,7 @@
     };
 
     cards.forEach((card) => {
+      const toggleControl = card.querySelector('[data-support-faq-card-toggle]');
       const toggle = () => {
         const shouldOpen = !card.classList.contains('is-open');
 
@@ -73,6 +80,13 @@
 
         setFaqExpanded(card, shouldOpen);
       };
+
+      if (toggleControl) {
+        toggleControl.addEventListener('click', (event) => {
+          event.stopPropagation();
+          toggle();
+        });
+      }
 
       card.addEventListener('click', (event) => {
         if (event.target && event.target.closest('a, button, input, textarea, select')) {
@@ -99,7 +113,7 @@
         chips.forEach((otherChip) => {
           const active = otherChip === chip;
           otherChip.classList.toggle('is-active', active);
-          otherChip.setAttribute('aria-selected', active ? 'true' : 'false');
+          otherChip.setAttribute('aria-pressed', active ? 'true' : 'false');
         });
 
         applyFilter(filterKey);
@@ -115,8 +129,11 @@
     const panelId = toggle ? toggle.getAttribute('aria-controls') : '';
     const panel = panelId ? document.getElementById(panelId) : group.querySelector('[data-download-group-panel]');
     const icon = group.querySelector('.f-download-group__icon');
+    const iconText = icon ? icon.querySelector('[aria-hidden="true"]') || icon : null;
 
     group.classList.toggle('is-open', expanded);
+    group.classList.toggle('f-download-group--open', expanded);
+    group.classList.toggle('f-download-group--closed', !expanded);
     if (toggle) {
       toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
     }
@@ -125,8 +142,8 @@
       panel.hidden = !expanded;
     }
 
-    if (icon) {
-      icon.textContent = expanded ? '−' : '+';
+    if (iconText) {
+      iconText.textContent = expanded ? '−' : '+';
     }
   };
 
@@ -206,7 +223,7 @@
 
         chips.forEach((otherChip) => {
           otherChip.classList.remove('is-active');
-          otherChip.setAttribute('aria-selected', 'false');
+          otherChip.setAttribute('aria-pressed', 'false');
         });
 
         if (wasActive) {
@@ -215,7 +232,7 @@
         }
 
         chip.classList.add('is-active');
-        chip.setAttribute('aria-selected', 'true');
+        chip.setAttribute('aria-pressed', 'true');
         applyFilter(filterType);
       });
     });

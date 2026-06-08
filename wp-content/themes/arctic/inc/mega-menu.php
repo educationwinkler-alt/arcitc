@@ -30,7 +30,7 @@ if ( !function_exists( 'arctic_mega_menu_definitions' ) ) {
 				'label'     => __( 'Celoroční bazény', 'baspa' ),
 				'url'       => home_url( '/swimspa/' ),
 				'page_path' => 'swimspa',
-				'columns'   => 3,
+				'columns'   => 2,
 			),
 		);
 
@@ -151,9 +151,12 @@ if ( !function_exists( 'arctic_mega_menu_products_by_series' ) ) {
 
 				$key = strtolower( sanitize_title( $term->slug ?: $term->name ) );
 				$order = array(
-					'core'    => 10,
-					'classic' => 20,
-					'custom'  => 30,
+					'core'             => 10,
+					'classic'          => 20,
+					'custom'           => 30,
+					'swimspa-classic'  => 40,
+					'swimspa-custom'   => 50,
+					'swimspa'          => 60,
 				);
 
 				return $order[ $key ] ?? 100;
@@ -191,6 +194,11 @@ if ( !function_exists( 'arctic_mega_menu_label_from_term' ) ) {
 	function arctic_mega_menu_label_from_term( ?WP_Term $term, string $fallback, int $index ): string {
 		if ( $term instanceof WP_Term ) {
 			$name = trim( $term->name );
+			$slug = sanitize_title( $term->slug ?: $term->name );
+			if ( $name !== '' && in_array( $slug, array( 'swimspa-classic', 'swimspa-custom' ), true ) ) {
+				return $name;
+			}
+
 			if ( $name !== '' ) {
 				return sprintf( __( 'Série %s', 'baspa' ), $name );
 			}
@@ -298,6 +306,7 @@ if ( !function_exists( 'arctic_get_desktop_mega_menus' ) ) {
 				'label'        => (string) ( $definition['label'] ?? '' ),
 				'url'          => (string) ( $definition['url'] ?? home_url( '/' ) ),
 				'columns'      => $columns,
+				'column_count' => count( $columns ),
 				'product_count'=> count( $products ),
 			);
 		}

@@ -3,36 +3,6 @@
   "version": 3,
   "templateParts": [
     {
-      "title": "Contact",
-      "name": "contact",
-      "area": "uncategorized"
-    },
-    {
-      "title": "Contact - Pools",
-      "name": "contact-pools",
-      "area": "uncategorized"
-    },
-    {
-      "title": "Contact - Jacuzzis",
-      "name": "contact-jacuzzis",
-      "area": "uncategorized"
-    },
-    {
-      "title": "Contact - Small",
-      "name": "contact-small",
-      "area": "uncategorized"
-    },
-    {
-      "title": "Contact - Small - Pools",
-      "name": "contact-small-pools",
-      "area": "uncategorized"
-    },
-    {
-      "title": "Contact - Small - Jacuzzis",
-      "name": "contact-small-jacuzzis",
-      "area": "uncategorized"
-    },
-    {
       "title": "Progress",
       "name": "progress",
       "area": "uncategorized"

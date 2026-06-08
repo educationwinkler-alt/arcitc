@@ -111,3 +111,14 @@ if ( !function_exists( 'baspa_styles' ) ) {
 	add_action( 'wp_enqueue_scripts', 'baspa_styles', 20 );
 
 }
+
+if ( !function_exists( 'arctic_dequeue_external_frontend_fonts' ) ) {
+
+	function arctic_dequeue_external_frontend_fonts(): void {
+		wp_dequeue_style( 'visao-css-poppins-font' );
+		wp_deregister_style( 'visao-css-poppins-font' );
+	}
+
+	add_action( 'wp_enqueue_scripts', 'arctic_dequeue_external_frontend_fonts', 999 );
+
+}

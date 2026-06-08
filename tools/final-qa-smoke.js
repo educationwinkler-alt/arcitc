@@ -181,18 +181,41 @@ async function assertProductAffordances(page) {
 }
 
 async function assertWaitingOnOwnerMarkers(page) {
-  const expectations = [
-    ['/kontakt/', '.f-contact-card__avatar[data-asset-status="WAITING_ON_OWNER"]', 6],
-    ['/zaruka/', '.f-warranty-card[data-asset-status="WAITING_ON_OWNER"]', 3],
-  ];
+  const adminMembers = await fetchAdminMembers();
 
-  for (const [path, selector, expected] of expectations) {
-    await page.goto(`${baseUrl}${path}`, { waitUntil: 'networkidle', timeout: 90000 });
-    const count = await page.locator(selector).count();
-    assert(count === expected, `${path} expected ${expected} ${selector}, got ${count}`);
+  await page.goto(`${baseUrl}/kontakt/`, { waitUntil: 'networkidle', timeout: 90000 });
+
+  if (adminMembers.length > 0) {
+    const contactCards = await page.evaluate(() => Array.from(document.querySelectorAll('.f-contact-card')).map((card) => {
+      const avatar = card.querySelector('.f-contact-card__avatar');
+      const image = avatar ? avatar.querySelector('img') : null;
+
+      return {
+        name: card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '',
+        source: card.getAttribute('data-content-source') || '',
+        memberId: card.getAttribute('data-member-id') || '',
+        avatarStatus: avatar ? avatar.getAttribute('data-asset-status') || '' : '',
+        avatarSource: image ? image.getAttribute('data-src') || image.currentSrc || image.src : '',
+      };
+    }));
+
+    assert(contactCards.length === adminMembers.length, `/kontakt/ expected ${adminMembers.length} member-backed contact cards, got ${contactCards.length}`);
+    assert(contactCards.every((card) => card.source === 'admin-member'), '/kontakt/ contains non-admin contact card sources');
+    assert(contactCards.every((card) => Number(card.memberId) > 0), '/kontakt/ contact cards must expose WP member ids');
+
+    const tomas = contactCards.find((card) => card.name.includes('Tomáš Koutný'));
+    assert(tomas, '/kontakt/ is missing Tomáš Koutný');
+    assert(tomas.avatarStatus === 'admin-member', `/kontakt/ Tomáš Koutný avatar status is ${tomas ? tomas.avatarStatus : '(missing)'}`);
+    assert(tomas.avatarSource.includes('contact-tomas-koutny'), `/kontakt/ Tomáš Koutný avatar source is ${tomas ? tomas.avatarSource : '(missing)'}`);
+
+    const figmaFallbacks = contactCards.filter((card) => card.source.includes('figma') || card.avatarStatus.includes('figma')).length;
+    assert(figmaFallbacks === 0, `/kontakt/ still has ${figmaFallbacks} Figma/Baspa fallback contact cards`);
   }
 
-  const adminMembers = await fetchAdminMembers();
+  await page.goto(`${baseUrl}/zaruka/`, { waitUntil: 'networkidle', timeout: 90000 });
+  const warrantyWaiting = await page.locator('.f-warranty-card[data-asset-status="WAITING_ON_OWNER"]').count();
+  assert(warrantyWaiting === 3, `/zaruka/ expected 3 .f-warranty-card[data-asset-status="WAITING_ON_OWNER"], got ${warrantyWaiting}`);
+
   const usesFigmaFallbackTeam = adminMembers.length === 0;
   const expectedPeople = adminMembers.length || 4;
 
@@ -209,9 +232,10 @@ async function assertWaitingOnOwnerMarkers(page) {
     assert(waitingMedia === 0, `/o-nas/ fallback must not show waiting placeholders, got ${waitingMedia}`);
   } else {
     const adminMedia = await page.locator('.f-about-person__media[data-asset-status="admin-member"]').count();
+    const avatarFallbackMedia = await page.locator('.f-about-person__media[data-asset-status="admin-member-avatar-fallback"]').count();
     const waitingMedia = await page.locator('.f-about-person__media[data-asset-status="WAITING_ON_OWNER"]').count();
 
-    assert(adminMedia + waitingMedia === teamCards, `/o-nas/ admin team media mismatch: ${adminMedia} admin images + ${waitingMedia} waiting media for ${teamCards} cards`);
+    assert(adminMedia + avatarFallbackMedia + waitingMedia === teamCards, `/o-nas/ admin team media mismatch: ${adminMedia} admin images + ${avatarFallbackMedia} avatar fallbacks + ${waitingMedia} waiting media for ${teamCards} cards`);
   }
 }
 

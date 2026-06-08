@@ -12,7 +12,7 @@ if ( ! function_exists( 'arctic_about_team_fallback' ) ) {
 				'description'  => 'Prodej vířivek',
 				'initials'     => 'VZ',
 				'asset_status' => 'figma-export',
-				'image'        => content_url( 'uploads/import/figma/about-team-vladimir.png' ),
+				'image'        => content_url( 'uploads/import/figma/about-team-vladimir-portrait.png' ),
 			),
 			array(
 				'name'         => 'Ing. Lukáš Dušek',
@@ -20,7 +20,7 @@ if ( ! function_exists( 'arctic_about_team_fallback' ) ) {
 				'description'  => 'Komunikace s dodavateli a prodej bazénů',
 				'initials'     => 'LD',
 				'asset_status' => 'figma-export',
-				'image'        => content_url( 'uploads/import/figma/about-team-lukas.png' ),
+				'image'        => content_url( 'uploads/import/figma/about-team-lukas-portrait.png' ),
 			),
 			array(
 				'name'         => 'Helena Antonyová',
@@ -28,7 +28,7 @@ if ( ! function_exists( 'arctic_about_team_fallback' ) ) {
 				'description'  => 'Prodej bazénů a jejich příslušenství',
 				'initials'     => 'HA',
 				'asset_status' => 'figma-export',
-				'image'        => content_url( 'uploads/import/figma/about-team-helena.png' ),
+				'image'        => content_url( 'uploads/import/figma/about-team-helena-portrait.png' ),
 			),
 			array(
 				'name'         => 'Alena Janulíková',
@@ -36,7 +36,7 @@ if ( ! function_exists( 'arctic_about_team_fallback' ) ) {
 				'description'  => 'Organizace dopravy a fakturace.',
 				'initials'     => 'AJ',
 				'asset_status' => 'figma-export',
-				'image'        => content_url( 'uploads/import/figma/about-team-alena.png' ),
+				'image'        => content_url( 'uploads/import/figma/about-team-alena-portrait.png' ),
 			),
 		);
 	}
@@ -58,7 +58,7 @@ if ( ! function_exists( 'arctic_about_initials' ) ) {
 if ( ! function_exists( 'arctic_about_team_members' ) ) {
 	function arctic_about_team_members(): array {
 		if ( ! function_exists( 'baspa_members_query' ) ) {
-			return arctic_about_team_fallback();
+			return function_exists( 'arctic_allow_seed_fallbacks' ) && arctic_allow_seed_fallbacks() ? arctic_about_team_fallback() : array();
 		}
 
 		$query = baspa_members_query();
@@ -68,15 +68,22 @@ if ( ! function_exists( 'arctic_about_team_members' ) ) {
 			while ( $query->have_posts() ) {
 				$query->the_post();
 
-				$name  = get_the_title();
-				$image = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+				$name        = get_the_title();
+				$member_data  = function_exists( 'baspa_member_data' ) ? baspa_member_data( get_the_ID(), 'full' ) : array();
+				$image        = !empty( $member_data['image'] ) ? (string) $member_data['image'] : '';
+				$asset_status = $image ? 'admin-member' : 'WAITING_ON_OWNER';
+
+				if ( '' === $image && !empty( $member_data['avatar'] ) ) {
+					$image        = (string) $member_data['avatar'];
+					$asset_status = 'admin-member-avatar-fallback';
+				}
 
 				$team[] = array(
 					'name'         => $name,
-					'role'         => get_post_meta( get_the_ID(), 'member_position', true ),
-					'description'  => get_post_meta( get_the_ID(), 'member_scope', true ),
-					'initials'     => arctic_about_initials( $name ),
-					'asset_status' => $image ? 'admin-member' : 'WAITING_ON_OWNER',
+					'role'         => !empty( $member_data['position'] ) ? $member_data['position'] : get_post_meta( get_the_ID(), 'member_position', true ),
+					'description'  => !empty( $member_data['scope'] ) ? $member_data['scope'] : get_post_meta( get_the_ID(), 'member_scope', true ),
+					'initials'     => !empty( $member_data['initials'] ) ? $member_data['initials'] : arctic_about_initials( $name ),
+					'asset_status' => $asset_status,
 					'image'        => $image ?: '',
 				);
 			}
@@ -84,7 +91,7 @@ if ( ! function_exists( 'arctic_about_team_members' ) ) {
 			wp_reset_postdata();
 		}
 
-		return $team ?: arctic_about_team_fallback();
+		return $team ?: ( function_exists( 'arctic_allow_seed_fallbacks' ) && arctic_allow_seed_fallbacks() ? arctic_about_team_fallback() : array() );
 	}
 }
 
@@ -173,14 +180,17 @@ if ( ! function_exists( 'arctic_about_jobs_fallback' ) ) {
 			array(
 				'title'   => 'Montážní technik',
 				'content' => $open_content,
+				'source'  => 'static-fallback',
 			),
 			array(
 				'title'   => 'Obchodník na prodejně v Moravanech',
 				'content' => '',
+				'source'  => 'static-fallback',
 			),
 			array(
 				'title'   => 'Obchodník na prodejně v Moravanech',
 				'content' => '',
+				'source'  => 'static-fallback',
 			),
 		);
 	}
@@ -207,15 +217,17 @@ if ( ! function_exists( 'arctic_about_jobs' ) ) {
 				$query->the_post();
 
 				$jobs[] = array(
+					'id'      => get_the_ID(),
 					'title'   => get_the_title(),
 					'content' => apply_filters( 'the_content', get_the_content() ),
+					'source'  => 'job-cpt',
 				);
 			}
 
 			wp_reset_postdata();
 		}
 
-		return $jobs ?: arctic_about_jobs_fallback();
+		return $jobs ?: ( function_exists( 'arctic_allow_seed_fallbacks' ) && arctic_allow_seed_fallbacks() ? arctic_about_jobs_fallback() : array() );
 	}
 }
 
@@ -225,7 +237,75 @@ $team_subtitle = get_option( 'baspa_members_subtitle' ) ?: __( 'Naše současná
 $jobs          = arctic_about_jobs();
 $jobs_title    = get_option( 'baspa_jobs_title' ) ?: __( 'Kariéra v Arctic spas', 'baspa' );
 $jobs_subtitle = get_option( 'baspa_jobs_subtitle' ) ?: __( 'Uplatnění u nás najdou šikovní lidé, kteří se nebojí komunikovat se zákazníky a odvádět dobrou práci každý den.', 'baspa' );
+$jobs_source   = $jobs[0]['source'] ?? 'unknown';
 $jobs_extra    = max( 0, count( $jobs ) - 3 ) * 116;
+
+$post_id = get_queried_object_id();
+
+$about_intro_title   = trim( wp_strip_all_tags( (string) get_post_meta( $post_id, 'about_intro_title', true ) ) );
+$about_intro_title   = '' !== $about_intro_title ? $about_intro_title : __( 'Naše společnost', 'baspa' );
+$about_intro_content = trim( apply_filters( 'the_content', get_post_field( 'post_content', $post_id ) ) );
+$about_intro_source  = 'wp-editor';
+
+if ( '' === $about_intro_content && function_exists( 'arctic_allow_seed_fallbacks' ) && arctic_allow_seed_fallbacks() ) {
+	$about_intro_source  = 'static-fallback';
+	$about_intro_content = wpautop( esc_html__( 'Prodejem vířivek Arctic Spas se zabýváme již od roku 2005 a základ našeho týmu se za tu dobu nezměnil. Máme více než 15 let osobních zkušeností s dovozem, prodejem, instalacemi a servisem vířivek Arctic Spas, které se zúročily při stovkách realizací v České republice i na Slovensku.', 'baspa' ) )
+		. wpautop( esc_html__( 'Při naší práci se můžeme jako autorizovaný dealer spolehnout také na podporu kanadského výrobce s celosvětovou působností a tradicí od roku 1994. Veškeré získané know-how je plně k dispozici našim zákazníkům.', 'baspa' ) );
+}
+
+$default_stats = array(
+	array(
+		'value' => '21+',
+		'label' => __( 'let zkušeností', 'baspa' ),
+	),
+	array(
+		'value' => '1000+',
+		'label' => __( 'spokojených klientů', 'baspa' ),
+	),
+	array(
+		'value' => '11',
+		'label' => __( 'členů týmu', 'baspa' ),
+	),
+);
+
+$about_stats_raw  = get_post_meta( $post_id, 'about_stats' );
+$about_stats_rows = array();
+
+foreach ( $about_stats_raw as $raw_stat_row ) {
+	if ( !is_array( $raw_stat_row ) ) {
+		continue;
+	}
+
+	if ( array_key_exists( 'value', $raw_stat_row ) || array_key_exists( 'label', $raw_stat_row ) ) {
+		$about_stats_rows[] = $raw_stat_row;
+		continue;
+	}
+
+	foreach ( $raw_stat_row as $nested_stat_row ) {
+		if ( is_array( $nested_stat_row ) ) {
+			$about_stats_rows[] = $nested_stat_row;
+		}
+	}
+}
+
+$about_stats = array();
+foreach ( $about_stats_rows as $stat_row ) {
+	$value = trim( wp_strip_all_tags( (string) ( $stat_row['value'] ?? '' ) ) );
+	$label = trim( wp_strip_all_tags( (string) ( $stat_row['label'] ?? '' ) ) );
+
+	if ( '' === $value && '' === $label ) {
+		continue;
+	}
+
+	$about_stats[] = array(
+		'value' => $value,
+		'label' => $label,
+	);
+}
+
+if ( empty( $about_stats ) && function_exists( 'arctic_allow_seed_fallbacks' ) && arctic_allow_seed_fallbacks() ) {
+	$about_stats = $default_stats;
+}
 
 get_header();
 get_template_part( 'templates/heading' );
@@ -236,26 +316,38 @@ get_template_part( 'templates/heading' );
 
 	<section class="f-section f-section--about-figma">
 		<div class="f-section__container a-container">
-			<div id="<?php echo sanitize_title( esc_attr_x( 'our-company', 'anchor', 'baspa' ) ); ?>" class="f-about-figma__intro js-links__section">
-				<h2><?php echo esc_html__( 'Naše společnost', 'baspa' ); ?></h2>
-				<p><?php echo esc_html__( 'Prodejem vířivek Arctic Spas se zabýváme již od roku 2005 a základ našeho týmu se za tu dobu nezměnil. Máme více než 15 let osobních zkušeností s dovozem, prodejem, instalacemi a servisem vířivek Arctic Spas, které se zúročily při stovkách realizací v České republice i na Slovensku.', 'baspa' ); ?></p>
-				<p><?php echo esc_html__( 'Při naší práci se můžeme jako autorizovaný dealer spolehnout také na podporu kanadského výrobce s celosvětovou působností a tradicí od roku 1994. Veškeré získané know-how je plně k dispozici našim zákazníkům.', 'baspa' ); ?></p>
+			<div id="<?php echo sanitize_title( esc_attr_x( 'our-company', 'anchor', 'baspa' ) ); ?>" class="f-about-figma__intro js-links__section" data-content-source="<?php echo esc_attr( $about_intro_source ); ?>">
+				<h2><?php echo esc_html( $about_intro_title ); ?></h2>
+				<?php echo wp_kses_post( $about_intro_content ); ?>
 			</div>
-			<div class="f-about-figma__stats" aria-label="<?php echo esc_attr__( 'Arctic Spas v číslech', 'baspa' ); ?>">
-				<div><strong>21+</strong><span><?php echo esc_html__( 'let zkušeností', 'baspa' ); ?></span></div>
-				<div><strong>1000+</strong><span><?php echo esc_html__( 'spokojených klientů', 'baspa' ); ?></span></div>
-				<div><strong>11</strong><span><?php echo esc_html__( 'členů týmu', 'baspa' ); ?></span></div>
+			<div class="f-about-figma__stats" data-content-source="about-meta" role="group" aria-label="<?php echo esc_attr__( 'Arctic Spas v číslech', 'baspa' ); ?>">
+				<?php foreach ( $about_stats as $stat ) { ?>
+					<div><strong><?php echo esc_html( $stat['value'] ); ?></strong><span><?php echo esc_html( $stat['label'] ); ?></span></div>
+				<?php } ?>
 			</div>
 			<div class="f-about-figma__team-copy">
 				<h2><?php echo wp_kses_post( $team_title ); ?></h2>
 				<div class="f-about-figma__team-subtitle"><?php echo wpautop( wp_kses_post( $team_subtitle ) ); ?></div>
 			</div>
 			<div class="f-about-team-carousel js-about-team-carousel" data-team-count="<?php echo esc_attr( count( $team ) ); ?>">
-				<div class="f-about-figma__team js-about-team-carousel__track" tabindex="0" aria-label="<?php echo esc_attr__( 'Členové týmu', 'baspa' ); ?>">
+				<button type="button"
+				        class="f-about-team__control f-about-team__prev js-about-team-carousel__prev"
+				        aria-label="<?php echo esc_attr__( 'Předchozí člen týmu', 'baspa' ); ?>"
+				        hidden>
+					<span aria-hidden="true">‹</span>
+				</button>
+				<div class="f-about-figma__team js-about-team-carousel__track" role="group" tabindex="0" aria-label="<?php echo esc_attr__( 'Členové týmu', 'baspa' ); ?>">
 					<?php foreach ( $team as $person ) { ?>
 						<article class="f-about-person">
 							<?php if ( ! empty( $person['image'] ) ) { ?>
-								<div class="f-about-person__media"
+								<?php
+								$media_classes = array( 'f-about-person__media' );
+
+								if ( 'admin-member-avatar-fallback' === ( $person['asset_status'] ?? '' ) ) {
+									$media_classes[] = 'f-about-person__media--avatar-fallback';
+								}
+								?>
+								<div class="<?php echo esc_attr( implode( ' ', $media_classes ) ); ?>"
 								     data-asset-status="<?php echo esc_attr( $person['asset_status'] ); ?>">
 									<img src="<?php echo esc_url( $person['image'] ); ?>"
 									     alt="<?php echo esc_attr( $person['name'] ); ?>"
@@ -280,28 +372,46 @@ get_template_part( 'templates/heading' );
 					<?php } ?>
 				</div>
 				<button type="button"
-				        class="f-about-team__next js-about-team-carousel__next"
+				        class="f-about-team__control f-about-team__next js-about-team-carousel__next"
 				        aria-label="<?php echo esc_attr__( 'Další člen týmu', 'baspa' ); ?>">
 					<span aria-hidden="true">›</span>
 				</button>
 			</div>
-			<div id="<?php echo sanitize_title( esc_attr_x( 'career', 'anchor', 'baspa' ) ); ?>" class="f-about-figma__career js-links__section">
+			<div id="career" class="f-about-figma__career js-links__section">
 				<h2><?php echo esc_html( $jobs_title ); ?></h2>
 				<div class="f-about-figma__career-copy"><?php echo wpautop( wp_kses_post( $jobs_subtitle ) ); ?></div>
 			</div>
-			<div class="f-about-figma__jobs" data-job-count="<?php echo esc_attr( count( $jobs ) ); ?>">
+			<div class="f-about-figma__jobs"
+			     data-content-source="<?php echo esc_attr( $jobs_source ); ?>"
+			     data-job-count="<?php echo esc_attr( count( $jobs ) ); ?>">
 				<?php foreach ( $jobs as $job_index => $job ) { ?>
-					<details class="f-about-job<?php echo 0 === $job_index ? ' f-about-job--open' : ''; ?>" <?php echo 0 === $job_index ? 'open' : ''; ?>>
-						<summary class="f-about-job__summary">
-							<span class="f-about-job__icon" aria-hidden="true"></span>
-							<h3><?php echo esc_html( $job['title'] ); ?></h3>
-						</summary>
-						<?php if ( ! empty( $job['content'] ) ) { ?>
+					<?php
+					$job_has_content = '' !== trim( wp_strip_all_tags( (string) ( $job['content'] ?? '' ) ) );
+					$job_id          = isset( $job['id'] ) ? (int) $job['id'] : 0;
+					?>
+					<?php if ( $job_has_content ) { ?>
+						<details class="f-about-job"
+						         name="about-career"
+						         data-content-source="<?php echo esc_attr( $job['source'] ?? $jobs_source ); ?>"
+						         <?php echo $job_id > 0 ? 'data-job-id="' . esc_attr( (string) $job_id ) . '"' : ''; ?>
+						         >
+							<summary class="f-about-job__summary">
+								<span class="f-about-job__icon" aria-hidden="true"></span>
+								<h3><?php echo esc_html( $job['title'] ); ?></h3>
+							</summary>
 							<div class="f-about-job__content f-content">
 								<?php echo wp_kses_post( $job['content'] ); ?>
 							</div>
-						<?php } ?>
-					</details>
+						</details>
+					<?php } else { ?>
+						<article class="f-about-job f-about-job--empty"
+						         data-content-source="<?php echo esc_attr( $job['source'] ?? $jobs_source ); ?>">
+							<div class="f-about-job__summary" aria-disabled="true">
+								<span class="f-about-job__icon" aria-hidden="true"></span>
+								<h3><?php echo esc_html( $job['title'] ); ?></h3>
+							</div>
+						</article>
+					<?php } ?>
 				<?php } ?>
 			</div>
 		</div>

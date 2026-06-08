@@ -78,26 +78,3 @@ if ( !function_exists( 'baspa_pages_filter_product_category_link' ) ) {
 	add_filter( 'term_link', 'baspa_pages_filter_product_category_link', 10, 3 );
 
 }
-
-if ( !function_exists( 'baspa_pages_redirect_more_info_hub' ) ) {
-
-	/**
-	 * The Figma wireframe defines "Další informace" as a header dropdown, not a
-	 * separate tile hub. Keep the old local page URL as a stable redirect.
-	 *
-	 * @return void
-	 */
-	function baspa_pages_redirect_more_info_hub(): void {
-
-		if ( !is_page( 'dalsi-informace' ) ) {
-			return;
-		}
-
-		wp_safe_redirect( home_url( '/#order-progress' ), 301 );
-		exit;
-
-	}
-
-	add_action( 'template_redirect', 'baspa_pages_redirect_more_info_hub', 1 );
-
-}

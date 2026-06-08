@@ -55,9 +55,11 @@ async function main() {
 
   await assertAssetContract('/showroom/', {
     required: [
-      'uploads/import/owner-showroom/showroom-main-web.jpg',
-      'uploads/import/owner-showroom/showroom-detail-web.jpg',
-      'uploads/import/owner-showroom/showroom-covana-interior-web.jpg',
+      'showroom-main-web',
+      'showroom-detail-web',
+      'showroom-covana-interior-web',
+      'data-content-source="wp-editor"',
+      'data-content-source="showroom-meta"',
     ],
     forbidden: [
       'uploads/import/figma/showroom-hero-bazeny.jpg',
@@ -68,9 +70,13 @@ async function main() {
 
   await assertAssetContract('/', {
     required: [
-      'uploads/import/owner-showroom/showroom-main-web.jpg',
-      'uploads/import/owner-showroom/showroom-detail-web.jpg',
-      'uploads/import/owner-showroom/showroom-covana-interior-web.jpg',
+      'data-content-source="homepage-meta"',
+      'data-content-source="offer-cpt"',
+      'data-asset-status="admin-offer-promo"',
+      'hp-fixed-banner-product',
+      'showroom-main-web',
+      'showroom-detail-web',
+      'showroom-covana-interior-web',
     ],
     forbidden: [
       'uploads/import/figma/showroom-1.png',
@@ -80,29 +86,38 @@ async function main() {
   });
 
   await assertAssetContract('/o-nas/', {
-    required: usesFigmaFallbackTeam ? [
+    required: [
+      'data-content-source="wp-editor"',
+      'data-content-source="about-meta"',
+      ...(usesFigmaFallbackTeam ? [
+      'uploads/import/figma/about-team-vladimir-portrait.png',
+      'uploads/import/figma/about-team-lukas-portrait.png',
+      'uploads/import/figma/about-team-helena-portrait.png',
+      'uploads/import/figma/about-team-alena-portrait.png',
+      'Vlastimil Zhoř',
+      'Ing. Lukáš Dušek',
+      'Alena Janulíková',
+      ] : []),
+    ],
+    forbidden: [
+      ...(usesFigmaFallbackTeam ? ['f-about-person__media--waiting'] : []),
       'uploads/import/figma/about-team-vladimir.png',
       'uploads/import/figma/about-team-lukas.png',
       'uploads/import/figma/about-team-helena.png',
       'uploads/import/figma/about-team-alena.png',
-      'Vlastimil Zhoř',
-      'Ing. Lukáš Dušek',
-      'Alena Janulíková',
-    ] : [],
-    forbidden: [
-      ...(usesFigmaFallbackTeam ? ['f-about-person__media--waiting'] : []),
+      'uploads/import/figma/about-team-tomas.png',
       'Vladimír Zajíč',
       'Servisní tým',
     ],
   });
 
   await assertAssetContract('/kontakt/', {
-    required: [
-      'data-content-source="figma-contact-frame"',
-      'data-asset-status="WAITING_ON_OWNER"',
-      'f-contact-card__avatar--waiting',
-    ],
+    required: adminMembers.length > 0 ? [
+      'data-content-source="admin-member"',
+      'data-member-id="',
+    ] : [],
     forbidden: [
+      'data-content-source="figma-contact-frame"',
       'uploads/import/figma/about-team-vladimir.png',
       'uploads/import/figma/about-team-lukas.png',
       'uploads/import/figma/about-team-helena.png',
@@ -117,9 +132,11 @@ async function main() {
       'acrylic-kalahari',
       'acrylic-odyssey',
       'acrylic-espresso',
-      'uploads/import/figma/color-platinum-swirl.png',
-      'uploads/import/figma/cabinet-cedar.png',
-      'uploads/import/figma/cabinet-maintenance-free.png',
+      'color-platinum-swirl',
+      'cabinet-cedar',
+      'cabinet-maintenance-free',
+      'data-content-source="spa_color"',
+      'data-asset-status="admin-product-color"',
     ],
     forbidden: [
       'uploads/import/figma/detail-timberwolf-hero.jpg',
@@ -128,12 +145,89 @@ async function main() {
 
   await assertAssetContract('/sluzby/', {
     required: [
-      'uploads/import/legacy-services/',
+      'data-content-source="service-cpt"',
+      'data-asset-status="admin-service"',
+      'service-consultation',
+      'service-meeting',
+      'service-catalog',
+      'service-showroom',
+      'service-delivery',
+      'service-support',
     ],
   });
 
+  await assertAssetContract('/certifikaty/', {
+    required: [
+      'data-content-source="certificates-meta"',
+      'data-content-source="certificates-media"',
+      'data-asset-status="admin-certificate"',
+      'certificate-tuv-1',
+      'certificate-tuv-2',
+      'certificate-tuv-3',
+    ],
+  });
+
+  await assertAssetContract('/kolik-stoji-udrzba/', {
+    required: [
+      'data-content-source="wp-editor"',
+      'RossExhaust',
+    ],
+  });
+
+  await assertAssetContract('/vlastnosti/', {
+    required: [
+      'data-content-source="feature-cpt"',
+      'data-asset-status="admin-feature"',
+      '/vlastnosti/zaruka-na-skorepinu/',
+      '/vlastnosti/termokryt/',
+      '/vlastnosti/podlaha-virivky/',
+      '/vlastnosti/servisni-pristup/',
+      '/vlastnosti/variabilita/',
+      '/vlastnosti/automaticka-dezinfekce/',
+    ],
+    forbidden: [
+      '/vlastnosti/#termokryt',
+      '/vlastnosti/#podlaha',
+      '/vlastnosti/#variabilita',
+      '/vlastnosti/#automaticka-dezinfekce',
+      '/podpora/#servisni-formular',
+    ],
+  });
+
+  await assertAssetContract('/vlastnosti/izolace-virivky/', {
+    required: [
+      'data-content-source="wp-editor"',
+      'data-content-source="feature-cpt"',
+      'data-asset-status="admin-feature-detail"',
+      'data-asset-status="admin-feature"',
+      'feature-izolace-freeheat',
+      'feature-freeheat-diagram',
+      'RossExhaust',
+      'Mylovac',
+    ],
+  });
+
+  for (const featureDetailPath of [
+    '/vlastnosti/zaruka-na-skorepinu/',
+    '/vlastnosti/termokryt/',
+    '/vlastnosti/podlaha-virivky/',
+    '/vlastnosti/servisni-pristup/',
+    '/vlastnosti/variabilita/',
+    '/vlastnosti/automaticka-dezinfekce/',
+  ]) {
+    await assertAssetContract(featureDetailPath, {
+      required: [
+        'data-content-source="wp-editor"',
+        'data-content-source="feature-cpt"',
+        'data-asset-status="admin-feature-detail"',
+        'data-asset-status="admin-feature"',
+      ],
+    });
+  }
+
   await assertAssetContract('/zaruka/', {
     required: [
+      'data-content-source="warranty-meta"',
       'data-asset-status="WAITING_ON_OWNER"',
       'f-warranty-card__media--waiting',
     ],

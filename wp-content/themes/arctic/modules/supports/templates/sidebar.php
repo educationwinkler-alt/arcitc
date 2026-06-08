@@ -7,5 +7,9 @@
 ?>
 
 <aside class="f-sidebar f-sidebar--sticky a-stack a-gap--m">
-	<?php block_template_part( 'contact-small-pools-and-jacuzzis' ); ?>
+	<?php get_template_part( 'templates/component/quick-contact-card', '', array(
+		'context'     => 'support_help',
+		'class'       => array( 'f-quick-contact-card--support' ),
+		'button_text' => __( 'Napsat zprávu', 'baspa' ),
+	) ); ?>
 </aside>

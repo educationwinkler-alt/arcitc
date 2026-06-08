@@ -1,4 +1,4 @@
-﻿const { readFileSync } = require('fs');
+const { readFileSync } = require('fs');
 
 const baseUrl = process.env.ARCTIC_BASE_URL || 'http://localhost:8090';
 

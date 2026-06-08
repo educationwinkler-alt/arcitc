@@ -18,7 +18,7 @@ $jobs_query = new WP_Query( $jobs_query_args );
 
 ?>
 
-<section id="<?php echo sanitize_title( esc_attr_x( 'career', 'anchor', 'baspa' ) ); ?>"
+<section id="career"
          class="f-section f-section--jobs js-links__section">
 
 	<div class="f-section__container a-container">

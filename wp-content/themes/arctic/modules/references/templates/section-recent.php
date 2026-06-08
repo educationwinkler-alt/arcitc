@@ -42,7 +42,7 @@ if ( is_home() || is_front_page() ) {
 
 if ( $references_query->have_posts() ) { ?>
 
-	<section id="<?php echo sanitize_title( esc_attr_x( 'references', 'anchor', 'baspa' ) ); ?>"
+	<section id="references"
 		data-reference-context="<?php echo esc_attr( $reference_context_slug ?: 'global' ); ?>"
 		<?php ( !function_exists( 'forqy_class' ) ) ?: forqy_class( $reference_section_class ); ?>>
 
@@ -86,7 +86,7 @@ if ( $references_query->have_posts() ) { ?>
 				</div>
 				<div class="a-flex__item--100 a-flex__item--66:m">
 
-					<div class="f-carousel f-carousel--cols-2 f-carousel--references swiper js-carousel js-carousel--cols-2 js-carousel--gap-40">
+					<div class="f-carousel f-carousel--references swiper js-carousel js-carousel--gap-40">
 
 						<div class="f-carousel__wrapper swiper-wrapper">
 
@@ -102,11 +102,13 @@ if ( $references_query->have_posts() ) { ?>
 						</div>
 
 						<button type="button"
-							class="f-carousel__control f-carousel__control--prev f-button f-button--accent a-button a-button--accent js-carousel__prev">
+							class="f-carousel__control f-carousel__control--prev f-button f-button--accent a-button a-button--accent js-carousel__prev"
+							aria-label="<?php echo esc_attr__( 'Předchozí reference', 'baspa' ); ?>">
 							<?php get_template_part( 'images/icon/arrow-left' ); ?>
 						</button>
 						<button type="button"
-							class="f-carousel__control f-carousel__control--next f-button f-button--accent a-button a-button--accent js-carousel__next">
+							class="f-carousel__control f-carousel__control--next f-button f-button--accent a-button a-button--accent js-carousel__next"
+							aria-label="<?php echo esc_attr__( 'Další reference', 'baspa' ); ?>">
 							<?php get_template_part( 'images/icon/arrow-right' ); ?>
 						</button>
 

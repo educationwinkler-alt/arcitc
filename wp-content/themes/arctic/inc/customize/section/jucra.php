@@ -45,6 +45,11 @@ if ( !function_exists( 'baspa_customize_settings_add_jucra' ) ) {
 			'sanitize_callback' => 'sanitize_text_field',
 		) );
 
+		$wp_customize->add_setting( 'arctic_jucra_model_definitions', array(
+			'default'           => function_exists( 'arctic_jucra_model_definitions_to_text' ) ? arctic_jucra_model_definitions_to_text() : '',
+			'sanitize_callback' => function_exists( 'arctic_jucra_sanitize_model_definitions_text' ) ? 'arctic_jucra_sanitize_model_definitions_text' : 'sanitize_textarea_field',
+		) );
+
 		$wp_customize->add_setting( 'arctic_jucra_pricing_relative_url', array(
 			'default'           => '/poptavka-konfigurace/',
 			'sanitize_callback' => 'arctic_jucra_sanitize_relative_path',
@@ -97,6 +102,14 @@ if ( !function_exists( 'baspa_customize_controls_add_jucra' ) ) {
 			'description' => esc_html__( 'Used when a specific product does not define jucra_model_name.', 'baspa' ),
 			'settings'    => 'arctic_jucra_default_model',
 			'type'        => 'text',
+			'section'     => 'jucra',
+		) ) );
+
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'arctic_jucra_model_definitions', array(
+			'label'       => esc_html__( 'Builder model list', 'baspa' ),
+			'description' => esc_html__( 'One model per line: slug|Label|Jucra model name|product-slug. Order here controls the frontend selector.', 'baspa' ),
+			'settings'    => 'arctic_jucra_model_definitions',
+			'type'        => 'textarea',
 			'section'     => 'jucra',
 		) ) );
 

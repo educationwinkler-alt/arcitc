@@ -40,7 +40,7 @@ if ( function_exists( 'wp_get_environment_type' ) && 'production' === wp_get_env
 	$smartsupp_offset_y = 24;
 	$privacy_url = function_exists( 'get_privacy_policy_url' ) ? (string) get_privacy_policy_url() : '';
 	?>
-	<script defer>
+	<script>
 	    var _smartsupp = _smartsupp || {};
 	    _smartsupp.key = <?php echo wp_json_encode( $smartsupp_key ); ?>;
 	    _smartsupp.color = <?php echo wp_json_encode( $smartsupp_color ); ?>;

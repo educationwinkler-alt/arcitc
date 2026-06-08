@@ -137,6 +137,7 @@ async function assertProductDetail(path, options = {}) {
         sidebarHoursClass: document.querySelector('.f-product-contact-card__hours')?.className || '',
         avatar: {
           src: document.querySelector('.f-product-contact-card__avatar img')?.currentSrc || '',
+          status: document.querySelector('.f-product-contact-card__avatar')?.getAttribute('data-asset-status') || '',
           transform: avatarStyle ? avatarStyle.transform : '',
           objectFit: avatarStyle ? avatarStyle.objectFit : '',
           position: avatarStyle ? avatarStyle.position : '',
@@ -232,17 +233,19 @@ async function assertProductDetail(path, options = {}) {
     }
 
     assert(state.sidebarHoursClass.includes('js-hours__status'), `${path} product sidebar hours are not using shared dynamic hours status`);
-    assert(state.avatar.src.includes('contact-lukas-dusek.png'), `${path} product sidebar avatar source is not the Figma Dusek asset`);
-    assert(state.avatar.transform === 'none', `${path} product sidebar avatar is still CSS-transformed: ${state.avatar.transform}`);
-    assert(state.avatar.objectFit === 'contain', `${path} product sidebar avatar object-fit is ${state.avatar.objectFit}, expected contain for rendered Figma crop`);
+    assert(['admin-member', 'WAITING_ON_OWNER'].includes(state.avatar.status), `${path} product sidebar avatar status is ${state.avatar.status}`);
+    if (state.avatar.status === 'admin-member') {
+      assert(state.avatar.src.length > 0, `${path} product sidebar admin avatar is missing an image source`);
+      assert(state.avatar.transform === 'none', `${path} product sidebar avatar is still CSS-transformed: ${state.avatar.transform}`);
+      assert(['cover', 'contain'].includes(state.avatar.objectFit), `${path} product sidebar avatar object-fit is ${state.avatar.objectFit}`);
+    }
 
     assert(state.ctaBar && state.ctaHours, `${path} is missing contact CTA bar or hours`);
     assert(state.ctaHours.y >= state.ctaBar.y, `${path} contact CTA hours start above the bar`);
     assert(state.ctaHours.bottom <= state.ctaBar.bottom - 8, `${path} contact CTA hours overflow the bar by ${Math.round(state.ctaHours.bottom - state.ctaBar.bottom)}px`);
 
-    assert(state.benefitMedia.length >= 20, `${path} exposes only ${state.benefitMedia.length} benefit/options media slots`);
     for (const [index, media] of state.benefitMedia.entries()) {
-      assert(media.status === 'available', `${path} benefit/options media ${index + 1} is not an exported Figma asset`);
+      assert(media.status === 'admin-product-benefit', `${path} benefit/options media ${index + 1} is not an admin-assigned asset`);
       assert(media.hasImage, `${path} benefit/options media ${index + 1} has no image`);
       assert(media.before === 'none' && media.after === 'none', `${path} benefit/options media ${index + 1} still renders a generated pseudoicon`);
     }

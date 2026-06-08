@@ -11,6 +11,7 @@
 <div id="<?php echo sanitize_title( esc_attr_x( 'navigation', 'anchor', 'baspa' ) ); ?>"
      class="f-off f-off--navigation a-off js-off"
      data-off="navigation"
+     data-off-anchors="true"
      data-off-breakpoint="1400"
      data-off-position="top">
 

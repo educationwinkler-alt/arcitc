@@ -7,9 +7,11 @@
 get_header();
 get_template_part( 'templates/heading/default' );
 
-$support_avatar = content_url( 'uploads/import/figma/contact-lukas-dusek.png' );
+$support_member = function_exists( 'baspa_members_get_selected_contact' ) ? baspa_members_get_selected_contact( 'support_help', get_template() . '-avatar' ) : array();
 $support_defaults = function_exists( 'arctic_support_option_defaults' ) ? arctic_support_option_defaults() : array();
 $downloads_defaults = function_exists( 'arctic_downloads_option_defaults' ) ? arctic_downloads_option_defaults() : array();
+$support_help_email = !empty( $support_member['email'] ) ? $support_member['email'] : get_theme_mod( 'baspa_email', 'info@arctic-spas.cz' );
+$support_help_phone = !empty( $support_member['phone'] ) ? $support_member['phone'] : get_theme_mod( 'baspa_phone', '+420 777 099 687' );
 
 $support_faq_title = function_exists( 'arctic_support_get_option' )
 	? arctic_support_get_option( 'arctic_support_faq_title', $support_defaults['arctic_support_faq_title'] ?? 'Časté dotazy' )
@@ -26,12 +28,16 @@ $support_form_content = function_exists( 'arctic_support_get_option' )
 $support_help_title = function_exists( 'arctic_support_get_option' )
 	? arctic_support_get_option( 'arctic_support_help_title', $support_defaults['arctic_support_help_title'] ?? 'Potřebujete poradit?' )
 	: 'Potřebujete poradit?';
-$support_help_name = function_exists( 'arctic_support_get_option' )
-	? arctic_support_get_option( 'arctic_support_help_name', $support_defaults['arctic_support_help_name'] ?? 'Lukáš Dušek' )
-	: 'Lukáš Dušek';
-$support_help_role = function_exists( 'arctic_support_get_option' )
-	? arctic_support_get_option( 'arctic_support_help_role', $support_defaults['arctic_support_help_role'] ?? 'Bazénový specialista' )
-	: 'Bazénový specialista';
+$support_help_name = !empty( $support_member['name'] )
+	? $support_member['name']
+	: ( function_exists( 'arctic_support_get_option' )
+		? arctic_support_get_option( 'arctic_support_help_name', $support_defaults['arctic_support_help_name'] ?? 'Bc. Tomáš Koutný' )
+		: 'Bc. Tomáš Koutný' );
+$support_help_role = !empty( $support_member['position'] )
+	? $support_member['position']
+	: ( function_exists( 'arctic_support_get_option' )
+		? arctic_support_get_option( 'arctic_support_help_role', $support_defaults['arctic_support_help_role'] ?? 'Prodej vířivek' )
+		: 'Prodej vířivek' );
 $support_help_hours = function_exists( 'arctic_support_get_option' )
 	? arctic_support_get_option( 'arctic_support_help_hours', $support_defaults['arctic_support_help_hours'] ?? 'Po - Pá 8:00-17:00 h' )
 	: 'Po - Pá 8:00-17:00 h';
@@ -40,12 +46,21 @@ $support_help_button = function_exists( 'arctic_support_get_option' )
 	: 'Napsat zprávu';
 $support_help_button_url = function_exists( 'arctic_support_get_option' ) ? arctic_support_get_option( 'arctic_support_help_button_url', '/kontakt/' ) : '/kontakt/';
 $support_help_button_url = function_exists( 'arctic_sections_url' ) ? arctic_sections_url( $support_help_button_url, '/kontakt/' ) : home_url( '/kontakt/' );
-$download_filter_labels = function_exists( 'arctic_downloads_filter_labels' )
-	? arctic_downloads_filter_labels()
-	: array( 'Katalogy vířivek', 'Návody', 'Rozměry', 'Záruky' );
-$download_filter_keys = array( 'catalog', 'manual', 'dimensions', 'warranty' );
+$support_help_source = !empty( $support_member['source'] ) ? $support_member['source'] : 'support-settings';
+$download_filter_definitions = function_exists( 'arctic_downloads_filter_definitions' )
+	? arctic_downloads_filter_definitions()
+	: array(
+		array( 'key' => 'catalog', 'label' => __( 'Katalogy vířivek', 'baspa' ) ),
+		array( 'key' => 'manual', 'label' => __( 'Návody', 'baspa' ) ),
+		array( 'key' => 'dimensions', 'label' => __( 'Rozměry', 'baspa' ) ),
+		array( 'key' => 'warranty', 'label' => __( 'Záruky', 'baspa' ) ),
+	);
 
-$questions = array(
+$questions = array();
+$allow_support_fallbacks = function_exists( 'arctic_allow_seed_fallbacks' ) && arctic_allow_seed_fallbacks();
+
+if ( $allow_support_fallbacks ) {
+	$questions = array(
 	array(
 		'title' => __( 'Jak probíhá výběr a objednávka vířivky?', 'baspa' ),
 		'text'  => __( 'Nejprve společně ověříme velikost, umístění a požadovanou výbavu. Poté připravíme konkrétní konfiguraci a navazující technickou přípravu.', 'baspa' ),
@@ -91,7 +106,8 @@ $questions = array(
 		'text'  => __( 'Po upřesnění modelu, konfigurace a montážních podmínek připravíme nezávaznou kalkulaci včetně navazující přípravy.', 'baspa' ),
 		'tag'   => __( 'Obchodní', 'baspa' ),
 	),
-);
+	);
+}
 
 $faq_query = new WP_Query( array(
 	'post_type'      => 'faq',
@@ -156,6 +172,7 @@ foreach ( $questions as $index => $question ) {
 
 	<section class="f-section f-section--support-tabs f-section--support-tabs-contract f-links--sticky f-links--support js-section-nav-handoff">
 		<div class="f-section__container a-container">
+			<h2 class="screen-reader-text"><?php echo esc_html__( 'Podpora', 'baspa' ); ?></h2>
 			<nav class="f-support-tabs f-support-tabs--contract js-links__navigation" aria-label="<?php echo esc_attr__( 'Podpora', 'baspa' ); ?>">
 				<a class="active" href="#caste-dotazy"><?php echo esc_html( $support_faq_title ); ?></a>
 				<a href="#ke-stazeni"><?php echo esc_html( $support_downloads_title ); ?></a>
@@ -169,31 +186,39 @@ foreach ( $questions as $index => $question ) {
 			<div class="f-support-layout">
 				<div class="f-support-layout__main">
 					<h2><?php echo esc_html( $support_faq_title ); ?></h2>
-					<div class="f-chip-list f-chip-list--interactive f-chip-list--contract" role="tablist" aria-label="<?php echo esc_attr__( 'Kategorie dotazů', 'baspa' ); ?>">
-						<?php foreach ( $faq_filters as $filter_index => $filter ) { ?>
+					<?php if ( !empty( $questions ) ) { ?>
+						<div class="f-chip-list f-chip-list--interactive f-chip-list--contract" role="group" aria-label="<?php echo esc_attr__( 'Kategorie dotazů', 'baspa' ); ?>">
+							<?php foreach ( $faq_filters as $filter_index => $filter ) { ?>
 							<button type="button"
 							        class="<?php echo $filter_index === 0 ? 'is-active' : ''; ?>"
 							        data-support-filter="<?php echo esc_attr( $filter['key'] ); ?>"
-							        role="tab"
-							        aria-selected="<?php echo $filter_index === 0 ? 'true' : 'false'; ?>">
+							        aria-pressed="<?php echo $filter_index === 0 ? 'true' : 'false'; ?>">
 								<?php echo esc_html( $filter['label'] ); ?>
 							</button>
-						<?php } ?>
-					</div>
+							<?php } ?>
+						</div>
+					<?php } ?>
 
 					<div class="f-support-accordion f-support-accordion--contract">
-						<?php foreach ( $questions as $index => $question ) {
+						<?php if ( empty( $questions ) && ( current_user_can( 'edit_posts' ) || $allow_support_fallbacks ) ) { ?>
+							<p class="f-support-empty" data-content-source="admin-empty"><?php echo esc_html__( 'FAQ zatím nemá publikované položky. Přidejte je ve WordPress administraci přes FAQ.', 'baspa' ); ?></p>
+						<?php }
+
+						foreach ( $questions as $index => $question ) {
 							$panel_id = 'support-faq-panel-' . $index;
 							$is_open  = 0 === $index;
 							?>
 							<article class="f-support-faq-card f-support-faq-card--contract <?php echo $is_open ? 'is-open' : ''; ?>"
 							         data-support-faq-card
-							         data-support-category="<?php echo esc_attr( $question['tag_slug'] ?? 'podpora' ); ?>"
-							         role="button"
-							         tabindex="0"
-							         aria-expanded="<?php echo $is_open ? 'true' : 'false'; ?>"
-							         aria-controls="<?php echo esc_attr( $panel_id ); ?>">
-								<div class="f-support-faq-card__icon" aria-hidden="true"><?php echo $is_open ? '−' : '+'; ?></div>
+							         data-support-category="<?php echo esc_attr( $question['tag_slug'] ?? 'podpora' ); ?>">
+								<button type="button"
+								        class="f-support-faq-card__icon"
+								        data-support-faq-card-toggle
+								        aria-expanded="<?php echo $is_open ? 'true' : 'false'; ?>"
+								        aria-controls="<?php echo esc_attr( $panel_id ); ?>">
+									<span aria-hidden="true"><?php echo $is_open ? '−' : '+'; ?></span>
+									<span class="screen-reader-text"><?php echo esc_html( $question['title'] ); ?></span>
+								</button>
 								<div class="f-support-faq-card__body">
 									<h3><?php echo esc_html( $question['title'] ); ?></h3>
 									<p id="<?php echo esc_attr( $panel_id ); ?>" <?php echo $is_open ? '' : 'hidden'; ?>>
@@ -206,19 +231,32 @@ foreach ( $questions as $index => $question ) {
 					</div>
 				</div>
 
-				<aside class="f-support-help-card f-support-help-card--contract">
+				<aside class="f-support-help-card f-support-help-card--contract"
+				       <?php echo !empty( $support_member['id'] ) ? 'data-member-id="' . esc_attr( (string) $support_member['id'] ) . '"' : ''; ?>
+				       data-content-source="<?php echo esc_attr( $support_help_source ); ?>">
 					<h3><?php echo esc_html( $support_help_title ); ?></h3>
-					<a href="mailto:<?php echo antispambot( esc_attr( get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' ) ) ); ?>">
-						<?php echo antispambot( esc_html( get_theme_mod( 'baspa_email', 'lukas.dusek@arctic-spas.cz' ) ) ); ?>
+					<a href="mailto:<?php echo antispambot( esc_attr( $support_help_email ) ); ?>">
+						<?php echo antispambot( esc_html( $support_help_email ) ); ?>
 					</a>
-					<a href="tel:<?php echo esc_attr( str_replace( ' ', '', get_theme_mod( 'baspa_phone', '+420 777 099 687' ) ) ); ?>">
-						<?php echo esc_html( get_theme_mod( 'baspa_phone', '+420 777 099 687' ) ); ?>
+					<a href="tel:<?php echo esc_attr( function_exists( 'baspa_member_phone_href' ) ? baspa_member_phone_href( $support_help_phone ) : str_replace( ' ', '', $support_help_phone ) ); ?>">
+						<?php echo esc_html( $support_help_phone ); ?>
 					</a>
 					<small><?php echo esc_html( $support_help_hours ); ?></small>
 					<div class="f-support-help-card__person">
-						<span class="f-support-help-card__avatar" aria-hidden="true">
-							<img src="<?php echo esc_url( $support_avatar ); ?>" alt="" loading="lazy" decoding="async">
-						</span>
+						<?php if ( !empty( $support_member ) && function_exists( 'baspa_member_avatar_html' ) ) {
+							echo baspa_member_avatar_html( $support_member, 'f-support-help-card__avatar', get_template() . '-avatar' );
+						} else if ( function_exists( 'baspa_member_avatar_html' ) && function_exists( 'baspa_member_initials' ) ) {
+							echo baspa_member_avatar_html( array(
+								'name'         => $support_help_name,
+								'initials'     => baspa_member_initials( $support_help_name ),
+								'asset_status' => 'admin-empty',
+							), 'f-support-help-card__avatar', get_template() . '-avatar' );
+						} else {
+							$support_initial = wp_strip_all_tags( $support_help_name );
+							$support_initial = function_exists( 'mb_substr' ) ? mb_substr( $support_initial, 0, 1 ) : substr( $support_initial, 0, 1 );
+							?>
+							<span class="f-support-help-card__avatar" data-asset-status="admin-empty" aria-hidden="true"><?php echo esc_html( $support_initial ); ?></span>
+						<?php } ?>
 						<div>
 							<strong><?php echo esc_html( $support_help_name ); ?></strong>
 							<span><?php echo esc_html( $support_help_role ); ?></span>
@@ -233,14 +271,13 @@ foreach ( $questions as $index => $question ) {
 	<section id="ke-stazeni" class="f-section f-section--support-downloads f-section--support-downloads-contract js-links__section">
 		<div class="f-section__container a-container">
 			<h2><?php echo esc_html( $support_downloads_title ); ?></h2>
-			<div class="f-chip-list f-chip-list--interactive f-chip-list--contract" role="tablist" aria-label="<?php echo esc_attr__( 'Kategorie ke stažení', 'baspa' ); ?>">
-				<?php foreach ( $download_filter_labels as $index => $label ) { ?>
+			<div class="f-chip-list f-chip-list--interactive f-chip-list--contract" role="group" aria-label="<?php echo esc_attr__( 'Kategorie ke stažení', 'baspa' ); ?>">
+				<?php foreach ( $download_filter_definitions as $definition ) { ?>
 					<button type="button"
 					        class=""
-					        data-download-filter="<?php echo esc_attr( $download_filter_keys[ $index ] ?? 'catalog' ); ?>"
-					        role="tab"
-					        aria-selected="false">
-						<?php echo esc_html( $label ); ?>
+					        data-download-filter="<?php echo esc_attr( $definition['key'] ?? 'catalog' ); ?>"
+					        aria-pressed="false">
+						<?php echo esc_html( $definition['label'] ?? '' ); ?>
 					</button>
 				<?php } ?>
 			</div><?php echo trim( (string) do_shortcode( '[arctic-downloads]' ) ); ?>

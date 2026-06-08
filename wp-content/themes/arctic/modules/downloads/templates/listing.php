@@ -22,16 +22,7 @@ $downloads_group_tag = function_exists( 'arctic_downloads_get_option' ) ? arctic
 $downloads_card_description = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_card_description', $downloads_defaults['arctic_downloads_card_description'] ?? 'Dokument Arctic Spas, PDF ke stažení.' ) : 'Dokument Arctic Spas, PDF ke stažení.';
 $downloads_button_text = function_exists( 'arctic_downloads_get_option' ) ? arctic_downloads_get_option( 'arctic_downloads_button_text', $downloads_defaults['arctic_downloads_button_text'] ?? 'Stáhnout' ) : 'Stáhnout';
 
-$download_filter_type_map = array(
-	'catalog'     => 'catalog',
-	'manual'      => 'manual',
-	'dimensions'  => 'dimensions',
-	'warranty'    => 'warranty',
-	'preparation' => 'dimensions',
-	'water-care'  => 'manual',
-	'service'     => 'manual',
-	'other'       => 'manual',
-);
+$allow_seed_fallbacks = function_exists( 'arctic_allow_seed_fallbacks' ) && arctic_allow_seed_fallbacks();
 
 if ( $downloads_query->have_posts() ) { ?>
 	<?php if ( is_page_template( 'template-support.php' ) || is_page_template( 'template-downloads.php' ) || is_page( 'ke-stazeni' ) ) {
@@ -40,7 +31,8 @@ if ( $downloads_query->have_posts() ) { ?>
 		while ( $downloads_query->have_posts() ) {
 			$downloads_query->the_post();
 			$document_type = (string) get_post_meta( get_the_ID(), 'download_document_type', true );
-			$filter_type   = $download_filter_type_map[ $document_type ] ?? 'manual';
+			$filter_type   = function_exists( 'arctic_downloads_filter_key_for_document_type' ) ? arctic_downloads_filter_key_for_document_type( $document_type ) : 'manual';
+			$thumbnail_url = get_the_post_thumbnail_url( get_the_ID(), get_template() . '-thumbnail' );
 
 			$downloads[] = array(
 				'id'          => get_the_ID(),
@@ -48,6 +40,7 @@ if ( $downloads_query->have_posts() ) { ?>
 				'file'        => get_post_meta( get_the_ID(), 'download_file_url', true ),
 				'type'        => $document_type,
 				'filter_type' => $filter_type,
+				'thumb'       => $thumbnail_url ?: '',
 			);
 		}
 
@@ -105,7 +98,11 @@ if ( $downloads_query->have_posts() ) { ?>
 			<article class="f-download-card f-download-card--contract"
 			         data-download-card
 			         data-download-filter-type="<?php echo esc_attr( $download['filter_type'] ); ?>">
-				<img class="f-download-card__thumb" src="<?php echo esc_url( $thumb ); ?>" alt="" loading="lazy" decoding="async">
+				<?php if ( !empty( $thumb ) ) { ?>
+					<img class="f-download-card__thumb" src="<?php echo esc_url( $thumb ); ?>" alt="" loading="lazy" decoding="async" data-asset-status="<?php echo esc_attr( !empty( $download['thumb'] ) ? 'admin-download-thumb' : 'seed-fallback' ); ?>">
+				<?php } else { ?>
+					<span class="f-download-card__thumb f-download-card__thumb--placeholder" data-asset-status="admin-empty" aria-hidden="true">PDF</span>
+				<?php } ?>
 				<div class="f-download-card__body">
 					<h4><?php echo esc_html( $download['title'] ); ?></h4>
 					<p><?php echo esc_html( $card_description ); ?></p>
@@ -122,58 +119,64 @@ if ( $downloads_query->have_posts() ) { ?>
 
 		<div class="f-downloads f-downloads--support-figma f-downloads--contract" data-downloads-root>
 			<section class="f-download-group f-download-group--contract f-download-group--open is-open" data-download-group>
-				<header class="f-download-group__header"
-				        data-download-group-toggle
-				        role="button"
-				        tabindex="0"
-				        aria-expanded="true"
-				        aria-controls="downloads-group-open-panel">
-					<span class="f-download-group__icon" aria-hidden="true">−</span>
+				<header class="f-download-group__header">
+					<button type="button"
+					        class="f-download-group__icon"
+					        data-download-group-toggle
+					        aria-expanded="true"
+					        aria-controls="downloads-group-open-panel">
+						<span aria-hidden="true">−</span>
+						<span class="screen-reader-text"><?php echo esc_html( $downloads_featured_group_title ); ?></span>
+					</button>
 					<h3><?php echo esc_html( $downloads_featured_group_title ); ?></h3>
 					<span class="f-download-group__tag"><?php echo esc_html( $downloads_group_tag ); ?></span>
 				</header>
 
 				<div id="downloads-group-open-panel" class="f-download-group__items" data-download-group-panel>
 					<?php foreach ( $featured_downloads as $index => $download ) {
-						$thumb = $thumbs[ $index % count( $thumbs ) ];
+						$thumb = !empty( $download['thumb'] ) ? $download['thumb'] : ( $allow_seed_fallbacks ? $thumbs[ $index % count( $thumbs ) ] : '' );
 						$render_download_card( $download, $thumb, $downloads_card_description, $downloads_button_text );
 					} ?>
 				</div>
 			</section>
 
 			<section class="f-download-group f-download-group--contract f-download-group--closed" data-download-group>
-				<div class="f-download-group__header"
-				     data-download-group-toggle
-				     role="button"
-				     tabindex="0"
-				     aria-expanded="false"
-				     aria-controls="downloads-group-closed-1-panel">
-					<span class="f-download-group__icon" aria-hidden="true">+</span>
+				<header class="f-download-group__header">
+					<button type="button"
+					        class="f-download-group__icon"
+					        data-download-group-toggle
+					        aria-expanded="false"
+					        aria-controls="downloads-group-closed-1-panel">
+						<span aria-hidden="true">+</span>
+						<span class="screen-reader-text"><?php echo esc_html( $downloads_closed_group_1_title ); ?></span>
+					</button>
 					<h3><?php echo esc_html( $downloads_closed_group_1_title ); ?></h3>
 					<span class="f-download-group__tag"><?php echo esc_html( $downloads_group_tag ); ?></span>
-				</div>
+				</header>
 				<div id="downloads-group-closed-1-panel" class="f-download-group__items" data-download-group-panel hidden>
 					<?php foreach ( $closed_group_1_downloads as $index => $download ) {
-						$thumb = $thumbs[ ( $index + 1 ) % count( $thumbs ) ];
+						$thumb = !empty( $download['thumb'] ) ? $download['thumb'] : ( $allow_seed_fallbacks ? $thumbs[ ( $index + 1 ) % count( $thumbs ) ] : '' );
 						$render_download_card( $download, $thumb, $downloads_card_description, $downloads_button_text );
 					} ?>
 				</div>
 			</section>
 
 			<section class="f-download-group f-download-group--contract f-download-group--closed" data-download-group>
-				<div class="f-download-group__header"
-				     data-download-group-toggle
-				     role="button"
-				     tabindex="0"
-				     aria-expanded="false"
-				     aria-controls="downloads-group-closed-2-panel">
-					<span class="f-download-group__icon" aria-hidden="true">+</span>
+				<header class="f-download-group__header">
+					<button type="button"
+					        class="f-download-group__icon"
+					        data-download-group-toggle
+					        aria-expanded="false"
+					        aria-controls="downloads-group-closed-2-panel">
+						<span aria-hidden="true">+</span>
+						<span class="screen-reader-text"><?php echo esc_html( $downloads_closed_group_2_title ); ?></span>
+					</button>
 					<h3><?php echo esc_html( $downloads_closed_group_2_title ); ?></h3>
 					<span class="f-download-group__tag"><?php echo esc_html( $downloads_group_tag ); ?></span>
-				</div>
+				</header>
 				<div id="downloads-group-closed-2-panel" class="f-download-group__items" data-download-group-panel hidden>
 					<?php foreach ( $closed_group_2_downloads as $index => $download ) {
-						$thumb = $thumbs[ ( $index + 2 ) % count( $thumbs ) ];
+						$thumb = !empty( $download['thumb'] ) ? $download['thumb'] : ( $allow_seed_fallbacks ? $thumbs[ ( $index + 2 ) % count( $thumbs ) ] : '' );
 						$render_download_card( $download, $thumb, $downloads_card_description, $downloads_button_text );
 					} ?>
 				</div>

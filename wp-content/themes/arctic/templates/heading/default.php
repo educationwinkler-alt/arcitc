@@ -7,9 +7,13 @@
 $description = get_post_meta( get_the_ID(), 'page_description_text', true );
 
 $badge_text = get_post_meta( get_the_ID(), 'page_badge_text', true );
+$page_id    = is_home() && !is_front_page() ? (int) get_option( 'page_for_posts' ) : get_the_ID();
+$has_media  = function_exists( 'arctic_post_has_hero_media' )
+	? arctic_post_has_hero_media( (int) $page_id, null, (int) get_post_thumbnail_id( $page_id ) )
+	: has_post_thumbnail( $page_id );
 
 $heading_class   = array( 'f-heading' );
-$heading_class[] = has_post_thumbnail() || has_header_image() ? 'f-heading--background' : '';
+$heading_class[] = $has_media || has_header_image() ? 'f-heading--background' : '';
 $heading_class[] = get_post_meta( get_the_ID(), 'page_title', true ) == 0 ? 'f-heading--empty' : '';
 ?>
 

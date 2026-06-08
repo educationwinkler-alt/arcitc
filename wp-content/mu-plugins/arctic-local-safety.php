@@ -24,6 +24,8 @@ function arctic_local_block_external_http( $preempt, array $parsed_args, string 
 		'::1',
 		'wordpress',
 		'db',
+		'api.wordpress.org',
+		'downloads.wordpress.org',
 	);
 
 	if ( in_array( strtolower( $host ), $allowed_hosts, true ) ) {

@@ -8,8 +8,11 @@
 require_once get_theme_file_path( 'inc/classes/Navigation.php' );
 
 // Functions
+require_once get_theme_file_path( 'inc/functions/environment.php' );
 require_once get_theme_file_path( 'inc/functions/body.php' );
 require_once get_theme_file_path( 'inc/functions/images.php' );
+require_once get_theme_file_path( 'inc/functions/page-sections.php' );
+require_once get_theme_file_path( 'inc/functions/hero-media.php' );
 require_once get_theme_file_path( 'inc/functions/email.php' );
 require_once get_theme_file_path( 'inc/functions/hours.php' );
 require_once get_theme_file_path( 'inc/functions/post.php' );

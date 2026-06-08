@@ -134,14 +134,68 @@ if ( !function_exists( 'arctic_downloads_filter_labels' ) ) {
 	 */
 	function arctic_downloads_filter_labels(): array {
 
+		return array_values( wp_list_pluck( arctic_downloads_filter_definitions(), 'label' ) );
+
+	}
+
+}
+
+if ( !function_exists( 'arctic_downloads_filter_definitions' ) ) {
+
+	/**
+	 * Shared downloads filter keys and labels.
+	 *
+	 * @return array<int, array{key: string, label: string, document_types: array<int, string>}>
+	 */
+	function arctic_downloads_filter_definitions(): array {
+
 		$defaults = arctic_downloads_option_defaults();
 
 		return array(
-			arctic_downloads_get_option( 'arctic_downloads_filter_catalogs', $defaults['arctic_downloads_filter_catalogs'] ),
-			arctic_downloads_get_option( 'arctic_downloads_filter_manuals', $defaults['arctic_downloads_filter_manuals'] ),
-			arctic_downloads_get_option( 'arctic_downloads_filter_dimensions', $defaults['arctic_downloads_filter_dimensions'] ),
-			arctic_downloads_get_option( 'arctic_downloads_filter_warranty', $defaults['arctic_downloads_filter_warranty'] ),
+			array(
+				'key'            => 'catalog',
+				'label'          => arctic_downloads_get_option( 'arctic_downloads_filter_catalogs', $defaults['arctic_downloads_filter_catalogs'] ),
+				'document_types' => array( 'catalog' ),
+			),
+			array(
+				'key'            => 'manual',
+				'label'          => arctic_downloads_get_option( 'arctic_downloads_filter_manuals', $defaults['arctic_downloads_filter_manuals'] ),
+				'document_types' => array( 'manual', 'water-care', 'service', 'other', 'technical', 'water' ),
+			),
+			array(
+				'key'            => 'dimensions',
+				'label'          => arctic_downloads_get_option( 'arctic_downloads_filter_dimensions', $defaults['arctic_downloads_filter_dimensions'] ),
+				'document_types' => array( 'dimensions', 'preparation' ),
+			),
+			array(
+				'key'            => 'warranty',
+				'label'          => arctic_downloads_get_option( 'arctic_downloads_filter_warranty', $defaults['arctic_downloads_filter_warranty'] ),
+				'document_types' => array( 'warranty' ),
+			),
 		);
+
+	}
+
+}
+
+if ( !function_exists( 'arctic_downloads_filter_key_for_document_type' ) ) {
+
+	/**
+	 * Resolve download CPT document type into the frontend filter key.
+	 *
+	 * @param string $document_type
+	 *
+	 * @return string
+	 */
+	function arctic_downloads_filter_key_for_document_type( string $document_type ): string {
+
+		foreach ( arctic_downloads_filter_definitions() as $definition ) {
+			if ( in_array( $document_type, $definition['document_types'], true ) ) {
+				return $definition['key'];
+			}
+		}
+
+		return 'manual';
 
 	}
 

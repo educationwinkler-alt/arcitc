@@ -6,7 +6,8 @@
 
 if ( is_tax( 'product-category', 'swimspa' ) ) {
 	$links = array(
-		array( '#serie-swimspa', __( 'Modely bazénů', 'baspa' ), true ),
+		array( '#serie-swimspa-classic', __( 'Bazény ARCTIC Classic', 'baspa' ), true ),
+		array( '#serie-swimspa-custom', __( 'Bazény ARCTIC Custom', 'baspa' ), false ),
 		array( '#showroom', __( 'Showroom', 'baspa' ), false ),
 		array( '#references', __( 'Reference', 'baspa' ), false ),
 	);
@@ -20,9 +21,9 @@ if ( is_tax( 'product-category', 'swimspa' ) ) {
 }
 ?>
 
-<section class="f-section f-section--series-nav" aria-label="<?php echo esc_attr__( 'Produktové série', 'baspa' ); ?>">
+<section class="f-section f-section--series-nav f-links--sticky js-section-nav-handoff" aria-label="<?php echo esc_attr__( 'Produktové série', 'baspa' ); ?>">
 	<div class="f-section__container a-container">
-		<nav class="f-series-nav">
+		<nav class="f-series-nav js-links__navigation">
 			<?php foreach ( $links as $link ) { ?>
 				<a<?php echo $link[2] ? ' class="is-active"' : ''; ?> href="<?php echo esc_url( $link[0] ); ?>"><?php echo esc_html( $link[1] ); ?></a>
 			<?php } ?>

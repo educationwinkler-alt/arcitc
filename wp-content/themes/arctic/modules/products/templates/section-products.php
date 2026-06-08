@@ -26,6 +26,7 @@ $products_query_args = array(
 if ( is_tax( 'product-category' ) ) {
 	$current_term = get_queried_object();
 	$current_slug = ( $current_term instanceof WP_Term ) ? $current_term->slug : '';
+	$section_title = ( $current_term instanceof WP_Term ) ? $current_term->name : $section_title;
 
 	if ( $current_slug === 'virivky' ) {
 		$category_context = 'hot-tub';
@@ -50,7 +51,7 @@ if ( is_tax( 'product-category' ) ) {
 }
 
 if ( is_tax( 'product-category' ) && 'accessories' !== get_term_meta( get_queried_object_id(), 'category_type', true ) ) {
-	$series_order = array( 'custom', 'classic', 'core', 'swimspa', 'covana' );
+	$series_order = array( 'custom', 'classic', 'core', 'swimspa-classic', 'swimspa-custom', 'swimspa', 'covana' );
 	$series_terms = get_terms( array(
 		'taxonomy'   => 'product-series',
 		'hide_empty' => false,
@@ -70,6 +71,9 @@ if ( is_tax( 'product-category' ) && 'accessories' !== get_term_meta( get_querie
 		<section id="<?php echo sanitize_title( $section_id ); ?>"
 			class="f-section f-section--products f-section--products-grouped f-section--product-listing-contract<?php echo $category_context !== '' ? ' f-section--product-listing-' . esc_attr( $category_context ) : ''; ?> js-links__section"
 			data-product-listing-context="<?php echo esc_attr( $category_context ?: 'default' ); ?>">
+			<header class="screen-reader-text">
+				<h2><?php echo esc_html( $section_title ); ?></h2>
+			</header>
 			<div class="f-section__container a-container">
 				<?php foreach ( $series_terms as $series_term ) {
 					$series_query_args = $products_query_args;
@@ -103,10 +107,21 @@ if ( is_tax( 'product-category' ) && 'accessories' !== get_term_meta( get_querie
 							'description' => __( 'Celoroční bazény pro plavání, rehabilitaci i rodinnou relaxaci.', 'baspa' ),
 						),
 					);
+					$series_copy['swimspa-classic'] = array(
+						'subtitle'    => __( 'Plavání a celoroční využití', 'baspa' ),
+						'description' => __( 'Modely s velkou vodní plochou pro plavání, cvičení a rodinné využití po celý rok.', 'baspa' ),
+					);
+					$series_copy['swimspa-custom'] = array(
+						'subtitle'    => __( 'Masáž, bar a individuální výbava', 'baspa' ),
+						'description' => __( 'Modely s rozsáhlejší hydroterapií, protiproudem a volitelnými konfiguracemi výbavy.', 'baspa' ),
+					);
+					$series_heading = in_array( $series_term->slug, array( 'swimspa-classic', 'swimspa-custom' ), true )
+						? $series_term->name
+						: sprintf( __( 'Série %s', 'baspa' ), $series_term->name );
 					?>
-					<section id="serie-<?php echo esc_attr( $series_term->slug ); ?>" class="f-products-series f-products-series--<?php echo esc_attr( $series_term->slug ); ?>">
+					<section id="serie-<?php echo esc_attr( $series_term->slug ); ?>" class="f-products-series f-products-series--<?php echo esc_attr( $series_term->slug ); ?> js-links__section">
 						<header class="f-products-series__header">
-							<h2><?php echo esc_html( 'Série ' . $series_term->name ); ?></h2>
+							<h2><?php echo esc_html( $series_heading ); ?></h2>
 							<?php if ( !empty( $series_copy[ $series_term->slug ]['subtitle'] ) ) { ?>
 								<p class="f-products-series__subtitle"><?php echo esc_html( $series_copy[ $series_term->slug ]['subtitle'] ); ?></p>
 							<?php } ?>

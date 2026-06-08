@@ -28,6 +28,13 @@ if ( !function_exists( 'baspa_members_metabox_register' ) ) {
 					'type'    => 'checkbox',
 				),
 				array(
+					'name'             => esc_html__( 'Contact avatar', 'baspa' ),
+					'id'               => 'member_avatar',
+					'type'             => 'image_advanced',
+					'max_file_uploads' => 1,
+					'desc'             => esc_html__( 'Square headshot used in small round contact cards. Featured image remains the larger team portrait.', 'baspa' ),
+				),
+				array(
 					'name'    => esc_html__( 'Position', 'baspa' ),
 					'id'      => 'member_position',
 					'type'    => 'text',

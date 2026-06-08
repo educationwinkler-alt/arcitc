@@ -73,6 +73,24 @@ async function box(page, selector, label) {
   return rect;
 }
 
+async function optionalBox(page, selector) {
+  const locator = page.locator(selector).first();
+  const count = await locator.count();
+
+  if (!count) {
+    return null;
+  }
+
+  return locator.boundingBox();
+}
+
+function withYOffset(expected, offset) {
+  return {
+    ...expected,
+    y: expected.y + offset,
+  };
+}
+
 async function assertBox(page, selector, expected, tolerance, label) {
   const rect = await box(page, selector, label);
 
@@ -121,7 +139,7 @@ async function assertReferenceCarouselArrow(page) {
   assertClose(next.width, 42, 4, 'figmaComponents.referencesArrowPosition.width');
   assertClose(next.height, 42, 4, 'figmaComponents.referencesArrowPosition.height');
   assertClose(next.x, carousel.x + carousel.width - next.width - 9, 4, 'figmaComponents.referencesArrowPosition.x');
-  assertClose(next.y, 3638, 4, 'figmaComponents.referencesArrowPosition.y');
+  assertClose(next.y, carousel.y + 118, 4, 'figmaComponents.referencesArrowPosition.y');
 
   if (!prevState.isDisabled || prevState.ariaDisabled !== 'true') {
     throw new Error('figmaComponents.referencesPrevArrowInitialState: expected previous arrow disabled at carousel start');
@@ -464,40 +482,35 @@ async function assertInteractiveToggleContract(page, selector, label) {
   }
 }
 
-async function assertInteractiveTabs(page, selector, label) {
-  const tabs = page.locator(selector);
-  const count = await tabs.count();
+async function assertInteractiveFilterButtons(page, selector, label) {
+  const filters = page.locator(selector);
+  const count = await filters.count();
 
   if (count < 2) {
-    throw new Error(`${label}: expected at least two filter tabs, got ${count}`);
+    throw new Error(`${label}: expected at least two filter buttons, got ${count}`);
   }
 
   for (let index = 0; index < count; index += 1) {
-    const tab = tabs.nth(index);
-    const tagName = await tab.evaluate((element) => element.tagName.toLowerCase());
-    const role = await tab.getAttribute('role');
-    const selected = await tab.getAttribute('aria-selected');
+    const filter = filters.nth(index);
+    const tagName = await filter.evaluate((element) => element.tagName.toLowerCase());
+    const pressed = await filter.getAttribute('aria-pressed');
 
     if (tagName !== 'button') {
       throw new Error(`${label}.${index}: expected a real button, got <${tagName}>`);
     }
 
-    if (role !== 'tab') {
-      throw new Error(`${label}.${index}: expected role="tab"`);
-    }
-
-    if (!['true', 'false'].includes(selected || '')) {
-      throw new Error(`${label}.${index}: expected boolean aria-selected`);
+    if (!['true', 'false'].includes(pressed || '')) {
+      throw new Error(`${label}.${index}: expected boolean aria-pressed`);
     }
   }
 
-  const target = tabs.nth(1);
+  const target = filters.nth(1);
   await target.click();
   await page.waitForTimeout(80);
 
-  const selectedAfterClick = await target.getAttribute('aria-selected');
-  if (selectedAfterClick !== 'true') {
-    throw new Error(`${label}: clicking a filter tab did not set aria-selected="true"`);
+  const pressedAfterClick = await target.getAttribute('aria-pressed');
+  if (pressedAfterClick !== 'true') {
+    throw new Error(`${label}: clicking a filter button did not set aria-pressed="true"`);
   }
 }
 
@@ -1453,17 +1466,28 @@ async function auditDesktop(page) {
   await assertBox(page, '.f-category:nth-child(2)', { x: 986, y: 866, width: 674, height: 424 }, 3, 'desktop.categorySwimspa');
   await assertHomepageCategoryCardsClickable(page, 'desktop.categoryCards');
   await assertBox(page, '.template--homepage .f-page__content', { x: 584, y: 1405, width: 752, height: 232 }, 3, 'desktop.exclusiveDealer');
-  await assertBox(page, '.template--homepage .f-arctic-benefits', { x: 260, y: 1703, width: 1400, height: 175 }, 3, 'desktop.benefits');
-  await assertBox(page, '.template--homepage .f-arctic-benefit:nth-child(1)', { x: 260, y: 1703, width: 416, height: 175 }, 3, 'desktop.benefitInstallation');
-  await assertBox(page, '.template--homepage .f-arctic-benefit:nth-child(2)', { x: 752, y: 1703, width: 416, height: 175 }, 3, 'desktop.benefitSupport');
-  await assertBox(page, '.template--homepage .f-arctic-benefit:nth-child(3)', { x: 1244, y: 1703, width: 416, height: 175 }, 3, 'desktop.benefitService');
-  await assertBox(page, '.template--homepage .f-section--showroom .f-section__container', { x: 260, y: 2102, width: 1400, height: 649 }, 4, 'desktop.showroomContainer');
-  await assertBox(page, '.template--homepage .f-showroom-panel', { x: 260, y: 2102, width: 1400, height: 525 }, 4, 'desktop.showroomPanel');
-  await assertBox(page, '.template--homepage .f-progress-layout', { x: 265, y: 2863, width: 1392, height: 444 }, 4, 'desktop.progress');
-  await assertBox(page, '.template--homepage .f-section--references', { x: 0, y: 3418, width: 1920, height: 422 }, 4, 'desktop.referencesSection');
-  await assertBox(page, '.template--homepage .f-section--references .f-carousel', { x: 258, y: 3520, width: 1400, height: 320 }, 4, 'desktop.referencesCarousel');
-  await assertBox(page, '.template--homepage .f-contact-cta', { x: 260, y: 3945, width: 1400, height: 455 }, 4, 'desktop.contactCta');
-  await assertFooterLayout(page, 'desktop', 4428);
+
+  const localCatalogRequest = await optionalBox(page, '.template--homepage .f-section--catalog-request');
+  const homepageFlowOffset = localCatalogRequest ? localCatalogRequest.height : 0;
+
+  if (localCatalogRequest) {
+    assertClose(localCatalogRequest.x, 0, 3, 'desktop.localCatalogRequest.x');
+    assertClose(localCatalogRequest.y, 1637, 4, 'desktop.localCatalogRequest.y');
+    assertClose(localCatalogRequest.width, 1920, 3, 'desktop.localCatalogRequest.width');
+    assertBetween(localCatalogRequest.height, 440, 620, 'desktop.localCatalogRequest.height');
+  }
+
+  await assertBox(page, '.template--homepage .f-arctic-benefits', withYOffset({ x: 260, y: 1703, width: 1400, height: 175 }, homepageFlowOffset), 3, 'desktop.benefits');
+  await assertBox(page, '.template--homepage .f-arctic-benefit:nth-child(1)', withYOffset({ x: 260, y: 1703, width: 416, height: 175 }, homepageFlowOffset), 3, 'desktop.benefitInstallation');
+  await assertBox(page, '.template--homepage .f-arctic-benefit:nth-child(2)', withYOffset({ x: 752, y: 1703, width: 416, height: 175 }, homepageFlowOffset), 3, 'desktop.benefitSupport');
+  await assertBox(page, '.template--homepage .f-arctic-benefit:nth-child(3)', withYOffset({ x: 1244, y: 1703, width: 416, height: 175 }, homepageFlowOffset), 3, 'desktop.benefitService');
+  await assertBox(page, '.template--homepage .f-section--showroom .f-section__container', withYOffset({ x: 260, y: 2102, width: 1400, height: 649 }, homepageFlowOffset), 4, 'desktop.showroomContainer');
+  await assertBox(page, '.template--homepage .f-showroom-panel', withYOffset({ x: 260, y: 2102, width: 1400, height: 525 }, homepageFlowOffset), 4, 'desktop.showroomPanel');
+  await assertBox(page, '.template--homepage .f-progress-layout', withYOffset({ x: 265, y: 2863, width: 1392, height: 444 }, homepageFlowOffset), 4, 'desktop.progress');
+  await assertBox(page, '.template--homepage .f-section--references', withYOffset({ x: 0, y: 3418, width: 1920, height: 422 }, homepageFlowOffset), 4, 'desktop.referencesSection');
+  await assertBox(page, '.template--homepage .f-section--references .f-carousel', withYOffset({ x: 258, y: 3520, width: 1400, height: 320 }, homepageFlowOffset), 4, 'desktop.referencesCarousel');
+  await assertBox(page, '.template--homepage .f-contact-cta', withYOffset({ x: 260, y: 3945, width: 1400, height: 455 }, homepageFlowOffset), 4, 'desktop.contactCta');
+  await assertFooterLayout(page, 'desktop', 4428 + homepageFlowOffset);
 
   await assertSourceContains(page, '.f-logo__img', 'images/logo.svg', 'desktop.logoSource');
   await assertSourceContains(page, '.template--homepage .f-slide--1 .f-slide__background', 'uploads/import/figma/hp-hero-arctic-spas-07.jpg', 'desktop.heroBackgroundSource');
@@ -1687,9 +1711,9 @@ async function auditPhase5BHardening(page) {
   await assertImageMaxUpscale(page, '.f-products-series--custom .f-listing--product:nth-child(3) .f-listing__image img', 1.25, 'phase5b.hotTubsCardThreeUpscale');
 
   await page.goto(`${baseUrl}/swimspa/`, { waitUntil: 'load' });
-  await assertImageMaxUpscale(page, '.f-products-series--swimspa .f-listing--product:nth-child(1) .f-listing__image img', 1.25, 'phase5b.swimspaCardOneUpscale');
-  await assertImageMaxUpscale(page, '.f-products-series--swimspa .f-listing--product:nth-child(2) .f-listing__image img', 1.25, 'phase5b.swimspaCardTwoUpscale');
-  await assertImageMaxUpscale(page, '.f-products-series--swimspa .f-listing--product:nth-child(3) .f-listing__image img', 1.25, 'phase5b.swimspaCardThreeUpscale');
+  await assertImageMaxUpscale(page, '.f-products-series--swimspa-classic .f-listing--product:nth-child(1) .f-listing__image img', 1.25, 'phase5b.swimspaCardOneUpscale');
+  await assertImageMaxUpscale(page, '.f-products-series--swimspa-classic .f-listing--product:nth-child(2) .f-listing__image img', 1.25, 'phase5b.swimspaCardTwoUpscale');
+  await assertImageMaxUpscale(page, '.f-products-series--swimspa-classic .f-listing--product:nth-child(3) .f-listing__image img', 1.25, 'phase5b.swimspaCardThreeUpscale');
 }
 
 async function auditCatalogHotTubsDesktop(page) {
@@ -1710,21 +1734,38 @@ async function auditCatalogHotTubsDesktop(page) {
   await assertSeriesNavNoOverlap(page, '.f-series-nav', 'catalog.seriesNavNoOverlap');
   await assertBox(page, '.f-products-series--custom', { x: 260, y: 2177, width: 1400, height: 1039 }, 4, 'catalog.customSeries');
   await assertBox(page, '.f-products-series--classic', { x: 260, y: 3331, width: 1400, height: 686 }, 4, 'catalog.classicSeries');
-  await assertBox(page, '.f-products-series--core', { x: 260, y: 4132, width: 1400, height: 686 }, 4, 'catalog.coreSeries');
+  const coreProductCount = await page.locator('.f-products-series--core .f-listing--product').count();
+  const coreRows = Math.max(1, Math.ceil(coreProductCount / 3));
+  const coreHeight = (coreRows * 333) + ((coreRows - 1) * 20);
+  const coreHeightOffset = coreHeight - 686;
+
+  await assertBox(page, '.f-products-series--core', { x: 260, y: 4132, width: 1400, height: coreHeight }, 4, 'catalog.coreSeries');
   await assertBox(page, '.f-products-series--custom .f-listing--product:nth-child(1)', { x: 615, y: 2177, width: 335, height: 333 }, 3, 'catalog.productCardOne');
   await assertBox(page, '.f-products-series--custom .f-listing--product:nth-child(2)', { x: 970, y: 2177, width: 335, height: 333 }, 3, 'catalog.productCardTwo');
   await assertBox(page, '.f-products-series--custom .f-listing--product:nth-child(3)', { x: 1325, y: 2177, width: 335, height: 333 }, 3, 'catalog.productCardThree');
-  await assertBox(page, '.f-configurator-cta', { x: 260, y: 4994, width: 1400, height: 312 }, 3, 'catalog.configurator');
-  await assertBox(page, '.f-configurator-cta__content .a-button', { x: 330, y: 5195, width: 141, height: 50 }, 2, 'catalog.configuratorButton');
+
+  const localCatalogRequest = await optionalBox(page, '.tax-product-category .f-section--catalog-request');
+  const catalogLocalOffset = localCatalogRequest ? localCatalogRequest.height : 0;
+  const categoryFlowOffset = coreHeightOffset + catalogLocalOffset;
+
+  if (localCatalogRequest) {
+    assertClose(localCatalogRequest.x, 0, 3, 'catalog.localCatalogRequest.x');
+    assertClose(localCatalogRequest.y, 4994 + coreHeightOffset, 4, 'catalog.localCatalogRequest.y');
+    assertClose(localCatalogRequest.width, 1920, 3, 'catalog.localCatalogRequest.width');
+    assertBetween(localCatalogRequest.height, 440, 620, 'catalog.localCatalogRequest.height');
+  }
+
+  await assertBox(page, '.f-configurator-cta', withYOffset({ x: 260, y: 4994, width: 1400, height: 312 }, categoryFlowOffset), 3, 'catalog.configurator');
+  await assertBox(page, '.f-configurator-cta__content .a-button', withYOffset({ x: 330, y: 5195, width: 141, height: 50 }, categoryFlowOffset), 2, 'catalog.configuratorButton');
   await assertComputedStyle(page, '.f-configurator-cta__content .a-button', 'background-color', 'rgba(0, 0, 0, 0)', 'catalog.configuratorButtonBackground');
   await assertComputedStyle(page, '.f-configurator-cta__content .a-button', 'border-color', 'rgb(255, 255, 255)', 'catalog.configuratorButtonBorder');
   await assertComputedStyle(page, '.f-configurator-cta__content .a-button', 'border-width', '1px', 'catalog.configuratorButtonBorderWidth');
   await assertComputedStyle(page, '.f-configurator-cta__content .a-button', 'border-radius', '50px', 'catalog.configuratorButtonRadius');
-  await assertBox(page, '.f-showroom-panel', { x: 260, y: 5484, width: 1400, height: 525 }, 4, 'catalog.showroomPanel');
-  await assertBox(page, '.f-progress-layout', { x: 264, y: 6245, width: 1392, height: 444 }, 4, 'catalog.progress');
-  await assertBox(page, '.f-section--references', { x: 0, y: 6800, width: 1920, height: 422 }, 4, 'catalog.references');
-  await assertBox(page, '.f-contact-cta', { x: 260, y: 7327, width: 1400, height: 455 }, 4, 'catalog.contactCta');
-  await assertFooterLayout(page, 'catalog', 7810);
+  await assertBox(page, '.f-showroom-panel', withYOffset({ x: 260, y: 5484, width: 1400, height: 525 }, categoryFlowOffset), 4, 'catalog.showroomPanel');
+  await assertBox(page, '.f-progress-layout', withYOffset({ x: 264, y: 6245, width: 1392, height: 444 }, categoryFlowOffset), 4, 'catalog.progress');
+  await assertBox(page, '.f-section--references', withYOffset({ x: 0, y: 6800, width: 1920, height: 422 }, categoryFlowOffset), 4, 'catalog.references');
+  await assertBox(page, '.f-contact-cta', withYOffset({ x: 260, y: 7327, width: 1400, height: 455 }, categoryFlowOffset), 4, 'catalog.contactCta');
+  await assertFooterLayout(page, 'catalog', 7810 + categoryFlowOffset);
 
   await assertSourceContains(page, '.f-heading--term .f-background__image img', 'category-hero-virivky', 'catalog.heroSource');
   await assertSourceContains(page, '.f-category-intro--split .f-category-intro__image img', 'category-vlastnosti', 'catalog.featuresSource');
@@ -1751,26 +1792,54 @@ async function auditCatalogSwimspaDesktop(page) {
   const swimspaSeriesNav = await box(page, '.f-series-nav', 'swimspaCatalog.seriesNav');
   assertClose(swimspaSeriesNav.x, 313, 4, 'swimspaCatalog.seriesNav.x');
   assertClose(swimspaSeriesNav.y, 2012, 4, 'swimspaCatalog.seriesNav.y');
-  assertBetween(swimspaSeriesNav.width, 560, 620, 'swimspaCatalog.seriesNav.width');
+  assertBetween(swimspaSeriesNav.width, 680, 720, 'swimspaCatalog.seriesNav.width');
   assertClose(swimspaSeriesNav.height, 51, 4, 'swimspaCatalog.seriesNav.height');
   await assertSeriesNavNoOverlap(page, '.f-series-nav', 'swimspaCatalog.seriesNavNoOverlap');
-  await assertBox(page, '.f-section--products-grouped', { x: 0, y: 2083, width: 1920, height: 780 }, 4, 'swimspaCatalog.productsSection');
-  await assertBox(page, '.f-products-series--swimspa', { x: 260, y: 2177, width: 1400, height: 686 }, 4, 'swimspaCatalog.swimspaSeries');
-  await assertBox(page, '.f-products-series--swimspa .f-listing--product:nth-child(1)', { x: 615, y: 2177, width: 335, height: 333 }, 3, 'swimspaCatalog.productCardOne');
-  await assertBox(page, '.f-products-series--swimspa .f-listing--product:nth-child(2)', { x: 970, y: 2177, width: 335, height: 333 }, 3, 'swimspaCatalog.productCardTwo');
-  await assertBox(page, '.f-products-series--swimspa .f-listing--product:nth-child(3)', { x: 1325, y: 2177, width: 335, height: 333 }, 3, 'swimspaCatalog.productCardThree');
+
+  const swimspaClassicCount = await page.locator('.f-products-series--swimspa-classic .f-listing--product').count();
+  const swimspaCustomCount = await page.locator('.f-products-series--swimspa-custom .f-listing--product').count();
+  const swimspaClassicRows = Math.max(1, Math.ceil(swimspaClassicCount / 3));
+  const swimspaCustomRows = Math.max(1, Math.ceil(swimspaCustomCount / 3));
+  const swimspaClassicHeight = (swimspaClassicRows * 333) + ((swimspaClassicRows - 1) * 20);
+  const swimspaCustomHeight = (swimspaCustomRows * 333) + ((swimspaCustomRows - 1) * 20);
+  const swimspaProductsHeight = 94 + swimspaClassicHeight + 115 + swimspaCustomHeight;
+  const swimspaCustomY = 2177 + swimspaClassicHeight + 115;
+
+  await assertBox(page, '.f-section--products-grouped', { x: 0, y: 2083, width: 1920, height: swimspaProductsHeight }, 4, 'swimspaCatalog.productsSection');
+  await assertBox(page, '.f-products-series--swimspa-classic', { x: 260, y: 2177, width: 1400, height: swimspaClassicHeight }, 4, 'swimspaCatalog.classicSeries');
+  await assertBox(page, '.f-products-series--swimspa-custom', { x: 260, y: swimspaCustomY, width: 1400, height: swimspaCustomHeight }, 4, 'swimspaCatalog.customSeries');
+  await assertBox(page, '.f-products-series--swimspa-classic .f-listing--product:nth-child(1)', { x: 615, y: 2177, width: 335, height: 333 }, 3, 'swimspaCatalog.productCardOne');
+  await assertBox(page, '.f-products-series--swimspa-classic .f-listing--product:nth-child(2)', { x: 970, y: 2177, width: 335, height: 333 }, 3, 'swimspaCatalog.productCardTwo');
+  await assertBox(page, '.f-products-series--swimspa-classic .f-listing--product:nth-child(3)', { x: 1325, y: 2177, width: 335, height: 333 }, 3, 'swimspaCatalog.productCardThree');
   await assertMissing(page, '.f-configurator-cta', 'swimspaCatalog.configurator');
-  await assertBox(page, '.f-showroom-panel', { x: 260, y: 3263, width: 1400, height: 525 }, 4, 'swimspaCatalog.showroomPanel');
-  await assertBox(page, '.f-progress-layout', { x: 264, y: 4024, width: 1392, height: 444 }, 4, 'swimspaCatalog.progress');
-  await assertBox(page, '.f-section--references', { x: 0, y: 4579, width: 1920, height: 422 }, 4, 'swimspaCatalog.references');
-  await assertBox(page, '.f-contact-cta', { x: 260, y: 5106, width: 1400, height: 455 }, 4, 'swimspaCatalog.contactCta');
-  await assertFooterLayout(page, 'swimspaCatalog', 5589);
+
+  const swimspaAfterProductsY = 2083 + swimspaProductsHeight + 115;
+  const swimspaLocalCatalogRequest = await optionalBox(page, '.tax-product-category .f-section--catalog-request');
+  const swimspaCatalogLocalOffset = swimspaLocalCatalogRequest ? swimspaLocalCatalogRequest.height : 0;
+
+  if (swimspaLocalCatalogRequest) {
+    assertClose(swimspaLocalCatalogRequest.x, 0, 3, 'swimspaCatalog.localCatalogRequest.x');
+    assertClose(swimspaLocalCatalogRequest.y, swimspaAfterProductsY, 4, 'swimspaCatalog.localCatalogRequest.y');
+    assertClose(swimspaLocalCatalogRequest.width, 1920, 3, 'swimspaCatalog.localCatalogRequest.width');
+    assertBetween(swimspaLocalCatalogRequest.height, 440, 620, 'swimspaCatalog.localCatalogRequest.height');
+  }
+
+  const swimspaShowroomY = swimspaAfterProductsY + swimspaCatalogLocalOffset + 115 + 63;
+  const swimspaProgressY = (swimspaShowroomY - 63) + 649 + 175;
+  const swimspaReferencesY = swimspaProgressY + 444 + 111;
+  const swimspaContactY = swimspaReferencesY + 422 + 105;
+
+  await assertBox(page, '.f-showroom-panel', { x: 260, y: swimspaShowroomY, width: 1400, height: 525 }, 4, 'swimspaCatalog.showroomPanel');
+  await assertBox(page, '.f-progress-layout', { x: 264, y: swimspaProgressY, width: 1392, height: 444 }, 4, 'swimspaCatalog.progress');
+  await assertBox(page, '.f-section--references', { x: 0, y: swimspaReferencesY, width: 1920, height: 422 }, 4, 'swimspaCatalog.references');
+  await assertBox(page, '.f-contact-cta', { x: 260, y: swimspaContactY, width: 1400, height: 455 }, 4, 'swimspaCatalog.contactCta');
+  await assertFooterLayout(page, 'swimspaCatalog', swimspaContactY + 455 + 28);
 
   await assertSourceContains(page, '.f-category-intro--split .f-category-intro__image img', 'figma-category-celorocni-bazeny', 'swimspaCatalog.benefitsSource');
   await assertSourceContains(page, '.f-category-intro--reverse .f-category-intro__image img', 'swimspa', 'swimspaCatalog.operationSource');
-  await assertSourceContains(page, '.f-products-series--swimspa .f-listing--product:nth-child(1) .f-listing__image img', 'bazen-athabascan.jpg', 'swimspaCatalog.productCardOneSource');
-  await assertSourceContains(page, '.f-products-series--swimspa .f-listing--product:nth-child(2) .f-listing__image img', 'bazen-hudson.jpg', 'swimspaCatalog.productCardTwoSource');
-  await assertSourceContains(page, '.f-products-series--swimspa .f-listing--product:nth-child(3) .f-listing__image img', 'bazen-kingfisher.jpg', 'swimspaCatalog.productCardThreeSource');
+  await assertSourceContains(page, '.f-products-series--swimspa-classic .f-listing--product:nth-child(1) .f-listing__image img', 'awp-athabascan-card-render', 'swimspaCatalog.productCardOneSource');
+  await assertSourceContains(page, '.f-products-series--swimspa-classic .f-listing--product:nth-child(2) .f-listing__image img', 'awp-hudson-card-render', 'swimspaCatalog.productCardTwoSource');
+  await assertSourceContains(page, '.f-products-series--swimspa-classic .f-listing--product:nth-child(3) .f-listing__image img', 'awp-kingfisher-card-render', 'swimspaCatalog.productCardThreeSource');
 }
 
 async function auditTimberwolfDesktop(page) {
@@ -1796,9 +1865,20 @@ async function auditTimberwolfDesktop(page) {
   await assertBox(page, '.f-product-colors', { x: 260, y: 2022, width: 1400, height: 739 }, 4, 'timberwolf.colors');
   await assertBox(page, '.f-section--product-benefits', { x: 0, y: 2866, width: 1920, height: 2017 }, 4, 'timberwolf.benefits');
   await assertBox(page, '.f-section--product-options', { x: 0, y: 4883, width: 1920, height: 1144 }, 4, 'timberwolf.options');
-  await assertBox(page, '.f-section--references', { x: 0, y: 6027, width: 1920, height: 525 }, 4, 'timberwolf.references');
-  await assertBox(page, '.f-contact-cta', { x: 260, y: 6552, width: 1400, height: 455 }, 4, 'timberwolf.contactCta');
-  await assertFooterLayout(page, 'timberwolf', 7035);
+
+  const timberwolfCatalogRequest = await optionalBox(page, '.single-product .f-section--catalog-request');
+  const timberwolfCatalogOffset = timberwolfCatalogRequest ? timberwolfCatalogRequest.height : 0;
+
+  if (timberwolfCatalogRequest) {
+    assertClose(timberwolfCatalogRequest.x, 0, 3, 'timberwolf.localCatalogRequest.x');
+    assertClose(timberwolfCatalogRequest.y, 6027, 4, 'timberwolf.localCatalogRequest.y');
+    assertClose(timberwolfCatalogRequest.width, 1920, 3, 'timberwolf.localCatalogRequest.width');
+    assertBetween(timberwolfCatalogRequest.height, 440, 620, 'timberwolf.localCatalogRequest.height');
+  }
+
+  await assertBox(page, '.f-section--references', withYOffset({ x: 0, y: 6027, width: 1920, height: 525 }, timberwolfCatalogOffset), 4, 'timberwolf.references');
+  await assertBox(page, '.f-contact-cta', withYOffset({ x: 260, y: 6552, width: 1400, height: 455 }, timberwolfCatalogOffset), 4, 'timberwolf.contactCta');
+  await assertFooterLayout(page, 'timberwolf', 7035 + timberwolfCatalogOffset);
 
   await assertSourceContains(page, '.f-heading--product-detail .f-gallery__slide:nth-child(1) img', 'timberwolf-signature.jpg', 'timberwolf.heroSource');
   await assertSourceContains(page, '.f-product-configuration:nth-child(1) .f-product-configuration__thumb img', 'timberwolf-prestige.jpg', 'timberwolf.prestigeSource');
@@ -1829,7 +1909,7 @@ async function auditBenefitPopupDesktop(page) {
   await assertBox(page, '.f-benefit-popup__media', { x: 602, y: 265, width: 697, height: 364 }, 4, 'benefitPopup.media');
   await assertBox(page, '.f-benefit-popup__content', { x: 601, y: 670, width: 671, height: 480 }, 4, 'benefitPopup.content');
   await assertBox(page, '.f-benefit-popup__button', { x: 601, y: 1101, width: 129, height: 55 }, 6, 'benefitPopup.button');
-  await assertSourceContains(page, '.f-benefit-popup__media img', 'uploads/import/figma/popup-shell-detail.png', 'benefitPopup.mediaSource');
+  await assertSourceContains(page, '.f-benefit-popup__media img', 'popup-shell-detail.png', 'benefitPopup.mediaSource');
 
   const popupText = await page.locator('.f-benefit-popup').innerText();
   for (const expected of ['Samonosná kompozitní skořepina', 'Aristech', 'Bio-Lok']) {
@@ -1894,7 +1974,7 @@ async function auditFigmaInfoPagesDesktop(page) {
   await assertBox(page, '.page-template-template-features .f-section--contact', { x: 0, y: 1414, width: 1920, height: 483 }, 4, 'features.contactSection');
   await assertBox(page, '.page-template-template-features .f-contact-cta', { x: 260, y: 1414, width: 1400, height: 455 }, 4, 'features.contactCta');
   await assertFooterLayout(page, 'features', 1897);
-  await assertSourceContains(page, '.f-figma-card--feature:nth-child(1)', 'uploads/import/figma/category-hero-virivky.jpg', 'features.cardSource');
+  await assertSourceContains(page, '.f-figma-card--feature:nth-child(1)', 'feature-izolace-freeheat', 'features.cardSource');
 
   await page.goto(`${baseUrl}/sluzby/`, { waitUntil: 'load' });
   await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 447 }, 3, 'services.heading');
@@ -2007,20 +2087,78 @@ async function auditFigmaInfoPagesDesktop(page) {
   await assertBox(page, '.f-heading', { x: 0, y: 0, width: 1920, height: 435 }, 3, 'featureDetail.heading');
   await assertBox(page, '.f-heading__headline h1', { x: 497, y: 206, width: 896, height: 61 }, 4, 'featureDetail.title');
   await assertBox(page, '.f-heading__description', { x: 497, y: 289, width: 856, height: 93 }, 4, 'featureDetail.description');
-  await assertBox(page, '.f-figma-article--feature-detail', { x: 497, y: 435, width: 927, height: 2295 }, 4, 'featureDetail.article');
+  const featureArticle = await box(page, '.f-figma-article--feature-detail', 'featureDetail.article');
+  assertClose(featureArticle.x, 497, 4, 'featureDetail.article.x');
+  assertClose(featureArticle.y, 435, 4, 'featureDetail.article.y');
+  assertClose(featureArticle.width, 927, 4, 'featureDetail.article.width');
+  assertBetween(featureArticle.height, 2200, 3200, 'featureDetail.article.height');
   await assertBox(page, '.f-figma-article__hero', { x: 497, y: 435, width: 927, height: 384 }, 4, 'featureDetail.heroImage');
-  await assertBox(page, '.f-figma-article--feature-detail section:nth-of-type(1)', { x: 497, y: 859, width: 927, height: 477 }, 4, 'featureDetail.blockOne');
-  await assertBox(page, '.f-figma-article__diagram', { x: 679.5, y: 1376, width: 562, height: 562 }, 4, 'featureDetail.diagram');
-  await assertBox(page, '.f-figma-article--feature-detail section:nth-of-type(2)', { x: 497, y: 2037, width: 927, height: 246 }, 4, 'featureDetail.blockTwo');
-  await assertBox(page, '.f-figma-article--feature-detail section:nth-of-type(3)', { x: 497, y: 2323, width: 927, height: 171 }, 4, 'featureDetail.blockThree');
-  await assertBox(page, '.f-figma-article--feature-detail section:nth-of-type(4)', { x: 497, y: 2534, width: 927, height: 196 }, 4, 'featureDetail.blockFour');
-  await assertBox(page, '.f-section--feature-related', { x: 0, y: 2840, width: 1920, height: 829 }, 4, 'featureDetail.relatedSection');
-  await assertBox(page, '.f-section--feature-related h2', { x: 497, y: 2840, width: 927, height: 51 }, 4, 'featureDetail.relatedTitle');
-  await assertBox(page, '.f-section--feature-related .f-figma-card-grid--features', { x: 260, y: 2921, width: 1400, height: 748 }, 4, 'featureDetail.relatedGrid');
-  await assertBox(page, '.page-template-template-feature-detail .f-contact-cta', { x: 260, y: 3750, width: 1400, height: 455 }, 4, 'featureDetail.contactCta');
-  await assertFooterLayout(page, 'featureDetail', 4233);
-  await assertSourceContains(page, '.f-figma-article__hero', 'uploads/import/legacy-categories/virivky.jpg', 'featureDetail.heroSource');
-  await assertSourceContains(page, '.f-figma-article__diagram', 'uploads/import/figma/feature-freeheat-diagram.png', 'featureDetail.diagramSource');
+
+  const featureArticleFlow = await page.locator('.f-figma-article--feature-detail').evaluate((article) => {
+    const articleRect = article.getBoundingClientRect();
+    const children = Array.from(article.children).map((element) => {
+      const rect = element.getBoundingClientRect();
+
+      return {
+        tag: element.tagName.toLowerCase(),
+        x: rect.x,
+        y: rect.y,
+        width: rect.width,
+        height: rect.height,
+        bottom: rect.y + rect.height,
+      };
+    });
+
+    return {
+      articleBottom: articleRect.y + articleRect.height,
+      children,
+      sectionCount: article.querySelectorAll('section').length,
+    };
+  });
+
+  if (featureArticleFlow.sectionCount < 6) {
+    throw new Error(`featureDetail.articleSections: expected at least 6 editable sections, got ${featureArticleFlow.sectionCount}`);
+  }
+
+  featureArticleFlow.children.forEach((child, index) => {
+    if (child.tag !== 'img' && child.tag !== 'section') {
+      return;
+    }
+
+    assertClose(child.x, child.tag === 'img' && child.width === 562 ? 679.5 : 497, 4, `featureDetail.flow.${index}.x`);
+    assertClose(child.width, child.tag === 'img' && child.width === 562 ? 562 : 927, 4, `featureDetail.flow.${index}.width`);
+
+    if (child.tag === 'section') {
+      assertBetween(child.height, 120, 560, `featureDetail.flow.${index}.height`);
+    }
+  });
+
+  for (let index = 1; index < featureArticleFlow.children.length; index += 1) {
+    const previous = featureArticleFlow.children[index - 1];
+    const current = featureArticleFlow.children[index];
+    const gap = current.y - previous.bottom;
+
+    assertBetween(gap, 36, 44, `featureDetail.flow.${index}.gap`);
+  }
+
+  const lastArticleChild = featureArticleFlow.children[featureArticleFlow.children.length - 1];
+  assertClose(featureArticleFlow.articleBottom, lastArticleChild.bottom, 4, 'featureDetail.articleBottom');
+
+  await assertBox(page, '.f-figma-article__diagram', { x: 679.5, y: 1140, width: 562, height: 562 }, 4, 'featureDetail.diagram');
+
+  const relatedSection = await box(page, '.f-section--feature-related', 'featureDetail.relatedSection');
+  assertClose(relatedSection.x, 0, 4, 'featureDetail.relatedSection.x');
+  assertClose(relatedSection.y, featureArticle.y + featureArticle.height + 110, 4, 'featureDetail.relatedSection.y');
+  assertClose(relatedSection.width, 1920, 4, 'featureDetail.relatedSection.width');
+  assertClose(relatedSection.height, 829, 4, 'featureDetail.relatedSection.height');
+  await assertBox(page, '.f-section--feature-related h2', { x: 497, y: relatedSection.y, width: 927, height: 51 }, 4, 'featureDetail.relatedTitle');
+  await assertBox(page, '.f-section--feature-related .f-figma-card-grid--features', { x: 260, y: relatedSection.y + 81, width: 1400, height: 748 }, 4, 'featureDetail.relatedGrid');
+
+  const featureDetailContactY = relatedSection.y + relatedSection.height + 81;
+  await assertBox(page, '.page-template-template-feature-detail .f-contact-cta', { x: 260, y: featureDetailContactY, width: 1400, height: 455 }, 4, 'featureDetail.contactCta');
+  await assertFooterLayout(page, 'featureDetail', featureDetailContactY + 483);
+  await assertSourceContains(page, '.f-figma-article__hero', 'feature-izolace-freeheat', 'featureDetail.heroSource');
+  await assertSourceContains(page, '.f-figma-article__diagram', 'feature-freeheat-diagram', 'featureDetail.diagramSource');
 }
 
 async function auditSupportDesktop(page) {
@@ -2141,14 +2279,14 @@ async function auditInfoSupportCompact1097(page) {
 async function auditPr7EQualityGuards(page) {
   await page.setViewportSize({ width: 1440, height: 1100 });
   await page.goto(`${baseUrl}/podpora/`, { waitUntil: 'networkidle' });
-  await assertInteractiveToggleContract(page, '[data-support-faq-card]:nth-child(2)', 'pr7e.support.faqToggle');
+  await assertInteractiveToggleContract(page, '[data-support-faq-card]:nth-child(2) [data-support-faq-card-toggle]', 'pr7e.support.faqToggle');
   await page.goto(`${baseUrl}/podpora/`, { waitUntil: 'networkidle' });
-  await assertInteractiveTabs(page, '[data-support-filter]', 'pr7e.support.filters');
+  await assertInteractiveFilterButtons(page, '[data-support-filter]', 'pr7e.support.filters');
 
   await page.goto(`${baseUrl}/ke-stazeni/`, { waitUntil: 'networkidle' });
   await assertInteractiveToggleContract(page, '[data-download-group]:nth-child(2) [data-download-group-toggle]', 'pr7e.downloads.groupToggle');
   await page.goto(`${baseUrl}/ke-stazeni/`, { waitUntil: 'networkidle' });
-  await assertInteractiveTabs(page, '[data-download-filter]', 'pr7e.downloads.filters');
+  await assertInteractiveFilterButtons(page, '[data-download-filter]', 'pr7e.downloads.filters');
 
   for (const width of [1920, 1097]) {
     for (const path of ['/zaruka/', '/kolik-stoji-udrzba/', '/podpora/', '/ke-stazeni/', '/sluzby/', '/reference/']) {
@@ -2348,40 +2486,45 @@ async function auditSharedFooterDesktop(page) {
   }
 }
 
+async function runAuditStep(name, callback) {
+  console.log(`Figma audit: ${name}`);
+  await callback();
+}
+
 (async () => {
-  const browser = await chromium.launch({ executablePath: chromePath });
+  const browser = await chromium.launch({ executablePath: chromePath, headless: true });
   const page = await browser.newPage({ deviceScaleFactor: 1 });
 
   try {
-    await auditDesktop(page);
-    await auditFigmaTokenAndComponentStyles(page);
-    await auditDesktopScaledMatrix(page);
-    await auditMobile(page);
-    await auditNarrowHomepageLayout(page);
-    await auditResponsiveShell(page);
-    await auditCompactNavigation(page);
-    await auditDesktopHeaderStates(page);
-    await auditDesktopHeaderRealViewport(page);
-    await auditZoomOutFullBleed(page);
-    await auditCompactLaptopLayout(page);
-    await auditScaledLaptopBoundary(page);
-    await auditFigmaSources(page);
-    await auditPhase5BHardening(page);
-    await auditCatalogHotTubsDesktop(page);
-    await auditCatalogSwimspaDesktop(page);
-    await auditTimberwolfDesktop(page);
-    await auditBenefitPopupDesktop(page);
-    await auditShowroomDesktop(page);
-    await auditFigmaInfoPagesDesktop(page);
-    await auditSupportDesktop(page);
-    await auditInfoSupportCompact1097(page);
-    await auditPr7EQualityGuards(page);
-    await auditPr7FComposition(page);
-    await auditReferenceDesktop(page);
-    await auditAboutDesktop(page);
-    await auditServiceRequestDesktop(page);
-    await auditContactDesktop(page);
-    await auditSharedFooterDesktop(page);
+    await runAuditStep('desktop home', () => auditDesktop(page));
+    await runAuditStep('tokens/components', () => auditFigmaTokenAndComponentStyles(page));
+    await runAuditStep('desktop scaled matrix', () => auditDesktopScaledMatrix(page));
+    await runAuditStep('mobile home', () => auditMobile(page));
+    await runAuditStep('narrow homepage', () => auditNarrowHomepageLayout(page));
+    await runAuditStep('responsive shell', () => auditResponsiveShell(page));
+    await runAuditStep('compact navigation', () => auditCompactNavigation(page));
+    await runAuditStep('desktop header states', () => auditDesktopHeaderStates(page));
+    await runAuditStep('desktop header real viewport', () => auditDesktopHeaderRealViewport(page));
+    await runAuditStep('zoom out full bleed', () => auditZoomOutFullBleed(page));
+    await runAuditStep('compact laptop layout', () => auditCompactLaptopLayout(page));
+    await runAuditStep('scaled laptop boundary', () => auditScaledLaptopBoundary(page));
+    await runAuditStep('figma sources', () => auditFigmaSources(page));
+    await runAuditStep('phase 5B hardening', () => auditPhase5BHardening(page));
+    await runAuditStep('hot tub catalog', () => auditCatalogHotTubsDesktop(page));
+    await runAuditStep('swimspa catalog', () => auditCatalogSwimspaDesktop(page));
+    await runAuditStep('timberwolf product', () => auditTimberwolfDesktop(page));
+    await runAuditStep('benefit popup', () => auditBenefitPopupDesktop(page));
+    await runAuditStep('showroom', () => auditShowroomDesktop(page));
+    await runAuditStep('info pages', () => auditFigmaInfoPagesDesktop(page));
+    await runAuditStep('support desktop', () => auditSupportDesktop(page));
+    await runAuditStep('info/support compact', () => auditInfoSupportCompact1097(page));
+    await runAuditStep('pr7e quality guards', () => auditPr7EQualityGuards(page));
+    await runAuditStep('pr7f composition', () => auditPr7FComposition(page));
+    await runAuditStep('references', () => auditReferenceDesktop(page));
+    await runAuditStep('about', () => auditAboutDesktop(page));
+    await runAuditStep('service request', () => auditServiceRequestDesktop(page));
+    await runAuditStep('contact', () => auditContactDesktop(page));
+    await runAuditStep('shared footer', () => auditSharedFooterDesktop(page));
     console.log('Figma visual audit passed.');
   } finally {
     await browser.close();

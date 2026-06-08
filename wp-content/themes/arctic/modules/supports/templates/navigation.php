@@ -24,7 +24,7 @@ $categories = get_terms( array(
 
 if ( !empty( $categories ) && !is_wp_error( $categories ) ) { ?>
 
-	<div class="f-links f-links--sticky f-links--support">
+	<div class="f-links f-links--sticky f-links--support js-section-nav-handoff">
 		<div class="f-links__container a-container">
 			<nav class="f-links__navigation js-links__navigation"
 			     aria-label="<?php echo esc_attr_x( 'Support Navigation', 'navigation', 'baspa' ); ?>">

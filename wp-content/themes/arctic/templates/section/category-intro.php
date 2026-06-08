@@ -4,75 +4,165 @@
  * Category Intro
  */
 
-$is_swimspa = is_tax( 'product-category', 'swimspa' );
+$term_id = get_queried_object_id();
+$term    = get_queried_object();
+$blocks  = array();
+$source  = 'term-meta';
 
-if ( $is_swimspa ) {
-	$blocks = array(
-		array(
-			'title'       => __( 'Výhody celoročních bazénů Arctic', 'baspa' ),
-			'text'        => __( 'Rodinný bazén na zahradě je snem řady domácností. Swimspa Arctic přivezeme kompletní, včetně filtrace, automatické dezinfekce, elektroohřevu, obvodové izolace FreeHeat™ a bezpečného termokrytu. Stačí ji postavit na rovnou plochu, připojit k elektřině a napustit vodou.', 'baspa' ),
-			'button_text' => __( 'Více o vlastnostech', 'baspa' ),
-			'url'         => home_url( '/vlastnosti/' ),
-			'image'       => content_url( 'uploads/import/figma-category-celorocni-bazeny.jpg' ),
-			'alt'         => __( 'Celoroční bazén Arctic Spas', 'baspa' ),
-		),
-		array(
-			'title'       => __( 'Celoroční provoz bez stavebních prací', 'baspa' ),
-			'text'        => __( 'Celoroční bazén Arctic vám přinese zábavu, relaxaci i sportovní vyžití bez výkopů a složitých stavebních prací. Díky kvalitní konstrukci, izolaci a termokrytu je připravený pro pohodlné používání po celý rok.', 'baspa' ),
-			'button_text' => __( 'Více o záruce', 'baspa' ),
-			'url'         => home_url( '/zaruka/' ),
-			'image'       => content_url( 'uploads/import/legacy-categories/swimspa.jpg' ),
-			'alt'         => __( 'Venkovní swimspa Arctic Spas', 'baspa' ),
-		),
+if ( !function_exists( 'arctic_category_intro_resolve_url' ) ) {
+	function arctic_category_intro_resolve_url( string $url ): string {
+		$url = trim( $url );
+
+		if ( '' === $url ) {
+			return '';
+		}
+
+		if ( 0 === strpos( $url, '/' ) ) {
+			return home_url( $url );
+		}
+
+		return $url;
+	}
+}
+
+if ( !function_exists( 'arctic_category_intro_fallback_blocks' ) ) {
+	function arctic_category_intro_fallback_blocks( bool $is_swimspa ): array {
+		if ( $is_swimspa ) {
+			return array(
+				array(
+					'title'       => 'Výhody celoročních bazénů Arctic',
+					'text'        => 'Rodinný bazén na zahradě je snem řady domácností. Swimspa Arctic přivezeme kompletní, včetně filtrace, automatické dezinfekce, elektroohřevu, obvodové izolace FreeHeat™ a bezpečného termokrytu. Stačí ji postavit na rovnou plochu, připojit k elektřině a napustit vodou.',
+					'button_text' => 'Více o vlastnostech',
+					'url'         => home_url( '/vlastnosti/' ),
+					'image_url'   => content_url( 'uploads/import/figma-category-celorocni-bazeny.jpg' ),
+					'alt'         => 'Celoroční bazén Arctic Spas',
+				),
+				array(
+					'title'       => 'Celoroční provoz bez stavebních prací',
+					'text'        => 'Celoroční bazén Arctic vám přinese zábavu, relaxaci i sportovní vyžití bez výkopů a složitých stavebních prací. Díky kvalitní konstrukci, izolaci a termokrytu je připravený pro pohodlné používání po celý rok.',
+					'button_text' => 'Více o záruce',
+					'url'         => home_url( '/zaruka/' ),
+					'image_url'   => content_url( 'uploads/import/legacy-categories/swimspa.jpg' ),
+					'alt'         => 'Venkovní swimspa Arctic Spas',
+				),
+			);
+		}
+
+		return array(
+			array(
+				'title'       => 'Vlastnosti vířivek',
+				'text'        => 'Venkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily, byly jednoduché na obsluhu a pro svůj provoz spotřebovaly minimum energie.',
+				'button_text' => 'Více o vlastnostech',
+				'url'         => home_url( '/vlastnosti/' ),
+				'image_url'   => content_url( 'uploads/import/figma/category-vlastnosti.jpg' ),
+				'alt'         => 'Vlastnosti vířivek Arctic Spas',
+			),
+			array(
+				'title'       => 'Záruka',
+				'text'        => 'Za kvalitou našich výrobků si stojíme, což dokládá doživotní záruka Arctic Spas na vodotěsnost skořepiny a pětiletá záruka na většinu komponentů včetně ohřevu.',
+				'button_text' => 'Více o záruce',
+				'url'         => home_url( '/zaruka/' ),
+				'image_url'   => content_url( 'uploads/import/figma/category-zaruka.jpg' ),
+				'alt'         => 'Záruka Arctic Spas',
+			),
+		);
+	}
+}
+
+if ( !function_exists( 'arctic_category_intro_render_image' ) ) {
+	function arctic_category_intro_render_image( array $block ): void {
+		$image_id = isset( $block['image_id'] ) ? absint( $block['image_id'] ) : 0;
+		$alt      = isset( $block['alt'] ) ? (string) $block['alt'] : '';
+
+		if ( $image_id > 0 ) {
+			echo wp_get_attachment_image( $image_id, 'large', false, array(
+				'alt'               => $alt,
+				'loading'           => 'lazy',
+				'decoding'          => 'async',
+				'data-asset-status' => 'admin-category-intro',
+			) );
+			return;
+		}
+
+		if ( !empty( $block['image_url'] ) ) {
+			?>
+			<img src="<?php echo esc_url( $block['image_url'] ); ?>"
+			     width="674"
+			     height="424"
+			     alt="<?php echo esc_attr( $alt ); ?>"
+			     loading="lazy"
+			     decoding="async"
+			     data-asset-status="seed-fallback">
+			<?php
+		}
+	}
+}
+
+for ( $index = 1; $index <= 2; $index++ ) {
+	$prefix = 'category_intro_' . $index;
+	$block  = array(
+		'title'       => (string) get_term_meta( $term_id, $prefix . '_title', true ),
+		'text'        => (string) get_term_meta( $term_id, $prefix . '_text', true ),
+		'button_text' => (string) get_term_meta( $term_id, $prefix . '_button_text', true ),
+		'url'         => arctic_category_intro_resolve_url( (string) get_term_meta( $term_id, $prefix . '_button_url', true ) ),
+		'image_id'    => absint( get_term_meta( $term_id, $prefix . '_image', true ) ),
+		'alt'         => (string) get_term_meta( $term_id, $prefix . '_alt', true ),
 	);
-} else {
-	$blocks = array(
-		array(
-			'title'       => __( 'Vlastnosti vířivek', 'baspa' ),
-			'text'        => __( 'Venkovní vířivky Arctic Spas jsou navrženy a vyrobeny pro drsné podnebí severní Kanady tak, aby dlouhé roky spolehlivě sloužily, byly jednoduché na obsluhu a pro svůj provoz spotřebovaly minimum energie. Unikátní technická řešení, jako obvodová izolace FreeHeat™, sklolaminátová podlaha Forever Floor™, servisní přístupy či termokryt Mylovac™, dělají z venkovních vířivek Arctic Spas tu nejlepší volbu, pokud vám jsou blízké hodnoty jako kvalita a úspornost.', 'baspa' ),
-			'button_text' => __( 'Více o vlastnostech', 'baspa' ),
-			'url'         => home_url( '/vlastnosti/' ),
-			'image'       => content_url( 'uploads/import/figma/category-vlastnosti.jpg' ),
-			'alt'         => __( 'Vlastnosti vířivek Arctic Spas podle grafiky', 'baspa' ),
-		),
-		array(
-			'title'       => __( 'Záruka', 'baspa' ),
-			'text'        => __( 'Na rozdíl od jiných výrobců nejsou pro nás výše uvedená tvrzení jenom líbivé fráze. Za kvalitou našich výrobků si stojíme, což jasně dokládá unikátní doživotní záruka Arctic Spas na vodotěsnost skořepiny a pětiletá záruka na většinu komponentů, včetně ohřevu.', 'baspa' ),
-			'button_text' => __( 'Více o záruce', 'baspa' ),
-			'url'         => home_url( '/zaruka/' ),
-			'image'       => content_url( 'uploads/import/figma/category-zaruka.jpg' ),
-			'alt'         => __( 'Záruka Arctic Spas podle grafiky', 'baspa' ),
-		),
-	);
+
+	if ( '' !== $block['title'] || '' !== $block['text'] || $block['image_id'] > 0 ) {
+		$blocks[] = $block;
+	}
+}
+
+if ( empty( $blocks ) ) {
+	if ( !function_exists( 'arctic_allow_seed_fallbacks' ) || !arctic_allow_seed_fallbacks() ) {
+		return;
+	}
+
+	$blocks = arctic_category_intro_fallback_blocks( is_tax( 'product-category', 'swimspa' ) );
+	$source = 'seed-fallback';
+}
+
+if ( empty( $blocks ) ) {
+	return;
 }
 ?>
 
-<section class="f-section f-section--category-intro">
+<section class="f-section f-section--category-intro"
+         data-content-source="<?php echo esc_attr( $source ); ?>"
+         data-term-id="<?php echo esc_attr( $term instanceof WP_Term ? $term->term_id : $term_id ); ?>">
 	<div class="f-section__container a-container">
-		<div class="f-category-intro f-category-intro--split">
-			<div class="f-category-intro__content">
-				<h2><?php echo esc_html( $blocks[0]['title'] ); ?></h2>
-				<p><?php echo esc_html( $blocks[0]['text'] ); ?></p>
-				<a class="f-button a-button a-button--accent" href="<?php echo esc_url( $blocks[0]['url'] ); ?>">
-					<?php echo esc_html( $blocks[0]['button_text'] ); ?>
-				</a>
-			</div>
-			<figure class="f-category-intro__image">
-				<img src="<?php echo esc_url( $blocks[0]['image'] ); ?>" width="674" height="424" alt="<?php echo esc_attr( $blocks[0]['alt'] ); ?>" loading="lazy" decoding="async">
-			</figure>
-		</div>
+		<?php foreach ( $blocks as $index => $block ) {
+			$is_reverse = 1 === $index;
+			$classes    = array( 'f-category-intro', $is_reverse ? 'f-category-intro--reverse' : 'f-category-intro--split' );
+			?>
+			<div <?php ( !function_exists( 'forqy_class' ) ) ?: forqy_class( $classes ); ?>>
+				<?php if ( $is_reverse ) { ?>
+					<figure class="f-category-intro__image">
+						<?php arctic_category_intro_render_image( $block ); ?>
+					</figure>
+				<?php } ?>
 
-		<div class="f-category-intro f-category-intro--reverse">
-			<figure class="f-category-intro__image">
-				<img src="<?php echo esc_url( $blocks[1]['image'] ); ?>" width="674" height="424" alt="<?php echo esc_attr( $blocks[1]['alt'] ); ?>" loading="lazy" decoding="async">
-			</figure>
-			<div class="f-category-intro__content">
-				<h2><?php echo esc_html( $blocks[1]['title'] ); ?></h2>
-				<p><?php echo esc_html( $blocks[1]['text'] ); ?></p>
-				<a class="f-button a-button a-button--accent" href="<?php echo esc_url( $blocks[1]['url'] ); ?>">
-					<?php echo esc_html( $blocks[1]['button_text'] ); ?>
-				</a>
+				<div class="f-category-intro__content">
+					<?php if ( !empty( $block['title'] ) ) { ?>
+						<h2><?php echo esc_html( $block['title'] ); ?></h2>
+					<?php } ?>
+					<?php if ( !empty( $block['text'] ) ) { ?>
+						<?php echo wp_kses_post( wpautop( $block['text'] ) ); ?>
+					<?php } ?>
+					<?php if ( !empty( $block['button_text'] ) && !empty( $block['url'] ) ) { ?>
+						<a class="f-button a-button a-button--accent" href="<?php echo esc_url( $block['url'] ); ?>">
+							<?php echo esc_html( $block['button_text'] ); ?>
+						</a>
+					<?php } ?>
+				</div>
+
+				<?php if ( !$is_reverse ) { ?>
+					<figure class="f-category-intro__image">
+						<?php arctic_category_intro_render_image( $block ); ?>
+					</figure>
+				<?php } ?>
 			</div>
-		</div>
+		<?php } ?>
 	</div>
 </section>

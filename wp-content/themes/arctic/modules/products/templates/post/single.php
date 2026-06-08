@@ -11,6 +11,7 @@ $post_class         = array( 'f-product--single', 'f-post', 'f-post--single' );
 ?>
 
 <article id="product-<?php the_ID(); ?>" <?php post_class( $post_class ); ?>>
+	<h2 class="screen-reader-text"><?php echo esc_html( get_the_title( $product_id ) ); ?></h2>
 	<?php if ( $has_configurations ) {
 		get_template_part( 'modules/products/templates/post/single/figma-detail-body' );
 	} else if ( baspa_products_query_product_has_parameters( get_the_ID() ) ) {

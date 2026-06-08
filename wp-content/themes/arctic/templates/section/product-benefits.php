@@ -4,98 +4,53 @@
  * Product Benefits
  */
 
-$benefits = array(
-	array(
-		'title'   => __( 'Samonosná kompozitní skořepina', 'baspa' ),
-		'summary' => __( 'Prémiový akrylát Aristech, ručně nanášený sklolaminát a pevný kompozitní základ bez podpůrné pěny.', 'baspa' ),
-		'popup'   => true,
-		'media_status' => 'available',
-		'media_url'    => content_url( 'uploads/import/figma/popup-shell-thumb.png' ),
-		'figma_node'   => '100:662',
-	),
-	array( 'title' => __( 'Izolace Heatlock', 'baspa' ) ),
-	array( 'title' => __( 'Cedrový kabinet', 'baspa' ) ),
-	array( 'title' => __( 'Podlaha vířivky', 'baspa' ) ),
-	array( 'title' => __( 'Termokryt', 'baspa' ) ),
-	array( 'title' => __( 'Servisní přístup', 'baspa' ) ),
-	array( 'title' => __( 'Variabilita sedadel', 'baspa' ) ),
-	array( 'title' => __( 'Automatická úprava vody', 'baspa' ) ),
-	array( 'title' => __( 'Ovládání Gecko', 'baspa' ) ),
-	array( 'title' => __( 'Filtrace', 'baspa' ) ),
-	array( 'title' => __( 'Masážní trysky', 'baspa' ) ),
-	array( 'title' => __( 'LED osvětlení', 'baspa' ) ),
-	array( 'title' => __( 'Aromaterapie', 'baspa' ) ),
-	array( 'title' => __( 'Hudební systém', 'baspa' ) ),
-	array( 'title' => __( 'Wi-Fi ovládání', 'baspa' ) ),
-	array( 'title' => __( 'Záruka na skořepinu', 'baspa' ) ),
-	array( 'title' => __( 'Nerezové trysky', 'baspa' ) ),
-	array( 'title' => __( 'Celoroční provoz', 'baspa' ) ),
-);
-
-$popup_id = sanitize_title( esc_attr_x( 'shell-benefit-popup', 'anchor', 'baspa' ) );
-$benefit_icons = array(
-	'shell',
-	'heatlock',
-	'cabinet',
-	'floor',
-	'cover',
-	'service',
-	'seats',
-	'water',
-	'control',
-	'filter',
-	'jets',
-	'led',
-	'aroma',
-	'audio',
-	'wifi',
-	'warranty',
-	'steel',
-	'winter',
-);
-
-foreach ( $benefits as $index => $benefit ) {
-	$media_index = str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT );
-
-	$benefits[ $index ]['media_status'] = 'available';
-	$benefits[ $index ]['media_url']    = content_url( 'uploads/import/figma/benefit-media-' . $media_index . '.png' );
-	$benefits[ $index ]['figma_node']   = '1:' . ( 1500 + ( $index * 10 ) );
-}
+$product_id = get_the_ID();
+$section    = function_exists( 'arctic_product_get_benefit_section' )
+	? arctic_product_get_benefit_section( $product_id )
+	: array(
+		'heading' => __( 'Výhody vířivek Arctic Spas - série Classic', 'baspa' ),
+		'text'    => __( 'Vířivky Arctic Spas série Classic jsou standardně dodávány s řadou funkcí. Kliknutím na vybrané funkce se o nich dozvíte více.', 'baspa' ),
+		'cards'   => array(),
+	);
+$benefits   = $section['cards'] ?? array();
 ?>
 
-<section id="vyhody" class="f-section f-section--product-benefits js-links__section">
+<?php if ( !empty( $benefits ) ) { ?>
+<section id="vyhody" class="f-section f-section--product-benefits js-links__section" data-content-source="<?php echo esc_attr( (string) ( $benefits[0]['source'] ?? 'static-fallback' ) ); ?>">
 	<div class="f-section__container a-container">
 		<header class="f-section__header">
-			<h2><?php echo esc_html__( 'Výhody vířivek Arctic Spas - série Classic', 'baspa' ); ?></h2>
-			<p><?php echo esc_html__( 'Vířivky Arctic Spas série Classic jsou standardně dodávány s řadou funkcí. Kliknutím na vybrané funkce se o nich dozvíte více.', 'baspa' ); ?></p>
+			<h2><?php echo esc_html( (string) $section['heading'] ); ?></h2>
+			<p><?php echo esc_html( (string) $section['text'] ); ?></p>
 		</header>
 
 		<div class="f-product-benefits">
 			<?php foreach ( $benefits as $index => $benefit ) {
-				$has_popup    = !empty( $benefit['popup'] );
-				$icon         = $benefit['icon'] ?? ( $benefit_icons[ $index ] ?? 'feature' );
-				$media_status = $benefit['media_status'] ?? 'WAITING_ON_FIGMA_EXPORT';
-				$media_url    = $benefit['media_url'] ?? '';
-				$figma_node   = $benefit['figma_node'] ?? '100:662';
+				$has_popup    = !empty( $benefit['interactive'] );
+				$icon         = (string) ( $benefit['icon'] ?? 'feature' );
+				$media_status = (string) ( $benefit['media_status'] ?? 'WAITING_ON_FIGMA_EXPORT' );
+				$media_url    = (string) ( $benefit['media_url'] ?? '' );
+				$figma_node   = (string) ( $benefit['figma_node'] ?? '100:662' );
+				$popup_id     = sanitize_title( (string) ( $benefit['popup_id'] ?? 'benefit-' . $index ) );
 				?>
-				<article class="f-product-benefit f-product-benefit--media-<?php echo esc_attr( $icon ); ?> <?php echo $has_popup ? 'f-product-benefit--has-popup f-product-benefit--interactive' : 'f-product-benefit--static'; ?>">
-					<span class="f-product-benefit__media f-product-benefit__media--<?php echo esc_attr( $icon ); ?>"
-						data-asset-status="<?php echo esc_attr( $media_status ); ?>"
-						data-figma-node="<?php echo esc_attr( $figma_node ); ?>"
-						aria-hidden="true">
-						<?php if ( !empty( $media_url ) ) { ?>
+				<article class="f-product-benefit f-product-benefit--media-<?php echo esc_attr( $icon ); ?> <?php echo $has_popup ? 'f-product-benefit--has-popup f-product-benefit--interactive' : 'f-product-benefit--static'; ?>" data-content-source="<?php echo esc_attr( (string) ( $benefit['source'] ?? 'static-fallback' ) ); ?>">
+					<?php if ( '' !== $media_url ) { ?>
+						<span class="f-product-benefit__media f-product-benefit__media--<?php echo esc_attr( $icon ); ?>"
+							data-asset-status="<?php echo esc_attr( $media_status ); ?>"
+							data-asset-source="<?php echo esc_attr( (string) ( $benefit['media_source'] ?? 'product-media' ) ); ?>"
+							data-figma-node="<?php echo esc_attr( $figma_node ); ?>"
+							aria-hidden="true">
 							<img src="<?php echo esc_url( $media_url ); ?>" alt="" loading="lazy" decoding="async">
-						<?php } ?>
-					</span>
-					<h3><?php echo esc_html( $benefit['title'] ); ?></h3>
-					<p><?php echo esc_html( $benefit['summary'] ?? __( 'Návrh vychází z požadavků na provoz v chladném klimatu, jednoduchou údržbu a stabilní výkon po mnoho sezon.', 'baspa' ) ); ?></p>
+						</span>
+					<?php } ?>
+					<h3><?php echo esc_html( (string) ( $benefit['title'] ?? '' ) ); ?></h3>
+					<p><?php echo esc_html( (string) ( $benefit['summary'] ?? '' ) ); ?></p>
 					<?php if ( $has_popup ) { ?>
 						<span class="f-product-benefit__more" aria-hidden="true">+</span>
 						<button type="button"
 							class="f-product-benefit__trigger f-off__trigger js-off__trigger"
-							data-off="benefit-shell"
+							data-off="<?php echo esc_attr( $popup_id ); ?>"
 							aria-controls="<?php echo esc_attr( $popup_id ); ?>">
-							<span class="screen-reader-text"><?php echo esc_html__( 'Zobrazit detail skořepiny', 'baspa' ); ?></span>
+							<span class="screen-reader-text"><?php echo esc_html( sprintf( __( 'Zobrazit detail: %s', 'baspa' ), (string) ( $benefit['title'] ?? '' ) ) ); ?></span>
 						</button>
 					<?php } ?>
 				</article>
@@ -104,38 +59,54 @@ foreach ( $benefits as $index => $benefit ) {
 	</div>
 </section>
 
-<aside id="<?php echo esc_attr( $popup_id ); ?>"
-	class="f-off f-off--benefit-popup f-off--dialog a-off a-off--dialog js-off"
-	data-off="benefit-shell"
-	data-off-breakpoint="all"
-	data-off-relocate="false"
-	aria-labelledby="benefit-shell-title"
-	aria-hidden="true">
+<?php foreach ( $benefits as $index => $benefit ) {
+	if ( empty( $benefit['interactive'] ) ) {
+		continue;
+	}
 
-	<div class="f-benefit-popup f-off__container a-off__container">
-		<button class="f-benefit-popup__close f-off__close a-off__close js-off__close"
-			data-off="benefit-shell"
-			aria-controls="<?php echo esc_attr( $popup_id ); ?>">
-			<?php if ( function_exists( 'forqy_get_icon' ) ) {
-				forqy_get_icon( 'close' );
-			} ?>
-			<span class="screen-reader-text"><?php echo esc_html__( 'Zavřít okno', 'baspa' ); ?></span>
-		</button>
+	$popup_id      = sanitize_title( (string) ( $benefit['popup_id'] ?? 'benefit-' . $index ) );
+	$popup_title   = (string) ( $benefit['popup_title'] ?? $benefit['title'] ?? '' );
+	$popup_content = trim( (string) ( $benefit['popup_content'] ?? '' ) );
+	$popup_image   = (string) ( $benefit['popup_image_url'] ?? '' );
 
-		<h2 id="benefit-shell-title"><?php echo esc_html__( 'Samonosná kompozitní skořepina s doživotní zárukou', 'baspa' ); ?></h2>
+	if ( '' === $popup_content ) {
+		$popup_content = '<p>' . esc_html( (string) ( $benefit['summary'] ?? '' ) ) . '</p>';
+	}
+	?>
+	<aside id="<?php echo esc_attr( $popup_id ); ?>"
+		class="f-off f-off--benefit-popup f-off--dialog a-off a-off--dialog js-off"
+		data-off="<?php echo esc_attr( $popup_id ); ?>"
+		data-off-breakpoint="all"
+		data-off-relocate="false"
+		aria-labelledby="<?php echo esc_attr( $popup_id . '-title' ); ?>"
+		aria-hidden="true">
 
-		<figure class="f-benefit-popup__media">
-			<img src="<?php echo esc_url( content_url( 'uploads/import/figma/popup-shell-detail.png' ) ); ?>" width="697" height="364" alt="<?php echo esc_attr__( 'Detail skořepiny vířivky Arctic Spas', 'baspa' ); ?>" loading="lazy" decoding="async">
-		</figure>
+		<div class="f-benefit-popup f-off__container a-off__container">
+			<button class="f-benefit-popup__close f-off__close a-off__close js-off__close"
+				data-off="<?php echo esc_attr( $popup_id ); ?>"
+				aria-controls="<?php echo esc_attr( $popup_id ); ?>">
+				<?php if ( function_exists( 'forqy_get_icon' ) ) {
+					forqy_get_icon( 'close' );
+				} ?>
+				<span class="screen-reader-text"><?php echo esc_html__( 'Zavřít okno', 'baspa' ); ?></span>
+			</button>
 
-		<div class="f-benefit-popup__content">
-			<p><?php echo esc_html__( 'Skořepina vířivky Arctic Spas je samotným základem naší konstrukce a proto k její výrobě přistupujeme s vědomím zásadní důležitosti její funkce.', 'baspa' ); ?></p>
-			<p><?php echo esc_html__( 'Začínáme vakuovým formováním vrstvy prémiového akrylátu Aristech s antibakteriální úpravou Bio-Lok™. Poté ručně nanášíme sklolaminátový kompozit vrstvu po vrstvě, aby skořepina získala svou legendární pevnost.', 'baspa' ); ?></p>
-			<p><?php echo esc_html__( 'Používáme nejsilnější vrstvu sklolaminátu v oboru a nehledáme žádné úsporné zkratky. Výsledkem je pevný a přesný základ pro instalaci pokročilých technologií Arctic Spas®.', 'baspa' ); ?></p>
+			<h2 id="<?php echo esc_attr( $popup_id . '-title' ); ?>"><?php echo esc_html( $popup_title ); ?></h2>
+
+			<?php if ( '' !== $popup_image ) { ?>
+				<figure class="f-benefit-popup__media">
+					<img src="<?php echo esc_url( $popup_image ); ?>" width="697" height="364" alt="" loading="lazy" decoding="async" data-asset-status="<?php echo esc_attr( (string) ( $benefit['popup_image_status'] ?? 'available' ) ); ?>">
+				</figure>
+			<?php } ?>
+
+			<div class="f-benefit-popup__content">
+				<?php echo wp_kses_post( wpautop( $popup_content ) ); ?>
+			</div>
+
+			<button class="f-benefit-popup__button js-off__close" type="button" data-off="<?php echo esc_attr( $popup_id ); ?>" aria-controls="<?php echo esc_attr( $popup_id ); ?>">
+				<?php echo esc_html__( 'Zavřít okno', 'baspa' ); ?>
+			</button>
 		</div>
-
-		<button class="f-benefit-popup__button js-off__close" type="button" data-off="benefit-shell" aria-controls="<?php echo esc_attr( $popup_id ); ?>">
-			<?php echo esc_html__( 'Zavřít okno', 'baspa' ); ?>
-		</button>
-	</div>
-</aside>
+	</aside>
+<?php } ?>
+<?php } ?>

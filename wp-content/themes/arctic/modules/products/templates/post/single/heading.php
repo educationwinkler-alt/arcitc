@@ -15,6 +15,14 @@ $seats        = get_post_meta( get_the_ID(), 'product_seats', false );
 $jets         = get_post_meta( get_the_ID(), 'product_nozzles', false );
 $dimensions   = get_post_meta( get_the_ID(), 'product_dimensions_external', false );
 $water_volume = get_post_meta( get_the_ID(), 'product_water_volume', false );
+$thumbnail_id = (int) get_post_thumbnail_id();
+$hero_media   = function_exists( 'arctic_hero_media_from_post' )
+	? arctic_hero_media_from_post( get_the_ID(), 'product_hero', $thumbnail_id, array(
+		'source'     => 'product-hero',
+		'image_size' => get_template() . '-huge',
+	) )
+	: array( 'type' => 'none' );
+$has_hero_video = 'video' === ( $hero_media['type'] ?? 'none' );
 $format_hero_dimensions = static function ( string $value ): string {
 	$value      = trim( wp_strip_all_tags( $value ) );
 	$times      = html_entity_decode( '&times;', ENT_QUOTES, 'UTF-8' );
@@ -39,8 +47,8 @@ if ( has_term( 'swimspa', 'product-category', get_the_ID() ) || has_term( 'swims
 }
 
 $heading_class   = array( 'f-heading', 'f-heading--product-detail' );
-$heading_class[] = !empty( $images ) || has_post_thumbnail() || has_header_image() ? 'f-heading--background' : '';
-if ( !empty( $images ) ) {
+$heading_class[] = $has_hero_video || !empty( $images ) || has_post_thumbnail() || has_header_image() ? 'f-heading--background' : '';
+if ( !empty( $images ) && !$has_hero_video ) {
 	$heading_class[] = 'f-heading--gallery';
 }
 ?>
@@ -105,7 +113,12 @@ if ( !empty( $images ) ) {
 	</div>
 
 	<?php
-	if ( !empty( $images ) ) {
+	if ( $has_hero_video && function_exists( 'arctic_render_hero_media' ) ) {
+		arctic_render_hero_media(
+			$hero_media,
+			array( 'f-background', 'f-background__image', 'f-background__image--thumb', 'a-image--cover' )
+		);
+	} else if ( !empty( $images ) ) {
 		get_template_part( 'templates/image/gallery', 'slideshow', array(
 			'meta_key'   => 'product_images',
 			'image_size' => 'huge',

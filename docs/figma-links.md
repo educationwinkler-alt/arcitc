@@ -7,8 +7,14 @@
 
 ## Arctic Spas finalni grafika
 
+- URL: https://www.figma.com/design/zWLRkhgU5uOipN7I6cGHHe/Arctic-spas.cz-grafika?t=Fn0CjjghZK7Z7jI5-0
+- File key: `zWLRkhgU5uOipN7I6cGHHe`
+
+## Arctic Spas finalni grafika - legacy odkaz
+
 - URL: https://www.figma.com/design/xeOew3dFjDVfjXZrJ09emM/Arctic-spas.cz-grafika?t=BdCp3f8qo4vMl5Ft-1
 - File key: `xeOew3dFjDVfjXZrJ09emM`
+- Stav: starsi odkaz ponechany jen kvuli historickym exportum a dokumentaci. Aktualni kontrola a Figma API cteni maji pouzivat file key `zWLRkhgU5uOipN7I6cGHHe`.
 
 ## Poznamka
 
