@@ -80,6 +80,92 @@ Commercial/admin requirements:
 - Four editable offer types with only published offers visible: covered by the same offers section.
 - Client must be able to edit texts, contacts, phones, and global facts in wp-admin without breaking sections: covered by admin save hardening, no-fallback gates, and the June 15 acceptance gate.
 
+## Content source strategy - 2026-06-08
+
+This project is for Arctic Spas products. Baspa is the template/reference environment, not a license to fill the Arctic site with generic BASPA product content. Use Baspa pages for proven structure, admin patterns, conversion flows, current company facts, and Arctic-specific content only.
+
+Source priority:
+
+1. Existing WP/admin data and production exports:
+   - preserve IDs, menus, media, CPT relationships, and editable fields,
+   - never replace real admin content with seed/Figma fallback content.
+2. Current Baspa public pages and admin data for company/contact/showroom facts:
+   - current `O nas` facts, team, stats, partner list, and footer/contact facts,
+   - current showroom address/map/contact facts,
+   - current contact people, phones, emails, and opening hours.
+3. Current Baspa Arctic product/series pages:
+   - series structure,
+   - indicative prices,
+   - parameter matrices,
+   - shell/cabinet color applicability,
+   - catalog/price-list CTA behavior,
+   - references block structure.
+4. Existing/old Arctic Spas CZ pages and official Arctic Spas materials:
+   - model-level configurations,
+   - feature/equipment descriptions,
+   - technical names,
+   - compatibility per hot tub/swimspa series.
+5. Figma:
+   - layout, visual hierarchy, component intent, responsive behavior,
+   - not a source of product truth unless the content is also verified elsewhere.
+6. Client/BASPA confirmation:
+   - final arbiter for facts that are time-sensitive or commercial: prices, staff, phone numbers, stats, current copy, published offers, Ecomail settings, and legal/privacy wording.
+
+Do not use as final public content:
+
+- local seed fallback copy,
+- Figma placeholder copy,
+- machine-translated feature text,
+- generic BASPA pool/reference content that is not relevant to Arctic Spas,
+- stale `O nas` facts from the current Arctic build.
+
+### Data source by repair area
+
+Homepage:
+
+- Slides, CTAs, services, progress, and intro text must come from WP/admin data.
+- Images should use approved Arctic media from current imports or client-approved replacements, then optimized through the image pipeline.
+- Baspa homepage can be used for behavior and conversion patterns, not as product copy.
+
+Categories and series:
+
+- Hot tub and swimspa category/series content should use current Baspa Arctic pages as the closest functional reference:
+  - `https://baspa.cz/produkt/virivky-arctic-spas/serie-arctic-spas-custom/`
+  - `https://baspa.cz/produkt/bazeny-arctic-classic/`
+- Build real Arctic series pages; do not create generic BASPA pool series pages in this project.
+
+Product details:
+
+- Configurations come from old/current Arctic Spas CZ product material, Baspa Arctic pages, and official Arctic Spas documents/pages.
+- Feature/equipment copy can use official Arctic Spas feature pages as source material, but must be rewritten/verified in Czech and assigned per product/series.
+- Product photos must be marked as approved official, approved BASPA/client, temporary legacy, missing, or wrong crop.
+
+`O nas`:
+
+- Primary source for current company facts is the current Baspa `O nas` page and admin/member data:
+  - company founded in 2013,
+  - activities in pools/spas since 2003,
+  - current public stats are `23+` years, `1200+` clients, `13` team members,
+  - current team list and partner list come from Baspa/current admin data.
+- Arctic-specific partner copy must stay focused on the Arctic Spas relationship; remove or de-emphasize unrelated suppliers unless the client wants the Arctic site to present the full BASPA company profile.
+- Because the client explicitly says the current Arctic `O nas` is more than a year old, all public facts must be marked `client-verify` before final delivery if they are not copied from current Baspa admin/public data.
+
+References:
+
+- Baspa references are the structure model: cards with image, product/category label, title/location/year, description, and link/detail.
+- Actual Arctic site references must be filtered to Arctic Spas hot tubs/swimspa or explicitly approved cross-sell/company references. Do not bulk-import unrelated BASPAWOOD/PLAYA references as Arctic product proof.
+
+Support/FAQ:
+
+- `Kolik stoji provoz a udrzba` should be split into editable FAQ entries.
+- Sources are existing Arctic/Baspa maintenance content plus client-approved service wording, not static template fallback text.
+
+Pricing/catalog/Ecomail:
+
+- Price and catalog CTA behavior should follow Baspa Arctic product/series pages.
+- Actual price values must come from current Baspa Arctic pages, client price list, or admin price fields; if missing, QA should fail instead of silently hiding price.
+- Ecomail credentials/settings are production-only and must not be copied into docs.
+
 ## Findings
 
 ### P0 - Admin edit caused homepage sections to disappear
@@ -911,14 +997,26 @@ Relevant code/data:
 - `wp-content/themes/arctic/template-about.php` uses WP editor content plus `about_stats` meta.
 - Fallback copy in `wp-content/themes/arctic/template-about.php:252` also contains `2005` and `15 let`, so local fallback can preserve stale text even when admin content is incomplete.
 - Local page meta has `about_stats` values `21+`, `1000+`, `11`.
+- Current Baspa `O nas` public source is newer and currently says:
+  - BASPA s.r.o. founded in `2013`,
+  - owner activities in the field started in `2003`,
+  - stats `23+` years, `1200+` clients, `13` team members,
+  - current team/member list and partner profile are available there.
 
 Repair plan:
 
-1. Get the approved current company/team copy from BASPA.
-2. Update WP editor content and `about_stats`.
-3. Verify `member` CPT/team cards match current staff.
-4. Remove stale fallback copy or make it generic enough that it cannot reintroduce obsolete facts.
-5. Add a content freshness checklist for owner-provided facts:
+1. Use current Baspa `O nas` and admin/member data as the first draft source for company facts, stats, and team structure.
+2. Mark all time-sensitive facts as `client-verify` before delivery:
+   - years of experience,
+   - number of clients/installations,
+   - team count,
+   - current staff and roles,
+   - supplier/partner list.
+3. Keep the Arctic site profile focused on BASPA as Arctic Spas dealer; do not bulk-copy unrelated generic pool supplier copy unless approved.
+4. Update WP editor content and `about_stats`.
+5. Verify `member` CPT/team cards match current staff.
+6. Remove stale fallback copy or make it generic enough that it cannot reintroduce obsolete facts.
+7. Add a content freshness checklist for owner-provided facts:
    - company intro,
    - team count,
    - number of installations/clients,
