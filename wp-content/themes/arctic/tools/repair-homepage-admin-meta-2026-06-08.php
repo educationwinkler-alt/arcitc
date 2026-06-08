@@ -56,6 +56,47 @@ $set_multi_meta = static function ( int $post_id, string $key, array $values ): 
 	}
 };
 
+$valid_fieldset_rows = static function ( int $post_id, string $key, array $row_keys ): array {
+	$rows = array();
+
+	foreach ( get_post_meta( $post_id, $key ) as $raw_row ) {
+		if ( !is_array( $raw_row ) ) {
+			continue;
+		}
+
+		$candidates = array( $raw_row );
+		foreach ( $raw_row as $nested_row ) {
+			if ( is_array( $nested_row ) ) {
+				$candidates[] = $nested_row;
+			}
+		}
+
+		foreach ( $candidates as $candidate ) {
+			$has_known_key = false;
+			$has_content   = false;
+
+			foreach ( $row_keys as $row_key ) {
+				if ( !array_key_exists( $row_key, $candidate ) ) {
+					continue;
+				}
+
+				$has_known_key = true;
+
+				if ( '' !== trim( wp_strip_all_tags( (string) $candidate[ $row_key ] ) ) ) {
+					$has_content = true;
+				}
+			}
+
+			if ( $has_known_key && $has_content ) {
+				$rows[] = $candidate;
+				break;
+			}
+		}
+	}
+
+	return $rows;
+};
+
 $attachment_for_upload = static function ( string $relative_file, string $title ) use ( &$summary ): int {
 	$upload_dir = wp_upload_dir();
 	$file       = trailingslashit( $upload_dir['basedir'] ) . ltrim( $relative_file, '/' );
@@ -140,7 +181,7 @@ $benefit_images = array_filter( array(
 	$attachment_for_upload( 'import/figma/hp-benefit-servis.png', 'Homepage benefit - Servis' ),
 ) );
 
-$existing_benefits = get_post_meta( $home_id, 'homepage_benefits' );
+$existing_benefits = $valid_fieldset_rows( $home_id, 'homepage_benefits', array( 'title', 'text', 'icon' ) );
 if ( count( $existing_benefits ) < count( $benefits ) ) {
 	$set_multi_meta( $home_id, 'homepage_benefits', $benefits );
 	$summary['updated'][] = 'homepage_benefits';
@@ -193,7 +234,7 @@ $progress_steps = array(
 	),
 );
 
-$existing_steps = get_post_meta( $home_id, 'homepage_progress_steps' );
+$existing_steps = $valid_fieldset_rows( $home_id, 'homepage_progress_steps', array( 'title', 'text' ) );
 if ( count( $existing_steps ) < count( $progress_steps ) ) {
 	$set_multi_meta( $home_id, 'homepage_progress_steps', $progress_steps );
 	$summary['updated'][] = 'homepage_progress_steps';
