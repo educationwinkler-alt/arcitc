@@ -1,0 +1,24 @@
+/* Editable copy must grow when changed in wp-admin; keep media masks in component CSS. */
+.template--homepage .f-page__content,
+.template--homepage .f-page__content p,
+.template--homepage .f-showroom-panel__content,
+.template--homepage .f-showroom-panel__content p,
+.template--homepage .f-progress-layout__intro,
+.template--homepage .f-progress-layout__intro p,
+.tax-product-category .f-products-series__description,
+.tax-product-category .f-configurator-cta__content p,
+.tax-product-category .f-showroom-panel__content p,
+.tax-product-category .f-progress-layout__intro p,
+.single-product .f-heading--product-detail .f-heading__description {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  overflow-wrap: anywhere;
+}
+
+.single-product .f-heading--product-detail .f-heading__description {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  line-clamp: unset !important;
+  -webkit-box-orient: initial !important;
+}

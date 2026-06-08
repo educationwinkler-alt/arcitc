@@ -37,6 +37,18 @@ if ( !function_exists( 'baspa_styles' ) ) {
 			);
 		}
 
+		$content_overflow_css_path = get_theme_file_path( 'dist/css/content-overflow-guard.css' );
+		if ( file_exists( $content_overflow_css_path ) ) {
+			$content_overflow_css_ver = filemtime( $content_overflow_css_path );
+			$content_overflow_css_ver = $is_local ? $content_overflow_css_ver . '-' . time() : $content_overflow_css_ver;
+			wp_enqueue_style(
+				get_template() . '-content-overflow-guard',
+				get_theme_file_uri( 'dist/css/content-overflow-guard.css' ),
+				array( get_template() . '-skin' ),
+				$content_overflow_css_ver
+			);
+		}
+
 		$product_colors_css_path = get_theme_file_path( 'dist/css/product-colors-mobile.css' );
 		if ( is_singular( 'product' ) && file_exists( $product_colors_css_path ) ) {
 			$product_colors_css_ver = filemtime( $product_colors_css_path );
