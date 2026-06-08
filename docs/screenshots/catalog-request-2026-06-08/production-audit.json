@@ -1,0 +1,110 @@
+{
+  "baseUrl": "https://illuminatus.cz",
+  "results": [
+    {
+      "id": "home",
+      "url": "https://illuminatus.cz/",
+      "status": 200,
+      "title": "Kompletní katalog s ceníkem produktů",
+      "text": "Kompletní katalog s ceníkem produktů Zadejte e-mail a pošleme vám odkaz na aktuální katalog a orientační ceny. U konkrétního modelu vám potom připravíme přesnou nabídku podle konfigurace. Email ✻ Odeslat Odesláním souhlasíte s podmínkami ochrany osobních údajů.",
+      "rect": {
+        "x": 0,
+        "y": 1524.75,
+        "width": 1440,
+        "height": 489.625,
+        "top": 1524.75,
+        "right": 1440,
+        "bottom": 2014.375,
+        "left": 0
+      },
+      "assets": [
+        "https://illuminatus.cz/wp-content/themes/arctic/dist/css/catalog-request.css?ver=1780925139"
+      ],
+      "formAction": "https://illuminatus.cz/#form-catalog-1",
+      "hasEmail": true,
+      "hasCatalogFormType": true,
+      "hasCatalogNonce": true,
+      "submitText": "Odeslat",
+      "directPdfLinks": []
+    },
+    {
+      "id": "hot-tubs",
+      "url": "https://illuminatus.cz/virivky/",
+      "status": 200,
+      "title": "Kompletní katalog s ceníkem produktů",
+      "text": "Kompletní katalog s ceníkem produktů Zadejte e-mail a pošleme vám odkaz na aktuální katalog a orientační ceny. U konkrétního modelu vám potom připravíme přesnou nabídku podle konfigurace. Email ✻ Odeslat Odesláním souhlasíte s podmínkami ochrany osobních údajů.",
+      "rect": {
+        "x": 0,
+        "y": 4230.25,
+        "width": 1440,
+        "height": 489.625,
+        "top": 4230.25,
+        "right": 1440,
+        "bottom": 4719.875,
+        "left": 0
+      },
+      "assets": [
+        "https://illuminatus.cz/wp-content/themes/arctic/dist/css/catalog-request.css?ver=1780925139"
+      ],
+      "formAction": "https://illuminatus.cz/virivky/#form-catalog-1",
+      "hasEmail": true,
+      "hasCatalogFormType": true,
+      "hasCatalogNonce": true,
+      "submitText": "Odeslat",
+      "directPdfLinks": []
+    },
+    {
+      "id": "swimspas",
+      "url": "https://illuminatus.cz/swimspa/",
+      "status": 200,
+      "title": "Kompletní katalog s ceníkem produktů",
+      "text": "Kompletní katalog s ceníkem produktů Zadejte e-mail a pošleme vám odkaz na aktuální katalog a orientační ceny. U konkrétního modelu vám potom připravíme přesnou nabídku podle konfigurace. Email ✻ Odeslat Odesláním souhlasíte s podmínkami ochrany osobních údajů.",
+      "rect": {
+        "x": 0,
+        "y": 3119.25,
+        "width": 1440,
+        "height": 489.625,
+        "top": 3119.25,
+        "right": 1440,
+        "bottom": 3608.875,
+        "left": 0
+      },
+      "assets": [
+        "https://illuminatus.cz/wp-content/themes/arctic/dist/css/catalog-request.css?ver=1780925139"
+      ],
+      "formAction": "https://illuminatus.cz/swimspa/#form-catalog-1",
+      "hasEmail": true,
+      "hasCatalogFormType": true,
+      "hasCatalogNonce": true,
+      "submitText": "Odeslat",
+      "directPdfLinks": []
+    },
+    {
+      "id": "product-cub",
+      "url": "https://illuminatus.cz/product/cub/",
+      "status": 200,
+      "title": "Kompletní katalog s ceníkem produktů",
+      "text": "Kompletní katalog s ceníkem produktů Zadejte e-mail a pošleme vám odkaz na aktuální katalog a orientační ceny. U konkrétního modelu vám potom připravíme přesnou nabídku podle konfigurace. Email ✻ Odeslat Odesláním souhlasíte s podmínkami ochrany osobních údajů.",
+      "rect": {
+        "x": 0,
+        "y": 2313,
+        "width": 1440,
+        "height": 489.625,
+        "top": 2313,
+        "right": 1440,
+        "bottom": 2802.625,
+        "left": 0
+      },
+      "assets": [
+        "https://illuminatus.cz/wp-content/themes/arctic/dist/css/catalog-request.css?ver=1780925139"
+      ],
+      "formAction": "https://illuminatus.cz/product/cub/#form-catalog-1",
+      "hasEmail": true,
+      "hasCatalogFormType": true,
+      "hasCatalogNonce": true,
+      "submitText": "Odeslat",
+      "directPdfLinks": []
+    }
+  ],
+  "failures": []
+}
