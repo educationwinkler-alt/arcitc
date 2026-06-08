@@ -1,0 +1,310 @@
+{
+  "baseUrl": "https://illuminatus.cz",
+  "results": [
+    {
+      "id": "home",
+      "url": "https://illuminatus.cz/",
+      "status": 200,
+      "assets": [
+        "https://illuminatus.cz/wp-content/themes/arctic/dist/css/content-overflow-guard.css?ver=1780924207"
+      ],
+      "checks": [
+        {
+          "selector": ".template--homepage .f-page__content p",
+          "index": 0,
+          "text": "Kanadské vířivky a celoroční bazény Arctic Spas dodáváme v ČR a na Slovesku jako výhradní prodejce již od roku 2025. Rádi vám pomůžeme při výběru, ať už máte přesnou představu nebo se myšlenkami na bazén či vířivku teprv",
+          "rect": {
+            "x": 584,
+            "y": 1466,
+            "width": 752,
+            "height": 125,
+            "top": 1466,
+            "right": 1336,
+            "bottom": 1591,
+            "left": 584
+          },
+          "clientHeight": 125,
+          "scrollHeight": 125,
+          "computedHeight": "125px",
+          "overflow": "visible",
+          "overflowY": "visible",
+          "maxHeight": "none",
+          "clipped": false
+        },
+        {
+          "selector": ".template--homepage .f-showroom-panel__content p",
+          "index": 0,
+          "text": "Chcete si osobně prohlédnout různá řešení a pobavit se o možnostech realizace vašeho nového bazénu nebo vířivky? Rádi si s vámi dáme kávu v našem showroomu.",
+          "rect": {
+            "x": 1088,
+            "y": 2335,
+            "width": 418,
+            "height": 100.8125,
+            "top": 2335,
+            "right": 1506,
+            "bottom": 2435.8125,
+            "left": 1088
+          },
+          "clientHeight": 101,
+          "scrollHeight": 101,
+          "computedHeight": "100.812px",
+          "overflow": "visible",
+          "overflowY": "visible",
+          "maxHeight": "none",
+          "clipped": false
+        },
+        {
+          "selector": ".template--homepage .f-progress-layout__intro p",
+          "index": 0,
+          "text": "Od první poptávky až po odbornou montáž vás provedeme celým procesem tak, aby byl výběr vířivky nebo bazénu jednoduchý a přehledný.",
+          "rect": {
+            "x": 265,
+            "y": 2949,
+            "width": 449,
+            "height": 75.609375,
+            "top": 2949,
+            "right": 714,
+            "bottom": 3024.609375,
+            "left": 265
+          },
+          "clientHeight": 76,
+          "scrollHeight": 76,
+          "computedHeight": "75.6094px",
+          "overflow": "visible",
+          "overflowY": "visible",
+          "maxHeight": "none",
+          "clipped": false
+        }
+      ],
+      "missingSelectors": []
+    },
+    {
+      "id": "hot-tubs",
+      "url": "https://illuminatus.cz/virivky/",
+      "status": 200,
+      "assets": [
+        "https://illuminatus.cz/wp-content/themes/arctic/dist/css/content-overflow-guard.css?ver=1780924207"
+      ],
+      "checks": [
+        {
+          "selector": ".tax-product-category .f-products-series__description",
+          "index": 0,
+          "text": "Dosud nevídaný komfort, konstrukce a technologie zcela podle vašich požadavků.",
+          "rect": {
+            "x": 263,
+            "y": 2257,
+            "width": 295,
+            "height": 75.609375,
+            "top": 2257,
+            "right": 558,
+            "bottom": 2332.609375,
+            "left": 263
+          },
+          "clientHeight": 76,
+          "scrollHeight": 76,
+          "computedHeight": "75.6094px",
+          "overflow": "visible",
+          "overflowY": "visible",
+          "maxHeight": "none",
+          "clipped": false
+        },
+        {
+          "selector": ".tax-product-category .f-products-series__description",
+          "index": 1,
+          "text": "Každá vířivka z řady Classic je postavena na základě více než 25 let zkušeností a vývoje.",
+          "rect": {
+            "x": 263,
+            "y": 3368,
+            "width": 295,
+            "height": 75.609375,
+            "top": 3368,
+            "right": 558,
+            "bottom": 3443.609375,
+            "left": 263
+          },
+          "clientHeight": 76,
+          "scrollHeight": 76,
+          "computedHeight": "75.6094px",
+          "overflow": "visible",
+          "overflowY": "visible",
+          "maxHeight": "none",
+          "clipped": false
+        },
+        {
+          "selector": ".tax-product-category .f-products-series__description",
+          "index": 2,
+          "text": "Cenově nejdostupnější řada vířivek, ve kterých jsou přesto zabudovány naše základní konstrukční principy.",
+          "rect": {
+            "x": 263,
+            "y": 4126,
+            "width": 295,
+            "height": 75.609375,
+            "top": 4126,
+            "right": 558,
+            "bottom": 4201.609375,
+            "left": 263
+          },
+          "clientHeight": 76,
+          "scrollHeight": 76,
+          "computedHeight": "75.6094px",
+          "overflow": "visible",
+          "overflowY": "visible",
+          "maxHeight": "none",
+          "clipped": false
+        },
+        {
+          "selector": ".tax-product-category .f-configurator-cta__content p",
+          "index": 0,
+          "text": "Vyberte si model, výbavu a barvy. Připravíme vám konkrétní doporučení i cenovou nabídku.",
+          "rect": {
+            "x": 330,
+            "y": 4552,
+            "width": 718,
+            "height": 50.40625,
+            "top": 4552,
+            "right": 1048,
+            "bottom": 4602.40625,
+            "left": 330
+          },
+          "clientHeight": 50,
+          "scrollHeight": 50,
+          "computedHeight": "50.4062px",
+          "overflow": "visible",
+          "overflowY": "visible",
+          "maxHeight": "none",
+          "clipped": false
+        }
+      ],
+      "missingSelectors": [
+        ".tax-product-category .f-showroom-panel__content p",
+        ".tax-product-category .f-progress-layout__intro p"
+      ]
+    },
+    {
+      "id": "swimspas",
+      "url": "https://illuminatus.cz/swimspa/",
+      "status": 200,
+      "assets": [
+        "https://illuminatus.cz/wp-content/themes/arctic/dist/css/content-overflow-guard.css?ver=1780924207"
+      ],
+      "checks": [
+        {
+          "selector": ".tax-product-category .f-products-series__description",
+          "index": 0,
+          "text": "Modely s velkou vodní plochou pro plavání, cvičení a rodinné využití po celý rok.",
+          "rect": {
+            "x": 263,
+            "y": 2292,
+            "width": 295,
+            "height": 75.609375,
+            "top": 2292,
+            "right": 558,
+            "bottom": 2367.609375,
+            "left": 263
+          },
+          "clientHeight": 76,
+          "scrollHeight": 76,
+          "computedHeight": "75.6094px",
+          "overflow": "visible",
+          "overflowY": "visible",
+          "maxHeight": "none",
+          "clipped": false
+        },
+        {
+          "selector": ".tax-product-category .f-products-series__description",
+          "index": 1,
+          "text": "Modely s rozsáhlejší hydroterapií, protiproudem a volitelnými konfiguracemi výbavy.",
+          "rect": {
+            "x": 263,
+            "y": 3080.59375,
+            "width": 295,
+            "height": 75.609375,
+            "top": 3080.59375,
+            "right": 558,
+            "bottom": 3156.203125,
+            "left": 263
+          },
+          "clientHeight": 76,
+          "scrollHeight": 76,
+          "computedHeight": "75.6094px",
+          "overflow": "visible",
+          "overflowY": "visible",
+          "maxHeight": "none",
+          "clipped": false
+        }
+      ],
+      "missingSelectors": [
+        ".tax-product-category .f-configurator-cta__content p",
+        ".tax-product-category .f-showroom-panel__content p",
+        ".tax-product-category .f-progress-layout__intro p"
+      ]
+    },
+    {
+      "id": "product-cub",
+      "url": "https://illuminatus.cz/product/cub/",
+      "status": 200,
+      "assets": [
+        "https://illuminatus.cz/wp-content/themes/arctic/dist/css/content-overflow-guard.css?ver=1780924207"
+      ],
+      "checks": [
+        {
+          "selector": ".single-product .f-heading--product-detail .f-heading__description",
+          "index": 0,
+          "text": "Dvě křesla pro pár a hluboce tvarované lehátko dělá z vířivky Cub velmi vyhledávaný model. Užijte si pohodlí a komfort v křeslech s víceúrovňovými opěrkami rukou...",
+          "rect": {
+            "x": 260,
+            "y": 410,
+            "width": 488,
+            "height": 124,
+            "top": 410,
+            "right": 748,
+            "bottom": 534,
+            "left": 260
+          },
+          "clientHeight": 124,
+          "scrollHeight": 124,
+          "computedHeight": "124px",
+          "overflow": "visible",
+          "overflowY": "visible",
+          "maxHeight": "none",
+          "clipped": false
+        }
+      ],
+      "missingSelectors": []
+    },
+    {
+      "id": "product-timberwolf",
+      "url": "https://illuminatus.cz/product/timberwolf/",
+      "status": 200,
+      "assets": [
+        "https://illuminatus.cz/wp-content/themes/arctic/dist/css/content-overflow-guard.css?ver=1780924207"
+      ],
+      "checks": [
+        {
+          "selector": ".single-product .f-heading--product-detail .f-heading__description",
+          "index": 0,
+          "text": "Maximální terapii naleznete ve dvou pohodlných lehátkách, navíc je zde místo i pro třetího. Maximální komfort na minimálním prostoru.",
+          "rect": {
+            "x": 260,
+            "y": 410,
+            "width": 488,
+            "height": 93,
+            "top": 410,
+            "right": 748,
+            "bottom": 503,
+            "left": 260
+          },
+          "clientHeight": 93,
+          "scrollHeight": 93,
+          "computedHeight": "93px",
+          "overflow": "visible",
+          "overflowY": "visible",
+          "maxHeight": "none",
+          "clipped": false
+        }
+      ],
+      "missingSelectors": []
+    }
+  ],
+  "failures": []
+}

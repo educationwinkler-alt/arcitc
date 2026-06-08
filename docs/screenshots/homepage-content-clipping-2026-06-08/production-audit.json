@@ -1,0 +1,35 @@
+{
+  "url": "https://illuminatus.cz/",
+  "headingText": "Jsme výhradní prodejce Arctic Spas",
+  "paragraphText": "Kanadské vířivky a celoroční bazény Arctic Spas dodáváme v ČR a na Slovesku jako výhradní prodejce již od roku 2025. Rádi vám pomůžeme při výběru, ať už máte přesnou představu nebo se myšlenkami na bazén či vířivku teprve začínáte zabývat. Nejprve se pobavíme o vašich přáních a potřebách, navrhneme vhodné řešení, zpracujeme podrobnou nabídku a nakonec projekt zrealizujeme.",
+  "paragraph": {
+    "rect": {
+      "x": 584,
+      "y": 1466,
+      "width": 752,
+      "height": 125,
+      "top": 1466,
+      "right": 1336,
+      "bottom": 1591,
+      "left": 584
+    },
+    "clientHeight": 125,
+    "scrollHeight": 125,
+    "computedHeight": "125px",
+    "overflow": "visible",
+    "maxHeight": "none"
+  },
+  "button": {
+    "text": "Více o nás",
+    "rect": {
+      "x": 902,
+      "y": 1612,
+      "width": 116,
+      "height": 50,
+      "top": 1612,
+      "right": 1018,
+      "bottom": 1662,
+      "left": 902
+    }
+  }
+}
