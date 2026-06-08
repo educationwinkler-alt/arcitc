@@ -1,0 +1,5540 @@
+{
+  "generatedAt": "2026-06-08T10:20:27.708Z",
+  "pages": [
+    {
+      "id": "home",
+      "path": "/"
+    },
+    {
+      "id": "hot-tubs",
+      "path": "/virivky/"
+    },
+    {
+      "id": "swimspas",
+      "path": "/swimspa/"
+    },
+    {
+      "id": "downloads",
+      "path": "/ke-stazeni/"
+    },
+    {
+      "id": "support",
+      "path": "/podpora/"
+    },
+    {
+      "id": "product-cub",
+      "path": "/product/cub/",
+      "product": true
+    },
+    {
+      "id": "product-timberwolf",
+      "path": "/product/timberwolf/",
+      "product": true
+    },
+    {
+      "id": "product-ocean",
+      "path": "/product/ocean/",
+      "product": true
+    },
+    {
+      "id": "offers-archive",
+      "path": "/akcni-nabidky/",
+      "offers": true
+    },
+    {
+      "id": "offer-stock",
+      "path": "/offer/vyprodej-skladovych-virivek/",
+      "offers": true
+    }
+  ],
+  "results": [
+    {
+      "target": "local",
+      "pageId": "home",
+      "url": "http://localhost:8090/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\local-home-desktop.png",
+      "page": {
+        "id": "home",
+        "path": "/"
+      },
+      "finalUrl": "http://localhost:8090/",
+      "title": "Arctic Spas Local",
+      "bodyClass": "home wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-19 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured template--homepage",
+      "h1": "Arctic Spas Local",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": "f-hero-promo__button"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": "f-hero-promo__button"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "http://localhost:8090/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608101955"
+            },
+            {
+              "name": "f-title",
+              "value": "Uvod"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "6b14f967f1"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "http://localhost:8090/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608101991"
+            },
+            {
+              "name": "f-title",
+              "value": "Uvod"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "9957d593ed"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 0,
+        "configurationPrices": [],
+        "navigationLinks": []
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "local",
+      "pageId": "hot-tubs",
+      "url": "http://localhost:8090/virivky/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\local-hot-tubs-desktop.png",
+      "page": {
+        "id": "hot-tubs",
+        "path": "/virivky/"
+      },
+      "finalUrl": "http://localhost:8090/virivky/",
+      "title": "Vířivky – Arctic Spas Local",
+      "bodyClass": "archive tax-product-category term-virivky term-6 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Venkovní vířivky Arctic Spas",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "http://localhost:8090/virivky/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608101964"
+            },
+            {
+              "name": "f-title",
+              "value": "Vířivky"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/virivky/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "6b14f967f1"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "http://localhost:8090/virivky/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608101956"
+            },
+            {
+              "name": "f-title",
+              "value": "Vířivky"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/virivky/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "9957d593ed"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [
+          "od 246 700 Kč vč. montáže",
+          "od 249 000 Kč vč. standardní výbavy",
+          "od 249 000 Kč",
+          "od 209 000 Kč"
+        ],
+        "configurationCount": 0,
+        "configurationPrices": [],
+        "navigationLinks": []
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "local",
+      "pageId": "swimspas",
+      "url": "http://localhost:8090/swimspa/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\local-swimspas-desktop.png",
+      "page": {
+        "id": "swimspas",
+        "path": "/swimspa/"
+      },
+      "finalUrl": "http://localhost:8090/swimspa/",
+      "title": "Celoroční bazény – Arctic Spas Local",
+      "bodyClass": "archive tax-product-category term-swimspa term-16 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Celoroční bazény Arctic Spas",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "http://localhost:8090/swimspa/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608101995"
+            },
+            {
+              "name": "f-title",
+              "value": "Celoroční bazény"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/swimspa/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "6b14f967f1"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "http://localhost:8090/swimspa/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608101916"
+            },
+            {
+              "name": "f-title",
+              "value": "Celoroční bazény"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/swimspa/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "9957d593ed"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 0,
+        "configurationPrices": [],
+        "navigationLinks": []
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "local",
+      "pageId": "downloads",
+      "url": "http://localhost:8090/ke-stazeni/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\local-downloads-desktop.png",
+      "page": {
+        "id": "downloads",
+        "path": "/ke-stazeni/"
+      },
+      "finalUrl": "http://localhost:8090/ke-stazeni/",
+      "title": "Ke stažení – Arctic Spas Local",
+      "bodyClass": "wp-singular page-template page-template-template-downloads page-template-template-downloads-php page page-id-13 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Ke stažení",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "http://localhost:8090/ke-stazeni/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608101910"
+            },
+            {
+              "name": "f-title",
+              "value": "Ke stažení"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/ke-stazeni/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "6b14f967f1"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": true,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "http://localhost:8090/ke-stazeni/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608101992"
+            },
+            {
+              "name": "f-title",
+              "value": "Ke stažení"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/ke-stazeni/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "9957d593ed"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": true,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 0,
+        "configurationPrices": [],
+        "navigationLinks": []
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "local",
+      "pageId": "support",
+      "url": "http://localhost:8090/podpora/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\local-support-desktop.png",
+      "page": {
+        "id": "support",
+        "path": "/podpora/"
+      },
+      "finalUrl": "http://localhost:8090/podpora/",
+      "title": "Podpora – Arctic Spas Local",
+      "bodyClass": "wp-singular page-template page-template-template-support page-template-template-support-php page page-id-23 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Podpora",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-support-form__card f-support-form__card--contract",
+          "action": "http://localhost:8090/kontakt/",
+          "method": "get",
+          "text": "Jméno E-mail Telefon Dotaz nebo požadavek Odesláním souhlasíte se zpracováním osobních údajů. Odeslat požadavek",
+          "hiddenValues": [],
+          "emailInputs": [
+            {
+              "name": "email",
+              "placeholder": "",
+              "required": false
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "http://localhost:8090/podpora/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608101973"
+            },
+            {
+              "name": "f-title",
+              "value": "Podpora"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/podpora/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "6b14f967f1"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "http://localhost:8090/podpora/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608101986"
+            },
+            {
+              "name": "f-title",
+              "value": "Podpora"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/podpora/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "9957d593ed"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 0,
+        "configurationPrices": [],
+        "navigationLinks": []
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "local",
+      "pageId": "product-cub",
+      "url": "http://localhost:8090/product/cub/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\local-product-cub-desktop.png",
+      "page": {
+        "id": "product-cub",
+        "path": "/product/cub/",
+        "product": true
+      },
+      "finalUrl": "http://localhost:8090/product/cub/",
+      "title": "Cub – Arctic Spas Local",
+      "bodyClass": "wp-singular product-template-default single single-product postid-65 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Venkovní vířivka Cub",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "http://localhost:8090/product/cub/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608101958"
+            },
+            {
+              "name": "f-title",
+              "value": "Cub"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/product/cub/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "6b14f967f1"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "http://localhost:8090/product/cub/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608101982"
+            },
+            {
+              "name": "f-title",
+              "value": "Cub"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/product/cub/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "9957d593ed"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 5,
+        "configurationPrices": [],
+        "navigationLinks": [
+          {
+            "text": "Barvy",
+            "href": "http://localhost:8090/product/cub/#barvy",
+            "visible": true,
+            "classes": ""
+          },
+          {
+            "text": "Výhody",
+            "href": "http://localhost:8090/product/cub/#vyhody",
+            "visible": true,
+            "classes": ""
+          },
+          {
+            "text": "Volitelná výbava",
+            "href": "http://localhost:8090/product/cub/#volitelna-vybava",
+            "visible": true,
+            "classes": ""
+          }
+        ]
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "local",
+      "pageId": "product-timberwolf",
+      "url": "http://localhost:8090/product/timberwolf/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\local-product-timberwolf-desktop.png",
+      "page": {
+        "id": "product-timberwolf",
+        "path": "/product/timberwolf/",
+        "product": true
+      },
+      "finalUrl": "http://localhost:8090/product/timberwolf/",
+      "title": "Timberwolf – Arctic Spas Local",
+      "bodyClass": "wp-singular product-template-default single single-product postid-85 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Venkovní vířivka Timberwolf",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "http://localhost:8090/product/timberwolf/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608101977"
+            },
+            {
+              "name": "f-title",
+              "value": "Timberwolf"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/product/timberwolf/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "6b14f967f1"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "http://localhost:8090/product/timberwolf/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608101952"
+            },
+            {
+              "name": "f-title",
+              "value": "Timberwolf"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/product/timberwolf/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "9957d593ed"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [
+          "od 246 700 Kč vč. montáže",
+          "od 246 700 Kč"
+        ],
+        "configurationCount": 8,
+        "configurationPrices": [
+          "od 246 700 Kč",
+          "na dotaz"
+        ],
+        "navigationLinks": [
+          {
+            "text": "Barvy",
+            "href": "http://localhost:8090/product/timberwolf/#barvy",
+            "visible": true,
+            "classes": ""
+          },
+          {
+            "text": "Výhody",
+            "href": "http://localhost:8090/product/timberwolf/#vyhody",
+            "visible": true,
+            "classes": ""
+          },
+          {
+            "text": "Volitelná výbava",
+            "href": "http://localhost:8090/product/timberwolf/#volitelna-vybava",
+            "visible": true,
+            "classes": ""
+          }
+        ]
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "local",
+      "pageId": "product-ocean",
+      "url": "http://localhost:8090/product/ocean/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\local-product-ocean-desktop.png",
+      "page": {
+        "id": "product-ocean",
+        "path": "/product/ocean/",
+        "product": true
+      },
+      "finalUrl": "http://localhost:8090/product/ocean/",
+      "title": "Arctic Ocean – Arctic Spas Local",
+      "bodyClass": "wp-singular product-template-default single single-product postid-98 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Celoroční bazén Arctic Ocean",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "http://localhost:8090/product/ocean/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608102019"
+            },
+            {
+              "name": "f-title",
+              "value": "Arctic Ocean"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/product/ocean/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "6b14f967f1"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "http://localhost:8090/product/ocean/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608102067"
+            },
+            {
+              "name": "f-title",
+              "value": "Arctic Ocean"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/product/ocean/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "9957d593ed"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 17,
+        "configurationPrices": [],
+        "navigationLinks": [
+          {
+            "text": "Barvy",
+            "href": "http://localhost:8090/product/ocean/#barvy",
+            "visible": true,
+            "classes": ""
+          }
+        ]
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "local",
+      "pageId": "offers-archive",
+      "url": "http://localhost:8090/akcni-nabidky/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\local-offers-archive-desktop.png",
+      "page": {
+        "id": "offers-archive",
+        "path": "/akcni-nabidky/",
+        "offers": true
+      },
+      "finalUrl": "http://localhost:8090/akcni-nabidky/",
+      "title": "Akční nabídky – Arctic Spas Local",
+      "bodyClass": "wp-singular page-template page-template-template-offers page-template-template-offers-php page page-id-2867 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Akční nabídky",
+      "commercialLinks": [
+        {
+          "text": "Přeskočit na navigaci",
+          "href": "http://localhost:8090/akcni-nabidky/#navigace",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na obsah",
+          "href": "http://localhost:8090/akcni-nabidky/#obsah",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na patičku",
+          "href": "http://localhost:8090/akcni-nabidky/#paticka",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "",
+          "href": "http://localhost:8090/nabidka/vyprodej-skladovych-virivek/",
+          "visible": true,
+          "classes": "f-offer-card__media lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek",
+          "href": "http://localhost:8090/nabidka/vyprodej-skladovych-virivek/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Zobrazit nabídku",
+          "href": "http://localhost:8090/nabidka/vyprodej-skladovych-virivek/",
+          "visible": true,
+          "classes": "f-offer-card__button a-button"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Přeskočit na navigaci",
+          "href": "http://localhost:8090/akcni-nabidky/#navigace",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na obsah",
+          "href": "http://localhost:8090/akcni-nabidky/#obsah",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na patičku",
+          "href": "http://localhost:8090/akcni-nabidky/#paticka",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "",
+          "href": "http://localhost:8090/nabidka/vyprodej-skladovych-virivek/",
+          "visible": true,
+          "classes": "f-offer-card__media lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek",
+          "href": "http://localhost:8090/nabidka/vyprodej-skladovych-virivek/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Zobrazit nabídku",
+          "href": "http://localhost:8090/nabidka/vyprodej-skladovych-virivek/",
+          "visible": true,
+          "classes": "f-offer-card__button a-button"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "http://localhost:8090/akcni-nabidky/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608102083"
+            },
+            {
+              "name": "f-title",
+              "value": "Akční nabídky"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/akcni-nabidky/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "6b14f967f1"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "http://localhost:8090/akcni-nabidky/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608102024"
+            },
+            {
+              "name": "f-title",
+              "value": "Akční nabídky"
+            },
+            {
+              "name": "f-url",
+              "value": "http://localhost:8090/akcni-nabidky/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "9957d593ed"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 0,
+        "configurationPrices": [],
+        "navigationLinks": []
+      },
+      "offers": {
+        "cardCount": 7,
+        "cardTexts": [
+          "Skladové vířivky Výprodej skladových vířivek Vybrané skladové modely lze po domluvě dodat rychleji než běžnou objednávku. Dostupnost a konkrétní konfiguraci potvrdíme podle aktuálního stavu skladu. Dostupnost Skladem / na cestě Zvýhodnění Individuální zvýhodnění Cena Na vyžádání Zobrazit nabídku",
+          "",
+          "Skladové vířivky Výprodej skladových vířivek Vybrané skladové modely lze po domluvě dodat rychleji než běžnou objednávku. Dostupnost a konkrétní konfiguraci potvrdíme podle aktuálního stavu skladu. Dostupnost Skladem / na cestě Zvýhodnění Individuální zvýhodnění Cena Na vyžádání Zobrazit nabídku",
+          "Skladové vířivky",
+          "Vybrané skladové modely lze po domluvě dodat rychleji než běžnou objednávku. Dostupnost a konkrétní konfiguraci potvrdíme podle aktuálního stavu skladu.",
+          "Dostupnost Skladem / na cestě Zvýhodnění Individuální zvýhodnění Cena Na vyžádání",
+          "Zobrazit nabídku"
+        ],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "local",
+      "pageId": "offer-stock",
+      "url": "http://localhost:8090/offer/vyprodej-skladovych-virivek/",
+      "status": 404,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\local-offer-stock-desktop.png",
+      "page": {
+        "id": "offer-stock",
+        "path": "/offer/vyprodej-skladovych-virivek/",
+        "offers": true
+      },
+      "finalUrl": "http://localhost:8090/offer/vyprodej-skladovych-virivek/",
+      "title": "Stránka nebyla nalezena – Arctic Spas Local",
+      "bodyClass": "error404 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Stránka nenalezena",
+      "commercialLinks": [
+        {
+          "text": "Přeskočit na navigaci",
+          "href": "http://localhost:8090/offer/vyprodej-skladovych-virivek/#navigace",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na obsah",
+          "href": "http://localhost:8090/offer/vyprodej-skladovych-virivek/#obsah",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na patičku",
+          "href": "http://localhost:8090/offer/vyprodej-skladovych-virivek/#paticka",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Přeskočit na navigaci",
+          "href": "http://localhost:8090/offer/vyprodej-skladovych-virivek/#navigace",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na obsah",
+          "href": "http://localhost:8090/offer/vyprodej-skladovych-virivek/#obsah",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na patičku",
+          "href": "http://localhost:8090/offer/vyprodej-skladovych-virivek/#paticka",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "http://localhost:8090/nabidka/vyprodej-skladovych-virivek/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608102083"
+            },
+            {
+              "name": "f-title",
+              "value": ""
+            },
+            {
+              "name": "f-url",
+              "value": ""
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "6b14f967f1"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "http://localhost:8090/nabidka/vyprodej-skladovych-virivek/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608102051"
+            },
+            {
+              "name": "f-title",
+              "value": ""
+            },
+            {
+              "name": "f-url",
+              "value": ""
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "9957d593ed"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "http://localhost:8090/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "a6812bff32"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 0,
+        "configurationPrices": [],
+        "navigationLinks": []
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "home",
+      "url": "https://illuminatus.cz/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\prod-home-desktop.png",
+      "page": {
+        "id": "home",
+        "path": "/"
+      },
+      "finalUrl": "https://illuminatus.cz/",
+      "title": "Arctic Spas",
+      "bodyClass": "home wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-19 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured template--homepage",
+      "h1": "Arctic Spas",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": "f-hero-promo__button"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": "f-hero-promo__button"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "https://illuminatus.cz/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122071"
+            },
+            {
+              "name": "f-title",
+              "value": "Uvod"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "d7a9207f38"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "https://illuminatus.cz/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122013"
+            },
+            {
+              "name": "f-title",
+              "value": "Uvod"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "3c6dcb1c7e"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 0,
+        "configurationPrices": [],
+        "navigationLinks": []
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "hot-tubs",
+      "url": "https://illuminatus.cz/virivky/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\prod-hot-tubs-desktop.png",
+      "page": {
+        "id": "hot-tubs",
+        "path": "/virivky/"
+      },
+      "finalUrl": "https://illuminatus.cz/virivky/",
+      "title": "Vířivky – Arctic Spas",
+      "bodyClass": "archive tax-product-category term-virivky term-6 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Venkovní vířivky Arctic Spas",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "https://illuminatus.cz/virivky/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122084"
+            },
+            {
+              "name": "f-title",
+              "value": "Vířivky"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/virivky/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "d7a9207f38"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "https://illuminatus.cz/virivky/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122010"
+            },
+            {
+              "name": "f-title",
+              "value": "Vířivky"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/virivky/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "3c6dcb1c7e"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [
+          "od 246 700 Kč vč. montáže",
+          "od 249 000 Kč vč. standardní výbavy",
+          "od 249 000 Kč",
+          "od 209 000 Kč"
+        ],
+        "configurationCount": 0,
+        "configurationPrices": [],
+        "navigationLinks": []
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "swimspas",
+      "url": "https://illuminatus.cz/swimspa/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\prod-swimspas-desktop.png",
+      "page": {
+        "id": "swimspas",
+        "path": "/swimspa/"
+      },
+      "finalUrl": "https://illuminatus.cz/swimspa/",
+      "title": "Celoroční bazény – Arctic Spas",
+      "bodyClass": "archive tax-product-category term-swimspa term-16 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Celoroční bazény Arctic Spas",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "https://illuminatus.cz/swimspa/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122041"
+            },
+            {
+              "name": "f-title",
+              "value": "Celoroční bazény"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/swimspa/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "d7a9207f38"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "https://illuminatus.cz/swimspa/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122037"
+            },
+            {
+              "name": "f-title",
+              "value": "Celoroční bazény"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/swimspa/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "3c6dcb1c7e"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 0,
+        "configurationPrices": [],
+        "navigationLinks": []
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "downloads",
+      "url": "https://illuminatus.cz/ke-stazeni/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\prod-downloads-desktop.png",
+      "page": {
+        "id": "downloads",
+        "path": "/ke-stazeni/"
+      },
+      "finalUrl": "https://illuminatus.cz/ke-stazeni/",
+      "title": "Ke stažení – Arctic Spas",
+      "bodyClass": "wp-singular page-template page-template-template-downloads page-template-template-downloads-php page page-id-13 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Ke stažení",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "https://illuminatus.cz/ke-stazeni/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122017"
+            },
+            {
+              "name": "f-title",
+              "value": "Ke stažení"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/ke-stazeni/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "d7a9207f38"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": true,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "https://illuminatus.cz/ke-stazeni/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122010"
+            },
+            {
+              "name": "f-title",
+              "value": "Ke stažení"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/ke-stazeni/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "3c6dcb1c7e"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": true,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 0,
+        "configurationPrices": [],
+        "navigationLinks": []
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "support",
+      "url": "https://illuminatus.cz/podpora/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\prod-support-desktop.png",
+      "page": {
+        "id": "support",
+        "path": "/podpora/"
+      },
+      "finalUrl": "https://illuminatus.cz/podpora/",
+      "title": "Podpora – Arctic Spas",
+      "bodyClass": "wp-singular page-template page-template-template-support page-template-template-support-php page page-id-23 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Podpora",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-support-form__card f-support-form__card--contract",
+          "action": "https://illuminatus.cz/kontakt/",
+          "method": "get",
+          "text": "Jméno E-mail Telefon Dotaz nebo požadavek Odesláním souhlasíte se zpracováním osobních údajů. Odeslat požadavek",
+          "hiddenValues": [],
+          "emailInputs": [
+            {
+              "name": "email",
+              "placeholder": "",
+              "required": false
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "https://illuminatus.cz/podpora/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122042"
+            },
+            {
+              "name": "f-title",
+              "value": "Podpora"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/podpora/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "d7a9207f38"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "https://illuminatus.cz/podpora/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122043"
+            },
+            {
+              "name": "f-title",
+              "value": "Podpora"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/podpora/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "3c6dcb1c7e"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 0,
+        "configurationPrices": [],
+        "navigationLinks": []
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "product-cub",
+      "url": "https://illuminatus.cz/product/cub/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\prod-product-cub-desktop.png",
+      "page": {
+        "id": "product-cub",
+        "path": "/product/cub/",
+        "product": true
+      },
+      "finalUrl": "https://illuminatus.cz/product/cub/",
+      "title": "Cub – Arctic Spas",
+      "bodyClass": "wp-singular product-template-default single single-product postid-65 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Venkovní vířivka Cub",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "https://illuminatus.cz/product/cub/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122072"
+            },
+            {
+              "name": "f-title",
+              "value": "Cub"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/product/cub/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "d7a9207f38"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "https://illuminatus.cz/product/cub/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122066"
+            },
+            {
+              "name": "f-title",
+              "value": "Cub"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/product/cub/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "3c6dcb1c7e"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 5,
+        "configurationPrices": [],
+        "navigationLinks": [
+          {
+            "text": "Barvy",
+            "href": "https://illuminatus.cz/product/cub/#barvy",
+            "visible": true,
+            "classes": ""
+          },
+          {
+            "text": "Výhody",
+            "href": "https://illuminatus.cz/product/cub/#vyhody",
+            "visible": true,
+            "classes": ""
+          },
+          {
+            "text": "Volitelná výbava",
+            "href": "https://illuminatus.cz/product/cub/#volitelna-vybava",
+            "visible": true,
+            "classes": ""
+          }
+        ]
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "product-timberwolf",
+      "url": "https://illuminatus.cz/product/timberwolf/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\prod-product-timberwolf-desktop.png",
+      "page": {
+        "id": "product-timberwolf",
+        "path": "/product/timberwolf/",
+        "product": true
+      },
+      "finalUrl": "https://illuminatus.cz/product/timberwolf/",
+      "title": "Timberwolf – Arctic Spas",
+      "bodyClass": "wp-singular product-template-default single single-product postid-85 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Venkovní vířivka Timberwolf",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "https://illuminatus.cz/product/timberwolf/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122056"
+            },
+            {
+              "name": "f-title",
+              "value": "Timberwolf"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/product/timberwolf/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "d7a9207f38"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "https://illuminatus.cz/product/timberwolf/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122056"
+            },
+            {
+              "name": "f-title",
+              "value": "Timberwolf"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/product/timberwolf/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "3c6dcb1c7e"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [
+          "od 246 700 Kč vč. montáže",
+          "od 246 700 Kč"
+        ],
+        "configurationCount": 8,
+        "configurationPrices": [
+          "od 246 700 Kč",
+          "na dotaz"
+        ],
+        "navigationLinks": [
+          {
+            "text": "Barvy",
+            "href": "https://illuminatus.cz/product/timberwolf/#barvy",
+            "visible": true,
+            "classes": ""
+          },
+          {
+            "text": "Výhody",
+            "href": "https://illuminatus.cz/product/timberwolf/#vyhody",
+            "visible": true,
+            "classes": ""
+          },
+          {
+            "text": "Volitelná výbava",
+            "href": "https://illuminatus.cz/product/timberwolf/#volitelna-vybava",
+            "visible": true,
+            "classes": ""
+          }
+        ]
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "product-ocean",
+      "url": "https://illuminatus.cz/product/ocean/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\prod-product-ocean-desktop.png",
+      "page": {
+        "id": "product-ocean",
+        "path": "/product/ocean/",
+        "product": true
+      },
+      "finalUrl": "https://illuminatus.cz/product/ocean/",
+      "title": "Arctic Ocean – Arctic Spas",
+      "bodyClass": "wp-singular product-template-default single single-product postid-98 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Celoroční bazén Arctic Ocean",
+      "commercialLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "https://illuminatus.cz/product/ocean/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122068"
+            },
+            {
+              "name": "f-title",
+              "value": "Arctic Ocean"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/product/ocean/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "d7a9207f38"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "https://illuminatus.cz/product/ocean/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122011"
+            },
+            {
+              "name": "f-title",
+              "value": "Arctic Ocean"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/product/ocean/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "3c6dcb1c7e"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 17,
+        "configurationPrices": [],
+        "navigationLinks": [
+          {
+            "text": "Barvy",
+            "href": "https://illuminatus.cz/product/ocean/#barvy",
+            "visible": true,
+            "classes": ""
+          }
+        ]
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "offers-archive",
+      "url": "https://illuminatus.cz/akcni-nabidky/",
+      "status": 200,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\prod-offers-archive-desktop.png",
+      "page": {
+        "id": "offers-archive",
+        "path": "/akcni-nabidky/",
+        "offers": true
+      },
+      "finalUrl": "https://illuminatus.cz/akcni-nabidky/",
+      "title": "Akční nabídky – Arctic Spas",
+      "bodyClass": "wp-singular page-template page-template-template-offers page-template-template-offers-php page page-id-2867 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Akční nabídky",
+      "commercialLinks": [
+        {
+          "text": "Přeskočit na navigaci",
+          "href": "https://illuminatus.cz/akcni-nabidky/#navigace",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na obsah",
+          "href": "https://illuminatus.cz/akcni-nabidky/#obsah",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na patičku",
+          "href": "https://illuminatus.cz/akcni-nabidky/#paticka",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "",
+          "href": "https://illuminatus.cz/nabidka/vyprodej-skladovych-virivek/",
+          "visible": true,
+          "classes": "f-offer-card__media lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek",
+          "href": "https://illuminatus.cz/nabidka/vyprodej-skladovych-virivek/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Zobrazit nabídku",
+          "href": "https://illuminatus.cz/nabidka/vyprodej-skladovych-virivek/",
+          "visible": true,
+          "classes": "f-offer-card__button a-button"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Přeskočit na navigaci",
+          "href": "https://illuminatus.cz/akcni-nabidky/#navigace",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na obsah",
+          "href": "https://illuminatus.cz/akcni-nabidky/#obsah",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na patičku",
+          "href": "https://illuminatus.cz/akcni-nabidky/#paticka",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "",
+          "href": "https://illuminatus.cz/nabidka/vyprodej-skladovych-virivek/",
+          "visible": true,
+          "classes": "f-offer-card__media lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek",
+          "href": "https://illuminatus.cz/nabidka/vyprodej-skladovych-virivek/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Zobrazit nabídku",
+          "href": "https://illuminatus.cz/nabidka/vyprodej-skladovych-virivek/",
+          "visible": true,
+          "classes": "f-offer-card__button a-button"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "https://illuminatus.cz/akcni-nabidky/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122074"
+            },
+            {
+              "name": "f-title",
+              "value": "Akční nabídky"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/akcni-nabidky/"
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "d7a9207f38"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "https://illuminatus.cz/akcni-nabidky/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122019"
+            },
+            {
+              "name": "f-title",
+              "value": "Akční nabídky"
+            },
+            {
+              "name": "f-url",
+              "value": "https://illuminatus.cz/akcni-nabidky/"
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "3c6dcb1c7e"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 0,
+        "configurationPrices": [],
+        "navigationLinks": []
+      },
+      "offers": {
+        "cardCount": 7,
+        "cardTexts": [
+          "Skladové vířivky Výprodej skladových vířivek Vybrané skladové modely lze po domluvě dodat rychleji než běžnou objednávku. Dostupnost a konkrétní konfiguraci potvrdíme podle aktuálního stavu skladu. Dostupnost Skladem / na cestě Zvýhodnění Individuální zvýhodnění Cena Na vyžádání Zobrazit nabídku",
+          "",
+          "Skladové vířivky Výprodej skladových vířivek Vybrané skladové modely lze po domluvě dodat rychleji než běžnou objednávku. Dostupnost a konkrétní konfiguraci potvrdíme podle aktuálního stavu skladu. Dostupnost Skladem / na cestě Zvýhodnění Individuální zvýhodnění Cena Na vyžádání Zobrazit nabídku",
+          "Skladové vířivky",
+          "Vybrané skladové modely lze po domluvě dodat rychleji než běžnou objednávku. Dostupnost a konkrétní konfiguraci potvrdíme podle aktuálního stavu skladu.",
+          "Dostupnost Skladem / na cestě Zvýhodnění Individuální zvýhodnění Cena Na vyžádání",
+          "Zobrazit nabídku"
+        ],
+        "oldStockSaleTextCount": 1
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "offer-stock",
+      "url": "https://illuminatus.cz/offer/vyprodej-skladovych-virivek/",
+      "status": 404,
+      "errorMessage": "",
+      "screenshot": "docs\\screenshots\\pricing-catalog-audit-2026-06-08\\prod-offer-stock-desktop.png",
+      "page": {
+        "id": "offer-stock",
+        "path": "/offer/vyprodej-skladovych-virivek/",
+        "offers": true
+      },
+      "finalUrl": "https://illuminatus.cz/offer/vyprodej-skladovych-virivek/",
+      "title": "Stránka nebyla nalezena – Arctic Spas",
+      "bodyClass": "error404 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Stránka nenalezena",
+      "commercialLinks": [
+        {
+          "text": "Přeskočit na navigaci",
+          "href": "https://illuminatus.cz/offer/vyprodej-skladovych-virivek/#navigace",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na obsah",
+          "href": "https://illuminatus.cz/offer/vyprodej-skladovych-virivek/#obsah",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na patičku",
+          "href": "https://illuminatus.cz/offer/vyprodej-skladovych-virivek/#paticka",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": ""
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "menuLinks": [
+        {
+          "text": "Přeskočit na navigaci",
+          "href": "https://illuminatus.cz/offer/vyprodej-skladovych-virivek/#navigace",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na obsah",
+          "href": "https://illuminatus.cz/offer/vyprodej-skladovych-virivek/#obsah",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Přeskočit na patičku",
+          "href": "https://illuminatus.cz/offer/vyprodej-skladovych-virivek/#paticka",
+          "visible": true,
+          "classes": "f-skiplink a-skiplink"
+        },
+        {
+          "text": "Akční nabídky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        }
+      ],
+      "catalogBlocks": [],
+      "forms": [
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-contact-contact-1",
+          "classes": "f-form--contact f-form js-form",
+          "action": "https://illuminatus.cz/nabidka/vyprodej-skladovych-virivek/#form-contact-contact-1",
+          "method": "post",
+          "text": "Kontaktní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ O co máte zájem? ✻ Vyberte, o co máte zájem ... Swimspa Vířivka Servis Akční nabídka Dotaz nebo poptávka Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "contact"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Kontakt"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122032"
+            },
+            {
+              "name": "f-title",
+              "value": ""
+            },
+            {
+              "name": "f-url",
+              "value": ""
+            },
+            {
+              "name": "f-contact-nonce",
+              "value": "d7a9207f38"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "form-service-1",
+          "classes": "f-form--service f-form js-form",
+          "action": "https://illuminatus.cz/nabidka/vyprodej-skladovych-virivek/#form-service-1",
+          "method": "post",
+          "text": "Servisní formulář Jméno a příjmení ✻ Email ✻ Telefon ✻ Dotaz nebo servisní požadavek Odesláním souhlasíte s podmínkami ochrany osobních údajů. Odeslat požadavek",
+          "hiddenValues": [
+            {
+              "name": "f-form",
+              "value": "service"
+            },
+            {
+              "name": "f-form-name",
+              "value": "Servis"
+            },
+            {
+              "name": "f-number",
+              "value": "260608122035"
+            },
+            {
+              "name": "f-title",
+              "value": ""
+            },
+            {
+              "name": "f-url",
+              "value": ""
+            },
+            {
+              "name": "f-interest",
+              "value": "service"
+            },
+            {
+              "name": "f-service-nonce",
+              "value": "3c6dcb1c7e"
+            }
+          ],
+          "emailInputs": [
+            {
+              "name": "f-email",
+              "placeholder": "Vyplňte e-mail ...",
+              "required": true
+            }
+          ],
+          "buttonTexts": [
+            "Odeslat požadavek"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        },
+        {
+          "id": "",
+          "classes": "f-search js-search",
+          "action": "https://illuminatus.cz/",
+          "method": "get",
+          "text": "Vyhledat Vyhledat",
+          "hiddenValues": [
+            {
+              "name": "post_type",
+              "value": "post,page,product"
+            },
+            {
+              "name": "post_taxonomy",
+              "value": "category,product-category"
+            },
+            {
+              "name": "search_nonce",
+              "value": "1318e99cbe"
+            }
+          ],
+          "emailInputs": [],
+          "buttonTexts": [
+            "Vyhledat"
+          ],
+          "isCatalogLikely": false,
+          "isEcomailVisible": false
+        }
+      ],
+      "frontendMentionsEcomail": false,
+      "product": {
+        "priceTexts": [],
+        "configurationCount": 0,
+        "configurationPrices": [],
+        "navigationLinks": []
+      },
+      "offers": {
+        "cardCount": 0,
+        "cardTexts": [],
+        "oldStockSaleTextCount": 1
+      }
+    }
+  ],
+  "summary": {
+    "local": {
+      "okPages": 9,
+      "pagesWithCatalogText": [],
+      "pagesWithCatalogForm": [
+        "downloads"
+      ],
+      "catalogFormCount": 2,
+      "menuHasCatalogOrPriceCTA": false,
+      "menuHasInquiryCTA": false,
+      "menuHasAkcniNabidky": true,
+      "menuHasOldStockSaleLabel": true,
+      "allOldStockSaleLinks": [
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "http://localhost:8090/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        }
+      ],
+      "productPagesWithoutVisiblePrice": [
+        "product-cub",
+        "product-ocean"
+      ],
+      "productPagesWithConfigPrices": [
+        "product-timberwolf"
+      ],
+      "productConfigurationCounts": {
+        "product-cub": 5,
+        "product-timberwolf": 8,
+        "product-ocean": 17
+      },
+      "offerPageTitles": {
+        "offers-archive": "Akční nabídky"
+      },
+      "offerCardsByPage": {
+        "offers-archive": 7
+      }
+    },
+    "prod": {
+      "okPages": 9,
+      "pagesWithCatalogText": [],
+      "pagesWithCatalogForm": [
+        "downloads"
+      ],
+      "catalogFormCount": 2,
+      "menuHasCatalogOrPriceCTA": false,
+      "menuHasInquiryCTA": false,
+      "menuHasAkcniNabidky": true,
+      "menuHasOldStockSaleLabel": true,
+      "allOldStockSaleLinks": [
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Skladové vířivky",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": true,
+          "classes": ""
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        },
+        {
+          "text": "Výprodej skladových vířivek Zobrazit nabídku",
+          "href": "https://illuminatus.cz/akcni-nabidky/",
+          "visible": false,
+          "classes": "f-mega-menu__promo lazy-loaded"
+        }
+      ],
+      "productPagesWithoutVisiblePrice": [
+        "product-cub",
+        "product-ocean"
+      ],
+      "productPagesWithConfigPrices": [
+        "product-timberwolf"
+      ],
+      "productConfigurationCounts": {
+        "product-cub": 5,
+        "product-timberwolf": 8,
+        "product-ocean": 17
+      },
+      "offerPageTitles": {
+        "offers-archive": "Akční nabídky"
+      },
+      "offerCardsByPage": {
+        "offers-archive": 7
+      }
+    }
+  }
+}

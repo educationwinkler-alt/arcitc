@@ -1,0 +1,1486 @@
+[
+  {
+    "target": "local",
+    "viewport": "mobile390",
+    "screenshot": "C:\\Users\\winkl\\Documents\\artcit nove\\arctic-spas-2\\docs\\screenshots\\homepage-customer-audit-2026-06-08\\local-mobile390.png",
+    "before": {
+      "url": "http://localhost:8090/",
+      "title": "Arctic Spas Local",
+      "bodyClass": "home wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-19 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured template--homepage",
+      "slideRootRect": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 556,
+        "bottom": 556
+      },
+      "slideCount": 3,
+      "slides": [
+        {
+          "index": 0,
+          "cls": "f-slide swiper-slide f-slide--1 swiper-slide-active",
+          "id": "135",
+          "source": "slide-cpt",
+          "visible": true,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 556,
+            "bottom": 556
+          },
+          "display": "flex",
+          "h2": "Kanadské luxusní vířivky",
+          "body": "Vířivky Arctic jsou vyrobeny tak, aby efektivně pracovaly v extrémních severských podmínkách a přinesly vám tak garanci nejnižších nákladů, dlouhé životnosti a pohodovou relaxaci, ať se nacházíte kdekoliv.",
+          "buttonText": "",
+          "buttonHref": "",
+          "bgRect": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 556,
+            "bottom": 556
+          },
+          "bgImage": "none",
+          "bgBeforeBackground": "linear-gradient(rgba(7, 24, 38, 0.5) 0%, rgba(7, 24, 38, 0.14) 18%, rgba(7, 24, 38, 0) 38%), linear-gradient(90deg, rgba(7, 24, 38, 0.74) 0%, rgba(7, 24, 38, 0.34) 36%, rgba(7, 24, 38, 0.05) 68%), linear-gradient(0deg, rgba(7, 24, 38, 0.22), rgba(7, 24, 38, 0.08))",
+          "bgAfterBackground": "linear-gradient(rgba(7, 24, 38, 0.04) 0%, rgba(7, 24, 38, 0.26) 48%, rgba(7, 24, 38, 0.72) 100%)",
+          "imgDisplay": "block",
+          "imgObjectPosition": "50% 0%",
+          "imgSrc": "http://localhost:8090/wp-content/uploads/import/figma/mobile-hp-hero-750-v2.jpg",
+          "imgNatural": {
+            "w": 750,
+            "h": 1112
+          }
+        },
+        {
+          "index": 1,
+          "cls": "f-slide swiper-slide f-slide--2 swiper-slide-next",
+          "id": "home-hero-garden",
+          "source": "static-home-fallback",
+          "visible": false,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0,
+            "bottom": 0
+          },
+          "display": "none",
+          "h2": "Venkovní vířivky do každého počasí",
+          "body": "Vyberte si model Core, Classic nebo Custom. Arctic Spas jsou navržené pro celoroční provoz, nízkou spotřebu a pohodlnou relaxaci doma na zahradě.",
+          "buttonText": "Zobrazit modely",
+          "buttonHref": "http://localhost:8090/virivky/",
+          "bgRect": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0,
+            "bottom": 0
+          },
+          "bgImage": "none",
+          "bgBeforeBackground": "linear-gradient(rgba(7, 24, 38, 0.5) 0%, rgba(7, 24, 38, 0.14) 18%, rgba(7, 24, 38, 0) 38%), linear-gradient(90deg, rgba(7, 24, 38, 0.74) 0%, rgba(7, 24, 38, 0.34) 36%, rgba(7, 24, 38, 0.05) 68%), linear-gradient(0deg, rgba(7, 24, 38, 0.22), rgba(7, 24, 38, 0.08))",
+          "bgAfterBackground": "linear-gradient(rgba(7, 24, 38, 0.04) 0%, rgba(7, 24, 38, 0.26) 48%, rgba(7, 24, 38, 0.72) 100%)",
+          "imgDisplay": "block",
+          "imgObjectPosition": "50% 0%",
+          "imgSrc": "http://localhost:8090/wp-content/uploads/import/curator/01-header-virivky/virivky-hero-zahrada-01.jpg",
+          "imgNatural": {
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "index": 2,
+          "cls": "f-slide swiper-slide f-slide--3",
+          "id": "home-hero-swimspa",
+          "source": "static-home-fallback",
+          "visible": false,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0,
+            "bottom": 0
+          },
+          "display": "none",
+          "h2": "Celoroční bazény Arctic Spas",
+          "body": "Swimspa spojují prostor pro plavání, cvičení a relaxaci. Projděte si modely Classic a Custom a vyberte řešení pro celou rodinu.",
+          "buttonText": "Zobrazit bazény",
+          "buttonHref": "http://localhost:8090/swimspa/",
+          "bgRect": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0,
+            "bottom": 0
+          },
+          "bgImage": "none",
+          "bgBeforeBackground": "linear-gradient(rgba(7, 24, 38, 0.5) 0%, rgba(7, 24, 38, 0.14) 18%, rgba(7, 24, 38, 0) 38%), linear-gradient(90deg, rgba(7, 24, 38, 0.74) 0%, rgba(7, 24, 38, 0.34) 36%, rgba(7, 24, 38, 0.05) 68%), linear-gradient(0deg, rgba(7, 24, 38, 0.22), rgba(7, 24, 38, 0.08))",
+          "bgAfterBackground": "linear-gradient(rgba(7, 24, 38, 0.04) 0%, rgba(7, 24, 38, 0.26) 48%, rgba(7, 24, 38, 0.72) 100%)",
+          "imgDisplay": "block",
+          "imgObjectPosition": "50% 100%",
+          "imgSrc": "http://localhost:8090/wp-content/uploads/import/curator/02-header-celorocni-bazeny/celorocni-bazen-hero-hory-lifestyle-01-1920.jpg",
+          "imgNatural": {
+            "w": 0,
+            "h": 0
+          }
+        }
+      ],
+      "controls": [
+        {
+          "cls": "f-slides__controls f-slides__controls--navigation",
+          "visible": false,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0,
+            "bottom": 0
+          },
+          "display": "none"
+        },
+        {
+          "cls": "f-slides__controls f-slides__controls--pagination a-container",
+          "visible": false,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0,
+            "bottom": 0
+          },
+          "display": "none"
+        }
+      ],
+      "swiper": {
+        "activeIndex": 0,
+        "realIndex": 0,
+        "slides": 3,
+        "loopedSlides": 1,
+        "autoplayRunning": true,
+        "enabled": true
+      },
+      "cats": [
+        {
+          "index": 0,
+          "cls": "f-category f-category--product virivky f-category--parent",
+          "text": "Vířivky",
+          "rect": {
+            "x": 28,
+            "y": 598,
+            "w": 335,
+            "h": 221,
+            "bottom": 819
+          },
+          "imageRect": {
+            "x": 28,
+            "y": 598,
+            "w": 335,
+            "h": 221,
+            "bottom": 819
+          },
+          "imgRect": {
+            "x": 28,
+            "y": 598,
+            "w": 335,
+            "h": 221,
+            "bottom": 819
+          },
+          "imgSrc": "http://localhost:8090/wp-content/uploads/import/figma/mobile-category-virivky.jpg",
+          "objectPosition": "50% 100%",
+          "objectFit": "cover"
+        },
+        {
+          "index": 1,
+          "cls": "f-category f-category--product swimspa f-category--parent",
+          "text": "Celoroční bazény",
+          "rect": {
+            "x": 28,
+            "y": 840,
+            "w": 335,
+            "h": 221,
+            "bottom": 1061
+          },
+          "imageRect": {
+            "x": 28,
+            "y": 840,
+            "w": 335,
+            "h": 221,
+            "bottom": 1061
+          },
+          "imgRect": {
+            "x": 28,
+            "y": 840,
+            "w": 335,
+            "h": 221,
+            "bottom": 1061
+          },
+          "imgSrc": "http://localhost:8090/wp-content/uploads/import/figma/mobile-category-celorocni-bazeny.png",
+          "objectPosition": "100% 100%",
+          "objectFit": "cover"
+        }
+      ],
+      "sections": {
+        "benefits": {
+          "count": 3,
+          "source": "homepage-meta",
+          "visible": true
+        },
+        "progress": {
+          "count": 6,
+          "source": "homepage-meta",
+          "visible": true
+        },
+        "homepageContentTitle": "Kategorie produktů"
+      }
+    },
+    "after": {
+      "activeClassTexts": [
+        "Kanadské luxusní vířivky"
+      ],
+      "visibleSlideTexts": [
+        "Kanadské luxusní vířivky"
+      ],
+      "swiper": {
+        "activeIndex": 0,
+        "realIndex": 0,
+        "autoplayRunning": true
+      }
+    },
+    "topResources": [
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg",
+        "status": 200,
+        "bytes": 12487328
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/import/figma/mobile-category-celorocni-bazeny.png",
+        "status": 200,
+        "bytes": 3640574
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/import/figma/footer-map.png",
+        "status": 200,
+        "bytes": 1150829
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/virivka-arctic-g7-720x480.jpg",
+        "status": 200,
+        "bytes": 319187
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/virivka-arctic-g1-720x480.jpg",
+        "status": 200,
+        "bytes": 316033
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/swimspa-arctic-g1-720x480.jpg",
+        "status": 200,
+        "bytes": 272972
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/import/figma/mobile-hp-hero-750-v2.jpg",
+        "status": 200,
+        "bytes": 268067
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/swimspa-arctic-g4-720x480.jpg",
+        "status": 200,
+        "bytes": 248868
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/arctic-fox-lidi-2-720x337.jpg",
+        "status": 200,
+        "bytes": 135282
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/arctic-fox-lidi.jpg",
+        "status": 200,
+        "bytes": 56730
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/import/figma/mobile-category-virivky.jpg",
+        "status": 200,
+        "bytes": 55639
+      },
+      {
+        "type": "stylesheet",
+        "url": "http://localhost:8090/wp-content/themes/arctic/dist/css/arctic.css?ver=1780908406-1780909919",
+        "status": 200,
+        "bytes": 51670
+      },
+      {
+        "type": "font",
+        "url": "http://localhost:8090/wp-content/themes/arctic/dist/fonts/red-hat-display-500.ttf",
+        "status": 200,
+        "bytes": 47320
+      },
+      {
+        "type": "font",
+        "url": "http://localhost:8090/wp-content/themes/arctic/dist/fonts/red-hat-display-700.ttf",
+        "status": 200,
+        "bytes": 47284
+      },
+      {
+        "type": "font",
+        "url": "http://localhost:8090/wp-content/themes/arctic/dist/fonts/red-hat-display-400.ttf",
+        "status": 200,
+        "bytes": 47276
+      },
+      {
+        "type": "stylesheet",
+        "url": "http://localhost:8090/wp-content/themes/arctic/dist/css/style.css?ver=1780753151-1780909919",
+        "status": 200,
+        "bytes": 44119
+      },
+      {
+        "type": "script",
+        "url": "http://localhost:8090/wp-content/themes/arctic/dist/js/plugin/swiper-bundle.js?ver=11.2.6",
+        "status": 200,
+        "bytes": 42780
+      },
+      {
+        "type": "script",
+        "url": "http://localhost:8090/wp-content/themes/arctic/vendor/forqys/pswp/dist/js/pswp.js?ver=5.4.4",
+        "status": 200,
+        "bytes": 20996
+      },
+      {
+        "type": "stylesheet",
+        "url": "http://localhost:8090/wp-includes/css/dist/block-library/style.min.css?ver=6.8.3",
+        "status": 200,
+        "bytes": 15315
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/themes/arctic/images/logo.svg",
+        "status": 200,
+        "bytes": 8490
+      }
+    ]
+  },
+  {
+    "target": "local",
+    "viewport": "desktop1440",
+    "screenshot": "C:\\Users\\winkl\\Documents\\artcit nove\\arctic-spas-2\\docs\\screenshots\\homepage-customer-audit-2026-06-08\\local-desktop1440.png",
+    "before": {
+      "url": "http://localhost:8090/",
+      "title": "Arctic Spas Local",
+      "bodyClass": "home wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-19 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured template--homepage",
+      "slideRootRect": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 596,
+        "bottom": 596
+      },
+      "slideCount": 3,
+      "slides": [
+        {
+          "index": 0,
+          "cls": "f-slide swiper-slide f-slide--1 swiper-slide-active",
+          "id": "135",
+          "source": "slide-cpt",
+          "visible": true,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 1440,
+            "h": 596,
+            "bottom": 596
+          },
+          "display": "flex",
+          "h2": "Kanadské luxusní vířivky",
+          "body": "Vířivky Arctic jsou vyrobeny tak, aby efektivně pracovaly v extrémních severských podmínkách a přinesly vám tak garanci nejnižších nákladů, dlouhé životnosti a pohodovou relaxaci, ať se nacházíte kdekoliv.",
+          "buttonText": "",
+          "buttonHref": "",
+          "bgRect": {
+            "x": 0,
+            "y": 0,
+            "w": 1440,
+            "h": 596,
+            "bottom": 596
+          },
+          "bgImage": "url(\"http://localhost:8090/wp-content/uploads/import/figma/hp-hero-arctic-spas-07.jpg\")",
+          "bgBeforeBackground": "linear-gradient(rgba(7, 24, 38, 0.5) 0%, rgba(7, 24, 38, 0.14) 18%, rgba(7, 24, 38, 0) 38%), linear-gradient(90deg, rgba(7, 24, 38, 0.74) 0%, rgba(7, 24, 38, 0.34) 36%, rgba(7, 24, 38, 0.05) 68%), linear-gradient(0deg, rgba(7, 24, 38, 0.22), rgba(7, 24, 38, 0.08))",
+          "bgAfterBackground": "none",
+          "imgDisplay": "none",
+          "imgObjectPosition": "50% 50%",
+          "imgSrc": "http://localhost:8090/wp-content/uploads/import/figma/hp-hero-arctic-spas-07.jpg",
+          "imgNatural": {
+            "w": 4096,
+            "h": 1474
+          }
+        },
+        {
+          "index": 1,
+          "cls": "f-slide swiper-slide f-slide--2 swiper-slide-next",
+          "id": "home-hero-garden",
+          "source": "static-home-fallback",
+          "visible": true,
+          "rect": {
+            "x": 1442,
+            "y": 0,
+            "w": 1440,
+            "h": 596,
+            "bottom": 596
+          },
+          "display": "flex",
+          "h2": "Venkovní vířivky do každého počasí",
+          "body": "Vyberte si model Core, Classic nebo Custom. Arctic Spas jsou navržené pro celoroční provoz, nízkou spotřebu a pohodlnou relaxaci doma na zahradě.",
+          "buttonText": "Zobrazit modely",
+          "buttonHref": "http://localhost:8090/virivky/",
+          "bgRect": {
+            "x": 1442,
+            "y": 0,
+            "w": 1440,
+            "h": 596,
+            "bottom": 596
+          },
+          "bgImage": "none",
+          "bgBeforeBackground": "linear-gradient(rgba(7, 24, 38, 0.5) 0%, rgba(7, 24, 38, 0.14) 18%, rgba(7, 24, 38, 0) 38%), linear-gradient(90deg, rgba(7, 24, 38, 0.74) 0%, rgba(7, 24, 38, 0.34) 36%, rgba(7, 24, 38, 0.05) 68%), linear-gradient(0deg, rgba(7, 24, 38, 0.22), rgba(7, 24, 38, 0.08))",
+          "bgAfterBackground": "none",
+          "imgDisplay": "inline",
+          "imgObjectPosition": "50% 50%",
+          "imgSrc": "http://localhost:8090/wp-content/uploads/import/curator/01-header-virivky/virivky-hero-zahrada-01.jpg",
+          "imgNatural": {
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "index": 2,
+          "cls": "f-slide swiper-slide f-slide--3",
+          "id": "home-hero-swimspa",
+          "source": "static-home-fallback",
+          "visible": true,
+          "rect": {
+            "x": 2884,
+            "y": 0,
+            "w": 1440,
+            "h": 596,
+            "bottom": 596
+          },
+          "display": "flex",
+          "h2": "Celoroční bazény Arctic Spas",
+          "body": "Swimspa spojují prostor pro plavání, cvičení a relaxaci. Projděte si modely Classic a Custom a vyberte řešení pro celou rodinu.",
+          "buttonText": "Zobrazit bazény",
+          "buttonHref": "http://localhost:8090/swimspa/",
+          "bgRect": {
+            "x": 2884,
+            "y": 0,
+            "w": 1440,
+            "h": 596,
+            "bottom": 596
+          },
+          "bgImage": "none",
+          "bgBeforeBackground": "linear-gradient(rgba(7, 24, 38, 0.5) 0%, rgba(7, 24, 38, 0.14) 18%, rgba(7, 24, 38, 0) 38%), linear-gradient(90deg, rgba(7, 24, 38, 0.74) 0%, rgba(7, 24, 38, 0.34) 36%, rgba(7, 24, 38, 0.05) 68%), linear-gradient(0deg, rgba(7, 24, 38, 0.22), rgba(7, 24, 38, 0.08))",
+          "bgAfterBackground": "none",
+          "imgDisplay": "inline",
+          "imgObjectPosition": "50% 100%",
+          "imgSrc": "http://localhost:8090/wp-content/uploads/import/curator/02-header-celorocni-bazeny/celorocni-bazen-hero-hory-lifestyle-01-1920.jpg",
+          "imgNatural": {
+            "w": 0,
+            "h": 0
+          }
+        }
+      ],
+      "controls": [
+        {
+          "cls": "f-slides__controls f-slides__controls--navigation",
+          "visible": true,
+          "rect": {
+            "x": 0,
+            "y": 287,
+            "w": 1440,
+            "h": 32,
+            "bottom": 318
+          },
+          "display": "flex"
+        },
+        {
+          "cls": "f-slides__controls f-slides__controls--pagination a-container",
+          "visible": true,
+          "rect": {
+            "x": 0,
+            "y": 510,
+            "w": 1440,
+            "h": 26,
+            "bottom": 536
+          },
+          "display": "flex"
+        }
+      ],
+      "swiper": {
+        "activeIndex": 0,
+        "realIndex": 0,
+        "slides": 3,
+        "loopedSlides": 1,
+        "autoplayRunning": true,
+        "enabled": true
+      },
+      "cats": [
+        {
+          "index": 0,
+          "cls": "f-category f-category--product virivky f-category--parent",
+          "text": "Vířivky",
+          "rect": {
+            "x": 18,
+            "y": 667,
+            "w": 674,
+            "h": 424,
+            "bottom": 1091
+          },
+          "imageRect": {
+            "x": 18,
+            "y": 667,
+            "w": 674,
+            "h": 424,
+            "bottom": 1091
+          },
+          "imgRect": {
+            "x": 18,
+            "y": 667,
+            "w": 674,
+            "h": 424,
+            "bottom": 1091
+          },
+          "imgSrc": "http://localhost:8090/wp-content/uploads/import/figma/hp-category-virivky.jpg",
+          "objectPosition": "50% 100%",
+          "objectFit": "cover"
+        },
+        {
+          "index": 1,
+          "cls": "f-category f-category--product swimspa f-category--parent",
+          "text": "Celoroční bazény",
+          "rect": {
+            "x": 746,
+            "y": 667,
+            "w": 674,
+            "h": 424,
+            "bottom": 1091
+          },
+          "imageRect": {
+            "x": 746,
+            "y": 667,
+            "w": 674,
+            "h": 424,
+            "bottom": 1091
+          },
+          "imgRect": {
+            "x": 746,
+            "y": 667,
+            "w": 674,
+            "h": 424,
+            "bottom": 1091
+          },
+          "imgSrc": "http://localhost:8090/wp-content/uploads/import/figma/hp-category-celorocni-bazeny.png",
+          "objectPosition": "100% 100%",
+          "objectFit": "cover"
+        }
+      ],
+      "sections": {
+        "benefits": {
+          "count": 3,
+          "source": "homepage-meta",
+          "visible": true
+        },
+        "progress": {
+          "count": 6,
+          "source": "homepage-meta",
+          "visible": true
+        },
+        "homepageContentTitle": "Kategorie produktů"
+      }
+    },
+    "after": {
+      "activeClassTexts": [
+        "Venkovní vířivky do každého počasí"
+      ],
+      "visibleSlideTexts": [
+        "Kanadské luxusní vířivky",
+        "Venkovní vířivky do každého počasí",
+        "Celoroční bazény Arctic Spas"
+      ],
+      "swiper": {
+        "activeIndex": 1,
+        "realIndex": 1,
+        "autoplayRunning": true
+      }
+    },
+    "topResources": [
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/import/figma/footer-background.jpg",
+        "status": 200,
+        "bytes": 12487328
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/import/figma/hp-hero-arctic-spas-07.jpg",
+        "status": 200,
+        "bytes": 7879422
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/import/figma/hp-category-celorocni-bazeny.png",
+        "status": 200,
+        "bytes": 3640574
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/import/curator/01-header-virivky/virivky-hero-zahrada-01.jpg",
+        "status": 200,
+        "bytes": 1435076
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/import/figma/footer-map.png",
+        "status": 200,
+        "bytes": 1150829
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/virivka-arctic-g7-720x480.jpg",
+        "status": 200,
+        "bytes": 319187
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/virivka-arctic-g1-720x480.jpg",
+        "status": 200,
+        "bytes": 316033
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/swimspa-arctic-g1-720x480.jpg",
+        "status": 200,
+        "bytes": 272972
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/swimspa-arctic-g4-720x480.jpg",
+        "status": 200,
+        "bytes": 248868
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/virivka-cub.jpg",
+        "status": 200,
+        "bytes": 185270
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/virivka-kodiak.jpg",
+        "status": 200,
+        "bytes": 175286
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/virivka-yukon.jpg",
+        "status": 200,
+        "bytes": 173987
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/virivka-tundra.jpg",
+        "status": 200,
+        "bytes": 155539
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/virivka-fox.jpg",
+        "status": 200,
+        "bytes": 149693
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/virivka-summit.jpg",
+        "status": 200,
+        "bytes": 149246
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/virivka-klondiker.jpg",
+        "status": 200,
+        "bytes": 139670
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/arctic-fox-lidi-2-720x337.jpg",
+        "status": 200,
+        "bytes": 135282
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/virivka-summit-xl.jpg",
+        "status": 200,
+        "bytes": 114481
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/2026/05/arctic-fox-lidi.jpg",
+        "status": 200,
+        "bytes": 56730
+      },
+      {
+        "type": "image",
+        "url": "http://localhost:8090/wp-content/uploads/import/figma/hp-category-virivky.jpg",
+        "status": 200,
+        "bytes": 55639
+      }
+    ]
+  },
+  {
+    "target": "prod",
+    "viewport": "mobile390",
+    "screenshot": "C:\\Users\\winkl\\Documents\\artcit nove\\arctic-spas-2\\docs\\screenshots\\homepage-customer-audit-2026-06-08\\prod-mobile390.png",
+    "before": {
+      "url": "https://illuminatus.cz/",
+      "title": "Arctic Spas",
+      "bodyClass": "home wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-19 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured template--homepage",
+      "slideRootRect": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 556,
+        "bottom": 556
+      },
+      "slideCount": 3,
+      "slides": [
+        {
+          "index": 0,
+          "cls": "f-slide swiper-slide f-slide--1 swiper-slide-active",
+          "id": "135",
+          "source": "slide-cpt",
+          "visible": true,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 556,
+            "bottom": 556
+          },
+          "display": "flex",
+          "h2": "Kanadské luxusní vířivky",
+          "body": "Vířivky Arctic jsou vyrobeny tak, aby efektivně pracovaly v extrémních severských podmínkách a přinesly vám tak garanci nejnižších nákladů, dlouhé životnosti a pohodovou relaxaci, ať se nacházíte kdekoliv.",
+          "buttonText": "",
+          "buttonHref": "",
+          "bgRect": {
+            "x": 0,
+            "y": 0,
+            "w": 390,
+            "h": 556,
+            "bottom": 556
+          },
+          "bgImage": "none",
+          "bgBeforeBackground": "linear-gradient(rgba(7, 24, 38, 0.5) 0%, rgba(7, 24, 38, 0.14) 18%, rgba(7, 24, 38, 0) 38%), linear-gradient(90deg, rgba(7, 24, 38, 0.74) 0%, rgba(7, 24, 38, 0.34) 36%, rgba(7, 24, 38, 0.05) 68%), linear-gradient(0deg, rgba(7, 24, 38, 0.22), rgba(7, 24, 38, 0.08))",
+          "bgAfterBackground": "linear-gradient(rgba(7, 24, 38, 0.04) 0%, rgba(7, 24, 38, 0.26) 48%, rgba(7, 24, 38, 0.72) 100%)",
+          "imgDisplay": "block",
+          "imgObjectPosition": "50% 0%",
+          "imgSrc": "https://illuminatus.cz/wp-content/uploads/import/figma/mobile-hp-hero-750-v2.jpg",
+          "imgNatural": {
+            "w": 750,
+            "h": 1112
+          }
+        },
+        {
+          "index": 1,
+          "cls": "f-slide swiper-slide f-slide--2 swiper-slide-next",
+          "id": "home-hero-garden",
+          "source": "static-home-fallback",
+          "visible": false,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0,
+            "bottom": 0
+          },
+          "display": "none",
+          "h2": "Venkovní vířivky do každého počasí",
+          "body": "Vyberte si model Core, Classic nebo Custom. Arctic Spas jsou navržené pro celoroční provoz, nízkou spotřebu a pohodlnou relaxaci doma na zahradě.",
+          "buttonText": "Zobrazit modely",
+          "buttonHref": "https://illuminatus.cz/virivky/",
+          "bgRect": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0,
+            "bottom": 0
+          },
+          "bgImage": "none",
+          "bgBeforeBackground": "linear-gradient(rgba(7, 24, 38, 0.5) 0%, rgba(7, 24, 38, 0.14) 18%, rgba(7, 24, 38, 0) 38%), linear-gradient(90deg, rgba(7, 24, 38, 0.74) 0%, rgba(7, 24, 38, 0.34) 36%, rgba(7, 24, 38, 0.05) 68%), linear-gradient(0deg, rgba(7, 24, 38, 0.22), rgba(7, 24, 38, 0.08))",
+          "bgAfterBackground": "linear-gradient(rgba(7, 24, 38, 0.04) 0%, rgba(7, 24, 38, 0.26) 48%, rgba(7, 24, 38, 0.72) 100%)",
+          "imgDisplay": "block",
+          "imgObjectPosition": "50% 0%",
+          "imgSrc": "https://illuminatus.cz/wp-content/uploads/import/curator/01-header-virivky/virivky-hero-zahrada-01.jpg",
+          "imgNatural": {
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "index": 2,
+          "cls": "f-slide swiper-slide f-slide--3",
+          "id": "home-hero-swimspa",
+          "source": "static-home-fallback",
+          "visible": false,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0,
+            "bottom": 0
+          },
+          "display": "none",
+          "h2": "Celoroční bazény Arctic Spas",
+          "body": "Swimspa spojují prostor pro plavání, cvičení a relaxaci. Projděte si modely Classic a Custom a vyberte řešení pro celou rodinu.",
+          "buttonText": "Zobrazit bazény",
+          "buttonHref": "https://illuminatus.cz/swimspa/",
+          "bgRect": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0,
+            "bottom": 0
+          },
+          "bgImage": "none",
+          "bgBeforeBackground": "linear-gradient(rgba(7, 24, 38, 0.5) 0%, rgba(7, 24, 38, 0.14) 18%, rgba(7, 24, 38, 0) 38%), linear-gradient(90deg, rgba(7, 24, 38, 0.74) 0%, rgba(7, 24, 38, 0.34) 36%, rgba(7, 24, 38, 0.05) 68%), linear-gradient(0deg, rgba(7, 24, 38, 0.22), rgba(7, 24, 38, 0.08))",
+          "bgAfterBackground": "linear-gradient(rgba(7, 24, 38, 0.04) 0%, rgba(7, 24, 38, 0.26) 48%, rgba(7, 24, 38, 0.72) 100%)",
+          "imgDisplay": "block",
+          "imgObjectPosition": "50% 100%",
+          "imgSrc": "https://illuminatus.cz/wp-content/uploads/import/curator/02-header-celorocni-bazeny/celorocni-bazen-hero-hory-lifestyle-01-1920.jpg",
+          "imgNatural": {
+            "w": 0,
+            "h": 0
+          }
+        }
+      ],
+      "controls": [
+        {
+          "cls": "f-slides__controls f-slides__controls--navigation",
+          "visible": false,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0,
+            "bottom": 0
+          },
+          "display": "none"
+        },
+        {
+          "cls": "f-slides__controls f-slides__controls--pagination a-container",
+          "visible": false,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 0,
+            "h": 0,
+            "bottom": 0
+          },
+          "display": "none"
+        }
+      ],
+      "swiper": {
+        "activeIndex": 0,
+        "realIndex": 0,
+        "slides": 3,
+        "loopedSlides": 1,
+        "autoplayRunning": true,
+        "enabled": true
+      },
+      "cats": [
+        {
+          "index": 0,
+          "cls": "f-category f-category--product virivky f-category--parent",
+          "text": "Vířivky",
+          "rect": {
+            "x": 28,
+            "y": 598,
+            "w": 335,
+            "h": 221,
+            "bottom": 819
+          },
+          "imageRect": {
+            "x": 28,
+            "y": 598,
+            "w": 335,
+            "h": 221,
+            "bottom": 819
+          },
+          "imgRect": {
+            "x": 28,
+            "y": 598,
+            "w": 335,
+            "h": 221,
+            "bottom": 819
+          },
+          "imgSrc": "https://illuminatus.cz/wp-content/uploads/import/figma/mobile-category-virivky.jpg",
+          "objectPosition": "50% 100%",
+          "objectFit": "cover"
+        },
+        {
+          "index": 1,
+          "cls": "f-category f-category--product swimspa f-category--parent",
+          "text": "Celoroční bazény",
+          "rect": {
+            "x": 28,
+            "y": 840,
+            "w": 335,
+            "h": 221,
+            "bottom": 1061
+          },
+          "imageRect": {
+            "x": 28,
+            "y": 840,
+            "w": 335,
+            "h": 221,
+            "bottom": 1061
+          },
+          "imgRect": {
+            "x": 28,
+            "y": 840,
+            "w": 335,
+            "h": 221,
+            "bottom": 1061
+          },
+          "imgSrc": "https://illuminatus.cz/wp-content/uploads/import/figma/mobile-category-celorocni-bazeny.png",
+          "objectPosition": "100% 100%",
+          "objectFit": "cover"
+        }
+      ],
+      "sections": {
+        "benefits": {
+          "count": 0,
+          "source": "",
+          "visible": false
+        },
+        "progress": {
+          "count": 0,
+          "source": "homepage-meta",
+          "visible": true
+        },
+        "homepageContentTitle": "Kategorie produktů"
+      }
+    },
+    "after": {
+      "activeClassTexts": [
+        "Kanadské luxusní vířivky"
+      ],
+      "visibleSlideTexts": [
+        "Kanadské luxusní vířivky"
+      ],
+      "swiper": {
+        "activeIndex": 0,
+        "realIndex": 0,
+        "autoplayRunning": true
+      }
+    },
+    "topResources": [
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/import/figma/footer-background.jpg",
+        "status": 200,
+        "bytes": 12487328
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/import/figma/mobile-category-celorocni-bazeny.png",
+        "status": 200,
+        "bytes": 3640574
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/import/figma/footer-map.png",
+        "status": 200,
+        "bytes": 1150829
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-arctic-g7-720x480.jpg",
+        "status": 200,
+        "bytes": 319187
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-arctic-g1-720x480.jpg",
+        "status": 200,
+        "bytes": 316033
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/swimspa-arctic-g1-720x480.jpg",
+        "status": 200,
+        "bytes": 272972
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/import/figma/mobile-hp-hero-750-v2.jpg",
+        "status": 200,
+        "bytes": 268067
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/swimspa-arctic-g4-720x480.jpg",
+        "status": 200,
+        "bytes": 248868
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/arctic-fox-lidi-2-720x337.jpg",
+        "status": 200,
+        "bytes": 135282
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/arctic-fox-lidi.jpg",
+        "status": 200,
+        "bytes": 56730
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/import/figma/mobile-category-virivky.jpg",
+        "status": 200,
+        "bytes": 55639
+      },
+      {
+        "type": "font",
+        "url": "https://illuminatus.cz/wp-content/themes/arctic/dist/fonts/red-hat-display-500.ttf",
+        "status": 200,
+        "bytes": 47320
+      },
+      {
+        "type": "font",
+        "url": "https://illuminatus.cz/wp-content/themes/arctic/dist/fonts/red-hat-display-700.ttf",
+        "status": 200,
+        "bytes": 47284
+      },
+      {
+        "type": "font",
+        "url": "https://illuminatus.cz/wp-content/themes/arctic/dist/fonts/red-hat-display-400.ttf",
+        "status": 200,
+        "bytes": 47276
+      },
+      {
+        "type": "stylesheet",
+        "url": "https://illuminatus.cz/wp-content/themes/arctic/dist/css/style.css?ver=1780753566",
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "type": "stylesheet",
+        "url": "https://illuminatus.cz/wp-content/themes/arctic/dist/css/arctic.css?ver=1780763808",
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "type": "script",
+        "url": "https://illuminatus.cz/wp-content/themes/arctic/vendor/forqys/image/js/lazy.js?ver=1.0.0",
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/themes/arctic/images/logo.svg",
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "type": "script",
+        "url": "https://illuminatus.cz/wp-content/themes/arctic/vendor/forqys/hours/dist/js/hours.js?ver=1.0.0",
+        "status": 200,
+        "bytes": 0
+      },
+      {
+        "type": "script",
+        "url": "https://illuminatus.cz/wp-content/themes/arctic/dist/js/section-nav-handoff.js?ver=1780694459",
+        "status": 200,
+        "bytes": 0
+      }
+    ]
+  },
+  {
+    "target": "prod",
+    "viewport": "desktop1440",
+    "screenshot": "C:\\Users\\winkl\\Documents\\artcit nove\\arctic-spas-2\\docs\\screenshots\\homepage-customer-audit-2026-06-08\\prod-desktop1440.png",
+    "before": {
+      "url": "https://illuminatus.cz/",
+      "title": "Arctic Spas",
+      "bodyClass": "home wp-singular page-template page-template-template-homepage page-template-template-homepage-php page page-id-19 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured template--homepage",
+      "slideRootRect": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 596,
+        "bottom": 596
+      },
+      "slideCount": 3,
+      "slides": [
+        {
+          "index": 0,
+          "cls": "f-slide swiper-slide f-slide--1 swiper-slide-active",
+          "id": "135",
+          "source": "slide-cpt",
+          "visible": true,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "w": 1440,
+            "h": 596,
+            "bottom": 596
+          },
+          "display": "flex",
+          "h2": "Kanadské luxusní vířivky",
+          "body": "Vířivky Arctic jsou vyrobeny tak, aby efektivně pracovaly v extrémních severských podmínkách a přinesly vám tak garanci nejnižších nákladů, dlouhé životnosti a pohodovou relaxaci, ať se nacházíte kdekoliv.",
+          "buttonText": "",
+          "buttonHref": "",
+          "bgRect": {
+            "x": 0,
+            "y": 0,
+            "w": 1440,
+            "h": 596,
+            "bottom": 596
+          },
+          "bgImage": "url(\"https://illuminatus.cz/wp-content/uploads/import/figma/hp-hero-arctic-spas-07.jpg\")",
+          "bgBeforeBackground": "linear-gradient(rgba(7, 24, 38, 0.5) 0%, rgba(7, 24, 38, 0.14) 18%, rgba(7, 24, 38, 0) 38%), linear-gradient(90deg, rgba(7, 24, 38, 0.74) 0%, rgba(7, 24, 38, 0.34) 36%, rgba(7, 24, 38, 0.05) 68%), linear-gradient(0deg, rgba(7, 24, 38, 0.22), rgba(7, 24, 38, 0.08))",
+          "bgAfterBackground": "none",
+          "imgDisplay": "none",
+          "imgObjectPosition": "50% 50%",
+          "imgSrc": "https://illuminatus.cz/wp-content/uploads/import/figma/hp-hero-arctic-spas-07.jpg",
+          "imgNatural": {
+            "w": 4096,
+            "h": 1474
+          }
+        },
+        {
+          "index": 1,
+          "cls": "f-slide swiper-slide f-slide--2 swiper-slide-next",
+          "id": "home-hero-garden",
+          "source": "static-home-fallback",
+          "visible": true,
+          "rect": {
+            "x": 1442,
+            "y": 0,
+            "w": 1440,
+            "h": 596,
+            "bottom": 596
+          },
+          "display": "flex",
+          "h2": "Venkovní vířivky do každého počasí",
+          "body": "Vyberte si model Core, Classic nebo Custom. Arctic Spas jsou navržené pro celoroční provoz, nízkou spotřebu a pohodlnou relaxaci doma na zahradě.",
+          "buttonText": "Zobrazit modely",
+          "buttonHref": "https://illuminatus.cz/virivky/",
+          "bgRect": {
+            "x": 1442,
+            "y": 0,
+            "w": 1440,
+            "h": 596,
+            "bottom": 596
+          },
+          "bgImage": "none",
+          "bgBeforeBackground": "linear-gradient(rgba(7, 24, 38, 0.5) 0%, rgba(7, 24, 38, 0.14) 18%, rgba(7, 24, 38, 0) 38%), linear-gradient(90deg, rgba(7, 24, 38, 0.74) 0%, rgba(7, 24, 38, 0.34) 36%, rgba(7, 24, 38, 0.05) 68%), linear-gradient(0deg, rgba(7, 24, 38, 0.22), rgba(7, 24, 38, 0.08))",
+          "bgAfterBackground": "none",
+          "imgDisplay": "inline",
+          "imgObjectPosition": "50% 50%",
+          "imgSrc": "https://illuminatus.cz/wp-content/uploads/import/curator/01-header-virivky/virivky-hero-zahrada-01.jpg",
+          "imgNatural": {
+            "w": 0,
+            "h": 0
+          }
+        },
+        {
+          "index": 2,
+          "cls": "f-slide swiper-slide f-slide--3",
+          "id": "home-hero-swimspa",
+          "source": "static-home-fallback",
+          "visible": true,
+          "rect": {
+            "x": 2884,
+            "y": 0,
+            "w": 1440,
+            "h": 596,
+            "bottom": 596
+          },
+          "display": "flex",
+          "h2": "Celoroční bazény Arctic Spas",
+          "body": "Swimspa spojují prostor pro plavání, cvičení a relaxaci. Projděte si modely Classic a Custom a vyberte řešení pro celou rodinu.",
+          "buttonText": "Zobrazit bazény",
+          "buttonHref": "https://illuminatus.cz/swimspa/",
+          "bgRect": {
+            "x": 2884,
+            "y": 0,
+            "w": 1440,
+            "h": 596,
+            "bottom": 596
+          },
+          "bgImage": "none",
+          "bgBeforeBackground": "linear-gradient(rgba(7, 24, 38, 0.5) 0%, rgba(7, 24, 38, 0.14) 18%, rgba(7, 24, 38, 0) 38%), linear-gradient(90deg, rgba(7, 24, 38, 0.74) 0%, rgba(7, 24, 38, 0.34) 36%, rgba(7, 24, 38, 0.05) 68%), linear-gradient(0deg, rgba(7, 24, 38, 0.22), rgba(7, 24, 38, 0.08))",
+          "bgAfterBackground": "none",
+          "imgDisplay": "inline",
+          "imgObjectPosition": "50% 100%",
+          "imgSrc": "https://illuminatus.cz/wp-content/uploads/import/curator/02-header-celorocni-bazeny/celorocni-bazen-hero-hory-lifestyle-01-1920.jpg",
+          "imgNatural": {
+            "w": 0,
+            "h": 0
+          }
+        }
+      ],
+      "controls": [
+        {
+          "cls": "f-slides__controls f-slides__controls--navigation",
+          "visible": true,
+          "rect": {
+            "x": 0,
+            "y": 287,
+            "w": 1440,
+            "h": 32,
+            "bottom": 318
+          },
+          "display": "flex"
+        },
+        {
+          "cls": "f-slides__controls f-slides__controls--pagination a-container",
+          "visible": true,
+          "rect": {
+            "x": 0,
+            "y": 510,
+            "w": 1440,
+            "h": 26,
+            "bottom": 536
+          },
+          "display": "flex"
+        }
+      ],
+      "swiper": {
+        "activeIndex": 0,
+        "realIndex": 0,
+        "slides": 3,
+        "loopedSlides": 1,
+        "autoplayRunning": true,
+        "enabled": true
+      },
+      "cats": [
+        {
+          "index": 0,
+          "cls": "f-category f-category--product virivky f-category--parent",
+          "text": "Vířivky",
+          "rect": {
+            "x": 18,
+            "y": 667,
+            "w": 674,
+            "h": 424,
+            "bottom": 1091
+          },
+          "imageRect": {
+            "x": 18,
+            "y": 667,
+            "w": 674,
+            "h": 424,
+            "bottom": 1091
+          },
+          "imgRect": {
+            "x": 18,
+            "y": 667,
+            "w": 674,
+            "h": 424,
+            "bottom": 1091
+          },
+          "imgSrc": "https://illuminatus.cz/wp-content/uploads/import/figma/hp-category-virivky.jpg",
+          "objectPosition": "50% 100%",
+          "objectFit": "cover"
+        },
+        {
+          "index": 1,
+          "cls": "f-category f-category--product swimspa f-category--parent",
+          "text": "Celoroční bazény",
+          "rect": {
+            "x": 746,
+            "y": 667,
+            "w": 674,
+            "h": 424,
+            "bottom": 1091
+          },
+          "imageRect": {
+            "x": 746,
+            "y": 667,
+            "w": 674,
+            "h": 424,
+            "bottom": 1091
+          },
+          "imgRect": {
+            "x": 746,
+            "y": 667,
+            "w": 674,
+            "h": 424,
+            "bottom": 1091
+          },
+          "imgSrc": "https://illuminatus.cz/wp-content/uploads/import/figma/hp-category-celorocni-bazeny.png",
+          "objectPosition": "100% 100%",
+          "objectFit": "cover"
+        }
+      ],
+      "sections": {
+        "benefits": {
+          "count": 0,
+          "source": "",
+          "visible": false
+        },
+        "progress": {
+          "count": 0,
+          "source": "homepage-meta",
+          "visible": true
+        },
+        "homepageContentTitle": "Kategorie produktů"
+      }
+    },
+    "after": {
+      "activeClassTexts": [
+        "Venkovní vířivky do každého počasí"
+      ],
+      "visibleSlideTexts": [
+        "Kanadské luxusní vířivky",
+        "Venkovní vířivky do každého počasí",
+        "Celoroční bazény Arctic Spas"
+      ],
+      "swiper": {
+        "activeIndex": 1,
+        "realIndex": 1,
+        "autoplayRunning": true
+      }
+    },
+    "topResources": [
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/import/figma/footer-background.jpg",
+        "status": 200,
+        "bytes": 12487328
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/import/figma/hp-hero-arctic-spas-07.jpg",
+        "status": 200,
+        "bytes": 7879422
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/import/figma/hp-category-celorocni-bazeny.png",
+        "status": 200,
+        "bytes": 3640574
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/import/curator/01-header-virivky/virivky-hero-zahrada-01.jpg",
+        "status": 200,
+        "bytes": 1435076
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/import/figma/footer-map.png",
+        "status": 200,
+        "bytes": 1150829
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-arctic-g7-720x480.jpg",
+        "status": 200,
+        "bytes": 319187
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-arctic-g1-720x480.jpg",
+        "status": 200,
+        "bytes": 316033
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/swimspa-arctic-g1-720x480.jpg",
+        "status": 200,
+        "bytes": 272972
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/swimspa-arctic-g4-720x480.jpg",
+        "status": 200,
+        "bytes": 248868
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-cub.jpg",
+        "status": 200,
+        "bytes": 185270
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-kodiak.jpg",
+        "status": 200,
+        "bytes": 175286
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-yukon.jpg",
+        "status": 200,
+        "bytes": 173987
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-tundra.jpg",
+        "status": 200,
+        "bytes": 155539
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-fox.jpg",
+        "status": 200,
+        "bytes": 149693
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-summit.jpg",
+        "status": 200,
+        "bytes": 149246
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-klondiker.jpg",
+        "status": 200,
+        "bytes": 139670
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/arctic-fox-lidi-2-720x337.jpg",
+        "status": 200,
+        "bytes": 135282
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-summit-xl.jpg",
+        "status": 200,
+        "bytes": 114481
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/2026/05/arctic-fox-lidi.jpg",
+        "status": 200,
+        "bytes": 56730
+      },
+      {
+        "type": "image",
+        "url": "https://illuminatus.cz/wp-content/uploads/import/figma/hp-category-virivky.jpg",
+        "status": 200,
+        "bytes": 55639
+      }
+    ]
+  }
+]

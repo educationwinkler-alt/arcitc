@@ -1,0 +1,1853 @@
+{
+  "generatedAt": "2026-06-08T10:11:28.144Z",
+  "pages": [
+    {
+      "id": "maintenance",
+      "path": "/kolik-stoji-udrzba/"
+    },
+    {
+      "id": "support",
+      "path": "/podpora/"
+    },
+    {
+      "id": "references",
+      "path": "/reference/"
+    },
+    {
+      "id": "about",
+      "path": "/o-nas/"
+    },
+    {
+      "id": "showroom",
+      "path": "/showroom/"
+    },
+    {
+      "id": "contact",
+      "path": "/kontakt/"
+    }
+  ],
+  "results": [
+    {
+      "target": "local",
+      "pageId": "maintenance",
+      "url": "http://localhost:8090/kolik-stoji-udrzba/",
+      "status": 200,
+      "screenshot": "docs\\screenshots\\site-customer-audit-2026-06-08\\local-maintenance-desktop.png",
+      "finalUrl": "http://localhost:8090/kolik-stoji-udrzba/",
+      "title": "Kolik stojí provoz a údržba vířivky? – Arctic Spas Local",
+      "bodyClass": "wp-singular page-template page-template-template-maintenance page-template-template-maintenance-php page page-id-688 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Kolik stojí provoz a údržba vířivky?",
+      "textSample": "Přeskočit na navigaci Přeskočit na obsah Přeskočit na patičku Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vířivky Vybrat podle parametrů Série Core Série Classic Série Custom Akční nabídky Celoroční bazény Vybrat podle parametrů Bazény ARCTIC Classic Bazény ARCTIC Custom Vlastnosti Tepelná izolace Záruka na skořepinu Termokryt Podlaha vířivky Servisní přístup Variabilita Automatická dezinfekce Další informace Služby Akční nabídky Certifikáty Záruka Kolik stojí provoz a údržba Podpora Reference O nás Showroom Servis Kontakt Lunar Orion Ke stažení Nezávazná konzultace Vyhledat Vyhledat Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vyhledat Nezávazná konzultace Navigace Série Core Lunar Orion Husky Série Classic McKinley Mustang Timberwolf Totem Eagle Série Custom Summit XL Summit Tundra Kodiak Klondiker Yukon Cub Arctic Fox Výprodej skladových vířivek Zobrazit nabídku Bazény ARCTIC Classic Athabascan Hudson Kingfisher Wolverine Bazény ARCTIC Custom Arctic Ocean Okanagan Výprodej skladových vířivek Zobrazit nabídku —Kolik stojí provoz a údržba vířivky? Kolik stojí provoz a údržba vířivky? Jedním z nejdůležitějších parametrů ve kterých značka Arctic Spas jednoznačně dominuje jsou velmi nízké provozní náklady a s tím spojená kvalita izolací a termo krytů. Žádná značka vířivek nemá obvodovou izolaci silnou 8 - 10 cm jako vířivky Arctic Spas a neexistují žádné alternativy, které takovouto izolaci nahradí. Vířivky Arctic Spas jsou vyráběny u nejseverně",
+      "headerMenu": {
+        "linkCount": 62,
+        "infoLinks": [
+          {
+            "text": "Další informace",
+            "href": "http://localhost:8090/dalsi-informace/",
+            "classes": ""
+          },
+          {
+            "text": "Služby",
+            "href": "http://localhost:8090/sluzby/",
+            "classes": ""
+          },
+          {
+            "text": "Akční nabídky",
+            "href": "http://localhost:8090/akcni-nabidky/",
+            "classes": ""
+          },
+          {
+            "text": "Certifikáty",
+            "href": "http://localhost:8090/certifikaty/",
+            "classes": ""
+          },
+          {
+            "text": "Záruka",
+            "href": "http://localhost:8090/zaruka/",
+            "classes": ""
+          },
+          {
+            "text": "Kolik stojí provoz a údržba",
+            "href": "http://localhost:8090/kolik-stoji-udrzba/",
+            "classes": ""
+          },
+          {
+            "text": "Podpora",
+            "href": "http://localhost:8090/podpora/",
+            "classes": ""
+          },
+          {
+            "text": "Reference",
+            "href": "http://localhost:8090/reference/",
+            "classes": ""
+          },
+          {
+            "text": "O nás",
+            "href": "http://localhost:8090/o-nas/",
+            "classes": ""
+          },
+          {
+            "text": "Showroom",
+            "href": "http://localhost:8090/showroom/",
+            "classes": ""
+          },
+          {
+            "text": "Servis",
+            "href": "http://localhost:8090/servis/",
+            "classes": ""
+          },
+          {
+            "text": "Kontakt",
+            "href": "http://localhost:8090/kontakt/",
+            "classes": ""
+          },
+          {
+            "text": "Lunar",
+            "href": "http://localhost:8090/product/lunar/",
+            "classes": ""
+          },
+          {
+            "text": "Orion",
+            "href": "http://localhost:8090/product/orion/",
+            "classes": ""
+          },
+          {
+            "text": "Ke stažení",
+            "href": "http://localhost:8090/ke-stazeni/",
+            "classes": ""
+          },
+          {
+            "text": "+420 602 149 106",
+            "href": "tel:+420602149106",
+            "classes": "f-bar__phone"
+          },
+          {
+            "text": "Lunar",
+            "href": "http://localhost:8090/product/lunar/",
+            "classes": "f-mega-menu__product"
+          },
+          {
+            "text": "Orion",
+            "href": "http://localhost:8090/product/orion/",
+            "classes": "f-mega-menu__product"
+          }
+        ]
+      },
+      "maintenance": {
+        "articleText": "Náklady na vlastnictví a provozování vířivky Stejně jako zvyklost používání vířivky, náklady na pořízení a provozování vířivky se během posledních několika let drasticky změnily. Když byly vířivky původně distribuovány pro domácí použití, jejich celkový design a energetická účinnost měly zásadní nedostatky; výrobci se soustředili více na praktické využití než na provozní náklady. Pokroky u výrobců jako je Arctic Spas výrazně zlepšily vývoj a technologie, čímž se snížily počáteční náklady a hlavně provozní náklady spojené s vlastnictvím přenosné vířivky. Jednou z takových inovací je technologie FreeHeat, při níž teplo generované vnitřními čerpadly a motory slouží k udržení teploty vody na optimální úrovni. Izolované termokryty pomáhají zachytit a udržovat stoupající teplo ve vířivce. Vynikající filtrační systémy udržují čistou vodu s menší potřebou chemie. Lepší chemikálie Arctic Pure zkracují čas potřebný k běžné údržbě. Konstrukce vířivky se počítá také. Vířivky Arctic Spas jsou navrženy tak, aby odolaly náročnému klimatu a poskytovaly dlouhodobou spolehlivost. Robustní konstrukce umožňuje komponentům, čerpadlům, motorům a dalším částem naplno využít svůj potenciál. Křehké nafukovací vířivky nejsou schopny pracovat v nepříjemném studeném počasí. Velké náklady na udržení správně nahřáté nafukovací nebo špatně izolované vířivky rychle vyrovnávají jakýkoli vnímaný přínos získaný nákupem levnějšího řešení. Venkovní vířivka je velkou investicí a náklady na vlastnictví vířivky bývají často ztraceny ve směsi celkových ročních nákladů. Pokud si koupíte vysoce kvalitní vířivku s ekonomickým provozním systémem, můžete čekat nízké každodenní provozní náklady po celý rok. Počáteční nákup, nové čerpadlo, nový termokryt a další náklady jsou zřetelnější než každodenní výdaje. Právě proto je důležité porovnávat nejen cenu pořízení, ale i konstrukci, izolaci, účinnost filtrace a dlouhodobou spotřebu energie. Rozsáhlá studie společnosti Arctic Spas ukazuje účinnost robustního designu a inteligentních vlastností zadržujících teplo. Vířivka Arctic Spas vykazovala denní provozní náklady nižší než 60 centů, zatímco vířivka s vnitřním prostorem vyplněným pěnou spotřebovala přes 75 centů za den. Tato studie se uskutečnila počátkem ledna v Coloradu a využívala standardní osmihodinový provoz filtračního cyklu. Průměrná venkovní teplota při studii byla 7 °F, tedy −13,8 °C, a ukázala, že vířivky Arctic Spas jsou výrazně účinnější než typické vířivky vyplněné pěnou. Navíc testovaná vířivka Arctic Spas měla kapacitu 450 galonů, tedy přibližně 1700 litrů, zatímco pěnová vana měla pouze 400 galonů. I s větším množstvím vody k ohřevu vyšla vířivka Arctic Spas z testu nejlépe. Tepelný výkon je dalším klíčovým faktorem při určování toho, jak je cenově výhodný provoz vířivky. Různé studie srovnávaly tři vířivky Arctic Spas proti jiným modelům v testu stálé spotřeby. Výzkumníci chtěli určit energeticky účinné atributy různých modelů vířivek. Všechny tři modely Arctic Spas se umístily do pátého místa, včetně prvních dvou míst, v kategorii nejnižší spotřeba energie. V závěrečném hodnocení celkové energetické účinnosti se vířivky Arctic Spas opět dostaly na první a druhé místo s modely Kodiak SS-1 a Kodiak SS-2. Tento test tepelného ohodnocení pracoval se spotřebou energie, ochlazováním v čase a teplotou vody. Spotřeba energie v ustáleném stavu Ochlazování v čase Specifická spotřeba energie v ustáleném stavu Teplota vody Spotřeba energie čerpadel Spotřeba energie ohřevu Jedním z nejzajímavějších výsledků vyhodnocení bylo dosažení stálého tepelného stavu při určité okolní teplotě. Arctic Spas Kodiak SS-2 spotřeboval pouze 149 wattů během 128 hodin, zatímco Cal Spas Atlantic spotřeboval 503 wattů za 130 hodin. Špičková tepelná izolace a venkovní provedení vířivky Kodiak SS-2 pomáhají vysvětlit drastické rozdíly ve spotřebě elektrické energie a tedy i v provozních nákladech. V závěrečném hodnocení celkové energetické účinnosti se vířivky Arctic Spas opět dostaly na přední místa. Pro běžného uživatele je důležité, že tato technická řešení nejsou jen laboratorní hodnoty. V každodenním provozu znamenají stabilnější teplotu vody, méně zbytečných ohřevových cyklů a pohodlnější celoroční používání. Nízké provozní náklady vířivky dokazují, že kvalitní venkovní vířivka nemusí znamenat nepříjemně vysoké měsíční účty za energii. Další inovace Jakákoliv překážka mezi elektrickým zařízením a skořepinou omezí přenos zbytkového tepla a znamená zvýšené náklady pro uživatele. Naše přesahující izolace přístupových dvířek zamezuje poslední možnosti tepelného úniku a ovládací systém RossExhaust™ monitoruje teplotu uvnitř kabinetu. Žádná jiná vířivka na světě nemá FreeHeat™. Schopnost kontrolovat a upravovat teplotu pod kabinetem je natolik unikátní a cenná, že jsme si toto řešení ochránili patentem. Výsledek je stabilnější prostředí pro technologii, efektivnější využití odpadního tepla a klidnější celoroční provoz i při náročném počasí. Nejnižší provozní náklady Zbytkové teplo z provozu zařízení, především čerpadel, může prostupovat přes sklolaminátovou skořepinu. To přispívá k přihřívání vody a snižuje počet ohřevových cyklů a provozní dobu elektroohřevu. Na rozdíl od vířivek vyplněných pěnou tak méně časté spínání elektroohřevu znamená nižší účet za elektrickou energii každý měsíc a předvídatelnější provozní náklady. Skutečná ochrana proti mrazu Obvodová izolace FreeHeat® má ještě jednu výhodu: schopnost využít teplo kumulované ve vodě vířivky k ochraně proti mrazu při výpadku proudu. Při mrazech −20 °C máte podle našich zkušeností přibližně 5 dnů na to, abyste zabránili promrznutí technologie. Pokud si zajistíte externí zdroj tepla, může být tato doba prakticky neomezená. Není špatné mít připravené řešení i pro extrémní situace, které mohou v zimě přijít bez varování a vyžadují rychlou reakci ještě před příjezdem servisu nebo obnovením elektřiny v celé lokalitě.",
+        "headingCount": 4,
+        "isSupportPage": false
+      }
+    },
+    {
+      "target": "local",
+      "pageId": "support",
+      "url": "http://localhost:8090/podpora/",
+      "status": 200,
+      "screenshot": "docs\\screenshots\\site-customer-audit-2026-06-08\\local-support-desktop.png",
+      "finalUrl": "http://localhost:8090/podpora/",
+      "title": "Podpora – Arctic Spas Local",
+      "bodyClass": "wp-singular page-template page-template-template-support page-template-template-support-php page page-id-23 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Podpora",
+      "textSample": "Přeskočit na navigaci Přeskočit na obsah Přeskočit na patičku Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vířivky Vybrat podle parametrů Série Core Série Classic Série Custom Akční nabídky Celoroční bazény Vybrat podle parametrů Bazény ARCTIC Classic Bazény ARCTIC Custom Vlastnosti Tepelná izolace Záruka na skořepinu Termokryt Podlaha vířivky Servisní přístup Variabilita Automatická dezinfekce Další informace Služby Akční nabídky Certifikáty Záruka Kolik stojí provoz a údržba Podpora Reference O nás Showroom Servis Kontakt Lunar Orion Ke stažení Nezávazná konzultace Vyhledat Vyhledat Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vyhledat Nezávazná konzultace Navigace Série Core Lunar Orion Husky Série Classic McKinley Mustang Timberwolf Totem Eagle Série Custom Summit XL Summit Tundra Kodiak Klondiker Yukon Cub Arctic Fox Výprodej skladových vířivek Zobrazit nabídku Bazény ARCTIC Classic Athabascan Hudson Kingfisher Wolverine Bazény ARCTIC Custom Arctic Ocean Okanagan Výprodej skladových vířivek Zobrazit nabídku —Podpora Podpora Zde naleznete odpovědi na časté otázky k problematice koupě, plánování, stavby a provozu domácího bazénu či vířivky. Podpora Časté dotazy Ke stažení Servisní formulář Časté dotazy Všechny Obchodní Stavební příprava Montáž Provoz a údržba Servis − Jak probíhá výběr a objednávka vířivky? Jak probíhá výběr a objednávka vířivky? Nejprve společně ověříme velikost, umístění a požadovanou výbavu. Poté připravíme konkrétní konf",
+      "headerMenu": {
+        "linkCount": 62,
+        "infoLinks": [
+          {
+            "text": "Další informace",
+            "href": "http://localhost:8090/dalsi-informace/",
+            "classes": ""
+          },
+          {
+            "text": "Služby",
+            "href": "http://localhost:8090/sluzby/",
+            "classes": ""
+          },
+          {
+            "text": "Akční nabídky",
+            "href": "http://localhost:8090/akcni-nabidky/",
+            "classes": ""
+          },
+          {
+            "text": "Certifikáty",
+            "href": "http://localhost:8090/certifikaty/",
+            "classes": ""
+          },
+          {
+            "text": "Záruka",
+            "href": "http://localhost:8090/zaruka/",
+            "classes": ""
+          },
+          {
+            "text": "Kolik stojí provoz a údržba",
+            "href": "http://localhost:8090/kolik-stoji-udrzba/",
+            "classes": ""
+          },
+          {
+            "text": "Podpora",
+            "href": "http://localhost:8090/podpora/",
+            "classes": ""
+          },
+          {
+            "text": "Reference",
+            "href": "http://localhost:8090/reference/",
+            "classes": ""
+          },
+          {
+            "text": "O nás",
+            "href": "http://localhost:8090/o-nas/",
+            "classes": ""
+          },
+          {
+            "text": "Showroom",
+            "href": "http://localhost:8090/showroom/",
+            "classes": ""
+          },
+          {
+            "text": "Servis",
+            "href": "http://localhost:8090/servis/",
+            "classes": ""
+          },
+          {
+            "text": "Kontakt",
+            "href": "http://localhost:8090/kontakt/",
+            "classes": ""
+          },
+          {
+            "text": "Lunar",
+            "href": "http://localhost:8090/product/lunar/",
+            "classes": ""
+          },
+          {
+            "text": "Orion",
+            "href": "http://localhost:8090/product/orion/",
+            "classes": ""
+          },
+          {
+            "text": "Ke stažení",
+            "href": "http://localhost:8090/ke-stazeni/",
+            "classes": ""
+          },
+          {
+            "text": "+420 602 149 106",
+            "href": "tel:+420602149106",
+            "classes": "f-bar__phone"
+          },
+          {
+            "text": "Lunar",
+            "href": "http://localhost:8090/product/lunar/",
+            "classes": "f-mega-menu__product"
+          },
+          {
+            "text": "Orion",
+            "href": "http://localhost:8090/product/orion/",
+            "classes": "f-mega-menu__product"
+          }
+        ]
+      },
+      "support": {
+        "faqCount": 9,
+        "faqTitles": [
+          "Jak probíhá výběr a objednávka vířivky?",
+          "Co je potřeba připravit před instalací?",
+          "Zajišťujete dopravu a montáž?",
+          "Jak náročná je běžná údržba vody?",
+          "Pomůžete s výběrem vhodné konfigurace?",
+          "Lze si vířivku prohlédnout osobně?",
+          "Jak se řeší stavební připravenost?",
+          "Umíte zajistit servis po instalaci?",
+          "Jak rychle dostanu cenovou nabídku?"
+        ],
+        "faqTags": [
+          "Obchodní",
+          "Stavební příprava",
+          "Montáž",
+          "Provoz a údržba",
+          "Obchodní",
+          "Obchodní",
+          "Stavební příprava",
+          "Servis",
+          "Obchodní"
+        ],
+        "tabLinks": [
+          {
+            "text": "Časté dotazy",
+            "href": "#caste-dotazy",
+            "targetExists": true
+          },
+          {
+            "text": "Ke stažení",
+            "href": "#ke-stazeni",
+            "targetExists": true
+          },
+          {
+            "text": "Servisní formulář",
+            "href": "#servisni-formular",
+            "targetExists": true
+          }
+        ]
+      }
+    },
+    {
+      "target": "local",
+      "pageId": "references",
+      "url": "http://localhost:8090/reference/",
+      "status": 200,
+      "screenshot": "docs\\screenshots\\site-customer-audit-2026-06-08\\local-references-desktop.png",
+      "finalUrl": "http://localhost:8090/reference/",
+      "title": "Reference – Arctic Spas Local",
+      "bodyClass": "wp-singular page-template page-template-template-references page-template-template-references-php page page-id-482 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Reference",
+      "textSample": "Přeskočit na navigaci Přeskočit na obsah Přeskočit na patičku Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vířivky Vybrat podle parametrů Série Core Série Classic Série Custom Akční nabídky Celoroční bazény Vybrat podle parametrů Bazény ARCTIC Classic Bazény ARCTIC Custom Vlastnosti Tepelná izolace Záruka na skořepinu Termokryt Podlaha vířivky Servisní přístup Variabilita Automatická dezinfekce Další informace Služby Akční nabídky Certifikáty Záruka Kolik stojí provoz a údržba Podpora Reference O nás Showroom Servis Kontakt Lunar Orion Ke stažení Nezávazná konzultace Vyhledat Vyhledat Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vyhledat Nezávazná konzultace Navigace Série Core Lunar Orion Husky Série Classic McKinley Mustang Timberwolf Totem Eagle Série Custom Summit XL Summit Tundra Kodiak Klondiker Yukon Cub Arctic Fox Výprodej skladových vířivek Zobrazit nabídku Bazény ARCTIC Classic Athabascan Hudson Kingfisher Wolverine Bazény ARCTIC Custom Arctic Ocean Okanagan Výprodej skladových vířivek Zobrazit nabídku —Reference Reference Reference Arctic Fox 2021 Arctic Fox po letech provozu Arctic Spas 2016 Fox se systémem Spa Boy Wolverine 2016 Swimspa Wolverine Arctic Spas 2014 Nízká spotřeba v zimním provozu Arctic Fox 2014 Arctic Fox předčil očekávání Bazén 2015 Vstřícný přístup při výběru bazénu Celoroční bazén 2015 Výběr celoročního bazénu Arctic Spas 2016 Vířivka bez poruchy Arctic Spas 2012 Novoroční přání z vířivky Potřebujete poradit s vý",
+      "headerMenu": {
+        "linkCount": 62,
+        "infoLinks": [
+          {
+            "text": "Další informace",
+            "href": "http://localhost:8090/dalsi-informace/",
+            "classes": ""
+          },
+          {
+            "text": "Služby",
+            "href": "http://localhost:8090/sluzby/",
+            "classes": ""
+          },
+          {
+            "text": "Akční nabídky",
+            "href": "http://localhost:8090/akcni-nabidky/",
+            "classes": ""
+          },
+          {
+            "text": "Certifikáty",
+            "href": "http://localhost:8090/certifikaty/",
+            "classes": ""
+          },
+          {
+            "text": "Záruka",
+            "href": "http://localhost:8090/zaruka/",
+            "classes": ""
+          },
+          {
+            "text": "Kolik stojí provoz a údržba",
+            "href": "http://localhost:8090/kolik-stoji-udrzba/",
+            "classes": ""
+          },
+          {
+            "text": "Podpora",
+            "href": "http://localhost:8090/podpora/",
+            "classes": ""
+          },
+          {
+            "text": "Reference",
+            "href": "http://localhost:8090/reference/",
+            "classes": ""
+          },
+          {
+            "text": "O nás",
+            "href": "http://localhost:8090/o-nas/",
+            "classes": ""
+          },
+          {
+            "text": "Showroom",
+            "href": "http://localhost:8090/showroom/",
+            "classes": ""
+          },
+          {
+            "text": "Servis",
+            "href": "http://localhost:8090/servis/",
+            "classes": ""
+          },
+          {
+            "text": "Kontakt",
+            "href": "http://localhost:8090/kontakt/",
+            "classes": ""
+          },
+          {
+            "text": "Lunar",
+            "href": "http://localhost:8090/product/lunar/",
+            "classes": ""
+          },
+          {
+            "text": "Orion",
+            "href": "http://localhost:8090/product/orion/",
+            "classes": ""
+          },
+          {
+            "text": "Ke stažení",
+            "href": "http://localhost:8090/ke-stazeni/",
+            "classes": ""
+          },
+          {
+            "text": "+420 602 149 106",
+            "href": "tel:+420602149106",
+            "classes": "f-bar__phone"
+          },
+          {
+            "text": "Lunar",
+            "href": "http://localhost:8090/product/lunar/",
+            "classes": "f-mega-menu__product"
+          },
+          {
+            "text": "Orion",
+            "href": "http://localhost:8090/product/orion/",
+            "classes": "f-mega-menu__product"
+          }
+        ]
+      },
+      "references": {
+        "cardCount": 9,
+        "imageOnlyLinkCount": 9,
+        "cardsWithDescriptionCount": 0,
+        "cards": [
+          {
+            "tag": "A",
+            "href": "http://localhost:8090/wp-content/uploads/2026/05/arctic-fox-lidi.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Arctic Fox po letech provozu",
+            "text": "Arctic Fox 2021 Arctic Fox po letech provozu",
+            "description": "Arctic Fox",
+            "hasUsefulDescription": false,
+            "imageSrc": "http://localhost:8090/wp-content/uploads/2026/05/arctic-fox-lidi.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "http://localhost:8090/wp-content/uploads/2026/05/arctic-fox-lidi-2.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Fox se systémem Spa Boy",
+            "text": "Arctic Spas 2016 Fox se systémem Spa Boy",
+            "description": "Arctic Spas",
+            "hasUsefulDescription": false,
+            "imageSrc": "http://localhost:8090/wp-content/uploads/2026/05/arctic-fox-lidi-2.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "http://localhost:8090/wp-content/uploads/2026/05/swimspa-arctic-g1.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Swimspa Wolverine",
+            "text": "Wolverine 2016 Swimspa Wolverine",
+            "description": "Wolverine",
+            "hasUsefulDescription": false,
+            "imageSrc": "http://localhost:8090/wp-content/uploads/2026/05/swimspa-arctic-g1.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "http://localhost:8090/wp-content/uploads/2026/05/virivka-arctic-g1.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Nízká spotřeba v zimním provozu",
+            "text": "Arctic Spas 2014 Nízká spotřeba v zimním provozu",
+            "description": "Arctic Spas",
+            "hasUsefulDescription": false,
+            "imageSrc": "http://localhost:8090/wp-content/uploads/2026/05/virivka-arctic-g1.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "http://localhost:8090/wp-content/uploads/2026/05/virivka-arctic-g7.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Arctic Fox předčil očekávání",
+            "text": "Arctic Fox 2014 Arctic Fox předčil očekávání",
+            "description": "Arctic Fox",
+            "hasUsefulDescription": false,
+            "imageSrc": "http://localhost:8090/wp-content/uploads/2026/05/virivka-arctic-g7.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "http://localhost:8090/wp-content/uploads/2026/05/swimspa-arctic-g4.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Vstřícný přístup při výběru bazénu",
+            "text": "Bazén 2015 Vstřícný přístup při výběru bazénu",
+            "description": "Bazén",
+            "hasUsefulDescription": false,
+            "imageSrc": "http://localhost:8090/wp-content/uploads/2026/05/swimspa-arctic-g4.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "http://localhost:8090/wp-content/uploads/2026/05/swimspa-arctic-g1.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Výběr celoročního bazénu",
+            "text": "Celoroční bazén 2015 Výběr celoročního bazénu",
+            "description": "Celoroční bazén",
+            "hasUsefulDescription": false,
+            "imageSrc": "http://localhost:8090/wp-content/uploads/2026/05/swimspa-arctic-g1.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "http://localhost:8090/wp-content/uploads/2026/05/virivka-arctic-g21.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Vířivka bez poruchy",
+            "text": "Arctic Spas 2016 Vířivka bez poruchy",
+            "description": "Arctic Spas",
+            "hasUsefulDescription": false,
+            "imageSrc": "http://localhost:8090/wp-content/uploads/2026/05/virivka-arctic-g21.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "http://localhost:8090/wp-content/uploads/2026/05/reference-zuz.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Novoroční přání z vířivky",
+            "text": "Arctic Spas 2012 Novoroční přání z vířivky",
+            "description": "Arctic Spas",
+            "hasUsefulDescription": false,
+            "imageSrc": "http://localhost:8090/wp-content/uploads/2026/05/reference-zuz.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "target": "local",
+      "pageId": "about",
+      "url": "http://localhost:8090/o-nas/",
+      "status": 200,
+      "screenshot": "docs\\screenshots\\site-customer-audit-2026-06-08\\local-about-desktop.png",
+      "finalUrl": "http://localhost:8090/o-nas/",
+      "title": "O nás – Arctic Spas Local",
+      "bodyClass": "wp-singular page-template page-template-template-about page-template-template-about-php page page-id-288 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "O nás",
+      "textSample": "Přeskočit na navigaci Přeskočit na obsah Přeskočit na patičku Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vířivky Vybrat podle parametrů Série Core Série Classic Série Custom Akční nabídky Celoroční bazény Vybrat podle parametrů Bazény ARCTIC Classic Bazény ARCTIC Custom Vlastnosti Tepelná izolace Záruka na skořepinu Termokryt Podlaha vířivky Servisní přístup Variabilita Automatická dezinfekce Další informace Služby Akční nabídky Certifikáty Záruka Kolik stojí provoz a údržba Podpora Reference O nás Showroom Servis Kontakt Lunar Orion Ke stažení Nezávazná konzultace Vyhledat Vyhledat Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vyhledat Nezávazná konzultace Navigace Série Core Lunar Orion Husky Série Classic McKinley Mustang Timberwolf Totem Eagle Série Custom Summit XL Summit Tundra Kodiak Klondiker Yukon Cub Arctic Fox Výprodej skladových vířivek Zobrazit nabídku Bazény ARCTIC Classic Athabascan Hudson Kingfisher Wolverine Bazény ARCTIC Custom Arctic Ocean Okanagan Výprodej skladových vířivek Zobrazit nabídku —O nás O nás Pořízení bazénu nebo vířivky je investice, která by měla být pečlivě zvážena. Při výběru značky i dodavatele je rozumné seznámit se s profilem výrobce a prodejce. Naše společnost Kariéra Naše společnost Prodejem vířivek Arctic Spas se zabýváme již od roku 2005 a základ našeho týmu se za tu dobu nezměnil. Máme více než 15 let osobních zkušeností s dovozem, prodejem, instalacemi a servisem vířivek Arctic Spas, které se zúroči",
+      "headerMenu": {
+        "linkCount": 62,
+        "infoLinks": [
+          {
+            "text": "Další informace",
+            "href": "http://localhost:8090/dalsi-informace/",
+            "classes": ""
+          },
+          {
+            "text": "Služby",
+            "href": "http://localhost:8090/sluzby/",
+            "classes": ""
+          },
+          {
+            "text": "Akční nabídky",
+            "href": "http://localhost:8090/akcni-nabidky/",
+            "classes": ""
+          },
+          {
+            "text": "Certifikáty",
+            "href": "http://localhost:8090/certifikaty/",
+            "classes": ""
+          },
+          {
+            "text": "Záruka",
+            "href": "http://localhost:8090/zaruka/",
+            "classes": ""
+          },
+          {
+            "text": "Kolik stojí provoz a údržba",
+            "href": "http://localhost:8090/kolik-stoji-udrzba/",
+            "classes": ""
+          },
+          {
+            "text": "Podpora",
+            "href": "http://localhost:8090/podpora/",
+            "classes": ""
+          },
+          {
+            "text": "Reference",
+            "href": "http://localhost:8090/reference/",
+            "classes": ""
+          },
+          {
+            "text": "O nás",
+            "href": "http://localhost:8090/o-nas/",
+            "classes": ""
+          },
+          {
+            "text": "Showroom",
+            "href": "http://localhost:8090/showroom/",
+            "classes": ""
+          },
+          {
+            "text": "Servis",
+            "href": "http://localhost:8090/servis/",
+            "classes": ""
+          },
+          {
+            "text": "Kontakt",
+            "href": "http://localhost:8090/kontakt/",
+            "classes": ""
+          },
+          {
+            "text": "Lunar",
+            "href": "http://localhost:8090/product/lunar/",
+            "classes": ""
+          },
+          {
+            "text": "Orion",
+            "href": "http://localhost:8090/product/orion/",
+            "classes": ""
+          },
+          {
+            "text": "Ke stažení",
+            "href": "http://localhost:8090/ke-stazeni/",
+            "classes": ""
+          },
+          {
+            "text": "+420 602 149 106",
+            "href": "tel:+420602149106",
+            "classes": "f-bar__phone"
+          },
+          {
+            "text": "Lunar",
+            "href": "http://localhost:8090/product/lunar/",
+            "classes": "f-mega-menu__product"
+          },
+          {
+            "text": "Orion",
+            "href": "http://localhost:8090/product/orion/",
+            "classes": "f-mega-menu__product"
+          }
+        ]
+      },
+      "about": {
+        "introText": "Naše společnost Kariéra Naše společnost Prodejem vířivek Arctic Spas se zabýváme již od roku 2005 a základ našeho týmu se za tu dobu nezměnil. Máme více než 15 let osobních zkušeností s dovozem, prodejem, instalacemi a servisem vířivek Arctic Spas, které se zúročily při stovkách realizací v České republice i na Slovensku. Při naší práci se můžeme jako autorizovaný dealer spolehnout také na podporu kanadského výrobce s celosvětovou působností a tradicí od roku 1994. Veškeré získané know-how je plně k dispozici našim zákazníkům. 21+let zkušeností 1000+spokojených klientů 11členů týmu Náš tým Naše současná sestava je vyladěna tak, aby byla schopna kompetentně a v dohodnutých termínech zajistit všechny fáze projektu. Od úvodní konzultace, přes návrh řešení, zpracování nabídky a realizaci, až po poprodejní služby a servis - tým BASPA je tu pro vás. ‹ Vlastimil Zhoř Jednatel společnosti Prodej vířivek Ing. Lukáš Dušek Jednatel společnosti Komunikace s dodavateli a prodej bazénů Helena Antonyová Prodej bazénů Prodej bazénů a příslušenství Alena Janulíková Logistika a fakturace Organizace dopravy a fakturace. Bc. Tomáš Koutný Prodej vířivek Prodej vířivek a koupacích sudů PN Pavel Nováček Vedoucí technického úseku Organizace montáží a servisů › Kariéra v Arctic spas Uplatnění u nás najdou šikovní lidé, kteří se nebojí komunikovat se zákazníky a odvádět dobrou práci každý den. Montážní technik Hledáme spolehlivého technika pro montáže, servisní výjezdy a péči o zákazníky po instalaci.Požadujemetechnickou zručnost a pečlivostřidičský průkaz skupiny Bslušné jednání se zákazníkysamostatnost při montážích a servisuchuť učit se produkty Arctic SpasNabízímestabilní práci v malém týmuzaškolení na produktech Arctic Spasférové jednání a dlouhodobou spoluprácizázemí showroomu v Moravanech u Brnapodmínky podle zkušeností a domluvyKontaktujte násVíce na pracovním portále Obchodník na prodejně v Moravanech Hledáme obchodníka pro showroom v Moravanech, který zvládne zákazníkům srozumitelně představit vířivky, bazény a navazující služby.Požadujemepříjemnou a věcnou komunikaci se zákazníkyorientaci v obchodním jednánípečlivost při přípravě nabídekochotu naučit se technické detaily sortimentuspolehlivost a samostatnostNabízímepráci v zavedeném showroomu u Brnaproduktové zaškolení Arctic Spasmenší tým s přímou komunikacímožnost podílet se na realizaci zakázek od poptávky po předáníférové podmínky podle zkušenostíNapsat zprávu Obchodník na prodejně v Moravanech Do obchodního týmu hledáme posilu pro komunikaci se zájemci, správu poptávek a koordinaci dalších kroků s technickým týmem.Požadujemezkušenost s prodejem nebo klientskou péčíschopnost dotahovat rozpracované poptávkydobrou organizaci práceochotu pracovat s produktovým katalogemspolupráci s techniky a logistikouNabízímestabilní zázemí autorizovaného prodejcejasné produktové portfolio a podporu týmukontakt se zákazníky v showroomu i onlinedlouhodobou spoluprácipodmínky podle domluvené roleNapsat zprávu",
+        "contains2005": true,
+        "contains15Years": true,
+        "stats": [
+          "Po - Pá 8:00-17:00 h",
+          "Po - Pá 8:00-17:00 h",
+          "21+let zkušeností 1000+spokojených klientů 11členů týmu",
+          "Po - Pá 8:00-17:00 h",
+          "Po - Pá 8:00-17:00 h"
+        ],
+        "teamNames": [
+          "Vlastimil Zhoř",
+          "Ing. Lukáš Dušek",
+          "Helena Antonyová",
+          "Alena Janulíková",
+          "Bc. Tomáš Koutný",
+          "Pavel Nováček"
+        ]
+      }
+    },
+    {
+      "target": "local",
+      "pageId": "showroom",
+      "url": "http://localhost:8090/showroom/",
+      "status": 200,
+      "screenshot": "docs\\screenshots\\site-customer-audit-2026-06-08\\local-showroom-desktop.png",
+      "finalUrl": "http://localhost:8090/showroom/",
+      "title": "Showroom – Arctic Spas Local",
+      "bodyClass": "wp-singular page-template page-template-template-showroom page-template-template-showroom-php page page-id-22 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Showroom",
+      "textSample": "Přeskočit na navigaci Přeskočit na obsah Přeskočit na patičku Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vířivky Vybrat podle parametrů Série Core Série Classic Série Custom Akční nabídky Celoroční bazény Vybrat podle parametrů Bazény ARCTIC Classic Bazény ARCTIC Custom Vlastnosti Tepelná izolace Záruka na skořepinu Termokryt Podlaha vířivky Servisní přístup Variabilita Automatická dezinfekce Další informace Služby Akční nabídky Certifikáty Záruka Kolik stojí provoz a údržba Podpora Reference O nás Showroom Servis Kontakt Lunar Orion Ke stažení Nezávazná konzultace Vyhledat Vyhledat Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vyhledat Nezávazná konzultace Navigace Série Core Lunar Orion Husky Série Classic McKinley Mustang Timberwolf Totem Eagle Série Custom Summit XL Summit Tundra Kodiak Klondiker Yukon Cub Arctic Fox Výprodej skladových vířivek Zobrazit nabídku Bazény ARCTIC Classic Athabascan Hudson Kingfisher Wolverine Bazény ARCTIC Custom Arctic Ocean Okanagan Výprodej skladových vířivek Zobrazit nabídku Další informace Showroom Showroom U nás najdete od každého něco a obvykle alespoň dva modely vířivek napuštěné vodou, abyste je mohli podrobit mokré zkoušce. Fotogalerie 280 m² prezentační plochy Přijďte se pobavit o své nové vířivce nebo swimspa Na pobočce nebo online s vámi vaše představy rádi probereme. Že žádné nemáte? Tím spíš se zastavte pro inspiraci. Domluvit si schůzku Kontakt Bc. Tomáš Koutný tomas.koutny@baspa.cz +420 602 149",
+      "headerMenu": {
+        "linkCount": 60,
+        "infoLinks": [
+          {
+            "text": "Další informace",
+            "href": "http://localhost:8090/dalsi-informace/",
+            "classes": ""
+          },
+          {
+            "text": "Služby",
+            "href": "http://localhost:8090/sluzby/",
+            "classes": ""
+          },
+          {
+            "text": "Akční nabídky",
+            "href": "http://localhost:8090/akcni-nabidky/",
+            "classes": ""
+          },
+          {
+            "text": "Certifikáty",
+            "href": "http://localhost:8090/certifikaty/",
+            "classes": ""
+          },
+          {
+            "text": "Záruka",
+            "href": "http://localhost:8090/zaruka/",
+            "classes": ""
+          },
+          {
+            "text": "Kolik stojí provoz a údržba",
+            "href": "http://localhost:8090/kolik-stoji-udrzba/",
+            "classes": ""
+          },
+          {
+            "text": "Podpora",
+            "href": "http://localhost:8090/podpora/",
+            "classes": ""
+          },
+          {
+            "text": "Reference",
+            "href": "http://localhost:8090/reference/",
+            "classes": ""
+          },
+          {
+            "text": "O nás",
+            "href": "http://localhost:8090/o-nas/",
+            "classes": ""
+          },
+          {
+            "text": "Showroom",
+            "href": "http://localhost:8090/showroom/",
+            "classes": ""
+          },
+          {
+            "text": "Servis",
+            "href": "http://localhost:8090/servis/",
+            "classes": ""
+          },
+          {
+            "text": "Kontakt",
+            "href": "http://localhost:8090/kontakt/",
+            "classes": ""
+          },
+          {
+            "text": "Lunar",
+            "href": "http://localhost:8090/product/lunar/",
+            "classes": ""
+          },
+          {
+            "text": "Orion",
+            "href": "http://localhost:8090/product/orion/",
+            "classes": ""
+          },
+          {
+            "text": "Ke stažení",
+            "href": "http://localhost:8090/ke-stazeni/",
+            "classes": ""
+          },
+          {
+            "text": "+420 602 149 106",
+            "href": "tel:+420602149106",
+            "classes": "f-bar__phone"
+          },
+          {
+            "text": "Lunar",
+            "href": "http://localhost:8090/product/lunar/",
+            "classes": "f-mega-menu__product"
+          },
+          {
+            "text": "Orion",
+            "href": "http://localhost:8090/product/orion/",
+            "classes": "f-mega-menu__product"
+          }
+        ]
+      },
+      "showroom": {
+        "mapSectionExists": false,
+        "mapLinks": [
+          {
+            "text": "Zobrazit na mapě.",
+            "href": "https://maps.app.goo.gl/ZsYfoZ2aQGF1JnZG6"
+          }
+        ],
+        "galleryButtonHref": "#fotogalerie",
+        "galleryButtonText": "Fotogalerie",
+        "galleryButtonTargetExists": true,
+        "gallerySectionText": "Naše bazény a vířivky si prohlédnete, případně vyzkoušíte Naše hlavní vzorková prodejna se nachází v Moravanech u Brna a je velmi dobře dostupná z dálnice D1. Vystavené vířivky, swimspa a vybrané příslušenství si u nás můžete nejen prohlédnout. Minimálně dvě vířivky míváme zprovozněné pro mokrý test, k dispozici je samozřejmě kompletní zázemí.",
+        "galleryImageCount": 1,
+        "galleryCardCount": 0,
+        "infoItems": [
+          "Kontakt Bc. Tomáš Koutný tomas.koutny@baspa.cz +420 602 149 106",
+          "Kde nás najdete Moravany u Brna Bohunicka cesta 15 Zobrazit na mapě.",
+          "Otevírací doba Úterý - Pátek 9:00 - 11:30 12:30 - 16:00"
+        ]
+      }
+    },
+    {
+      "target": "local",
+      "pageId": "contact",
+      "url": "http://localhost:8090/kontakt/",
+      "status": 200,
+      "screenshot": "docs\\screenshots\\site-customer-audit-2026-06-08\\local-contact-desktop.png",
+      "finalUrl": "http://localhost:8090/kontakt/",
+      "title": "Kontakt – Arctic Spas Local",
+      "bodyClass": "wp-singular page-template page-template-template-contact page-template-template-contact-php page page-id-25 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured template--contact",
+      "h1": "Jsme k dispozici pro vaše dotazy",
+      "textSample": "Přeskočit na navigaci Přeskočit na obsah Přeskočit na patičku Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vířivky Vybrat podle parametrů Série Core Série Classic Série Custom Akční nabídky Celoroční bazény Vybrat podle parametrů Bazény ARCTIC Classic Bazény ARCTIC Custom Vlastnosti Tepelná izolace Záruka na skořepinu Termokryt Podlaha vířivky Servisní přístup Variabilita Automatická dezinfekce Další informace Služby Akční nabídky Certifikáty Záruka Kolik stojí provoz a údržba Podpora Reference O nás Showroom Servis Kontakt Lunar Orion Ke stažení Nezávazná konzultace Vyhledat Vyhledat Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vyhledat Nezávazná konzultace Navigace Série Core Lunar Orion Husky Série Classic McKinley Mustang Timberwolf Totem Eagle Série Custom Summit XL Summit Tundra Kodiak Klondiker Yukon Cub Arctic Fox Výprodej skladových vířivek Zobrazit nabídku Bazény ARCTIC Classic Athabascan Hudson Kingfisher Wolverine Bazény ARCTIC Custom Arctic Ocean Okanagan Výprodej skladových vířivek Zobrazit nabídku —Kontakt Jsme k dispozici pro vaše dotazy +420 777 099 687 Po–Pá: 08:00-17:00 lukas.dusek@arctic-spas.cz Odpovíme do dvou pracovních dní Poptávkový formulář Servisní formulář Kontaktní formulář Kde nás najdete? Kde nás najdete Moravany u BrnaBohunická cesta 15 Otevírací doba Úterý - Pátek9:00 - 11:3012:30 - 16:00 Chcete si osobně prohlédnout řešení a pobavit se o možnostech realizace? Rádi se vám budeme věnovat v showroomu. Zobrazit na ",
+      "headerMenu": {
+        "linkCount": 64,
+        "infoLinks": [
+          {
+            "text": "Další informace",
+            "href": "http://localhost:8090/dalsi-informace/",
+            "classes": ""
+          },
+          {
+            "text": "Služby",
+            "href": "http://localhost:8090/sluzby/",
+            "classes": ""
+          },
+          {
+            "text": "Akční nabídky",
+            "href": "http://localhost:8090/akcni-nabidky/",
+            "classes": ""
+          },
+          {
+            "text": "Certifikáty",
+            "href": "http://localhost:8090/certifikaty/",
+            "classes": ""
+          },
+          {
+            "text": "Záruka",
+            "href": "http://localhost:8090/zaruka/",
+            "classes": ""
+          },
+          {
+            "text": "Kolik stojí provoz a údržba",
+            "href": "http://localhost:8090/kolik-stoji-udrzba/",
+            "classes": ""
+          },
+          {
+            "text": "Podpora",
+            "href": "http://localhost:8090/podpora/",
+            "classes": ""
+          },
+          {
+            "text": "Reference",
+            "href": "http://localhost:8090/reference/",
+            "classes": ""
+          },
+          {
+            "text": "O nás",
+            "href": "http://localhost:8090/o-nas/",
+            "classes": ""
+          },
+          {
+            "text": "Showroom",
+            "href": "http://localhost:8090/showroom/",
+            "classes": ""
+          },
+          {
+            "text": "Servis",
+            "href": "http://localhost:8090/servis/",
+            "classes": ""
+          },
+          {
+            "text": "Kontakt",
+            "href": "http://localhost:8090/kontakt/",
+            "classes": ""
+          },
+          {
+            "text": "Lunar",
+            "href": "http://localhost:8090/product/lunar/",
+            "classes": ""
+          },
+          {
+            "text": "Orion",
+            "href": "http://localhost:8090/product/orion/",
+            "classes": ""
+          },
+          {
+            "text": "Ke stažení",
+            "href": "http://localhost:8090/ke-stazeni/",
+            "classes": ""
+          },
+          {
+            "text": "+420 602 149 106",
+            "href": "tel:+420602149106",
+            "classes": "f-bar__phone"
+          },
+          {
+            "text": "Lunar",
+            "href": "http://localhost:8090/product/lunar/",
+            "classes": "f-mega-menu__product"
+          },
+          {
+            "text": "Orion",
+            "href": "http://localhost:8090/product/orion/",
+            "classes": "f-mega-menu__product"
+          }
+        ]
+      },
+      "contact": {
+        "mapExists": true,
+        "mapContentSource": "customizer-map-embed",
+        "mapRect": {
+          "x": 0,
+          "y": 430,
+          "width": 1440,
+          "height": 782,
+          "top": 430,
+          "left": 0,
+          "bottom": 1212,
+          "right": 1440
+        },
+        "mapStyle": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "filter": "none",
+          "background": "rgb(238, 241, 245) none repeat scroll 0% 0% / auto padding-box border-box",
+          "backgroundColor": "rgb(238, 241, 245)",
+          "pointerEvents": "auto"
+        },
+        "mapBeforeStyle": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "filter": "none",
+          "background": "rgba(35, 40, 47, 0.72) none repeat scroll 0% 0% / auto padding-box border-box",
+          "backgroundColor": "rgba(35, 40, 47, 0.72)",
+          "pointerEvents": "none"
+        },
+        "mapOverlayBackground": "rgba(35, 40, 47, 0.72) none repeat scroll 0% 0% / auto padding-box border-box",
+        "mapIframeSrc": "https://www.google.com/maps?q=49.149%2C16.589&ll=49.149%2C16.407&z=11&output=embed",
+        "mapIframeStyle": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "filter": "grayscale(0.7) saturate(0.5) contrast(1.05) brightness(0.88)",
+          "background": "rgba(0, 0, 0, 0) none no-repeat scroll 0% 0% / auto padding-box border-box",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "pointerEvents": "auto"
+        },
+        "fallbackImageSrc": "",
+        "cardText": "Kde nás najdete? Kde nás najdete Moravany u BrnaBohunická cesta 15 Otevírací doba Úterý - Pátek9:00 - 11:3012:30 - 16:00 Chcete si osobně prohlédnout řešení a pobavit se o možnostech realizace? Rádi se vám budeme věnovat v showroomu. Zobrazit na mapě",
+        "mapButtonHref": "https://maps.app.goo.gl/ZsYfoZ2aQGF1JnZG6",
+        "contactCardCount": 6,
+        "overlayStyle": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "filter": "none",
+          "background": "rgb(238, 241, 245) none repeat scroll 0% 0% / auto padding-box border-box",
+          "backgroundColor": "rgb(238, 241, 245)",
+          "pointerEvents": "auto"
+        }
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "maintenance",
+      "url": "https://illuminatus.cz/kolik-stoji-udrzba/",
+      "status": 200,
+      "screenshot": "docs\\screenshots\\site-customer-audit-2026-06-08\\prod-maintenance-desktop.png",
+      "finalUrl": "https://illuminatus.cz/kolik-stoji-udrzba/",
+      "title": "Kolik stojí provoz a údržba vířivky? – Arctic Spas",
+      "bodyClass": "wp-singular page-template page-template-template-maintenance page-template-template-maintenance-php page page-id-688 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Kolik stojí provoz a údržba vířivky?",
+      "textSample": "Přeskočit na navigaci Přeskočit na obsah Přeskočit na patičku Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vířivky Vybrat podle parametrů Série Core Série Classic Série Custom Akční nabídky Celoroční bazény Vybrat podle parametrů Bazény ARCTIC Classic Bazény ARCTIC Custom Vlastnosti Tepelná izolace Záruka na skořepinu Termokryt Podlaha vířivky Servisní přístup Variabilita Automatická dezinfekce Další informace Služby Akční nabídky Certifikáty Záruka Kolik stojí provoz a údržba Podpora Reference O nás Showroom Servis Kontakt Lunar Orion Ke stažení Nezávazná konzultace Vyhledat Vyhledat Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vyhledat Nezávazná konzultace Navigace Série Core Lunar Orion Husky Série Classic McKinley Mustang Timberwolf Totem Eagle Série Custom Summit XL Summit Tundra Kodiak Klondiker Yukon Cub Arctic Fox Výprodej skladových vířivek Zobrazit nabídku Bazény ARCTIC Classic Athabascan Hudson Kingfisher Wolverine Bazény ARCTIC Custom Arctic Ocean Okanagan Výprodej skladových vířivek Zobrazit nabídku —Kolik stojí provoz a údržba vířivky? Kolik stojí provoz a údržba vířivky? Jedním z nejdůležitějších parametrů ve kterých značka Arctic Spas jednoznačně dominuje jsou velmi nízké provozní náklady a s tím spojená kvalita izolací a termo krytů. Žádná značka vířivek nemá obvodovou izolaci silnou 8 - 10 cm jako vířivky Arctic Spas a neexistují žádné alternativy, které takovouto izolaci nahradí. Vířivky Arctic Spas jsou vyráběny u nejseverně",
+      "headerMenu": {
+        "linkCount": 62,
+        "infoLinks": [
+          {
+            "text": "Další informace",
+            "href": "https://illuminatus.cz/dalsi-informace/",
+            "classes": ""
+          },
+          {
+            "text": "Služby",
+            "href": "https://illuminatus.cz/sluzby/",
+            "classes": ""
+          },
+          {
+            "text": "Akční nabídky",
+            "href": "https://illuminatus.cz/akcni-nabidky/",
+            "classes": ""
+          },
+          {
+            "text": "Certifikáty",
+            "href": "https://illuminatus.cz/certifikaty/",
+            "classes": ""
+          },
+          {
+            "text": "Záruka",
+            "href": "https://illuminatus.cz/zaruka/",
+            "classes": ""
+          },
+          {
+            "text": "Kolik stojí provoz a údržba",
+            "href": "https://illuminatus.cz/kolik-stoji-udrzba/",
+            "classes": ""
+          },
+          {
+            "text": "Podpora",
+            "href": "https://illuminatus.cz/podpora/",
+            "classes": ""
+          },
+          {
+            "text": "Reference",
+            "href": "https://illuminatus.cz/reference/",
+            "classes": ""
+          },
+          {
+            "text": "O nás",
+            "href": "https://illuminatus.cz/o-nas/",
+            "classes": ""
+          },
+          {
+            "text": "Showroom",
+            "href": "https://illuminatus.cz/showroom/",
+            "classes": ""
+          },
+          {
+            "text": "Servis",
+            "href": "https://illuminatus.cz/servis/",
+            "classes": ""
+          },
+          {
+            "text": "Kontakt",
+            "href": "https://illuminatus.cz/kontakt/",
+            "classes": ""
+          },
+          {
+            "text": "Lunar",
+            "href": "https://illuminatus.cz/product/lunar/",
+            "classes": ""
+          },
+          {
+            "text": "Orion",
+            "href": "https://illuminatus.cz/product/orion/",
+            "classes": ""
+          },
+          {
+            "text": "Ke stažení",
+            "href": "https://illuminatus.cz/ke-stazeni/",
+            "classes": ""
+          },
+          {
+            "text": "+420 602 149 106",
+            "href": "tel:+420602149106",
+            "classes": "f-bar__phone"
+          },
+          {
+            "text": "Lunar",
+            "href": "https://illuminatus.cz/product/lunar/",
+            "classes": "f-mega-menu__product"
+          },
+          {
+            "text": "Orion",
+            "href": "https://illuminatus.cz/product/orion/",
+            "classes": "f-mega-menu__product"
+          }
+        ]
+      },
+      "maintenance": {
+        "articleText": "Náklady na vlastnictví a provozování vířivky Stejně jako zvyklost používání vířivky, náklady na pořízení a provozování vířivky se během posledních několika let drasticky změnily. Když byly vířivky původně distribuovány pro domácí použití, jejich celkový design a energetická účinnost měly zásadní nedostatky; výrobci se soustředili více na praktické využití než na provozní náklady. Pokroky u výrobců jako je Arctic Spas výrazně zlepšily vývoj a technologie, čímž se snížily počáteční náklady a hlavně provozní náklady spojené s vlastnictvím přenosné vířivky. Jednou z takových inovací je technologie FreeHeat, při níž teplo generované vnitřními čerpadly a motory slouží k udržení teploty vody na optimální úrovni. Izolované termokryty pomáhají zachytit a udržovat stoupající teplo ve vířivce. Vynikající filtrační systémy udržují čistou vodu s menší potřebou chemie. Lepší chemikálie Arctic Pure zkracují čas potřebný k běžné údržbě. Konstrukce vířivky se počítá také. Vířivky Arctic Spas jsou navrženy tak, aby odolaly náročnému klimatu a poskytovaly dlouhodobou spolehlivost. Robustní konstrukce umožňuje komponentům, čerpadlům, motorům a dalším částem naplno využít svůj potenciál. Křehké nafukovací vířivky nejsou schopny pracovat v nepříjemném studeném počasí. Velké náklady na udržení správně nahřáté nafukovací nebo špatně izolované vířivky rychle vyrovnávají jakýkoli vnímaný přínos získaný nákupem levnějšího řešení. Venkovní vířivka je velkou investicí a náklady na vlastnictví vířivky bývají často ztraceny ve směsi celkových ročních nákladů. Pokud si koupíte vysoce kvalitní vířivku s ekonomickým provozním systémem, můžete čekat nízké každodenní provozní náklady po celý rok. Počáteční nákup, nové čerpadlo, nový termokryt a další náklady jsou zřetelnější než každodenní výdaje. Právě proto je důležité porovnávat nejen cenu pořízení, ale i konstrukci, izolaci, účinnost filtrace a dlouhodobou spotřebu energie. Rozsáhlá studie společnosti Arctic Spas ukazuje účinnost robustního designu a inteligentních vlastností zadržujících teplo. Vířivka Arctic Spas vykazovala denní provozní náklady nižší než 60 centů, zatímco vířivka s vnitřním prostorem vyplněným pěnou spotřebovala přes 75 centů za den. Tato studie se uskutečnila počátkem ledna v Coloradu a využívala standardní osmihodinový provoz filtračního cyklu. Průměrná venkovní teplota při studii byla 7 °F, tedy −13,8 °C, a ukázala, že vířivky Arctic Spas jsou výrazně účinnější než typické vířivky vyplněné pěnou. Navíc testovaná vířivka Arctic Spas měla kapacitu 450 galonů, tedy přibližně 1700 litrů, zatímco pěnová vana měla pouze 400 galonů. I s větším množstvím vody k ohřevu vyšla vířivka Arctic Spas z testu nejlépe. Tepelný výkon je dalším klíčovým faktorem při určování toho, jak je cenově výhodný provoz vířivky. Různé studie srovnávaly tři vířivky Arctic Spas proti jiným modelům v testu stálé spotřeby. Výzkumníci chtěli určit energeticky účinné atributy různých modelů vířivek. Všechny tři modely Arctic Spas se umístily do pátého místa, včetně prvních dvou míst, v kategorii nejnižší spotřeba energie. V závěrečném hodnocení celkové energetické účinnosti se vířivky Arctic Spas opět dostaly na první a druhé místo s modely Kodiak SS-1 a Kodiak SS-2. Tento test tepelného ohodnocení pracoval se spotřebou energie, ochlazováním v čase a teplotou vody. Spotřeba energie v ustáleném stavu Ochlazování v čase Specifická spotřeba energie v ustáleném stavu Teplota vody Spotřeba energie čerpadel Spotřeba energie ohřevu Jedním z nejzajímavějších výsledků vyhodnocení bylo dosažení stálého tepelného stavu při určité okolní teplotě. Arctic Spas Kodiak SS-2 spotřeboval pouze 149 wattů během 128 hodin, zatímco Cal Spas Atlantic spotřeboval 503 wattů za 130 hodin. Špičková tepelná izolace a venkovní provedení vířivky Kodiak SS-2 pomáhají vysvětlit drastické rozdíly ve spotřebě elektrické energie a tedy i v provozních nákladech. V závěrečném hodnocení celkové energetické účinnosti se vířivky Arctic Spas opět dostaly na přední místa. Pro běžného uživatele je důležité, že tato technická řešení nejsou jen laboratorní hodnoty. V každodenním provozu znamenají stabilnější teplotu vody, méně zbytečných ohřevových cyklů a pohodlnější celoroční používání. Nízké provozní náklady vířivky dokazují, že kvalitní venkovní vířivka nemusí znamenat nepříjemně vysoké měsíční účty za energii. Další inovace Jakákoliv překážka mezi elektrickým zařízením a skořepinou omezí přenos zbytkového tepla a znamená zvýšené náklady pro uživatele. Naše přesahující izolace přístupových dvířek zamezuje poslední možnosti tepelného úniku a ovládací systém RossExhaust™ monitoruje teplotu uvnitř kabinetu. Žádná jiná vířivka na světě nemá FreeHeat™. Schopnost kontrolovat a upravovat teplotu pod kabinetem je natolik unikátní a cenná, že jsme si toto řešení ochránili patentem. Výsledek je stabilnější prostředí pro technologii, efektivnější využití odpadního tepla a klidnější celoroční provoz i při náročném počasí. Nejnižší provozní náklady Zbytkové teplo z provozu zařízení, především čerpadel, může prostupovat přes sklolaminátovou skořepinu. To přispívá k přihřívání vody a snižuje počet ohřevových cyklů a provozní dobu elektroohřevu. Na rozdíl od vířivek vyplněných pěnou tak méně časté spínání elektroohřevu znamená nižší účet za elektrickou energii každý měsíc a předvídatelnější provozní náklady. Skutečná ochrana proti mrazu Obvodová izolace FreeHeat® má ještě jednu výhodu: schopnost využít teplo kumulované ve vodě vířivky k ochraně proti mrazu při výpadku proudu. Při mrazech −20 °C máte podle našich zkušeností přibližně 5 dnů na to, abyste zabránili promrznutí technologie. Pokud si zajistíte externí zdroj tepla, může být tato doba prakticky neomezená. Není špatné mít připravené řešení i pro extrémní situace, které mohou v zimě přijít bez varování a vyžadují rychlou reakci ještě před příjezdem servisu nebo obnovením elektřiny v celé lokalitě.",
+        "headingCount": 4,
+        "isSupportPage": false
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "support",
+      "url": "https://illuminatus.cz/podpora/",
+      "status": 200,
+      "screenshot": "docs\\screenshots\\site-customer-audit-2026-06-08\\prod-support-desktop.png",
+      "finalUrl": "https://illuminatus.cz/podpora/",
+      "title": "Podpora – Arctic Spas",
+      "bodyClass": "wp-singular page-template page-template-template-support page-template-template-support-php page page-id-23 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Podpora",
+      "textSample": "Přeskočit na navigaci Přeskočit na obsah Přeskočit na patičku Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vířivky Vybrat podle parametrů Série Core Série Classic Série Custom Akční nabídky Celoroční bazény Vybrat podle parametrů Bazény ARCTIC Classic Bazény ARCTIC Custom Vlastnosti Tepelná izolace Záruka na skořepinu Termokryt Podlaha vířivky Servisní přístup Variabilita Automatická dezinfekce Další informace Služby Akční nabídky Certifikáty Záruka Kolik stojí provoz a údržba Podpora Reference O nás Showroom Servis Kontakt Lunar Orion Ke stažení Nezávazná konzultace Vyhledat Vyhledat Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vyhledat Nezávazná konzultace Navigace Série Core Lunar Orion Husky Série Classic McKinley Mustang Timberwolf Totem Eagle Série Custom Summit XL Summit Tundra Kodiak Klondiker Yukon Cub Arctic Fox Výprodej skladových vířivek Zobrazit nabídku Bazény ARCTIC Classic Athabascan Hudson Kingfisher Wolverine Bazény ARCTIC Custom Arctic Ocean Okanagan Výprodej skladových vířivek Zobrazit nabídku —Podpora Podpora Zde naleznete odpovědi na časté otázky k problematice koupě, plánování, stavby a provozu domácího bazénu či vířivky. Podpora Časté dotazy Ke stažení Servisní formulář Časté dotazy Všechny Obchodní Stavební příprava Montáž Provoz a údržba Servis − Jak probíhá výběr a objednávka vířivky? Jak probíhá výběr a objednávka vířivky? Nejprve společně ověříme velikost, umístění a požadovanou výbavu. Poté připravíme konkrétní konf",
+      "headerMenu": {
+        "linkCount": 62,
+        "infoLinks": [
+          {
+            "text": "Další informace",
+            "href": "https://illuminatus.cz/dalsi-informace/",
+            "classes": ""
+          },
+          {
+            "text": "Služby",
+            "href": "https://illuminatus.cz/sluzby/",
+            "classes": ""
+          },
+          {
+            "text": "Akční nabídky",
+            "href": "https://illuminatus.cz/akcni-nabidky/",
+            "classes": ""
+          },
+          {
+            "text": "Certifikáty",
+            "href": "https://illuminatus.cz/certifikaty/",
+            "classes": ""
+          },
+          {
+            "text": "Záruka",
+            "href": "https://illuminatus.cz/zaruka/",
+            "classes": ""
+          },
+          {
+            "text": "Kolik stojí provoz a údržba",
+            "href": "https://illuminatus.cz/kolik-stoji-udrzba/",
+            "classes": ""
+          },
+          {
+            "text": "Podpora",
+            "href": "https://illuminatus.cz/podpora/",
+            "classes": ""
+          },
+          {
+            "text": "Reference",
+            "href": "https://illuminatus.cz/reference/",
+            "classes": ""
+          },
+          {
+            "text": "O nás",
+            "href": "https://illuminatus.cz/o-nas/",
+            "classes": ""
+          },
+          {
+            "text": "Showroom",
+            "href": "https://illuminatus.cz/showroom/",
+            "classes": ""
+          },
+          {
+            "text": "Servis",
+            "href": "https://illuminatus.cz/servis/",
+            "classes": ""
+          },
+          {
+            "text": "Kontakt",
+            "href": "https://illuminatus.cz/kontakt/",
+            "classes": ""
+          },
+          {
+            "text": "Lunar",
+            "href": "https://illuminatus.cz/product/lunar/",
+            "classes": ""
+          },
+          {
+            "text": "Orion",
+            "href": "https://illuminatus.cz/product/orion/",
+            "classes": ""
+          },
+          {
+            "text": "Ke stažení",
+            "href": "https://illuminatus.cz/ke-stazeni/",
+            "classes": ""
+          },
+          {
+            "text": "+420 602 149 106",
+            "href": "tel:+420602149106",
+            "classes": "f-bar__phone"
+          },
+          {
+            "text": "Lunar",
+            "href": "https://illuminatus.cz/product/lunar/",
+            "classes": "f-mega-menu__product"
+          },
+          {
+            "text": "Orion",
+            "href": "https://illuminatus.cz/product/orion/",
+            "classes": "f-mega-menu__product"
+          }
+        ]
+      },
+      "support": {
+        "faqCount": 9,
+        "faqTitles": [
+          "Jak probíhá výběr a objednávka vířivky?",
+          "Co je potřeba připravit před instalací?",
+          "Zajišťujete dopravu a montáž?",
+          "Jak náročná je běžná údržba vody?",
+          "Pomůžete s výběrem vhodné konfigurace?",
+          "Lze si vířivku prohlédnout osobně?",
+          "Jak se řeší stavební připravenost?",
+          "Umíte zajistit servis po instalaci?",
+          "Jak rychle dostanu cenovou nabídku?"
+        ],
+        "faqTags": [
+          "Obchodní",
+          "Stavební příprava",
+          "Montáž",
+          "Provoz a údržba",
+          "Obchodní",
+          "Obchodní",
+          "Stavební příprava",
+          "Servis",
+          "Obchodní"
+        ],
+        "tabLinks": [
+          {
+            "text": "Časté dotazy",
+            "href": "#caste-dotazy",
+            "targetExists": true
+          },
+          {
+            "text": "Ke stažení",
+            "href": "#ke-stazeni",
+            "targetExists": true
+          },
+          {
+            "text": "Servisní formulář",
+            "href": "#servisni-formular",
+            "targetExists": true
+          }
+        ]
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "references",
+      "url": "https://illuminatus.cz/reference/",
+      "status": 200,
+      "screenshot": "docs\\screenshots\\site-customer-audit-2026-06-08\\prod-references-desktop.png",
+      "finalUrl": "https://illuminatus.cz/reference/",
+      "title": "Reference – Arctic Spas",
+      "bodyClass": "wp-singular page-template page-template-template-references page-template-template-references-php page page-id-482 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Reference",
+      "textSample": "Přeskočit na navigaci Přeskočit na obsah Přeskočit na patičku Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vířivky Vybrat podle parametrů Série Core Série Classic Série Custom Akční nabídky Celoroční bazény Vybrat podle parametrů Bazény ARCTIC Classic Bazény ARCTIC Custom Vlastnosti Tepelná izolace Záruka na skořepinu Termokryt Podlaha vířivky Servisní přístup Variabilita Automatická dezinfekce Další informace Služby Akční nabídky Certifikáty Záruka Kolik stojí provoz a údržba Podpora Reference O nás Showroom Servis Kontakt Lunar Orion Ke stažení Nezávazná konzultace Vyhledat Vyhledat Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vyhledat Nezávazná konzultace Navigace Série Core Lunar Orion Husky Série Classic McKinley Mustang Timberwolf Totem Eagle Série Custom Summit XL Summit Tundra Kodiak Klondiker Yukon Cub Arctic Fox Výprodej skladových vířivek Zobrazit nabídku Bazény ARCTIC Classic Athabascan Hudson Kingfisher Wolverine Bazény ARCTIC Custom Arctic Ocean Okanagan Výprodej skladových vířivek Zobrazit nabídku —Reference Reference Reference Arctic Fox 2021 Arctic Fox po letech provozu Arctic Spas 2016 Fox se systémem Spa Boy Wolverine 2016 Swimspa Wolverine Arctic Spas 2014 Nízká spotřeba v zimním provozu Arctic Fox 2014 Arctic Fox předčil očekávání Bazén 2015 Vstřícný přístup při výběru bazénu Celoroční bazén 2015 Výběr celoročního bazénu Arctic Spas 2016 Vířivka bez poruchy Arctic Spas 2012 Novoroční přání z vířivky Potřebujete poradit s vý",
+      "headerMenu": {
+        "linkCount": 62,
+        "infoLinks": [
+          {
+            "text": "Další informace",
+            "href": "https://illuminatus.cz/dalsi-informace/",
+            "classes": ""
+          },
+          {
+            "text": "Služby",
+            "href": "https://illuminatus.cz/sluzby/",
+            "classes": ""
+          },
+          {
+            "text": "Akční nabídky",
+            "href": "https://illuminatus.cz/akcni-nabidky/",
+            "classes": ""
+          },
+          {
+            "text": "Certifikáty",
+            "href": "https://illuminatus.cz/certifikaty/",
+            "classes": ""
+          },
+          {
+            "text": "Záruka",
+            "href": "https://illuminatus.cz/zaruka/",
+            "classes": ""
+          },
+          {
+            "text": "Kolik stojí provoz a údržba",
+            "href": "https://illuminatus.cz/kolik-stoji-udrzba/",
+            "classes": ""
+          },
+          {
+            "text": "Podpora",
+            "href": "https://illuminatus.cz/podpora/",
+            "classes": ""
+          },
+          {
+            "text": "Reference",
+            "href": "https://illuminatus.cz/reference/",
+            "classes": ""
+          },
+          {
+            "text": "O nás",
+            "href": "https://illuminatus.cz/o-nas/",
+            "classes": ""
+          },
+          {
+            "text": "Showroom",
+            "href": "https://illuminatus.cz/showroom/",
+            "classes": ""
+          },
+          {
+            "text": "Servis",
+            "href": "https://illuminatus.cz/servis/",
+            "classes": ""
+          },
+          {
+            "text": "Kontakt",
+            "href": "https://illuminatus.cz/kontakt/",
+            "classes": ""
+          },
+          {
+            "text": "Lunar",
+            "href": "https://illuminatus.cz/product/lunar/",
+            "classes": ""
+          },
+          {
+            "text": "Orion",
+            "href": "https://illuminatus.cz/product/orion/",
+            "classes": ""
+          },
+          {
+            "text": "Ke stažení",
+            "href": "https://illuminatus.cz/ke-stazeni/",
+            "classes": ""
+          },
+          {
+            "text": "+420 602 149 106",
+            "href": "tel:+420602149106",
+            "classes": "f-bar__phone"
+          },
+          {
+            "text": "Lunar",
+            "href": "https://illuminatus.cz/product/lunar/",
+            "classes": "f-mega-menu__product"
+          },
+          {
+            "text": "Orion",
+            "href": "https://illuminatus.cz/product/orion/",
+            "classes": "f-mega-menu__product"
+          }
+        ]
+      },
+      "references": {
+        "cardCount": 9,
+        "imageOnlyLinkCount": 9,
+        "cardsWithDescriptionCount": 0,
+        "cards": [
+          {
+            "tag": "A",
+            "href": "https://illuminatus.cz/wp-content/uploads/2026/05/arctic-fox-lidi.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Arctic Fox po letech provozu",
+            "text": "Arctic Fox 2021 Arctic Fox po letech provozu",
+            "description": "Arctic Fox",
+            "hasUsefulDescription": false,
+            "imageSrc": "https://illuminatus.cz/wp-content/uploads/2026/05/arctic-fox-lidi.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "https://illuminatus.cz/wp-content/uploads/2026/05/arctic-fox-lidi-2.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Fox se systémem Spa Boy",
+            "text": "Arctic Spas 2016 Fox se systémem Spa Boy",
+            "description": "Arctic Spas",
+            "hasUsefulDescription": false,
+            "imageSrc": "https://illuminatus.cz/wp-content/uploads/2026/05/arctic-fox-lidi-2.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "https://illuminatus.cz/wp-content/uploads/2026/05/swimspa-arctic-g1.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Swimspa Wolverine",
+            "text": "Wolverine 2016 Swimspa Wolverine",
+            "description": "Wolverine",
+            "hasUsefulDescription": false,
+            "imageSrc": "https://illuminatus.cz/wp-content/uploads/2026/05/swimspa-arctic-g1.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-arctic-g1.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Nízká spotřeba v zimním provozu",
+            "text": "Arctic Spas 2014 Nízká spotřeba v zimním provozu",
+            "description": "Arctic Spas",
+            "hasUsefulDescription": false,
+            "imageSrc": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-arctic-g1.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-arctic-g7.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Arctic Fox předčil očekávání",
+            "text": "Arctic Fox 2014 Arctic Fox předčil očekávání",
+            "description": "Arctic Fox",
+            "hasUsefulDescription": false,
+            "imageSrc": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-arctic-g7.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "https://illuminatus.cz/wp-content/uploads/2026/05/swimspa-arctic-g4.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Vstřícný přístup při výběru bazénu",
+            "text": "Bazén 2015 Vstřícný přístup při výběru bazénu",
+            "description": "Bazén",
+            "hasUsefulDescription": false,
+            "imageSrc": "https://illuminatus.cz/wp-content/uploads/2026/05/swimspa-arctic-g4.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "https://illuminatus.cz/wp-content/uploads/2026/05/swimspa-arctic-g1.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Výběr celoročního bazénu",
+            "text": "Celoroční bazén 2015 Výběr celoročního bazénu",
+            "description": "Celoroční bazén",
+            "hasUsefulDescription": false,
+            "imageSrc": "https://illuminatus.cz/wp-content/uploads/2026/05/swimspa-arctic-g1.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-arctic-g21.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Vířivka bez poruchy",
+            "text": "Arctic Spas 2016 Vířivka bez poruchy",
+            "description": "Arctic Spas",
+            "hasUsefulDescription": false,
+            "imageSrc": "https://illuminatus.cz/wp-content/uploads/2026/05/virivka-arctic-g21.jpg"
+          },
+          {
+            "tag": "A",
+            "href": "https://illuminatus.cz/wp-content/uploads/2026/05/reference-zuz.jpg",
+            "isImageHref": true,
+            "isLightbox": true,
+            "title": "Novoroční přání z vířivky",
+            "text": "Arctic Spas 2012 Novoroční přání z vířivky",
+            "description": "Arctic Spas",
+            "hasUsefulDescription": false,
+            "imageSrc": "https://illuminatus.cz/wp-content/uploads/2026/05/reference-zuz.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "about",
+      "url": "https://illuminatus.cz/o-nas/",
+      "status": 200,
+      "screenshot": "docs\\screenshots\\site-customer-audit-2026-06-08\\prod-about-desktop.png",
+      "finalUrl": "https://illuminatus.cz/o-nas/",
+      "title": "O nás – Arctic Spas",
+      "bodyClass": "wp-singular page-template page-template-template-about page-template-template-about-php page page-id-288 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "O nás",
+      "textSample": "Přeskočit na navigaci Přeskočit na obsah Přeskočit na patičku Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vířivky Vybrat podle parametrů Série Core Série Classic Série Custom Akční nabídky Celoroční bazény Vybrat podle parametrů Bazény ARCTIC Classic Bazény ARCTIC Custom Vlastnosti Tepelná izolace Záruka na skořepinu Termokryt Podlaha vířivky Servisní přístup Variabilita Automatická dezinfekce Další informace Služby Akční nabídky Certifikáty Záruka Kolik stojí provoz a údržba Podpora Reference O nás Showroom Servis Kontakt Lunar Orion Ke stažení Nezávazná konzultace Vyhledat Vyhledat Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vyhledat Nezávazná konzultace Navigace Série Core Lunar Orion Husky Série Classic McKinley Mustang Timberwolf Totem Eagle Série Custom Summit XL Summit Tundra Kodiak Klondiker Yukon Cub Arctic Fox Výprodej skladových vířivek Zobrazit nabídku Bazény ARCTIC Classic Athabascan Hudson Kingfisher Wolverine Bazény ARCTIC Custom Arctic Ocean Okanagan Výprodej skladových vířivek Zobrazit nabídku —O nás O nás Pořízení bazénu nebo vířivky je investice, která by měla být pečlivě zvážena. Při výběru značky i dodavatele je rozumné seznámit se s profilem výrobce a prodejce. Naše společnost Kariéra Naše společnost Prodejem vířivek Arctic Spas se zabýváme již od roku 2005 a základ našeho týmu se za tu dobu nezměnil. Máme více než 15 let osobních zkušeností s dovozem, prodejem, instalacemi a servisem vířivek Arctic Spas, které se zúroči",
+      "headerMenu": {
+        "linkCount": 62,
+        "infoLinks": [
+          {
+            "text": "Další informace",
+            "href": "https://illuminatus.cz/dalsi-informace/",
+            "classes": ""
+          },
+          {
+            "text": "Služby",
+            "href": "https://illuminatus.cz/sluzby/",
+            "classes": ""
+          },
+          {
+            "text": "Akční nabídky",
+            "href": "https://illuminatus.cz/akcni-nabidky/",
+            "classes": ""
+          },
+          {
+            "text": "Certifikáty",
+            "href": "https://illuminatus.cz/certifikaty/",
+            "classes": ""
+          },
+          {
+            "text": "Záruka",
+            "href": "https://illuminatus.cz/zaruka/",
+            "classes": ""
+          },
+          {
+            "text": "Kolik stojí provoz a údržba",
+            "href": "https://illuminatus.cz/kolik-stoji-udrzba/",
+            "classes": ""
+          },
+          {
+            "text": "Podpora",
+            "href": "https://illuminatus.cz/podpora/",
+            "classes": ""
+          },
+          {
+            "text": "Reference",
+            "href": "https://illuminatus.cz/reference/",
+            "classes": ""
+          },
+          {
+            "text": "O nás",
+            "href": "https://illuminatus.cz/o-nas/",
+            "classes": ""
+          },
+          {
+            "text": "Showroom",
+            "href": "https://illuminatus.cz/showroom/",
+            "classes": ""
+          },
+          {
+            "text": "Servis",
+            "href": "https://illuminatus.cz/servis/",
+            "classes": ""
+          },
+          {
+            "text": "Kontakt",
+            "href": "https://illuminatus.cz/kontakt/",
+            "classes": ""
+          },
+          {
+            "text": "Lunar",
+            "href": "https://illuminatus.cz/product/lunar/",
+            "classes": ""
+          },
+          {
+            "text": "Orion",
+            "href": "https://illuminatus.cz/product/orion/",
+            "classes": ""
+          },
+          {
+            "text": "Ke stažení",
+            "href": "https://illuminatus.cz/ke-stazeni/",
+            "classes": ""
+          },
+          {
+            "text": "+420 602 149 106",
+            "href": "tel:+420602149106",
+            "classes": "f-bar__phone"
+          },
+          {
+            "text": "Lunar",
+            "href": "https://illuminatus.cz/product/lunar/",
+            "classes": "f-mega-menu__product"
+          },
+          {
+            "text": "Orion",
+            "href": "https://illuminatus.cz/product/orion/",
+            "classes": "f-mega-menu__product"
+          }
+        ]
+      },
+      "about": {
+        "introText": "Naše společnost Kariéra Naše společnost Prodejem vířivek Arctic Spas se zabýváme již od roku 2005 a základ našeho týmu se za tu dobu nezměnil. Máme více než 15 let osobních zkušeností s dovozem, prodejem, instalacemi a servisem vířivek Arctic Spas, které se zúročily při stovkách realizací v České republice i na Slovensku. Při naší práci se můžeme jako autorizovaný dealer spolehnout také na podporu kanadského výrobce s celosvětovou působností a tradicí od roku 1994. Veškeré získané know-how je plně k dispozici našim zákazníkům. 21+let zkušeností 1000+spokojených klientů 11členů týmu Náš tým Naše současná sestava je vyladěna tak, aby byla schopna kompetentně a v dohodnutých termínech zajistit všechny fáze projektu. Od úvodní konzultace, přes návrh řešení, zpracování nabídky a realizaci, až po poprodejní služby a servis - tým BASPA je tu pro vás. ‹ Vlastimil Zhoř Jednatel společnosti Prodej vířivek Ing. Lukáš Dušek Jednatel společnosti Komunikace s dodavateli a prodej bazénů Helena Antonyová Prodej bazénů Prodej bazénů a příslušenství Alena Janulíková Logistika a fakturace Organizace dopravy a fakturace. Bc. Tomáš Koutný Prodej vířivek Prodej vířivek a koupacích sudů PN Pavel Nováček Vedoucí technického úseku Organizace montáží a servisů › Kariéra v Arctic spas Uplatnění u nás najdou šikovní lidé, kteří se nebojí komunikovat se zákazníky a odvádět dobrou práci každý den. Montážní technik Hledáme spolehlivého technika pro montáže, servisní výjezdy a péči o zákazníky po instalaci.Požadujemetechnickou zručnost a pečlivostřidičský průkaz skupiny Bslušné jednání se zákazníkysamostatnost při montážích a servisuchuť učit se produkty Arctic SpasNabízímestabilní práci v malém týmuzaškolení na produktech Arctic Spasférové jednání a dlouhodobou spoluprácizázemí showroomu v Moravanech u Brnapodmínky podle zkušeností a domluvyKontaktujte násVíce na pracovním portále Obchodník na prodejně v Moravanech Hledáme obchodníka pro showroom v Moravanech, který zvládne zákazníkům srozumitelně představit vířivky, bazény a navazující služby.Požadujemepříjemnou a věcnou komunikaci se zákazníkyorientaci v obchodním jednánípečlivost při přípravě nabídekochotu naučit se technické detaily sortimentuspolehlivost a samostatnostNabízímepráci v zavedeném showroomu u Brnaproduktové zaškolení Arctic Spasmenší tým s přímou komunikacímožnost podílet se na realizaci zakázek od poptávky po předáníférové podmínky podle zkušenostíNapsat zprávu Obchodník na prodejně v Moravanech Do obchodního týmu hledáme posilu pro komunikaci se zájemci, správu poptávek a koordinaci dalších kroků s technickým týmem.Požadujemezkušenost s prodejem nebo klientskou péčíschopnost dotahovat rozpracované poptávkydobrou organizaci práceochotu pracovat s produktovým katalogemspolupráci s techniky a logistikouNabízímestabilní zázemí autorizovaného prodejcejasné produktové portfolio a podporu týmukontakt se zákazníky v showroomu i onlinedlouhodobou spoluprácipodmínky podle domluvené roleNapsat zprávu",
+        "contains2005": true,
+        "contains15Years": true,
+        "stats": [
+          "Po - Pá 8:00-17:00 h",
+          "Po - Pá 8:00-17:00 h",
+          "21+let zkušeností 1000+spokojených klientů 11členů týmu",
+          "Po - Pá 8:00-17:00 h",
+          "Po - Pá 8:00-17:00 h"
+        ],
+        "teamNames": [
+          "Vlastimil Zhoř",
+          "Ing. Lukáš Dušek",
+          "Helena Antonyová",
+          "Alena Janulíková",
+          "Bc. Tomáš Koutný",
+          "Pavel Nováček"
+        ]
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "showroom",
+      "url": "https://illuminatus.cz/showroom/",
+      "status": 200,
+      "screenshot": "docs\\screenshots\\site-customer-audit-2026-06-08\\prod-showroom-desktop.png",
+      "finalUrl": "https://illuminatus.cz/showroom/",
+      "title": "Showroom – Arctic Spas",
+      "bodyClass": "wp-singular page-template page-template-template-showroom page-template-template-showroom-php page page-id-22 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured",
+      "h1": "Showroom",
+      "textSample": "Přeskočit na navigaci Přeskočit na obsah Přeskočit na patičku Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vířivky Vybrat podle parametrů Série Core Série Classic Série Custom Akční nabídky Celoroční bazény Vybrat podle parametrů Bazény ARCTIC Classic Bazény ARCTIC Custom Vlastnosti Tepelná izolace Záruka na skořepinu Termokryt Podlaha vířivky Servisní přístup Variabilita Automatická dezinfekce Další informace Služby Akční nabídky Certifikáty Záruka Kolik stojí provoz a údržba Podpora Reference O nás Showroom Servis Kontakt Lunar Orion Ke stažení Nezávazná konzultace Vyhledat Vyhledat Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vyhledat Nezávazná konzultace Navigace Série Core Lunar Orion Husky Série Classic McKinley Mustang Timberwolf Totem Eagle Série Custom Summit XL Summit Tundra Kodiak Klondiker Yukon Cub Arctic Fox Výprodej skladových vířivek Zobrazit nabídku Bazény ARCTIC Classic Athabascan Hudson Kingfisher Wolverine Bazény ARCTIC Custom Arctic Ocean Okanagan Výprodej skladových vířivek Zobrazit nabídku Další informace Showroom Showroom U nás najdete od každého něco a obvykle alespoň dva modely vířivek napuštěné vodou, abyste je mohli podrobit mokré zkoušce. Fotogalerie 280 m² prezentační plochy Přijďte se pobavit o své nové vířivce nebo swimspa Na pobočce nebo online s vámi vaše představy rádi probereme. Že žádné nemáte? Tím spíš se zastavte pro inspiraci. Domluvit si schůzku Kontakt Bc. Tomáš Koutný tomas.koutny@baspa.cz +420 602 149",
+      "headerMenu": {
+        "linkCount": 60,
+        "infoLinks": [
+          {
+            "text": "Další informace",
+            "href": "https://illuminatus.cz/dalsi-informace/",
+            "classes": ""
+          },
+          {
+            "text": "Služby",
+            "href": "https://illuminatus.cz/sluzby/",
+            "classes": ""
+          },
+          {
+            "text": "Akční nabídky",
+            "href": "https://illuminatus.cz/akcni-nabidky/",
+            "classes": ""
+          },
+          {
+            "text": "Certifikáty",
+            "href": "https://illuminatus.cz/certifikaty/",
+            "classes": ""
+          },
+          {
+            "text": "Záruka",
+            "href": "https://illuminatus.cz/zaruka/",
+            "classes": ""
+          },
+          {
+            "text": "Kolik stojí provoz a údržba",
+            "href": "https://illuminatus.cz/kolik-stoji-udrzba/",
+            "classes": ""
+          },
+          {
+            "text": "Podpora",
+            "href": "https://illuminatus.cz/podpora/",
+            "classes": ""
+          },
+          {
+            "text": "Reference",
+            "href": "https://illuminatus.cz/reference/",
+            "classes": ""
+          },
+          {
+            "text": "O nás",
+            "href": "https://illuminatus.cz/o-nas/",
+            "classes": ""
+          },
+          {
+            "text": "Showroom",
+            "href": "https://illuminatus.cz/showroom/",
+            "classes": ""
+          },
+          {
+            "text": "Servis",
+            "href": "https://illuminatus.cz/servis/",
+            "classes": ""
+          },
+          {
+            "text": "Kontakt",
+            "href": "https://illuminatus.cz/kontakt/",
+            "classes": ""
+          },
+          {
+            "text": "Lunar",
+            "href": "https://illuminatus.cz/product/lunar/",
+            "classes": ""
+          },
+          {
+            "text": "Orion",
+            "href": "https://illuminatus.cz/product/orion/",
+            "classes": ""
+          },
+          {
+            "text": "Ke stažení",
+            "href": "https://illuminatus.cz/ke-stazeni/",
+            "classes": ""
+          },
+          {
+            "text": "+420 602 149 106",
+            "href": "tel:+420602149106",
+            "classes": "f-bar__phone"
+          },
+          {
+            "text": "Lunar",
+            "href": "https://illuminatus.cz/product/lunar/",
+            "classes": "f-mega-menu__product"
+          },
+          {
+            "text": "Orion",
+            "href": "https://illuminatus.cz/product/orion/",
+            "classes": "f-mega-menu__product"
+          }
+        ]
+      },
+      "showroom": {
+        "mapSectionExists": false,
+        "mapLinks": [
+          {
+            "text": "Zobrazit na mapě.",
+            "href": "https://maps.app.goo.gl/ZsYfoZ2aQGF1JnZG6"
+          }
+        ],
+        "galleryButtonHref": "#fotogalerie",
+        "galleryButtonText": "Fotogalerie",
+        "galleryButtonTargetExists": true,
+        "gallerySectionText": "Naše bazény a vířivky si prohlédnete, případně vyzkoušíte Naše hlavní vzorková prodejna se nachází v Moravanech u Brna a je velmi dobře dostupná z dálnice D1. Vystavené vířivky, swimspa a vybrané příslušenství si u nás můžete nejen prohlédnout. Minimálně dvě vířivky míváme zprovozněné pro mokrý test, k dispozici je samozřejmě kompletní zázemí.",
+        "galleryImageCount": 1,
+        "galleryCardCount": 0,
+        "infoItems": [
+          "Kontakt Bc. Tomáš Koutný tomas.koutny@baspa.cz +420 602 149 106",
+          "Kde nás najdete Moravany u Brna Bohunicka cesta 15 Zobrazit na mapě.",
+          "Otevírací doba Úterý - Pátek 9:00 - 11:30 12:30 - 16:00"
+        ]
+      }
+    },
+    {
+      "target": "prod",
+      "pageId": "contact",
+      "url": "https://illuminatus.cz/kontakt/",
+      "status": 200,
+      "screenshot": "docs\\screenshots\\site-customer-audit-2026-06-08\\prod-contact-desktop.png",
+      "finalUrl": "https://illuminatus.cz/kontakt/",
+      "title": "Kontakt – Arctic Spas",
+      "bodyClass": "wp-singular page-template page-template-template-contact page-template-template-contact-php page page-id-25 wp-embed-responsive wp-theme-arctic image--lazy image-content--lazy image--photoswipe image-content--photoswipe offers--featured template--contact",
+      "h1": "Jsme k dispozici pro vaše dotazy",
+      "textSample": "Přeskočit na navigaci Přeskočit na obsah Přeskočit na patičku Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vířivky Vybrat podle parametrů Série Core Série Classic Série Custom Akční nabídky Celoroční bazény Vybrat podle parametrů Bazény ARCTIC Classic Bazény ARCTIC Custom Vlastnosti Tepelná izolace Záruka na skořepinu Termokryt Podlaha vířivky Servisní přístup Variabilita Automatická dezinfekce Další informace Služby Akční nabídky Certifikáty Záruka Kolik stojí provoz a údržba Podpora Reference O nás Showroom Servis Kontakt Lunar Orion Ke stažení Nezávazná konzultace Vyhledat Vyhledat Máte dotaz? Volejte na +420 602 149 106 Po - Pá 8:00-17:00 h Vyhledat Nezávazná konzultace Navigace Série Core Lunar Orion Husky Série Classic McKinley Mustang Timberwolf Totem Eagle Série Custom Summit XL Summit Tundra Kodiak Klondiker Yukon Cub Arctic Fox Výprodej skladových vířivek Zobrazit nabídku Bazény ARCTIC Classic Athabascan Hudson Kingfisher Wolverine Bazény ARCTIC Custom Arctic Ocean Okanagan Výprodej skladových vířivek Zobrazit nabídku —Kontakt Jsme k dispozici pro vaše dotazy +420 777 099 687 Po–Pá: 08:00-17:00 lukas.dusek@arctic-spas.cz Odpovíme do dvou pracovních dní Poptávkový formulář Servisní formulář Kontaktní formulář Kde nás najdete? Kde nás najdete Moravany u BrnaBohunická cesta 15 Otevírací doba Úterý - Pátek9:00 - 11:3012:30 - 16:00 Chcete si osobně prohlédnout řešení a pobavit se o možnostech realizace? Rádi se vám budeme věnovat v showroomu. Zobrazit na ",
+      "headerMenu": {
+        "linkCount": 64,
+        "infoLinks": [
+          {
+            "text": "Další informace",
+            "href": "https://illuminatus.cz/dalsi-informace/",
+            "classes": ""
+          },
+          {
+            "text": "Služby",
+            "href": "https://illuminatus.cz/sluzby/",
+            "classes": ""
+          },
+          {
+            "text": "Akční nabídky",
+            "href": "https://illuminatus.cz/akcni-nabidky/",
+            "classes": ""
+          },
+          {
+            "text": "Certifikáty",
+            "href": "https://illuminatus.cz/certifikaty/",
+            "classes": ""
+          },
+          {
+            "text": "Záruka",
+            "href": "https://illuminatus.cz/zaruka/",
+            "classes": ""
+          },
+          {
+            "text": "Kolik stojí provoz a údržba",
+            "href": "https://illuminatus.cz/kolik-stoji-udrzba/",
+            "classes": ""
+          },
+          {
+            "text": "Podpora",
+            "href": "https://illuminatus.cz/podpora/",
+            "classes": ""
+          },
+          {
+            "text": "Reference",
+            "href": "https://illuminatus.cz/reference/",
+            "classes": ""
+          },
+          {
+            "text": "O nás",
+            "href": "https://illuminatus.cz/o-nas/",
+            "classes": ""
+          },
+          {
+            "text": "Showroom",
+            "href": "https://illuminatus.cz/showroom/",
+            "classes": ""
+          },
+          {
+            "text": "Servis",
+            "href": "https://illuminatus.cz/servis/",
+            "classes": ""
+          },
+          {
+            "text": "Kontakt",
+            "href": "https://illuminatus.cz/kontakt/",
+            "classes": ""
+          },
+          {
+            "text": "Lunar",
+            "href": "https://illuminatus.cz/product/lunar/",
+            "classes": ""
+          },
+          {
+            "text": "Orion",
+            "href": "https://illuminatus.cz/product/orion/",
+            "classes": ""
+          },
+          {
+            "text": "Ke stažení",
+            "href": "https://illuminatus.cz/ke-stazeni/",
+            "classes": ""
+          },
+          {
+            "text": "+420 602 149 106",
+            "href": "tel:+420602149106",
+            "classes": "f-bar__phone"
+          },
+          {
+            "text": "Lunar",
+            "href": "https://illuminatus.cz/product/lunar/",
+            "classes": "f-mega-menu__product"
+          },
+          {
+            "text": "Orion",
+            "href": "https://illuminatus.cz/product/orion/",
+            "classes": "f-mega-menu__product"
+          }
+        ]
+      },
+      "contact": {
+        "mapExists": true,
+        "mapContentSource": "customizer-map-embed",
+        "mapRect": {
+          "x": 0,
+          "y": 430,
+          "width": 1440,
+          "height": 782,
+          "top": 430,
+          "left": 0,
+          "bottom": 1212,
+          "right": 1440
+        },
+        "mapStyle": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "filter": "none",
+          "background": "rgb(238, 241, 245) none repeat scroll 0% 0% / auto padding-box border-box",
+          "backgroundColor": "rgb(238, 241, 245)",
+          "pointerEvents": "auto"
+        },
+        "mapBeforeStyle": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "filter": "none",
+          "background": "rgba(35, 40, 47, 0.72) none repeat scroll 0% 0% / auto padding-box border-box",
+          "backgroundColor": "rgba(35, 40, 47, 0.72)",
+          "pointerEvents": "none"
+        },
+        "mapOverlayBackground": "rgba(35, 40, 47, 0.72) none repeat scroll 0% 0% / auto padding-box border-box",
+        "mapIframeSrc": "https://www.google.com/maps?q=49.149%2C16.589&ll=49.149%2C16.407&z=11&output=embed",
+        "mapIframeStyle": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "filter": "grayscale(0.7) saturate(0.5) contrast(1.05) brightness(0.88)",
+          "background": "rgba(0, 0, 0, 0) none no-repeat scroll 0% 0% / auto padding-box border-box",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "pointerEvents": "auto"
+        },
+        "fallbackImageSrc": "",
+        "cardText": "Kde nás najdete? Kde nás najdete Moravany u BrnaBohunická cesta 15 Otevírací doba Úterý - Pátek9:00 - 11:3012:30 - 16:00 Chcete si osobně prohlédnout řešení a pobavit se o možnostech realizace? Rádi se vám budeme věnovat v showroomu. Zobrazit na mapě",
+        "mapButtonHref": "https://maps.app.goo.gl/ZsYfoZ2aQGF1JnZG6",
+        "contactCardCount": 6,
+        "overlayStyle": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "filter": "none",
+          "background": "rgb(238, 241, 245) none repeat scroll 0% 0% / auto padding-box border-box",
+          "backgroundColor": "rgb(238, 241, 245)",
+          "pointerEvents": "auto"
+        }
+      }
+    }
+  ],
+  "summary": {
+    "local": {
+      "okPages": 6,
+      "menuHasInquiryForm": false,
+      "menuHasMaintenancePage": true,
+      "supportFaqCount": 9,
+      "supportHasMaintenanceCostFaq": true,
+      "maintenanceIsStandalonePage": true,
+      "referenceCards": 9,
+      "referenceImageOnlyLinks": 9,
+      "referenceCardsWithDescription": 0,
+      "aboutContainsOldYearSignals": true,
+      "showroomHasEmbeddedMapSection": false,
+      "showroomGalleryButtonHref": "#fotogalerie",
+      "showroomGalleryTargetExists": true,
+      "showroomGalleryCards": 0,
+      "contactMapSource": "customizer-map-embed",
+      "contactMapIframe": "https://www.google.com/maps?q=49.149%2C16.589&ll=49.149%2C16.407&z=11&output=embed",
+      "contactMapHasDarkOverlay": true
+    },
+    "prod": {
+      "okPages": 6,
+      "menuHasInquiryForm": false,
+      "menuHasMaintenancePage": true,
+      "supportFaqCount": 9,
+      "supportHasMaintenanceCostFaq": true,
+      "maintenanceIsStandalonePage": true,
+      "referenceCards": 9,
+      "referenceImageOnlyLinks": 9,
+      "referenceCardsWithDescription": 0,
+      "aboutContainsOldYearSignals": true,
+      "showroomHasEmbeddedMapSection": false,
+      "showroomGalleryButtonHref": "#fotogalerie",
+      "showroomGalleryTargetExists": true,
+      "showroomGalleryCards": 0,
+      "contactMapSource": "customizer-map-embed",
+      "contactMapIframe": "https://www.google.com/maps?q=49.149%2C16.589&ll=49.149%2C16.407&z=11&output=embed",
+      "contactMapHasDarkOverlay": true
+    }
+  }
+}
