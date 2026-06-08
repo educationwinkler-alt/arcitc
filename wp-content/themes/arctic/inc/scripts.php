@@ -107,6 +107,17 @@ if ( !function_exists( 'baspa_scripts' ) ) {
 		// Enqueue
 		wp_enqueue_script( get_template() . '-carousel' );
 
+		$homepage_mobile_slider_path = get_theme_file_path( 'dist/js/homepage-mobile-slider.js' );
+		if ( is_front_page() && file_exists( $homepage_mobile_slider_path ) ) {
+			wp_enqueue_script(
+				get_template() . '-homepage-mobile-slider',
+				get_theme_file_uri( 'dist/js/homepage-mobile-slider.js' ),
+				array( get_template() . '-carousel' ),
+				filemtime( $homepage_mobile_slider_path ),
+				true
+			);
+		}
+
 	}
 
 	add_action( 'wp_enqueue_scripts', 'baspa_scripts', 20 );

@@ -1,0 +1,105 @@
+{
+  "before": {
+    "url": "http://localhost:8090/",
+    "viewportWidth": 393,
+    "scrollWidth": 393,
+    "activeSlideId": "135",
+    "wrapperTransform": "matrix(1, 0, 0, 1, 0, 0)",
+    "slides": [
+      {
+        "id": "135",
+        "className": "f-slide swiper-slide f-slide--1 swiper-slide-active",
+        "display": "flex",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 393,
+          "height": 556,
+          "top": 0,
+          "right": 393,
+          "bottom": 556,
+          "left": 0
+        }
+      },
+      {
+        "id": "home-hero-garden",
+        "className": "f-slide swiper-slide f-slide--2 swiper-slide-next",
+        "display": "flex",
+        "rect": {
+          "x": 395,
+          "y": 0,
+          "width": 393,
+          "height": 556,
+          "top": 0,
+          "right": 788,
+          "bottom": 556,
+          "left": 395
+        }
+      },
+      {
+        "id": "home-hero-swimspa",
+        "className": "f-slide swiper-slide f-slide--3",
+        "display": "flex",
+        "rect": {
+          "x": 790,
+          "y": 0,
+          "width": 393,
+          "height": 556,
+          "top": 0,
+          "right": 1183,
+          "bottom": 556,
+          "left": 790
+        }
+      }
+    ],
+    "button": {
+      "text": "Vybrat vířivku",
+      "href": "http://localhost:8090/virivky/",
+      "display": "flex",
+      "rect": {
+        "x": 122.5,
+        "y": 458,
+        "width": 148,
+        "height": 46,
+        "top": 458,
+        "right": 270.5,
+        "bottom": 504,
+        "left": 122.5
+      }
+    },
+    "content": {
+      "x": 25.5,
+      "y": 342,
+      "width": 342,
+      "height": 96,
+      "top": 342,
+      "right": 367.5,
+      "bottom": 438,
+      "left": 25.5
+    },
+    "pagination": {
+      "display": "flex",
+      "rect": {
+        "x": 0,
+        "y": 519,
+        "width": 393,
+        "height": 21,
+        "top": 519,
+        "right": 393,
+        "bottom": 540,
+        "left": 0
+      }
+    },
+    "bulletCount": 3,
+    "overlayBefore": "linear-gradient(rgba(7, 24, 38, 0.24) 0%, rgba(7, 24, 38, 0.08) 28%, rgba(7, 24, 38, 0) 54%), linear-gradient(90deg, rgba(7, 24, 38, 0.38) 0%, rgba(7, 24, 38, 0.16) 42%, rgba(7, 24, 38, 0.02) 78%)",
+    "overlayAfter": "linear-gradient(rgba(7, 24, 38, 0) 0%, rgba(7, 24, 38, 0.16) 56%, rgba(7, 24, 38, 0.42) 100%)",
+    "assets": [
+      "<link rel=\"stylesheet\" id=\"arctic-homepage-mobile-slider-css\" href=\"http://localhost:8090/wp-content/themes/arctic/dist/css/homepage-mobile-slider.css?ver=1780919648-1780919774\" media=\"all\">",
+      "<script src=\"http://localhost:8090/wp-content/themes/arctic/dist/js/homepage-mobile-slider.js?ver=1780919666\" id=\"arctic-homepage-mobile-slider-js\"></script>"
+    ]
+  },
+  "after": {
+    "activeSlideId": "home-hero-garden",
+    "wrapperTransform": "matrix(1, 0, 0, 1, -395, 0)"
+  }
+}

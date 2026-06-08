@@ -8,6 +8,26 @@ $button_text         = get_post_meta( get_the_ID(), 'button_text', true );
 $button_url_post     = get_post_meta( get_the_ID(), 'button_url_post', true );
 $button_url_category = get_post_meta( get_the_ID(), 'button_url_category', true );
 $button_url          = get_post_meta( get_the_ID(), 'button_url', true );
+$seed_key            = (string) get_post_meta( get_the_ID(), '_arctic_seed_key', true );
+$homepage_defaults   = array(
+	'home-hero-arctic' => array(
+		'text' => __( 'Vybrat vířivku', 'baspa' ),
+		'url'  => home_url( '/virivky/' ),
+	),
+	'home-hero-garden' => array(
+		'text' => __( 'Zobrazit modely', 'baspa' ),
+		'url'  => home_url( '/virivky/' ),
+	),
+	'home-hero-swimspa' => array(
+		'text' => __( 'Zobrazit bazény', 'baspa' ),
+		'url'  => home_url( '/swimspa/' ),
+	),
+);
+
+if ( is_front_page() && '' === (string) $button_text && isset( $homepage_defaults[ $seed_key ] ) ) {
+	$button_text = $homepage_defaults[ $seed_key ]['text'];
+	$button_url  = $homepage_defaults[ $seed_key ]['url'];
+}
 
 if ( !empty( $button_text ) && ( !empty( $button_url_post ) || !empty( $button_url_category ) || !empty( $button_url ) ) ) {
 	if ( !empty( $button_url_post ) ) {

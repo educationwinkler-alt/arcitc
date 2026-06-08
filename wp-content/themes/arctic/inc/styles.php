@@ -49,6 +49,18 @@ if ( !function_exists( 'baspa_styles' ) ) {
 			);
 		}
 
+		$homepage_mobile_slider_css_path = get_theme_file_path( 'dist/css/homepage-mobile-slider.css' );
+		if ( is_front_page() && file_exists( $homepage_mobile_slider_css_path ) ) {
+			$homepage_mobile_slider_css_ver = filemtime( $homepage_mobile_slider_css_path );
+			$homepage_mobile_slider_css_ver = $is_local ? $homepage_mobile_slider_css_ver . '-' . time() : $homepage_mobile_slider_css_ver;
+			wp_enqueue_style(
+				get_template() . '-homepage-mobile-slider',
+				get_theme_file_uri( 'dist/css/homepage-mobile-slider.css' ),
+				array( get_template() . '-skin' ),
+				$homepage_mobile_slider_css_ver
+			);
+		}
+
 		/**
 		 * Admin Bar
 		 */
