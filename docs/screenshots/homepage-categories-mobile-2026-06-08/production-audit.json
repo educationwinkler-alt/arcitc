@@ -1,5 +1,5 @@
 {
-  "url": "http://localhost:8090/",
+  "url": "https://illuminatus.cz/",
   "viewportWidth": 393,
   "scrollWidth": 393,
   "cards": [
@@ -103,6 +103,6 @@
     }
   ],
   "assets": [
-    "<link rel=\"stylesheet\" id=\"arctic-homepage-mobile-slider-css\" href=\"http://localhost:8090/wp-content/themes/arctic/dist/css/homepage-mobile-slider.css?ver=1780919974-1780920372\" media=\"all\">"
+    "<link rel=\"stylesheet\" id=\"arctic-homepage-mobile-slider-css\" href=\"https://illuminatus.cz/wp-content/themes/arctic/dist/css/homepage-mobile-slider.css?ver=1780920719\" media=\"all\">"
   ]
 }
