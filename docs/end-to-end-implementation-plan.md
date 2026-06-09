@@ -14,6 +14,29 @@ Zakaznicke pripominky od Lukase Duska jsou P0. Do produkce se od tohoto bodu nep
 
 Aktualni Figma grafika pro kontrolu je file key `zWLRkhgU5uOipN7I6cGHHe`; starsi grafika key `xeOew3dFjDVfjXZrJ09emM` je jen legacy reference. Figma neni inspirace podle oka, ale zdroj souradnic, rozmeru, fill vrstev, gradientu/stinu, mobile frame a footer/header kompozic. Baspa je technicky WordPress zaklad a zdroj existujicich funkcnosti, ne vizualni fallback.
 
+## Aktualizace 2026-06-09: CSS rebuild gate pred pokracovanim P0 oprav
+
+Dnesni CSS audit je v `docs/css-arctic-rebuild-audit-2026-06-09.md`. Tento blok ma prednost pred drivejsim pristupem "Baspa zaklad + Arctic override". Duvod: audit potvrdil, ze `dist/css/style.css` z Baspa sablony se stale nacita jako hlavni frontend stylesheet a Arctic pravidla jsou jen prebijeci vrstva. To neni udrzitelne a vede k presne tem chybam, ktere klient hlasi: tmave filtry, urezane texty, rozbite mobile menu, showroom/footer mimo Figmu a hotfix CSS s pevnymi vyskovymi limity.
+
+Nove pravidlo:
+
+1. Baspa smi zustat WordPress/admin/data zaklad.
+2. Baspa nesmi zustat vizualni CSS autorita ani pro desktop, ani pro mobile.
+3. Figma grafika `zWLRkhgU5uOipN7I6cGHHe` je kontrakt pro CSS hodnoty, ne inspirace podle oka.
+4. Pred dalsim rozsirovanim P0 oprav musi vzniknout Arctic-owned CSS entrypoint, ktery dokazatelne bezi lokalne bez frontend nacitani `dist/css/style.css`.
+5. Protoze markup stale masivne pouziva `a-*` utility, nejdriv musi vzniknout minimalni Arctic kompatibilni layout vrstva; az potom se muze Baspa `style.css` vypnout.
+6. Stare hotfix soubory typu `mobile-figma-contract.css`, `homepage-mobile-slider.css`, `product-colors-mobile.css` a `catalog-request.css` jsou prechodne. Cilem je sloucit jejich legitimni pravidla do Arctic komponent, ne na ne dal nabalovat dalsi prebijeni.
+7. CSS rebuild se ma delat lokalne v nove pracovni kopii `arctic-spas-3`, zalozene z aktualniho `arctic-spas-2`, po existujici ZIP zaloze. Dokud nebude lokalne schvaleno, produkce zustava bez zmen.
+
+CSS rebuild gate se vklada pred pokracovani vizualnich P0 oprav:
+
+1. Zalozit `arctic-spas-3` jako izolovanou pracovni kopii.
+2. Pridat `src/arctic-css/` a vystup `dist/css/arctic-app.css`.
+3. Upravit lokalni enqueue tak, aby slo na localu spustit frontend bez Baspa `dist/css/style.css`.
+4. Vytvorit minimalni `a-*` compatibility shim pod Arctic vlastnictvim.
+5. Postavit globalni komponenty podle Figmy: header, mobile menu, footer, buttony, karty, hero, showroom, reference, produktove listingy.
+6. Teprve potom pokracovat v jednotlivych P0 bodech nize jako v implementaci nad novym Arctic CSS, ne jako dalsi hotfixy proti Baspa vrstve.
+
 Repair plan je rozdeleny do techto bloků:
 
 1. Home Page: rychlost prvniho nacteni, slidy vcetne prokliku, mobilni slider bez temneho filtru, zarovnani karet `Virivky`/`Celorocni bazeny`, admin save integrity pro text `Jsme vyhradni prodejce`, navrat service ikon a progress odrazek, footer menu bez `Skladove virivky`, copyright `BASPA s.r.o.`.
@@ -33,6 +56,7 @@ Repair plan je rozdeleny do techto bloků:
 15. Globalni text flow: useknute vety se nesmi opravovat po jedne strance. CSS a audit maji hlidat `line-clamp`, fixed height, overflow clipping a fixed card heights u editovatelnych textu globalne.
 16. Duplicitni logika: kazdy novy blok se pred implementaci porovna s existujicimi Baspa/Arctic moduly. Katalog, nabidky, reference, downloady, FAQ, kontakty a mapy se nemaji implementovat paralelne, pokud uz existuje editovatelny modul.
 17. Deploy: kazda oprava se commituje a pushuje s poznamkou, jestli je nebo neni v produkci. Produkce = FTP upload souboru + pripadny produkcni DB/script krok + hash/URL verifikace. Bez schvaleni zustava status `Not deployed to production`.
+18. Arctic CSS rebuild: vizualni opravy v bodech 1-16 se nesmi dal resit jako izolovane prebijeci CSS hotfixy. Nejdriv se musi oddelit frontend od Baspa `style.css`, zmerit Figma kontrakt a navazat opravy na novou Arctic CSS architekturu popsanou v `docs/css-arctic-rebuild-audit-2026-06-09.md`.
 
 ## Aktualni navazujici plan od 2026-05-25
 
