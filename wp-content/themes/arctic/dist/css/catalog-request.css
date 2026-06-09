@@ -101,6 +101,10 @@
 }
 
 @media (max-width: 767px) {
+  .template--homepage .f-section--catalog-request {
+    display: none;
+  }
+
   .f-section--catalog-request {
     padding: 38px 0 46px;
   }

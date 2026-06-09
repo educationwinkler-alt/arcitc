@@ -47,6 +47,20 @@ if ( !function_exists( 'baspa_scripts' ) ) {
 		}
 
 		/**
+		 * Mobile Figma responsive contract: navigation/footer accordions.
+		 */
+		$mobile_figma_contract_path = get_theme_file_path( 'dist/js/mobile-figma-contract.js' );
+		if ( file_exists( $mobile_figma_contract_path ) ) {
+			wp_enqueue_script(
+				get_template() . '-mobile-figma-contract',
+				get_theme_file_uri( 'dist/js/mobile-figma-contract.js' ),
+				array( get_template() ),
+				filemtime( $mobile_figma_contract_path ),
+				true
+			);
+		}
+
+		/**
 		 * Smartsupp homepage promo collision guard
 		 */
 		$smartsupp_promo_offset_path = get_theme_file_path( 'dist/js/smartsupp-promo-offset.js' );

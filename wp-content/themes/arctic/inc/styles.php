@@ -85,6 +85,18 @@ if ( !function_exists( 'baspa_styles' ) ) {
 			);
 		}
 
+		$mobile_figma_contract_css_path = get_theme_file_path( 'dist/css/mobile-figma-contract.css' );
+		if ( file_exists( $mobile_figma_contract_css_path ) ) {
+			$mobile_figma_contract_css_ver = filemtime( $mobile_figma_contract_css_path );
+			$mobile_figma_contract_css_ver = $is_local ? $mobile_figma_contract_css_ver . '-' . time() : $mobile_figma_contract_css_ver;
+			wp_enqueue_style(
+				get_template() . '-mobile-figma-contract',
+				get_theme_file_uri( 'dist/css/mobile-figma-contract.css' ),
+				array( get_template() . '-skin' ),
+				$mobile_figma_contract_css_ver
+			);
+		}
+
 		/**
 		 * Admin Bar
 		 */

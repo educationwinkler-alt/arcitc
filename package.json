@@ -24,6 +24,7 @@
     "link:smoke": "node tools/link-smoke.js",
     "local:safety": "node tools/local-safety-smoke.js",
     "maintenance:smoke": "node tools/maintenance-smoke.js",
+    "mobile-figma:smoke": "node tools/mobile-figma-contract-smoke.js",
     "modal:smoke": "node tools/modal-design-smoke.js",
     "migration:map": "node tools/build-migration-map.js",
     "product-detail:physical": "node tools/product-detail-physical-smoke.js",

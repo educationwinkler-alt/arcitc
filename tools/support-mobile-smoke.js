@@ -187,31 +187,63 @@ async function assertMobileHomepageAndMenu(page) {
       return style.display !== 'none' && rect.width > 1 && rect.height > 1;
     }).length;
 
+    const search = element.querySelector(':scope > .f-search')?.getBoundingClientRect();
     const visibleLinks = [...element.querySelectorAll('a')]
       .filter((link) => link.offsetWidth > 1 || link.offsetHeight > 1 || link.getClientRects().length > 0)
       .map((link) => link.textContent.replace(/\s+/g, ' ').trim())
       .filter(Boolean);
 
+    const accordionItems = [...element.querySelectorAll('.f-navigation__list > li.has-sub')].slice(0, 4).map((item) => {
+      const link = item.querySelector(':scope > a');
+      const panel = item.querySelector(':scope > .f-navigation-sub');
+
+      return {
+        label: link ? link.textContent.replace(/\s+/g, ' ').trim() : '',
+        open: item.classList.contains('is-open'),
+        expanded: link ? link.getAttribute('aria-expanded') : null,
+        panelHidden: panel ? panel.hidden : null,
+      };
+    });
+
     return {
       overflowY: getComputedStyle(element).overflowY,
-      scrollHeight: element.scrollHeight,
-      clientHeight: element.clientHeight,
+      search: search ? {
+        x: Math.round(search.x),
+        y: Math.round(search.y),
+        width: Math.round(search.width),
+        height: Math.round(search.height),
+      } : null,
       visibleSubmenus,
       visibleLinks,
+      accordionItems,
     };
   });
 
-  if (menuState.visibleSubmenus < 4) {
-    throw new Error(`mobile menu expected visible submenu groups, got ${menuState.visibleSubmenus}`);
+  if (menuState.visibleSubmenus !== 1) {
+    throw new Error(`mobile menu expected one visible Figma accordion submenu, got ${menuState.visibleSubmenus}`);
   }
 
-  if (menuState.scrollHeight <= menuState.clientHeight || menuState.overflowY === 'hidden') {
-    throw new Error('mobile menu is not scrollable after exposing submenu content');
+  if (!menuState.search || menuState.search.x !== 26 || menuState.search.y !== 527 || menuState.search.width !== 323 || menuState.search.height !== 44) {
+    throw new Error(`mobile menu search does not match Figma geometry: ${JSON.stringify(menuState.search)}`);
   }
 
-  for (const label of ['Série Core', 'Série Classic', 'Série Custom', 'Bazény ARCTIC Classic', 'Bazény ARCTIC Custom', 'Termokryt']) {
-    if (!menuState.visibleLinks.includes(label)) {
-      throw new Error(`mobile menu is missing visible submenu link: ${label}`);
+  if (menuState.overflowY === 'hidden') {
+    throw new Error('mobile menu must remain scrollable if expanded groups exceed the viewport');
+  }
+
+  if (!menuState.accordionItems[0]?.open || menuState.accordionItems[0]?.expanded !== 'true' || menuState.accordionItems[0]?.panelHidden) {
+    throw new Error(`first mobile menu accordion must start open: ${JSON.stringify(menuState.accordionItems[0])}`);
+  }
+
+  for (const item of menuState.accordionItems.slice(1)) {
+    if (item.open || item.expanded !== 'false' || item.panelHidden !== true) {
+      throw new Error(`non-first mobile menu accordion must start collapsed: ${JSON.stringify(item)}`);
+    }
+  }
+
+  for (const fragment of ['Core', 'Classic', 'Custom']) {
+    if (!menuState.visibleLinks.some((label) => label.includes(fragment))) {
+      throw new Error(`mobile menu first accordion is missing visible link fragment: ${fragment}`);
     }
   }
 }
